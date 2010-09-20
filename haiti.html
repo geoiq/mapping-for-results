@@ -1,8 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html class="js" xml:lang="en" xmlns="http://www.w3.org/19	99/xhtml" lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>The World Bank - Climate Change</title>
-<link href="http://beta.worldbank.org/feed" title="Climate Change Whats New | World Bank" type="application/rss+xml" rel="alternate">
+<title>The World Bank - Mapping for Results</title>
+<link href="http://beta.worldbank.org/feed" title="Mapping for Results Whats New | World Bank" type="application/rss+xml" rel="alternate">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="http://beta.worldbank.org/sites/default/files/climatechange_favicon.png" type="image/x-icon">
 <link type="text/css" rel="stylesheet" media="all" href="The%20World%20Bank%20-%20Climate%20Change_files/aggregator.css">
@@ -48,42 +48,30 @@
 <script type="text/javascript" src="The%20World%20Bank%20-%20Climate%20Change_files/search_box.js"></script>
 <script type="text/javascript" src="The%20World%20Bank%20-%20Climate%20Change_files/update_print_link.js"></script>
 
-<script type="text/javascript" charset="utf-8" src="http://api-sandbox.geoiq.com/javascripts/prototype.js"></script>
-<!--script type="text/javascript" charset="utf-8" src="http://api-sandbox.geoiq.com/javascripts/jquery-1.3.2.min.js"></script-->
+<script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/prototype.js"></script>
+<!--script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/jquery-1.3.2.min.js"></script-->
 <script type="text/javascript" charset="utf-8">
 var jq = jQuery.noConflict();
 </script>
 <script type="text/javascript" charset="utf-8" src="js/f1.js"></script>
-<script type="text/javascript" charset="utf-8" src="http://api-sandbox.geoiq.com/javascripts/f1.api.js"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/raphael.js?1279556727" type="text/javascript"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/g.raphael.js?1279556727" type="text/javascript"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/g.bar.js?1279556727" type="text/javascript"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/g.line.js?1279556727" type="text/javascript"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/g.dot.js?1279556727" type="text/javascript"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/g.pie.js?1279556727" type="text/javascript"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/jquery.tablesorter.min.js?1279556727" type="text/javascript"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/f1.maker.visualizer.js?1279556727" type="text/javascript"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/jquery-css-transform.js?1279556727" type="text/javascript"></script>
-<script src="http://api-sandbox.geoiq.com/javascripts/f1.maker.visual_creator.js?1279556727" type="text/javascript"></script>
-
-
-<script type="text/javascript">
-	<!--//--><![CDATA[//><!--
-	jQuery.extend(Drupal.settings, { "basePath": "/" });
-	//--><!]]>
-</script>
-<script type="text/javascript">
-	<!--//--><![CDATA[//><!--
-	AudioPlayer.setup("/sites/default/modules/mp3player/mp3player/player.swf", {width:290});
-	//--><!]]>
-</script>
+<script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/f1.api.js"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/raphael.js?1279556727" type="text/javascript"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/g.raphael.js?1279556727" type="text/javascript"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/g.bar.js?1279556727" type="text/javascript"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/g.line.js?1279556727" type="text/javascript"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/g.dot.js?1279556727" type="text/javascript"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/g.pie.js?1279556727" type="text/javascript"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/jquery.tablesorter.min.js?1279556727" type="text/javascript"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/f1.maker.visualizer.js?1279556727" type="text/javascript"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/jquery-css-transform.js?1279556727" type="text/javascript"></script>
+<script src="http://wbstaging.geocommons.com/javascripts/f1.maker.visual_creator.js?1279556727" type="text/javascript"></script>
 
 <script type="text/javascript" charset="utf-8">
 	var filter = "commune_1";
 	var filter_value = "PETION-VILLE";
-	var proxy_host = "http://api-sandbox.geoiq.com";
+	var proxy_host = "http://wbstaging.geocommons.com";
 	var map = new F1.Maker.Map( { dom_id:"geoiq_map",
-								  map_id:"225", 
+								  map_id:"2", 
 								  uiZoom: true,
 								  uiLayers: false,
 								  
@@ -107,18 +95,18 @@ var jq = jQuery.noConflict();
 
 
 	function drawCharts() {
-	  F1.Visualizer.utils.get_data_from_flash("159", function(data) {
+	  F1.Visualizer.utils.get_data_from_flash("13", function(data) {
 		var features = jq.map(data.features, function(feature) { 
 		  if (feature) { return feature.attributes} });
 
 		  data.features = features;
-		  F1.Visualizer.charts.grid(500, 930, data, "projects-table");
+		  F1.Visualizer.charts.grid(500, 930, data, "projects-table", ["project title", "project id", "total amt", "sector1", "sector2", "sector3", "approval date"]);
 
-		  bar_options = {"features":features, "attributes": {"data":{"name": "Number of Projects", "original_name": "projects"}, "description":{"name": "Commune", "original_name": "commune"}, "sort":{"name": "Number of Projects","original_name": "projects"} } };
-		  F1.Visualizer.charts.bar(180, 455, bar_options, "overall_funding");
-
-		  pie_options = {"features":features, "attributes": {"data":{"name": "Number of Projects","original_name": "projects"}, "description":{"name": "Commune","original_name": "commune"}, "sort":{"name": "Number of Projects","original_name": "projects"} } };
-		  F1.Visualizer.charts.pie(180, 455, pie_options, "funding_by_region");
+      // bar_options = {"features":features, "attributes": {"data":{"name": "Number of Projects", "original_name": "projects"}, "description":{"name": "Commune", "original_name": "commune"}, "sort":{"name": "Number of Projects","original_name": "projects"} } };
+      // F1.Visualizer.charts.bar(180, 455, bar_options, "overall_funding");
+      // 
+      // pie_options = {"features":features, "attributes": {"data":{"name": "Number of Projects","original_name": "projects"}, "description":{"name": "Commune","original_name": "commune"}, "sort":{"name": "Number of Projects","original_name": "projects"} } };
+      // F1.Visualizer.charts.pie(180, 455, pie_options, "funding_by_region");
 
 		  }, map);
 		}
@@ -179,27 +167,21 @@ var jq = jQuery.noConflict();
 <li><a href="http://beta.worldbank.org/overview#results">Results</a></li>
 </ul>
 </div>
-<div class="overview-text"><strong>Climate change</strong> is expected
-to hit developing countries the hardest. Its effects—higher
-temperatures, changes in precipitation patterns, rising sea levels, and
-more frequent weather-related disasters—pose risks for agriculture,
-food, and water supplies. At stake are recent gains in the fight
-against poverty, hunger and disease, and the lives and livelihoods of
-billions of people in developing countries. <a class="readmore" href="http://beta.worldbank.org/overview">Read More »</a></div>
+<div class="overview-text"><strong>The Mapping for Results Beta</strong>initiative provides detailed information on our efforts to reduce poverty and alleviate human suffering in every part of the world. This website showcases information on the what and where by accessing the indicator, sector, region, and funding dropdown and toggle areas. <a class="readmore" href="#">Read More »</a></div>
   </div>
 </div>
     </div>
           </div>
         </div>
         <div id="map-content-header">
-				<div id='map-content-title'>HAITI FEATURED MAPS</div>
+				<div id='map-content-title'>HAITI</div>
 		</div>
         <div id="map-content">
 			<div id="geoiq_map" class=""></div>
 			<div id="map_console">
-		<h3 class="console-title">24</h3><span class="console-info">total active project sites</span>
+		<h3 class="console-title">292</h3><span class="console-info">total project activity sites</span>
 		<div style="clear:both;"></div>
-		<h3 class="console-title">120</h3><span class="console-info"> project sites</span>
+		<h3 class="console-title">22</h3><span class="console-info"> total projects</span>
 		</div>
 		<div id="map_factbox"><h3 class="factbox-title">Haiti</h3>
 		<p class="map-factbox-info"><b>Region:</b>Kignoma</p>
@@ -213,11 +195,12 @@ billions of people in developing countries. <a class="readmore" href="http://bet
         <!--Charts Begin-->
 		<div id="chart-left">
 			<h2 class='block-title'>Total Funding By Region</h2>
-			<div  id="funding_by_region" ></div>
+			<div  id="funding_by_region" class="chart">CHART PENDING</div>
 		</div>
 		<div id="chart-right">
 			<h2 class='block-title'>Overall Funding By Sector</h2>
-			<div  id="overall_funding" >
+			<div  id="overall_funding" class="chart" >
+			  CHART PENDING
 			</div>
 		</div> 
         
@@ -274,50 +257,4 @@ billions of people in developing countries. <a class="readmore" href="http://bet
 <!-- /#wrapper -->
 <!-- /layout -->
 
-  <!-- code for http://www.climatechange.extcc.com -->
-<!-- SiteCatalyst code version: G.6. Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
-<script language="JavaScript" src="The%20World%20Bank%20-%20Climate%20Change_files/WebStatsUtil.js"></script>
-<script language="JavaScript">
-<!--
-var s_pageName="The World Bank - Climate Change";
-var s_channel="EXT Climate Change BETA EXT";
-var s_hier1 = "EXT,EXT Climate Change BETA EXT";
-var s_prop1 = "The World Bank - Climate Change";
-var s_prop2 = "Not Available";  /* Author */
-var s_prop3 = "Not Available";  /* Date */
-var s_prop4 = "Not Available";  /* Topic */
-var s_prop5 = "Not Available";  /* Sub Topic */
-var s_prop6 = "Not Available";  /* Region */
-var s_prop7 = "Not Available";  /* Country */
-var s_prop8 = "Not Available";  /* DocType */
-var s_prop9 = "Not Available";  /* MDK or unique identifier */
-var s_prop10 = "Live";          /* Site Status */
-var s_prop11 = "Not Available"; /* Data Source */
-var s_prop13 = "EXT";           /* VPU */
-var s_prop16="English";         /* doc language */
-var s_prop17="English";         /* site language */
-var omnitureCookieContent= getCookieValueByName('omniture');							 
-	var s_prop18 =getVPU(omnitureCookieContent);	
-	var s_prop19 =getDutyStation(omnitureCookieContent);
-	var s_prop20 =getUserType(omnitureCookieContent);
-var sTitle = document.title;
-var asTitleParts = sTitle.split("-");
-while (sTitle.indexOf(",") > -1)
-	sTitle = sTitle.replace(",", "");
-
-s_pageName = sTitle;
-s_prop1 = sTitle;
-s_hier1 += ", " + sTitle;
-
-var s_account="wbnispextcchange,wbglobalext";
-//-->
-</script>
-<script language="JavaScript" src="The%20World%20Bank%20-%20Climate%20Change_files/s_code_remote.js"></script><img src="The%20World%20Bank%20-%20Climate%20Change_files/s72373755849060.gif" name="s_i_wbnispextcchange" alt="" width="1" border="0" height="1">
-<!-- End SiteCatalyst code version: G.6. -->
-<script type="text/javascript">
-<!--//--><![CDATA[//><!--
-jQuery.extend(Drupal.settings, { "CToolsAJAX": { "scripts": { "/sites/all/modules/jquery_update/replace/jquery.packed.js?4": true, "/misc/drupal.js?4": true, "/sites/worldbank.org.climatechange/modules/collapsible/collapsible.js?4": true, "/sites/worldbank.org.climatechange/modules/mp3player/mp3player/audio-player.js?4": true, "/sites/worldbank.org.climatechange/modules/view_rotator/view_rotator.js?4": true, "/sites/worldbank.org.climatechange/modules/view_rotator/jquery.jcarousel.js?4": true, "/sites/all/modules/jquery_ui/jquery.ui/ui/minified/ui.core.min.js?4": true, "/sites/all/modules/jquery_ui/jquery.ui/ui/minified/effects.core.min.js?4": true, "/sites/all/modules/jquery_ui/jquery.ui/ui/minified/effects.blind.min.js?4": true }, "css": { "/modules/aggregator/aggregator.css?4": true, "/modules/node/node.css?4": true, "/modules/system/defaults.css?4": true, "/modules/system/system.css?4": true, "/modules/system/system-menus.css?4": true, "/modules/user/user.css?4": true, "/sites/all/modules/cck/theme/content-module.css?4": true, "/sites/all/modules/ctools/css/ctools.css?4": true, "/sites/all/modules/custompage/custompage.css?4": true, "/sites/all/modules/filefield/filefield.css?4": true, "/sites/worldbank.org.climatechange/modules/date/date.css?4": true, "/sites/worldbank.org.climatechange/modules/date/date_popup/themes/datepicker.css?4": true, "/sites/worldbank.org.climatechange/modules/date/date_popup/themes/timeentry.css?4": true, "/sites/all/modules/cck/modules/fieldgroup/fieldgroup.css?4": true, "/sites/all/modules/views/css/views.css?4": true, "/sites/worldbank.org.climatechange/modules/view_rotator/jquery.jcarousel.css?4": true, "/sites/worldbank.org.climatechange/themes/climatechange/style.css?4": true, "/sites/worldbank.org.climatechange/themes/climatechange/layout.css?4": true, "/sites/worldbank.org.climatechange/themes/climatechange/one-off.css?4": true, "/sites/worldbank.org.climatechange/themes/climatechange/people.css?4": true, "/sites/worldbank.org.climatechange/themes/climatechange/data.css?4": true, "/sites/worldbank.org.climatechange/themes/climatechange/custom.css?4": true, "/sites/worldbank.org.climatechange/themes/climatechange/override.css?4": true, "/sites/worldbank.org.climatechange/themes/climatechange/print.css?4": true } } });
-//--><!]]>
-</script>
-
-  </body></html>
+</body></html>
