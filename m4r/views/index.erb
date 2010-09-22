@@ -35,7 +35,7 @@
   <ul>
     <% MAPS.each do |endpoint, map| %>
     <% if endpoint != :world %>
-      <li><a href="/<%= endpoint %>"><%= map[:name] %></a></li>
+      <li><a href="<%= SUBDOMAIN %>/<%= endpoint %>"><%= map[:name] %></a></li>
     <% end %>
     <% end %>
   </ul>

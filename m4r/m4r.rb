@@ -2,6 +2,7 @@ require 'rubygems'
 require 'sinatra'
 
 PLATFORM_API_URL = "http://wbstaging.geocommons.com"
+SUBDOMAIN = "/beta"
 MAPS = {
   :world => {:name => "World", :map => 1, :projects => nil, :region => nil},
   :haiti => {:name => "Haiti", :map => 2, :projects => 13, :region => "Latin America and Caribbean"},
@@ -34,9 +35,9 @@ helpers do
   # e.g Map / World / Latin America and Caribbean / Haiti
   def map_link(country, options={})
     link = "Map / "
-    link += "<a href=\"/\" title='World Bank: World'>World</a>"
+    link += "<a href=\"#{SUBDOMAIN}/\" title='World Bank: World'>World</a>"
     unless @country[:region].nil?
-      link += " / <a href=\"/#region:#{@country[:region].gsub(/ /,'').downcase}\">#{@country[:region]}</a> / #{@country[:name]}"
+      link += " / <a href=\"#{SUBDOMAIN}/#region:#{@country[:region].gsub(/ /,'').downcase}\">#{@country[:region]}</a> / #{@country[:name]}"
     end
     link
   end  
