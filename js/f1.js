@@ -514,4 +514,3 @@ Object.isEmpty = function(object) { for(var i in object) { return false; } retur
         return data ? fn(data) : fn;
     };
 })();
-

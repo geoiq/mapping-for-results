@@ -117,16 +117,16 @@ var jq = jQuery.noConflict();
 
     <script type="text/javascript" charset="utf-8">
 	var proxy_host = "http://wbstaging.geocommons.com";
-	var map = new F1.Maker.Map( { dom_id:"geoiq_map",map_id:2, 
+	var map = new F1.Maker.Map( { dom_id:"geoiq_map",map_id:1, 
                                 uiZoom: true,uiLayers: false,uiLegend: true,uiStyles: true,
                                 uiHeader: true,hideGCLogo: true,hideGILogo: true,
                                 ShowControl:("Legend",true,"open"),
                                 core_host:  proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
-                                onload: function() { drawCharts(); }
+                                onload: function() {  }
                               });
 
 	function drawCharts() {
-	  F1.Visualizer.utils.get_data_from_flash(13, function(data) {
+	  F1.Visualizer.utils.get_data_from_flash(1, function(data) {
 		var features = jq.map(data.features, function(feature) { 
 		  if (feature) { return feature.attributes} });
 		  data.features = features;
@@ -142,7 +142,7 @@ var jq = jQuery.noConflict();
 </script>
 
 <div id="map-content-header">
-  <div id='map-content-title'>HAITI</div>
+  <div id='map-content-title'>WORLD</div>
 </div>
 <div id="map-content">
   <div id="geoiq_map" class=""></div>
@@ -151,7 +151,7 @@ var jq = jQuery.noConflict();
     <div style="clear:both;"></div>
     <h3 class="console-title">#</h3><span class="console-info"> total projects</span>
   </div>
-  <!-- <div id="map_factbox"><h3 class="factbox-title">Haiti</h3>
+  <!-- <div id="map_factbox"><h3 class="factbox-title">World</h3>
     <p class="map-factbox-info"><b>Region:</b>Kignoma</p>
     <p class="map-factbox-info"><b>Total Projects:</b>56</p>
     <p class="map-factbox-info"><b>Total Funding:</b>12 Million</p>
@@ -167,15 +167,33 @@ var jq = jQuery.noConflict();
 </div>
 <div id="chart-right">
   
-  <h2 class='block-title'>Overall Funding By Sector</h2>
-  <div  id="overall_funding" class="chart" >
-    CHART PENDING
-  </div>
+  <h2 class='block-title'>Mapping for Results Countries</h2>
+  <ul>
+    
+    
+      <li><a href="/bolivia">Bolivia</a></li>
+    
+    
+    
+      <li><a href="/kenya">Kenya</a></li>
+    
+    
+    
+    
+    
+      <li><a href="/indonesia">Indonesia</a></li>
+    
+    
+    
+      <li><a href="/haiti">Haiti</a></li>
+    
+    
+  </ul>
   
 </div> 
 
 <!--Project Search Bar Begins-->      
-<div id="projects-bar"><div class="project-bar-text"><img src="images/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />Total Project List / Haiti</div>
+<div id="projects-bar"><div class="project-bar-text"><img src="images/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />Total Project List / World</div>
 <div id="">
   <form action="/" accept-charset="UTF-8" method="post" id="search-theme-form">
     <input maxlength="128" name="search_theme_form" id="project-search-box" size="15" value="" class="form-text" type="text">
@@ -195,7 +213,7 @@ var jq = jQuery.noConflict();
 
       <!--Red Footer Begins-->
       <div id="red-footer">
-        <div class="red-footer-links"><b>You are here:</b><img src="images/spacer.gif"/>Map / <a href="/" title='World Bank: World'>World</a> / <a href="/#region:latinamericaandcaribbean">Latin America and Caribbean</a> / Haiti</div>
+        <div class="red-footer-links"><b>You are here:</b><img src="images/spacer.gif"/>Map / <a href="/" title='World Bank: World'>World</a></div>
       </div>
 
       <div id="footer-maps">

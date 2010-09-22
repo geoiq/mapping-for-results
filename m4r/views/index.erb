@@ -1,0 +1,62 @@
+<%= partial :map %>
+
+<div id="map-content-header">
+  <div id='map-content-title'><%= @country[:name].upcase %></div>
+</div>
+<div id="map-content">
+  <div id="geoiq_map" class=""></div>
+  <div id="map_console">
+    <h3 class="console-title">#</h3><span class="console-info">total project activity sites</span>
+    <div style="clear:both;"></div>
+    <h3 class="console-title">#</h3><span class="console-info"> total projects</span>
+  </div>
+  <!-- <div id="map_factbox"><h3 class="factbox-title"><%= @country[:name].capitalize %></h3>
+    <p class="map-factbox-info"><b>Region:</b>Kignoma</p>
+    <p class="map-factbox-info"><b>Total Projects:</b>56</p>
+    <p class="map-factbox-info"><b>Total Funding:</b>12 Million</p>
+    <p class="map-factbox-info"><b>Results:</b>38 New Schools</p>
+  </div> -->
+</div>
+
+<!--Map Content Ends-->
+<!--Charts Begin-->
+<div id="chart-left">
+  <h2 class='block-title'>Total Funding By Region</h2>
+  <div  id="funding_by_region" class="chart">CHART PENDING</div>
+</div>
+<div id="chart-right">
+  <% unless @country[:region].nil? %>
+  <h2 class='block-title'>Overall Funding By Sector</h2>
+  <div  id="overall_funding" class="chart" >
+    CHART PENDING
+  </div>
+  <% else %>
+  <h2 class='block-title'>Mapping for Results Countries</h2>
+  <ul>
+    <% MAPS.each do |endpoint, map| %>
+    <% if endpoint != :world %>
+      <li><a href="/<%= endpoint %>"><%= map[:name] %></a></li>
+    <% end %>
+    <% end %>
+  </ul>
+  <% end %>
+</div> 
+
+<!--Project Search Bar Begins-->      
+<div id="projects-bar"><div class="project-bar-text"><img src="images/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />Total Project List / <%= @country[:name].capitalize %></div>
+<div id="">
+  <form action="/" accept-charset="UTF-8" method="post" id="search-theme-form">
+    <input maxlength="128" name="search_theme_form" id="project-search-box" size="15" value="" class="form-text" type="text">
+  </form>
+</div>
+</div>	
+<!--Table Data Begins-->
+<div id="data-table">
+  <div id="projects-table" style="overflow: auto;">
+  </div>       
+</div>
+<!--Data Table Ends-->
+
+<div id="page-scroll">
+  <p class="pagination"><a ref="#"><< PREVIOUS</a> | <a href="">1</a> | <a href="">2</a> | <a href="">3</a> | <a href="">4</a> | <a href="">5</a> | <a href="">NEXT>></a><a href="">VIEW FULL LIST</a></p>
+</div>
