@@ -1,11 +1,21 @@
 require 'rubygems'
 require 'sinatra'
 
-PLATFORM_API_URL = "http://wbstaging.geocommons.com"
-SUBDOMAIN = "/beta"
+# PLATFORM_API_URL = "http://wbstaging.geocommons.com"
+# SUBDOMAIN = ""
+# MAPS = {
+#   :world => {:name => "World", :map => 1, :projects => nil, :region => nil},
+#   :haiti => {:name => "Haiti", :map => 2, :projects => 13, :region => "Latin America and Caribbean"},
+#   :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"},
+#   :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"},
+#   :indonesia => {:name => "Indonesia", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
+# }
+
+PLATFORM_API_URL = "http://geoiq.local"
+SUBDOMAIN = ""
 MAPS = {
   :world => {:name => "World", :map => 1, :projects => nil, :region => nil},
-  :haiti => {:name => "Haiti", :map => 2, :projects => 13, :region => "Latin America and Caribbean"},
+  :haiti => {:name => "Haiti", :map => 124, :projects => 1591, :region => "Latin America and Caribbean"},
   :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"},
   :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"},
   :indonesia => {:name => "Indonesia", :map => 5, :projects => nil, :region => "East Asia and Pacific"}

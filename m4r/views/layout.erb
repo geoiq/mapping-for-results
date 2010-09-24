@@ -56,8 +56,22 @@ var jq = jQuery.noConflict();
 </script>
 <script type="text/javascript" charset="utf-8" src="js/f1.js"></script>
 <script type="text/javascript" charset="utf-8" src="<%= PLATFORM_API_URL %>/javascripts/f1.api.js"></script>
+<% if PLATFORM_API_URL =~ /geocommons/ %>
 <script src="<%= PLATFORM_API_URL %>/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
+<% else %>
+<script type="text/javascript" charset="utf-8" src="<%= PLATFORM_API_URL %>/javascripts/f1.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%= PLATFORM_API_URL %>/javascripts/f1.api.js"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/raphael.js?1279556727" type="text/javascript"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/g.raphael.js?1279556727" type="text/javascript"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/g.bar.js?1279556727" type="text/javascript"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/g.line.js?1279556727" type="text/javascript"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/g.dot.js?1279556727" type="text/javascript"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/g.pie.js?1279556727" type="text/javascript"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/jquery.tablesorter.min.js?1279556727" type="text/javascript"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/f1.maker.visualizer.js?1279556727" type="text/javascript"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/jquery-css-transform.js?1279556727" type="text/javascript"></script>
+<script src="<%= PLATFORM_API_URL %>/javascripts/f1.maker.visual_creator.js?1279556727" type="text/javascript"></script>
+<% end %>
 
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
