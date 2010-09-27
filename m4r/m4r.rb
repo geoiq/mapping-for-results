@@ -14,13 +14,32 @@ require 'sinatra'
 PLATFORM_API_URL = "http://geoiq.local"
 SUBDOMAIN = ""
 MAPS = {
-  :world => {:name => "World", :map => 1, :projects => nil, :region => nil},
-  :haiti => {:name => "Haiti", :map => 124, :projects => 1591, :region => "Latin America and Caribbean"},
-  :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"},
-  :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"},
-  :indonesia => {:name => "Indonesia", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
+  :world => {:name => "World", :map => 1, :projects => nil, :regions => {
+    :africa => {
+      :name => "Africa",
+      :zoom => 3, :lat => -4, :lon => 21,
+      :countries => {
+        :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"}
+      }
+    },
+      :eastasia => {
+        :name => "East Asia and Pacific",
+        :zoom => 4, :lat => 19, :lon => 105.5,
+        :countries => {
+          :indonesia => {:name => "Indonesia", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
+        }
+    },
+    :lac =>  {
+      :name => "Latin America and Caribbean",
+      :zoom => 3, :lat => -25, :lon => -57.8,
+      :countries => {
+        :haiti => {:name => "Haiti", :map => 124, :projects => 1591, :region => "Latin America and Caribbean"},
+        :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"}
+      }
+      }      
+    }
+  }
 }
-
 require 'erb'
 
 get '/' do
@@ -28,8 +47,9 @@ get '/' do
   erb :index
 end
 
-get '/:country' do
-  @country = MAPS[params[:country].to_sym]
+get '/:region/:country' do
+  @region = MAPS[:world][:regions][params[:region].to_sym]
+  @country = @region[:countries][params[:country].to_sym]
   erb :index
 end
 
@@ -44,10 +64,9 @@ helpers do
   # 
   # e.g Map / World / Latin America and Caribbean / Haiti
   def map_link(country, options={})
-    link = "Map / "
-    link += "<a href=\"#{SUBDOMAIN}/\" title='World Bank: World'>World</a>"
+    link = %Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/" title='World Bank: World'>World</a>}    
     unless @country[:region].nil?
-      link += " / <a href=\"#{SUBDOMAIN}/#region:#{@country[:region].gsub(/ /,'').downcase}\">#{@country[:region]}</a> / #{@country[:name]}"
+      link += %Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/#region:#{@country[:region].gsub(/ /,'').downcase}">#{@country[:region]}</a><span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">#{@country[:name]}</a></span>}
     end
     link
   end  

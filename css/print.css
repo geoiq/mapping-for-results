@@ -1,0 +1,115 @@
+/* $Id: print.css,v 1.1.2.2 2008/08/21 22:03:40 jcnventura Exp $ */
+
+body {
+background: #f4f7ee;
+margin:0px 0px 20px; padding:0px; 
+text-align:center; /*workaround for centering div in IE*/ }
+ 
+ #wrapper {
+background: url(background-images/mainbg.png);
+background-repeat: repeat-y;
+margin: 0 auto;
+width: 1020px;
+padding: 0px;
+text-align: left; 
+overflow:hidden;
+line-height: 1.6em;
+
+}
+th {
+  text-align: left; /* LTR */
+  color: #006;
+  border-bottom: 1px solid #ccc;
+}
+tr.odd {
+  background-color: #ddd;
+}
+tr.even {
+  background-color: #fff;
+}
+td {
+  padding: 5px;
+}
+
+h1, h2, h1.print-title {font-family: Georgia; font-weight: normal;}
+
+h2 {
+font-size: 2.2em; color: #600; margin: 10px 0px 20px;}
+
+#menu {
+  visibility: hidden;
+}
+#main {
+  margin: 1em;
+}
+a:link {color: #000; text-decoration: none;}
+a:visited {color: #000; text-decoration: none;}
+a:hover {color: #00f;  text-decoration: underline;}
+a:link img, a:visited img {border: 0;}
+.print-footnote {font-size: xx-small;}
+img.print-logo {border: 0;}
+.print-site_name {display: none;}
+.print-breadcrumb {font-size: x-small; display: none;}
+.print-title {}
+.print-submitted {font-size: small;}
+.print-created {font-size: small;}
+.print-taxonomy {
+  text-align: right;
+}
+.print-taxonomy li {display: inline;}
+.print-main {padding: 0px 40px; margin: 0px; font: 12px arial; line-height: 1.6em;}
+.print-content {}
+.print-hr {width: 960px;
+border-bottom: 1px solid #980101;
+}
+
+h1.print-title {font-size: 2em; color: #434343;
+}
+.print-message {
+  border: medium dotted blue;
+  padding: 1em;
+  
+}
+.print-source_url {font-size: small; }
+.print-links {font-size: small;}
+.print-footer {text-align: center;}
+
+
+.print-logo {margin-top: 15px;
+	margin-left: 20px;
+	margin-bottom: 10px;}
+	
+	#footer {clear: both;}
+	.footer {margin-top: 30px;}
+	
+	.footer-logo {float: left; margin: 0px 10px 0px 0px;}
+	
+	#footer .footer-links {font-size: 0.8em;padding: 5px 0px 20px; line-height: 2em;color: #70716b;}
+#footer .footer-links a, #footer .footer-links a:visited {color: #70716b;}
+	
+/*print-site_name
+	print-breadcrumb
+	print-hr
+	print-title
+	print-submitted
+	print-created
+	print-content
+	print-taxonomy
+	print-footer
+	print-hr
+	print-source_url*/
+
+
+#footer .links {
+  margin:0px;
+  padding: 0px;
+}
+#footer .links li {
+border-right:1px solid #73766C;
+display:inline;
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+padding:0 4px;
+}
+#footer p { margin:0px;}

@@ -1,0 +1,74 @@
+.expertfeature {padding: 15px 25px;}
+.mainpageexpertquote, .peopldetail-quote {text-align: center; font-family: georgia;
+font-size: 1.25em; color: #4c453d; padding: 15px 0px;
+}
+
+.mainpageexpertname, .quoteby {text-align: right; font-size: 0.916em; color: #999b9a; }
+
+.expert-entry {padding-bottom: 15px;}
+
+.expert-listing {padding-left: 5px;}
+
+.expert-alphalist {color: #676767; text-transform: uppercase; font-size: 0.916em; margin-bottom: 20px;  letter-spacing: 0.04em;
+margin-top: 15px; }
+
+.expert-alphalist a, .expert-alphalist a:visited, .expert-alphalist a.inactive, .expert-alphalist a.inactive:visited {color: #840202;font-weight: bold;}
+
+.expert-alphalist a.inactive, .expert-alphalist a.inactive:visited {color: #676767; }
+
+.alpha {font-size: 1em; color: #840202; margin-bottom: 10px; }
+
+.expert-leftlist {float: left; width: 250px; }
+
+.expert-rightlist {float: right;  width: 225px;}
+
+/* people detail pages */
+
+.people-detail {float: left; margin-left: -8px;}
+.people-detail .title, .expert-listing .title {line-height: 1.2em;}
+.photo-quote {float: left; width: 125px;}
+.peopldetail-quote {font-size: 1em; margin-top: 20px;}
+.communications {clear: both; margin: 15px 20px 25px; color: #989898;}
+
+.detailbio {float: right;margin-left:30px;
+margin-top:11px;
+width:340px;}
+.people-projs {border-top: 1px solid #ebeee3; border-bottom: 1px solid #ebeee3; margin: 0px -10px 10px; padding: 10px 20px;}
+.people-projs .projsentry, .people-pubs .pubsentry {margin: 20px 0px;}
+
+.people-pubs {padding: 10px 10px;}
+
+.people-projs, .people-pubs {clear: both;}
+
+
+/* overrides */
+
+#experts {
+margin:0;
+padding:0px 5px 3em 0;
+}
+
+h4.small {
+font-size:1.25em;
+line-height:1.3em;
+padding:0 0 0;
+}
+
+#experts .expert-image {
+float:left;
+margin:-5px 15px 10px -8px;
+padding:0;
+width:47px;
+}
+
+
+/* stats */
+
+#stats .stats img {margin: 0px 5px 0px 0px; vertical-align: text-bottom;}
+
+#stats .stats {padding: 0px 15px 0px 0px; margin: 0px;}
+#stats .stats-blurb {padding:20px 15px 0 0px;
+}
+#stats .stat-number {font-size: 5.833em; font-family: Georgia; color: #980000;}
+#stats .stat-desc {font-size: 2em; font-family: Georgia; color: #000;}
+

@@ -1,0 +1,28 @@
+code{
+   display: block;
+   margin: 6px 10px 8px 0;
+   padding: 2px 30px 2px 15px;
+   overflow: hidden;
+   
+   font-family: monospace;
+   line-height: 17px;
+   white-space: pre;
+   text-align: left;
+   
+   border: 1px solid #6699CC;
+   border-width: 1px 1px 1px 15px;
+   
+   border-radius: 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+   
+   background-color: #f7f7f7;
+}
+
+   code span{ color: #4CC744; font-style: italic; }
+   code var{ color: #6699CC; font-style: normal; }
+   code samp{ color: #CC0066; font-style: normal; text-decoration: none; }
+   code dfn{ color: #FF7C0A; font-style: normal; text-decoration: none; }
+
+   code.css var{ color: #FF7C0A; }
+   code.css dfn{ color: purple; }

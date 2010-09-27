@@ -1,0 +1,45 @@
+        <div id="download">
+          <ul>
+            <li class="">Choose from the boxes below to investigate mapping for results:</li>
+          </ul>
+        </div>
+        <div class="dropmenuholder">
+          <ul class="dropmenu">
+            <li class="first"><a href="#">LOCATION</a>
+              <ul>
+                <% MAPS[:world][:regions].each do |region, region_attr| %>
+                  <% region_attr[:countries].each do |country, country_attr| %>
+                  <li><a href="/<%= region %>/<%= country %>"><%= country_attr[:name] %></a></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+          </ul>
+          <!-- ... and so on ... -->
+          <ul class="dropmenu">
+            <li class="first"><a href="#">INDICATOR</a>
+              <ul>
+                <li><a href="#">Poverty</a></li>
+                <li><a href="#">Malnutrition</a></li>
+                <li><a href="#">Skilled Births</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- ... and so on ... -->
+          <ul class="dropmenu">
+            <li class="first"><a href="#">PROJECT</a>
+              <ul>
+                <li><a href="#">Count</a></li>
+                <li><a href="#">Funding</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- ... and so on ... -->
+          <ul class="dropmenu">
+            <li><a href="#">SECTOR</a>
+              <ul>
+                <li><a href="#">Subitem One</a></li>
+              </ul>
+            </li>
+            <!-- ... and so on ... -->
+          </ul>

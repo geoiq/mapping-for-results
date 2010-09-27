@@ -1,6 +1,6 @@
 <script type="text/javascript" charset="utf-8">
 var proxy_host = "<%= PLATFORM_API_URL %>";    
-var project_attributes = ["project t0", "project i0", "activity count", "total amt0", "sector1", "approval 0"];
+var project_attributes = ["project t0", "project i0", "activity count", "financing", "sector1", "approval 0"];
 var worldbank_sectors = ["agriculture","communication","energy","education","finance","health","industry","public","transportation","water"];
 
 var project_sectors = {"General agriculture":"agriculture", "Agricultural extension and research":"agriculture", "fishing and forestry sector":"agriculture", 
@@ -16,6 +16,18 @@ var project_sectors = {"General agriculture":"agriculture", "Agricultural extens
 // , "General agriculture, fishing and forestry sector":"agriculture"
 if(typeof(F1)=='undefined') {F1 = {}}
 (function(){
+  Object.size = function(obj) {
+      var size = 0, key;
+      for (key in obj) {
+          if (obj.hasOwnProperty(key)) size++;
+      }
+      return size;
+  };
+
+  String.prototype.capitalize = function(){
+    return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
+  };  
+  
   F1.WorldBank = function(options) {  //constructor
     this.options = options;
     // F1.WorldBank.instances[options.id] = this;
@@ -29,7 +41,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.activities = {};
       this.projects = {};
       this.sectors = {};
-
+      this.total_funding = 0;
+      
       for(var i=0;i< worldbank_sectors.length;i++) {
         this.sectors[worldbank_sectors[i]] = {funding: 0, projects: [], activities: 0, sector: worldbank_sectors[i]};
       }
@@ -44,7 +57,17 @@ if(typeof(F1)=='undefined') {F1 = {}}
       });
 
     },
-  
+    setBookmark: function(key, value) {
+      
+    },
+    setLocation: function(region,lat,lon,zoom) {
+      this.setBookmark('region', region);
+      this.map.setCenterZoom(lat,lon,zoom);
+    },
+    toggleSector: function(sector,visible) {
+      var self = this;
+      self.sectorPieChart(sector);
+    },
     sortData: function(data) {
       var self = this;
       self.activities = jq.map(data.features, function(feature) { 
@@ -58,7 +81,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
               if(project_attributes[i] != "activity count")
                 project[project_attributes[i]] = attr[project_attributes[i]];
             }
-            project["financing"] = "$" + attr[project_attributes["total amt0"]] + " million";
+            project["total amt0"] = attr["total amt0"];
+            project["financing"] = "$" + attr["total amt0"] + " million";
             project["activity count"] = 0;
             self.projects[attr["project i0"]] = project
             
@@ -70,7 +94,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
               wb_sector = project_sectors["Default"];
               
             self.sectors[wb_sector].funding += attr["total amt0"];
-            self.sectors[wb_sector].projects.push(project);            
+            self.sectors[wb_sector].projects.push(project);
+            self.total_funding += self.sectors[wb_sector].funding;
           }
           self.projects[attr["project i0"]]["activity count"] += 1;
           
@@ -84,6 +109,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
       });      
     },
     projectTable: function(data) {
+      jq('#project_count').html(Object.size(this.projects));
+      jq('#activity_count').html(this.activities.length);
       data.attributes["activity count"] = {original_name: "activity county", name: "Activities"}
       data.attributes["financing"] = {original_name: "financing", name: "Financing"}
       data.features = this.projects;
@@ -93,30 +120,30 @@ if(typeof(F1)=='undefined') {F1 = {}}
     sectorPieChart: function(sector_name) {
       var self = this;
       console.log(self.sectors[sector_name].projects);
+      jq('#sector_funding_title').html("Project Funding for " + sector_name.capitalize() + " Projects")
+      jq('#sector_funding_total').html(self.sectors[sector_name].funding + " Million");
       pie_options = {"features":self.sectors[sector_name].projects, 
           "attributes": {"data":{"name": "Funding","original_name": "total amt0"},
           "description":{"name": "Project","original_name": "project i0"}, 
           "sort":{"name": "Funding","original_name": "total amt0"} } };
-      F1.Visualizer.charts.pie(180, 455, pie_options, "funding_by_region");
+      F1.Visualizer.charts.pie(180, 455, pie_options, "chart-left-pie-chart");
     },
     sectorFundingBars: function() {
       var self = this;
-      console.log("Bar");
-      console.log(self.sectors)
       var s;
       var features = [];
       for(s in self.sectors) { features.push(self.sectors[s]); }
-      console.log(features)
+      // console.log(features)
+      jq('#funding_total').html(self.total_funding + " Million");
       bar_options = {"features":features, "attributes": {
             "data":{"name": "Funding", "original_name": "funding"}, 
             "description":{"name": "Sector", "original_name": "sector"}, 
             "sort":{"name": "Activities","original_name": "activities"} } };
-      F1.Visualizer.charts.bar(180, 455, bar_options, "overall_funding");
+      F1.Visualizer.charts.bar(180, 455, bar_options, "chart-right-graph");
     },  
     drawCharts: function(map, projects_id) {
       var self = this;
       F1.Visualizer.utils.get_data_from_flash(projects_id, function(data) {
-          console.log("data retrieved")
           self.sortData(data);
           self.projectTable(data);
           self.sectorPieChart("public");        

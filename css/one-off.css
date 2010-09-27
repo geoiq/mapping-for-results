@@ -1,0 +1,192 @@
+
+/*
+/* data visual */
+
+.data-visual {
+  margin: 0px 0px 0px 0px;
+  padding: 10px 0px 0px;}
+  
+.data-visual .piechart-hp {
+  float: left;
+  margin: 0px 0px;
+  padding: 10px 4px 20px 0px;
+  border-right: 1px solid #eaeee3;}
+
+* html .data-visual .piechart-hp {
+  padding : 10px 4px 30px 0px;
+}
+.data-visual .linechart-hp {
+  float: right;
+  margin: 0px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;}
+  
+.charttitle {
+  color:#81837A;
+  font-size:0.9em;
+  text-transform:uppercase;}
+.data-visual img {
+  margin:0px;
+}
+#content .ie6.data-middle-desc 
+{margin-left: 15px;float:left;}
+
+/*
+/* around the world */
+
+div.around-hp {
+  clear:both;
+  margin: 0px 0 0 0px;}
+
+.node .around-hp img {
+  margin:0px;
+}
+.node .around-hp p {
+  margin:0px;
+}
+.around-hp .explore-region {
+  float: right;
+  width: 135px;
+  margin: 30px -5px 0px 0px;
+  padding: 0px;
+}
+.around-hp .ie6.explore-region {
+  position :relative;
+  left: -5px;
+}
+.explore-region ul li, .lending-region ul li {
+  background:transparent;
+  list-style-type: none;
+  font-size: 0.833em;
+  border-bottom: 1px dotted #bfbfbf;
+  line-height: normal;
+  padding: 2px 0px 5px;}
+
+.cchome-regioninfo {
+  float:left;
+  margin:10px 0 0;
+  padding:0;
+  width:272px;}
+  
+.ccregion-regioninfo {
+  float:left;
+  margin:0 0 0;
+  padding:0;
+  width:272px;}
+
+#experts {padding: 10px 10px 3em; margin: 0px}
+#experts .bio {clear: both; margin: 15px 0px 10px; padding: 0px; font-size: 0.916em; line-height: 1.7em; color: #333;}
+#experts .expert-image {float: left; width: 47px; margin: 2px 5px 10px 0px;}
+#related-topics a {color:#840202;}
+
+
+
+/*
+ * Lending
+ */
+.toplevel-featurechart {padding: 10px 40px;}
+.ie6.toplevel-featurechart {padding: 10px 0px;}
+.toplevel-featurechart .charttitle, 
+.toplevel-feathrechart  span.desc {font-size: 0.9em; color: #81837a; text-transform: uppercase;}
+.toplevel-featurechart span.desc {font-weight: bold; text-transform: none;}
+
+
+
+.geomap-region {float: left; width: 260px; margin: 5px 0px 30px}
+.geomap-region p { margin : 0}
+.geomap-region img { margin : 0}
+.lending-region {float: left; width: 230px; margin: 5px 0px 0px }
+.ie6.lending-region {float: left; width: 220px; margin: 5px 0px 0px }
+.lending-region ul {margin: 8px 0px 0px;}
+.lending-region ul li {font-size: 0.916em; color: #6e6966;}
+
+
+span.leftnav-title {
+  color:#333333;
+  font-size:0.916em;
+  display: block;
+  }
+.node img.imagediv {
+  float:left;
+  margin:0 5px 5px 0;
+  width:31px;
+}
+
+#sidebar-left .imagediv {width: 31px; margin: 0px 5px 5px 0px;} 
+
+ul.partnership a {
+  color:#000000;
+  font-size:11px;
+}
+#sidebar-left h5 {
+  font-size : 13px;
+}
+/* 
+ * Banner
+ */
+
+.overview-links {
+border-left:1px solid #C1C4BA;
+color:#840202;
+float:right;
+font-size:1.1em;
+margin:10px 20px 0;
+padding:0 10px 0 30px;
+position:relative;
+width:150px;
+}
+.ie6.overview-links {
+  width:110px;
+}
+.overview-links ul {margin: 0px 5px 0px; padding: 0px;}
+.overview-links ul li {
+  list-style-type: none;
+  background-image: url(background-images/overview-bullets.gif); 
+  background-repeat: no-repeat; background-position: 0.5em .4em; 
+  padding: 0px 0 5px 15px;
+  margin: 0;
+}
+.overview-links ul li a, .overview-links ul li a:visited {font-size: 1.0em; color: #840202;}
+.overview-text {
+  font-size:1.2em;
+  line-height:1.6em;
+  background:#DEE1D7 none repeat scroll 0 0;
+color:#4D5146;
+padding:20px;
+}
+}
+.mediacontact {
+  font-size:0.916em;
+  line-height:1.5em;
+}
+.about a,
+.about a:visited ,
+.mediacontact a,
+.mediacontact a:visited {
+  color:#840202;
+}
+.about img {
+  vertical-align : bottom;
+  margin : 1px;
+}
+.about .learnmore {
+  margin : 5px 0;
+}
+.about .learnmore a,
+.about .learnmore a:visited {
+  color:#716863;
+}
+.spotlight-entry img {
+  padding:0 ;margin :0
+}
+.spotlight-entry {
+  line-height:1.5em;
+  margin:15px 0 0;
+}
+.spotlight-entry a ,
+.spotlight-entry a:visited {
+  color : #333;
+}
+/* video */
+.video p {
+  line-height:1.5em;
+}
