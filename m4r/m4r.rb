@@ -57,17 +57,18 @@ LOCAL = {
     },
       :eca => {
         :name => "Europe and Central Asia",
-        :zoom => 4, :lat => 19, :lon => 105.5,
+        :zoom => 4, :lat => 42.68, :lon => 68.90,		
         :countries => {}
       },
       :mena => {
         :name => "Middle East and North Africa",
-        :zoom => 4, :lat => 19, :lon => 105.5,
+        :zoom => 4, :lat => 26.1, :lon => 25.7,
+        15975694062723
         :countries => {}
       },
       :sar => {
         :name => "South Asia",
-        :zoom => 4, :lat => 19, :lon => 105.5,
+        :zoom => 4, :lat => 15.5, :lon => 91.8,
         :countries => {}
       },            
     :lac =>  {
