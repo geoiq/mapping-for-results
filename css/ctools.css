@@ -15,11 +15,11 @@ a.ctools-ajaxing,
 input.ctools-ajaxing,
 select.ctools-ajaxing {
   padding-right: 18px !important;
-  background: url(../images/status-active.gif) right center no-repeat;
+  background: url(../wbimages/status-active.gif) right center no-repeat;
 }
 
 div.ctools-ajaxing {
   float: left;
   width: 18px;
-  background: url(../images/status-active.gif) center center no-repeat;
+  background: url(../wbimages/status-active.gif) center center no-repeat;
 }

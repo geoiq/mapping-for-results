@@ -77,7 +77,7 @@ html body .block {
 }
 
 body.region-content-top.region-content-top-right #center-top {
-  background:#FFFFFF url(background-images/fauxcol-filler-topcontent2.gif) repeat-y scroll 50% 0;
+  background:#FFFFFF url(background-wbimages/fauxcol-filler-topcontent2.gif) repeat-y scroll 50% 0;
   border-bottom:15px solid white;
   float:right;
   margin:0 0 0 10px;
@@ -120,7 +120,7 @@ body.region-content-top.region-content-top-right #content-top-right {
   background: transparent;
   padding:0px;
   margin-left:0;
-  background:#81837A url(background-images/white-dot.jpg) bottom repeat-x;
+  background:#81837A url(background-wbimages/white-dot.jpg) bottom repeat-x;
   padding:5px 10px;
 }
 .block-menu ul li a, 
@@ -131,7 +131,7 @@ body.region-content-top.region-content-top-right #content-top-right {
   display : inline;
 }
 .block-menu ul li.active-trail {
-  background:#EAEEE3 url(background-images/white-dot.jpg) bottom repeat-x;
+  background:#EAEEE3 url(background-wbimages/white-dot.jpg) bottom repeat-x;
 }
 .block-menu ul li.active-trail a,
 .block-menu ul li.active-trail a:visited {
@@ -151,7 +151,7 @@ body.region-content-top.region-content-top-right #content-top-right {
 
 #block-custom_blocks-1 li.first,
 #block-menu-menu-main li.first {
-  background:#872E2A url(background-images/red-dot.jpg) bottom repeat-x;
+  background:#872E2A url(background-wbimages/red-dot.jpg) bottom repeat-x;
 }
 
 .item-list ul li { margin:0px;}
@@ -231,7 +231,7 @@ body.region-content-top.region-content-top-right #content-top-right {
 }
 .block li {
   list-style-image:  none;
-  background: url(images/related-bullets.gif); 
+  background: url(wbimages/related-bullets.gif); 
   background-position: 0.2em .8em;
   background-repeat: no-repeat;
   list-style-type: none; 
@@ -400,13 +400,13 @@ color: #9f9894; padding: 1px;}
   padding-right: 10px;
 }
 #rotator-content-front_rotator-nav li.rotator-nav-previous{
-  background:transparent url(background-images/prev-border.gif) no-repeat scroll 0 0;
+  background:transparent url(background-wbimages/prev-border.gif) no-repeat scroll 0 0;
   height:25px;
   width:29px;
   cursor : pointer;
 }
 #rotator-content-front_rotator-nav li.rotator-nav-next{
-  background:transparent url(background-images/feature-counter-next.gif) no-repeat scroll 10px 9px;
+  background:transparent url(background-wbimages/feature-counter-next.gif) no-repeat scroll 10px 9px;
   height:25px;
   width:29px;
   cursor : pointer;
@@ -419,12 +419,12 @@ color: #9f9894; padding: 1px;}
  * banner
  */
 #banner {
-  background:#FFFFFF url(background-images/fauxcol-filler-white.gif) repeat-y scroll 50% 0;
+  background:#FFFFFF url(background-wbimages/fauxcol-filler-white.gif) repeat-y scroll 50% 0;
   margin:0;
   padding:0 0 10px;
 }
 #banner #banner-header {
-  background:transparent url(../images/nav.gif) no-repeat scroll left top;
+  background:transparent url(../wbimages/nav.gif) no-repeat scroll left top;
   display:block;
   height:100px;
   text-indent:-999999px;
@@ -440,12 +440,12 @@ color: #9f9894; padding: 1px;}
   position : absolute;
   top:30px;
   right:17px;
-  background : url(background-images/overview-drop-arrow-open-color.gif) 0 0 no-repeat;
+  background : url(background-wbimages/overview-drop-arrow-open-color.gif) 0 0 no-repeat;
   height : 10px;
   width : 12px;
 }
 #banner #banner-header .collapsed .banner-open-image {
-  background : url(background-images/overview-drop-arrow-color.gif) 0 0 no-repeat;
+  background : url(background-wbimages/overview-drop-arrow-color.gif) 0 0 no-repeat;
 }
 #banner .collapsible-content .node{
   background:#DEE1D7 none repeat scroll 0 0;
@@ -462,7 +462,7 @@ color: #9f9894; padding: 1px;}
  * tools block
  */
 .tools ul li {
-  background-image:url(background-images/icon-print.gif);
+  background-image:url(background-wbimages/icon-print.gif);
   background-position:0.8em 0.5em;
   background-repeat:no-repeat;
   border-bottom:1px dotted #B3B7AA;
@@ -472,19 +472,19 @@ color: #9f9894; padding: 1px;}
   text-transform:uppercase;
 }
 .tools ul li.mail {
-  background-image:url(background-images/icon-email.gif);
+  background-image:url(background-wbimages/icon-email.gif);
   background-position:0.8em 0.7em;
 }
 .tools ul li.rss {
-  background-image:url(background-images/icon-rss.gif);
+  background-image:url(background-wbimages/icon-rss.gif);
   background-position:0.8em 0.7em;
 }
 .tools ul li.feedback {
-  background-image:url(background-images/icon-feedback.gif);
+  background-image:url(background-wbimages/icon-feedback.gif);
   background-position:0.8em 0.7em;
 }
 .tools ul li.share {
-  background-image:url(background-images/icon-share.gif);
+  background-image:url(background-wbimages/icon-share.gif);
   background-position:0.8em 0.7em;
   position:relative;
 }
@@ -507,7 +507,7 @@ color: #9f9894; padding: 1px;}
 */
 
 #highlights {margin: 0px 0px; padding: 10px 0px 0px; width: 958px; position:relative; border: 1px solid #eaeee3; }
-#highlights h6 {background: #fff url(background-images/highlights-back.gif) repeat-x; height: 20px; padding: 0px 0px 0px 10px;}
+#highlights h6 {background: #fff url(background-wbimages/highlights-back.gif) repeat-x; height: 20px; padding: 0px 0px 0px 10px;}
 #highlights h6 {text-transform: uppercase; font-weight: bold; font-size: 0.9em; color: #41423f;margin : 0px;}
 #highlights .highlight img {vertical-align: bottom; float: right;}
 
@@ -579,7 +579,7 @@ div.plus1-widget div.plus1-score {
 }
 body div.plus1-widget {
 
-  background:transparent url(background-images/rating-background.jpg) no-repeat scroll 0 0;
+  background:transparent url(background-wbimages/rating-background.jpg) no-repeat scroll 0 0;
   height:24px;
   width:180px;
   color:#6f726b;
@@ -590,7 +590,7 @@ body div.plus1-widget {
 
 }
 div.plus1-widget div.plus1-vote {
-  background:transparent url(background-images/rating-add-background3.jpg) no-repeat scroll 0 0;
+  background:transparent url(background-wbimages/rating-add-background3.jpg) no-repeat scroll 0 0;
   height:24px;
   width:37px;
 }
@@ -731,7 +731,7 @@ border-top:2px solid #980101}
   width: 360px;}
 
 #center #feature {
-  background:#FFFFFF url(images/fauxcol-filler-white.gif) repeat-y scroll 50% 0;
+  background:#FFFFFF url(wbimages/fauxcol-filler-white.gif) repeat-y scroll 50% 0;
   float:right;
   margin:0 0 0 10px;
   padding-bottom:15px;
@@ -859,11 +859,11 @@ padding:0 10px 5px 15px;
   clear: left;}
   
 /* #block-views-most_recommended-block_1 h6  {
-	background: transparent url(images/info-icon-sm.png) no-repeat 12em; 
+	background: transparent url(wbimages/info-icon-sm.png) no-repeat 12em; 
 } 
   
 #block-views-most_recommended-block_1 h6:hover {
-  background: url(images/related-bullets.gif); 	
+  background: url(wbimages/related-bullets.gif); 	
 }*/
 
 span#infoicon {position:relative;
@@ -889,7 +889,7 @@ span#infoicon a:hover span {display: block;
 
 #related-topics li, #most-popular li, #most-recommended li, #events-list li {
   list-style-image:  none;
-  background: url(images/related-bullets.gif); 
+  background: url(wbimages/related-bullets.gif); 
   background-position: 0.0em .8em;
   background-repeat: no-repeat;
   list-style-type: none; 
@@ -935,7 +935,7 @@ span#infoicon a:hover span {display: block;
   
 .block li {
   list-style-image:  none;
-  background: url(images/related-bullets.gif); 
+  background: url(wbimages/related-bullets.gif); 
   background-position: 0.2em .8em;
   background-repeat: no-repeat;
   list-style-type: none; 
@@ -972,7 +972,7 @@ span#infoicon a:hover span {display: block;
 
 ul.overview li {
   list-style-type: none;
-  background-image: url(images/overviewdetail-bullets.gif); 
+  background-image: url(wbimages/overviewdetail-bullets.gif); 
   background-repeat: no-repeat; 
   background-position: 0.5em .4em; 
   padding: 0px 0 5px 15px;
@@ -990,7 +990,7 @@ ul.overview li a, ul.overview li a:visited {
 .landing h1 {color: #840202;}
 
 .landing #center-top  {
-  background: #FFFFFF url(images/fauxcol-filler-topcontent2.gif) repeat-y scroll 50% 0}
+  background: #FFFFFF url(wbimages/fauxcol-filler-topcontent2.gif) repeat-y scroll 50% 0}
 
 #second #content-top {
   color:#504D4C;

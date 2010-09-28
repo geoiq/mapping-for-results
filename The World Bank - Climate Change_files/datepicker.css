@@ -40,7 +40,7 @@
   display: none;
 }
 .ui-datepicker-next, .ui-datepicker-prev {
-  background: #e6e6e6 url(images/e6e6e6_40x100_textures_02_glass_75.png) 0 50% repeat-x; /* LTR */
+  background: #e6e6e6 url(wbimages/e6e6e6_40x100_textures_02_glass_75.png) 0 50% repeat-x; /* LTR */
   left: .5em; /* LTR */
   position: absolute;
   top: .5em;
@@ -49,10 +49,10 @@
   left: 14.6em;
 }
 .ui-datepicker-next:hover, .ui-datepicker-prev:hover {
-  background: #dadada url(images/dadada_40x100_textures_02_glass_75.png) 0 50% repeat-x; /* LTR */
+  background: #dadada url(wbimages/dadada_40x100_textures_02_glass_75.png) 0 50% repeat-x; /* LTR */
 }
 .ui-datepicker-next a, .ui-datepicker-prev a {
-  background: url(images/888888_7x7_arrow_left.gif) 50% 50% no-repeat; /* LTR */
+  background: url(wbimages/888888_7x7_arrow_left.gif) 50% 50% no-repeat; /* LTR */
   border: 1px solid #d3d3d3;
   cursor: pointer;
   display: block;
@@ -62,19 +62,19 @@
   width: 1.3em;
 }
 .ui-datepicker-next a {
-  background: url(images/888888_7x7_arrow_right.gif) 50% 50% no-repeat; /* LTR */
+  background: url(wbimages/888888_7x7_arrow_right.gif) 50% 50% no-repeat; /* LTR */
 }
 .ui-datepicker-prev a:hover {
-  background: url(images/454545_7x7_arrow_left.gif) 50% 50% no-repeat; /* LTR */
+  background: url(wbimages/454545_7x7_arrow_left.gif) 50% 50% no-repeat; /* LTR */
 }
 .ui-datepicker-next a:hover {
-  background: url(images/454545_7x7_arrow_right.gif) 50% 50% no-repeat; /* LTR */
+  background: url(wbimages/454545_7x7_arrow_right.gif) 50% 50% no-repeat; /* LTR */
 }
 .ui-datepicker-prev a:active {
-  background: url(images/222222_7x7_arrow_left.gif) 50% 50% no-repeat; /* LTR */
+  background: url(wbimages/222222_7x7_arrow_left.gif) 50% 50% no-repeat; /* LTR */
 }
 .ui-datepicker-next a:active {
-  background: url(images/222222_7x7_arrow_right.gif) 50% 50% no-repeat; /* LTR */
+  background: url(wbimages/222222_7x7_arrow_right.gif) 50% 50% no-repeat; /* LTR */
 }
 .ui-datepicker-header select {
   background: #e6e6e6;
@@ -109,17 +109,17 @@ table.ui-datepicker tbody {
   border-top: none;
 }
 table.ui-datepicker tbody td a {
-  background: #e6e6e6 url(images/e6e6e6_40x100_textures_02_glass_75.png) 0 50% repeat-x; /* LTR */
+  background: #e6e6e6 url(wbimages/e6e6e6_40x100_textures_02_glass_75.png) 0 50% repeat-x; /* LTR */
   border: 1px solid #ffffff;
   cursor: pointer;
 }
 table.ui-datepicker tbody td a:hover {
-  background: #dadada url(images/dadada_40x100_textures_02_glass_75.png) 0 50% repeat-x; /* LTR */
+  background: #dadada url(wbimages/dadada_40x100_textures_02_glass_75.png) 0 50% repeat-x; /* LTR */
   border: 1px solid #999999;
   color: #212121;
 }
 table.ui-datepicker tbody td a:active {
-  background: #ffffff url(images/ffffff_40x100_textures_02_glass_65.png) 0 50% repeat-x; /* LTR */
+  background: #ffffff url(wbimages/ffffff_40x100_textures_02_glass_65.png) 0 50% repeat-x; /* LTR */
   border: 1px solid #dddddd;
   color: #222222;
 }

@@ -50,7 +50,7 @@
         <li class="more"><a href="http://web.worldbank.org/WBSITE/EXTERNAL/0,,contentMDK:20130470%7EpagePK:50016803%7EpiPK:50016805%7EtheSitePK:13,00.html">View more</a></li>
       </ul>
     </div>    
-    <span id="header"><a href="http://www.worldbank.org/"> <img src="/images/worldbank_logo.gif" alt="" width="232" height="55" border="0" id="logo" /> </a> </span>
+    <span id="header"><a href="http://www.worldbank.org/"> <img src="/wbimages/worldbank_logo.gif" alt="" width="232" height="55" border="0" id="logo" /> </a> </span>
      <div id="search-box">
 	<form action="http://search.worldbank.org/all" accept-charset="UTF-8" method="get" id="search-theme-form">
 		<div>
@@ -118,7 +118,7 @@ var proxy_host = "http://wbstaging.geocommons.com";
 var project_attributes = ["project t0", "project i0", "activity count", "financing", "sector1", "approval 0"];
 var worldbank_sectors = ["agriculture","communication","energy","education","finance","health","industry","public","transportation","water"];
 
-var sector_icons =  {"EP":"http://geoiq.local/images/icons/wb/education-on.png","AZ":"http://geoiq.local/images/icons/wb/agriculture-on.png","JB":"http://geoiq.local/images/icons/wb/health-on.png","BC":"http://geoiq.local/images/icons/wb/public-on.png","TA":"http://geoiq.local/images/icons/wb/transportation-on.png","LE":"http://geoiq.local/images/icons/wb/energy-on.png","TZ":"http://geoiq.local/images/icons/wb/transportation-on.png","LD":"http://geoiq.local/images/icons/wb/energy-on.png","WZ":"http://geoiq.local/images/icons/wb/water-on.png","BL":"http://geoiq.local/images/icons/wb/public-on.png","BU":"http://geoiq.local/images/icons/wb/public-on.png","AB":"http://geoiq.local/images/icons/wb/agriculture-on.png","FD":"http://geoiq.local/images/icons/wb/finance-on.png","ET":"http://geoiq.local/images/icons/wb/education"};
+var sector_icons =  {"EP":"http://geoiq.local/wbimages/icons/wb/education-on.png","AZ":"http://geoiq.local/wbimages/icons/wb/agriculture-on.png","JB":"http://geoiq.local/wbimages/icons/wb/health-on.png","BC":"http://geoiq.local/wbimages/icons/wb/public-on.png","TA":"http://geoiq.local/wbimages/icons/wb/transportation-on.png","LE":"http://geoiq.local/wbimages/icons/wb/energy-on.png","TZ":"http://geoiq.local/wbimages/icons/wb/transportation-on.png","LD":"http://geoiq.local/wbimages/icons/wb/energy-on.png","WZ":"http://geoiq.local/wbimages/icons/wb/water-on.png","BL":"http://geoiq.local/wbimages/icons/wb/public-on.png","BU":"http://geoiq.local/wbimages/icons/wb/public-on.png","AB":"http://geoiq.local/wbimages/icons/wb/agriculture-on.png","FD":"http://geoiq.local/wbimages/icons/wb/finance-on.png","ET":"http://geoiq.local/wbimages/icons/wb/education"};
 
 var project_sectors = {"General agriculture":"agriculture", "Agricultural extension and research":"agriculture", "fishing and forestry sector":"agriculture", 
   "Central government administration":"public","Public administration- Energy and mining": "public", "Public administration- Agriculture, fishing and forestry": "public", 
@@ -511,7 +511,7 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
   <div id="chart-right-stat-subtitle">
     <h1 id="funding_total"></h1>
   </div>
-  <div id="chart-right-graph"><img src="images/right-chart-graph.gif" alt="" /></div>
+  <div id="chart-right-graph"><img src="wbimages/right-chart-graph.gif" alt="" /></div>
    
 
 </div>
@@ -519,7 +519,7 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
 
    <!--Project Search Bar Begins-->
     <div id="projects-bar">
-      <div class="project-bar-text"><img src="images/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />&nbsp;&nbsp;&nbsp;&nbsp;Total Project List / Phillipines</div>
+      <div class="project-bar-text"><img src="wbimages/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />&nbsp;&nbsp;&nbsp;&nbsp;Total Project List / Phillipines</div>
       <div id="div">
         <form action="/" accept-charset="UTF-8" method="post" id="search-theme-form">
           <input maxlength="128" name="search_theme_form" id="project-search-box" size="15" value="" class="project-search-box-text" type="text" />
@@ -532,12 +532,12 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
         <table width="960" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <th class="project-th">Project Title</th>
-            <th><img src="images/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Project ID</th>
-            <th><div id="commitment-arrow"><img src="images/down-arrow-black.gif" alt="" /></div>
+            <th><img src="wbimages/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Project ID</th>
+            <th><div id="commitment-arrow"><img src="wbimages/down-arrow-black.gif" alt="" /></div>
               <div id="commitment-amount-th">Commitment Amount</div></th>
-            <th><img src="images/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Sector</th>
-            <th><img src="images/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Status</th>
-            <th><div id="commitment-arrow"><img src="images/down-arrow-black.gif" alt="" /></div>
+            <th><img src="wbimages/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Sector</th>
+            <th><img src="wbimages/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Status</th>
+            <th><div id="commitment-arrow"><img src="wbimages/down-arrow-black.gif" alt="" /></div>
               <div id="commitment-amount-th">Approval Date</div></th>
           </tr>
           <tr>

@@ -6,7 +6,7 @@ margin:0px 0px 20px; padding:0px;
 text-align:center; /*workaround for centering div in IE*/ }
  
  #wrapper {
-background: url(background-images/mainbg.png);
+background: url(background-wbimages/mainbg.png);
 background-repeat: repeat-y;
 margin: 0 auto;
 width: 1020px;
