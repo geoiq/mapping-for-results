@@ -222,7 +222,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       if(sector == null) {
         self.map.showLayer(self.stylelayers["Project Locations"].order, "false");        
       }
-      //self.sectorPieChart(sector);
+      self.sectorPieChart(sector);
     },
     setIndicator: function(indicator,visible) {
       var self = this;
@@ -443,17 +443,23 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
               <ul>
                 
                   
-                  <li><a href="/africa/kenya">Kenya</a></li>
+                
                   
                 
                   
-                  <li><a href="/eastasia/phillipines">Phillipines</a></li>
+                  <li><a href="/afr/kenya">Kenya</a></li>
                   
                 
                   
                   <li><a href="/lac/haiti">Haiti</a></li>
                   
                   <li><a href="/lac/bolivia">Bolivia</a></li>
+                  
+                
+                  
+                  <li><a href="/eap/phillipines">Phillipines</a></li>
+                  
+                
                   
                 
               </ul>

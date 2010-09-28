@@ -1,4052 +1,653 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>NoMethodError at /eap/phillipines</title>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html class="js" xml:lang="en" xmlns="http://www.w3.org/19	99/xhtml" lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>The World Bank - Mapping for Results</title>
 
-  <script type="text/javascript">
-  //<!--
-  function toggle(id) {
-    var pre  = document.getElementById("pre-" + id);
-    var post = document.getElementById("post-" + id);
-    var context = document.getElementById("context-" + id);
+  <link href="http://wbstaging.geocommons.com/feed" title="Mapping for Results Whats New | World Bank" type="application/rss+xml" rel="alternate">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+  <link rel="shortcut icon" href="http://wbstaging.geocommons.com/sites/default/files/climatechange_favicon.png" type="image/x-icon">
+  
+  <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css">
+  <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css">
+  <link type="text/css" rel="stylesheet" media="all" href="/css/style.css">
+  <link type="text/css" rel="stylesheet" media="all" href="/css/layout.css">
+  <link type="text/css" rel="stylesheet" media="all" href="/css/one-off.css">
+                                                           
+  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css">
+  <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css">
 
-    if (pre.style.display == 'block') {
-      pre.style.display = 'none';
-      post.style.display = 'none';
-      context.style.background = "none";
-    } else {
-      pre.style.display = 'block';
-      post.style.display = 'block';
-      context.style.background = "#fffed9";
-    }
-  }
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" src="/js/drupal.js"></script>
+  <script type="text/javascript" src="/js/collapsible.js"></script>
+  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <script type="text/javascript" src="/js/ui.js"></script>
+  <script type="text/javascript" src="/js/effects_002.js"></script>
+  <script type="text/javascript" src="/js/effects.js"></script>
+  <script type="text/javascript" src="/js/search_box.js"></script>
 
-  function toggleBacktrace(){
-    var bt = document.getElementById("backtrace");
-    var toggler = document.getElementById("expando");
+<script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/prototype.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+var jq = jQuery.noConflict();
+</script>
+<script type="text/javascript" charset="utf-8" src="/js/f1.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/f1.api.js"></script>
 
-    if (bt.className == 'condensed') {
-      bt.className = 'expanded';
-      toggler.innerHTML = "(condense)";
-    } else {
-      bt.className = 'condensed';
-      toggler.innerHTML = "(expand)";
-    }
-  }
-  //-->
-  </script>
+<script src="http://wbstaging.geocommons.com/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
-<style type="text/css" media="screen">
-  *                   {margin: 0; padding: 0; border: 0; outline: 0;}
-  div.clear           {clear: both;}
-  body                {background: #EEEEEE; margin: 0; padding: 0;
-                       font-family: 'Lucida Grande', 'Lucida Sans Unicode',
-                       'Garuda';}
-  code                {font-family: 'Lucida Console', monospace;
-                       font-size: 12px;}
-  li                  {height: 18px;}
-  ul                  {list-style: none; margin: 0; padding: 0;}
-  ol:hover            {cursor: pointer;}
-  ol li               {white-space: pre;}
-  #explanation        {font-size: 12px; color: #666666;
-                       margin: 20px 0 0 100px;}
-/* WRAP */
-  #wrap               {width: 1000px; background: #FFFFFF; margin: 0 auto;
-                       padding: 30px 50px 20px 50px;
-                       border-left: 1px solid #DDDDDD;
-                       border-right: 1px solid #DDDDDD;}
-/* HEADER */
-  #header             {margin: 0 auto 25px auto;}
-  #header img         {float: left;}
-  #header #summary    {float: left; margin: 12px 0 0 20px; width:660px;
-                       font-family: 'Lucida Grande', 'Lucida Sans Unicode';}
-  h1                  {margin: 0; font-size: 36px; color: #981919;}
-  h2                  {margin: 0; font-size: 22px; color: #333333;}
-  #header ul          {margin: 0; font-size: 12px; color: #666666;}
-  #header ul li strong{color: #444444;}
-  #header ul li       {display: inline; padding: 0 10px;}
-  #header ul li.first {padding-left: 0;}
-  #header ul li.last  {border: 0; padding-right: 0;}
-/* BODY */
-  #backtrace,
-  #get,
-  #post,
-  #cookies,
-  #rack               {width: 980px; margin: 0 auto 10px auto;}
-  p#nav               {float: right; font-size: 14px;}
-/* BACKTRACE */
-  a#expando           {float: left; padding-left: 5px; color: #666666;
-                      font-size: 14px; text-decoration: none; cursor: pointer;}
-  a#expando:hover     {text-decoration: underline;}
-  h3                  {float: left; width: 100px; margin-bottom: 10px;
-                       color: #981919; font-size: 14px; font-weight: bold;}
-  #nav a              {color: #666666; text-decoration: none; padding: 0 5px;}
-  #backtrace li.frame-info {background: #f7f7f7; padding-left: 10px;
-                           font-size: 12px; color: #333333;}
-  #backtrace ul       {list-style-position: outside; border: 1px solid #E9E9E9;
-                       border-bottom: 0;}
-  #backtrace ol       {width: 920px; margin-left: 50px;
-                       font: 10px 'Lucida Console', monospace; color: #666666;}
-  #backtrace ol li    {border: 0; border-left: 1px solid #E9E9E9;
-                       padding: 2px 0;}
-  #backtrace ol code  {font-size: 10px; color: #555555; padding-left: 5px;}
-  #backtrace-ul li    {border-bottom: 1px solid #E9E9E9; height: auto;
-                       padding: 3px 0;}
-  #backtrace-ul .code {padding: 6px 0 4px 0;}
-  #backtrace.condensed .system,
-  #backtrace.condensed .framework {display:none;}
-/* REQUEST DATA */
-  p.no-data           {padding-top: 2px; font-size: 12px; color: #666666;}
-  table.req           {width: 980px; text-align: left; font-size: 12px;
-                       color: #666666; padding: 0; border-spacing: 0;
-                       border: 1px solid #EEEEEE; border-bottom: 0;
-                       border-left: 0;
-                       clear:both}
-  table.req tr th     {padding: 2px 10px; font-weight: bold;
-                       background: #F7F7F7; border-bottom: 1px solid #EEEEEE;
-                       border-left: 1px solid #EEEEEE;}
-  table.req tr td     {padding: 2px 20px 2px 10px;
-                       border-bottom: 1px solid #EEEEEE;
-                       border-left: 1px solid #EEEEEE;}
-/* HIDE PRE/POST CODE AT START */
-  .pre-context,
-  .post-context       {display: none;}
 
-  table td.code       {width:750px}
-  table td.code div   {width:750px;overflow:hidden}
-</style>
 </head>
-<body>
-  <div id="wrap">
-    <div id="header">
-      <img src="/__sinatra__/500.png" alt="application error" height="161" width="313" />
-      <div id="summary">
-        <h1><strong>NoMethodError</strong> at <strong>/eap/phillipines
-          </strong></h1>
-        <h2>undefined method `[]&#39; for nil:NilClass</h2>
-        <ul>
-          <li class="first"><strong>file:</strong> <code>
-            m4r.rb</code></li>
-          <li><strong>location:</strong> <code>GET /:region/:country
-            </code></li>
-          <li class="last"><strong>line:
-            </strong> 98</li>
+<body class=" region-left region-right region-far-right region-content-top">
+
+<!-- Layout -->
+<div id="wrapper">
+  <div id="header">
+    <div id="languages">
+      <ul>
+        <li class="en first"><a href="http://www.worldbank.org/" class="active">English</a></li>
+        <li><a href="http://www.bancomundial.org/">Español</a></li>
+        <li><a href="http://www.banquemondiale.org/">Français</a></li>
+        <li><a href="http://www.worldbank.org/russian">Pусский</a></li>
+        <li><a href="http://www.albankaldawli.org/">عربي</a></li>
+        <li class="chinese"><a href="http://www.worldbank.org.cn/Chinese">中文</a></li>
+        <li class="more"><a href="http://web.worldbank.org/WBSITE/EXTERNAL/0,,contentMDK:20130470%7EpagePK:50016803%7EpiPK:50016805%7EtheSitePK:13,00.html">View more</a></li>
+      </ul>
+    </div>    
+    <span id="header"><a href="http://www.worldbank.org/"> <img src="/images/worldbank_logo.gif" alt="" width="232" height="55" border="0" id="logo" /> </a> </span>
+     <div id="search-box">
+	<form action="http://search.worldbank.org/all" accept-charset="UTF-8" method="get" id="search-theme-form">
+		<div>
+			<div id="search" class="container-inline">
+				<div class="form-item" id="edit-search-theme-form-1-wrapper">
+					<label class="over-input" for="search-header">Search </label>
+					<input maxlength="128" name="qterm" id="search-header" size="15" value="" onfocus="if (this.value == 'Search My Site') {this.value = '';}" class="form-text" type="text">
+				</div>
+				<input name="op" id="qterm edit-submit" value="" class="form-submit" type="submit">
+			</div>
+		</div>
+	</form>
+</div>
+    <div id="network">
+      <div class="navigation"> <a class="network-home" href="http://www.worldbank.org">The World Bank</a>
+        <ul class="links network-links">
+          <li><a href="http://www.worldbank.org/about">About</a></li>
+          <li><a class="active" href="http://www.worldbank.org/data">Data</a></li>
+          <li><a href="http://econ.worldbank.org">Research</a></li>
+          <li><a href="http://www.worldbank.org/wbi">Learning</a></li>
+          <li><a href="http://www.worldbank.org/news">News</a></li>
+          <li><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></li>
+          <li class="last"><a href="http://www.worldbank.org/reference">Publications</a></li>
+        </ul>
+        <ul class="links network-special-links">
+          <li class="countries first"><a href="http://www.worldbank.org/countries">Countries</a></li>
+          <li class="topics last"><a href="http://www.worldbank.org/topics">Topics</a></li>
         </ul>
       </div>
-      <div class="clear"></div>
+    </div>
+    <!-- /#network -->
+    <div class="clear"></div>
+    </div> 
+    <!-- /#header -->
+
+        <div id="container">
+      <div id="banner">
+        <h1 id="banner-header">
+          <div class="collapsible-header expanded" content_id="collapsible-banner" >
+            <div class="banner-open-image"></div>
+          </div>
+        </h1>
+        
+        <div id="banner-content">
+          <div class="collapsible-content" id="collapsible-banner" delay="2000" params="{ &quot;effect&quot;: &quot;blind&quot;, &quot;options&quot;: { &quot;direction&quot;: &quot;up&quot; }, &quot;delay&quot;: 2000 }">
+            <div id="block-nodeasblock-3273" class="block block-nodeasblock ">
+              <div class="content">
+                <div class="overview-links">
+                  <p>Overview »</p>
+                  <ul>
+                    <li><a href="#context">Context</a></li>
+                    <li><a href="#strategy">Strategy</a></li>
+                    <li><a href="#results">Results</a></li>
+                  </ul>
+                </div>
+                <div class="overview-text"><strong>The Mapping for Results Beta</strong> initiative provides detailed information on our efforts to reduce poverty and alleviate human suffering in every part of the world. This website showcases information on the what and where by accessing the indicator, sector, region, and funding dropdown and toggle areas. <a class="readmore" href="#">Read More »</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script type="text/javascript" charset="utf-8">
+var proxy_host = "http://wbstaging.geocommons.com";    
+var project_attributes = ["project title", "project id", "activity count", "financing", "major sector", "approval date"];
+var worldbank_sectors = ["agriculture","communication","energy","education","finance","health","industry","public","transportation","water"];
+
+var sector_icons =  {"EP":"http://wbstaging.geocommons.com/wbimages/icons/education-on.png","AZ":"http://wbstaging.geocommons.com/wbimages/icons/agriculture-on.png","JB":"http://wbstaging.geocommons.com/wbimages/icons/health-on.png","BC":"http://wbstaging.geocommons.com/wbimages/icons/public-on.png","TA":"http://wbstaging.geocommons.com/wbimages/icons/transportation-on.png","LE":"http://wbstaging.geocommons.com/wbimages/icons/energy-on.png","TZ":"http://wbstaging.geocommons.com/wbimages/icons/transportation-on.png","LD":"http://wbstaging.geocommons.com/wbimages/icons/energy-on.png","WZ":"http://wbstaging.geocommons.com/wbimages/icons/water-on.png","BL":"http://wbstaging.geocommons.com/wbimages/icons/public-on.png","BU":"http://wbstaging.geocommons.com/wbimages/icons/public-on.png","AB":"http://wbstaging.geocommons.com/wbimages/icons/agriculture-on.png","FD":"http://wbstaging.geocommons.com/wbimages/icons/finance-on.png","ET":"http://wbstaging.geocommons.com/wbimages/icons/education-on.png"};
+
+var project_sectors = {"General agriculture":"agriculture", "Agricultural extension and research":"agriculture", "fishing and forestry sector":"agriculture", 
+  "Central government administration":"public","Public administration- Energy and mining": "public", "Public administration- Agriculture, fishing and forestry": "public", 
+  "Primary education":"education", "Tertiary education": "education",
+  "Other social services":"health",
+  "Water supply":"water",
+  "General transportation sector":"transportation","Roads and highways":"transportation", 
+  "Renewable energy":"energy",  "Power": "energy", 
+  "Non-compulsory pensions, insurance and contractual savings":"finance",
+  "Default":"public"};
+
+// , "General agriculture, fishing and forestry sector":"agriculture"
+if(typeof(F1)=='undefined') {F1 = {}}
+(function(){
+  Object.size = function(obj) {
+      var size = 0, key;
+      for (key in obj) {
+          if (obj.hasOwnProperty(key)) size++;
+      }
+      return size;
+  };
+
+  Object.include = function(arr, obj) {
+    for(var i=0; i<arr.length; i++) {
+      if (arr[i] == obj) return i;
+    }
+    return null;
+  }
+
+  String.prototype.capitalize = function(){
+    return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
+  };  
+  
+  F1.WorldBank = function(options) {  //constructor
+    this.options = options;
+    // F1.WorldBank.instances[options.id] = this;
+  }
+
+  F1.WorldBank.indicators = {
+		"Extreme Poverty": {source: "finder:", title:"Poverty", subtitle: "1998 Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [0xFEF7A5, 0xFECE6D, 0xEC8414, 0xAE4C02, 0x662506], categories: 5, classificationType: "St Dev", opacity: 0.55, selectedAttribute: "Height_for" }}},
+		"Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5 (DHS 1998)", styles: { type: "CHOROPLETH", fill: { colors: [0x4A342C, 0x7C6253, 0xA4866D, 0xD1B79F, 0xEBD9C2], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Weight_for" }}},
+		"Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births (DHS 1998)", styles: { type: "CHOROPLETH", fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Infant_mor"}}},
+    "Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total (DHS 1998)", styles: { type: "CHOROPLETH",fill: { colors: [0x511483, 0x835BA4, 0xC090BD, 0xE3BBC2, 0xFCE3D7], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Total_Skil"}}},
+    "Population": {source: "finder:", title:"Population", subtitle: "", styles: { type: "CHOROPLETH",fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "pop"}}}
+	},
+  F1.WorldBank.prototype = {
+    init: function(map_id) {
+      
+      var self = this;
+      this.activities = {};
+      this.projects = {};
+      this.sectors = {};
+      this.total_funding = 0;
+      this.stylelayers = {};
+      this.initialized = false;
+      for(var i=0;i< worldbank_sectors.length;i++) {
+        this.sectors[worldbank_sectors[i]] = {funding: 0, projects: [], activities: 0, sector: worldbank_sectors[i]};
+      }
+
+      
+      this.map = new F1.Maker.Map( { dom_id:"geoiq_map",map_id:map_id, 
+                uiZoom: true,uiLayers: false,uiLegend: true,uiStyles: true,
+                uiHeader: true,hideGCLogo: true,hideGILogo: true,
+                ShowControl:("Legend",true,"open"),
+                core_host:  proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
+                onload: function() {   }
+      });
+
+    },
+    setBookmark: function(key, value) {
+      
+    },
+    setState: function(location,indicator,project,sectors) {
+      if(location != null)
+        setLocation("",location.lat,location.lon,location.zoom);
+      this.setIndicator(indicator);
+      if(sectors != null){
+        var sector;
+        for(sector in sectors)
+          this.toggleSector(sectors[sector]);
+      } else {
+        this.toggleSector('all', false)
+      }
+    },
+    setLocation: function(region,lat,lon,zoom) {
+      this.setBookmark('region', region);
+      this.map.setCenterZoom(lat,lon,zoom);
+    },
+    toggleSector: function(sector,visible) {
+      var self = this;
+      //console.log("toggle: " + sector);
+      if(visible == null)
+        visible = "true";
+      if(sector == 'all') {
+        self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
+      }
+      if(sector == null) {
+        self.map.showLayer(self.stylelayers["Project Locations"].order, "false");        
+      }
+      self.sectorPieChart(sector);
+    },
+    setIndicator: function(indicator,visible) {
+      var self = this;
+      if(indicator == null) {
+        jq('#indicator').html("IndicatorS");
+        self.map.showLayer(self.stylelayers["Indicators"].order, "false");
+      }
+      else {
+        jq('#indicator').html(indicator);
+        self.map.showLayer(self.stylelayers["Indicators"].order, "true");
+        var style = F1.WorldBank.indicators[indicator].styles;
+        style.source = self.stylelayers["Indicators"];
+        self.map.setLayerStyle(self.stylelayers["Indicators"].order, style);
+      }
+    },
+
+    sortData: function(data) {
+      var self = this;
+      self.activities = jq.map(data.features, function(feature) { 
+        if (feature) {
+          attr = feature.attributes;
+          if(self.projects[attr["project id"]] == null) { // first time we've seen this project ID
+            var project = {};
+
+            // Get the project level attributes
+            for(var i = 0;i<project_attributes.length;i++) {
+              if(project_attributes[i] != "activity count")
+                project[project_attributes[i]] = attr[project_attributes[i]];
+            }
+            project["financing amount"] = attr["financing amount"];
+            project["financing"] = "$" + attr["financing amount"] + " million";
+            project["activity count"] = 0;
+            self.projects[attr["project id"]] = project
+            
+            // Add to sector funding and project count
+            var sector = project["major sector"];
+            var wb_sector = project_sectors[sector];
+
+            if(wb_sector == null)
+              wb_sector = project_sectors["Default"];
+              
+            self.sectors[wb_sector].funding += attr["financing amount"];
+            self.sectors[wb_sector].projects.push(project);
+            self.total_funding += self.sectors[wb_sector].funding;
+          }
+          self.projects[attr["project id"]]["activity count"] += 1;
+          
+          var wb_sector = project_sectors[self.projects[attr["project id"]]["major sector"]];
+          if(wb_sector == null)
+            wb_sector = project_sectors["Default"];
+
+          self.sectors[wb_sector].activities += 1;
+          return attr;
+        }
+      });      
+    },
+    projectTable: function(data) {
+      jq('#project_count').html(Object.size(this.projects));
+      jq('#activity_count').html(this.activities.length);
+      data.attributes["activity count"] = {original_name: "activity county", name: "Activities"}
+      data.attributes["financing"] = {original_name: "financing", name: "Financing"}
+      data.features = this.projects;
+
+      F1.Visualizer.charts.grid(500, 930, data, "projects-table", project_attributes);
+    },
+    sectorPieChart: function(sector_name) {
+      var self = this;
+      ////console.log(self.sectors[sector_name].projects);
+      jq('#sector_funding_title').html("Project Funding for " + sector_name.capitalize() + " Projects")
+      jq('#sector_funding_total').html(self.sectors[sector_name].funding.toFixed(1) + " Million");
+      pie_options = {"features":self.sectors[sector_name].projects, 
+          "attributes": {"data":{"name": "Funding","original_name": "financing amount"},
+          "description":{"name": "Project","original_name": "project id"}, 
+          "sort":{"name": "Funding","original_name": "financing amount"} } };
+      F1.Visualizer.charts.pie(180, 455, pie_options, "chart-left-pie-chart");
+    },
+    sectorFundingBars: function() {
+      var self = this;
+      var s;
+      var features = [];
+      for(s in self.sectors) { features.push(self.sectors[s]); }
+      // ////console.log(features)
+      jq('#funding_total').html(self.total_funding.toFixed(1) + " Million");
+      bar_options = {"features":features, "attributes": {
+            "data":{"name": "Funding", "original_name": "funding"}, 
+            "description":{"name": "Sector", "original_name": "sector"}, 
+            "sort":{"name": "Activities","original_name": "activities"} } };
+      F1.Visualizer.charts.bar(180, 455, bar_options, "chart-right-graph");
+    },
+    getLayers: function(map) {
+      var self = this;
+      var findlayers = ["Project Locations", "Indicators", "Population"];
+      var possibleLayers = map.getLayers();
+      var j;
+      var index;
+      for(j in possibleLayers) {
+        index = Object.include(findlayers, possibleLayers[j].title);
+        if(index != null){
+          self.stylelayers[findlayers[index]] = {order: possibleLayers[j].order, source: possibleLayers[j].source};
+        }
+       }
+       jq('#download_data').attr('href','http://wbstaging.geocommons.com/overlays/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
+       return false;
+    },
+    styleMap: function(map) {
+      var self = this;
+      self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector 1 code",categories:sector_icons});
+    },
+    drawCharts: function(map) {
+      var self = this;
+      if( self.initialized ) {return;}
+        
+      self.getLayers(map);
+      self.styleMap(map);
+      F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""), function(data) {
+          //console.log("loaded");
+          self.sortData(data);
+          self.projectTable(data);
+          self.sectorPieChart("public");        
+          self.sectorFundingBars();
+          self.initialized = true;
+        }, map);
+      }      
+  }
+})();  // preserving the global namespace
+
+var wb = new F1.WorldBank();
+wb.init(5);
+
+function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.map, projects_id)}
+</script>
+    <div id="share">
+      <ul>
+     <!--   <li class="print"><a href="#">Print</a></li>
+        <li class="email"><a href="#">Email</a></li>-->
+        <li class="download"><a href="" id="download_data">DOWNLOAD</a></li>
+        <li class="simpleshare_link"><a href="http://data.worldbank.org/topic/public-sector" >SHARE</a></li>
+      </ul>
     </div>
 
-    <div id="backtrace" class='condensed'>
-      <h3>BACKTRACE</h3>
-      <p><a href="#" id="expando"
-            onclick="toggleBacktrace(); return false">(expand)</a></p>
-      <p id="nav"><strong>JUMP TO:</strong>
-         <a href="#get-info">GET</a>
-         <a href="#post-info">POST</a>
-         <a href="#cookie-info">COOKIES</a>
-         <a href="#env-info">ENV</a>
-      </p>
-      <div class="clear"></div>
-
-      <ul id="backtrace-ul">
-
+    <div id="map-content-header">
+      <div class="worldmenuholder">
+        <ul class="worldmenu">
+          <li class="first"><a href="#">PHILLIPINES</a>
+            <ul>
+              
+                <li><a href="#" onclick="wb.setState(null,'Extreme Poverty'); return false">Extreme Poverty (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Malnutrition'); return false">Malnutrition (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Infant Mortality'); return false">Infant Mortality (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Malnutrition'); return false">Births Attended (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,null,null,['all']); return false">Project Portfolio</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Extreme Poverty',null,['all']); return false">Projects by Poverty</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Population',null,['all']); return false">Projects by Population</a></li>
+              
+            </ul>
+          </li>
+          <!-- ... and so on ... -->
+        </ul>
+      </div>
       
-      
-          
-
-            <li class="frame-info app">
-              <code>./m4r.rb</code> in
-                <code><strong>GET /:region/:country</strong></code>
-            </li>
-
-            <li class="code app">
-              
-              <ol start="91"
-                  class="pre-context" id="pre-1"
-                  onclick="toggle(1);">
-                
-                <li class="pre-context-line"><code>get &#39;/&#39; do
-</code></li>
-                
-                <li class="pre-context-line"><code>  @country = MAPS[:world]
-</code></li>
-                
-                <li class="pre-context-line"><code>  erb :index
-</code></li>
-                
-                <li class="pre-context-line"><code>end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>get &#39;/:region/:country&#39; do
-</code></li>
-                
-                <li class="pre-context-line"><code>  @region = MAPS[:world][:regions][params[:region].to_sym]
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="98" class="context" id="1"
-                  onclick="toggle(1);">
-                <li class="context-line" id="context-1"><code>  @country = @region[:countries][params[:country].to_sym]</code></li>
-              </ol>
-
-              
-              <ol start="99" class="post-context"
-                  id="post-1" onclick="toggle(1);">
-                
-                <li class="post-context-line"><code>  erb :index
-</code></li>
-                
-                <li class="post-context-line"><code>end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>helpers do
-</code></li>
-                
-                <li class="post-context-line"><code>  # Embed a page partial
-</code></li>
-                
-                <li class="post-context-line"><code>  # Usage: partial :foo
-</code></li>
-                
-                <li class="post-context-line"><code>  def partial(page, options={})
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="856"
-                  class="pre-context" id="pre-2"
-                  onclick="toggle(2);">
-                
-                <li class="pre-context-line"><code>        pattern, keys = compile(path)
-</code></li>
-                
-                <li class="pre-context-line"><code>        conditions, @conditions = @conditions, []
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>        define_method &quot;#{verb} #{path}&quot;, &amp;block
-</code></li>
-                
-                <li class="pre-context-line"><code>        unbound_method = instance_method(&quot;#{verb} #{path}&quot;)
-</code></li>
-                
-                <li class="pre-context-line"><code>        block =
-</code></li>
-                
-                <li class="pre-context-line"><code>          if block.arity != 0
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="863" class="context" id="2"
-                  onclick="toggle(2);">
-                <li class="context-line" id="context-2"><code>            proc { unbound_method.bind(self).call(*@block_params) }</code></li>
-              </ol>
-
-              
-              <ol start="864" class="post-context"
-                  id="post-2" onclick="toggle(2);">
-                
-                <li class="post-context-line"><code>          else
-</code></li>
-                
-                <li class="post-context-line"><code>            proc { unbound_method.bind(self).call }
-</code></li>
-                
-                <li class="post-context-line"><code>          end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>        invoke_hook(:route_added, verb, path, block)
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>        (@routes[verb] ||= []).
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>route</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="856"
-                  class="pre-context" id="pre-3"
-                  onclick="toggle(3);">
-                
-                <li class="pre-context-line"><code>        pattern, keys = compile(path)
-</code></li>
-                
-                <li class="pre-context-line"><code>        conditions, @conditions = @conditions, []
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>        define_method &quot;#{verb} #{path}&quot;, &amp;block
-</code></li>
-                
-                <li class="pre-context-line"><code>        unbound_method = instance_method(&quot;#{verb} #{path}&quot;)
-</code></li>
-                
-                <li class="pre-context-line"><code>        block =
-</code></li>
-                
-                <li class="pre-context-line"><code>          if block.arity != 0
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="863" class="context" id="3"
-                  onclick="toggle(3);">
-                <li class="context-line" id="context-3"><code>            proc { unbound_method.bind(self).call(*@block_params) }</code></li>
-              </ol>
-
-              
-              <ol start="864" class="post-context"
-                  id="post-3" onclick="toggle(3);">
-                
-                <li class="post-context-line"><code>          else
-</code></li>
-                
-                <li class="post-context-line"><code>            proc { unbound_method.bind(self).call }
-</code></li>
-                
-                <li class="post-context-line"><code>          end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>        invoke_hook(:route_added, verb, path, block)
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>        (@routes[verb] ||= []).
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>instance_eval</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="514"
-                  class="pre-context" id="pre-4"
-                  onclick="toggle(4);">
-                
-                <li class="pre-context-line"><code>      route_eval(&amp;pass_block) if pass_block
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      route_missing
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Run a route block and throw :halt with the result.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def route_eval(&amp;block)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="521" class="context" id="4"
-                  onclick="toggle(4);">
-                <li class="context-line" id="context-4"><code>      throw :halt, instance_eval(&amp;block)</code></li>
-              </ol>
-
-              
-              <ol start="522" class="post-context"
-                  id="post-4" onclick="toggle(4);">
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    # No matching route was found or all routes passed. The default
-</code></li>
-                
-                <li class="post-context-line"><code>    # implementation is to forward the request downstream when running
-</code></li>
-                
-                <li class="post-context-line"><code>    # as middleware (@app is non-nil); when no downstream app is set, raise
-</code></li>
-                
-                <li class="post-context-line"><code>    # a NotFound exception. Subclasses can override this method to perform
-</code></li>
-                
-                <li class="post-context-line"><code>    # custom route miss logic.
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>route_eval</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="514"
-                  class="pre-context" id="pre-5"
-                  onclick="toggle(5);">
-                
-                <li class="pre-context-line"><code>      route_eval(&amp;pass_block) if pass_block
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      route_missing
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Run a route block and throw :halt with the result.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def route_eval(&amp;block)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="521" class="context" id="5"
-                  onclick="toggle(5);">
-                <li class="context-line" id="context-5"><code>      throw :halt, instance_eval(&amp;block)</code></li>
-              </ol>
-
-              
-              <ol start="522" class="post-context"
-                  id="post-5" onclick="toggle(5);">
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    # No matching route was found or all routes passed. The default
-</code></li>
-                
-                <li class="post-context-line"><code>    # implementation is to forward the request downstream when running
-</code></li>
-                
-                <li class="post-context-line"><code>    # as middleware (@app is non-nil); when no downstream app is set, raise
-</code></li>
-                
-                <li class="post-context-line"><code>    # a NotFound exception. Subclasses can override this method to perform
-</code></li>
-                
-                <li class="post-context-line"><code>    # custom route miss logic.
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>route!</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="493"
-                  class="pre-context" id="pre-6"
-                  onclick="toggle(6);">
-                
-                <li class="pre-context-line"><code>              end
-</code></li>
-                
-                <li class="pre-context-line"><code>            @params = original_params.merge(params)
-</code></li>
-                
-                <li class="pre-context-line"><code>            @block_params = values
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>            pass_block = catch(:pass) do
-</code></li>
-                
-                <li class="pre-context-line"><code>              conditions.each { |cond|
-</code></li>
-                
-                <li class="pre-context-line"><code>                throw :pass if instance_eval(&amp;cond) == false }
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="500" class="context" id="6"
-                  onclick="toggle(6);">
-                <li class="context-line" id="context-6"><code>              route_eval(&amp;block)</code></li>
-              </ol>
-
-              
-              <ol start="501" class="post-context"
-                  id="post-6" onclick="toggle(6);">
-                
-                <li class="post-context-line"><code>            end
-</code></li>
-                
-                <li class="post-context-line"><code>          end
-</code></li>
-                
-                <li class="post-context-line"><code>        end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>        @params = original_params
-</code></li>
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>catch</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="490"
-                  class="pre-context" id="pre-7"
-                  onclick="toggle(7);">
-                
-                <li class="pre-context-line"><code>                {&#39;captures&#39; =&gt; values}
-</code></li>
-                
-                <li class="pre-context-line"><code>              else
-</code></li>
-                
-                <li class="pre-context-line"><code>                {}
-</code></li>
-                
-                <li class="pre-context-line"><code>              end
-</code></li>
-                
-                <li class="pre-context-line"><code>            @params = original_params.merge(params)
-</code></li>
-                
-                <li class="pre-context-line"><code>            @block_params = values
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="497" class="context" id="7"
-                  onclick="toggle(7);">
-                <li class="context-line" id="context-7"><code>            pass_block = catch(:pass) do</code></li>
-              </ol>
-
-              
-              <ol start="498" class="post-context"
-                  id="post-7" onclick="toggle(7);">
-                
-                <li class="post-context-line"><code>              conditions.each { |cond|
-</code></li>
-                
-                <li class="post-context-line"><code>                throw :pass if instance_eval(&amp;cond) == false }
-</code></li>
-                
-                <li class="post-context-line"><code>              route_eval(&amp;block)
-</code></li>
-                
-                <li class="post-context-line"><code>            end
-</code></li>
-                
-                <li class="post-context-line"><code>          end
-</code></li>
-                
-                <li class="post-context-line"><code>        end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>route!</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="490"
-                  class="pre-context" id="pre-8"
-                  onclick="toggle(8);">
-                
-                <li class="pre-context-line"><code>                {&#39;captures&#39; =&gt; values}
-</code></li>
-                
-                <li class="pre-context-line"><code>              else
-</code></li>
-                
-                <li class="pre-context-line"><code>                {}
-</code></li>
-                
-                <li class="pre-context-line"><code>              end
-</code></li>
-                
-                <li class="pre-context-line"><code>            @params = original_params.merge(params)
-</code></li>
-                
-                <li class="pre-context-line"><code>            @block_params = values
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="497" class="context" id="8"
-                  onclick="toggle(8);">
-                <li class="context-line" id="context-8"><code>            pass_block = catch(:pass) do</code></li>
-              </ol>
-
-              
-              <ol start="498" class="post-context"
-                  id="post-8" onclick="toggle(8);">
-                
-                <li class="post-context-line"><code>              conditions.each { |cond|
-</code></li>
-                
-                <li class="post-context-line"><code>                throw :pass if instance_eval(&amp;cond) == false }
-</code></li>
-                
-                <li class="post-context-line"><code>              route_eval(&amp;block)
-</code></li>
-                
-                <li class="post-context-line"><code>            end
-</code></li>
-                
-                <li class="post-context-line"><code>          end
-</code></li>
-                
-                <li class="post-context-line"><code>        end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>each</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="469"
-                  class="pre-context" id="pre-9"
-                  onclick="toggle(9);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Run routes defined on the class and all superclasses.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def route!(base=self.class, pass_block=nil)
-</code></li>
-                
-                <li class="pre-context-line"><code>      if routes = base.routes[@request.request_method]
-</code></li>
-                
-                <li class="pre-context-line"><code>        original_params = @params
-</code></li>
-                
-                <li class="pre-context-line"><code>        path            = unescape(@request.path_info)
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="476" class="context" id="9"
-                  onclick="toggle(9);">
-                <li class="context-line" id="context-9"><code>        routes.each do |pattern, keys, conditions, block|</code></li>
-              </ol>
-
-              
-              <ol start="477" class="post-context"
-                  id="post-9" onclick="toggle(9);">
-                
-                <li class="post-context-line"><code>          if match = pattern.match(path)
-</code></li>
-                
-                <li class="post-context-line"><code>            values = match.captures.to_a
-</code></li>
-                
-                <li class="post-context-line"><code>            params =
-</code></li>
-                
-                <li class="post-context-line"><code>              if keys.any?
-</code></li>
-                
-                <li class="post-context-line"><code>                keys.zip(values).inject({}) do |hash,(k,v)|
-</code></li>
-                
-                <li class="post-context-line"><code>                  if k == &#39;splat&#39;
-</code></li>
-                
-                <li class="post-context-line"><code>                    (hash[k] ||= []) &lt;&lt; v
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>route!</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="469"
-                  class="pre-context" id="pre-10"
-                  onclick="toggle(10);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Run routes defined on the class and all superclasses.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def route!(base=self.class, pass_block=nil)
-</code></li>
-                
-                <li class="pre-context-line"><code>      if routes = base.routes[@request.request_method]
-</code></li>
-                
-                <li class="pre-context-line"><code>        original_params = @params
-</code></li>
-                
-                <li class="pre-context-line"><code>        path            = unescape(@request.path_info)
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="476" class="context" id="10"
-                  onclick="toggle(10);">
-                <li class="context-line" id="context-10"><code>        routes.each do |pattern, keys, conditions, block|</code></li>
-              </ol>
-
-              
-              <ol start="477" class="post-context"
-                  id="post-10" onclick="toggle(10);">
-                
-                <li class="post-context-line"><code>          if match = pattern.match(path)
-</code></li>
-                
-                <li class="post-context-line"><code>            values = match.captures.to_a
-</code></li>
-                
-                <li class="post-context-line"><code>            params =
-</code></li>
-                
-                <li class="post-context-line"><code>              if keys.any?
-</code></li>
-                
-                <li class="post-context-line"><code>                keys.zip(values).inject({}) do |hash,(k,v)|
-</code></li>
-                
-                <li class="post-context-line"><code>                  if k == &#39;splat&#39;
-</code></li>
-                
-                <li class="post-context-line"><code>                    (hash[k] ||= []) &lt;&lt; v
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>dispatch!</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="594"
-                  class="pre-context" id="pre-11"
-                  onclick="toggle(11);">
-                
-                <li class="pre-context-line"><code>      res
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Dispatch a request with error handling.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def dispatch!
-</code></li>
-                
-                <li class="pre-context-line"><code>      static! if settings.static? &amp;&amp; (request.get? || request.head?)
-</code></li>
-                
-                <li class="pre-context-line"><code>      before_filter!
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="601" class="context" id="11"
-                  onclick="toggle(11);">
-                <li class="context-line" id="context-11"><code>      route!</code></li>
-              </ol>
-
-              
-              <ol start="602" class="post-context"
-                  id="post-11" onclick="toggle(11);">
-                
-                <li class="post-context-line"><code>    rescue NotFound =&gt; boom
-</code></li>
-                
-                <li class="post-context-line"><code>      handle_not_found!(boom)
-</code></li>
-                
-                <li class="post-context-line"><code>    rescue ::Exception =&gt; boom
-</code></li>
-                
-                <li class="post-context-line"><code>      handle_exception!(boom)
-</code></li>
-                
-                <li class="post-context-line"><code>    ensure
-</code></li>
-                
-                <li class="post-context-line"><code>      after_filter! unless env[&#39;sinatra.static_file&#39;]
-</code></li>
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>call!</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="404"
-                  class="pre-context" id="pre-12"
-                  onclick="toggle(12);">
-                
-                <li class="pre-context-line"><code>    def call!(env)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @env      = env
-</code></li>
-                
-                <li class="pre-context-line"><code>      @request  = Request.new(env)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @response = Response.new
-</code></li>
-                
-                <li class="pre-context-line"><code>      @params   = indifferent_params(@request.params)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @template_cache.clear if settings.reload_templates
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="411" class="context" id="12"
-                  onclick="toggle(12);">
-                <li class="context-line" id="context-12"><code>      invoke { dispatch! }</code></li>
-              </ol>
-
-              
-              <ol start="412" class="post-context"
-                  id="post-12" onclick="toggle(12);">
-                
-                <li class="post-context-line"><code>      invoke { error_block!(response.status) }
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      status, header, body = @response.finish
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      # Never produce a body on HEAD requests. Do retain the Content-Length
-</code></li>
-                
-                <li class="post-context-line"><code>      # unless it&#39;s &quot;0&quot;, in which case we assume it was calculated erroneously
-</code></li>
-                
-                <li class="post-context-line"><code>      # for a manual HEAD response and remove it entirely.
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>instance_eval</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="559"
-                  class="pre-context" id="pre-13"
-                  onclick="toggle(13);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def indifferent_hash
-</code></li>
-                
-                <li class="pre-context-line"><code>      Hash.new {|hash,key| hash[key.to_s] if Symbol === key }
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Run the block with &#39;throw :halt&#39; support and apply result to the response.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def invoke(&amp;block)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="566" class="context" id="13"
-                  onclick="toggle(13);">
-                <li class="context-line" id="context-13"><code>      res = catch(:halt) { instance_eval(&amp;block) }</code></li>
-              </ol>
-
-              
-              <ol start="567" class="post-context"
-                  id="post-13" onclick="toggle(13);">
-                
-                <li class="post-context-line"><code>      return if res.nil?
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      case
-</code></li>
-                
-                <li class="post-context-line"><code>      when res.respond_to?(:to_str)
-</code></li>
-                
-                <li class="post-context-line"><code>        @response.body = [res]
-</code></li>
-                
-                <li class="post-context-line"><code>      when res.respond_to?(:to_ary)
-</code></li>
-                
-                <li class="post-context-line"><code>        res = res.to_ary
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>invoke</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="559"
-                  class="pre-context" id="pre-14"
-                  onclick="toggle(14);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def indifferent_hash
-</code></li>
-                
-                <li class="pre-context-line"><code>      Hash.new {|hash,key| hash[key.to_s] if Symbol === key }
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Run the block with &#39;throw :halt&#39; support and apply result to the response.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def invoke(&amp;block)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="566" class="context" id="14"
-                  onclick="toggle(14);">
-                <li class="context-line" id="context-14"><code>      res = catch(:halt) { instance_eval(&amp;block) }</code></li>
-              </ol>
-
-              
-              <ol start="567" class="post-context"
-                  id="post-14" onclick="toggle(14);">
-                
-                <li class="post-context-line"><code>      return if res.nil?
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      case
-</code></li>
-                
-                <li class="post-context-line"><code>      when res.respond_to?(:to_str)
-</code></li>
-                
-                <li class="post-context-line"><code>        @response.body = [res]
-</code></li>
-                
-                <li class="post-context-line"><code>      when res.respond_to?(:to_ary)
-</code></li>
-                
-                <li class="post-context-line"><code>        res = res.to_ary
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>catch</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="559"
-                  class="pre-context" id="pre-15"
-                  onclick="toggle(15);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def indifferent_hash
-</code></li>
-                
-                <li class="pre-context-line"><code>      Hash.new {|hash,key| hash[key.to_s] if Symbol === key }
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Run the block with &#39;throw :halt&#39; support and apply result to the response.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def invoke(&amp;block)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="566" class="context" id="15"
-                  onclick="toggle(15);">
-                <li class="context-line" id="context-15"><code>      res = catch(:halt) { instance_eval(&amp;block) }</code></li>
-              </ol>
-
-              
-              <ol start="567" class="post-context"
-                  id="post-15" onclick="toggle(15);">
-                
-                <li class="post-context-line"><code>      return if res.nil?
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      case
-</code></li>
-                
-                <li class="post-context-line"><code>      when res.respond_to?(:to_str)
-</code></li>
-                
-                <li class="post-context-line"><code>        @response.body = [res]
-</code></li>
-                
-                <li class="post-context-line"><code>      when res.respond_to?(:to_ary)
-</code></li>
-                
-                <li class="post-context-line"><code>        res = res.to_ary
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>invoke</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="559"
-                  class="pre-context" id="pre-16"
-                  onclick="toggle(16);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def indifferent_hash
-</code></li>
-                
-                <li class="pre-context-line"><code>      Hash.new {|hash,key| hash[key.to_s] if Symbol === key }
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Run the block with &#39;throw :halt&#39; support and apply result to the response.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def invoke(&amp;block)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="566" class="context" id="16"
-                  onclick="toggle(16);">
-                <li class="context-line" id="context-16"><code>      res = catch(:halt) { instance_eval(&amp;block) }</code></li>
-              </ol>
-
-              
-              <ol start="567" class="post-context"
-                  id="post-16" onclick="toggle(16);">
-                
-                <li class="post-context-line"><code>      return if res.nil?
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      case
-</code></li>
-                
-                <li class="post-context-line"><code>      when res.respond_to?(:to_str)
-</code></li>
-                
-                <li class="post-context-line"><code>        @response.body = [res]
-</code></li>
-                
-                <li class="post-context-line"><code>      when res.respond_to?(:to_ary)
-</code></li>
-                
-                <li class="post-context-line"><code>        res = res.to_ary
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>call!</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="404"
-                  class="pre-context" id="pre-17"
-                  onclick="toggle(17);">
-                
-                <li class="pre-context-line"><code>    def call!(env)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @env      = env
-</code></li>
-                
-                <li class="pre-context-line"><code>      @request  = Request.new(env)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @response = Response.new
-</code></li>
-                
-                <li class="pre-context-line"><code>      @params   = indifferent_params(@request.params)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @template_cache.clear if settings.reload_templates
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="411" class="context" id="17"
-                  onclick="toggle(17);">
-                <li class="context-line" id="context-17"><code>      invoke { dispatch! }</code></li>
-              </ol>
-
-              
-              <ol start="412" class="post-context"
-                  id="post-17" onclick="toggle(17);">
-                
-                <li class="post-context-line"><code>      invoke { error_block!(response.status) }
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      status, header, body = @response.finish
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      # Never produce a body on HEAD requests. Do retain the Content-Length
-</code></li>
-                
-                <li class="post-context-line"><code>      # unless it&#39;s &quot;0&quot;, in which case we assume it was calculated erroneously
-</code></li>
-                
-                <li class="post-context-line"><code>      # for a manual HEAD response and remove it entirely.
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="392"
-                  class="pre-context" id="pre-18"
-                  onclick="toggle(18);">
-                
-                <li class="pre-context-line"><code>      @app = app
-</code></li>
-                
-                <li class="pre-context-line"><code>      @template_cache = Tilt::Cache.new
-</code></li>
-                
-                <li class="pre-context-line"><code>      yield self if block_given?
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Rack call interface.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="399" class="context" id="18"
-                  onclick="toggle(18);">
-                <li class="context-line" id="context-18"><code>      dup.call!(env)</code></li>
-              </ol>
-
-              
-              <ol start="400" class="post-context"
-                  id="post-18" onclick="toggle(18);">
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    attr_accessor :env, :request, :response, :params
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    def call!(env)
-</code></li>
-                
-                <li class="post-context-line"><code>      @env      = env
-</code></li>
-                
-                <li class="post-context-line"><code>      @request  = Request.new(env)
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/showexceptions.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="17"
-                  class="pre-context" id="pre-19"
-                  onclick="toggle(19);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def initialize(app)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @app = app
-</code></li>
-                
-                <li class="pre-context-line"><code>      @template = ERB.new(TEMPLATE)
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="24" class="context" id="19"
-                  onclick="toggle(19);">
-                <li class="context-line" id="context-19"><code>      @app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="25" class="post-context"
-                  id="post-19" onclick="toggle(19);">
-                
-                <li class="post-context-line"><code>    rescue StandardError, LoadError, SyntaxError =&gt; e
-</code></li>
-                
-                <li class="post-context-line"><code>      backtrace = pretty(env, e)
-</code></li>
-                
-                <li class="post-context-line"><code>      [500,
-</code></li>
-                
-                <li class="post-context-line"><code>       {&quot;Content-Type&quot; =&gt; &quot;text/html&quot;,
-</code></li>
-                
-                <li class="post-context-line"><code>        &quot;Content-Length&quot; =&gt; backtrace.join.size.to_s},
-</code></li>
-                
-                <li class="post-context-line"><code>       backtrace]
-</code></li>
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="17"
-                  class="pre-context" id="pre-20"
-                  onclick="toggle(20);">
-                
-                <li class="pre-context-line"><code>        method = method.to_s.upcase
-</code></li>
-                
-                <li class="pre-context-line"><code>        if HTTP_METHODS.include?(method)
-</code></li>
-                
-                <li class="pre-context-line"><code>          env[&quot;rack.methodoverride.original_method&quot;] = env[&quot;REQUEST_METHOD&quot;]
-</code></li>
-                
-                <li class="pre-context-line"><code>          env[&quot;REQUEST_METHOD&quot;] = method
-</code></li>
-                
-                <li class="pre-context-line"><code>        end
-</code></li>
-                
-                <li class="pre-context-line"><code>      end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="24" class="context" id="20"
-                  onclick="toggle(20);">
-                <li class="context-line" id="context-20"><code>      @app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="25" class="post-context"
-                  id="post-20" onclick="toggle(20);">
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>  end
-</code></li>
-                
-                <li class="post-context-line"><code>end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="972"
-                  class="pre-context" id="pre-21"
-                  onclick="toggle(21);">
-                
-                <li class="pre-context-line"><code>        middleware.each { |c,a,b| builder.use(c, *a, &amp;b) }
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>        builder.run super
-</code></li>
-                
-                <li class="pre-context-line"><code>        builder.to_app
-</code></li>
-                
-                <li class="pre-context-line"><code>      end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      def call(env)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="979" class="context" id="21"
-                  onclick="toggle(21);">
-                <li class="context-line" id="context-21"><code>        synchronize { prototype.call(env) }</code></li>
-              </ol>
-
-              
-              <ol start="980" class="post-context"
-                  id="post-21" onclick="toggle(21);">
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    private
-</code></li>
-                
-                <li class="post-context-line"><code>      def detect_rack_handler
-</code></li>
-                
-                <li class="post-context-line"><code>        servers = Array(self.server)
-</code></li>
-                
-                <li class="post-context-line"><code>        servers.each do |server_name|
-</code></li>
-                
-                <li class="post-context-line"><code>          begin
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>synchronize</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="998"
-                  class="pre-context" id="pre-22"
-                  onclick="toggle(22);">
-                
-                <li class="pre-context-line"><code>      end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      @@mutex = Mutex.new
-</code></li>
-                
-                <li class="pre-context-line"><code>      def synchronize(&amp;block)
-</code></li>
-                
-                <li class="pre-context-line"><code>        if lock?
-</code></li>
-                
-                <li class="pre-context-line"><code>          @@mutex.synchronize(&amp;block)
-</code></li>
-                
-                <li class="pre-context-line"><code>        else
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="1005" class="context" id="22"
-                  onclick="toggle(22);">
-                <li class="context-line" id="context-22"><code>          yield</code></li>
-              </ol>
-
-              
-              <ol start="1006" class="post-context"
-                  id="post-22" onclick="toggle(22);">
-                
-                <li class="post-context-line"><code>        end
-</code></li>
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      def metadef(message, &amp;block)
-</code></li>
-                
-                <li class="post-context-line"><code>        (class &lt;&lt; self; self; end).
-</code></li>
-                
-                <li class="post-context-line"><code>          send :define_method, message, &amp;block
-</code></li>
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info framework">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/sinatra-1.0/lib/sinatra/base.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code framework">
-              
-              <ol start="972"
-                  class="pre-context" id="pre-23"
-                  onclick="toggle(23);">
-                
-                <li class="pre-context-line"><code>        middleware.each { |c,a,b| builder.use(c, *a, &amp;b) }
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>        builder.run super
-</code></li>
-                
-                <li class="pre-context-line"><code>        builder.to_app
-</code></li>
-                
-                <li class="pre-context-line"><code>      end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      def call(env)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="979" class="context" id="23"
-                  onclick="toggle(23);">
-                <li class="context-line" id="context-23"><code>        synchronize { prototype.call(env) }</code></li>
-              </ol>
-
-              
-              <ol start="980" class="post-context"
-                  id="post-23" onclick="toggle(23);">
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    private
-</code></li>
-                
-                <li class="post-context-line"><code>      def detect_rack_handler
-</code></li>
-                
-                <li class="post-context-line"><code>        servers = Array(self.server)
-</code></li>
-                
-                <li class="post-context-line"><code>        servers.each do |server_name|
-</code></li>
-                
-                <li class="post-context-line"><code>          begin
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lint.rb</code> in
-                <code><strong>_call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="41"
-                  class="pre-context" id="pre-24"
-                  onclick="toggle(24);">
-                
-                <li class="pre-context-line"><code>      assert(&quot;No env given&quot;) { env }
-</code></li>
-                
-                <li class="pre-context-line"><code>      check_env env
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      env[&#39;rack.input&#39;] = InputWrapper.new(env[&#39;rack.input&#39;])
-</code></li>
-                
-                <li class="pre-context-line"><code>      env[&#39;rack.errors&#39;] = ErrorWrapper.new(env[&#39;rack.errors&#39;])
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      ## and returns an Array of exactly three values:
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="48" class="context" id="24"
-                  onclick="toggle(24);">
-                <li class="context-line" id="context-24"><code>      status, headers, @body = @app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="49" class="post-context"
-                  id="post-24" onclick="toggle(24);">
-                
-                <li class="post-context-line"><code>      ## The *status*,
-</code></li>
-                
-                <li class="post-context-line"><code>      check_status status
-</code></li>
-                
-                <li class="post-context-line"><code>      ## the *headers*,
-</code></li>
-                
-                <li class="post-context-line"><code>      check_headers headers
-</code></li>
-                
-                <li class="post-context-line"><code>      ## and the *body*.
-</code></li>
-                
-                <li class="post-context-line"><code>      check_content_type status, headers
-</code></li>
-                
-                <li class="post-context-line"><code>      check_content_length status, headers
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lint.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="29"
-                  class="pre-context" id="pre-25"
-                  onclick="toggle(25);">
-                
-                <li class="pre-context-line"><code>    ## after to catch all mistakes.
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    ## = Rack applications
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    ## A Rack application is an Ruby object (not a class) that
-</code></li>
-                
-                <li class="pre-context-line"><code>    ## responds to +call+.
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env=nil)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="36" class="context" id="25"
-                  onclick="toggle(25);">
-                <li class="context-line" id="context-25"><code>      dup._call(env)</code></li>
-              </ol>
-
-              
-              <ol start="37" class="post-context"
-                  id="post-25" onclick="toggle(25);">
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    def _call(env)
-</code></li>
-                
-                <li class="post-context-line"><code>      ## It takes exactly one argument, the *environment*
-</code></li>
-                
-                <li class="post-context-line"><code>      assert(&quot;No env given&quot;) { env }
-</code></li>
-                
-                <li class="post-context-line"><code>      check_env env
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/showexceptions.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="17"
-                  class="pre-context" id="pre-26"
-                  onclick="toggle(26);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def initialize(app)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @app = app
-</code></li>
-                
-                <li class="pre-context-line"><code>      @template = ERB.new(TEMPLATE)
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="24" class="context" id="26"
-                  onclick="toggle(26);">
-                <li class="context-line" id="context-26"><code>      @app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="25" class="post-context"
-                  id="post-26" onclick="toggle(26);">
-                
-                <li class="post-context-line"><code>    rescue StandardError, LoadError, SyntaxError =&gt; e
-</code></li>
-                
-                <li class="post-context-line"><code>      backtrace = pretty(env, e)
-</code></li>
-                
-                <li class="post-context-line"><code>      [500,
-</code></li>
-                
-                <li class="post-context-line"><code>       {&quot;Content-Type&quot; =&gt; &quot;text/html&quot;,
-</code></li>
-                
-                <li class="post-context-line"><code>        &quot;Content-Length&quot; =&gt; backtrace.join.size.to_s},
-</code></li>
-                
-                <li class="post-context-line"><code>       backtrace]
-</code></li>
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/commonlogger.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="11"
-                  class="pre-context" id="pre-27"
-                  onclick="toggle(27);">
-                
-                <li class="pre-context-line"><code>    def initialize(app, logger=nil)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @app = app
-</code></li>
-                
-                <li class="pre-context-line"><code>      @logger = logger
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-                <li class="pre-context-line"><code>      began_at = Time.now
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="18" class="context" id="27"
-                  onclick="toggle(27);">
-                <li class="context-line" id="context-27"><code>      status, header, body = @app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="19" class="post-context"
-                  id="post-27" onclick="toggle(27);">
-                
-                <li class="post-context-line"><code>      header = Utils::HeaderHash.new(header)
-</code></li>
-                
-                <li class="post-context-line"><code>      log(env, status, header, began_at)
-</code></li>
-                
-                <li class="post-context-line"><code>      [status, header, body]
-</code></li>
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    private
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/shotgun-0.8/lib/shotgun/loader.rb</code> in
-                <code><strong>proceed_as_child</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="79"
-                  class="pre-context" id="pre-28"
-                  onclick="toggle(28);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    ##
-</code></li>
-                
-                <li class="pre-context-line"><code>    # Stuff that happens in the child process
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def proceed_as_child
-</code></li>
-                
-                <li class="pre-context-line"><code>      boom = false
-</code></li>
-                
-                <li class="pre-context-line"><code>      @reader.close
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="86" class="context" id="28"
-                  onclick="toggle(28);">
-                <li class="context-line" id="context-28"><code>      status, headers, body = assemble_app.call(@env)</code></li>
-              </ol>
-
-              
-              <ol start="87" class="post-context"
-                  id="post-28" onclick="toggle(28);">
-                
-                <li class="post-context-line"><code>      Marshal.dump([:ok, status, headers.to_hash], @writer)
-</code></li>
-                
-                <li class="post-context-line"><code>      spec_body(body).each { |chunk| @writer.write(chunk) }
-</code></li>
-                
-                <li class="post-context-line"><code>    rescue Object =&gt; boom
-</code></li>
-                
-                <li class="post-context-line"><code>      Marshal.dump([
-</code></li>
-                
-                <li class="post-context-line"><code>        :error,
-</code></li>
-                
-                <li class="post-context-line"><code>        &quot;#{boom.class.name}: #{boom.to_s}&quot;,
-</code></li>
-                
-                <li class="post-context-line"><code>        boom.backtrace
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/shotgun-0.8/lib/shotgun/loader.rb</code> in
-                <code><strong>call!</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="24"
-                  class="pre-context" id="pre-29"
-                  onclick="toggle(29);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      Shotgun.before_fork!
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      if @child = fork
-</code></li>
-                
-                <li class="pre-context-line"><code>        proceed_as_parent
-</code></li>
-                
-                <li class="pre-context-line"><code>      else
-</code></li>
-                
-                <li class="pre-context-line"><code>        Shotgun.after_fork!
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="31" class="context" id="29"
-                  onclick="toggle(29);">
-                <li class="context-line" id="context-29"><code>        proceed_as_child</code></li>
-              </ol>
-
-              
-              <ol start="32" class="post-context"
-                  id="post-29" onclick="toggle(29);">
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    ##
-</code></li>
-                
-                <li class="post-context-line"><code>    # Stuff that happens in the parent process
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    def proceed_as_parent
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/shotgun-0.8/lib/shotgun/loader.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="11"
-                  class="pre-context" id="pre-30"
-                  onclick="toggle(30);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def initialize(rackup_file, &amp;block)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @rackup_file = rackup_file
-</code></li>
-                
-                <li class="pre-context-line"><code>      @config = block || lambda { }
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="18" class="context" id="30"
-                  onclick="toggle(30);">
-                <li class="context-line" id="context-30"><code>      dup.call!(env)</code></li>
-              </ol>
-
-              
-              <ol start="19" class="post-context"
-                  id="post-30" onclick="toggle(30);">
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>    def call!(env)
-</code></li>
-                
-                <li class="post-context-line"><code>      @env = env
-</code></li>
-                
-                <li class="post-context-line"><code>      @reader, @writer = IO.pipe
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      Shotgun.before_fork!
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/shotgun-0.8/lib/shotgun/favicon.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="5"
-                  class="pre-context" id="pre-31"
-                  onclick="toggle(31);">
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-                <li class="pre-context-line"><code>      if env[&#39;PATH_INFO&#39;] == &#39;/favicon.ico&#39;
-</code></li>
-                
-                <li class="pre-context-line"><code>        [404, {
-</code></li>
-                
-                <li class="pre-context-line"><code>          &#39;Content-Type&#39;  =&gt; &#39;image/png&#39;,
-</code></li>
-                
-                <li class="pre-context-line"><code>          &#39;Cache-Control&#39; =&gt; &#39;public, max-age=100000000000&#39;
-</code></li>
-                
-                <li class="pre-context-line"><code>        }, []]
-</code></li>
-                
-                <li class="pre-context-line"><code>      else
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="12" class="context" id="31"
-                  onclick="toggle(31);">
-                <li class="context-line" id="context-31"><code>        app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="13" class="post-context"
-                  id="post-31" onclick="toggle(31);">
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>  end
-</code></li>
-                
-                <li class="post-context-line"><code>end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/shotgun-0.8/lib/shotgun/static.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="7"
-                  class="pre-context" id="pre-32"
-                  onclick="toggle(32);">
-                
-                <li class="pre-context-line"><code>      @file = Rack::File.new(public_dir)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @app = app
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-                <li class="pre-context-line"><code>      status, headers, body = @file.call(env)
-</code></li>
-                
-                <li class="pre-context-line"><code>      if status &gt; 400
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="14" class="context" id="32"
-                  onclick="toggle(32);">
-                <li class="context-line" id="context-32"><code>        @app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="15" class="post-context"
-                  id="post-32" onclick="toggle(32);">
-                
-                <li class="post-context-line"><code>      else
-</code></li>
-                
-                <li class="post-context-line"><code>        [status, headers, body]
-</code></li>
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>  end
-</code></li>
-                
-                <li class="post-context-line"><code>end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/builder.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="70"
-                  class="pre-context" id="pre-33"
-                  onclick="toggle(33);">
-                
-                <li class="pre-context-line"><code>    def to_app
-</code></li>
-                
-                <li class="pre-context-line"><code>      @ins[-1] = Rack::URLMap.new(@ins.last)  if Hash === @ins.last
-</code></li>
-                
-                <li class="pre-context-line"><code>      inner_app = @ins.last
-</code></li>
-                
-                <li class="pre-context-line"><code>      @ins[0...-1].reverse.inject(inner_app) { |a, e| e.call(a) }
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="77" class="context" id="33"
-                  onclick="toggle(33);">
-                <li class="context-line" id="context-33"><code>      to_app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="78" class="post-context"
-                  id="post-33" onclick="toggle(33);">
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>  end
-</code></li>
-                
-                <li class="post-context-line"><code>end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/content_length.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="6"
-                  class="pre-context" id="pre-34"
-                  onclick="toggle(34);">
-                
-                <li class="pre-context-line"><code>    include Rack::Utils
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def initialize(app)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @app = app
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="13" class="context" id="34"
-                  onclick="toggle(34);">
-                <li class="context-line" id="context-34"><code>      status, headers, body = @app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="14" class="post-context"
-                  id="post-34" onclick="toggle(34);">
-                
-                <li class="post-context-line"><code>      headers = HeaderHash.new(headers)
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      if !STATUS_WITH_NO_ENTITY_BODY.include?(status.to_i) &amp;&amp;
-</code></li>
-                
-                <li class="post-context-line"><code>         !headers[&#39;Content-Length&#39;] &amp;&amp;
-</code></li>
-                
-                <li class="post-context-line"><code>         !headers[&#39;Transfer-Encoding&#39;] &amp;&amp;
-</code></li>
-                
-                <li class="post-context-line"><code>         (body.respond_to?(:to_ary) || body.respond_to?(:to_str))
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/chunked.rb</code> in
-                <code><strong>call</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="8"
-                  class="pre-context" id="pre-35"
-                  onclick="toggle(35);">
-                
-                <li class="pre-context-line"><code>    include Rack::Utils
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def initialize(app)
-</code></li>
-                
-                <li class="pre-context-line"><code>      @app = app
-</code></li>
-                
-                <li class="pre-context-line"><code>    end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>    def call(env)
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="15" class="context" id="35"
-                  onclick="toggle(35);">
-                <li class="context-line" id="context-35"><code>      status, headers, body = @app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="16" class="post-context"
-                  id="post-35" onclick="toggle(35);">
-                
-                <li class="post-context-line"><code>      headers = HeaderHash.new(headers)
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      if env[&#39;HTTP_VERSION&#39;] == &#39;HTTP/1.0&#39; ||
-</code></li>
-                
-                <li class="post-context-line"><code>         STATUS_WITH_NO_ENTITY_BODY.include?(status) ||
-</code></li>
-                
-                <li class="post-context-line"><code>         headers[&#39;Content-Length&#39;] ||
-</code></li>
-                
-                <li class="post-context-line"><code>         headers[&#39;Transfer-Encoding&#39;]
-</code></li>
-                
-                <li class="post-context-line"><code>        [status, headers, body]
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/mongrel.rb</code> in
-                <code><strong>process</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="60"
-                  class="pre-context" id="pre-36"
-                  onclick="toggle(36);">
-                
-                <li class="pre-context-line"><code>                     &quot;rack.multiprocess&quot; =&gt; false, # ???
-</code></li>
-                
-                <li class="pre-context-line"><code>                     &quot;rack.run_once&quot; =&gt; false,
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>                     &quot;rack.url_scheme&quot; =&gt; &quot;http&quot;,
-</code></li>
-                
-                <li class="pre-context-line"><code>                   })
-</code></li>
-                
-                <li class="pre-context-line"><code>        env[&quot;QUERY_STRING&quot;] ||= &quot;&quot;
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="67" class="context" id="36"
-                  onclick="toggle(36);">
-                <li class="context-line" id="context-36"><code>        status, headers, body = @app.call(env)</code></li>
-              </ol>
-
-              
-              <ol start="68" class="post-context"
-                  id="post-36" onclick="toggle(36);">
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>        begin
-</code></li>
-                
-                <li class="post-context-line"><code>          response.status = status.to_i
-</code></li>
-                
-                <li class="post-context-line"><code>          response.send_status(nil)
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>          headers.each { |k, vs|
-</code></li>
-                
-                <li class="post-context-line"><code>            vs.split(&quot;\n&quot;).each { |v|
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>process_client</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="152"
-                  class="pre-context" id="pre-37"
-                  onclick="toggle(37);">
-                
-                <li class="pre-context-line"><code>              break if request.body == nil  # nil signals from HttpRequest::initialize that the request was aborted
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>              # request is good so far, continue processing the response
-</code></li>
-                
-                <li class="pre-context-line"><code>              response = HttpResponse.new(client)
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>              # Process each handler in registered order until we run out or one finalizes the response.
-</code></li>
-                
-                <li class="pre-context-line"><code>              handlers.each do |handler|
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="159" class="context" id="37"
-                  onclick="toggle(37);">
-                <li class="context-line" id="context-37"><code>                handler.process(request, response)</code></li>
-              </ol>
-
-              
-              <ol start="160" class="post-context"
-                  id="post-37" onclick="toggle(37);">
-                
-                <li class="post-context-line"><code>                break if response.done or client.closed?
-</code></li>
-                
-                <li class="post-context-line"><code>              end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>              # And finally, if nobody closed the response off, we finalize it.
-</code></li>
-                
-                <li class="post-context-line"><code>              unless response.done or client.closed? 
-</code></li>
-                
-                <li class="post-context-line"><code>                response.finished
-</code></li>
-                
-                <li class="post-context-line"><code>              end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>each</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="151"
-                  class="pre-context" id="pre-38"
-                  onclick="toggle(38);">
-                
-                <li class="pre-context-line"><code>              # in the case of large file uploads the user could close the socket, so skip those requests
-</code></li>
-                
-                <li class="pre-context-line"><code>              break if request.body == nil  # nil signals from HttpRequest::initialize that the request was aborted
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>              # request is good so far, continue processing the response
-</code></li>
-                
-                <li class="pre-context-line"><code>              response = HttpResponse.new(client)
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>              # Process each handler in registered order until we run out or one finalizes the response.
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="158" class="context" id="38"
-                  onclick="toggle(38);">
-                <li class="context-line" id="context-38"><code>              handlers.each do |handler|</code></li>
-              </ol>
-
-              
-              <ol start="159" class="post-context"
-                  id="post-38" onclick="toggle(38);">
-                
-                <li class="post-context-line"><code>                handler.process(request, response)
-</code></li>
-                
-                <li class="post-context-line"><code>                break if response.done or client.closed?
-</code></li>
-                
-                <li class="post-context-line"><code>              end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>              # And finally, if nobody closed the response off, we finalize it.
-</code></li>
-                
-                <li class="post-context-line"><code>              unless response.done or client.closed? 
-</code></li>
-                
-                <li class="post-context-line"><code>                response.finished
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>process_client</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="151"
-                  class="pre-context" id="pre-39"
-                  onclick="toggle(39);">
-                
-                <li class="pre-context-line"><code>              # in the case of large file uploads the user could close the socket, so skip those requests
-</code></li>
-                
-                <li class="pre-context-line"><code>              break if request.body == nil  # nil signals from HttpRequest::initialize that the request was aborted
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>              # request is good so far, continue processing the response
-</code></li>
-                
-                <li class="pre-context-line"><code>              response = HttpResponse.new(client)
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>              # Process each handler in registered order until we run out or one finalizes the response.
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="158" class="context" id="39"
-                  onclick="toggle(39);">
-                <li class="context-line" id="context-39"><code>              handlers.each do |handler|</code></li>
-              </ol>
-
-              
-              <ol start="159" class="post-context"
-                  id="post-39" onclick="toggle(39);">
-                
-                <li class="post-context-line"><code>                handler.process(request, response)
-</code></li>
-                
-                <li class="post-context-line"><code>                break if response.done or client.closed?
-</code></li>
-                
-                <li class="post-context-line"><code>              end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>              # And finally, if nobody closed the response off, we finalize it.
-</code></li>
-                
-                <li class="post-context-line"><code>              unless response.done or client.closed? 
-</code></li>
-                
-                <li class="post-context-line"><code>                response.finished
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>run</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="278"
-                  class="pre-context" id="pre-40"
-                  onclick="toggle(40);">
-                
-                <li class="pre-context-line"><code>              worker_list = @workers.list
-</code></li>
-                
-                <li class="pre-context-line"><code>  
-</code></li>
-                
-                <li class="pre-context-line"><code>              if worker_list.length &gt;= @num_processors
-</code></li>
-                
-                <li class="pre-context-line"><code>                STDERR.puts &quot;Server overloaded with #{worker_list.length} processors (#@num_processors max). Dropping connection.&quot;
-</code></li>
-                
-                <li class="pre-context-line"><code>                client.close rescue nil
-</code></li>
-                
-                <li class="pre-context-line"><code>                reap_dead_workers(&quot;max processors&quot;)
-</code></li>
-                
-                <li class="pre-context-line"><code>              else
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="285" class="context" id="40"
-                  onclick="toggle(40);">
-                <li class="context-line" id="context-40"><code>                thread = Thread.new(client) {|c| process_client(c) }</code></li>
-              </ol>
-
-              
-              <ol start="286" class="post-context"
-                  id="post-40" onclick="toggle(40);">
-                
-                <li class="post-context-line"><code>                thread[:started_on] = Time.now
-</code></li>
-                
-                <li class="post-context-line"><code>                @workers.add(thread)
-</code></li>
-                
-                <li class="post-context-line"><code>  
-</code></li>
-                
-                <li class="post-context-line"><code>                sleep @throttle if @throttle &gt; 0
-</code></li>
-                
-                <li class="post-context-line"><code>              end
-</code></li>
-                
-                <li class="post-context-line"><code>            rescue StopServer
-</code></li>
-                
-                <li class="post-context-line"><code>              break
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>initialize</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="278"
-                  class="pre-context" id="pre-41"
-                  onclick="toggle(41);">
-                
-                <li class="pre-context-line"><code>              worker_list = @workers.list
-</code></li>
-                
-                <li class="pre-context-line"><code>  
-</code></li>
-                
-                <li class="pre-context-line"><code>              if worker_list.length &gt;= @num_processors
-</code></li>
-                
-                <li class="pre-context-line"><code>                STDERR.puts &quot;Server overloaded with #{worker_list.length} processors (#@num_processors max). Dropping connection.&quot;
-</code></li>
-                
-                <li class="pre-context-line"><code>                client.close rescue nil
-</code></li>
-                
-                <li class="pre-context-line"><code>                reap_dead_workers(&quot;max processors&quot;)
-</code></li>
-                
-                <li class="pre-context-line"><code>              else
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="285" class="context" id="41"
-                  onclick="toggle(41);">
-                <li class="context-line" id="context-41"><code>                thread = Thread.new(client) {|c| process_client(c) }</code></li>
-              </ol>
-
-              
-              <ol start="286" class="post-context"
-                  id="post-41" onclick="toggle(41);">
-                
-                <li class="post-context-line"><code>                thread[:started_on] = Time.now
-</code></li>
-                
-                <li class="post-context-line"><code>                @workers.add(thread)
-</code></li>
-                
-                <li class="post-context-line"><code>  
-</code></li>
-                
-                <li class="post-context-line"><code>                sleep @throttle if @throttle &gt; 0
-</code></li>
-                
-                <li class="post-context-line"><code>              end
-</code></li>
-                
-                <li class="post-context-line"><code>            rescue StopServer
-</code></li>
-                
-                <li class="post-context-line"><code>              break
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>new</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="278"
-                  class="pre-context" id="pre-42"
-                  onclick="toggle(42);">
-                
-                <li class="pre-context-line"><code>              worker_list = @workers.list
-</code></li>
-                
-                <li class="pre-context-line"><code>  
-</code></li>
-                
-                <li class="pre-context-line"><code>              if worker_list.length &gt;= @num_processors
-</code></li>
-                
-                <li class="pre-context-line"><code>                STDERR.puts &quot;Server overloaded with #{worker_list.length} processors (#@num_processors max). Dropping connection.&quot;
-</code></li>
-                
-                <li class="pre-context-line"><code>                client.close rescue nil
-</code></li>
-                
-                <li class="pre-context-line"><code>                reap_dead_workers(&quot;max processors&quot;)
-</code></li>
-                
-                <li class="pre-context-line"><code>              else
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="285" class="context" id="42"
-                  onclick="toggle(42);">
-                <li class="context-line" id="context-42"><code>                thread = Thread.new(client) {|c| process_client(c) }</code></li>
-              </ol>
-
-              
-              <ol start="286" class="post-context"
-                  id="post-42" onclick="toggle(42);">
-                
-                <li class="post-context-line"><code>                thread[:started_on] = Time.now
-</code></li>
-                
-                <li class="post-context-line"><code>                @workers.add(thread)
-</code></li>
-                
-                <li class="post-context-line"><code>  
-</code></li>
-                
-                <li class="post-context-line"><code>                sleep @throttle if @throttle &gt; 0
-</code></li>
-                
-                <li class="post-context-line"><code>              end
-</code></li>
-                
-                <li class="post-context-line"><code>            rescue StopServer
-</code></li>
-                
-                <li class="post-context-line"><code>              break
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>run</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="278"
-                  class="pre-context" id="pre-43"
-                  onclick="toggle(43);">
-                
-                <li class="pre-context-line"><code>              worker_list = @workers.list
-</code></li>
-                
-                <li class="pre-context-line"><code>  
-</code></li>
-                
-                <li class="pre-context-line"><code>              if worker_list.length &gt;= @num_processors
-</code></li>
-                
-                <li class="pre-context-line"><code>                STDERR.puts &quot;Server overloaded with #{worker_list.length} processors (#@num_processors max). Dropping connection.&quot;
-</code></li>
-                
-                <li class="pre-context-line"><code>                client.close rescue nil
-</code></li>
-                
-                <li class="pre-context-line"><code>                reap_dead_workers(&quot;max processors&quot;)
-</code></li>
-                
-                <li class="pre-context-line"><code>              else
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="285" class="context" id="43"
-                  onclick="toggle(43);">
-                <li class="context-line" id="context-43"><code>                thread = Thread.new(client) {|c| process_client(c) }</code></li>
-              </ol>
-
-              
-              <ol start="286" class="post-context"
-                  id="post-43" onclick="toggle(43);">
-                
-                <li class="post-context-line"><code>                thread[:started_on] = Time.now
-</code></li>
-                
-                <li class="post-context-line"><code>                @workers.add(thread)
-</code></li>
-                
-                <li class="post-context-line"><code>  
-</code></li>
-                
-                <li class="post-context-line"><code>                sleep @throttle if @throttle &gt; 0
-</code></li>
-                
-                <li class="post-context-line"><code>              end
-</code></li>
-                
-                <li class="post-context-line"><code>            rescue StopServer
-</code></li>
-                
-                <li class="post-context-line"><code>              break
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>initialize</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="261"
-                  class="pre-context" id="pre-44"
-                  onclick="toggle(44);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      configure_socket_options
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      if defined?($tcp_defer_accept_opts) and $tcp_defer_accept_opts
-</code></li>
-                
-                <li class="pre-context-line"><code>        @socket.setsockopt(*$tcp_defer_accept_opts) rescue nil
-</code></li>
-                
-                <li class="pre-context-line"><code>      end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="268" class="context" id="44"
-                  onclick="toggle(44);">
-                <li class="context-line" id="context-44"><code>      @acceptor = Thread.new do</code></li>
-              </ol>
-
-              
-              <ol start="269" class="post-context"
-                  id="post-44" onclick="toggle(44);">
-                
-                <li class="post-context-line"><code>        begin
-</code></li>
-                
-                <li class="post-context-line"><code>          while true
-</code></li>
-                
-                <li class="post-context-line"><code>            begin
-</code></li>
-                
-                <li class="post-context-line"><code>              client = @socket.accept
-</code></li>
-                
-                <li class="post-context-line"><code>  
-</code></li>
-                
-                <li class="post-context-line"><code>              if defined?($tcp_cork_opts) and $tcp_cork_opts
-</code></li>
-                
-                <li class="post-context-line"><code>                client.setsockopt(*$tcp_cork_opts) rescue nil
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>new</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="261"
-                  class="pre-context" id="pre-45"
-                  onclick="toggle(45);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      configure_socket_options
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      if defined?($tcp_defer_accept_opts) and $tcp_defer_accept_opts
-</code></li>
-                
-                <li class="pre-context-line"><code>        @socket.setsockopt(*$tcp_defer_accept_opts) rescue nil
-</code></li>
-                
-                <li class="pre-context-line"><code>      end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="268" class="context" id="45"
-                  onclick="toggle(45);">
-                <li class="context-line" id="context-45"><code>      @acceptor = Thread.new do</code></li>
-              </ol>
-
-              
-              <ol start="269" class="post-context"
-                  id="post-45" onclick="toggle(45);">
-                
-                <li class="post-context-line"><code>        begin
-</code></li>
-                
-                <li class="post-context-line"><code>          while true
-</code></li>
-                
-                <li class="post-context-line"><code>            begin
-</code></li>
-                
-                <li class="post-context-line"><code>              client = @socket.accept
-</code></li>
-                
-                <li class="post-context-line"><code>  
-</code></li>
-                
-                <li class="post-context-line"><code>              if defined?($tcp_cork_opts) and $tcp_cork_opts
-</code></li>
-                
-                <li class="post-context-line"><code>                client.setsockopt(*$tcp_cork_opts) rescue nil
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb</code> in
-                <code><strong>run</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="261"
-                  class="pre-context" id="pre-46"
-                  onclick="toggle(46);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      configure_socket_options
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>      if defined?($tcp_defer_accept_opts) and $tcp_defer_accept_opts
-</code></li>
-                
-                <li class="pre-context-line"><code>        @socket.setsockopt(*$tcp_defer_accept_opts) rescue nil
-</code></li>
-                
-                <li class="pre-context-line"><code>      end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="268" class="context" id="46"
-                  onclick="toggle(46);">
-                <li class="context-line" id="context-46"><code>      @acceptor = Thread.new do</code></li>
-              </ol>
-
-              
-              <ol start="269" class="post-context"
-                  id="post-46" onclick="toggle(46);">
-                
-                <li class="post-context-line"><code>        begin
-</code></li>
-                
-                <li class="post-context-line"><code>          while true
-</code></li>
-                
-                <li class="post-context-line"><code>            begin
-</code></li>
-                
-                <li class="post-context-line"><code>              client = @socket.accept
-</code></li>
-                
-                <li class="post-context-line"><code>  
-</code></li>
-                
-                <li class="post-context-line"><code>              if defined?($tcp_cork_opts) and $tcp_cork_opts
-</code></li>
-                
-                <li class="post-context-line"><code>                client.setsockopt(*$tcp_cork_opts) rescue nil
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/mongrel.rb</code> in
-                <code><strong>run</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="31"
-                  class="pre-context" id="pre-47"
-                  onclick="toggle(47);">
-                
-                <li class="pre-context-line"><code>          else
-</code></li>
-                
-                <li class="pre-context-line"><code>            raise ArgumentError, &quot;first argument should be a Hash or URLMap&quot;
-</code></li>
-                
-                <li class="pre-context-line"><code>          end
-</code></li>
-                
-                <li class="pre-context-line"><code>        else
-</code></li>
-                
-                <li class="pre-context-line"><code>          server.register(&#39;/&#39;, Rack::Handler::Mongrel.new(app))
-</code></li>
-                
-                <li class="pre-context-line"><code>        end
-</code></li>
-                
-                <li class="pre-context-line"><code>        yield server  if block_given?
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="38" class="context" id="47"
-                  onclick="toggle(47);">
-                <li class="context-line" id="context-47"><code>        server.run.join</code></li>
-              </ol>
-
-              
-              <ol start="39" class="post-context"
-                  id="post-47" onclick="toggle(47);">
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      def initialize(app)
-</code></li>
-                
-                <li class="post-context-line"><code>        @app = Rack::Chunked.new(Rack::ContentLength.new(app))
-</code></li>
-                
-                <li class="post-context-line"><code>      end
-</code></li>
-                
-                <li class="post-context-line"><code>
-</code></li>
-                
-                <li class="post-context-line"><code>      def process(request, response)
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/lib/ruby/gems/1.8/gems/shotgun-0.8/bin/shotgun</code> in
-                <code><strong>nil</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="149"
-                  class="pre-context" id="pre-48"
-                  onclick="toggle(48);">
-                
-                <li class="pre-context-line"><code>end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code># load shotgun.rb in current working directory if it exists
-</code></li>
-                
-                <li class="pre-context-line"><code>Shotgun.preload
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>base_url = &quot;http://#{options[:Host]}:#{options[:Port]}#{options[:Path]}&quot;
-</code></li>
-                
-                <li class="pre-context-line"><code>puts &quot;== Shotgun/#{server.to_s.sub(/Rack::Handler::/, &#39;&#39;)} on #{base_url}&quot;
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="156" class="context" id="48"
-                  onclick="toggle(48);">
-                <li class="context-line" id="context-48"><code>server.run app, options do |inst|</code></li>
-              </ol>
-
-              
-              <ol start="157" class="post-context"
-                  id="post-48" onclick="toggle(48);">
-                
-                <li class="post-context-line"><code>  if browse
-</code></li>
-                
-                <li class="post-context-line"><code>    if ENV[&#39;BROWSER&#39;]
-</code></li>
-                
-                <li class="post-context-line"><code>      system &quot;#{ENV[&#39;BROWSER&#39;]} &#39;#{base_url}&#39;&quot;
-</code></li>
-                
-                <li class="post-context-line"><code>    else
-</code></li>
-                
-                <li class="post-context-line"><code>      abort &quot;BROWSER environment variable not set and no browser detected&quot;
-</code></li>
-                
-                <li class="post-context-line"><code>    end
-</code></li>
-                
-                <li class="post-context-line"><code>  end
-</code></li>
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/bin/shotgun</code> in
-                <code><strong>load</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="12"
-                  class="pre-context" id="pre-49"
-                  onclick="toggle(49);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>if ARGV.first =~ /^_(.*)_$/ and Gem::Version.correct? $1 then
-</code></li>
-                
-                <li class="pre-context-line"><code>  version = $1
-</code></li>
-                
-                <li class="pre-context-line"><code>  ARGV.shift
-</code></li>
-                
-                <li class="pre-context-line"><code>end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>gem &#39;shotgun&#39;, version
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="19" class="context" id="49"
-                  onclick="toggle(49);">
-                <li class="context-line" id="context-49"><code>load Gem.bin_path(&#39;shotgun&#39;, &#39;shotgun&#39;, version)</code></li>
-              </ol>
-
-              
-              <ol start="20" class="post-context"
-                  id="post-49" onclick="toggle(49);">
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-          
-
-            <li class="frame-info system">
-              <code>/usr/local/bin/shotgun</code> in
-                <code><strong>nil</strong></code>
-            </li>
-
-            <li class="code system">
-              
-              <ol start="12"
-                  class="pre-context" id="pre-50"
-                  onclick="toggle(50);">
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>if ARGV.first =~ /^_(.*)_$/ and Gem::Version.correct? $1 then
-</code></li>
-                
-                <li class="pre-context-line"><code>  version = $1
-</code></li>
-                
-                <li class="pre-context-line"><code>  ARGV.shift
-</code></li>
-                
-                <li class="pre-context-line"><code>end
-</code></li>
-                
-                <li class="pre-context-line"><code>
-</code></li>
-                
-                <li class="pre-context-line"><code>gem &#39;shotgun&#39;, version
-</code></li>
-                
-              </ol>
-              
-
-              <ol start="19" class="context" id="50"
-                  onclick="toggle(50);">
-                <li class="context-line" id="context-50"><code>load Gem.bin_path(&#39;shotgun&#39;, &#39;shotgun&#39;, version)</code></li>
-              </ol>
-
-              
-              <ol start="20" class="post-context"
-                  id="post-50" onclick="toggle(50);">
-                
-              </ol>
-              
-              <div class="clear"></div>
-            </li>
-
-          
-
-        
-      
-
-      </ul>
-    </div> <!-- /BACKTRACE -->
-
-    <div id="get">
-      <h3 id="get-info">GET</h3>
-      
-        <p class="no-data">No GET data.</p>
-      
-      <div class="clear"></div>
-    </div> <!-- /GET -->
-
-    <div id="post">
-      <h3 id="post-info">POST</h3>
-      
-        <p class="no-data">No POST data.</p>
-      
-      <div class="clear"></div>
-    </div> <!-- /POST -->
-
-    <div id="cookies">
-      <h3 id="cookie-info">COOKIES</h3>
-      
-        <p class="no-data">No cookie data.</p>
-      
-      <div class="clear"></div>
-    </div> <!-- /COOKIES -->
-
-    <div id="rack">
-      <h3 id="env-info">Rack ENV</h3>
-      <table class="req">
-        <tr>
-          <th>Variable</th>
-          <th>Value</th>
-        </tr>
-         
-         <tr>
-           <td>GATEWAY_INTERFACE</td>
-           <td class="code"><div>CGI/1.2</div></td>
-         </tr>
-         
-         <tr>
-           <td>HTTP_ACCEPT</td>
-           <td class="code"><div>*/*</div></td>
-         </tr>
-         
-         <tr>
-           <td>HTTP_HOST</td>
-           <td class="code"><div>localhost:4567</div></td>
-         </tr>
-         
-         <tr>
-           <td>HTTP_USER_AGENT</td>
-           <td class="code"><div>curl/7.19.7 (universal-apple-darwin10.0) libcurl/7.19.7 OpenSSL/0.9.8l zlib/1.2.3</div></td>
-         </tr>
-         
-         <tr>
-           <td>HTTP_VERSION</td>
-           <td class="code"><div>HTTP/1.1</div></td>
-         </tr>
-         
-         <tr>
-           <td>PATH_INFO</td>
-           <td class="code"><div>/eap/phillipines</div></td>
-         </tr>
-         
-         <tr>
-           <td>QUERY_STRING</td>
-           <td class="code"><div></div></td>
-         </tr>
-         
-         <tr>
-           <td>REMOTE_ADDR</td>
-           <td class="code"><div>127.0.0.1</div></td>
-         </tr>
-         
-         <tr>
-           <td>REQUEST_METHOD</td>
-           <td class="code"><div>GET</div></td>
-         </tr>
-         
-         <tr>
-           <td>REQUEST_PATH</td>
-           <td class="code"><div>/eap/phillipines</div></td>
-         </tr>
-         
-         <tr>
-           <td>REQUEST_URI</td>
-           <td class="code"><div>/eap/phillipines</div></td>
-         </tr>
-         
-         <tr>
-           <td>SCRIPT_NAME</td>
-           <td class="code"><div></div></td>
-         </tr>
-         
-         <tr>
-           <td>SERVER_NAME</td>
-           <td class="code"><div>localhost</div></td>
-         </tr>
-         
-         <tr>
-           <td>SERVER_PORT</td>
-           <td class="code"><div>4567</div></td>
-         </tr>
-         
-         <tr>
-           <td>SERVER_PROTOCOL</td>
-           <td class="code"><div>HTTP/1.1</div></td>
-         </tr>
-         
-         <tr>
-           <td>SERVER_SOFTWARE</td>
-           <td class="code"><div>Mongrel 1.1.5</div></td>
-         </tr>
-         
-         <tr>
-           <td>rack.errors</td>
-           <td class="code"><div>#&lt;Rack::Lint::ErrorWrapper:0x1023192c0 @error=#&lt;IO:0x1001acb78&gt;&gt;</div></td>
-         </tr>
-         
-         <tr>
-           <td>rack.input</td>
-           <td class="code"><div>#&lt;Rack::Lint::InputWrapper:0x102319338 @input=#&lt;StringIO:0x1023ead48&gt;&gt;</div></td>
-         </tr>
-         
-         <tr>
-           <td>rack.multiprocess</td>
-           <td class="code"><div>false</div></td>
-         </tr>
-         
-         <tr>
-           <td>rack.multithread</td>
-           <td class="code"><div>true</div></td>
-         </tr>
-         
-         <tr>
-           <td>rack.request.query_hash</td>
-           <td class="code"><div>{}</div></td>
-         </tr>
-         
-         <tr>
-           <td>rack.request.query_string</td>
-           <td class="code"><div></div></td>
-         </tr>
-         
-         <tr>
-           <td>rack.run_once</td>
-           <td class="code"><div>false</div></td>
-         </tr>
-         
-         <tr>
-           <td>rack.url_scheme</td>
-           <td class="code"><div>http</div></td>
-         </tr>
-         
-         <tr>
-           <td>rack.version</td>
-           <td class="code"><div>[1, 1]</div></td>
-         </tr>
-         
-         <tr>
-           <td>sinatra.error</td>
-           <td class="code"><div>#&lt;NoMethodError: undefined method `[]&#39; for nil:NilClass&gt;</div></td>
-         </tr>
-         
-      </table>
-      <div class="clear"></div>
-    </div> <!-- /RACK ENV -->
-
-    <p id="explanation">You're seeing this error because you have
-enabled the <code>show_exceptions</code> setting.</p>
-  </div> <!-- /WRAP -->
-  </body>
-</html>
+  <script type="text/javascript">
+  $(function() {
+       // $('#sector1').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector2').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector3').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector4').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector5').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector6').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector7').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector8').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector9').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector10').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector11').tipsy({gravity: $.fn.tipsy.autoNS});
+  });
+  </script>
+
+      <div id="map-content-icons">
+        <div id="map-content-icons2">
+          <ul>
+            <li class="sectors">ACTIVE SECTORS:</li>
+            <li class="s1"><a original-title="Public administration Law, Justice" id="sector1" href="javascript:wb.toggleSector('public')">1</a></li>
+            <li class="s2"><a original-title="Agriculture, fishing, forestry" id="sector2" href="javascript:wb.toggleSector('agriculture')">2</a></li>
+            <li class="s3"><a original-title="Health, other social" id="sector3" href="javascript:wb.toggleSector('health')">3</a></li>
+            <li class="s4"><a original-title="Communications" id="sector4" href="javascript:wb.toggleSector('communications')">4</a></li>
+            <li class="s5"><a original-title="Energy, mining" id="sector5" href="javascript:wb.toggleSector('energy')">5</a></li>
+            <li class="s6"><a original-title="Finance" id="sector6" href="javascript:wb.toggleSector('finance')">6</a></li>
+            <li class="s7"><a original-title="Industry, trade" id="sector7" href="javascript:wb.toggleSector('industry')">7</a></li>
+            <li class="s8"><a original-title="Transportation" id="sector8" href="javascript:wb.toggleSector('transportation')">8</a></li>
+            <li class="s9"><a original-title="Water, Sanitation, flood protection" id="sector10" href="javascript:wb.toggleSector('water')">9</a></li>
+            <li class="s10"><a original-title="Education" id="sector11" href="javascript:wb.toggleSector('education')">10</a> </li>
+            <li class="s11"><form action="" method="get">
+                <input name="input" type="checkbox" value="" onclick="wb.toggleSector('all')"/>
+              </form></li>
+            <li class="all">ALL</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<div id="map-content">
+  <div id="geoiq_map" class=""></div>
+  <div id="map_console">
+        <div class="console-title">
+          <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        </div>
+        <div class="console-info">
+          <p>active projects</p>
+          <p>project locations mapped</p>
+        </div>    
+                <div id="download">
+          <ul>
+            <li class="">Choose from the boxes below to investigate mapping for results:</li>
+          </ul>
+        </div>
+        <div class="dropmenuholder">
+          <ul class="dropmenu">
+            <li class="first"><a href="">LOCATIONS</a>
+              <ul>
+                
+                  
+                
+                  
+                
+                  
+                  <li><a href="/afr/kenya">Kenya</a></li>
+                  
+                
+                  
+                  <li><a href="/lac/haiti">Haiti</a></li>
+                  
+                  <li><a href="/lac/bolivia">Bolivia</a></li>
+                  
+                
+                  
+                  <li><a href="/eap/phillipines">Phillipines</a></li>
+                  
+                
+                  
+                
+              </ul>
+            </li>
+          </ul>
+          <!-- ... and so on ... -->
+          <ul class="dropmenu ">
+            <li class="first"><a href="#" id="indicator" onclick="wb.setIndicator(); return false">INDICATORS</a>
+              <ul>
+                
+                <li><a href="#" onclick="wb.setIndicator('Population'); return false">Population</a></li>
+                
+                <li><a href="#" onclick="wb.setIndicator('Extreme Poverty'); return false">Extreme Poverty</a></li>
+                
+                <li><a href="#" onclick="wb.setIndicator('Infant Mortality'); return false">Infant Mortality</a></li>
+                
+                <li><a href="#" onclick="wb.setIndicator('Maternal Health'); return false">Maternal Health</a></li>
+                
+                <li><a href="#" onclick="wb.setIndicator('Malnutrition'); return false">Malnutrition</a></li>
+                
+              </ul>
+            </li>
+          </ul>
+          <!-- ... and so on ... -->
+          <ul class="dropmenu ">
+            <li class="first"><a href="#" onclick="wb.toggleSector(); return false">PROJECTS</a>
+              <ul>
+                <li><a href="#">Number by Department</a></li>
+                <li><a href="#">Number by Commune</a></li>
+                <li><a href="#" onclick="wb.toggleSector('all'); return false">All Projects</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- ... and so on ... -->
+          <ul class="dropmenu ">
+            <li><a href="">RESULTS</a>
+              <ul>
+                <li><a href="#">Country Profile</a></li>
+                <li><a href="#">Project Profile</a></li>
+              </ul>
+            </li>
+            <!-- ... and so on ... -->
+          </ul>
+  </div>
+  
+</div>
+
+<div id="chart-left">
+  <div id="chart-left-title">
+    <h1 id="sector_funding_title"></h1>
+  </div>
+  <div id="chart-left-stat">
+    <h1 id="sector_funding_total"></h1>
+    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio justo, hendrerit at iaculis a, molestie eu massa. Sed vel lobortis erat. </h2>
+  </div>
+  <div id="chart-left-pie-chart"></div>
+</div>
+
+<div id="chart-right">
+  
+  <div id="chart-right-title">
+    <h1>Overview Funding By Sector</h1>
+  </div>
+  <div id="chart-right-stat-subtitle">
+    <h1 id="funding_total"></h1>
+  </div>
+  <div id="chart-right-graph"><img src="wbimages/right-chart-graph.gif" alt="" /></div>
+   
+
+</div>
+
+
+   <!--Project Search Bar Begins-->
+    <div id="projects-bar">
+      <div class="project-bar-text"><img src="wbimages/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />&nbsp;&nbsp;&nbsp;&nbsp;Total Project List / Phillipines</div>
+      <div id="div">
+        <form action="/" accept-charset="UTF-8" method="post" id="search-theme-form">
+          <input maxlength="128" name="search_theme_form" id="project-search-box" size="15" value="" class="project-search-box-text" type="text" />
+        </form>
+      </div>
+    </div>
+    <!--Table Data Begins-->
+    <div id="projects-table" style="width:960px; float:left">
+      <!-- <div id="data-table">
+        <table width="960" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="project-th">Project Title</th>
+            <th><img src="wbimages/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Project ID</th>
+            <th><div id="commitment-arrow"><img src="wbimages/down-arrow-black.gif" alt="" /></div>
+              <div id="commitment-amount-th">Commitment Amount</div></th>
+            <th><img src="wbimages/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Sector</th>
+            <th><img src="wbimages/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Status</th>
+            <th><div id="commitment-arrow"><img src="wbimages/down-arrow-black.gif" alt="" /></div>
+              <div id="commitment-amount-th">Approval Date</div></th>
+          </tr>
+          <tr>
+            <td><h1>Hajia Railway</h1></td>
+            <td>P000000</td>
+            <td>$300 million</td>
+            <td>Transportation</td>
+            <td>Pipeline</td>
+            <td>25-FEB-2010</td>
+          </tr>
+          <tr>
+            <td class="background-colored-cell"><h1>Zhejiang Qiantang River Basin Small Town Environment Project</h1></td>
+            <td class="background-colored-cell">P000000</td>
+            <td class="background-colored-cell">$100 million</td>
+            <td class="background-colored-cell">Environment</td>
+            <td class="background-colored-cell">Pipeline</td>
+            <td class="background-colored-cell">25-FEB-2010</td>
+          </tr>
+          <tr>
+            <td><h1>China Wuhan Second Urban Transport</h1></td>
+            <td>P000000</td>
+            <td>$100 million</td>
+            <td>Transportation</td>
+            <td>Active</td>
+            <td>30-MAR-2010</td>
+          </tr>
+          <tr>
+            <td class="background-colored-cell"><h1>CN-Yunnan Urban Environtment-Phase II Additional Financing</h1></td>
+            <td class="background-colored-cell">P000000</td>
+            <td class="background-colored-cell">$60 million</td>
+            <td class="background-colored-cell">Transportation</td>
+            <td class="background-colored-cell">Pipeline</td>
+            <td class="background-colored-cell">30-MAR-2010</td>
+          </tr>
+          <tr>
+            <td><h1>Sustainable Development in Poor Rural Areas</h1></td>
+            <td>P000000</td>
+            <td>$100 million</td>
+            <td>Rural Development</td>
+            <td>Pipeline</td>
+            <td>30-MAR-2010</td>
+          </tr>
+        </table>
+      </div> -->
+    </div>
+    <!--Data Table Ends-->
+    <div id="page-scroll">
+      <div id="pagination">
+        <ul>
+          <li class="previous"><a href="#">&lt;&lt; PREVIOUS</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">NEXT &gt;&gt;</a></li>
+          <li class="fulllist"><a href="#">FULL LIST</a></li>
+        </ul>
+      </div>
+    </div>
+
+
+        <!--Red Footer Begins-->
+    <div id="network-breadcrumb">
+      <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
+        <span class="breadcrumb-link breadcrumb-first"><a href="http://data.worldbank.org/">Map</a></span>
+        <a class="breadcrumb-link" href="/" title='World Bank: World'>World</a><a class="breadcrumb-link" href="/#region:eastasiaandpacific">East Asia and Pacific</a><span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">Phillipines</a></span>
+        </div>
+    </div>
+    <!--Grey Footer Begins-->
+    <div id="network-footer">
+      <div class="limiter"> <a class="network-name" href="http://www.worldbank.org">The World Bank</a>
+        <div class="network-footer-nav">
+          <ul class="links network-footer-links">
+            <li ><a href="http://www.worldbank.org/sitemap">Site Map</a></li>
+            <li ><a href="http://www.worldbank.org/siteindex">Index</a></li>
+            <li><a href="http://www.worldbank.org/help">FAQs</a></li>
+            <li ><a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/0,,contentMDK:20041066~menuPK:34582~pagePK:43912~piPK:44037~theSitePK:29708,00.html">Contact Us</a></li>
+            <li ><a href="http://www.worldbank.org/search.htm">Search</a></li>
+            <li><a href="http://developer.worldbank.org">API</a></li>
+            <li class="rss last"><a href="http://www.worldbank.org/rss">RSS</a></li>
+          </ul>
+          <div class="network-footer-legal"> &copy; 2010 <a href="http://www.worldbankgroup.org">The World Bank Group</a>, All Rights Reserved. <a href="http://web.worldbank.org/WBSITE/EXTERNAL/0,,contentMDK:20146401~pagePK:50016803~piPK:50016805~theSitePK:13,00.html">Legal</a>.</div>
+        </div>
+        <div class="network-footer-hotline"> <a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/ORGANIZATION/ORGUNITS/EXTDOII/0,,contentMDK:20659616~menuPK:1702202~pagePK:64168445~piPK:64168309~theSitePK:588921,00.html">Fraud &amp; Corruption Hotline</a><br />
+          <a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/ORGANIZATION/ORGUNITS/EXTDOII/0,,contentMDK:20659616~menuPK:1702202~pagePK:64168445~piPK:64168309~theSitePK:588921,00.html">1-800-831-0463</a></div>
+      </div>
+    </div>
+    <!--Grey Footer Ends-->
+  </div>
+  <!-- /#footer -->
+</div>
+<span class="clear"></span>
+
+<!-- /#wrapper -->
+<!-- /layout -->
+
+</body></html>

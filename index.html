@@ -222,7 +222,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       if(sector == null) {
         self.map.showLayer(self.stylelayers["Project Locations"].order, "false");        
       }
-      //self.sectorPieChart(sector);
+      self.sectorPieChart(sector);
     },
     setIndicator: function(indicator,visible) {
       var self = this;
@@ -370,11 +370,17 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
             <ul>
               
               
+                <li><a href="javascript:wb.setLocation('Middle East and North Africa',26.1,25.7,4)">Middle East and North Africa</a></li>
+              
+                <li><a href="javascript:wb.setLocation('South Asia',15.5,91.8,4)">South Asia</a></li>
+              
                 <li><a href="javascript:wb.setLocation('Africa',-4,21,3)">Africa</a></li>
+              
+                <li><a href="javascript:wb.setLocation('Latin America and Caribbean',-25,-57.8,3)">Latin America and Caribbean</a></li>
               
                 <li><a href="javascript:wb.setLocation('East Asia and Pacific',19,105.5,4)">East Asia and Pacific</a></li>
               
-                <li><a href="javascript:wb.setLocation('Latin America and Caribbean',-25,-57.8,3)">Latin America and Caribbean</a></li>
+                <li><a href="javascript:wb.setLocation('Europe and Central Asia',42.68,68.9,4)">Europe and Central Asia</a></li>
               
               
             </ul>
@@ -406,17 +412,23 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
               <ul>
                 
                   
-                  <li><a href="/africa/kenya">Kenya</a></li>
+                
                   
                 
                   
-                  <li><a href="/eastasia/phillipines">Phillipines</a></li>
+                  <li><a href="/afr/kenya">Kenya</a></li>
                   
                 
                   
                   <li><a href="/lac/haiti">Haiti</a></li>
                   
                   <li><a href="/lac/bolivia">Bolivia</a></li>
+                  
+                
+                  
+                  <li><a href="/eap/phillipines">Phillipines</a></li>
+                  
+                
                   
                 
               </ul>

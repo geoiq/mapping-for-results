@@ -13,20 +13,35 @@ SUBDOMAIN = ""
 
 WBSTAGING = {
   :world => {:name => "World", :map => 1, :projects => nil, :regions => {
-    :africa => {
+    :afr => {
       :name => "Africa",
       :zoom => 3, :lat => -4, :lon => 21,
       :countries => {
         :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"}
       }
     },
-      :eastasia => {
+      :eap => {
         :name => "East Asia and Pacific",
         :zoom => 4, :lat => 19, :lon => 105.5,
         :countries => {
           :phillipines => {:name => "Phillipines", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
         }
     },
+      :eca => {
+        :name => "Europe and Central Asia",
+        :zoom => 4, :lat => 42.68, :lon => 68.90,
+        :countries => {}
+      },
+      :mena => {
+        :name => "Middle East and North Africa",
+        :zoom => 4, :lat => 26.1, :lon => 25.7,
+        :countries => {}
+      },
+      :sar => {
+        :name => "South Asia",
+        :zoom => 4, :lat => 15.5, :lon => 91.8,
+        :countries => {}
+      },                
     :lac =>  {
       :name => "Latin America and Caribbean",
       :zoom => 3, :lat => -25, :lon => -57.8,
@@ -41,13 +56,13 @@ WBSTAGING = {
 
 LOCAL = {
   :world => {:name => "World", :map => 1, :projects => nil, :regions => {
-    :afr => {
-      :name => "Africa",
-      :zoom => 3, :lat => -4, :lon => 21,
-      :countries => {
-        :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"}
-      }
-    },
+      :afr => {
+        :name => "Africa",
+        :zoom => 3, :lat => -4, :lon => 21,
+        :countries => {
+          :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"}
+        }
+      },
       :eap => {
         :name => "East Asia and Pacific",
         :zoom => 4, :lat => 19, :lon => 105.5,
