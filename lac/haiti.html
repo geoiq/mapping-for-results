@@ -184,7 +184,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
                 uiHeader: true,hideGCLogo: true,hideGILogo: true,
                 ShowControl:("Legend",true,"open"),
                 core_host:  proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
-                onload: function() {   }
+                onload: function() {  drawCharts(wb, 13); }
       });
 
     },
@@ -341,7 +341,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
 })();  // preserving the global namespace
 
 var wb = new F1.WorldBank();
-wb.init(1);
+wb.init(2);
 
 function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.map, projects_id)}
 </script>
@@ -357,16 +357,16 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
     <div id="map-content-header">
       <div class="worldmenuholder">
         <ul class="worldmenu">
-          <li class="first"><a href="#">WORLD</a>
+          <li class="first"><a href="#">HAITI</a>
             <ul>
               
-              
-                <li><a href="javascript:wb.setLocation('Africa',-4,21,3)">Africa</a></li>
-              
-                <li><a href="javascript:wb.setLocation('East Asia and Pacific',19,105.5,4)">East Asia and Pacific</a></li>
-              
-                <li><a href="javascript:wb.setLocation('Latin America and Caribbean',-25,-57.8,3)">Latin America and Caribbean</a></li>
-              
+                <li><a href="#" onclick="wb.setState(null,'Extreme Poverty'); return false">Extreme Poverty (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Malnutrition'); return false">Malnutrition (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Infant Mortality'); return false">Infant Mortality (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Malnutrition'); return false">Births Attended (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,null,null,['all']); return false">Project Portfolio</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Extreme Poverty',null,['all']); return false">Projects by Poverty</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Population',null,['all']); return false">Projects by Population</a></li>
               
             </ul>
           </li>
@@ -374,13 +374,50 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
         </ul>
       </div>
       
+  <script type="text/javascript">
+  $(function() {
+       // $('#sector1').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector2').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector3').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector4').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector5').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector6').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector7').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector8').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector9').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector10').tipsy({gravity: $.fn.tipsy.autoNS});
+       // $('#sector11').tipsy({gravity: $.fn.tipsy.autoNS});
+  });
+  </script>
+
+      <div id="map-content-icons">
+        <div id="map-content-icons2">
+          <ul>
+            <li class="sectors">ACTIVE SECTORS:</li>
+            <li class="s1"><a original-title="Public administration Law, Justice" id="sector1" href="javascript:wb.toggleSector('public')">1</a></li>
+            <li class="s2"><a original-title="Agriculture, fishing, forestry" id="sector2" href="javascript:wb.toggleSector('agriculture')">2</a></li>
+            <li class="s3"><a original-title="Health, other social" id="sector3" href="javascript:wb.toggleSector('health')">3</a></li>
+            <li class="s4"><a original-title="Communications" id="sector4" href="javascript:wb.toggleSector('communications')">4</a></li>
+            <li class="s5"><a original-title="Energy, mining" id="sector5" href="javascript:wb.toggleSector('energy')">5</a></li>
+            <li class="s6"><a original-title="Finance" id="sector6" href="javascript:wb.toggleSector('finance')">6</a></li>
+            <li class="s7"><a original-title="Industry, trade" id="sector7" href="javascript:wb.toggleSector('industry')">7</a></li>
+            <li class="s8"><a original-title="Transportation" id="sector8" href="javascript:wb.toggleSector('transportation')">8</a></li>
+            <li class="s9"><a original-title="Water, Sanitation, flood protection" id="sector10" href="javascript:wb.toggleSector('water')">9</a></li>
+            <li class="s10"><a original-title="Education" id="sector11" href="javascript:wb.toggleSector('education')">10</a> </li>
+            <li class="s11"><form action="" method="get">
+                <input name="input" type="checkbox" value="" onclick="wb.toggleSector('all')"/>
+              </form></li>
+            <li class="all">ALL</li>
+          </ul>
+        </div>
+      </div>
     </div>
 <div id="map-content">
   <div id="geoiq_map" class=""></div>
   <div id="map_console">
         <div class="console-title">
-          <p id="project_count">473</p>
-          <p id="activity_count">12,000</p>
+          <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
         </div>
         <div class="console-info">
           <p>active projects</p>
@@ -414,7 +451,7 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
             </li>
           </ul>
           <!-- ... and so on ... -->
-          <ul class="dropmenu inactive">
+          <ul class="dropmenu ">
             <li class="first"><a href="#" id="indicator" onclick="wb.setIndicator(); return false">INDICATORS</a>
               <ul>
                 
@@ -432,7 +469,7 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
             </li>
           </ul>
           <!-- ... and so on ... -->
-          <ul class="dropmenu inactive">
+          <ul class="dropmenu ">
             <li class="first"><a href="#">PROJECTS</a>
               <ul>
                 <li><a href="#">Number by Department</a></li>
@@ -442,7 +479,7 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
             </li>
           </ul>
           <!-- ... and so on ... -->
-          <ul class="dropmenu inactive">
+          <ul class="dropmenu ">
             <li><a href="#">RESULTS</a>
               <ul>
                 <li><a href="#">Country Profile</a></li>
@@ -455,16 +492,119 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
   
 </div>
 
+<div id="chart-left">
+  <div id="chart-left-title">
+    <h1 id="sector_funding_title"></h1>
+  </div>
+  <div id="chart-left-stat">
+    <h1 id="sector_funding_total"></h1>
+    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec odio justo, hendrerit at iaculis a, molestie eu massa. Sed vel lobortis erat. </h2>
+  </div>
+  <div id="chart-left-pie-chart"></div>
+</div>
+
+<div id="chart-right">
+  
+  <div id="chart-right-title">
+    <h1>Overview Funding By Sector</h1>
+  </div>
+  <div id="chart-right-stat-subtitle">
+    <h1 id="funding_total"></h1>
+  </div>
+  <div id="chart-right-graph"><img src="images/right-chart-graph.gif" alt="" /></div>
+   
+
+</div>
 
 
-
+   <!--Project Search Bar Begins-->
+    <div id="projects-bar">
+      <div class="project-bar-text"><img src="images/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />&nbsp;&nbsp;&nbsp;&nbsp;Total Project List / Haiti</div>
+      <div id="div">
+        <form action="/" accept-charset="UTF-8" method="post" id="search-theme-form">
+          <input maxlength="128" name="search_theme_form" id="project-search-box" size="15" value="" class="project-search-box-text" type="text" />
+        </form>
+      </div>
+    </div>
+    <!--Table Data Begins-->
+    <div id="projects-table" style="width:960px; float:left">
+      <!-- <div id="data-table">
+        <table width="960" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th class="project-th">Project Title</th>
+            <th><img src="images/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Project ID</th>
+            <th><div id="commitment-arrow"><img src="images/down-arrow-black.gif" alt="" /></div>
+              <div id="commitment-amount-th">Commitment Amount</div></th>
+            <th><img src="images/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Sector</th>
+            <th><img src="images/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Status</th>
+            <th><div id="commitment-arrow"><img src="images/down-arrow-black.gif" alt="" /></div>
+              <div id="commitment-amount-th">Approval Date</div></th>
+          </tr>
+          <tr>
+            <td><h1>Hajia Railway</h1></td>
+            <td>P000000</td>
+            <td>$300 million</td>
+            <td>Transportation</td>
+            <td>Pipeline</td>
+            <td>25-FEB-2010</td>
+          </tr>
+          <tr>
+            <td class="background-colored-cell"><h1>Zhejiang Qiantang River Basin Small Town Environment Project</h1></td>
+            <td class="background-colored-cell">P000000</td>
+            <td class="background-colored-cell">$100 million</td>
+            <td class="background-colored-cell">Environment</td>
+            <td class="background-colored-cell">Pipeline</td>
+            <td class="background-colored-cell">25-FEB-2010</td>
+          </tr>
+          <tr>
+            <td><h1>China Wuhan Second Urban Transport</h1></td>
+            <td>P000000</td>
+            <td>$100 million</td>
+            <td>Transportation</td>
+            <td>Active</td>
+            <td>30-MAR-2010</td>
+          </tr>
+          <tr>
+            <td class="background-colored-cell"><h1>CN-Yunnan Urban Environtment-Phase II Additional Financing</h1></td>
+            <td class="background-colored-cell">P000000</td>
+            <td class="background-colored-cell">$60 million</td>
+            <td class="background-colored-cell">Transportation</td>
+            <td class="background-colored-cell">Pipeline</td>
+            <td class="background-colored-cell">30-MAR-2010</td>
+          </tr>
+          <tr>
+            <td><h1>Sustainable Development in Poor Rural Areas</h1></td>
+            <td>P000000</td>
+            <td>$100 million</td>
+            <td>Rural Development</td>
+            <td>Pipeline</td>
+            <td>30-MAR-2010</td>
+          </tr>
+        </table>
+      </div> -->
+    </div>
+    <!--Data Table Ends-->
+    <div id="page-scroll">
+      <div id="pagination">
+        <ul>
+          <li class="previous"><a href="#">&lt;&lt; PREVIOUS</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">NEXT &gt;&gt;</a></li>
+          <li class="fulllist"><a href="#">FULL LIST</a></li>
+        </ul>
+      </div>
+    </div>
 
 
         <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
         <span class="breadcrumb-link breadcrumb-first"><a href="http://data.worldbank.org/">Map</a></span>
-        <a class="breadcrumb-link" href="/" title='World Bank: World'>World</a>
+        <a class="breadcrumb-link" href="/" title='World Bank: World'>World</a><a class="breadcrumb-link" href="/#region:latinamericaandcaribbean">Latin America and Caribbean</a><span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">Haiti</a></span>
         </div>
     </div>
     <!--Grey Footer Begins-->
