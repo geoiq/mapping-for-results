@@ -1,21 +1,15 @@
 // tipsy, facebook style tooltips for jquery
 // version 1.0.0a
 // (c) 2008-2010 jason frame [jason@onehackoranother.com]
-// releated under the MIT license
+// released under the MIT license
 
 (function($) {
-    
-    function fixTitle($ele) {
-        if ($ele.attr('title') || typeof($ele.attr('original-title')) != 'string') {
-            $ele.attr('original-title', $ele.attr('title') || '').removeAttr('title');
-        }
-    }
     
     function Tipsy(element, options) {
         this.$element = $(element);
         this.options = options;
         this.enabled = true;
-        fixTitle(this.$element);
+        this.fixTitle();
     }
     
     Tipsy.prototype = {
@@ -80,9 +74,16 @@
             }
         },
         
+        fixTitle: function() {
+            var $e = this.$element;
+            if ($e.attr('title') || typeof($e.attr('original-title')) != 'string') {
+                $e.attr('original-title', $e.attr('title') || '').removeAttr('title');
+            }
+        },
+        
         getTitle: function() {
             var title, $e = this.$element, o = this.options;
-            fixTitle($e);
+            this.fixTitle();
             var title, o = this.options;
             if (typeof o.title == 'string') {
                 title = $e.attr(o.title == 'title' ? 'original-title' : o.title);
@@ -95,7 +96,7 @@
         
         tip: function() {
             if (!this.$tip) {
-                this.$tip = $('<div class="tipsy"></div>').html('<div class="tipsy-arrow"></div><div class="tipsy-inner"/></div>');
+                this.$tip = $('<div class="tipsy"></div>').html('<div class="tipsy-arrow"></div><div class="tipsy-inner"></div>');
             }
             return this.$tip;
         },
@@ -113,20 +114,22 @@
         toggleEnabled: function() { this.enabled = !this.enabled; }
     };
     
-    jQuery.fn.tipsy = function(options) {
+    $.fn.tipsy = function(options) {
         
         if (options === true) {
             return this.data('tipsy');
         } else if (typeof options == 'string') {
-            return this.data('tipsy')[options]();
+            var tipsy = this.data('tipsy');
+            if (tipsy) tipsy[options]();
+            return this;
         }
         
-        options = $.extend({}, jQuery.fn.tipsy.defaults, options);
+        options = $.extend({}, $.fn.tipsy.defaults, options);
         
         function get(ele) {
             var tipsy = $.data(ele, 'tipsy');
             if (!tipsy) {
-                tipsy = new Tipsy(ele, jQuery.fn.tipsy.elementOptions(ele, options));
+                tipsy = new Tipsy(ele, $.fn.tipsy.elementOptions(ele, options));
                 $.data(ele, 'tipsy', tipsy);
             }
             return tipsy;
@@ -138,6 +141,7 @@
             if (options.delayIn == 0) {
                 tipsy.show();
             } else {
+                tipsy.fixTitle();
                 setTimeout(function() { if (tipsy.hoverState == 'in') tipsy.show(); }, options.delayIn);
             }
         };
@@ -155,8 +159,8 @@
         if (!options.live) this.each(function() { get(this); });
         
         if (options.trigger != 'manual') {
-            var binder   = options.live ? 'live' : 'bind',
-                eventIn  = options.trigger == 'hover' ? 'mouseenter' : 'focus',
+            var binder = options.live ? 'live' : 'bind',
+                eventIn = options.trigger == 'hover' ? 'mouseenter' : 'focus',
                 eventOut = options.trigger == 'hover' ? 'mouseleave' : 'blur';
             this[binder](eventIn, enter)[binder](eventOut, leave);
         }
@@ -165,7 +169,7 @@
         
     };
     
-    jQuery.fn.tipsy.defaults = {
+    $.fn.tipsy.defaults = {
         delayIn: 0,
         delayOut: 0,
         fade: false,
@@ -183,16 +187,17 @@
     // For example, you could store the gravity in a 'tipsy-gravity' attribute:
     // return $.extend({}, options, {gravity: $(ele).attr('tipsy-gravity') || 'n' });
     // (remember - do not modify 'options' in place!)
-    jQuery.fn.tipsy.elementOptions = function(ele, options) {
+    $.fn.tipsy.elementOptions = function(ele, options) {
         return $.metadata ? $.extend({}, options, $(ele).metadata()) : options;
     };
     
-    jQuery.fn.tipsy.autoNS = function() {
+    $.fn.tipsy.autoNS = function() {
         return $(this).offset().top > ($(document).scrollTop() + $(window).height() / 2) ? 's' : 'n';
     };
     
-    jQuery.fn.tipsy.autoWE = function() {
+    $.fn.tipsy.autoWE = function() {
         return $(this).offset().left > ($(document).scrollLeft() + $(window).width() / 2) ? 'e' : 'w';
     };
     
 })(jQuery);
+

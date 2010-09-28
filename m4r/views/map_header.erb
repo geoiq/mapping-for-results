@@ -8,13 +8,13 @@
                 <li><a href="javascript:wb.setLocation('<%= region_attr[:name] %>',<%= region_attr[:lat] %>,<%= region_attr[:lon] %>,<%= region_attr[:zoom] %>)"><%= region_attr[:name] %></a></li>
               <% end %>
               <% else %>
-                <li><a href="#">Extreme Poverty (MDG1)</a></li>
-                <li><a href="#">Malnutrition (MDG1)</a></li>
-                <li><a href="#">Infant Mortality (MDG1)</a></li>
-                <li><a href="#">Births Attended (MDG1)</a></li>
-                <li><a href="#">Project Portfolio</a></li>
-                <li><a href="#">Projects by Poverty</a></li>
-                <li><a href="#">Projects by Population</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Extreme Poverty'); return false">Extreme Poverty (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Malnutrition'); return false">Malnutrition (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Infant Mortality'); return false">Infant Mortality (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Malnutrition'); return false">Births Attended (MDG1)</a></li>
+                <li><a href="#" onclick="wb.setState(null,null,null,['all']); return false">Project Portfolio</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Extreme Poverty',null,['all']); return false">Projects by Poverty</a></li>
+                <li><a href="#" onclick="wb.setState(null,'Population',null,['all']); return false">Projects by Population</a></li>
               <% end %>
             </ul>
           </li>

@@ -5,18 +5,18 @@
   <div id="geoiq_map" class=""></div>
   <div id="map_console">
         <div class="console-title">
-          <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
-          <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+          <p id="project_count"><%= @country[:name] == "World" ? "473" : "&nbsp;&nbsp;&nbsp;&nbsp;" %></p>
+          <p id="activity_count"><%= @country[:name] == "World" ? "12,000" : "&nbsp;&nbsp;&nbsp;&nbsp;" %></p>
         </div>
         <div class="console-info">
-          <p>total projects</p>
-          <p>total project activity sites</p>
+          <p>active projects</p>
+          <p>project locations mapped</p>
         </div>    
         <%= partial :layer_controls %>
   </div>
   <%# partial :infowindow %>
 </div>
 
-<%= partial :charts %>
+<%= partial :charts unless @country[:name] == "World" %>
 
 <%= partial :projects_table unless @country[:name] == "World" %>

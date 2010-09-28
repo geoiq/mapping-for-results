@@ -5,7 +5,7 @@
         </div>
         <div class="dropmenuholder">
           <ul class="dropmenu">
-            <li class="first"><a href="#">LOCATION</a>
+            <li class="first"><a href="#">LOCATIONS</a>
               <ul>
                 <% MAPS[:world][:regions].each do |region, region_attr| %>
                   <% region_attr[:countries].each do |country, country_attr| %>
@@ -16,29 +16,31 @@
             </li>
           </ul>
           <!-- ... and so on ... -->
-          <ul class="dropmenu">
-            <li class="first"><a href="#">INDICATOR</a>
+          <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
+            <li class="first"><a href="#" id="indicator" onclick="wb.setIndicator(); return false">INDICATORS</a>
               <ul>
-                <li><a href="#">Poverty</a></li>
-                <li><a href="#">Malnutrition</a></li>
-                <li><a href="#">Skilled Births</a></li>
+                <% ["Population", "Extreme Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"].each do |indicator| %>
+                <li><a href="#" onclick="wb.setIndicator('<%= indicator %>'); return false"><%= indicator %></a></li>
+                <% end %>
               </ul>
             </li>
           </ul>
           <!-- ... and so on ... -->
-          <ul class="dropmenu">
-            <li class="first"><a href="#">PROJECT</a>
+          <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
+            <li class="first"><a href="#">PROJECTS</a>
               <ul>
-                <li><a href="#">Count</a></li>
-                <li><a href="#">Funding</a></li>
+                <li><a href="#">Number by Department</a></li>
+                <li><a href="#">Number by Commune</a></li>
+                <li><a href="#" onclick="wb.toggleSector('all'); return false">All Projects</a></li>
               </ul>
             </li>
           </ul>
           <!-- ... and so on ... -->
-          <ul class="dropmenu">
-            <li><a href="#">SECTOR</a>
+          <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
+            <li><a href="#">RESULTS</a>
               <ul>
-                <li><a href="#">Subitem One</a></li>
+                <li><a href="#">Country Profile</a></li>
+                <li><a href="#">Project Profile</a></li>
               </ul>
             </li>
             <!-- ... and so on ... -->

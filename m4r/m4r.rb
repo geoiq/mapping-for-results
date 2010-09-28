@@ -1,8 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 
-# PLATFORM_API_URL = "http://wbstaging.geocommons.com"
-# SUBDOMAIN = ""
+SUBDOMAIN = ""
 # MAPS = {
 #   :world => {:name => "World", :map => 1, :projects => nil, :region => nil},
 #   :haiti => {:name => "Haiti", :map => 2, :projects => 13, :region => "Latin America and Caribbean"},
@@ -11,9 +10,8 @@ require 'sinatra'
 #   :indonesia => {:name => "Indonesia", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
 # }
 
-PLATFORM_API_URL = "http://geoiq.local"
-SUBDOMAIN = ""
-MAPS = {
+
+WBSTAGING = {
   :world => {:name => "World", :map => 1, :projects => nil, :regions => {
     :africa => {
       :name => "Africa",
@@ -26,7 +24,35 @@ MAPS = {
         :name => "East Asia and Pacific",
         :zoom => 4, :lat => 19, :lon => 105.5,
         :countries => {
-          :indonesia => {:name => "Indonesia", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
+          :phillipines => {:name => "Phillipines", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
+        }
+    },
+    :lac =>  {
+      :name => "Latin America and Caribbean",
+      :zoom => 3, :lat => -25, :lon => -57.8,
+      :countries => {
+        :haiti => {:name => "Haiti", :map => 2, :projects => 13, :region => "Latin America and Caribbean"},
+        :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"}
+      }
+      }      
+    }
+  }
+}
+
+LOCAL = {
+  :world => {:name => "World", :map => 1, :projects => nil, :regions => {
+    :africa => {
+      :name => "Africa",
+      :zoom => 3, :lat => -4, :lon => 21,
+      :countries => {
+        :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"}
+      }
+    },
+      :eastasia => {
+        :name => "East Asia and Pacific",
+        :zoom => 4, :lat => 19, :lon => 105.5,
+        :countries => {
+          :phillipines => {:name => "Phillipines", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
         }
     },
     :lac =>  {
@@ -40,6 +66,11 @@ MAPS = {
     }
   }
 }
+
+PLATFORM_API_URL = "http://wbstaging.geocommons.com"
+# PLATFORM_API_URL = "http://geoiq.local"
+MAPS = PLATFORM_API_URL =~ /geocommons/ ? WBSTAGING : LOCAL 
+
 require 'erb'
 
 get '/' do
