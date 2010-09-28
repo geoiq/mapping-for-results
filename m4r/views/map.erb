@@ -1,9 +1,9 @@
 <script type="text/javascript" charset="utf-8">
 var proxy_host = "<%= PLATFORM_API_URL %>";    
-var project_attributes = ["project t0", "project i0", "activity count", "financing", "sector1", "approval 0"];
+var project_attributes = ["project title", "project id", "activity count", "financing", "major sector", "approval date"];
 var worldbank_sectors = ["agriculture","communication","energy","education","finance","health","industry","public","transportation","water"];
 
-var sector_icons =  {"EP":"<%= PLATFORM_API_URL %>/wbimages/icons/education-on.png","AZ":"<%= PLATFORM_API_URL %>/wbimages/icons/agriculture-on.png","JB":"<%= PLATFORM_API_URL %>/wbimages/icons/health-on.png","BC":"<%= PLATFORM_API_URL %>/wbimages/icons/public-on.png","TA":"<%= PLATFORM_API_URL %>/wbimages/icons/transportation-on.png","LE":"<%= PLATFORM_API_URL %>/wbimages/icons/energy-on.png","TZ":"<%= PLATFORM_API_URL %>/wbimages/icons/transportation-on.png","LD":"<%= PLATFORM_API_URL %>/wbimages/icons/energy-on.png","WZ":"<%= PLATFORM_API_URL %>/wbimages/icons/water-on.png","BL":"<%= PLATFORM_API_URL %>/wbimages/icons/public-on.png","BU":"<%= PLATFORM_API_URL %>/wbimages/icons/public-on.png","AB":"<%= PLATFORM_API_URL %>/wbimages/icons/agriculture-on.png","FD":"<%= PLATFORM_API_URL %>/wbimages/icons/finance-on.png","ET":"<%= PLATFORM_API_URL %>/wbimages/icons/education"};
+var sector_icons =  {"EP":"<%= PLATFORM_API_URL %>/wbimages/icons/education-on.png","AZ":"<%= PLATFORM_API_URL %>/wbimages/icons/agriculture-on.png","JB":"<%= PLATFORM_API_URL %>/wbimages/icons/health-on.png","BC":"<%= PLATFORM_API_URL %>/wbimages/icons/public-on.png","TA":"<%= PLATFORM_API_URL %>/wbimages/icons/transportation-on.png","LE":"<%= PLATFORM_API_URL %>/wbimages/icons/energy-on.png","TZ":"<%= PLATFORM_API_URL %>/wbimages/icons/transportation-on.png","LD":"<%= PLATFORM_API_URL %>/wbimages/icons/energy-on.png","WZ":"<%= PLATFORM_API_URL %>/wbimages/icons/water-on.png","BL":"<%= PLATFORM_API_URL %>/wbimages/icons/public-on.png","BU":"<%= PLATFORM_API_URL %>/wbimages/icons/public-on.png","AB":"<%= PLATFORM_API_URL %>/wbimages/icons/agriculture-on.png","FD":"<%= PLATFORM_API_URL %>/wbimages/icons/finance-on.png","ET":"<%= PLATFORM_API_URL %>/wbimages/icons/education-on.png"};
 
 var project_sectors = {"General agriculture":"agriculture", "Agricultural extension and research":"agriculture", "fishing and forestry sector":"agriculture", 
   "Central government administration":"public","Public administration- Energy and mining": "public", "Public administration- Agriculture, fishing and forestry": "public", 
@@ -94,24 +94,29 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },
     toggleSector: function(sector,visible) {
       var self = this;
-      console.log("toggle: " + sector);
+      //console.log("toggle: " + sector);
       if(visible == null)
         visible = "true";
       if(sector == 'all') {
         self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
+      }
+      if(sector == null) {
+        self.map.showLayer(self.stylelayers["Project Locations"].order, "false");        
       }
       //self.sectorPieChart(sector);
     },
     setIndicator: function(indicator,visible) {
       var self = this;
       if(indicator == null) {
-        $('#indicator').html("IndicatorS");
+        jq('#indicator').html("IndicatorS");
         self.map.showLayer(self.stylelayers["Indicators"].order, "false");
       }
       else {
-        $('#indicator').html(indicator);
+        jq('#indicator').html(indicator);
         self.map.showLayer(self.stylelayers["Indicators"].order, "true");
-        self.map.setLayerStyle(self.stylelayers["Indicators"].order, F1.WorldBank.indicators[indicator].styles);
+        var style = F1.WorldBank.indicators[indicator].styles;
+        style.source = self.stylelayers["Indicators"];
+        self.map.setLayerStyle(self.stylelayers["Indicators"].order, style);
       }
     },
 
@@ -120,7 +125,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.activities = jq.map(data.features, function(feature) { 
         if (feature) {
           attr = feature.attributes;
-          if(self.projects[attr["project i0"]] == null) { // first time we've seen this project ID
+          if(self.projects[attr["project id"]] == null) { // first time we've seen this project ID
             var project = {};
 
             // Get the project level attributes
@@ -128,25 +133,25 @@ if(typeof(F1)=='undefined') {F1 = {}}
               if(project_attributes[i] != "activity count")
                 project[project_attributes[i]] = attr[project_attributes[i]];
             }
-            project["total amt0"] = attr["total amt0"];
-            project["financing"] = "$" + attr["total amt0"] + " million";
+            project["financing amount"] = attr["financing amount"];
+            project["financing"] = "$" + attr["financing amount"] + " million";
             project["activity count"] = 0;
-            self.projects[attr["project i0"]] = project
+            self.projects[attr["project id"]] = project
             
             // Add to sector funding and project count
-            var sector = project["sector1"];
+            var sector = project["major sector"];
             var wb_sector = project_sectors[sector];
 
             if(wb_sector == null)
               wb_sector = project_sectors["Default"];
               
-            self.sectors[wb_sector].funding += attr["total amt0"];
+            self.sectors[wb_sector].funding += attr["financing amount"];
             self.sectors[wb_sector].projects.push(project);
             self.total_funding += self.sectors[wb_sector].funding;
           }
-          self.projects[attr["project i0"]]["activity count"] += 1;
+          self.projects[attr["project id"]]["activity count"] += 1;
           
-          var wb_sector = project_sectors[self.projects[attr["project i0"]]["sector1"]];
+          var wb_sector = project_sectors[self.projects[attr["project id"]]["major sector"]];
           if(wb_sector == null)
             wb_sector = project_sectors["Default"];
 
@@ -156,8 +161,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
       });      
     },
     projectTable: function(data) {
-      $('#project_count').html(Object.size(this.projects));
-      $('#activity_count').html(this.activities.length);
+      jq('#project_count').html(Object.size(this.projects));
+      jq('#activity_count').html(this.activities.length);
       data.attributes["activity count"] = {original_name: "activity county", name: "Activities"}
       data.attributes["financing"] = {original_name: "financing", name: "Financing"}
       data.features = this.projects;
@@ -166,13 +171,13 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },
     sectorPieChart: function(sector_name) {
       var self = this;
-      //console.log(self.sectors[sector_name].projects);
-      $('#sector_funding_title').html("Project Funding for " + sector_name.capitalize() + " Projects")
-      $('#sector_funding_total').html(self.sectors[sector_name].funding + " Million");
+      ////console.log(self.sectors[sector_name].projects);
+      jq('#sector_funding_title').html("Project Funding for " + sector_name.capitalize() + " Projects")
+      jq('#sector_funding_total').html(self.sectors[sector_name].funding.toFixed(1) + " Million");
       pie_options = {"features":self.sectors[sector_name].projects, 
-          "attributes": {"data":{"name": "Funding","original_name": "total amt0"},
-          "description":{"name": "Project","original_name": "project i0"}, 
-          "sort":{"name": "Funding","original_name": "total amt0"} } };
+          "attributes": {"data":{"name": "Funding","original_name": "financing amount"},
+          "description":{"name": "Project","original_name": "project id"}, 
+          "sort":{"name": "Funding","original_name": "financing amount"} } };
       F1.Visualizer.charts.pie(180, 455, pie_options, "chart-left-pie-chart");
     },
     sectorFundingBars: function() {
@@ -180,8 +185,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
       var s;
       var features = [];
       for(s in self.sectors) { features.push(self.sectors[s]); }
-      // //console.log(features)
-      $('#funding_total').html(self.total_funding + " Million");
+      // ////console.log(features)
+      jq('#funding_total').html(self.total_funding.toFixed(1) + " Million");
       bar_options = {"features":features, "attributes": {
             "data":{"name": "Funding", "original_name": "funding"}, 
             "description":{"name": "Sector", "original_name": "sector"}, 
@@ -200,21 +205,21 @@ if(typeof(F1)=='undefined') {F1 = {}}
           self.stylelayers[findlayers[index]] = {order: possibleLayers[j].order, source: possibleLayers[j].source};
         }
        }
-       $('#download_data').attr('href','<%= PLATFORM_API_URL %>/overlays/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
+       jq('#download_data').attr('href','<%= PLATFORM_API_URL %>/overlays/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
        return false;
     },
     styleMap: function(map) {
       var self = this;
-      self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector1code",categories:sector_icons});
+      self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector 1 code",categories:sector_icons});
     },
-    drawCharts: function(map, projects_id) {
+    drawCharts: function(map) {
       var self = this;
       if( self.initialized ) {return;}
         
       self.getLayers(map);
       self.styleMap(map);
-      F1.Visualizer.utils.get_data_from_flash(projects_id, function(data) {
-          console.log("loaded");
+      F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""), function(data) {
+          //console.log("loaded");
           self.sortData(data);
           self.projectTable(data);
           self.sectorPieChart("public");        

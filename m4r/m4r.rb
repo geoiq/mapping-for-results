@@ -31,7 +31,7 @@ WBSTAGING = {
       :name => "Latin America and Caribbean",
       :zoom => 3, :lat => -25, :lon => -57.8,
       :countries => {
-        :haiti => {:name => "Haiti", :map => 2, :projects => 13, :region => "Latin America and Caribbean"},
+        :haiti => {:name => "Haiti", :map => 49, :projects => 108, :region => "Latin America and Caribbean"},
         :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"}
       }
       }      
@@ -41,20 +41,35 @@ WBSTAGING = {
 
 LOCAL = {
   :world => {:name => "World", :map => 1, :projects => nil, :regions => {
-    :africa => {
+    :afr => {
       :name => "Africa",
       :zoom => 3, :lat => -4, :lon => 21,
       :countries => {
         :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"}
       }
     },
-      :eastasia => {
+      :eap => {
         :name => "East Asia and Pacific",
         :zoom => 4, :lat => 19, :lon => 105.5,
         :countries => {
           :phillipines => {:name => "Phillipines", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
         }
     },
+      :eca => {
+        :name => "Europe and Central Asia",
+        :zoom => 4, :lat => 19, :lon => 105.5,
+        :countries => {}
+      },
+      :mena => {
+        :name => "Middle East and North Africa",
+        :zoom => 4, :lat => 19, :lon => 105.5,
+        :countries => {}
+      },
+      :sar => {
+        :name => "South Asia",
+        :zoom => 4, :lat => 19, :lon => 105.5,
+        :countries => {}
+      },            
     :lac =>  {
       :name => "Latin America and Caribbean",
       :zoom => 3, :lat => -25, :lon => -57.8,
