@@ -35,7 +35,7 @@ margin:0 0 2px;
 float:left
 }
 #network-breadcrumb .limiter {
-background:url(../images/sprite.png) repeat-x scroll 0 -170px transparent;
+background:url(../wbimages/sprite.png) repeat-x scroll 0 -170px transparent;
 color:#FFFFFF;
 font-size:11px;
 font-weight:bold;
@@ -51,7 +51,7 @@ color:#FFFFFF; text-decoration:none
 float:left;
 }
 #network-breadcrumb .breadcrumb-link {
-background:url(../images/sprite.png) no-repeat scroll 100% -290px transparent;
+background:url(../wbimages/sprite.png) no-repeat scroll 100% -290px transparent;
 float:left;
 padding:0 15px 0 15px;
 }
@@ -65,7 +65,7 @@ background:none repeat scroll 0 0 transparent;
 color:#D8DCD4;
 }
 #network-footer .limiter {
-background:url(../images/sprite.png) repeat-x scroll 0 -230px transparent;
+background:url(../wbimages/sprite.png) repeat-x scroll 0 -230px transparent;
 color:#92948C;
 font-size:11px;
 height:40px;
@@ -79,7 +79,7 @@ color:#FFFFFF; text-decoration:none
 float:left;
 }
 #network-footer .network-name {
-background:url(../images/sprite.png) no-repeat scroll 15px -347px transparent;
+background:url(../wbimages/sprite.png) no-repeat scroll 15px -347px transparent;
 height:30px;
 margin:5px 0 0;
 overflow:hidden;
@@ -104,7 +104,7 @@ text-align:right;
 
 
 #network .navigation {
-	background:url(../images/sprite.png) 0px -70px repeat-x;
+	background:url(../wbimages/sprite.png) 0px -70px repeat-x;
 	height:27px;
 	width:960px;
 	clear:both;
@@ -126,7 +126,7 @@ text-align:right;
 	overflow:hidden;
 	text-indent:-999px;
 	border-right:2px solid #fff;
-	background:url(../images/sprite.png) 6px -375px no-repeat;
+	background:url(../wbimages/sprite.png) 6px -375px no-repeat;
 }
 #network .navigation .links a {
 	line-height:15px;
@@ -146,13 +146,13 @@ body.es #network .navigation .links a {
 	margin:0px 0px 0px -1px;
 	padding-top:6px;
 	padding-bottom:6px;
-	background:url(../images/sprite.png) 0px -130px;
+	background:url(../wbimages/sprite.png) 0px -130px;
 	border-right:1px solid #c43;
 	border-left:1px solid #c43;
 }
 #network .navigation .network-special-links {
 	border-left:2px solid #fff;
-	background:url(../images/sprite.png) 0px -100px repeat-x;
+	background:url(../wbimages/sprite.png) 0px -100px repeat-x;
 	float:right;
 }
 #network .navigation .network-special-links a {
@@ -161,7 +161,7 @@ body.es #network .navigation .links a {
 
 #wrapper {
   -x-system-font:none;
-  background:transparent url(../images/mainbg.png) repeat-y scroll 0 0;
+  background:transparent url(../wbimages/mainbg.png) repeat-y scroll 0 0;
   font-family:arial;
   font-size:12px;
   font-size-adjust:none;
@@ -189,7 +189,7 @@ margin:20px 0 22px 15px;
   float:left
 }
 #header #search-box {
-background:transparent url(../images/search-roundbox.gif) no-repeat scroll 0 0;
+background:transparent url(../wbimages/search-roundbox.gif) no-repeat scroll 0 0;
   bottom:25px;
   height:26px;
   position:absolute;
@@ -201,7 +201,7 @@ background:transparent url(../images/search-roundbox.gif) no-repeat scroll 0 0;
 #search-box .form-submit { 
 margin : 0; 
   border: 0px; 
-  background:url(../images/go-btn.gif) 0 7px no-repeat;
+  background:url(../wbimages/go-btn.gif) 0 7px no-repeat;
   width  :17px ;
   cursor : pointer;
 
@@ -216,7 +216,7 @@ margin : 0;
 #search-box .text-entered label { display:none; }
 
 #search-box .form-text {
-  background:transparent url(../images/magnify.gif) no-repeat scroll 0 7px;
+  background:transparent url(../wbimages/magnify.gif) no-repeat scroll 0 7px;
   border:0 none;
   color:#000;
   float:left;
@@ -274,14 +274,14 @@ overflow:hidden;
 padding-bottom:0;
 position:relative;
 width:960px;
-background:#FFFFFF url(background-images/fauxcol-filler-toplevel2.gif) repeat-y scroll 0 0;
+background:#FFFFFF url(background-wbimages/fauxcol-filler-toplevel2.gif) repeat-y scroll 0 0;
 }
 
 body.region-left.region-far-right div#container {
-  background:#FFFFFF url(background-images/fauxcol-filler2.gif) repeat-y scroll 0 0;
+  background:#FFFFFF url(background-wbimages/fauxcol-filler2.gif) repeat-y scroll 0 0;
   }
 body.region-left.region-right #container {
-  background:#FFFFFF url(background-images/fauxcol-filler-toplevel2.gif) repeat-y scroll 0 0;
+  background:#FFFFFF url(background-wbimages/fauxcol-filler-toplevel2.gif) repeat-y scroll 0 0;
 }
 
 #sidebar-left {
@@ -308,7 +308,7 @@ body.region-left #center {
 }
 
 #center-top {
-  background : #FFFFFF url(background-images/fauxcol-filler-white.gif) repeat-y scroll 50% 0;
+  background : #FFFFFF url(background-wbimages/fauxcol-filler-white.gif) repeat-y scroll 50% 0;
 }
 
 #center-top {
@@ -428,28 +428,28 @@ margin-bottom:10px;
 #languages ul li a:hover{color:#222222;}
 #languages ul li a.active{color:#222222;background-color:#eee;}
 #languages ul li.arabic{margin-top:-2px}
-#languages ul li.more{width:20px;text-indent:-9999px; background-image:url(../images/arrow-languages.gif); background-repeat:no-repeat; background-position:11px 7px; margin:0; padding:0; border-right:solid 1px #fff}
+#languages ul li.more{width:20px;text-indent:-9999px; background-image:url(../wbimages/arrow-languages.gif); background-repeat:no-repeat; background-position:11px 7px; margin:0; padding:0; border-right:solid 1px #fff}
 #languages ul li.more a{border-right:solid 1px #fff}
 
 #share{overflow:hidden;  padding:10px 0 18px 0;}
 #share ul {float:right; list-style:none; margin: 0;padding:0;}
 #share ul li{float:left;}
 #share ul li a, #download ul li a{cursor:pointer;display:block;  line-height:18px;font-size:10px; -moz-border-radius:2px; -webkit-border-radius:2px;background:#fff; color:#989a94;	border:1px solid #ddd; padding:0 4px 0 0}
-#share .simpleshare_link a {background:#fff url(../images/sprite2.png) 0px -61px no-repeat;padding-left:19px;}
+#share .simpleshare_link a {background:#fff url(../wbimages/sprite2.png) 0px -61px no-repeat;padding-left:19px;}
 
 #share ul li a:hover, #share ul li.print a:hover, #download ul li a:hover {color:#aa2222}
 #share ul li.print{text-indent:-9999px; }
-#share ul li.print a {background:#fff url(../images/sprite2.png) 0px -326px no-repeat;padding-left:19px; border-top:1px solid #fff;   border-bottom:1px solid #fff; padding-right:10px; border-left:1px solid #fff}
+#share ul li.print a {background:#fff url(../wbimages/sprite2.png) 0px -326px no-repeat;padding-left:19px; border-top:1px solid #fff;   border-bottom:1px solid #fff; padding-right:10px; border-left:1px solid #fff}
 #share ul li.email{text-indent:-9999px; }
-#share ul li.email a {background:#fff url(../images/sprite2.png) 0px -266px no-repeat;padding-left:19px;border:1px solid #fff; margin:0 3px 0 3px }
+#share ul li.email a {background:#fff url(../wbimages/sprite2.png) 0px -266px no-repeat;padding-left:19px;border:1px solid #fff; margin:0 3px 0 3px }
 
 #share ul li.download {padding-right: 10px;}
-#share ul li.download a {background:#fff url(../images/sprite2.png) 0px -20px no-repeat;padding-left:19px;}
+#share ul li.download a {background:#fff url(../wbimages/sprite2.png) 0px -20px no-repeat;padding-left:19px;}
 
 #download ul{float:left; list-style:none; margin: 0;padding:0; width:500px;}
 #download { color: #7F7F7F; padding:22px 0 0 0; margin-right:55px;float:right;}
 #download ul li{float:left;}
-#download ul li.button a {background:#fff url(../images/sprite2.png) 0px -20px no-repeat;padding-left:19px;}
+#download ul li.button a {background:#fff url(../wbimages/sprite2.png) 0px -20px no-repeat;padding-left:19px;}
 
 .dropmenuholder {float:right; margin: 10px 20px 0 0;}
 .worldmenuholder {float:left; margin: 0}
@@ -479,7 +479,7 @@ margin-bottom:10px;
 }
 
 .worldmenu li a {
-	display: block;font-family: Arial, Helvetica, sans-serif; font-size:13px; 	color: #333; padding:5px; text-decoration: none; background-image:url(../images/btn-worldmenu.gif); background-position:0 1px; background-repeat:no-repeat; text-transform:uppercase; padding:15px 15px 16px 30px;}
+	display: block;font-family: Arial, Helvetica, sans-serif; font-size:13px; 	color: #333; padding:5px; text-decoration: none; background-image:url(../wbimages/btn-worldmenu.gif); background-position:0 1px; background-repeat:no-repeat; text-transform:uppercase; padding:15px 15px 16px 30px;}
 	
 .worldmenu li:hover li a {
 	background-color: #f4f5f1;
@@ -514,7 +514,7 @@ margin-bottom:10px;
 }
 	
 .dropmenu li a {
-	display: block;font-family: Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold;	color: #fff; padding:5px; background-color: #97382a;text-decoration: none; background-image:url(../images/btn-dropmenu.gif); background-repeat:no-repeat; border:#5f2017 solid 1px; text-transform:uppercase}
+	display: block;font-family: Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold;	color: #fff; padding:5px; background-color: #97382a;text-decoration: none; background-image:url(../wbimages/btn-dropmenu.gif); background-repeat:no-repeat; border:#5f2017 solid 1px; text-transform:uppercase}
 		
 .dropmenu li:hover ul, .worldmenu li:hover ul {
 	display: block;
