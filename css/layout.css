@@ -444,11 +444,11 @@ margin-bottom:10px;
 #share ul li.email a {background:#fff url(../wbimages/sprite2.png) 0px -266px no-repeat;padding-left:19px;border:1px solid #fff; margin:0 3px 0 3px }
 
 #download ul{float:left; list-style:none; margin: 0;padding:0; width:500px;}
-#download{ padding:22px 0 0 0; margin-left:123px;float:left;}
+#download{ padding:22px 0 0 0; margin-right:75px;float:right;}
 #download ul li{float:left;}
 #download ul li.button a {background:#fff url(../wbimages/sprite2.png) 0px -20px no-repeat;padding-left:19px;}
 
-.dropmenuholder {float:left; margin: 10px 0 0 124px;}
+.dropmenuholder {float:right; margin: 10px 40px 0 0px;}
 .worldmenuholder {float:left; margin: 0}
 
 
