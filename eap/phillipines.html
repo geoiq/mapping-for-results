@@ -12,7 +12,6 @@
   <link type="text/css" rel="stylesheet" media="all" href="/css/style.css">
   <link type="text/css" rel="stylesheet" media="all" href="/css/layout.css">
   <link type="text/css" rel="stylesheet" media="all" href="/css/one-off.css">
-                                                           
   <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css">
   <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css">
 
@@ -26,11 +25,8 @@
   <script type="text/javascript" src="/js/effects.js"></script>
   <script type="text/javascript" src="/js/search_box.js"></script>
 
-<script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/prototype.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" charset="utf-8">
-var jq = jQuery.noConflict();
-</script>
+
 <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/f1.api.js"></script>
 
@@ -119,10 +115,10 @@ var jq = jQuery.noConflict();
 
     <script type="text/javascript" charset="utf-8">
 var proxy_host = "http://wbstaging.geocommons.com";    
-var project_attributes = ["project title", "project id", "activity count", "financing", "major sector", "approval date"];
+var project_attributes = ["project t0", "project i0", "activity count", "financing", "sector1", "approval 0"];
 var worldbank_sectors = ["agriculture","communication","energy","education","finance","health","industry","public","transportation","water"];
 
-var sector_icons =  {"EP":"http://wbstaging.geocommons.com/wbimages/icons/education-on.png","AZ":"http://wbstaging.geocommons.com/wbimages/icons/agriculture-on.png","JB":"http://wbstaging.geocommons.com/wbimages/icons/health-on.png","BC":"http://wbstaging.geocommons.com/wbimages/icons/public-on.png","TA":"http://wbstaging.geocommons.com/wbimages/icons/transportation-on.png","LE":"http://wbstaging.geocommons.com/wbimages/icons/energy-on.png","TZ":"http://wbstaging.geocommons.com/wbimages/icons/transportation-on.png","LD":"http://wbstaging.geocommons.com/wbimages/icons/energy-on.png","WZ":"http://wbstaging.geocommons.com/wbimages/icons/water-on.png","BL":"http://wbstaging.geocommons.com/wbimages/icons/public-on.png","BU":"http://wbstaging.geocommons.com/wbimages/icons/public-on.png","AB":"http://wbstaging.geocommons.com/wbimages/icons/agriculture-on.png","FD":"http://wbstaging.geocommons.com/wbimages/icons/finance-on.png","ET":"http://wbstaging.geocommons.com/wbimages/icons/education-on.png"};
+var sector_icons =  {"EP":"http://wbstaging.geocommons.com/images/icons/education-on.png","AZ":"http://wbstaging.geocommons.com/images/icons/agriculture-on.png","JB":"http://wbstaging.geocommons.com/images/icons/health-on.png","BC":"http://wbstaging.geocommons.com/images/icons/public-on.png","TA":"http://wbstaging.geocommons.com/images/icons/transportation-on.png","LE":"http://wbstaging.geocommons.com/images/icons/energy-on.png","TZ":"http://wbstaging.geocommons.com/images/icons/transportation-on.png","LD":"http://wbstaging.geocommons.com/images/icons/energy-on.png","WZ":"http://wbstaging.geocommons.com/images/icons/water-on.png","BL":"http://wbstaging.geocommons.com/images/icons/public-on.png","BU":"http://wbstaging.geocommons.com/images/icons/public-on.png","AB":"http://wbstaging.geocommons.com/images/icons/agriculture-on.png","FD":"http://wbstaging.geocommons.com/images/icons/finance-on.png","ET":"http://wbstaging.geocommons.com/images/icons/education"};
 
 var project_sectors = {"General agriculture":"agriculture", "Agricultural extension and research":"agriculture", "fishing and forestry sector":"agriculture", 
   "Central government administration":"public","Public administration- Energy and mining": "public", "Public administration- Agriculture, fishing and forestry": "public", 
@@ -213,29 +209,24 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },
     toggleSector: function(sector,visible) {
       var self = this;
-      //console.log("toggle: " + sector);
+      console.log("toggle: " + sector);
       if(visible == null)
         visible = "true";
       if(sector == 'all') {
         self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
       }
-      if(sector == null) {
-        self.map.showLayer(self.stylelayers["Project Locations"].order, "false");        
-      }
-      self.sectorPieChart(sector);
+      //self.sectorPieChart(sector);
     },
     setIndicator: function(indicator,visible) {
       var self = this;
       if(indicator == null) {
-        jq('#indicator').html("IndicatorS");
+        $('#indicator').html("IndicatorS");
         self.map.showLayer(self.stylelayers["Indicators"].order, "false");
       }
       else {
-        jq('#indicator').html(indicator);
+        $('#indicator').html(indicator);
         self.map.showLayer(self.stylelayers["Indicators"].order, "true");
-        var style = F1.WorldBank.indicators[indicator].styles;
-        style.source = self.stylelayers["Indicators"];
-        self.map.setLayerStyle(self.stylelayers["Indicators"].order, style);
+        self.map.setLayerStyle(self.stylelayers["Indicators"].order, F1.WorldBank.indicators[indicator].styles);
       }
     },
 
@@ -244,7 +235,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.activities = jq.map(data.features, function(feature) { 
         if (feature) {
           attr = feature.attributes;
-          if(self.projects[attr["project id"]] == null) { // first time we've seen this project ID
+          if(self.projects[attr["project i0"]] == null) { // first time we've seen this project ID
             var project = {};
 
             // Get the project level attributes
@@ -252,25 +243,25 @@ if(typeof(F1)=='undefined') {F1 = {}}
               if(project_attributes[i] != "activity count")
                 project[project_attributes[i]] = attr[project_attributes[i]];
             }
-            project["financing amount"] = attr["financing amount"];
-            project["financing"] = "$" + attr["financing amount"] + " million";
+            project["total amt0"] = attr["total amt0"];
+            project["financing"] = "$" + attr["total amt0"] + " million";
             project["activity count"] = 0;
-            self.projects[attr["project id"]] = project
+            self.projects[attr["project i0"]] = project
             
             // Add to sector funding and project count
-            var sector = project["major sector"];
+            var sector = project["sector1"];
             var wb_sector = project_sectors[sector];
 
             if(wb_sector == null)
               wb_sector = project_sectors["Default"];
               
-            self.sectors[wb_sector].funding += attr["financing amount"];
+            self.sectors[wb_sector].funding += attr["total amt0"];
             self.sectors[wb_sector].projects.push(project);
             self.total_funding += self.sectors[wb_sector].funding;
           }
-          self.projects[attr["project id"]]["activity count"] += 1;
+          self.projects[attr["project i0"]]["activity count"] += 1;
           
-          var wb_sector = project_sectors[self.projects[attr["project id"]]["major sector"]];
+          var wb_sector = project_sectors[self.projects[attr["project i0"]]["sector1"]];
           if(wb_sector == null)
             wb_sector = project_sectors["Default"];
 
@@ -280,8 +271,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
       });      
     },
     projectTable: function(data) {
-      jq('#project_count').html(Object.size(this.projects));
-      jq('#activity_count').html(this.activities.length);
+      $('#project_count').html(Object.size(this.projects));
+      $('#activity_count').html(this.activities.length);
       data.attributes["activity count"] = {original_name: "activity county", name: "Activities"}
       data.attributes["financing"] = {original_name: "financing", name: "Financing"}
       data.features = this.projects;
@@ -290,13 +281,13 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },
     sectorPieChart: function(sector_name) {
       var self = this;
-      ////console.log(self.sectors[sector_name].projects);
-      jq('#sector_funding_title').html("Project Funding for " + sector_name.capitalize() + " Projects")
-      jq('#sector_funding_total').html(self.sectors[sector_name].funding.toFixed(1) + " Million");
+      //console.log(self.sectors[sector_name].projects);
+      $('#sector_funding_title').html("Project Funding for " + sector_name.capitalize() + " Projects")
+      $('#sector_funding_total').html(self.sectors[sector_name].funding + " Million");
       pie_options = {"features":self.sectors[sector_name].projects, 
-          "attributes": {"data":{"name": "Funding","original_name": "financing amount"},
-          "description":{"name": "Project","original_name": "project id"}, 
-          "sort":{"name": "Funding","original_name": "financing amount"} } };
+          "attributes": {"data":{"name": "Funding","original_name": "total amt0"},
+          "description":{"name": "Project","original_name": "project i0"}, 
+          "sort":{"name": "Funding","original_name": "total amt0"} } };
       F1.Visualizer.charts.pie(180, 455, pie_options, "chart-left-pie-chart");
     },
     sectorFundingBars: function() {
@@ -304,8 +295,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
       var s;
       var features = [];
       for(s in self.sectors) { features.push(self.sectors[s]); }
-      // ////console.log(features)
-      jq('#funding_total').html(self.total_funding.toFixed(1) + " Million");
+      // //console.log(features)
+      $('#funding_total').html(self.total_funding + " Million");
       bar_options = {"features":features, "attributes": {
             "data":{"name": "Funding", "original_name": "funding"}, 
             "description":{"name": "Sector", "original_name": "sector"}, 
@@ -324,21 +315,21 @@ if(typeof(F1)=='undefined') {F1 = {}}
           self.stylelayers[findlayers[index]] = {order: possibleLayers[j].order, source: possibleLayers[j].source};
         }
        }
-       jq('#download_data').attr('href','http://wbstaging.geocommons.com/overlays/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
+       $('#download_data').attr('href','http://wbstaging.geocommons.com/overlays/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
        return false;
     },
     styleMap: function(map) {
       var self = this;
-      self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector 1 code",categories:sector_icons});
+      self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector1code",categories:sector_icons});
     },
-    drawCharts: function(map) {
+    drawCharts: function(map, projects_id) {
       var self = this;
       if( self.initialized ) {return;}
         
       self.getLayers(map);
       self.styleMap(map);
-      F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""), function(data) {
-          //console.log("loaded");
+      F1.Visualizer.utils.get_data_from_flash(projects_id, function(data) {
+          console.log("loaded");
           self.sortData(data);
           self.projectTable(data);
           self.sectorPieChart("public");        
@@ -439,27 +430,21 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
         </div>
         <div class="dropmenuholder">
           <ul class="dropmenu">
-            <li class="first"><a href="">LOCATIONS</a>
+            <li class="first"><a href="#">LOCATIONS</a>
               <ul>
                 
                   
-                
+                  <li><a href="/africa/kenya">Kenya</a></li>
                   
                 
                   
-                  <li><a href="/afr/kenya">Kenya</a></li>
+                  <li><a href="/eastasia/phillipines">Phillipines</a></li>
                   
                 
                   
                   <li><a href="/lac/haiti">Haiti</a></li>
                   
                   <li><a href="/lac/bolivia">Bolivia</a></li>
-                  
-                
-                  
-                  <li><a href="/eap/phillipines">Phillipines</a></li>
-                  
-                
                   
                 
               </ul>
@@ -485,7 +470,7 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
           </ul>
           <!-- ... and so on ... -->
           <ul class="dropmenu ">
-            <li class="first"><a href="#" onclick="wb.toggleSector(); return false">PROJECTS</a>
+            <li class="first"><a href="#">PROJECTS</a>
               <ul>
                 <li><a href="#">Number by Department</a></li>
                 <li><a href="#">Number by Commune</a></li>
@@ -495,7 +480,7 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
           </ul>
           <!-- ... and so on ... -->
           <ul class="dropmenu ">
-            <li><a href="">RESULTS</a>
+            <li><a href="#">RESULTS</a>
               <ul>
                 <li><a href="#">Country Profile</a></li>
                 <li><a href="#">Project Profile</a></li>
@@ -526,7 +511,7 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
   <div id="chart-right-stat-subtitle">
     <h1 id="funding_total"></h1>
   </div>
-  <div id="chart-right-graph"><img src="wbimages/right-chart-graph.gif" alt="" /></div>
+  <div id="chart-right-graph"><img src="images/right-chart-graph.gif" alt="" /></div>
    
 
 </div>
@@ -534,7 +519,7 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
 
    <!--Project Search Bar Begins-->
     <div id="projects-bar">
-      <div class="project-bar-text"><img src="wbimages/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />&nbsp;&nbsp;&nbsp;&nbsp;Total Project List / Phillipines</div>
+      <div class="project-bar-text"><img src="images/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />&nbsp;&nbsp;&nbsp;&nbsp;Total Project List / Phillipines</div>
       <div id="div">
         <form action="/" accept-charset="UTF-8" method="post" id="search-theme-form">
           <input maxlength="128" name="search_theme_form" id="project-search-box" size="15" value="" class="project-search-box-text" type="text" />
@@ -547,12 +532,12 @@ function drawCharts(wb_project,projects_id) { wb_project.drawCharts(wb_project.m
         <table width="960" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <th class="project-th">Project Title</th>
-            <th><img src="wbimages/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Project ID</th>
-            <th><div id="commitment-arrow"><img src="wbimages/down-arrow-black.gif" alt="" /></div>
+            <th><img src="images/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Project ID</th>
+            <th><div id="commitment-arrow"><img src="images/down-arrow-black.gif" alt="" /></div>
               <div id="commitment-amount-th">Commitment Amount</div></th>
-            <th><img src="wbimages/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Sector</th>
-            <th><img src="wbimages/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Status</th>
-            <th><div id="commitment-arrow"><img src="wbimages/down-arrow-black.gif" alt="" /></div>
+            <th><img src="images/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Sector</th>
+            <th><img src="images/down-arrow-black.gif" alt="" / class=" table-th-black-arrow" />Status</th>
+            <th><div id="commitment-arrow"><img src="images/down-arrow-black.gif" alt="" /></div>
               <div id="commitment-amount-th">Approval Date</div></th>
           </tr>
           <tr>

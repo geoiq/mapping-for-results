@@ -2,56 +2,56 @@
 #geoiq_map{width:958px; height:514px;}
 
 #map-content {width:958px; height:514px; border-left:solid 1px #d9dbcd; border-bottom:solid 1px #d9dbcd;  border-right:solid 1px #d9dbcd; background:#FFFFFF;}
-#map-content-header{background-image:url(../wbimages/map.nav.header.gif); border:medium none;height:47px;  overflow:hidden;  padding:0 0 0 0}
+#map-content-header{background-image:url(../images/map.nav.header.gif); border:medium none;height:47px;  overflow:hidden;  padding:0 0 0 0}
 #map-content-title {font-family:arial;font-size:13px; color:#000; white-space:normal;float:left; margin-top:10px; margin-left:15px; padding-top:6px; } 
 #map-content-sectors {font-family:arial;font-size:13px; color:#777876; white-space:normal;float:right; margin-top:10px; margin-right:25px; margin-left:15px; padding-top:6px; } 
 
 #map-content-icons {width:480px; margin:13px 21px 0 0; float:right;}#map-content-icons ul{float:left; list-style:none; margin: 0;padding:0;}
 #map-content-icons ul li{float:left;}
-#map-content-icons ul li a{height:19px;	color:#FFFFFF;display:block; text-decoration:none; margin:0; background:url(../wbimages/sector-icons.gif) no-repeat 0 0; text-indent:-9999px}
+#map-content-icons ul li a{height:19px;	color:#FFFFFF;display:block; text-decoration:none; margin:0; background:url(../images/sector-icons.gif) no-repeat 0 0; text-indent:-9999px}
 
 #map-content-icons ul li.sectors{width:130px;  margin-top:3px; font-family:arial;font-size:13px; color:#777876; float:left }
 #map-content-icons ul li.all {font-family:arial;font-size:13px; padding:3px 0 3px 5px; color:#777876; float:left }
 
-#map-content-icons ul li.s1 a{width: 19px; margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat 0 0}
-#map-content-icons ul li.s1 a:hover,#map-s1-icons ul li.s1 a.active{width: 19px; margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat 0 -19px}
+#map-content-icons ul li.s1 a{width: 19px; margin-right:11px; background:url(../images/sector-icons.gif) no-repeat 0 0}
+#map-content-icons ul li.s1 a:hover,#map-content-icons ul li.s1 a.active{width: 19px; margin-right:11px; background:url(../images/sector-icons.gif) no-repeat 0 -19px}
 
-#map-content-icons ul li.s2 a{width: 19px; margin-right:11px;  background:url(../wbimages/sector-icons.gif) no-repeat -30px 0}
-#map-content-icons ul li.s2 a:hover,#map-content-icons ul li.s2 a.active{width: 19px; margin-right:11px; background:url(../wbimages/sector-icons.gif)  no-repeat -30px -19px}
+#map-content-icons ul li.s2 a{width: 19px; margin-right:11px;  background:url(../images/sector-icons.gif) no-repeat -30px 0}
+#map-content-icons ul li.s2 a:hover,#map-content-icons ul li.s2 a.active{width: 19px; margin-right:11px; background:url(../images/sector-icons.gif)  no-repeat -30px -19px}
 
-#map-content-icons ul li.s3 a{width: 19px;  margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat -60px 0}
-#map-content-icons ul li.s3 a:hover,#map-content-icons ul li.s3 a.active{width: 19px; background:url(../wbimages/sector-icons.gif) no-repeat -60px -19px}
+#map-content-icons ul li.s3 a{width: 19px;  margin-right:11px; background:url(../images/sector-icons.gif) no-repeat -60px 0}
+#map-content-icons ul li.s3 a:hover,#map-content-icons ul li.s3 a.active{width: 19px; background:url(../images/sector-icons.gif) no-repeat -60px -19px}
 
-#map-content-icons ul li.s4 a{width: 19px;  margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat -90px 0}
-#map-content-icons ul li.s4 a:hover,#map-content-icons ul li.s4 a.active{width: 19px; background:url(../wbimages/sector-icons.gif) no-repeat -90px -19px}
+#map-content-icons ul li.s4 a{width: 19px;  margin-right:11px; background:url(../images/sector-icons.gif) no-repeat -90px 0}
+#map-content-icons ul li.s4 a:hover,#map-content-icons ul li.s4 a.active{width: 19px; background:url(../images/sector-icons.gif) no-repeat -90px -19px}
 
-#map-content-icons ul li.s5 a{width: 19px;  margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat -120px  0}
-#map-content-icons ul li.s5 a:hover,#map-content-icons ul li.s5 a.active{width: 19px; background:url(../wbimages/sector-icons.gif) no-repeat -120px -19px}
+#map-content-icons ul li.s5 a{width: 19px;  margin-right:11px; background:url(../images/sector-icons.gif) no-repeat -120px  0}
+#map-content-icons ul li.s5 a:hover,#map-content-icons ul li.s5 a.active{width: 19px; background:url(../images/sector-icons.gif) no-repeat -120px -19px}
 
-#map-content-icons ul li.s6 a{width: 19px;  margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat -150px  0}
-#map-content-icons ul li.s6 a:hover,#map-content-icons ul li.s6 a.active{width: 19px; background:url(../wbimages/sector-icons.gif) no-repeat -150px -19px}
+#map-content-icons ul li.s6 a{width: 19px;  margin-right:11px; background:url(../images/sector-icons.gif) no-repeat -150px  0}
+#map-content-icons ul li.s6 a:hover,#map-content-icons ul li.s6 a.active{width: 19px; background:url(../images/sector-icons.gif) no-repeat -150px -19px}
 
-#map-content-icons ul li.s7 a{width: 19px;  margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat -180px 0}
-#map-content-icons ul li.s7 a:hover,#map-content-icons ul li.s7 a.active{width: 19px; background:url(../wbimages/sector-icons.gif) no-repeat -180px -19px}
+#map-content-icons ul li.s7 a{width: 19px;  margin-right:11px; background:url(../images/sector-icons.gif) no-repeat -180px 0}
+#map-content-icons ul li.s7 a:hover,#map-content-icons ul li.s7 a.active{width: 19px; background:url(../images/sector-icons.gif) no-repeat -180px -19px}
 
-#map-content-icons ul li.s8 a{width: 19px;  margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat -210px 0}
-#map-content-icons ul li.s8 a:hover,#map-content-icons ul li.s8 a.active{width: 19px; background:url(../wbimages/sector-icons.gif) no-repeat -210px -19px}
+#map-content-icons ul li.s8 a{width: 19px;  margin-right:11px; background:url(../images/sector-icons.gif) no-repeat -210px 0}
+#map-content-icons ul li.s8 a:hover,#map-content-icons ul li.s8 a.active{width: 19px; background:url(../images/sector-icons.gif) no-repeat -210px -19px}
 
-#map-content-icons ul li.s9 a{width: 19px;  margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat -240px 0}
-#map-content-icons ul li.s9 a:hover,#map-content-icons ul li.s9 a.active{width: 19px; background:url(../wbimages/sector-icons.gif) no-repeat -240px -19px}
+#map-content-icons ul li.s9 a{width: 19px;  margin-right:11px; background:url(../images/sector-icons.gif) no-repeat -240px 0}
+#map-content-icons ul li.s9 a:hover,#map-content-icons ul li.s9 a.active{width: 19px; background:url(../images/sector-icons.gif) no-repeat -240px -19px}
 
-#map-content-icons ul li.s10 a{width: 19px;  margin-right:11px; background:url(../wbimages/sector-icons.gif) no-repeat -270px 0}
-#map-content-icons ul li.s10 a:hover,#map-content-icons ul li.s10 a.active{width: 19px; background:url(../wbimages/sector-icons.gif) no-repeat -270px -19px}
-
-
+#map-content-icons ul li.s10 a{width: 19px;  margin-right:11px; background:url(../images/sector-icons.gif) no-repeat -270px 0}
+#map-content-icons ul li.s10 a:hover,#map-content-icons ul li.s10 a.active{width: 19px; background:url(../images/sector-icons.gif) no-repeat -270px -19px}
 
 
-#map_console{background-image:url(../wbimages/map.console.png);width:960px;height:97px; float:left; margin-top:-97px; position:absolute; border-top:solid 1px #d9dbcd}
+
+
+#map_console{background-image:url(../images/map.console.png);width:960px;height:97px; float:left; margin-top:-97px; position:absolute; border-top:solid 1px #d9dbcd}
 .console-title{font-family:georgia;font-size:24px; line-height:25px;color:#A52A2A; float:left;margin:20px 0 0 25px;font-weight:bold; text-align:right}
 .console-info{font-family:georgia;font-size:18px; line-height:26px; color:#7F7F7F;float:left;margin:20px 0 0 10px; float:left; text-align:left}
 .console-title p, .console-info p {padding:0; margin:0}
 
-#map_factbox{background-image:url(../wbimages/map.factbox.png);width:206px;height:133px;position:relative;top:-444px;left:701px}
+#map_factbox{background-image:url(../images/map.factbox.png);width:206px;height:133px;position:relative;top:-444px;left:701px}
 .factbox-title{font-family:arial;font-size:20px;  color:#FFFFFF;margin:3px 0 0 20px;}
 .map-factbox-info {margin:3px 0 0 25px;}
 
@@ -66,20 +66,20 @@
 #chart-left #chart-left-title  { width:440px; height:25px; border-bottom: solid 1px #ececec; margin-top:10px; margin-left:10px;}
 #chart-left h1 {font-family:Arial,sans-serif; font-size:14px; color:#8a8a8a; margin-left:0px;}
 
-	#chart-left-stat { width:175px; height:210px; float:left;margin-left:10px;}
-		#chart-left-stat h1 {font-family:Georgia, serif; font-size:26px; color:#970001; font-weight:bold; margin-top:16px;}
-		#chart-left-stat h2 {font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f; line-height:17px; padding-right:18px;}
+#chart-left-stat { width:175px; height:210px; float:left;margin-left:10px;}
+#chart-left-stat h1 {font-family:Georgia, serif; font-size:26px; color:#970001; font-weight:bold; margin-top:16px;}
+#chart-left-stat h2 {font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f; line-height:17px; padding-right:18px;}
 
-	#chart-left-pie-chart {width:262px; height:210px; float:left;}
+#chart-left-pie-chart {width:262px; height:210px; float:left; margin-top: 40px; margin-left: -30px;}
 
 /*RIGHT CHART*/
 #chart-right {margin-top:20px;margin-bottom:17px; width:476px; height:260px; float:left;}
-	#chart-right-title  { width:440px; height:25px; border-bottom: solid 1px #ececec; margin-top:10px; margin-left:25px; margin-bottom:12px;}
-	#chart-right h1 {font-family:Arial,sans-serif; font-size:14px; color:#8a8a8a; margin-left:0px;}
-	#chart-right-stat-subtitle {width:200px; height:30px; margin-left:25px;}
-	#chart-right-stat-subtitle h1 {font-family:Georgia, serif; font-size:26px; color:#970001; font-weight:bold;}
-	#subtitle-comment { width:100px; height:30px;font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f;}
-	#chart-right-graph {width:440px; height:155px; margin-left:25px;}
+#chart-right-title  { width:440px; height:25px; border-bottom: solid 1px #ececec; margin-top:10px; margin-left:25px; margin-bottom:12px;}
+#chart-right h1 {font-family:Arial,sans-serif; font-size:14px; color:#8a8a8a; margin-left:0px;}
+#chart-right-stat-subtitle {width:200px; height:30px; margin-left:25px;}
+#chart-right-stat-subtitle h1 {font-family:Georgia, serif; font-size:26px; color:#970001; font-weight:bold;}
+#subtitle-comment { width:100px; height:30px;font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f;}
+#chart-right-graph {width:440px; height:155px; margin-left:25px;}
 	
 /* ........................................................END NEW 9/23/2010.................................................................. */
 
@@ -87,8 +87,8 @@
   color:#666666;  font-size:11px;  font-weight:bold;  line-height:20px;  padding:5px 0px 0px 5px;margin:0px 0px 0px 5px;  width:80%;}
 
 /*Projects Search Bar*/
-#projects-bar {width:958px; height:45px; margin-top:17px; margin-bottom:17px; background-image:url(../wbimages/project-bar-bg.gif); border-top:2px solid #9b0a07; border-left:1px solid #cfd1c4; border-bottom:1px solid #cfd1c4; border-right:1px solid #cfd1c4; float:left;}
-#project-search-box{background:url(../wbimages/projects_search.jpg) no-repeat scroll 0 0 transparent; right:0;float:right;border:none;width:400px;height:31px; margin-top:-22px; padding-left: 10px;}
+#projects-bar {width:958px; height:45px; margin-top:17px; margin-bottom:17px; background-image:url(../images/project-bar-bg.gif); border-top:2px solid #9b0a07; border-left:1px solid #cfd1c4; border-bottom:1px solid #cfd1c4; border-right:1px solid #cfd1c4; float:left;}
+#project-search-box{background:url(../images/projects_search.jpg) no-repeat scroll 0 0 transparent; right:0;float:right;border:none;width:400px;height:31px; margin-top:-22px; padding-left: 10px;}
 .project-bar-text {width: 200px;font-family:arial, sans serif; font-size:12px; color:#000; margin-top: 15px; margin-left: 10px;}
 .project-search-box-text {font-family:arial, sans serif; font-size:13px;}
 
@@ -107,19 +107,16 @@ table,th,td
 {height:50px;padding-left:13px; margin-top:6px;}
 
 table, th {
-background:url(../wbimages/table-th-bg.gif) repeat-x;font-family:Arial, sans-serif; font-size:12px; font-weight:100; color:#000; padding-left:13px;}
+background:url(../images/table-th-bg.gif) repeat-x;font-family:Arial, sans-serif; font-size:12px; font-weight:100; color:#000; padding-left:13px;}
 
 th { border: 1px solid #dadcd1;}
 td {font-family: Arial, sans-serif; font-size:12px; vertical-align:middle;}
 
 td h1 {font-family: Georgia, Times, serif; font-size:13px; font-weight:100; line-height:20px; margin-top:10px; margin-right:8px;}
 
-#projects-table th:first-child, .project-th {background: url(../wbimages/table-th-project-list-bg.gif) repeat-x; border:: 1px solid #dadcd1;}
-#projects-table th {min-width: 60px;}
-#projects-table tbody {overflow-y: auto; overflow-x: hidden; height: 435px;}
-.load_link {display: none;}
-.sort_icon, .table-th-black-arrow {display: none; padding-right:5px; background-image: url(../wbimages/down-arrow-black.gif);}
-.background-colored-cell, .row_even {background-color:#eeefe9;}
+.project-th {background: url(../images/table-th-project-list-bg.gif) repeat-x; border:: 1px solid #dadcd1;}
+
+.background-colored-cell {background-color:#eeefe9;}
 
 
 
@@ -128,6 +125,7 @@ td h1 {font-family: Georgia, Times, serif; font-size:13px; font-weight:100; line
 #commitment-amount-th {width: 65px; height: 30px;font-family:Arial, sans-serif; font-size:12px; font-weight:100; 
 color:#000; text-align:left; padding-left:18px; margin-top:10px; margin-left:-10px; float:left;}
 #commitment-arrow { width:11px; margin-top:11px;float:left;}
+.table-th-black-arrow {padding-right:5px;}
 /*.......................................................END NEW 9/23/2010.................................................................*/
 
 
@@ -137,7 +135,9 @@ color:#000; text-align:left; padding-left:18px; margin-top:10px; margin-left:-10
 /*Pagination Layer*/
 #page-scroll {width:960px; height:33px; float:left;margin-top:17px; margin-bottom:17px;}
 
-#pagination { display: none; width:958px; height:30px; border:1px solid #d9dcdc; position:relative}
+
+
+#pagination {width:958px; height:30px; border:1px solid #d9dcdc; position:relative}
 #pagination ul{float:left; list-style:none; margin: 0;padding:0;}
 #pagination ul li{float:left; border-left: 1px solid #eeeeee; margin-top: 7px;}
 #pagination ul li a{font-size:10px; color:#989a94; display:block; font-weight:100; text-decoration:none; margin:0;padding:4px 9px}
@@ -154,8 +154,8 @@ color:#000; text-align:left; padding-left:18px; margin-top:10px; margin-left:-10
 
 /*Grey Footer*/
 
-#footer-maps {margin: 0px 0px 20px; padding: 0px 0px 10px; width: 960px; height:55px; float:left; background: url(../wbimages/footer-grey-bg.gif) repeat-x}
-#footer-maps .footer-breadcrumb { background: url(../wbimages/footer-grey-bg.gif) repeat-x; margin: 22px 0px 0px 30px; float:left;}
+#footer-maps {margin: 0px 0px 20px; padding: 0px 0px 10px; width: 960px; height:55px; float:left; background: url(../images/footer-grey-bg.gif) repeat-x}
+#footer-maps .footer-breadcrumb { background: url(../images/footer-grey-bg.gif) repeat-x; margin: 22px 0px 0px 30px; float:left;}
 
 #footer-maps .footer-breadcrumb a , #footer .footer-breadcrumb a:visited,
 #footer-maps .footer-breadcrumb a.topic, #footer .footer-breadcrumb a.topic:visited
@@ -192,3 +192,6 @@ color:#000; text-align:left; padding-left:18px; margin-top:10px; margin-left:-10
 /*Pending */
 .chart {color: #883333; padding: 50px 50px;}
 
+.inactivepanel {opacity: 0.6;}
+
+.sort_icon {display: none;}

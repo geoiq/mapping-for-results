@@ -45,7 +45,7 @@ function setupDemo()
    $(demo).find('.simple-hover a').simpletip({ fixed: false });
    $(demo).find('.simple-hover-fixed a').simpletip();
    $(demo).find('.simple-click a').simpletip({ persistent: true, content: 'Click me to close!' });
-   $(demo).find('.simple-content a').simpletip({ persistent: true, content: '<img class="pngfix" src="/simpletip/wbimages/logo_small.png" />' });
+   $(demo).find('.simple-content a').simpletip({ persistent: true, content: '<img class="pngfix" src="/simpletip/images/logo_small.png" />' });
    
    //Positioning demos
    $(demo).find('.position-left a').simpletip({ fixed: true, position: 'left' });

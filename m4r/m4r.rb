@@ -97,8 +97,22 @@ LOCAL = {
   }
 }
 
-PLATFORM_API_URL = "http://wbstaging.geocommons.com"
-# PLATFORM_API_URL = "http://geoiq.local"
+SECTORS = {
+  :public => {:name => "Public administration Law, Justice"},
+  :agriculture => {:name => "Agriculture, fishing, forestry"},
+  :health => {:name => "Health, other Social"},
+  :communications => {:name => "Communications"},
+  :energy => {:name => "Energy, Mining"},
+  :finance => {:name => "Finance"},
+  :industry => {:name => "Industry, trade"},
+  :transporation => {:name => "Transportation"},
+  :water => {:name => "Water, Sanitation, flood protection"},
+  :education => {:name => "Education"}
+  }
+
+
+# PLATFORM_API_URL = "http://wbstaging.geocommons.com"
+PLATFORM_API_URL = "http://geoiq.local"
 MAPS = PLATFORM_API_URL =~ /geocommons/ ? WBSTAGING : LOCAL 
 
 require 'erb'
