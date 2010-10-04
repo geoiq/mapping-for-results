@@ -95,16 +95,12 @@
 /*.......................................................NEW 9/23/2010.................................................................*/
 
 /*PROJECT TABLE STYLING*/
-table {
-border-collapse: collapse;
-width:960px;
-font-family:Arial, sans-serif;
-font-size:12px;
-color:#000;
-}
-
-table,th,td
-{height:50px;padding-left:13px; margin-top:6px;}
+table {border-collapse: collapse;width:960px;font-family:Arial, sans-serif;font-size:12px;color:#000;}
+table {height: 400px;overflow-y: scroll; overflow-x: hidden;}
+#projects-table {height: 400px;overflow-x:hidden;overflow-y:auto;}
+#project-search-box {display: none;}
+table, th,td {padding-left:13px; margin-top:6px;}
+th,td {height:50px}
 
 table, th {
 background:url(../images/table-th-bg.gif) repeat-x;font-family:Arial, sans-serif; font-size:12px; font-weight:100; color:#000; padding-left:13px;}
@@ -116,7 +112,7 @@ td h1 {font-family: Georgia, Times, serif; font-size:13px; font-weight:100; line
 
 .project-th {background: url(../images/table-th-project-list-bg.gif) repeat-x; border:: 1px solid #dadcd1;}
 
-.background-colored-cell {background-color:#eeefe9;}
+.background-colored-cell, .row_even {background-color:#eeefe9;}
 
 
 
@@ -193,5 +189,4 @@ color:#000; text-align:left; padding-left:18px; margin-top:10px; margin-left:-10
 .chart {color: #883333; padding: 50px 50px;}
 
 .inactivepanel {opacity: 0.6;}
-
 .sort_icon {display: none;}

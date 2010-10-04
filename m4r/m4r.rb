@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'sinatra'
 
+PLATFORM_API_URL = "http://wbstaging.geocommons.com"
+# PLATFORM_API_URL = "http://geoiq.local"
 SUBDOMAIN = ""
 # MAPS = {
 #   :world => {:name => "World", :map => 1, :projects => nil, :region => nil},
@@ -46,7 +48,7 @@ WBSTAGING = {
       :name => "Latin America and Caribbean",
       :zoom => 3, :lat => -25, :lon => -57.8,
       :countries => {
-        :haiti => {:name => "Haiti", :map => 49, :projects => 108, :region => "Latin America and Caribbean"},
+        :haiti => {:name => "Haiti", :map => 114, :projects => 108, :region => "Latin America and Caribbean"},
         :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"}
       }
       }      
@@ -111,8 +113,6 @@ SECTORS = {
   }
 
 
-PLATFORM_API_URL = "http://wbstaging.geocommons.com"
-# PLATFORM_API_URL = "http://geoiq.local"
 MAPS = PLATFORM_API_URL =~ /geocommons/ ? WBSTAGING : LOCAL 
 
 require 'erb'
@@ -122,10 +122,18 @@ get '/' do
   erb :index
 end
 
+get '/about' do 
+  erb :about
+end
+
 get '/:region/:country' do
   @region = MAPS[:world][:regions][params[:region].to_sym]
-  @country = @region[:countries][params[:country].to_sym]
-  erb :index
+  if(@region.nil?)
+    erb :about
+  else
+    @country = @region[:countries][params[:country].to_sym]
+    erb :index
+  end
 end
 
 helpers do

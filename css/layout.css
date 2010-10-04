@@ -537,3 +537,26 @@ margin-bottom:10px;
 	
 .dropmenu li li a:hover, .worldmenu li li a:hover {
 	background-color: #d9dccf; }
+	
+	
+#body-content {
+    color:#333333;
+    float:left;
+    font-size:1em;
+    line-height:1.5em;
+    padding:20px 10px 3em;
+    width:506px;    
+}
+#sidebar-left {
+    float:left;
+    margin:0;
+    padding:0;
+    width:120px;
+}
+#sidebar-right {
+    padding:0 0 10px 0;
+    width:300px;
+    float:left;
+    margin:0;
+    padding:0;
+}

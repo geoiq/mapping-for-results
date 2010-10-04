@@ -19,7 +19,7 @@
           <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
             <li class="first"><a href="#" id="indicator" onclick="wb.setIndicator(); return false">INDICATORS</a>
               <ul>
-                <% ["Population", "Extreme Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"].each do |indicator| %>
+                <% ["Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"].each do |indicator| %>
                 <li><a href="#" onclick="wb.setIndicator('<%= indicator %>'); return false"><%= indicator %></a></li>
                 <% end %>
               </ul>
@@ -29,7 +29,6 @@
           <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
             <li class="first"><a href="#" onclick="wb.toggleSector(); return false">PROJECTS</a>
               <ul>
-                <li><a href="#">Number by Department</a></li>
                 <li><a href="#">Number by Commune</a></li>
                 <li><a href="#" onclick="wb.toggleSector('all'); return false">All Projects</a></li>
               </ul>

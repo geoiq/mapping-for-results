@@ -5,7 +5,7 @@
 
   <link href="http://wbstaging.geocommons.com/feed" title="Mapping for Results Whats New | World Bank" type="application/rss+xml" rel="alternate">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
-  <link rel="shortcut icon" href="http://wbstaging.geocommons.com/sites/default/files/climatechange_favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="http://wbstaging.geocommons.com/favicon.png" type="image/x-icon">
   
   <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css">
   <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css">
@@ -99,9 +99,9 @@ var jq = jQuery.noConflict();
 
         <div id="container">
       <div id="banner">
-        <h1 id="banner-header">
+        <h1 id="banner-header" title="Click to hide the overview information">
           <div class="collapsible-header expanded" content_id="collapsible-banner" >
-            <div class="banner-open-image"></div>
+            <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>
         </h1>
         
@@ -112,12 +112,12 @@ var jq = jQuery.noConflict();
                 <div class="overview-links">
                   <p>Overview »</p>
                   <ul>
-                    <li><a href="#context">Context</a></li>
-                    <li><a href="#strategy">Strategy</a></li>
-                    <li><a href="#results">Results</a></li>
+                    <li><a href="/about#context">Context</a></li>
+                    <li><a href="/about#strategy">Strategy</a></li>
+                    <li><a href="/about#results">Feedback</a></li>
                   </ul>
                 </div>
-                <div class="overview-text"><strong>The Mapping for Results Beta</strong> initiative provides detailed information on our efforts to reduce poverty and alleviate human suffering in every part of the world. This website showcases information on the what and where by accessing the indicator, sector, region, and funding dropdown and toggle areas. <a class="readmore" href="#">Read More »</a></div>
+                <div class="overview-text"><strong>The Mapping for Results Beta</strong> initiative provides detailed information on our efforts to reduce poverty and alleviate human suffering in every part of the world. This website showcases information on the what and where by accessing the indicator, sector, region, and funding dropdown and toggle areas. <a class="readmore" href="/about">Read More »</a></div>
               </div>
             </div>
           </div>
@@ -126,21 +126,21 @@ var jq = jQuery.noConflict();
 
     <script type="text/javascript" charset="utf-8">
 var proxy_host = "http://wbstaging.geocommons.com";    
-var project_attributes = ["project title", "project id", "activity count", "financing", "major sector", "approval date"];
+var project_attributes = ["project title", "project id", "activity count", "financing", "sector1", "approval date"];
 var worldbank_sectors = ["agriculture","communication","energy","education","finance","health","industry","public","transportation","water"];
 
 var sector_icons =  {"EP":"http://wbstaging.geocommons.com/images/icons/worldbank/education-on.png","AZ":"http://wbstaging.geocommons.com/images/icons/worldbank/agriculture-on.png","JB":"http://wbstaging.geocommons.com/images/icons/worldbank/health-on.png","BC":"http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png","TA":"http://wbstaging.geocommons.com/images/icons/worldbank/transportation-on.png","LE":"http://wbstaging.geocommons.com/images/icons/worldbank/energy-on.png","TZ":"http://wbstaging.geocommons.com/images/icons/worldbank/transportation-on.png","LD":"http://wbstaging.geocommons.com/images/icons/worldbank/energy-on.png", "WC":"http://wbstaging.geocommons.com/images/icons/worldbank/water-on.png","WZ":"http://wbstaging.geocommons.com/images/icons/worldbank/water-on.png","BL":"http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png","BU":"http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png","AB":"http://wbstaging.geocommons.com/images/icons/worldbank/agriculture-on.png","FD":"http://wbstaging.geocommons.com/images/icons/worldbank/finance-on.png","ET":"http://wbstaging.geocommons.com/images/icons/worldbank/education-on.png"};
 
 var sector_codes = {"education":["EP","ET"],"communications": [],"finance":["FD"], "agriculture": ["AB","AZ"], "health": ["JB"], "public": ["BU","GC","BL"], "transportation": ["TA","TZ"], "water": ["WC","WZ"], "energy":["LE","LD"], "industry": [] };
 
-var project_sectors = {"General agriculture":"agriculture", "Agricultural extension and research":"agriculture", "fishing and forestry sector":"agriculture", 
-  "Central government administration":"public","Public administration- Energy and mining": "public", "Public administration- Agriculture, fishing and forestry": "public", 
-  "Primary education":"education", "Tertiary education": "education",
-  "Other social services":"health",
-  "Water supply":"water",
-  "General transportation sector":"transportation","Roads and highways":"transportation", 
-  "Renewable energy":"energy",  "Power": "energy", 
-  "Non-compulsory pensions, insurance and contractual savings":"finance",
+var project_sectors = {"Agriculture, Fishing, and Forestry": "agriculture", "General agriculture":"agriculture", "Agricultural extension and research":"agriculture", "fishing and forestry sector":"agriculture", 
+  "Public Administration, Law, and Justice":"public","Central government administration":"public","Public administration- Energy and mining": "public", "Public administration- Agriculture, fishing and forestry": "public", 
+  "Education":"education", "Primary education":"education", "Tertiary education": "education",
+  "Health and Other Social Services":"health","Other social services":"health",
+  "Water, Sanitation, and Flood Protection":"water","Water supply":"water",
+  "Transportation":"transportation","General transportation sector":"transportation","Roads and highways":"transportation", 
+  "Energy and Mining":"energy","Renewable energy":"energy",  "Power": "energy", 
+  "Finance":"finance","Non-compulsory pensions, insurance and contractual savings":"finance",
   "Default":"public"};
 
 // , "General agriculture, fishing and forestry sector":"agriculture"
@@ -180,11 +180,11 @@ if(typeof(F1)=='undefined') {F1 = {}}
   }
 
   F1.WorldBank.indicators = {
-		"Extreme Poverty": {source: "finder:", title:"Poverty", subtitle: "1998 Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [0xFEF7A5, 0xFECE6D, 0xEC8414, 0xAE4C02, 0x662506], categories: 5, classificationType: "St Dev", opacity: 0.55, selectedAttribute: "Height_for" }}},
-		"Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5 (DHS 1998)", styles: { type: "CHOROPLETH", fill: { colors: [0x4A342C, 0x7C6253, 0xA4866D, 0xD1B79F, 0xEBD9C2], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Weight_for" }}},
-		"Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births (DHS 1998)", styles: { type: "CHOROPLETH", fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Infant_mor"}}},
-    "Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total (DHS 1998)", styles: { type: "CHOROPLETH",fill: { colors: [0x511483, 0x835BA4, 0xC090BD, 0xE3BBC2, 0xFCE3D7], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Total_Skil"}}},
-    "Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "pop"}}}
+    "Poverty": {source: "finder:", title:"Poverty", subtitle: "Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [0xFEF7A5, 0xFECE6D, 0xEC8414, 0xAE4C02, 0x662506], categories: 5, classificationType: "St Dev", opacity: 0.55, selectedAttribute: "Height_for" }}},
+    "Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0x4A342C, 0x7C6253, 0xA4866D, 0xD1B79F, 0xEBD9C2], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "WFAB2SD" }}},
+    "Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "IM1q0"}}},  
+    "Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0x511483, 0x835BA4, 0xC090BD, 0xE3BBC2, 0xFCE3D7], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "DBHP"}}},
+    "Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}}
 	},
   F1.WorldBank.prototype = {
     init: function(map_id) {
@@ -197,7 +197,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.total_funding = 0;
       this.stylelayers = {};
       this.initialized = false;
-      this.highlightedProjects = null;
       
       for(var i=0;i< worldbank_sectors.length;i++) {
         this.sectors[worldbank_sectors[i]] = {funding: 0, projects: [], activities: 0, sector: worldbank_sectors[i]};
@@ -239,11 +238,9 @@ if(typeof(F1)=='undefined') {F1 = {}}
     complexSectorExpression: function(sectors, sector_attribute) {
       var expression = "";
       if(sector_attribute == null)
-        sector_attribute = "sector 1 code";
+        sector_attribute = "sector1code";
         
-      console.log("complex: " + sectors);
       for(var s=0;s<sectors.length; s++) {        
-        console.log("First loop: " + sector_codes[sectors[s]]);
         for(var sc=0;sc<sector_codes[sectors[s]].length; sc++) {
           expression += "$["+sector_attribute+"] == '" + sector_codes[sectors[s]][sc] + "'";
           if(sc != sector_codes[sectors[s]].length-1)
@@ -256,11 +253,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },
     highlighProject: function(project_id) {
       var highlightExpression = "$[project id] == '"+project_id+"'";
-      if(this.highlightedProject != null) {
-        this.map.swf.removeFilter(this.stylelayers["Project Locations"].order, {expression: "$[project id] == '"+this.highlightedProject+"'"});
-      }
-      this.highlightedProject = project_id;
-      this.map.swf.addFilter(this.stylelayers["Project Locations"].order, {expression: highlightExpression});
+      this.map.swf.clearHighlights(this.stylelayers["Project Locations"].order);
+      this.map.swf.addHighlight(this.stylelayers["Project Locations"].order, highlightExpression);
     },
     toggleSector: function(sector,visible) {
       var self = this;
@@ -268,7 +262,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
       if(visible == null){
         visible = !(jq("#sectorcontrol_" + sector).hasClass('active'));
       }
-      console.log("toggle: " + sector + " -- visible: " + visible);
       if(sector == 'all') {
         self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
         self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
@@ -285,7 +278,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
         jq("#sectorcontrol_" + sector).removeClass("active");
         self.map.swf.removeFilter(self.stylelayers["Project Locations"].order, 
             {expression: self.complexSectorExpression(self.visibleSectors)});
-          console.log("Removing: " + self.complexSectorExpression(self.visibleSectors));
         self.visibleSectors = jQuery.grep(self.visibleSectors, function(value) {
           return value != sector;
         });
@@ -299,17 +291,17 @@ if(typeof(F1)=='undefined') {F1 = {}}
     setIndicator: function(indicator,visible) {
       var self = this;
       if(indicator == null) {
-        jq('#indicator').html("IndicatorS");
-        self.map.showLayer(self.stylelayers["Indicators"].order, "false");
+        jq('#indicator').html("Indicators");
+        self.map.showLayer(self.stylelayers[indicator].order, "false");
       }
       else {
         jq('#indicator').html(indicator);
-        self.map.showLayer(self.stylelayers["Indicators"].order, "true");
+        self.map.showLayer(self.stylelayers[indicator].order, "true");
         var style = F1.WorldBank.indicators[indicator].styles;
-        style.source = self.stylelayers["Indicators"];
-        self.map.setLayerStyle(self.stylelayers["Indicators"].order, style);
-        self.map.setLayeTitle(self.stylelayers["Indicators"].order, F1.WorldBank.indicators[indicator].title);
-        self.map.setLayeSubtitle(self.stylelayers["Indicators"].order, F1.WorldBank.indicators[indicator].subtitle);
+        style.source = self.stylelayers[indicator];
+        self.map.setLayerStyle(self.stylelayers[indicator].order, style);
+        self.map.setLayeTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].title);
+        self.map.setLayeSubtitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].subtitle);
       }
     },
 
@@ -326,25 +318,25 @@ if(typeof(F1)=='undefined') {F1 = {}}
               if(project_attributes[i] != "activity count")
                 project[project_attributes[i]] = attr[project_attributes[i]];
             }
-            project["financing amount"] = attr["financing amount"];
-            project["financing"] = "$" + attr["financing amount"] + " million";
+            project["financing amount"] = attr["total amt"];
+            project["financing"] = "$" + attr["total amt"] + " million";
             project["activity count"] = 0;
             self.projects[attr["project id"]] = project
             
             // Add to sector funding and project count
-            var sector = project["major sector"];
+            var sector = project["sector1"];
             var wb_sector = project_sectors[sector];
 
             if(wb_sector == null)
               wb_sector = project_sectors["Default"];
               
-            self.sectors[wb_sector].funding += attr["financing amount"];
+            self.sectors[wb_sector].funding += attr["total amt"];
             self.sectors[wb_sector].projects.push(project);
             self.total_funding += self.sectors[wb_sector].funding;
           }
           self.projects[attr["project id"]]["activity count"] += 1;
           
-          var wb_sector = project_sectors[self.projects[attr["project id"]]["major sector"]];
+          var wb_sector = project_sectors[self.projects[attr["project id"]]["sector1"]];
           if(wb_sector == null)
             wb_sector = project_sectors["Default"];
 
@@ -360,7 +352,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       data.attributes["financing"] = {original_name: "financing", name: "Financing"}
       data.features = this.projects;
 
-      F1.Visualizer.charts.grid(500, 930, data, "projects-table", project_attributes);
+      F1.Visualizer.charts.grid(400, 960, data, "projects-table", project_attributes);
     },
     sectorPieChart: function(sector_name) {
       var self = this;
@@ -379,7 +371,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
         // funding = self.sectors[sector_name].funding;
         for(var sn=0;sn<self.visibleSectors.length;sn++) {
           if(self.sectors[self.visibleSectors[sn]] != null) {
-            console.log(self.sectors[self.visibleSectors[sn]].projects);
+            //console.log(self.sectors[self.visibleSectors[sn]].projects);
             projects.push(self.sectors[self.visibleSectors[sn]].projects);
             funding += self.sectors[self.visibleSectors[sn]].funding;
             if(sn != 0){
@@ -392,7 +384,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
         projects = projects.flatten();
       }
       
-      ////console.log(self.sectors[sector_name].projects);
+      //////console.log(self.sectors[sector_name].projects);
       if(projects.length == 0){
         jq('#chart-left-pie-chart').hide();
         jq('#sector_funding_total').html("There are no projects in this sector.");
@@ -402,55 +394,75 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq('#sector_funding_title').html("Project Funding for " + sector_names + " Projects <a href='#footnote' title='(as of June 30,2010)'>[1]</a>")
       jq('#sector_funding_total').html(funding.toFixed(1) + " Million");
       
-      console.log("Projects in Pie: " + projects)
-      var links = jq.map(projects, function (project) { return "javascript:wb.highlighProject('" + project["project id"] + "');";  });
-      console.log(links);
+      var links = jq.map(projects, function (project) { 
+          return "javascript:wb.highlighProject('" + project["project id"] + "');";  
+        });
       
       pie_options = {"features":projects, 
           "attributes": {"data":{"name": "Funding","original_name": "financing amount"},
           "description":{"name": "Project","original_name": "project id"}, 
           "sort":{"name": "Funding","original_name": "financing amount"} } };
       jq('#chart-left-pie-chart').show();
-      console.log(projects.length);
-      F1.Visualizer.charts.pie(180, 505, pie_options, "chart-left-pie-chart", {href: links }
-        );
+
+      F1.Visualizer.charts.pie(180, 505, pie_options, "chart-left-pie-chart", {href: links });
     },
     sectorFundingBars: function() {
       var self = this;
       var s;
       var features = [];
-      for(s in self.sectors) { features.push(self.sectors[s]); }
-      // ////console.log(features)
+      var links = [];
+
+      for(s in self.sectors) { 
+        features.push(self.sectors[s]);
+        links.push( self.sectors[s]["sector"] );
+      }
+
       jq('#funding_total').html(self.total_funding.toFixed(1) + " Million");
+      
       bar_options = {"features":features, "attributes": {
-            "data":{"name": "Funding", "original_name": "funding"}, 
-            "description":{"name": "Sector", "original_name": "sector"}, 
-            "sort":{"name": "Activities","original_name": "activities"} } };
-      F1.Visualizer.charts.bar(180, 455, bar_options, "chart-right-graph");
+            "data":{"name": "Financing", "original_name": "funding"}, 
+            "description":{"name": "Sector", "original_name": "sector1"}, 
+            "sort":{"name": "Total Amount","original_name": "funding"} } };
+      F1.Visualizer.charts.bar(180, 455, bar_options, "chart-right-graph", {href: links, label: function() {
+        return links[this.bar.index];
+      }, onclick: function() {
+          wb.toggleSector(links[this.bar.index]);
+         }});
     },
     getLayers: function(map) {
       var self = this;
-      var findlayers = ["Project Locations", "Indicators", "Population"];
+      var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"];
       var possibleLayers = map.getLayers();
-      var j;
+      var j,f;
       var index;
-      for(j in possibleLayers) {
-        index = Object.include(findlayers, possibleLayers[j].title);
-        if(index != null){
-          self.stylelayers[findlayers[index]] = {order: possibleLayers[j].order, source: possibleLayers[j].source};
-        }
+      var found;
+      for(f=0; f<findlayers.length; f++) {
+        for(j in possibleLayers) {
+          //index = Object.include(findlayers, possibleLayers[j].title);
+          if(findlayers[f] == possibleLayers[j].title){
+            self.stylelayers[findlayers[f]] = {order: possibleLayers[j].order, source: possibleLayers[j].source};
+            break;
+          } else {
+            self.stylelayers[findlayers[f]] = {order: possibleLayers[j].order, source: self.stylelayers["Indicators"].source};          
+          }
+         }
        }
        jq('#download_data').attr('href','http://wbstaging.geocommons.com/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
        return false;
     },
     styleMap: function(map) {
       var self = this;
-      // Apply a filter to hide all sectors
-      //self.hideSectors();
       
-      map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector 1 code",categories:sector_icons});
-      map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[major sector] Sector", tabs:[{title: "About", type: "text", value:"Financing: $ $[financing amount] million"}, {title: "Financing", type: "table", value: "$[project id]$[financing amount]$[activity count]$[administrative 1]$[administrative 2]$[region]$[approval date]$[sector 1 code]"}]});
-          
+      // icons
+      map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector1code",categories:sector_icons});
+      // infowindow
+      map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "About", type: "text", value:"Total Disbursement: $ $[total disb] million\nTotal Financing: $ $[total amt] million"}, {title: "Financing", type: "table", value: "$[project id]$[total disb]$[activity count]$[adm1]$[adm2]$[region]$[approval date]$[sector1]$[sector2]$[sector3]$[sector1code]"}]});
+      
+      // just health sector
+      wb.toggleSector("health");
+      map.swf.showLayer(self.stylelayers["Project Locations"].order, true);
+      
+      // legend
       map.swf.setStyle( { 
         legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", 
                   buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:40,y:103}}
@@ -463,7 +475,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.getLayers(map);
       self.styleMap(map);
       F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""), function(data) {
-          //console.log("loaded");
           self.sortData(data);
           self.projectTable(data);
           self.sectorFundingBars();
@@ -473,8 +484,16 @@ if(typeof(F1)=='undefined') {F1 = {}}
   }
 })();  // preserving the global namespace
 
+jq("#banner-header").click(function () {
+      jq("#collapsible-banner").hide("blind", { direction: "vertical" }, 2000);
+});
+jq(".banner-open-image").click(function() {
+      jq("#collapsible-banner").show("blind", { direction: "vertical" }, 2000);
+  
+})
+
 var wb = new F1.WorldBank();
-wb.init(49);
+wb.init(114);
 
 function initializeWorldBank(wb_project) { wb_project.drawCharts(wb_project.map)}
 </script>
@@ -509,17 +528,17 @@ function initializeWorldBank(wb_project) { wb_project.drawCharts(wb_project.map)
       
   <script type="text/javascript">
   jq(function() {
-        jq('#sector1').tipsy({gravity:  jq.fn.tipsy.autoNS});
-        jq('#sector2').tipsy({gravity:  jq.fn.tipsy.autoNS});
-        jq('#sector3').tipsy({gravity:  jq.fn.tipsy.autoNS});
-        jq('#sector4').tipsy({gravity:  jq.fn.tipsy.autoNS});
-        jq('#sector5').tipsy({gravity:  jq.fn.tipsy.autoNS});
-        jq('#sector6').tipsy({gravity:  jq.fn.tipsy.autoNS});
-        jq('#sector7').tipsy({gravity:  jq.fn.tipsy.autoNS});
-        jq('#sector8').tipsy({gravity:  jq.fn.tipsy.autoNS});
-        jq('#sector9').tipsy({gravity:  jq.fn.tipsy.autoNS});
-        jq('#sector10').tipsy({gravity: jq.fn.tipsy.autoNS});
-        jq('#sector11').tipsy({gravity: jq.fn.tipsy.autoNS});
+        jq('.s1').tipsy({gravity:  jq.fn.tipsy.autoNS});
+        jq('.s2').tipsy({gravity:  jq.fn.tipsy.autoNS});
+        jq('.s3').tipsy({gravity:  jq.fn.tipsy.autoNS});
+        jq('.s4').tipsy({gravity:  jq.fn.tipsy.autoNS});
+        jq('.s5').tipsy({gravity:  jq.fn.tipsy.autoNS});
+        jq('.s6').tipsy({gravity:  jq.fn.tipsy.autoNS});
+        jq('.s7').tipsy({gravity:  jq.fn.tipsy.autoNS});
+        jq('.s8').tipsy({gravity:  jq.fn.tipsy.autoNS});
+        jq('.s9').tipsy({gravity:  jq.fn.tipsy.autoNS});
+        jq('.s10').tipsy({gravity: jq.fn.tipsy.autoNS});
+        jq('.s11').tipsy({gravity: jq.fn.tipsy.autoNS});
   });
   </script>
 
@@ -553,8 +572,8 @@ function initializeWorldBank(wb_project) { wb_project.drawCharts(wb_project.map)
           <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
         </div>
         <div class="console-info">
-          <p>active projects</p>
-          <p>project locations mapped</p>
+          <p title="Active projects as of June 30, 2010">active projects</p>
+          <p title="Project locations as of June 30, 2010">project locations mapped</p>
         </div>    
                 <div id="layerinfo">
           <ul>
@@ -571,19 +590,19 @@ function initializeWorldBank(wb_project) { wb_project.drawCharts(wb_project.map)
                   
                 
                   
+                
+                  
                   <li><a href="/afr/kenya">Kenya</a></li>
                   
                 
                   
-                  <li><a href="/lac/haiti">Haiti</a></li>
-                  
                   <li><a href="/lac/bolivia">Bolivia</a></li>
+                  
+                  <li><a href="/lac/haiti">Haiti</a></li>
                   
                 
                   
                   <li><a href="/eap/phillipines">Phillipines</a></li>
-                  
-                
                   
                 
               </ul>
@@ -596,7 +615,7 @@ function initializeWorldBank(wb_project) { wb_project.drawCharts(wb_project.map)
                 
                 <li><a href="#" onclick="wb.setIndicator('Population'); return false">Population</a></li>
                 
-                <li><a href="#" onclick="wb.setIndicator('Extreme Poverty'); return false">Extreme Poverty</a></li>
+                <li><a href="#" onclick="wb.setIndicator('Poverty'); return false">Poverty</a></li>
                 
                 <li><a href="#" onclick="wb.setIndicator('Infant Mortality'); return false">Infant Mortality</a></li>
                 
@@ -611,7 +630,6 @@ function initializeWorldBank(wb_project) { wb_project.drawCharts(wb_project.map)
           <ul class="dropmenu ">
             <li class="first"><a href="#" onclick="wb.toggleSector(); return false">PROJECTS</a>
               <ul>
-                <li><a href="#">Number by Department</a></li>
                 <li><a href="#">Number by Commune</a></li>
                 <li><a href="#" onclick="wb.toggleSector('all'); return false">All Projects</a></li>
               </ul>
@@ -666,20 +684,7 @@ function initializeWorldBank(wb_project) { wb_project.drawCharts(wb_project.map)
     <div id="projects-table" style="width:960px; float:left">
     </div>
     <!--Data Table Ends-->
-    <div id="page-scroll">
-      <div id="pagination">
-        <ul>
-          <li class="previous"><a href="#">&lt;&lt; PREVIOUS</a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">NEXT &gt;&gt;</a></li>
-          <li class="fulllist"><a href="#">FULL LIST</a></li>
-        </ul>
-      </div>
-    </div>
+    
 
 
         <div id="footnote">Current projects as of June 30, 2010.</div>
