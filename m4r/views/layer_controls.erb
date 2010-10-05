@@ -7,10 +7,16 @@
           <ul class="dropmenu">
             <li class="first"><a href="">LOCATIONS</a>
               <ul>
+                <% if @country[:name] == "World" %>
                 <% MAPS[:world][:regions].each do |region, region_attr| %>
                   <% region_attr[:countries].each do |country, country_attr| %>
                   <li><a href="/<%= region %>/<%= country %>"><%= country_attr[:name] %></a></li>
                   <% end %>
+                <% end  %>
+                <% elsif(@country.keys.include?(:adm1)) %>
+                <% @country[:adm1].each do |adm_attr| %>
+                  <li><a href="javascript:wb.setLocation('<%= adm_attr[:name] %>',<%= adm_attr[:lat] %>,<%= adm_attr[:lon] %>,<%= adm_attr[:zoom] %>)"><%= adm_attr[:name] %></a></li>                
+                <% end %>
                 <% end %>
               </ul>
             </li>
@@ -29,17 +35,18 @@
           <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
             <li class="first"><a href="#" onclick="wb.toggleSector(); return false">PROJECTS</a>
               <ul>
-                <li><a href="#">Number by Commune</a></li>
-                <li><a href="#" onclick="wb.toggleSector('all'); return false">All Projects</a></li>
+                <li><a href="" onclick="wb.toggleSector('counts', true); return false">Number by Region</a></li>
+                <li><a href="" onclick="wb.toggleSector('all', true); return false">All Projects</a></li>
+                <li><a href="" onclick="wb.toggleSector('all',false);wb.toggleSector('counts',false); return false">No Projects</a></li>
               </ul>
             </li>
           </ul>
           <!-- ... and so on ... -->
-          <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
+          <ul class="dropmenu inactive">
             <li><a href="">RESULTS</a>
               <ul>
-                <li><a href="#">Country Profile</a></li>
-                <li><a href="#">Project Profile</a></li>
+                <li><a href="">Country Profile</a></li>
+                <li><a href="">Project Profile</a></li>
               </ul>
             </li>
             <!-- ... and so on ... -->

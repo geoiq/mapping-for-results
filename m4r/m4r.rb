@@ -19,14 +19,14 @@ WBSTAGING = {
       :name => "Africa",
       :zoom => 3, :lat => -4, :lon => 21,
       :countries => {
-        :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"}
+        :kenya => {:name => "Kenya", :map => 255, :projects => nil, :region => "Africa"}
       }
     },
       :eap => {
         :name => "East Asia and Pacific",
         :zoom => 4, :lat => 19, :lon => 105.5,
         :countries => {
-          :phillipines => {:name => "Phillipines", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
+          :phillipines => {:name => "Phillipines", :map => 263, :projects => nil, :region => "East Asia and Pacific"}
         }
     },
       :eca => {
@@ -48,8 +48,19 @@ WBSTAGING = {
       :name => "Latin America and Caribbean",
       :zoom => 3, :lat => -25, :lon => -57.8,
       :countries => {
-        :haiti => {:name => "Haiti", :map => 114, :projects => 108, :region => "Latin America and Caribbean"},
-        :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"}
+        :haiti => {:name => "Haiti", :map => 114, :projects => 108, :region => "Latin America and Caribbean", :adm1  => 
+          [{ :name => "Grand-Anse", :zoom => 11, :lat => 18.53, :lon => -74.13},
+            {:name => "Sud", :zoom => 10, :lat => 18.272, :lon => -73.72},
+            {:name => "Nippes", :zoom => 10, :lat => 18.45, :lon => -73.313},
+            {:name => "Sud-Est", :zoom => 10, :lat => 18.277, :lon => -72.369},
+            {:name => "Ouest", :zoom => 10, :lat => 18.45, :lon => -72.266},
+            {:name => "Centre", :zoom => 10, :lat => 18.98, :lon => -71.95},
+            {:name => "Artibonite", :zoom => 11, :lat => 18.16, :lon => -72.53},
+            {:name => "Nord-Est", :zoom => 11, :lat => 18.455, :lon => -71.9},
+            {:name => "Nord", :zoom => 11, :lat => 19.577, :lon => -72.29},
+            {:name => "Nord-Ouest", :zoom => 11, :lat => 19.65, :lon => -72.86},
+            ]},
+        :bolivia => {:name => "Bolivia", :map => 262, :projects => nil, :region => "Latin America and Caribbean"}
       }
       }      
     }
@@ -91,7 +102,18 @@ LOCAL = {
       :name => "Latin America and Caribbean",
       :zoom => 3, :lat => -25, :lon => -57.8,
       :countries => {
-        :haiti => {:name => "Haiti", :map => 124, :projects => 1591, :region => "Latin America and Caribbean"},
+        :haiti => {:name => "Haiti", :map => 124, :projects => 1591, :region => "Latin America and Caribbean", :adm1  => 
+          [{ :name => "Grand-Anse", :zoom => 11, :lat => 18.53, :lon => -74.13},
+            {:name => "Sud", :zoom => 10, :lat => 18.28, :lon => -74.74},
+            {:name => "Nippes", :zoom => 10, :lat => 18.41, :lon => -74.434},
+            {:name => "Sud-Est", :zoom => 10, :lat => 18.277, :lon => -72.369},
+            {:name => "Ouest", :zoom => 10, :lat => 18.45, :lon => -72.266},
+            {:name => "Centre", :zoom => 10, :lat => 18.98, :lon => -71.95},
+            {:name => "Artibonite", :zoom => 11, :lat => 18.16, :lon => -72.53},
+            {:name => "Nord-Est", :zoom => 11, :lat => 18.455, :lon => -71.9},
+            {:name => "Nord", :zoom => 11, :lat => 19.577, :lon => -72.29},
+            {:name => "Nord-Ouest", :zoom => 11, :lat => 19.65, :lon => -72.86},
+            ]},
         :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"}
       }
       }      

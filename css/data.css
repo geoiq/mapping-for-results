@@ -3,7 +3,7 @@ h4.data {color: #6d6d6d; margin: 10px 0px 0px;}
 .data-middle-image {float: left; width: 510px;}
 .data-middle-desc {float: right; width: 275px; margin-left: 20px;}
 .data-middle-desc p {color: #3f3f3f; line-height: 1.5em;}
-.toplevel {background: #fff url(background-images/fauxcol-filler-toplevel-data.gif) repeat-y 50% ;_z-index: -1;}
+.toplevel {background: #fff url(../images/background-images/fauxcol-filler-toplevel-data.gif) repeat-y 50% ;_z-index: -1;}
 
 #wb_vis_container {font-family: Georgia; padding: 5px 10px;}	
 
