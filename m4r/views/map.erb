@@ -56,6 +56,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.total_funding = 0;
       this.stylelayers = {};
       this.initialized = false;
+      this.current_indicator = "Poverty";
       
       this.wbsectors = ["agriculture","public","education","health","water","transportation","energy","finance"]
       this.sectors = {
@@ -118,7 +119,10 @@ if(typeof(F1)=='undefined') {F1 = {}}
       
       console.log("toggleSector = " + sector + " - " + visible);
       
-      if(sector == 'all') {
+      if(sector == "none") {
+        self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
+        self.map.showLayer(self.stylelayers["Project Counts"].order, visible);        
+      } else if(sector == 'all') {
         if(visible) {
           jq.each(self.sectors, function(sector) {
             if(!Object.include(self.visibleSectors, sector))
@@ -173,9 +177,9 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq.each(sectorcontrols, function(sc) {
           console.log(sectorcontrols[sc].attr("sector-name"));
           if(Object.include(self.visibleSectors, sectorcontrols[sc])) {
-            jq("#sectorcontrol_" + wb.visibleSectors[sectorcontrols[sc].attr("sector-name")]).removeClass('inactive').addClass('active');
+            jq("#sectorcontrol_" + wb.visibleSectors[jq("#"+sectorcontrols[sc].id).attr("sector-name")]).removeClass('inactive').addClass('active');
           } else {
-            jq("#sectorcontrol_" + wb.visibleSectors[sectorcontrols[sc].attr("sector-name")]).removeClass('active').addClass('inactive');            
+            jq("#sectorcontrol_" + wb.visibleSectors[jq("#"+sectorcontrols[sc].id).attr("sector-name")]).removeClass('active').addClass('inactive');            
           }
           
       });
@@ -201,19 +205,24 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },    
     setIndicator: function(indicator,visible) {
       var self = this;
+      self.map.showLayer(self.stylelayers[self.current_indicator].order, false);
       if(indicator == null) {
         jq('#indicator').html("Indicators");
-        self.map.showLayer(self.stylelayers[indicator].order, "false");
+        self.map.showLayer(self.stylelayers[indicator].order, false);
       }
       else {
         jq('#indicator').html(indicator);
-        self.map.showLayer(self.stylelayers[indicator].order, "true");
+        
         var style = F1.WorldBank.indicators[indicator].styles;
         style.source = self.stylelayers[indicator];
         self.map.setLayerStyle(self.stylelayers[indicator].order, style);
-        self.map.setLayeTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].title);
-        self.map.setLayeSubtitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].subtitle);
+
+        // self.map.setLayerTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].title);
+        // self.map.setLayerSubtitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].subtitle);
+        self.map.showLayer(self.stylelayers[indicator].order, true);
       }
+      self.current_indicator = indicator;
+      
     },
 
     sortData: function(data) {
@@ -385,8 +394,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq.each(self.sectors, function(sector) {
         icons[self.sectors[sector].name] = self.sectors[sector].icon;
       });
-      
-      
+            
       // icons
       map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector1",categories:icons});
       
@@ -394,7 +402,9 @@ if(typeof(F1)=='undefined') {F1 = {}}
       map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "About", type: "text", value:"Total Financing: $ $[total amt] million"}, {title: "Financing", type: "table", value: "$[project id]$[total disb]$[activity count]$[adm1]$[adm2]$[region]$[approval date]$[sector1]$[sector2]$[sector3]"}]});
         
       // legend
-      map.swf.setStyle( { legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:20,y:90}}});
+      map.swf.setStyle( { legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:95}}});
+
+      wb.setIndicator("Poverty");
       
     },
     drawCharts: function(map) {

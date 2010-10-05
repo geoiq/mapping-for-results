@@ -33,11 +33,11 @@
           </ul>
           <!-- ... and so on ... -->
           <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
-            <li class="first"><a href="#" onclick="wb.toggleSector(); return false">PROJECTS</a>
+            <li class="first"><a href="#" onclick="wb.toggleSector('none',false); return false">PROJECTS</a>
               <ul>
                 <li><a href="#" onclick="wb.toggleSector('counts', true); return false">Number by Region</a></li>
                 <li><a href="#" onclick="wb.toggleSector('all', true); return false">All Projects</a></li>
-                <li><a href="#" onclick="wb.toggleSector('all',false);wb.toggleSector('counts',false); return false">No Projects</a></li>
+                <li><a href="#" onclick="wb.toggleSector('none',false); return false">No Projects</a></li>
               </ul>
             </li>
           </ul>
