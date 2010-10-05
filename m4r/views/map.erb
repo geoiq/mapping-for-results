@@ -140,7 +140,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
         self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
         self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
       } else if(sector == null) {
-        self.map.showLayer(self.stylelayers["Project Locations"].order, "false");
+        self.map.showLayer(self.stylelayers["Project Counts"].order, "false");
       } else if(visible == true){
         jq("#sectorcontrol_" + sector).addClass("active");
         self.map.swf.removeFilter(self.stylelayers["Project Locations"].order, 
