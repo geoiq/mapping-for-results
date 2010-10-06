@@ -321,8 +321,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },
     projectTable: function(data) {
       var self = this;
-      jq('#project_count').html(Object.size(this.projects));
-      jq('#activity_count').html(this.activities.length);
       data.attributes["activity count"] = {original_name: "activity county", name: "Activities"}
       data.attributes["financing"] = {original_name: "financing", name: "Financing"}
       data.features = this.projects;
@@ -340,7 +338,12 @@ if(typeof(F1)=='undefined') {F1 = {}}
             jq("#projects-table").show("blind", { direction: "vertical" }, 2000);
             jq(this).removeClass("collapsed").addClass("expanded");  
           }
-      });      
+      });  
+
+
+      jq('#project_count').html(Object.size(this.projects));
+      jq('#activity_count').html(this.activities.length);
+          
       
     },
     sectorPieChart: function(sector_name) {
@@ -460,6 +463,10 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.map.swf.setStyle( { legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:95}}});      
       return false;
     },
+    hideLoading: function() {
+      jq("#loading").hide();
+      jq(".loaded").show();
+    },
     drawCharts: function(map) {
       var self = this;
       jq("#sall").attr('checked', false); // clear the checkbox
@@ -472,6 +479,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
           wb.setIndicator("Poverty");
           self.sortData(data);
           self.projectTable(data);
+          self.hideLoading();
           // self.sectorFundingBars();
           self.initialized = true;
         }, map);

@@ -448,8 +448,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },
     projectTable: function(data) {
       var self = this;
-      jq('#project_count').html(Object.size(this.projects));
-      jq('#activity_count').html(this.activities.length);
       data.attributes["activity count"] = {original_name: "activity county", name: "Activities"}
       data.attributes["financing"] = {original_name: "financing", name: "Financing"}
       data.features = this.projects;
@@ -467,7 +465,12 @@ if(typeof(F1)=='undefined') {F1 = {}}
             jq("#projects-table").show("blind", { direction: "vertical" }, 2000);
             jq(this).removeClass("collapsed").addClass("expanded");  
           }
-      });      
+      });  
+
+
+      jq('#project_count').html(Object.size(this.projects));
+      jq('#activity_count').html(this.activities.length);
+          
       
     },
     sectorPieChart: function(sector_name) {
@@ -587,6 +590,10 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.map.swf.setStyle( { legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:95}}});      
       return false;
     },
+    hideLoading: function() {
+      jq("#loading").hide();
+      jq(".loaded").show();
+    },
     drawCharts: function(map) {
       var self = this;
       jq("#sall").attr('checked', false); // clear the checkbox
@@ -599,6 +606,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
           wb.setIndicator("Poverty");
           self.sortData(data);
           self.projectTable(data);
+          self.hideLoading();
           // self.sectorFundingBars();
           self.initialized = true;
         }, map);
@@ -690,17 +698,18 @@ wb.init(255);
       </div>
     </div>
 <div id="map-content">
-  <div id="wb_map" class=""></div>
+  <div id="wb_map" class="" style="height: 520px"></div>
   <div id="map_console">
-        <div class="console-title">
-          <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
-          <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        </div>
-        <div class="console-info">
-          <p title="Active projects as of June 30, 2010">active projects working in</p>
-          <p title="Project locations as of June 30, 2010">project locations</p>
-        </div>    
-                <div id="layerinfo">
+      <div class="console-title">
+        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      </div>
+      <div class="console-info">
+        <div id="loading">Loading Map Data...</div>
+        <p class="loaded" style="display: none" title="Active projects as of June 30, 2010">active projects working in</p>
+        <p class="loaded" style="display: none" title="Project locations as of June 30, 2010">project locations</p>
+      </div>    
+              <div id="layerinfo">
           <ul>
             <li class="">Choose from the boxes below to investigate mapping for results:</li>
           </ul>

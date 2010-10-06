@@ -10,7 +10,9 @@
                 <% if @country[:name] == "World" %>
                 <% MAPS[:world][:regions].each do |region, region_attr| %>
                   <% region_attr[:countries].each do |country, country_attr| %>
+                  <% if (country_attr[:status] == 'active') %>
                   <li><a href="<%= (country_attr[:status] == 'inactive') ? "#" : "/#{region}/#{country}" %>" class="<%= country_attr[:status] %>"><%= country_attr[:name] %></a></li>
+                  <% end %>
                   <% end %>
                 <% end  %>
                 <% elsif(@country.keys.include?(:adm1)) %>
