@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 curl http://localhost:4567/ > index.html
+curl http://localhost:4567/map.js > map.js
 mkdir -p lac/
 mkdir -p afr/
 mkdir -p eap/

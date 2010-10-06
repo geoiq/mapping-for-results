@@ -149,7 +149,8 @@ get '/about' do
 end
 
 get '/map.js' do 
-  erb :map
+  content_type 'application/javascript', :charset => 'utf-8'
+  erb :map, :layout => false
 end
 
 get '/:region/:country' do

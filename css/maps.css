@@ -96,14 +96,13 @@
 /*.......................................................NEW 9/23/2010.................................................................*/
 
 /*PROJECT TABLE STYLING*/
-table {border-collapse: collapse;width:960px;font-family:Arial, sans-serif;font-size:12px;color:#000;}
+table#projects-table_grid  {border-collapse: collapse;width:960px;font-family:Arial, sans-serif;font-size:12px;color:#000;}
 table {height: 400px;overflow-y: scroll; overflow-x: hidden;}
 #project-search-box {display: none;}
-table, th,td {padding:0 13px; margin-top:6px;}
-th,td {height:50px}
+table#projects-table_grid ,th, td {padding:0 13px; margin-top:6px;}
+th,tr{height:50px}
 
-table, th {
-background:url(../images/table-th-bg.gif) repeat-x;font-family:Arial, sans-serif; font-size:12px; font-weight:100; color:#000; padding-left:13px;}
+table#projects-table_grid , th {background:url(../images/table-th-bg.gif) repeat-x;font-family:Arial, sans-serif; font-size:12px; font-weight:100; color:#000; padding-left:13px;}
 
 th { border: 1px solid #dadcd1;}
 td {font-family: Arial, sans-serif; font-size:12px; vertical-align:middle;}

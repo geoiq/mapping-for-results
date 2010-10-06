@@ -1,7 +1,9 @@
-<%= partial :map %>
+<%# partial :map %>
 <%= partial :map_header %>
 <div id="map-content">
+  <div id="wb_map_wrapper" style="z-index: -1; height: 514px; 958px">
   <div id="wb_map" class="" style="height: 520px"></div>
+  </div>
   <div id="map_console">
       <div class="console-title">
         <p id="project_count"><%= @country[:name] == "World" ? "473" : "&nbsp;&nbsp;&nbsp;&nbsp;" %></p>
@@ -10,7 +12,7 @@
       <div class="console-info">
         <% unless @country[:name] == "World" %><div id="loading">Loading Map Data...</div><% end %>
         <p class="loaded" style="<% unless @country[:name] == "World" %>display: none<% end %>" title="Active projects as of June 30, 2010">active projects working in</p>
-        <p class="loaded" style="<% unless @country[:name] == "World" %>display: none<% end %>" title="Project locations as of June 30, 2010">project locations</p>
+        <p class="loaded" style="<% unless @country[:name] == "World" %>display: none<% end %>" title="Project locations as of June 30, 2010">mapped project locations</p>
       </div>    
       <%= partial :layer_controls %>
   </div>
@@ -20,3 +22,7 @@
 <%# partial :charts %>
 
 <%= partial :projects_table unless @country[:name] == "World" %>
+
+<script type="text/javascript" charset="utf-8">
+  wb.init(<%= @country[:map].to_s %>,  <%= @country[:name] == "World" ? "wb.styleLegend" : "wb.drawCharts" %>);
+</script>
