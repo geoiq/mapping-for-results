@@ -577,7 +577,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       
       // infowindow
       map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: $[project id]\nTitle: $[project title]\nFinancing: $ $[total amt] million\nApproved:$[approval date]\nMajor Sector:$[sector1]\nOther Sectors: $[sector2], $[sector3]"}, {title: "Location", type: "text", value: "Location: $[adm2],$[adm1]\nWorld Bank Region: $[region]\n$[precision description]"}]});
-
+      map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in this Region"});
       // map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in this Region", tabs:[{title: "Projects", type: "text", value:"<ul><li>$[pid1]</li><li>$[pid2]</li><li>$[pid3]</li><li>$[pid4]</li><li>$[pid5]</li><li>$[pid6]</li><li>$[pid7]</li><li>$[pid8]</li><li>$[pid9]</li><li>$[pid10]</li><li>$[pid11]</li><li>$[pid12]</li><li>$[pid13]</li><li>$[pid14]</li></ul>"}, {title: "Location", type: "text", value: "Location: $[adm2],$[adm1]\nWorld Bank Region: $[region]\n$[precision description]"}]});
 
       self.styleLegend();
