@@ -5,28 +5,28 @@ PLATFORM_API_URL = "http://wbstaging.geocommons.com"
 # PLATFORM_API_URL = "http://geoiq.local"
 SUBDOMAIN = ""
 # MAPS = {
-#   :world => {:name => "World", :map => 1, :projects => nil, :region => nil},
+#   :world => {:name => "World", :map => 1, :region => nil},
 #   :haiti => {:name => "Haiti", :map => 2, :projects => 13, :region => "Latin America and Caribbean"},
-#   :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"},
-#   :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"},
-#   :indonesia => {:name => "Indonesia", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
+#   :bolivia => {:name => "Bolivia", :map => 3, :region => "Latin America and Caribbean"},
+#   :kenya => {:name => "Kenya", :map => 4, :region => "Africa"},
+#   :indonesia => {:name => "Indonesia", :map => 5, :region => "East Asia and Pacific"}
 # }
 
 
 WBSTAGING = {
-  :world => {:name => "World", :map => 1, :projects => nil, :regions => {
+  :world => {:name => "World", :map => 1, :regions => {
     :afr => {
       :name => "Africa",
       :zoom => 3, :lat => -4, :lon => 21,
       :countries => {
-        :kenya => {:name => "Kenya", :map => 255, :projects => nil, :region => "Africa"}
+        :kenya => {:name => "Kenya", :map => 255, :region => "Africa", :status => "active"}
       }
     },
       :eap => {
         :name => "East Asia and Pacific",
         :zoom => 4, :lat => 19, :lon => 105.5,
         :countries => {
-          :phillipines => {:name => "Phillipines", :map => 263, :projects => nil, :region => "East Asia and Pacific"}
+          # :phillipines => {:name => "Phillipines", :map => 263, :region => "East Asia and Pacific", :status => "inactive"}
         }
     },
       :eca => {
@@ -48,7 +48,7 @@ WBSTAGING = {
       :name => "Latin America and Caribbean",
       :zoom => 3, :lat => -25, :lon => -57.8,
       :countries => {
-        :haiti => {:name => "Haiti", :map => 114, :projects => 108, :region => "Latin America and Caribbean", :adm1  => 
+        :haiti => {:name => "Haiti", :map => 114, :projects => 108, :region => "Latin America and Caribbean", :status => "active", :adm1  => 
           [{ :name => "Grand-Anse", :zoom => 11, :lat => 18.53, :lon => -74.13},
             {:name => "Sud", :zoom => 10, :lat => 18.272, :lon => -73.72},
             {:name => "Nippes", :zoom => 10, :lat => 18.45, :lon => -73.313},
@@ -60,7 +60,7 @@ WBSTAGING = {
             {:name => "Nord", :zoom => 11, :lat => 19.577, :lon => -72.29},
             {:name => "Nord-Ouest", :zoom => 11, :lat => 19.65, :lon => -72.86},
             ]},
-        :bolivia => {:name => "Bolivia", :map => 262, :projects => nil, :region => "Latin America and Caribbean"}
+        :bolivia => {:name => "Bolivia", :map => 262, :region => "Latin America and Caribbean", :status => "active"}
       }
       }      
     }
@@ -68,19 +68,19 @@ WBSTAGING = {
 }
 
 LOCAL = {
-  :world => {:name => "World", :map => 1, :projects => nil, :regions => {
+  :world => {:name => "World", :map => 1, :regions => {
       :afr => {
         :name => "Africa",
         :zoom => 3, :lat => -4, :lon => 21,
         :countries => {
-          :kenya => {:name => "Kenya", :map => 4, :projects => nil, :region => "Africa"}
+          :kenya => {:name => "Kenya", :map => 4, :region => "Africa"}
         }
       },
       :eap => {
         :name => "East Asia and Pacific",
         :zoom => 4, :lat => 19, :lon => 105.5,
         :countries => {
-          :phillipines => {:name => "Phillipines", :map => 5, :projects => nil, :region => "East Asia and Pacific"}
+          :phillipines => {:name => "Phillipines", :map => 5, :region => "East Asia and Pacific"}
         }
     },
       :eca => {
@@ -114,7 +114,7 @@ LOCAL = {
             {:name => "Nord", :zoom => 11, :lat => 19.577, :lon => -72.29},
             {:name => "Nord-Ouest", :zoom => 11, :lat => 19.65, :lon => -72.86},
             ]},
-        :bolivia => {:name => "Bolivia", :map => 3, :projects => nil, :region => "Latin America and Caribbean"}
+        :bolivia => {:name => "Bolivia", :map => 3, :region => "Latin America and Caribbean"}
       }
       }      
     }
@@ -146,6 +146,10 @@ end
 
 get '/about' do 
   erb :about
+end
+
+get '/map.js' do 
+  erb :map
 end
 
 get '/:region/:country' do

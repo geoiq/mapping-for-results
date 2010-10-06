@@ -5,17 +5,17 @@
         </div>
         <div class="dropmenuholder">
           <ul class="dropmenu">
-            <li class="first"><a href="">LOCATIONS</a>
-              <ul>
+            <li class="first" title="Zoom to Locations"><a href="">LOCATIONS</a>
+              <ul id="locations_list">
                 <% if @country[:name] == "World" %>
                 <% MAPS[:world][:regions].each do |region, region_attr| %>
                   <% region_attr[:countries].each do |country, country_attr| %>
-                  <li><a href="/<%= region %>/<%= country %>"><%= country_attr[:name] %></a></li>
+                  <li><a href="<%= (country_attr[:status] == 'inactive') ? "#" : "/#{region}/#{country}" %>" class="<%= country_attr[:status] %>"><%= country_attr[:name] %></a></li>
                   <% end %>
                 <% end  %>
                 <% elsif(@country.keys.include?(:adm1)) %>
                 <% @country[:adm1].each do |adm_attr| %>
-                  <li><a href="javascript:wb.setLocation('<%= adm_attr[:name] %>',<%= adm_attr[:lat] %>,<%= adm_attr[:lon] %>,<%= adm_attr[:zoom] %>)"><%= adm_attr[:name] %></a></li>                
+                  <li><a href="#" onclick="return wb.setLocation('<%= adm_attr[:name] %>',<%= adm_attr[:lat] %>,<%= adm_attr[:lon] %>,<%= adm_attr[:zoom] %>)"><%= adm_attr[:name] %></a></li>                
                 <% end %>
                 <% end %>
               </ul>
@@ -23,31 +23,38 @@
           </ul>
           <!-- ... and so on ... -->
           <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
-            <li class="first"><a href="#" id="indicator" onclick="wb.setIndicator(); return false">INDICATORS</a>
+            <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
+              <% unless @country[:name] == "World" %>
               <ul>
                 <% ["Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"].each do |indicator| %>
-                <li><a href="#" onclick="wb.setIndicator('<%= indicator %>'); return false"><%= indicator %></a></li>
+                <li><a href="#" onclick="return wb.setIndicator('<%= indicator %>')"><%= indicator %></a></li>
                 <% end %>
               </ul>
+              <% end %>
             </li>
           </ul>
           <!-- ... and so on ... -->
           <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
-            <li class="first"><a href="#" onclick="wb.toggleSector('none',false); return false">PROJECTS</a>
+            <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
+              <% unless @country[:name] == "World" %>
               <ul>
-                <li><a href="#" onclick="wb.toggleSector('counts', true); return false">Number by Region</a></li>
-                <li><a href="#" onclick="wb.toggleSector('all', true); return false">All Projects</a></li>
-                <li><a href="#" onclick="wb.toggleSector('none',false); return false">No Projects</a></li>
+                <li><a href="#" onclick="return wb.toggleSector('counts_admin1', true)">Number by Admin 1</a></li>
+                <li><a href="#" onclick="return wb.toggleSector('counts_admin2', true)">Number by Admin 2</a></li>
+                <li><a href="#" onclick="return wb.toggleSector('all', true)">All Projects</a></li>
+                <li><a href="#" onclick="return wb.toggleSector('none',false)">No Projects</a></li>
               </ul>
+              <% end %>
             </li>
           </ul>
           <!-- ... and so on ... -->
           <ul class="dropmenu inactive">
-            <li><a href="">RESULTS</a>
+            <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
+              <% unless true || @country[:name] == "World" %>
               <ul>
                 <li><a href="#">Country Profile</a></li>
                 <li><a href="#">Project Profile</a></li>
               </ul>
+              <% end %>
             </li>
             <!-- ... and so on ... -->
           </ul>

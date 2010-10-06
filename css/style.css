@@ -424,7 +424,7 @@ color: #9f9894; padding: 1px;}
   padding:0 0 10px;
 }
 #banner #banner-header {
-  background:transparent url(../images/nav.gif) no-repeat scroll left top;
+  background:transparent url(../images/nav.png) repeat-x scroll left top;
   display:block;
   height:63px;
   text-indent:-999999px;

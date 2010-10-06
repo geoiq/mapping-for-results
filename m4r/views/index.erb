@@ -2,15 +2,15 @@
 <%= partial :share %>
 <%= partial :map_header %>
 <div id="map-content">
-  <div id="geoiq_map" class=""></div>
+  <div id="wb_map" class=""></div>
   <div id="map_console">
         <div class="console-title">
           <p id="project_count"><%= @country[:name] == "World" ? "473" : "&nbsp;&nbsp;&nbsp;&nbsp;" %></p>
           <p id="activity_count"><%= @country[:name] == "World" ? "12,000" : "&nbsp;&nbsp;&nbsp;&nbsp;" %></p>
         </div>
         <div class="console-info">
-          <p title="Active projects as of June 30, 2010">active projects</p>
-          <p title="Project locations as of June 30, 2010">project locations mapped</p>
+          <p title="Active projects as of June 30, 2010">active projects working in</p>
+          <p title="Project locations as of June 30, 2010">project locations</p>
         </div>    
         <%= partial :layer_controls %>
   </div>

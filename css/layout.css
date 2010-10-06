@@ -274,14 +274,14 @@ overflow:hidden;
 padding-bottom:0;
 position:relative;
 width:960px;
-background:#FFFFFF url(../images/background-images/fauxcol-filler-toplevel2.gif) repeat-y scroll 0 0;
+background:#FFFFFF repeat-y scroll 0 0;
 }
 
 body.region-left.region-far-right div#container {
-  background:#FFFFFF url(../images/background-images/fauxcol-filler2.gif) repeat-y scroll 0 0;
+  background:#FFFFFF repeat-y scroll 0 0;
   }
 body.region-left.region-right #container {
-  background:#FFFFFF url(../images/background-images/fauxcol-filler-toplevel2.gif) repeat-y scroll 0 0;
+  background:#FFFFFF repeat-y scroll 0 0;
 }
 
 #sidebar-left {
@@ -514,7 +514,11 @@ margin-bottom:10px;
 	list-style: none;
 	float: left;width:128px; /* Width to help Opera out */
 }
-	
+
+#map_console .inactive {
+    opacity: 0.4;
+}
+
 .dropmenu li a {
 	display: block;font-family: Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold;	color: #fff; padding:5px; background-color: #97382a;text-decoration: none; background-image:url(../images/btn-dropmenu.gif); background-repeat:no-repeat; border:#5f2017 solid 1px; text-transform:uppercase}
 		
@@ -561,3 +565,5 @@ margin-bottom:10px;
     margin:0;
     padding:0;
 }
+
+#footnote {float: right; color: #989A94;}
