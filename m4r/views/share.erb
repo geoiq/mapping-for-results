@@ -1,6 +1,6 @@
     <div id="share">
       <ul>
-        <% if @country[:name] != "World" %><li class="download"><a href="" id="download_data">DOWNLOAD</a></li><% end %>
+        <% if !@country.nil? && @country[:name] != "World" %><li class="download"><a href="" id="download_data">DOWNLOAD</a></li><% end %>
         <li class="simpleshare_link"><a href="http://data.worldbank.org/topic/public-sector" >SHARE</a></li>
       </ul>
     </div>

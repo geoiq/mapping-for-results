@@ -1,8 +1,8 @@
-    <% unless @country[:name] == "World" %><div id="footnote">Current projects as of June 30, 2010.</div><% end %>
+    <% unless @country.nil? || @country[:name] == "World" %><div id="footnote">Current projects as of June 30, 2010.</div><% end %>
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
-        <span class="breadcrumb-link breadcrumb-first"><a href="http://data.worldbank.org/">Map</a></span>
+        <span class="breadcrumb-link breadcrumb-first"><a href="<%= PLATFORM_API_URL %>">Map</a></span>
         <%= map_link(@country) unless @country.nil? %>
         </div>
     </div>

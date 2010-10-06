@@ -21,6 +21,8 @@
   <script type="text/javascript" src="/js/jquery-1.js"></script>
 <script type="text/javascript" charset="utf-8">
 var jq = jQuery.noConflict();
+if (top.frames.length!=0)
+  top.location=self.document.location;
 </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   
@@ -36,7 +38,6 @@ var jq = jQuery.noConflict();
 
 
 <!-- <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/jquery-1.3.2.min.js"></script> -->
-
 
 <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/f1.api.js"></script>
@@ -124,6 +125,14 @@ var jq = jQuery.noConflict();
           </div>
         </div>
       </div>
+
+        <div id="share">
+      <ul>
+        <li class="download"><a href="" id="download_data">DOWNLOAD</a></li>
+        <li class="simpleshare_link"><a href="http://data.worldbank.org/topic/public-sector" >SHARE</a></li>
+      </ul>
+    </div>
+
 
     <script type="text/javascript" charset="utf-8">
 var proxy_host = "http://wbstaging.geocommons.com";    
@@ -632,13 +641,6 @@ var wb = new F1.WorldBank();
 wb.init(114);
 
 </script>
-    <div id="share">
-      <ul>
-        <li class="download"><a href="" id="download_data">DOWNLOAD</a></li>
-        <li class="simpleshare_link"><a href="http://data.worldbank.org/topic/public-sector" >SHARE</a></li>
-      </ul>
-    </div>
-
     <div id="map-content-header">
       <div class="worldmenuholder">
         <ul class="worldmenu">
@@ -716,7 +718,7 @@ wb.init(114);
         </div>
         <div class="dropmenuholder">
           <ul class="dropmenu">
-            <li class="first" title="Zoom to Locations"><a href="">LOCATIONS</a>
+            <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
               <ul id="locations_list">
                 
                 
@@ -811,7 +813,7 @@ wb.init(114);
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
-        <span class="breadcrumb-link breadcrumb-first"><a href="http://data.worldbank.org/">Map</a></span>
+        <span class="breadcrumb-link breadcrumb-first"><a href="http://wbstaging.geocommons.com">Map</a></span>
         <a class="breadcrumb-link" href="/" title='World Bank: World'>World</a><a class="breadcrumb-link" href="/#region:latinamericaandcaribbean">Latin America and Caribbean</a><span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">Haiti</a></span>
         </div>
     </div>

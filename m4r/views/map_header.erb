@@ -4,9 +4,13 @@
           <li class="first"><a href="javascript:return false;" ><%= @country[:name].upcase %> <% unless @country[:name] == "World" %>/ <span id="map-title">Projects by Poverty</span><% end %></a>
             <ul>
               <% if @country[:name] == "World" %>
-              <% @country[:regions].each do |region, region_attr| %>
-                <li><a href="#" onclick="return wb.setLocation('<%= region_attr[:name] %>',<%= region_attr[:lat] %>,<%= region_attr[:lon] %>,<%= region_attr[:zoom] %>)"><%= region_attr[:name] %></a></li>
-              <% end %>
+                <% MAPS[:world][:regions].each do |region, region_attr| %>
+                  <% region_attr[:countries].each do |country, country_attr| %>
+                  <% if (country_attr[:status] == 'active') %>
+                  <li><a href="<%= (country_attr[:status] == 'inactive') ? "#" : "/#{region}/#{country}" %>" class="<%= country_attr[:status] %>"><%= country_attr[:name] %></a></li>
+                  <% end %>
+                  <% end %>
+                <% end  %>              
               <% else %>
                 <li><a href="#" onclick="return wb.setState(null,'Poverty')">Extreme Poverty (MDG1)</a></li>
                 <li><a href="#" onclick="return wb.setState(null,'Malnutrition')">Malnutrition (MDG1)</a></li>

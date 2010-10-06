@@ -26,7 +26,7 @@ WBSTAGING = {
         :name => "East Asia and Pacific",
         :zoom => 4, :lat => 19, :lon => 105.5,
         :countries => {
-          :philippines => {:name => "Philippines", :map => 263, :region => "East Asia and Pacific", :status => "inactive"}
+          :philippines => {:name => "Philippines", :map => 263, :region => "East Asia and Pacific", :status => "active"}
         }
     },
       :eca => {

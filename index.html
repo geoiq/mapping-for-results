@@ -21,6 +21,8 @@
   <script type="text/javascript" src="/js/jquery-1.js"></script>
 <script type="text/javascript" charset="utf-8">
 var jq = jQuery.noConflict();
+if (top.frames.length!=0)
+  top.location=self.document.location;
 </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   
@@ -36,7 +38,6 @@ var jq = jQuery.noConflict();
 
 
 <!-- <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/jquery-1.3.2.min.js"></script> -->
-
 
 <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/f1.api.js"></script>
@@ -124,6 +125,14 @@ var jq = jQuery.noConflict();
           </div>
         </div>
       </div>
+
+        <div id="share">
+      <ul>
+        
+        <li class="simpleshare_link"><a href="http://data.worldbank.org/topic/public-sector" >SHARE</a></li>
+      </ul>
+    </div>
+
 
     <script type="text/javascript" charset="utf-8">
 var proxy_host = "http://wbstaging.geocommons.com";    
@@ -632,32 +641,41 @@ var wb = new F1.WorldBank();
 wb.init(1);
 
 </script>
-    <div id="share">
-      <ul>
-        
-        <li class="simpleshare_link"><a href="http://data.worldbank.org/topic/public-sector" >SHARE</a></li>
-      </ul>
-    </div>
-
     <div id="map-content-header">
       <div class="worldmenuholder">
         <ul class="worldmenu">
           <li class="first"><a href="javascript:return false;" >WORLD </a>
             <ul>
               
-              
-                <li><a href="#" onclick="return wb.setLocation('Middle East and North Africa',26.1,25.7,4)">Middle East and North Africa</a></li>
-              
-                <li><a href="#" onclick="return wb.setLocation('South Asia',15.5,91.8,4)">South Asia</a></li>
-              
-                <li><a href="#" onclick="return wb.setLocation('Africa',-4,21,3)">Africa</a></li>
-              
-                <li><a href="#" onclick="return wb.setLocation('Latin America and Caribbean',-25,-57.8,3)">Latin America and Caribbean</a></li>
-              
-                <li><a href="#" onclick="return wb.setLocation('East Asia and Pacific',19,105.5,4)">East Asia and Pacific</a></li>
-              
-                <li><a href="#" onclick="return wb.setLocation('Europe and Central Asia',42.68,68.9,4)">Europe and Central Asia</a></li>
-              
+                
+                  
+                
+                  
+                
+                  
+                  
+                  <li><a href="/afr/kenya" class="active">Kenya</a></li>
+                  
+                  
+                
+                  
+                  
+                  <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
+                  
+                  
+                  
+                  <li><a href="/lac/haiti" class="active">Haiti</a></li>
+                  
+                  
+                
+                  
+                  
+                  <li><a href="/eap/philippines" class="active">Philippines</a></li>
+                  
+                  
+                
+                  
+                              
               
             </ul>
           </li>
@@ -685,36 +703,23 @@ wb.init(1);
         </div>
         <div class="dropmenuholder">
           <ul class="dropmenu">
-            <li class="first" title="Zoom to Locations"><a href="">LOCATIONS</a>
+            <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
               <ul id="locations_list">
                 
                 
-                  
+                  <li><a href="#" onclick="return wb.setLocation('Middle East and North Africa',26.1,25.7,4)">Middle East and North Africa</a></li>
                 
-                  
+                  <li><a href="#" onclick="return wb.setLocation('South Asia',15.5,91.8,4)">South Asia</a></li>
                 
-                  
-                  
-                  <li><a href="/afr/kenya" class="active">Kenya</a></li>
-                  
-                  
+                  <li><a href="#" onclick="return wb.setLocation('Africa',-4,21,3)">Africa</a></li>
                 
-                  
-                  
-                  <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
-                  
-                  
-                  
-                  <li><a href="/lac/haiti" class="active">Haiti</a></li>
-                  
-                  
+                  <li><a href="#" onclick="return wb.setLocation('Latin America and Caribbean',-25,-57.8,3)">Latin America and Caribbean</a></li>
                 
-                  
-                  
-                  
+                  <li><a href="#" onclick="return wb.setLocation('East Asia and Pacific',19,105.5,4)">East Asia and Pacific</a></li>
                 
-                  
+                  <li><a href="#" onclick="return wb.setLocation('Europe and Central Asia',42.68,68.9,4)">Europe and Central Asia</a></li>
                 
+
                 
               </ul>
             </li>
@@ -752,7 +757,7 @@ wb.init(1);
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
-        <span class="breadcrumb-link breadcrumb-first"><a href="http://data.worldbank.org/">Map</a></span>
+        <span class="breadcrumb-link breadcrumb-first"><a href="http://wbstaging.geocommons.com">Map</a></span>
         <a class="breadcrumb-link" href="/" title='World Bank: World'>World</a>
         </div>
     </div>
