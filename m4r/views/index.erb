@@ -9,9 +9,9 @@
         <p id="activity_count"><%= @country[:name] == "World" ? "12,000" : "&nbsp;&nbsp;&nbsp;&nbsp;" %></p>
       </div>
       <div class="console-info">
-        <div id="loading">Loading Map Data...</div>
-        <p class="loaded" style="display: none" title="Active projects as of June 30, 2010">active projects working in</p>
-        <p class="loaded" style="display: none" title="Project locations as of June 30, 2010">project locations</p>
+        <% unless @country[:name] == "World" %><div id="loading">Loading Map Data...</div><% end %>
+        <p class="loaded" style="<% unless @country[:name] == "World" %>display: none<% end %>" title="Active projects as of June 30, 2010">active projects working in</p>
+        <p class="loaded" style="<% unless @country[:name] == "World" %>display: none<% end %>" title="Project locations as of June 30, 2010">project locations</p>
       </div>    
       <%= partial :layer_controls %>
   </div>
