@@ -24,5 +24,6 @@
 <%= partial :projects_table unless @country[:name] == "World" %>
 
 <script type="text/javascript" charset="utf-8">
-  wb.init(<%= @country[:map].to_s %>,  <%= @country[:name] == "World" ? "wb.styleLegend" : "wb.drawCharts" %>);
+  var wb = new F1.WorldBank();
+  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>");
 </script>

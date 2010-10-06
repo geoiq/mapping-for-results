@@ -45,7 +45,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
     "Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: "$[name_2],$[name_1]", table: null, description: "<p>The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'. This page uses the term 'statoid' for short. Since the word has no other accepted meaning (2), it can be used as a search term on search engines to target this site. The 'a' of statoid is long.</p><p>This page is a guide to Internet sites about the statoids of each country. It can be used independently, but it is meant to be an update to the book 'Administrative Subdivisions of Countries', by Gwillim Law (McFarland &amp; Company, Jefferson, North Carolina) (3). The international standard ISO 3166 is the source for the list of countries. As a result, some dependencies, and a few integral parts of larger countries, are listed as if they were separate countries</p><p>Source: <a href='http://www.statoids.com/ubo.html'>Statoids</a></p>"}
 	},
   F1.WorldBank.prototype = {
-    init: function(map_id, maponload) {
+    init: function(map_id, region) {
       
       var self = this;
       this.activities = {};
@@ -57,7 +57,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.initialized = false;
       this.current_indicator = "Poverty";
       this.current_projects = true;
-      
+      this.region = region;
             
       icons = {};
       jq.each(self.sectors, function(sector) {
@@ -85,7 +85,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
                 uiZoom: true,uiLayers: false,uiLegend: false,uiStyles: true,
                 uiHeader: true,hideGCLogo: true,hideGILogo: true,
                 core_host:  proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
-                onload: function() { maponload(self.map) }
+                onload: function() { console.log("Loaded"); self.loadedMap() }
       });
     },
     setBookmark: function(key, value) {
@@ -418,10 +418,10 @@ if(typeof(F1)=='undefined') {F1 = {}}
           wb.toggleSector(links[this.bar.index]);
          }});
     },
-    getLayers: function(map) {
+    getLayers: function() {
       var self = this;
       var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"];
-      var possibleLayers = map.getLayers();
+      var possibleLayers = self.map.getLayers();
       var index;
       jq.each(possibleLayers, function(layer) {
         index = Object.include(findlayers, possibleLayers[layer].title);
@@ -444,18 +444,17 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq('#download_data').attr('href','http://wbstaging.geocommons.com/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
        return false;
     },
-    styleMap: function(map) {
+    styleMap: function() {
       var self = this;
             
       // icons
-      map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector1",categories:self.wbicons});
+      self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector1",categories:self.wbicons});
       
       // infowindow
-      map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "$[adm1]\n$[adm2]\n\n$[precision description]"}]});
-      map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in this Region"});
-      // map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in this Region", tabs:[{title: "Projects", type: "text", value:"<ul><li>$[pid1]</li><li>$[pid2]</li><li>$[pid3]</li><li>$[pid4]</li><li>$[pid5]</li><li>$[pid6]</li><li>$[pid7]</li><li>$[pid8]</li><li>$[pid9]</li><li>$[pid10]</li><li>$[pid11]</li><li>$[pid12]</li><li>$[pid13]</li><li>$[pid14]</li></ul>"}, {title: "Location", type: "text", value: "Location: $[adm2],$[adm1]\nWorld Bank Region: $[region]\n$[precision description]"}]});
+      self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "$[adm1]\n$[adm2]\n\n$[precision description]"}]});
+      self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in this Region"});
+      // self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in this Region", tabs:[{title: "Projects", type: "text", value:"<ul><li>$[pid1]</li><li>$[pid2]</li><li>$[pid3]</li><li>$[pid4]</li><li>$[pid5]</li><li>$[pid6]</li><li>$[pid7]</li><li>$[pid8]</li><li>$[pid9]</li><li>$[pid10]</li><li>$[pid11]</li><li>$[pid12]</li><li>$[pid13]</li><li>$[pid14]</li></ul>"}, {title: "Location", type: "text", value: "Location: $[adm2],$[adm1]\nWorld Bank Region: $[region]\n$[precision description]"}]});
 
-      self.styleLegend();
     },
     styleLegend: function() {
       this.map.showControl("Legend",true);
@@ -466,24 +465,32 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq("#loading").hide();
       jq(".loaded").show();
     },
-    drawCharts: function(map) {
+    drawCharts: function() {
       var self = this;
-      jq("#sall").attr('checked', false); // clear the checkbox
+      // jq("#sall").attr('checked', false); // clear the checkbox
       
       if( self.initialized ) {return;}
-
-      self.getLayers(map);
-      self.styleMap(map);
-      F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""), function(data) {
+      console.log("drawCharts");
+      self.getLayers(self.map);
+      self.styleMap(self.map);
+      F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""),   
+        function(data) {
           wb.setIndicator("Poverty");
-          wb.toggleSector("counts_admin1")
+          wb.toggleSector("counts_admin1",true)
           self.sortData(data);
           self.projectTable(data);
           self.hideLoading();
           // self.sectorFundingBars();
           self.initialized = true;
-        }, map);
-      }      
+        }, self.map);
+      },
+      loadedMap: function() {
+         var self = this;
+         self.styleLegend();
+         if(self.region != "World"){
+            self.drawCharts();
+         }
+      }
   }
 })();  // preserving the global namespace
 
@@ -500,5 +507,3 @@ jq(".collapsible-header").click(function () {
 jq("#locations_list .inactive").click(function () {
   return false;
 });
-
-var wb = new F1.WorldBank();

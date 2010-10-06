@@ -122,7 +122,7 @@ if (top.frames.length!=0)
         <div id="share">
       <ul>
         <li class="download"><a href="" id="download_data">DOWNLOAD</a></li>
-        <li class="simpleshare_link"><a href="http://data.worldbank.org/topic/public-sector" >SHARE</a></li>
+        <li class="simpleshare_link"><a href="#" onclick="javascript:return false">SHARE</a></li>
       </ul>
     </div>
 
@@ -296,7 +296,8 @@ if (top.frames.length!=0)
 
 
 <script type="text/javascript" charset="utf-8">
-  wb.init(114,  wb.drawCharts);
+  var wb = new F1.WorldBank();
+  wb.init(114,  "Haiti");
 </script>
 
 
