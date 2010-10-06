@@ -1,20 +1,19 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html class="js" xml:lang="en" xmlns="http://www.w3.org/19	99/xhtml" lang="en"><head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>The World Bank - Mapping for Results</title>
 
-  <link href="http://wbstaging.geocommons.com/feed" title="Mapping for Results Whats New | World Bank" type="application/rss+xml" rel="alternate">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
-  <link rel="shortcut icon" href="http://wbstaging.geocommons.com/favicon.png" type="image/x-icon">
+  <link href="http://wbstaging.geocommons.com/feed" title="Mapping for Results Whats New | World Bank" type="application/rss+xml" rel="alternate" />
+  <link rel="shortcut icon" href="http://wbstaging.geocommons.com/favicon.png" type="image/x-icon" />
   
-  <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css">
-  <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css">
-  <link type="text/css" rel="stylesheet" media="all" href="/css/style.css">
-  <link type="text/css" rel="stylesheet" media="all" href="/css/layout.css">
-  <link type="text/css" rel="stylesheet" media="all" href="/css/one-off.css">
+  <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="/css/style.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="/css/layout.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="/css/one-off.css" />
                                                            
-  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css">
-  <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css">
+  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css" />
 
 <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/prototype.js"></script>
 
@@ -711,60 +710,57 @@ wb.init(262);
         <p class="loaded" style="display: none" title="Active projects as of June 30, 2010">active projects working in</p>
         <p class="loaded" style="display: none" title="Project locations as of June 30, 2010">project locations</p>
       </div>    
-              <div id="layerinfo">
-          <ul>
-            <li class="">Choose from the boxes below to investigate mapping for results:</li>
-          </ul>
-        </div>
-        <div class="dropmenuholder">
-          <ul class="dropmenu">
-            <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
-              <ul id="locations_list">
-                
-              </ul>
-            </li>
-          </ul>
-          <!-- ... and so on ... -->
-          <ul class="dropmenu ">
-            <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
-              
-              <ul>
-                
-                <li><a href="#" onclick="return wb.setIndicator('Population')">Population</a></li>
-                
-                <li><a href="#" onclick="return wb.setIndicator('Poverty')">Poverty</a></li>
-                
-                <li><a href="#" onclick="return wb.setIndicator('Infant Mortality')">Infant Mortality</a></li>
-                
-                <li><a href="#" onclick="return wb.setIndicator('Maternal Health')">Maternal Health</a></li>
-                
-                <li><a href="#" onclick="return wb.setIndicator('Malnutrition')">Malnutrition</a></li>
-                
-              </ul>
-              
-            </li>
-          </ul>
-          <!-- ... and so on ... -->
-          <ul class="dropmenu ">
-            <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
-              
-              <ul>
-                <li><a href="#" onclick="return wb.toggleSector('counts_admin1', true)">Number by Admin 1</a></li>
-                <li><a href="#" onclick="return wb.toggleSector('counts_admin2', true)">Number by Admin 2</a></li>
-                <li><a href="#" onclick="return wb.toggleSector('all', true)">All Projects</a></li>
-                <li><a href="#" onclick="return wb.toggleSector('none',false)">No Projects</a></li>
-              </ul>
-              
-            </li>
-          </ul>
-          <!-- ... and so on ... -->
-          <ul class="dropmenu inactive">
-            <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
-              
-            </li>
-            <!-- ... and so on ... -->
-          </ul>
-
+      <div id="layerinfo">
+  <ul>
+    <li class="">Choose from the data for indicators and portfolio projects below to investigate mapping for results:</li>
+  </ul>
+</div>
+<div class="dropmenuholder">
+  <ul class="dropmenu">
+    <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
+      <ul id="locations_list">
+        
+      </ul>
+    </li>
+  </ul>
+  <ul class="dropmenu ">
+    <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
+      
+      <ul>
+        
+        <li><a href="#" onclick="return wb.setIndicator('Population')">Population</a></li>
+        
+        <li><a href="#" onclick="return wb.setIndicator('Poverty')">Poverty</a></li>
+        
+        <li><a href="#" onclick="return wb.setIndicator('Infant Mortality')">Infant Mortality</a></li>
+        
+        <li><a href="#" onclick="return wb.setIndicator('Maternal Health')">Maternal Health</a></li>
+        
+        <li><a href="#" onclick="return wb.setIndicator('Malnutrition')">Malnutrition</a></li>
+        
+      </ul>
+      
+    </li>
+  </ul>
+  <ul class="dropmenu ">
+    <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
+      
+      <ul>
+        <li><a href="#" onclick="return wb.toggleSector('counts_admin1', true)">Number by Admin 1</a></li>
+        <li><a href="#" onclick="return wb.toggleSector('counts_admin2', true)">Number by Admin 2</a></li>
+        <li><a href="#" onclick="return wb.toggleSector('all', true)">All Projects</a></li>
+        <li><a href="#" onclick="return wb.toggleSector('none',false)">No Projects</a></li>
+      </ul>
+      
+    </li>
+  </ul>
+  <!-- ... and so on ... -->
+  <ul class="dropmenu inactive">
+    <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
+      
+    </li>
+  </ul>
+</div>
   </div>
   
 </div>

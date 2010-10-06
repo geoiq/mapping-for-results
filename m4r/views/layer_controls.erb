@@ -1,59 +1,57 @@
-        <div id="layerinfo">
-          <ul>
-            <li class="">Choose from the boxes below to investigate mapping for results:</li>
-          </ul>
-        </div>
-        <div class="dropmenuholder">
-          <ul class="dropmenu">
-            <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
-              <ul id="locations_list">
-                <% if @country[:name] == "World" %>
-                <% @country[:regions].each do |region, region_attr| %>
-                  <li><a href="#" onclick="return wb.setLocation('<%= region_attr[:name] %>',<%= region_attr[:lat] %>,<%= region_attr[:lon] %>,<%= region_attr[:zoom] %>)"><%= region_attr[:name] %></a></li>
-                <% end %>
+<div id="layerinfo">
+  <ul>
+    <li class="">Choose from the data for indicators and portfolio projects below to investigate mapping for results:</li>
+  </ul>
+</div>
+<div class="dropmenuholder">
+  <ul class="dropmenu">
+    <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
+      <ul id="locations_list">
+        <% if @country[:name] == "World" %>
+        <% @country[:regions].each do |region, region_attr| %>
+        <li><a href="#" onclick="return wb.setLocation('<%= region_attr[:name] %>',<%= region_attr[:lat] %>,<%= region_attr[:lon] %>,<%= region_attr[:zoom] %>)"><%= region_attr[:name] %></a></li>
+        <% end %>
 
-                <% elsif(@country.keys.include?(:adm1)) %>
-                <% @country[:adm1].each do |adm_attr| %>
-                  <li><a href="#" onclick="return wb.setLocation('<%= adm_attr[:name] %>',<%= adm_attr[:lat] %>,<%= adm_attr[:lon] %>,<%= adm_attr[:zoom] %>)"><%= adm_attr[:name] %></a></li>                
-                <% end %>
-                <% end %>
-              </ul>
-            </li>
-          </ul>
-          <!-- ... and so on ... -->
-          <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
-            <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
-              <% unless @country[:name] == "World" %>
-              <ul>
-                <% ["Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"].each do |indicator| %>
-                <li><a href="#" onclick="return wb.setIndicator('<%= indicator %>')"><%= indicator %></a></li>
-                <% end %>
-              </ul>
-              <% end %>
-            </li>
-          </ul>
-          <!-- ... and so on ... -->
-          <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
-            <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
-              <% unless @country[:name] == "World" %>
-              <ul>
-                <li><a href="#" onclick="return wb.toggleSector('counts_admin1', true)">Number by Admin 1</a></li>
-                <li><a href="#" onclick="return wb.toggleSector('counts_admin2', true)">Number by Admin 2</a></li>
-                <li><a href="#" onclick="return wb.toggleSector('all', true)">All Projects</a></li>
-                <li><a href="#" onclick="return wb.toggleSector('none',false)">No Projects</a></li>
-              </ul>
-              <% end %>
-            </li>
-          </ul>
-          <!-- ... and so on ... -->
-          <ul class="dropmenu inactive">
-            <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
-              <% unless true || @country[:name] == "World" %>
-              <ul>
-                <li><a href="#">Country Profile</a></li>
-                <li><a href="#">Project Profile</a></li>
-              </ul>
-              <% end %>
-            </li>
-            <!-- ... and so on ... -->
-          </ul>
+        <% elsif(@country.keys.include?(:adm1)) %>
+        <% @country[:adm1].each do |adm_attr| %>
+        <li><a href="#" onclick="return wb.setLocation('<%= adm_attr[:name] %>',<%= adm_attr[:lat] %>,<%= adm_attr[:lon] %>,<%= adm_attr[:zoom] %>)"><%= adm_attr[:name] %></a></li>                
+        <% end %>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+  <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
+    <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
+      <% unless @country[:name] == "World" %>
+      <ul>
+        <% ["Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"].each do |indicator| %>
+        <li><a href="#" onclick="return wb.setIndicator('<%= indicator %>')"><%= indicator %></a></li>
+        <% end %>
+      </ul>
+      <% end %>
+    </li>
+  </ul>
+  <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
+    <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
+      <% unless @country[:name] == "World" %>
+      <ul>
+        <li><a href="#" onclick="return wb.toggleSector('counts_admin1', true)">Number by Admin 1</a></li>
+        <li><a href="#" onclick="return wb.toggleSector('counts_admin2', true)">Number by Admin 2</a></li>
+        <li><a href="#" onclick="return wb.toggleSector('all', true)">All Projects</a></li>
+        <li><a href="#" onclick="return wb.toggleSector('none',false)">No Projects</a></li>
+      </ul>
+      <% end %>
+    </li>
+  </ul>
+  <!-- ... and so on ... -->
+  <ul class="dropmenu inactive">
+    <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
+      <% unless true || @country[:name] == "World" %>
+      <ul>
+        <li><a href="#">Country Profile</a></li>
+        <li><a href="#">Project Profile</a></li>
+      </ul>
+      <% end %>
+    </li>
+  </ul>
+</div>
