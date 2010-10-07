@@ -8,13 +8,13 @@
               <li><a href="#" onclick="return wb.setLocation('<%= region_attr[:name] %>',<%= region_attr[:lat] %>,<%= region_attr[:lon] %>,<%= region_attr[:zoom] %>)"><%= region_attr[:name] %></a></li>
               <% end %>
               <% else %>
-                <li><a href="#" onclick="return wb.setState(null,'Poverty')">MDG1: Extreme Poverty</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Malnutrition')">MDG1: Malnutrition</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Infant Mortality')">MDG4: Infant Mortality</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Maternal Health')">MDG5: Births attended by skilled health staff</a></li>
+                <% if @country[:indicators].include?("Poverty") %><li><a href="#" onclick="return wb.setState(null,'Poverty')">MDG1: Extreme Poverty</a></li><% end %>
+                <% if @country[:indicators].include?("Malnutrition") %><li><a href="#" onclick="return wb.setState(null,'Malnutrition')">MDG1: Malnutrition</a></li><% end %>
+                <% if @country[:indicators].include?("Infant Mortality") %><li><a href="#" onclick="return wb.setState(null,'Infant Mortality')">MDG4: Infant Mortality</a></li><% end %>
+                <% if @country[:indicators].include?("Maternal Health") %><li><a href="#" onclick="return wb.setState(null,'Maternal Health')">MDG5: Births attended by skilled health staff</a></li><% end %>
                 <li><a href="#" onclick="return wb.setState(null,null,null,['all'])">Project Portfolio</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Poverty',null,['all'])">Projects by Poverty</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Population',null,['all'])">Projects by Population</a></li>
+                <% if @country[:indicators].include?("Poverty") %><li><a href="#" onclick="return wb.setState(null,'Poverty',null,['all'])">Projects by Poverty</a></li><% end %>
+                <% if @country[:indicators].include?("Population") %><li><a href="#" onclick="return wb.setState(null,'Population',null,['all'])">Projects by Population</a></li><% end %>
               <% end %>
             </ul>
           </li>
