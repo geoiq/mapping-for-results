@@ -19,14 +19,16 @@ WBSTAGING = {
       :name => "Africa",
       :zoom => 3, :lat => -4, :lon => 21,
       :countries => {
-        :kenya => {:name => "Kenya", :map => 255, :region => "Africa", :status => "active"}
+        :kenya => {:name => "Kenya", :map => 255, :region => "Africa", :status => "active",
+                    :indicators => ["Population","Poverty","Infant Mortality","Maternal Health","Malnutrition"]}
       }
     },
       :eap => {
         :name => "East Asia and Pacific",
         :zoom => 4, :lat => 19, :lon => 105.5,
         :countries => {
-          :philippines => {:name => "Philippines", :map => 263, :region => "East Asia and Pacific", :status => "active"}
+          :philippines => {:name => "Philippines", :map => 263, :region => "East Asia and Pacific", :status => "active",
+                      :indicators => ["Population","Poverty","Infant Mortality"]}
         }
     },
       :eca => {
@@ -48,8 +50,9 @@ WBSTAGING = {
       :name => "Latin America and Caribbean",
       :zoom => 3, :lat => -25, :lon => -57.8,
       :countries => {
-        :haiti => {:name => "Haiti", :map => 114, :projects => 108, :region => "Latin America and Caribbean", :status => "inactive", :adm1  => 
-          [{ :name => "Grand-Anse", :zoom => 11, :lat => 18.53, :lon => -74.13},
+        :haiti => {:name => "Haiti", :map => 114, :projects => 108, :region => "Latin America and Caribbean", :status => "inactive", 
+          :indicators => ["Population","Poverty","Infant Mortality","Malnutrition"],
+          :adm1  => [{ :name => "Grand-Anse", :zoom => 11, :lat => 18.53, :lon => -74.13},
             {:name => "Sud", :zoom => 10, :lat => 18.272, :lon => -73.72},
             {:name => "Nippes", :zoom => 10, :lat => 18.45, :lon => -73.313},
             {:name => "Sud-Est", :zoom => 10, :lat => 18.277, :lon => -72.369},
@@ -60,8 +63,9 @@ WBSTAGING = {
             {:name => "Nord", :zoom => 11, :lat => 19.577, :lon => -72.29},
             {:name => "Nord-Ouest", :zoom => 11, :lat => 19.65, :lon => -72.86},
             ]},
-        :bolivia => {:name => "Bolivia", :map => 262, :region => "Latin America and Caribbean", :status => "active"}
-      }
+        :bolivia => {:name => "Bolivia", :map => 262, :region => "Latin America and Caribbean", :status => "active",
+                    :indicators => ["Population","Poverty","Infant Mortality","Maternal Health","Malnutrition"]}
+        }      
       }      
     }
   }

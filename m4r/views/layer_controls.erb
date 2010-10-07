@@ -27,7 +27,7 @@
     <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
       <% unless @country[:name] == "World" %>
       <ul>
-        <% ["Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"].each do |indicator| %>
+        <% @country[:indicators].each do |indicator| %>
         <li><a href="#" onclick="return wb.setIndicator('<%= indicator %>')"><%= indicator %></a></li>
         <% end %>
       </ul>
