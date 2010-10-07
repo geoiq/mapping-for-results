@@ -6,8 +6,8 @@
   </div>
   <div id="map_console">
       <div class="console-title">
-        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
-        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
+        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
       </div>
       <div class="console-info">
         <div id="loading">Loading Map Data...</div>
@@ -25,5 +25,5 @@
 
 <script type="text/javascript" charset="utf-8">
   var wb = new F1.WorldBank();
-  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>");
+  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", {projects_count: <%= @country[:projects_count] %>, locations_count: <%= @country[:locations_count] %>});
 </script>

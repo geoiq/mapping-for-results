@@ -173,8 +173,8 @@
   </div>
   <div id="map_console">
       <div class="console-title">
-        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
-        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
+        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
       </div>
       <div class="console-info">
         <div id="loading">Loading Map Data...</div>
@@ -191,27 +191,33 @@
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
         
-        
-        <li><a href="#" onclick="return wb.setLocation('Grand-Anse',18.53,-74.13,11)">Grand-Anse</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Sud',18.272,-73.72,10)">Sud</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Nippes',18.45,-73.313,10)">Nippes</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Sud-Est',18.277,-72.369,10)">Sud-Est</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Ouest',18.45,-72.266,10)">Ouest</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Centre',18.98,-71.95,10)">Centre</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Artibonite',18.16,-72.53,11)">Artibonite</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Nord-Est',18.455,-71.9,11)">Nord-Est</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Nord',19.577,-72.29,11)">Nord</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Nord-Ouest',19.65,-72.86,11)">Nord-Ouest</a></li>                
-        
+          
+            
+            
+            
+            
+            <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
+            
+            
+          
+            
+            
+            <li><a href="/eap/philippines" class="active">Philippines</a></li>
+            
+            
+          
+            
+          
+            
+          
+            
+            
+            <li><a href="/afr/kenya" class="active">Kenya</a></li>
+            
+            
+          
+            
+                        
         
       </ul>
     </li>
@@ -245,9 +251,16 @@
       
     </li>
   </ul>
-  <!-- ... and so on ... -->
-  <ul class="dropmenu inactive">
+  <ul class="dropmenu  ">
     <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
+      
+      <ul>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/HAITIEXTN/0,,contentMDK:22251393~pagePK:1497618~piPK:217854~theSitePK:338165,00.html#projects" target="_new">Country Profile</a></li>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html" target="_new">Decentralized Infrastructure for Rural Transformation Project (IDTR)</a></li>
+        
+      </ul>
       
     </li>
   </ul>
@@ -276,7 +289,7 @@
 
 <script type="text/javascript" charset="utf-8">
   var wb = new F1.WorldBank();
-  wb.init(114,  "Haiti");
+  wb.init(114,  "Haiti", {projects_count: 22, locations_count: 319});
 </script>
 
 

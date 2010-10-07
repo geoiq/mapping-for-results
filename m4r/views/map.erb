@@ -45,7 +45,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
     "Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com/ubo.html'>Statoids"}
 	},
   F1.WorldBank.prototype = {
-    init: function(map_id, region) {
+    init: function(map_id, region, country_attrs) {
       
       var self = this;
       this.activities = {};
@@ -58,6 +58,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.current_indicator = "Poverty";
       this.current_projects = true;
       this.region = region;
+      this.country_attrs = country_attrs;
             
       // icons = {};
       // jq.each(self.sectors, function(sector) {
@@ -489,14 +490,20 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.styleMap(self.map);
       wb.setIndicator("Poverty");
       wb.toggleSector("counts_admin1",true)
-      F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""),   
-        function(data) {
-          self.sortData(data);
-          self.projectTable(data);
+      if(country_attrs["locations_count"] > 2000) {
+          F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""),   
+            function(data) {
+              self.sortData(data);
+              self.projectTable(data);
+              self.hideLoading();
+              self.initialized = true;
+            }, self.map);
+        } else {
+          jq('#project_count').html(country_attrs["projects_count"]);
+          jq('#activity_count').html(country_attrs["locations_count"]);
           self.hideLoading();
-          // self.sectorFundingBars();
           self.initialized = true;
-        }, self.map);
+        }
       },
       styleWorldMap: function() {
           var self = this;

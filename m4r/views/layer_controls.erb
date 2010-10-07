@@ -7,7 +7,7 @@
   <ul class="dropmenu">
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
-        <% if @country[:name] == "World" %>
+        <% if true || @country[:name] == "World" %>
           <% MAPS[:world][:regions].each do |region, region_attr| %>
             <% region_attr[:countries].each do |country, country_attr| %>
             <% if (country_attr[:status] == 'active') %>
@@ -46,13 +46,13 @@
       <% end %>
     </li>
   </ul>
-  <!-- ... and so on ... -->
-  <ul class="dropmenu inactive">
+  <ul class="dropmenu <%= inactive if @country[:name] == "World" %> ">
     <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
-      <% unless true || @country[:name] == "World" %>
+      <% unless @country[:name] == "World" %>
       <ul>
-        <li><a href="#">Country Profile</a></li>
-        <li><a href="#">Project Profile</a></li>
+        <% @country[:results].each do |result| %>
+        <li><a href="<%= result[:link] %>" target="_new"><%= result[:name] %></a></li>
+        <% end %>
       </ul>
       <% end %>
     </li>

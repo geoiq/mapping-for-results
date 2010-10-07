@@ -173,8 +173,8 @@
   </div>
   <div id="map_console">
       <div class="console-title">
-        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
-        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
+        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
       </div>
       <div class="console-info">
         <div id="loading">Loading Map Data...</div>
@@ -190,6 +190,34 @@
   <ul class="dropmenu">
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
+        
+          
+            
+            
+            
+            
+            <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
+            
+            
+          
+            
+            
+            <li><a href="/eap/philippines" class="active">Philippines</a></li>
+            
+            
+          
+            
+          
+            
+          
+            
+            
+            <li><a href="/afr/kenya" class="active">Kenya</a></li>
+            
+            
+          
+            
+                        
         
       </ul>
     </li>
@@ -225,9 +253,18 @@
       
     </li>
   </ul>
-  <!-- ... and so on ... -->
-  <ul class="dropmenu inactive">
+  <ul class="dropmenu  ">
     <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
+      
+      <ul>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,menuPK:356520~pagePK:141132~piPK:141107~theSitePK:356509,00.html" target="_new">Country Profile</a></li>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:22632909~menuPK:50003484~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html" target="_new">World Bank Approves US$100 Million Credit for Kenya’s Health Sector</a></li>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:21275229~menuPK:356530~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html" target="_new">World Bank Approves US$154.5 Million to Support Poorest People in Western Kenya</a></li>
+        
+      </ul>
       
     </li>
   </ul>
@@ -256,7 +293,7 @@
 
 <script type="text/javascript" charset="utf-8">
   var wb = new F1.WorldBank();
-  wb.init(255,  "Kenya");
+  wb.init(255,  "Kenya", {projects_count: 30, locations_count: 231});
 </script>
 
 

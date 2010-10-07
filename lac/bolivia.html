@@ -173,8 +173,8 @@
   </div>
   <div id="map_console">
       <div class="console-title">
-        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
-        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
+        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
       </div>
       <div class="console-info">
         <div id="loading">Loading Map Data...</div>
@@ -190,6 +190,34 @@
   <ul class="dropmenu">
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
+        
+          
+            
+            
+            
+            
+            <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
+            
+            
+          
+            
+            
+            <li><a href="/eap/philippines" class="active">Philippines</a></li>
+            
+            
+          
+            
+          
+            
+          
+            
+            
+            <li><a href="/afr/kenya" class="active">Kenya</a></li>
+            
+            
+          
+            
+                        
         
       </ul>
     </li>
@@ -225,9 +253,20 @@
       
     </li>
   </ul>
-  <!-- ... and so on ... -->
-  <ul class="dropmenu inactive">
+  <ul class="dropmenu  ">
     <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
+      
+      <ul>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/BOLIVIAEXTN/0,,menuPK:322289~pagePK:141132~piPK:141107~theSitePK:322279,00.html#projects" target="_new">Country Profile</a></li>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html" target="_new">Decentralized Infrastructure for Rural Transformation Project (IDTR)</a></li>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/EXTLACPROJECTSRESULTS/0,,contentMDK:21217923~contenttypepk:64745485~dataclass:CNTRY~folderpk:64748632~mdk:82648~pagePK:64750647~piPK:64750659~projID:P060392~theSitePK:3177341,00.html" target="_new">Improving Access to Essential Maternal and Child Health Services (2007)</a></li>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/EXTLACPROJECTSRESULTS/0,,contentMDK:21359569~contenttypepk:64745485~dataclass:CNTRY~folderpk:64748632~mdk:82648~pagePK:64750647~piPK:64750659~projID:P055230~theSitePK:3177341,00.html" target="_new">Stimulating Local Economic Development and Regional Integration - the Abapo-Camiri Highway (2007)</a></li>
+        
+      </ul>
       
     </li>
   </ul>
@@ -256,7 +295,7 @@
 
 <script type="text/javascript" charset="utf-8">
   var wb = new F1.WorldBank();
-  wb.init(262,  "Bolivia");
+  wb.init(262,  "Bolivia", {projects_count: 14, locations_count: 638});
 </script>
 
 
