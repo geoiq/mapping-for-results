@@ -576,3 +576,4 @@ margin-bottom:10px;
 .static_display p {font-size:13px;  text-align:justify; margin:0px 0px 10px 0px;}
 .static_display a {color:#690600}
 .static_display span {color:#690600; font-weight:bold;}
+#world_link {margin-left: 5px; float: left; font-size: 1.1em;}

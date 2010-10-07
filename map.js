@@ -446,11 +446,11 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector1",categories:self.wbicons});
       
       // infowindow
-      self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "$[adm1]\n$[adm2]\n\n$[precision description]"}]});
+      self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "$[adm1]\n$[adm2]\n\n$[precision description]"}]});
       self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in this Region"});
-      // self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in this Region", tabs:[{title: "Projects", type: "text", value:"<ul><li>$[pid1]</li><li>$[pid2]</li><li>$[pid3]</li><li>$[pid4]</li><li>$[pid5]</li><li>$[pid6]</li><li>$[pid7]</li><li>$[pid8]</li><li>$[pid9]</li><li>$[pid10]</li><li>$[pid11]</li><li>$[pid12]</li><li>$[pid13]</li><li>$[pid14]</li></ul>"}, {title: "Location", type: "text", value: "Location: $[adm2],$[adm1]\nWorld Bank Region: $[region]\n$[precision description]"}]});
+      self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in $[adm1 name],$[adm2 name]", tabs:[{title: "Projects", type: "text", value:"<ul><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid1]'>$[pid1]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid2]'>$[pid2]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid3]'>$[pid3]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid4]'>$[pid4]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid5]'>$[pid5]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid6]'>$[pid6]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid7]'>$[pid7]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid8]'>$[pid8]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid9]'>$[pid9]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid10]'>$[pid10]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid11]'>$[pid11]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid12]'>$[pid12]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid13]'>$[pid13]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid14]'>$[pid14]</a></li></ul>"}]});
 
-    },
+    },  
     styleLegend: function() {
       this.map.showControl("Legend",true);
       this.map.swf.setStyle( { legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:95}}});      
@@ -489,31 +489,29 @@ if(typeof(F1)=='undefined') {F1 = {}}
           self.initialized = true;
         }, self.map);
       },
+      styleWorldMap: function() {
+          var self = this;
+         self.highlightRegions(["Kenya","Haiti","Philippines","Bolivia"]);
+          jq('#project_count').html("1,517");
+          jq('#activity_count').html("12,000");
+          
+          self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country]: $[Project Count]", subtitle: "", tabs: [{title:"About", type: "text", 
+            value: "Learn more about $[Country]'s World Bank portfolio projects and their results based on Millenium Development Goals.\n\n<a href='/$[Country]'>Go to the $[Country] Map</a>"}]});
+          
+          
+         self.hideLoading();
+      },
       loadedMap: function() {
          var self = this;
          self.styleLegend();
          if(self.region != "World"){
             self.drawCharts();
          } else {
-             self.highlightRegions(["Kenya","Haiti","Philippines","Bolivia"]);
-              jq('#project_count').html("473");
-              jq('#activity_count').html("12,000");
-             self.hideLoading();
+             self.styleWorldMap();
          }
       }
   }
+
+
 })();  // preserving the global namespace
-
-jq(".collapsible-header").click(function () {
-      if(jQuery(this).hasClass("expanded")) {
-        jq("#collapsible-banner").hide("blind", { direction: "vertical" }, 2000);
-        jq(this).removeClass("expanded").addClass("collapsed");      
-      } else {
-        jq("#collapsible-banner").show("blind", { direction: "vertical" }, 2000);
-        jq(this).removeClass("collapsed").addClass("expanded");  
-      }
-});
-
-jq("#locations_list .inactive").click(function () {
-  return false;
-});
+  

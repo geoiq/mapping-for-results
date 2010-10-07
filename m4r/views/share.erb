@@ -1,4 +1,5 @@
     <div id="share">
+        <% unless @country[:name] == "World" %><a href="/" id="world_link">&laquo back to World Map</a><% end %>
       <ul>
         <% if !@country.nil? && @country[:name] != "World" %><li class="download"><a href="" id="download_data">DOWNLOAD</a></li><% end %>
         <li class="simpleshare_link"><a href="#" onclick="javascript:return false" title="Share - coming soon">SHARE</a></li>
