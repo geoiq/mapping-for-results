@@ -46,8 +46,8 @@
       <% end %>
     </li>
   </ul>
-  <ul class="dropmenu <%= inactive if @country[:name] == "World" %> ">
-    <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
+  <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %> ">
+    <li title=""><a href="#" onclick="return false">RESULTS</a>
       <% unless @country[:name] == "World" %>
       <ul>
         <% @country[:results].each do |result| %>
