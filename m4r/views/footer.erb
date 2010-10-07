@@ -1,4 +1,4 @@
-    <div id="footnote">Current projects as of June 30, 2010.</div>
+    <% unless @country.nil? %><div id="footnote">Current projects as of June 30, 2010.</div><% end %>
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
@@ -28,4 +28,13 @@
     <!--Grey Footer Ends-->
   </div>
   <!-- /#footer -->
+  <div id="share-pane">
+    <span class="close">Close</span>
+    <ul class="links">
+      <li class="twitter first"><a href="http://twitter.com/?status=World+Bank+Maps+<%= PLATFORM_API_URL %>" target="_new">Twitter</a></li>
+      <li class="facebook"><a href="http://facebook.com/share.php?u=<%= PLATFORM_API_URL %>" target="_new">Facebook</a></li>
+      <li class="delicious"><a href="http://delicious.com/save?v=5&noui&jump=close&url=<%= PLATFORM_API_URL %>" target="_new">Delicious</a></li>
+      <li class="email last"><a href="mailto:?Subject=World%20Bank%20Maps&Body=World%20Bank%20Maps%20%28http%3A%2F%2Fmaps.worldbank.org">E-Mail</a></li>
+    </ul>
+  </div>
   <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>

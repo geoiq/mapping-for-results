@@ -101,6 +101,8 @@ table {height: 400px;overflow-y: scroll; overflow-x: hidden;}
 #project-search-box {display: none;}
 table#projects-table_grid ,th, td {padding:0 13px; margin-top:6px;}
 th,tr{height:50px}
+table#projects-table_grid tr .active { border:2px solid #9b0a07;  }
+table#projects-table_grid tr .inactive { border:none; }
 
 table#projects-table_grid , th {background:url(../images/table-th-bg.gif) repeat-x;font-family:Arial, sans-serif; font-size:12px; font-weight:100; color:#000; padding-left:13px;}
 

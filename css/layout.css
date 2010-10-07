@@ -577,3 +577,49 @@ margin-bottom:10px;
 .static_display a {color:#690600}
 .static_display span {color:#690600; font-weight:bold;}
 #world_link {margin-left: 5px; float: left; font-size: 1.1em;}
+
+
+div#share-pane {
+    -moz-box-shadow:0 0 5px #999999;
+    background:none repeat scroll 0 0 #FFFFFF;
+    bottom:0;
+    display:none;
+    left:0;
+    padding:20px 60px 20px 20px;
+    position:fixed;
+    right:0;
+    z-index:1000;
+}
+
+div#share-pane span.close {
+    background:none repeat scroll 0 0 #999999;
+    color:#FFFFFF;
+    cursor:pointer;
+    display:block;
+    font-size:11px;
+    line-height:20px;
+    padding:0 5px;
+    position:absolute;
+    right:0;
+    top:0;
+}
+div#share-pane span.close {
+    background:none repeat scroll 0 0 #111111;
+    color:#FFFFFF;
+    font-size:20px;
+    font-weight:bold;
+    margin:20px 0;
+    padding:5px 10px;
+}
+
+div#share-pane {
+background:url("../images/mask_95.png") repeat scroll 0 0 transparent;
+color:#CCCCCC;
+font-size:16px;
+line-height:30px;
+text-transform:none;
+}
+div#share-pane a, div#share-pane a:hover {color:#FFFFFF;}
+ul.links{display:block;}
+ul.links li, ul.links li a {float:left;}
+div#share-pane .links a {-moz-border-radius:2px 2px 2px 2px;background:none repeat scroll 0 0 #111111;margin-right:5px;padding:0 15px;}

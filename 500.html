@@ -120,176 +120,31 @@ if (top.frames.length!=0)
       </div>
 
         <div id="share">
-        <a href="/" id="world_link">&laquo back to World Map</a>
+        
       <ul>
-        <li class="download"><a href="" id="download_data">DOWNLOAD</a></li>
+        
         <li class="simpleshare_link"><a href="#" title="Share">SHARE</a></li>
       </ul>
     </div>
 
 
-    
-    <div id="map-content-header">
-      <div class="worldmenuholder">
-        <ul class="worldmenu">
-          <li class="first"><a href="javascript:return false;" >HAITI / <span id="map-title">Projects by Poverty</span></a>
-            <ul>
-              
-                <li><a href="#" onclick="return wb.setState(null,'Poverty')">MDG1: Extreme Poverty</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Malnutrition')">MDG1: Malnutrition</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Infant Mortality')">MDG4: Infant Mortality</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Maternal Health')">MDG5: Births attended by skilled health staff</a></li>
-                <li><a href="#" onclick="return wb.setState(null,null,null,['all'])">Project Portfolio</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Poverty',null,['all'])">Projects by Poverty</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Population',null,['all'])">Projects by Population</a></li>
-              
-            </ul>
-          </li>
-        </ul>
-      </div>
-            <div id="map-content-icons">
-        <div id="map-content-icons2">
-          <ul>
-            <li class="sectors">MAJOR SECTORS:</li>
-            <li class="s1"><a  sector-name="public" original-title="Public administration Law, Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#">1</a></li>
-            <li class="s2"><a  sector-name="agriculture" original-title="Agriculture, fishing, forestry" class="sectorcontrol inactive" id="sectorcontrol_agriculture" href="#">2</a></li>
-            <li class="s3"><a  sector-name="health" original-title="Health, other social" class="sectorcontrol inactive" id="sectorcontrol_health" href="#">3</a></li>
-            <li class="s4"><a  sector-name="communications" original-title="Communications" class="sectorcontrol inactive" id="sectorcontrol_communications" href="#">4</a></li>
-            <li class="s5"><a  sector-name="energy" original-title="Energy, mining" class="sectorcontrol inactive" id="sectorcontrol_energy" href="#">5</a></li>
-            <li class="s6"><a  sector-name="finance" original-title="Finance" class="sectorcontrol inactive" id="sectorcontrol_finance" href="#">6</a></li>
-            <li class="s7"><a  sector-name="industry" original-title="Industry, trade" class="sectorcontrol inactive" id="sectorcontrol_industry" href="#">7</a></li>
-            <li class="s8"><a  sector-name="transportation" original-title="Transportation" class="sectorcontrol inactive" id="sectorcontrol_transportation" href="#">8</a></li>
-            <li class="s9"><a  sector-name="water" original-title="Water, Sanitation, flood protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
-            <li class="s10"><a sector-name="education" original-title="Education" class="sectorcontrol inactive" id="sectorcontrol_education" href="#">10</a> </li>            
-            <li class="s11"><form action="" method="get">
-                <input name="input" id="sall" class="" type="checkbox" value=""/>
-              </form></li>
-            <li class="all">ALL</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-<div id="map-content">
-  <div id="wb_map_wrapper" style="z-index: -1; height: 514px; 958px">
-  <div id="wb_map" class="" style="height: 520px"></div>
-  </div>
-  <div id="map_console">
-      <div class="console-title">
-        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
-        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
-      </div>
-      <div class="console-info">
-        <div id="loading">Loading Map Data...</div>
-        <p class="loaded" style="display: none" title="Active projects as of June 30, 2010">active projects working in</p>
-        <p class="loaded" style="display: none" title="Project locations as of June 30, 2010">mapped project locations</p>
-      </div>    
-      <div id="layerinfo">
-  <ul>
-    <li class="">Choose the indicator data and portfolio projects below to investigate mapping for results:</li>
-  </ul>
-</div>
-<div class="dropmenuholder">
-  <ul class="dropmenu">
-    <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
-      <ul id="locations_list">
-        
-        
-        <li><a href="#" onclick="return wb.setLocation('Grand-Anse',18.53,-74.13,11)">Grand-Anse</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Sud',18.272,-73.72,10)">Sud</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Nippes',18.45,-73.313,10)">Nippes</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Sud-Est',18.277,-72.369,10)">Sud-Est</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Ouest',18.45,-72.266,10)">Ouest</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Centre',18.98,-71.95,10)">Centre</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Artibonite',18.16,-72.53,11)">Artibonite</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Nord-Est',18.455,-71.9,11)">Nord-Est</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Nord',19.577,-72.29,11)">Nord</a></li>                
-        
-        <li><a href="#" onclick="return wb.setLocation('Nord-Ouest',19.65,-72.86,11)">Nord-Ouest</a></li>                
-        
-        
-      </ul>
-    </li>
-  </ul>
-  <ul class="dropmenu ">
-    <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
-      
-      <ul>
-        
-        <li><a href="#" onclick="return wb.setIndicator('Population')">Population</a></li>
-        
-        <li><a href="#" onclick="return wb.setIndicator('Poverty')">Poverty</a></li>
-        
-        <li><a href="#" onclick="return wb.setIndicator('Infant Mortality')">Infant Mortality</a></li>
-        
-        <li><a href="#" onclick="return wb.setIndicator('Maternal Health')">Maternal Health</a></li>
-        
-        <li><a href="#" onclick="return wb.setIndicator('Malnutrition')">Malnutrition</a></li>
-        
-      </ul>
-      
-    </li>
-  </ul>
-  <ul class="dropmenu ">
-    <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
-      
-      <ul>
-        <li><a href="#" onclick="return wb.toggleSector('counts_admin1', true)">Number by Province</a></li>
-        <li><a href="#" onclick="return wb.toggleSector('counts_admin2', true)">Number by District</a></li>
-        <li><a href="#" onclick="return wb.toggleSector('all', true)">All Projects</a></li>
-        <li><a href="#" onclick="return wb.toggleSector('none',false)">No Projects</a></li>
-      </ul>
-      
-    </li>
-  </ul>
-  <!-- ... and so on ... -->
-  <ul class="dropmenu inactive">
-    <li title="Resultings Coming Soon"><a href="#" onclick="return false">RESULTS</a>
-      
-    </li>
-  </ul>
-</div>
-  </div>
-  
-</div>
+    <div class="static_display">
+  <h4>Page not found</h4>
+
+<p>We are sorry, but the page you were looking for could not be found. We are continuing to build the World Bank Mapping for Results platform to include more countries and projects. Please <a href="/">explore</a> the currently available countries, data, and project information.</p>
+
+<h5>Feedback</h5>
+<p>In order to improve our Mapping for Results Platform, we are very interested in your feedback. Please email us with your questions and comments at <a href="mailto:mappingforresults@worldbank.org">mappingforresults@worldbank.org</a></p>
+<p>Comment on our <a href="http://blogs.worldbank.org/dmblog/node/733" title="Geography and Aid | Turning Ideas into Action">blog</a>.</p>
 
 
 
-<!--Project Search Bar Begins-->
-<div id="projects-bar" class="expanded">
-  <div class="project-bar-text"><img src="/images/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />&nbsp;&nbsp;&nbsp;&nbsp;Total Project List / Haiti</div>
-  <div id="div">
-    <form action="/" accept-charset="UTF-8" method="post" id="search-theme-form">
-      <input maxlength="128" name="search_theme_form" id="project-search-box" size="15" value="" class="project-search-box-text" type="text" />
-    </form>
-  </div>
-</div>
-<!--Table Data Begins-->
-<div id="projects-table" style="width:960px; float:left">
-</div>
-<!--Data Table Ends-->
-
-
-
-<script type="text/javascript" charset="utf-8">
-  var wb = new F1.WorldBank();
-  wb.init(114,  "Haiti");
-</script>
-
-
-        <div id="footnote">Current projects as of June 30, 2010.</div>
+        
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
         <span class="breadcrumb-link breadcrumb-first"><a href="http://wbstaging.geocommons.com">Map</a></span>
-        <a class="breadcrumb-link" href="/" title='World Bank: World'>World</a><a class="breadcrumb-link" href="/#region:latinamericaandcaribbean">Latin America and Caribbean</a><span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">Haiti</a></span>
+        
         </div>
     </div>
     <!--Grey Footer Begins-->

@@ -22,4 +22,8 @@ jq(function() {
     jq('#sall').click(function(){
         wb.toggleSector('all');
     });
+    
+    jq('table#projects-table_grid tr').hover(function() { jq(this).addClass('active')},function() { jq(this).removeClass('active')})
+    jq('.simpleshare_link').click(function() { jq('#share-pane').toggle() });
+    jq('#share-pane .close').click(function() { jq('#share-pane').toggle() });
 });

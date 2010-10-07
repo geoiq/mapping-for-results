@@ -144,6 +144,14 @@ get '/' do
   erb :index
 end
 
+get '/404' do 
+  erb :missing
+end
+
+get '/500' do 
+  erb :missing
+end
+
 get '/about' do 
   erb :about
 end
