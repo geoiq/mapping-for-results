@@ -108,8 +108,8 @@ if (top.frames.length!=0)
                   <p>Overview »</p>
                   <ul>
                     <li><a href="/about#context">Context</a></li>
-                    <li><a href="/about#strategy">Strategy</a></li>
-                    <li><a href="/about#results">Feedback</a></li>
+                    <li><a href="/about#partners">Partners</a></li>
+                    <li><a href="/about#feedback">Feedback</a></li>
                   </ul>
                 </div>
                 <div class="overview-text"><strong>The Mapping for Results Beta</strong> initiative provides detailed information on our efforts to reduce poverty and alleviate human suffering in every part of the world. This website showcases information on the what and where by accessing the indicator, sector, region, and funding dropdown and toggle areas. <a class="readmore" href="/about">Read More »</a></div>
@@ -122,7 +122,7 @@ if (top.frames.length!=0)
         <div id="share">
       <ul>
         
-        <li class="simpleshare_link"><a href="#" onclick="javascript:return false">SHARE</a></li>
+        <li class="simpleshare_link"><a href="#" onclick="javascript:return false" title="Share - coming soon">SHARE</a></li>
       </ul>
     </div>
 
@@ -131,42 +131,25 @@ if (top.frames.length!=0)
     <div id="map-content-header">
       <div class="worldmenuholder">
         <ul class="worldmenu">
-          <li class="first"><a href="javascript:return false;" >WORLD </a>
+          <li class="first"><a href="javascript:return false;" >WORLD  / Number of Projects</a>
             <ul>
               
-                
-                  
-                
-                  
-                
-                  
-                  
-                  <li><a href="/afr/kenya" class="active">Kenya</a></li>
-                  
-                  
-                
-                  
-                  
-                  <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
-                  
-                  
-                  
-                  <li><a href="/lac/haiti" class="active">Haiti</a></li>
-                  
-                  
-                
-                  
-                  
-                  <li><a href="/eap/philippines" class="active">Philippines</a></li>
-                  
-                  
-                
-                  
-                              
+              
+              <li><a href="#" onclick="return wb.setLocation('Middle East and North Africa',26.1,25.7,4)">Middle East and North Africa</a></li>
+              
+              <li><a href="#" onclick="return wb.setLocation('South Asia',15.5,91.8,4)">South Asia</a></li>
+              
+              <li><a href="#" onclick="return wb.setLocation('Africa',-4,21,3)">Africa</a></li>
+              
+              <li><a href="#" onclick="return wb.setLocation('Latin America and Caribbean',-25,-57.8,3)">Latin America and Caribbean</a></li>
+              
+              <li><a href="#" onclick="return wb.setLocation('East Asia and Pacific',19,105.5,4)">East Asia and Pacific</a></li>
+              
+              <li><a href="#" onclick="return wb.setLocation('Europe and Central Asia',42.68,68.9,4)">Europe and Central Asia</a></li>
+              
               
             </ul>
           </li>
-          <!-- ... and so on ... -->
         </ul>
       </div>
       
@@ -177,13 +160,13 @@ if (top.frames.length!=0)
   </div>
   <div id="map_console">
       <div class="console-title">
-        <p id="project_count">473</p>
-        <p id="activity_count">12,000</p>
+        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
+        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
       </div>
       <div class="console-info">
-        
-        <p class="loaded" style="" title="Active projects as of June 30, 2010">active projects working in</p>
-        <p class="loaded" style="" title="Project locations as of June 30, 2010">mapped project locations</p>
+        <div id="loading">Loading Map Data...</div>
+        <p class="loaded" style="display: none" title="Active projects as of June 30, 2010">active projects working in</p>
+        <p class="loaded" style="display: none" title="Project locations as of June 30, 2010">mapped project locations</p>
       </div>    
       <div id="layerinfo">
   <ul>
@@ -195,20 +178,35 @@ if (top.frames.length!=0)
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
         
-        
-        <li><a href="#" onclick="return wb.setLocation('Middle East and North Africa',26.1,25.7,4)">Middle East and North Africa</a></li>
-        
-        <li><a href="#" onclick="return wb.setLocation('South Asia',15.5,91.8,4)">South Asia</a></li>
-        
-        <li><a href="#" onclick="return wb.setLocation('Africa',-4,21,3)">Africa</a></li>
-        
-        <li><a href="#" onclick="return wb.setLocation('Latin America and Caribbean',-25,-57.8,3)">Latin America and Caribbean</a></li>
-        
-        <li><a href="#" onclick="return wb.setLocation('East Asia and Pacific',19,105.5,4)">East Asia and Pacific</a></li>
-        
-        <li><a href="#" onclick="return wb.setLocation('Europe and Central Asia',42.68,68.9,4)">Europe and Central Asia</a></li>
-        
-
+          
+            
+          
+            
+          
+            
+            
+            <li><a href="/afr/kenya" class="active">Kenya</a></li>
+            
+            
+          
+            
+            
+            <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
+            
+            
+            
+            <li><a href="/lac/haiti" class="active">Haiti</a></li>
+            
+            
+          
+            
+            
+            <li><a href="/eap/philippines" class="active">Philippines</a></li>
+            
+            
+          
+            
+                        
         
       </ul>
     </li>
@@ -240,11 +238,11 @@ if (top.frames.length!=0)
 
 <script type="text/javascript" charset="utf-8">
   var wb = new F1.WorldBank();
-  wb.init(1,  "World");
+  wb.init(343,  "World");
 </script>
 
 
-        
+        <div id="footnote">Current projects as of June 30, 2010.</div>
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>

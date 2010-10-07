@@ -14,7 +14,7 @@ SUBDOMAIN = ""
 
 
 WBSTAGING = {
-  :world => {:name => "World", :map => 1, :regions => {
+  :world => {:name => "World", :map => 343, :regions => {
     :afr => {
       :name => "Africa",
       :zoom => 3, :lat => -4, :lon => 21,

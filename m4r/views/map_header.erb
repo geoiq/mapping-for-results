@@ -1,28 +1,23 @@
     <div id="map-content-header">
       <div class="worldmenuholder">
         <ul class="worldmenu">
-          <li class="first"><a href="javascript:return false;" ><%= @country[:name].upcase %> <% unless @country[:name] == "World" %>/ <span id="map-title">Projects by Poverty</span><% end %></a>
+          <li class="first"><a href="javascript:return false;" ><%= @country[:name].upcase %> <%= @country[:name] == "World" ? ' / Number of Projects' : '/ <span id="map-title">Projects by Poverty</span>' %></a>
             <ul>
               <% if @country[:name] == "World" %>
-                <% MAPS[:world][:regions].each do |region, region_attr| %>
-                  <% region_attr[:countries].each do |country, country_attr| %>
-                  <% if (country_attr[:status] == 'active') %>
-                  <li><a href="<%= (country_attr[:status] == 'inactive') ? "#" : "/#{region}/#{country}" %>" class="<%= country_attr[:status] %>"><%= country_attr[:name] %></a></li>
-                  <% end %>
-                  <% end %>
-                <% end  %>              
+              <% @country[:regions].each do |region, region_attr| %>
+              <li><a href="#" onclick="return wb.setLocation('<%= region_attr[:name] %>',<%= region_attr[:lat] %>,<%= region_attr[:lon] %>,<%= region_attr[:zoom] %>)"><%= region_attr[:name] %></a></li>
+              <% end %>
               <% else %>
-                <li><a href="#" onclick="return wb.setState(null,'Poverty')">Extreme Poverty (MDG1)</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Malnutrition')">Malnutrition (MDG1)</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Infant Mortality')">Infant Mortality (MDG1)</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Malnutrition')">Births Attended (MDG1)</a></li>
+                <li><a href="#" onclick="return wb.setState(null,'Poverty')">MDG1: Extreme Poverty</a></li>
+                <li><a href="#" onclick="return wb.setState(null,'Malnutrition')">MDG1: Malnutrition</a></li>
+                <li><a href="#" onclick="return wb.setState(null,'Infant Mortality')">MDG4: Infant Mortality</a></li>
+                <li><a href="#" onclick="return wb.setState(null,'Maternal Health')">MDG5: Births attended by skilled health staff</a></li>
                 <li><a href="#" onclick="return wb.setState(null,null,null,['all'])">Project Portfolio</a></li>
                 <li><a href="#" onclick="return wb.setState(null,'Poverty',null,['all'])">Projects by Poverty</a></li>
                 <li><a href="#" onclick="return wb.setState(null,'Population',null,['all'])">Projects by Population</a></li>
               <% end %>
             </ul>
           </li>
-          <!-- ... and so on ... -->
         </ul>
       </div>
       <%= partial :sector_controls unless @country[:name] == "World" %>

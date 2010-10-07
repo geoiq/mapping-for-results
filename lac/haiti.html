@@ -108,8 +108,8 @@ if (top.frames.length!=0)
                   <p>Overview »</p>
                   <ul>
                     <li><a href="/about#context">Context</a></li>
-                    <li><a href="/about#strategy">Strategy</a></li>
-                    <li><a href="/about#results">Feedback</a></li>
+                    <li><a href="/about#partners">Partners</a></li>
+                    <li><a href="/about#feedback">Feedback</a></li>
                   </ul>
                 </div>
                 <div class="overview-text"><strong>The Mapping for Results Beta</strong> initiative provides detailed information on our efforts to reduce poverty and alleviate human suffering in every part of the world. This website showcases information on the what and where by accessing the indicator, sector, region, and funding dropdown and toggle areas. <a class="readmore" href="/about">Read More »</a></div>
@@ -122,7 +122,7 @@ if (top.frames.length!=0)
         <div id="share">
       <ul>
         <li class="download"><a href="" id="download_data">DOWNLOAD</a></li>
-        <li class="simpleshare_link"><a href="#" onclick="javascript:return false">SHARE</a></li>
+        <li class="simpleshare_link"><a href="#" onclick="javascript:return false" title="Share - coming soon">SHARE</a></li>
       </ul>
     </div>
 
@@ -134,17 +134,16 @@ if (top.frames.length!=0)
           <li class="first"><a href="javascript:return false;" >HAITI / <span id="map-title">Projects by Poverty</span></a>
             <ul>
               
-                <li><a href="#" onclick="return wb.setState(null,'Poverty')">Extreme Poverty (MDG1)</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Malnutrition')">Malnutrition (MDG1)</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Infant Mortality')">Infant Mortality (MDG1)</a></li>
-                <li><a href="#" onclick="return wb.setState(null,'Malnutrition')">Births Attended (MDG1)</a></li>
+                <li><a href="#" onclick="return wb.setState(null,'Poverty')">MDG1: Extreme Poverty</a></li>
+                <li><a href="#" onclick="return wb.setState(null,'Malnutrition')">MDG1: Malnutrition</a></li>
+                <li><a href="#" onclick="return wb.setState(null,'Infant Mortality')">MDG4: Infant Mortality</a></li>
+                <li><a href="#" onclick="return wb.setState(null,'Maternal Health')">MDG5: Births attended by skilled health staff</a></li>
                 <li><a href="#" onclick="return wb.setState(null,null,null,['all'])">Project Portfolio</a></li>
                 <li><a href="#" onclick="return wb.setState(null,'Poverty',null,['all'])">Projects by Poverty</a></li>
                 <li><a href="#" onclick="return wb.setState(null,'Population',null,['all'])">Projects by Population</a></li>
               
             </ul>
           </li>
-          <!-- ... and so on ... -->
         </ul>
       </div>
       
@@ -167,7 +166,7 @@ if (top.frames.length!=0)
       <div id="map-content-icons">
         <div id="map-content-icons2">
           <ul>
-            <li class="sectors">ACTIVE SECTORS:</li>
+            <li class="sectors">MAJOR SECTORS:</li>
             <li class="s1"><a  sector-name="public" original-title="Public administration Law, Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#" onclick="return wb.toggleSector('public')">1</a></li>
             <li class="s2"><a  sector-name="agriculture" original-title="Agriculture, fishing, forestry" class="sectorcontrol inactive" id="sectorcontrol_agriculture" href="#" onclick="return wb.toggleSector('agriculture')">2</a></li>
             <li class="s3"><a  sector-name="health" original-title="Health, other social" class="sectorcontrol inactive" id="sectorcontrol_health" href="#" onclick="return wb.toggleSector('health')">3</a></li>
@@ -192,8 +191,8 @@ if (top.frames.length!=0)
   </div>
   <div id="map_console">
       <div class="console-title">
-        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
+        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp</p>
       </div>
       <div class="console-info">
         <div id="loading">Loading Map Data...</div>
