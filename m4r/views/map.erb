@@ -499,8 +499,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
               self.initialized = true;
             }, self.map);
         } else {
-          jq('#project_count').html(country_attrs["projects_count"]);
-          jq('#activity_count').html(country_attrs["locations_count"]);
+          jq('#project_count').html(self.country_attrs["projects_count"]);
+          jq('#activity_count').html(self.country_attrs["locations_count"]);
           self.hideLoading();
           self.initialized = true;
         }
