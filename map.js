@@ -319,8 +319,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },
     projectTable: function(data) {
       var self = this;
-      data.attributes["activity count"] = {original_name: "activity county", name: "Activities"}
-      data.attributes["financing"] = {original_name: "financing", name: "Financing"}
+      data.attributes["activity count"] = {original_name: "activity county", name: "Locations"}
+      data.attributes["financing"] = {original_name: "financing", name: "Total Amount"}
       data.features = this.projects;
 
       F1.Visualizer.charts.grid(500, 960, data, "projects-table", project_attributes, {"project-id": "project id"});
@@ -408,7 +408,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq('#funding_total').html(self.total_funding.toFixed(1) + " Million");
       
       bar_options = {"features":features, "attributes": {
-            "data":{"name": "Financing", "original_name": "funding"}, 
+            "data":{"name": "Total Amount", "original_name": "funding"}, 
             "description":{"name": "Sector", "original_name": "sector1"}, 
             "sort":{"name": "Total Amount","original_name": "funding"} } };
       F1.Visualizer.charts.bar(180, 455, bar_options, "chart-right-graph", {href: links, label: function() {
