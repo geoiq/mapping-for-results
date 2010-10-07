@@ -489,8 +489,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.getLayers(self.map);
       self.styleMap(self.map);
       wb.setIndicator("Poverty");
-      wb.toggleSector("counts_admin1",true)
-      if(country_attrs["locations_count"] > 2000) {
+      wb.toggleSector("counts_admin1",true);
+      if(self.country_attrs["locations_count"] < 2000) {
           F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""),   
             function(data) {
               self.sortData(data);
