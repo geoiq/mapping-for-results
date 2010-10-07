@@ -38,11 +38,11 @@ if(typeof(F1)=='undefined') {F1 = {}}
   }
 
   F1.WorldBank.indicators = {
-    "Poverty": {source: "finder:", title:"Poverty", subtitle: "Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [16709541,16698989,15500308,11422722,6694150], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "poverty" }}, infosubtitle: null, table: null, description: "<p>These data sets involve econometric or quantitative indirect estimation procedures that combine spatial precision (such as censuses) with substantive depth (such as surveys). They have been developed and implemented by the World Bank Development Economics Research Group and colleagues, in collaboration with country teams for the implementation of Poverty Reduction Strategy Programmes.</p><p>Though spatial information may be used in the process of generating these estimates, the spatial data is generally separated prior to the analysis, reporting and dissemination of the poverty estimates. Thus, CIESIN’s database of sub-national small area estimates contains poverty and inequality data with reconstructed boundary information, using basic geographic information system (GIS) tools. (Text obtained from the source of data at <a href='http://sedac.ciesin.columbia.edu/povmap/methods_nat_sae.jsp'>CIESIN</a>)</p><p>Source: <a href='http://www.measuredhs.com/'>Demographic and Health Surveys (DHS)</a></p>"},
+    "Poverty": {source: "finder:", title:"Poverty", subtitle: "Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [16709541,16698989,15500308,11422722,6694150], categories: 5, classificationNumClasses: 6, classificationType: "St Dev", opacity: 0.75, selectedAttribute: "poverty" }}, infosubtitle: null, table: null, description: "<p>These data sets involve econometric or quantitative indirect estimation procedures that combine spatial precision (such as censuses) with substantive depth (such as surveys). They have been developed and implemented by the World Bank Development Economics Research Group and colleagues, in collaboration with country teams for the implementation of Poverty Reduction Strategy Programmes.</p><p>Though spatial information may be used in the process of generating these estimates, the spatial data is generally separated prior to the analysis, reporting and dissemination of the poverty estimates. Thus, CIESIN’s database of sub-national small area estimates contains poverty and inequality data with reconstructed boundary information, using basic geographic information system (GIS) tools. (Text obtained from the source of data at <a href='http://sedac.ciesin.columbia.edu/povmap/methods_nat_sae.jsp'>CIESIN</a>)</p><p>Source: <a href='http://www.measuredhs.com/'>Demographic and Health Surveys (DHS)</a></p>"},
     "Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0x4A342C, 0x7C6253, 0xA4866D, 0xD1B79F, 0xEBD9C2], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "WFAB2SD" }}, infosubtitle: null, table: null, description: "Prevalence of child malnutrition is the percentage of children under age 5 whose height for age (stunting) is more than two standard deviations below the median for the international reference population ages 0-59 months. For children up to two years old height is measured by recumbent length. For older children height is measured by stature while standing. The data are based on the WHO's new child growth standards released in 2006.\nSource: World Health Organization, Global Database on Child Growth and Malnutrition.\nCatalog Sources: World Development Indicators"},
     "Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "IM1q0"}}, infosubtitle: null, table: null, description: "Mortality rate, infant (per 1,000 live births) Infant mortality rate is the number of infants dying before reaching one year of age, per 1,000 live births in a given year.\nSource: Inter-agency Group for Child Mortality Estimation (UNICEF, WHO, World Bank, UNPD, universities and research institutions).\nCatalog Source: World Development Indicators"},  
     "Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0x511483, 0x835BA4, 0xC090BD, 0xE3BBC2, 0xFCE3D7], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "DBHP"}}, infosubtitle: null,table: null, description: "Births attended by skilled health staff (% of total), are the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and advice to women during pregnancy, labor, and the postpartum period; to conduct deliveries on their own; and to care for newborns.\nSource: UNICEF, State of the World's Children, Childinfo, and Demographic and Health Surveys by Macro International."},
-    "Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "<p>The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'. This page uses the term 'statoid' for short. Since the word has no other accepted meaning (2), it can be used as a search term on search engines to target this site. The 'a' of statoid is long.</p><p>This page is a guide to Internet sites about the statoids of each country. It can be used independently, but it is meant to be an update to the book 'Administrative Subdivisions of Countries', by Gwillim Law (McFarland &amp; Company, Jefferson, North Carolina) (3). The international standard ISO 3166 is the source for the list of countries. As a result, some dependencies, and a few integral parts of larger countries, are listed as if they were separate countries</p><p>Source: <a href='http://www.statoids.com/ubo.html'>Statoids</a></p>"}
+    "Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com/ubo.html'>Statoids"}
 	},
   F1.WorldBank.prototype = {
     init: function(map_id, region) {
@@ -59,12 +59,12 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.current_projects = true;
       this.region = region;
             
-      icons = {};
-      jq.each(self.sectors, function(sector) {
-        icons[self.sectors[sector].name] = self.sectors[sector].icon;
-      });
+      // icons = {};
+      // jq.each(self.sectors, function(sector) {
+      //   icons[self.sectors[sector].name] = self.sectors[sector].icon;
+      // });
       		
-      this.wbicons = {"Agriculture, Fishing, and Forestry":"http://wbstaging.geocommons.com/images/icons/worldbank/agriculture-on.png","Communications":"http://wbstaging.geocommons.com/images/icons/worldbank/communication-on.png","Education":"http://wbstaging.geocommons.com/images/icons/worldbank/education-on.png","Energy and Mining":"http://wbstaging.geocommons.com/images/icons/worldbank/energy-on.png","Finance":"http://wbstaging.geocommons.com/images/icons/worldbank/finance-on.png","Health and Other Social Services":"http://wbstaging.geocommons.com/images/icons/worldbank/health-on.png","Industry":"http://wbstaging.geocommons.com/images/icons/worldbank/industry-on.png","Public Administration, Law, and Justice":"http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png","Transportation":"http://wbstaging.geocommons.com/images/icons/worldbank/transportation-on.png","Water, Sanitation, and Flood Protection":"http://wbstaging.geocommons.com/images/icons/worldbank/water-on.png"};
+      this.wbicons = {"Agriculture, Fishing, and Forestry":"http://wbstaging.geocommons.com/images/icons/worldbank/agriculture-on.png","Communications":"http://wbstaging.geocommons.com/images/icons/worldbank/communication-on.png","Education":"http://wbstaging.geocommons.com/images/icons/worldbank/education-on.png","Energy and Mining":"http://wbstaging.geocommons.com/images/icons/worldbank/energy-on.png","Finance":"http://wbstaging.geocommons.com/images/icons/worldbank/finance-on.png","Health and Other Social Services":"http://wbstaging.geocommons.com/images/icons/worldbank/health-on.png","Industry and Trade":"http://wbstaging.geocommons.com/images/icons/worldbank/industry-on.png","Public Administration, Law, and Justice":"http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png","Transportation":"http://wbstaging.geocommons.com/images/icons/worldbank/transportation-on.png","Water, Sanitation, and Flood Protection":"http://wbstaging.geocommons.com/images/icons/worldbank/water-on.png"};
       this.wbsectors = ["agriculture","public","education","health","water","transportation","energy","finance"]
       this.sectors = {
         "agriculture": {name: "Agriculture, Fishing, and Forestry", funding: 0, projects: [], activities: 0, shortname: "agriculture", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/agriculture-on.png"}, 
@@ -73,7 +73,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
         "energy": {name: "Energy and Mining", funding: 0, projects: [], activities: 0, shortname: "energy", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/energy-on.png"},
         "finance": {name: "Finance", funding: 0, projects: [], activities: 0, shortname: "finance", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/finance-on.png"},
         "health": {name: "Health and Other Social Services", funding: 0, projects: [], activities: 0, shortname: "health", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/health-on.png"},
-        "industry": {name: "Industry", funding: 0, projects: [], activities: 0, shortname: "industry", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/industry-on.png"},
+        "industry": {name: "Industry and Trade", funding: 0, projects: [], activities: 0, shortname: "industry", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/industry-on.png"},
         "public": {name: "Public Administration, Law, and Justice", funding: 0, projects: [], activities: 0, shortname: "public", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png"},
         "water": {name: "Water, Sanitation, and Flood Protection", funding: 0, projects: [], activities: 0, shortname: "water", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/water-on.png"},
         "transportation": {name: "Transportation", funding: 0, projects: [], activities: 0, shortname: "transportation", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/transportation-on.png"}};
@@ -142,7 +142,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
         if(visible == null)
           visible = (jq("#sall").is(':checked'));
         if(visible) {
-
           jq.each(self.sectors, function(sector) {
             if(Object.include(self.visibleSectors, sector) == null)
               self.visibleSectors.push(sector);
@@ -151,8 +150,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
           self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
           self.visibleSectors = [];
         }
-        visible = jq("#sall").attr("checked", visible);
-        
         self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
         self.map.showLayer(self.stylelayers["Project Counts"].order, !visible);
         jq('#layercontrol_sectors').html("By Sector");
@@ -252,8 +249,11 @@ if(typeof(F1)=='undefined') {F1 = {}}
         jq('#layercontrol_indicators').html(indicator);
         
         var style = F1.WorldBank.indicators[indicator].styles;
-        style.source = self.stylelayers[indicator];
-        self.map.setLayerStyle(self.stylelayers[indicator].order, style);
+        style.source = self.stylelayers[indicator].source;
+        
+        if(self.stylelayers[indicator].sharedLayer)
+            self.map.setLayerStyle(self.stylelayers[indicator].order, style);
+            
         var infotabs = [];
         if(F1.WorldBank.indicators[indicator].table != null)
           infotabs.push({title: "Data", type:"table", value:F1.WorldBank.indicators[indicator].table})
@@ -265,8 +265,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
           
         self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: indicator + ": $["+ F1.WorldBank.indicators[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
 
-        // self.map.swf.setLayerTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].title);
-        // self.map.swf.setLayerSubTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].subtitle);
+        self.map.swf.setLayerTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].title);
+        self.map.swf.setLayerSubTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].subtitle);
         self.map.showLayer(self.stylelayers[indicator].order, true);
       }
       self.current_indicator = indicator;
@@ -425,7 +425,10 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq.each(possibleLayers, function(layer) {
         index = Object.include(findlayers, possibleLayers[layer].title);
         if(index != null){
-          self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source};
+          self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
+          if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition"], possibleLayers[layer].title)) {
+            F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
+          }
           // self.map.swf.setLayerTitle(possibleLayers[layer].order, F1.WorldBank.indicators[possibleLayers[layer].title]);
           // self.map.swf.setLayerSubTitle(possibleLayers[layer].order, F1.WorldBank.indicators[possibleLayers[layer].subtitle]);
           findlayers.splice(index,1);
@@ -434,7 +437,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
 
       // second pass if we missed any
       jq.each(findlayers, function(layer) {
-        self.stylelayers[findlayers[layer]] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source};
+        self.stylelayers[findlayers[layer]] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
         // we'll set the title & subtitle later
       });
 
@@ -452,7 +455,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       // infowindow
       self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"}]});
       
-      self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in the region", tabs:[]});
+      self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "", tabs:[{title:"About", type:"text", value: "There are $[project count] active projects in the region."}]});
       
       // self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in $[adm1 name]", tabs:[{title: "Projects", type: "text", value:"<ul><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid1]'>$[pid1]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid2]'>$[pid2]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid3]'>$[pid3]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid4]'>$[pid4]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid5]'>$[pid5]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid6]'>$[pid6]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid7]'>$[pid7]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid8]'>$[pid8]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid9]'>$[pid9]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid10]'>$[pid10]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid11]'>$[pid11]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid12]'>$[pid12]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid13]'>$[pid13]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid14]'>$[pid14]</a></li></ul>"}]});
 
@@ -489,7 +492,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
           self.sortData(data);
           self.projectTable(data);
           wb.setIndicator("Poverty");
-          wb.toggleSector("all",true)
+          wb.toggleSector("counts_admin1",true)
           self.hideLoading();
           // self.sectorFundingBars();
           self.initialized = true;

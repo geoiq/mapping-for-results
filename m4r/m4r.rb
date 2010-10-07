@@ -128,7 +128,7 @@ SECTORS = {
   :communications => {:name => "Communications"},
   :energy => {:name => "Energy, Mining"},
   :finance => {:name => "Finance"},
-  :industry => {:name => "Industry, trade"},
+  :industry => {:name => "Industry and Trade"},
   :transporation => {:name => "Transportation"},
   :water => {:name => "Water, Sanitation, flood protection"},
   :education => {:name => "Education"}
