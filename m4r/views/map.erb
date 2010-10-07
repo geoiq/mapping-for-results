@@ -323,7 +323,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       data.attributes["financing"] = {original_name: "financing", name: "Total Amount"}
       data.features = this.projects;
 
-      F1.Visualizer.charts.grid(500, 960, data, "projects-table", project_attributes, {"project-id": "project id"});
+      F1.Visualizer.charts.grid(400, 960, data, "projects-table", project_attributes, {"project-id": "project id"});
       
       jq("#projects-table_grid tr").click(function() {
         self.highlightProject(jq(this).attr("project-id"));
