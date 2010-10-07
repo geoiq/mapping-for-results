@@ -142,6 +142,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
         if(visible == null)
           visible = (jq("#sall").is(':checked'));
         if(visible) {
+
           jq.each(self.sectors, function(sector) {
             if(Object.include(self.visibleSectors, sector) == null)
               self.visibleSectors.push(sector);
@@ -150,6 +151,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
           self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
           self.visibleSectors = [];
         }
+        visible = jq("#sall").attr("checked", visible);
+        
         self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
         self.map.showLayer(self.stylelayers["Project Counts"].order, !visible);
         jq('#layercontrol_sectors').html("By Sector");
@@ -483,10 +486,10 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.styleMap(self.map);
       F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""),   
         function(data) {
-          wb.setIndicator("Poverty");
-          wb.toggleSector("counts_admin1",true)
           self.sortData(data);
           self.projectTable(data);
+          wb.setIndicator("Poverty");
+          wb.toggleSector("all",true)
           self.hideLoading();
           // self.sectorFundingBars();
           self.initialized = true;
@@ -498,7 +501,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
           jq('#project_count').html("1,517");
           jq('#activity_count').html("12,000");
           
-          self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "Learn more about $[Country_1]'s World Bank portfolio projects and their results based on Millenium Development Goals.\n\n<a href='/$[regioncode]/$[lower]'>Go to the $[Country_1] Map</a>"}]});
+          self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
           
           
          self.hideLoading();
