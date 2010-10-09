@@ -469,7 +469,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
     highlightRegions: function(regions, region_attr) {
         var self = this;
         if(region_attr == null)
-            region_attr = "Country";
+            region_attr = "Country_1";
         
         self.map.swf.clearHighlights(0);
         jq.map(regions,function(region) {
@@ -508,7 +508,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       styleWorldMap: function() {
           var self = this;
          self.highlightRegions(["Kenya","Philippines","Bolivia"]);
-          jq('#project_count').html("1,517");
+          jq('#project_count').html("2,505");
           jq('#activity_count').html("12,000");
           
           self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
