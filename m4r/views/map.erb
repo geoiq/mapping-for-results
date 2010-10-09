@@ -340,7 +340,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       });  
 
 
-      jq('#project_count').html(Object.size(this.projects));
+      // jq('#project_count').html(Object.size(this.projects));
       jq('#activity_count').html(this.activities.length);
           
       
@@ -490,6 +490,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.styleMap(self.map);
       wb.setIndicator("Poverty");
       wb.toggleSector("counts_admin1",true);
+      jq('#project_count').html(self.country_attrs["projects_count"]);
+      jq('#activity_count').html(self.country_attrs["locations_count"]);
       if(self.country_attrs["locations_count"] < 2000) {
           F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""),   
             function(data) {
@@ -499,8 +501,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
               self.initialized = true;
             }, self.map);
         } else {
-          jq('#project_count').html(self.country_attrs["projects_count"]);
-          jq('#activity_count').html(self.country_attrs["locations_count"]);
           self.hideLoading();
           self.initialized = true;
         }

@@ -20,7 +20,7 @@ WBSTAGING = {
       :zoom => 3, :lat => -4, :lon => 21,
       :countries => {
         :kenya => {:name => "Kenya", :map => 255, :region => "Africa", :status => "active",
-                      :projects_count => 30, :locations_count => 231, 
+                      :projects_count => 37, :locations_count => 231, 
             :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,menuPK:356520~pagePK:141132~piPK:141107~theSitePK:356509,00.html"},
                 {:name => "World Bank Approves US$100 Million Credit for Kenya’s Health Sector", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:22632909~menuPK:50003484~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"},
                 {:name => "World Bank Approves US$154.5 Million to Support Poorest People in Western Kenya", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:21275229~menuPK:356530~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"}],
@@ -32,7 +32,7 @@ WBSTAGING = {
         :zoom => 4, :lat => 19, :lon => 105.5,
         :countries => {
           :philippines => {:name => "Philippines", :map => 263, :region => "East Asia and Pacific", :status => "active",
-                      :projects_count => 466, :locations_count => 4764, 
+                      :projects_count => 48, :locations_count => 4764, 
             :results => [{:name  => "Country Profile", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:20203978~menuPK:332990~pagePK:141137~piPK:141127~theSitePK:332982~isCURL:Y,00.html"},
                 {:name => "Kapitbisig Laban sa Kahirapan - Comprehensive And Integrated Delivery Of Social Services Project (KALAHI-CIDSS)", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:22190322~pagePK:141137~piPK:141127~theSitePK:332982,00.html"},
                 {:name => "Laguna de Bay Institutional Strengthening and Community Participation (LISCOP) Project", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:22149130~pagePK:141137~piPK:141127~theSitePK:332982,00.html"}],
@@ -59,7 +59,7 @@ WBSTAGING = {
       :zoom => 3, :lat => -25, :lon => -57.8,
       :countries => {
         :haiti => {:name => "Haiti", :map => 114, :projects => 108, :region => "Latin America and Caribbean", :status => "inactive", 
-                      :projects_count => 22, :locations_count => 319, 
+                      :projects_count => 27, :locations_count => 319, 
             :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/HAITIEXTN/0,,contentMDK:22251393~pagePK:1497618~piPK:217854~theSitePK:338165,00.html#projects"},
                 {:name => "Decentralized Infrastructure for Rural Transformation Project (IDTR)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html"}],          
           :indicators => ["Population","Poverty","Infant Mortality","Malnutrition"],
@@ -75,7 +75,7 @@ WBSTAGING = {
             {:name => "Nord-Ouest", :zoom => 11, :lat => 19.65, :lon => -72.86}
             ]},
         :bolivia => {:name => "Bolivia", :map => 262, :region => "Latin America and Caribbean", :status => "active",
-                      :projects_count => 14, :locations_count => 638, 
+                      :projects_count => 17, :locations_count => 638, 
                     :indicators => ["Population","Poverty","Infant Mortality","Maternal Health","Malnutrition"],
                     :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/BOLIVIAEXTN/0,,menuPK:322289~pagePK:141132~piPK:141107~theSitePK:322279,00.html#projects"},
                       {:name => "Decentralized Infrastructure for Rural Transformation Project (IDTR)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html"},
