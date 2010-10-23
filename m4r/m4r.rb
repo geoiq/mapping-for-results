@@ -1,5 +1,4 @@
-require 'rubygems'
-require 'sinatra'
+%w{ rubygems sinatra open-uri yajl erb  yajl/gzip yajl/deflate yajl/http_stream }.each {|gem| require gem}
 
 PLATFORM_API_URL = "http://wbstaging.geocommons.com"
 # PLATFORM_API_URL = "http://geoiq.local"
@@ -12,98 +11,113 @@ SUBDOMAIN = ""
 #   :indonesia => {:name => "Indonesia", :map => 5, :region => "East Asia and Pacific"}
 # }
 
+module WorldBank
 
-WBSTAGING = {
-  :world => {:name => "World", :map => 353, :projects_count => 1517, :locations_count => 12000, :regions => {
-    :afr => {
-      :name => "Africa",
-      :zoom => 3, :lat => -4, :lon => 21,
-      :countries => {
-        :kenya => {:name => "Kenya", :map => 255, :region => "Africa", :status => "active",
-                      :projects_count => 37, :locations_count => 231, 
-            :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,menuPK:356520~pagePK:141132~piPK:141107~theSitePK:356509,00.html"},
-                {:name => "World Bank Approves US$100 Million Credit for Kenya’s Health Sector", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:22632909~menuPK:50003484~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"},
-                {:name => "World Bank Approves US$154.5 Million to Support Poorest People in Western Kenya", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:21275229~menuPK:356530~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"}],
-                    :indicators => ["Population","Poverty","Infant Mortality","Maternal Health","Malnutrition"]}
-      }
-    },
-      :eap => {
-        :name => "East Asia and Pacific",
-        :zoom => 4, :lat => 19, :lon => 105.5,
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,mjsector1&countrycode[]=COUNTRY_CODE&status[]=active&rows=500&format=json&geocode=&frmYear=ALL&toYear=ALL"
+  WBSTAGING = {
+    :world => {:name => "World", :map => 353, :projects_count => 1517, :locations_count => 12000, :regions => {
+      :afr => {
+        :name => "Africa",
+        :zoom => 3, :lat => -4, :lon => 21,
         :countries => {
-          :philippines => {:name => "Philippines", :map => 263, :region => "East Asia and Pacific", :status => "active",
-                      :projects_count => 48, :locations_count => 4764, 
-            :results => [{:name  => "Country Profile", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:20203978~menuPK:332990~pagePK:141137~piPK:141127~theSitePK:332982~isCURL:Y,00.html"},
-                {:name => "Kapitbisig Laban sa Kahirapan - Comprehensive And Integrated Delivery Of Social Services Project (KALAHI-CIDSS)", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:22190322~pagePK:141137~piPK:141127~theSitePK:332982,00.html"},
-                {:name => "Laguna de Bay Institutional Strengthening and Community Participation (LISCOP) Project", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:22149130~pagePK:141137~piPK:141127~theSitePK:332982,00.html"}],
-                      :indicators => ["Population","Poverty","Infant Mortality"]}
+          :kenya => {:name => "Kenya", :map => 255, :isocode => "KE", :region => "Africa", :status => "active",
+                        :projects_count => 37, :locations_count => 231, 
+              :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,menuPK:356520~pagePK:141132~piPK:141107~theSitePK:356509,00.html"},
+                  {:name => "World Bank Approves US$100 Million Credit for Kenya’s Health Sector", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:22632909~menuPK:50003484~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"},
+                  {:name => "World Bank Approves US$154.5 Million to Support Poorest People in Western Kenya", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:21275229~menuPK:356530~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"}],
+                      :indicators => ["Population","Poverty","Infant Mortality","Maternal Health","Malnutrition"]}
         }
-    },
-      :eca => {
-        :name => "Europe and Central Asia",
-        :zoom => 4, :lat => 42.68, :lon => 68.90,
-        :countries => {}
       },
-      :mena => {
-        :name => "Middle East and North Africa",
-        :zoom => 4, :lat => 26.1, :lon => 25.7,
-        :countries => {}
+        :eap => {
+          :name => "East Asia and Pacific",
+          :zoom => 4, :lat => 19, :lon => 105.5,
+          :countries => {
+            :philippines => {:name => "Philippines", :isocode => "PH", :map => 263, :region => "East Asia and Pacific", :status => "active",
+                        :projects_count => 48, :locations_count => 4764, 
+              :results => [{:name  => "Country Profile", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:20203978~menuPK:332990~pagePK:141137~piPK:141127~theSitePK:332982~isCURL:Y,00.html"},
+                  {:name => "Kapitbisig Laban sa Kahirapan - Comprehensive And Integrated Delivery Of Social Services Project (KALAHI-CIDSS)", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:22190322~pagePK:141137~piPK:141127~theSitePK:332982,00.html"},
+                  {:name => "Laguna de Bay Institutional Strengthening and Community Participation (LISCOP) Project", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:22149130~pagePK:141137~piPK:141127~theSitePK:332982,00.html"}],
+                        :indicators => ["Population","Poverty","Infant Mortality"]}
+          }
       },
-      :sar => {
-        :name => "South Asia",
-        :zoom => 4, :lat => 15.5, :lon => 91.8,
-        :countries => {}
-      },                
-    :lac =>  {
-      :name => "Latin America and Caribbean",
-      :zoom => 3, :lat => -25, :lon => -57.8,
-      :countries => {
-        :haiti => {:name => "Haiti", :map => 114, :projects => 108, :region => "Latin America and Caribbean", :status => "inactive", 
-                      :projects_count => 27, :locations_count => 319, 
-            :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/HAITIEXTN/0,,contentMDK:22251393~pagePK:1497618~piPK:217854~theSitePK:338165,00.html#projects"},
-                {:name => "Decentralized Infrastructure for Rural Transformation Project (IDTR)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html"}],          
-          :indicators => ["Population","Poverty","Infant Mortality","Malnutrition"],
-          :adm1  => [{ :name => "Grand-Anse", :zoom => 11, :lat => 18.53, :lon => -74.13},
-            {:name => "Sud", :zoom => 10, :lat => 18.272, :lon => -73.72},
-            {:name => "Nippes", :zoom => 10, :lat => 18.45, :lon => -73.313},
-            {:name => "Sud-Est", :zoom => 10, :lat => 18.277, :lon => -72.369},
-            {:name => "Ouest", :zoom => 10, :lat => 18.45, :lon => -72.266},
-            {:name => "Centre", :zoom => 10, :lat => 18.98, :lon => -71.95},
-            {:name => "Artibonite", :zoom => 11, :lat => 18.16, :lon => -72.53},
-            {:name => "Nord-Est", :zoom => 11, :lat => 18.455, :lon => -71.9},
-            {:name => "Nord", :zoom => 11, :lat => 19.577, :lon => -72.29},
-            {:name => "Nord-Ouest", :zoom => 11, :lat => 19.65, :lon => -72.86}
-            ]},
-        :bolivia => {:name => "Bolivia", :map => 262, :region => "Latin America and Caribbean", :status => "active",
-                      :projects_count => 17, :locations_count => 638, 
-                    :indicators => ["Population","Poverty","Infant Mortality","Maternal Health","Malnutrition"],
-                    :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/BOLIVIAEXTN/0,,menuPK:322289~pagePK:141132~piPK:141107~theSitePK:322279,00.html#projects"},
-                      {:name => "Decentralized Infrastructure for Rural Transformation Project (IDTR)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html"},
-                      {:name => "Improving Access to Essential Maternal and Child Health Services (2007)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/EXTLACPROJECTSRESULTS/0,,contentMDK:21217923~contenttypepk:64745485~dataclass:CNTRY~folderpk:64748632~mdk:82648~pagePK:64750647~piPK:64750659~projID:P060392~theSitePK:3177341,00.html"},
-                      {:name => "Stimulating Local Economic Development and Regional Integration - the Abapo-Camiri Highway (2007)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/EXTLACPROJECTSRESULTS/0,,contentMDK:21359569~contenttypepk:64745485~dataclass:CNTRY~folderpk:64748632~mdk:82648~pagePK:64750647~piPK:64750659~projID:P055230~theSitePK:3177341,00.html"}]}
+        :eca => {
+          :name => "Europe and Central Asia",
+          :zoom => 4, :lat => 42.68, :lon => 68.90,
+          :countries => {}
+        },
+        :mena => {
+          :name => "Middle East and North Africa",
+          :zoom => 4, :lat => 26.1, :lon => 25.7,
+          :countries => {}
+        },
+        :sar => {
+          :name => "South Asia",
+          :zoom => 4, :lat => 15.5, :lon => 91.8,
+          :countries => {}
+        },                
+      :lac =>  {
+        :name => "Latin America and Caribbean",
+        :zoom => 3, :lat => -25, :lon => -57.8,
+        :countries => {
+          :haiti => {:name => "Haiti", :map => 114, :isocode => "HT", :projects => 108, :region => "Latin America and Caribbean", :status => "inactive", 
+                        :projects_count => 27, :locations_count => 319, 
+              :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/HAITIEXTN/0,,contentMDK:22251393~pagePK:1497618~piPK:217854~theSitePK:338165,00.html#projects"},
+                  {:name => "Decentralized Infrastructure for Rural Transformation Project (IDTR)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html"}],          
+            :indicators => ["Population","Poverty","Infant Mortality","Malnutrition"],
+            :adm1  => [{ :name => "Grand-Anse", :zoom => 11, :lat => 18.53, :lon => -74.13},
+              {:name => "Sud", :zoom => 10, :lat => 18.272, :lon => -73.72},
+              {:name => "Nippes", :zoom => 10, :lat => 18.45, :lon => -73.313},
+              {:name => "Sud-Est", :zoom => 10, :lat => 18.277, :lon => -72.369},
+              {:name => "Ouest", :zoom => 10, :lat => 18.45, :lon => -72.266},
+              {:name => "Centre", :zoom => 10, :lat => 18.98, :lon => -71.95},
+              {:name => "Artibonite", :zoom => 11, :lat => 18.16, :lon => -72.53},
+              {:name => "Nord-Est", :zoom => 11, :lat => 18.455, :lon => -71.9},
+              {:name => "Nord", :zoom => 11, :lat => 19.577, :lon => -72.29},
+              {:name => "Nord-Ouest", :zoom => 11, :lat => 19.65, :lon => -72.86}
+              ]},
+          :bolivia => {:name => "Bolivia", :isocode => "BO", :map => 262, :region => "Latin America and Caribbean", :status => "active",
+                        :projects_count => 17, :locations_count => 638, 
+                      :indicators => ["Population","Poverty","Infant Mortality","Maternal Health","Malnutrition"],
+                      :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/BOLIVIAEXTN/0,,menuPK:322289~pagePK:141132~piPK:141107~theSitePK:322279,00.html#projects"},
+                        {:name => "Decentralized Infrastructure for Rural Transformation Project (IDTR)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html"},
+                        {:name => "Improving Access to Essential Maternal and Child Health Services (2007)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/EXTLACPROJECTSRESULTS/0,,contentMDK:21217923~contenttypepk:64745485~dataclass:CNTRY~folderpk:64748632~mdk:82648~pagePK:64750647~piPK:64750659~projID:P060392~theSitePK:3177341,00.html"},
+                        {:name => "Stimulating Local Economic Development and Regional Integration - the Abapo-Camiri Highway (2007)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/EXTLACPROJECTSRESULTS/0,,contentMDK:21359569~contenttypepk:64745485~dataclass:CNTRY~folderpk:64748632~mdk:82648~pagePK:64750647~piPK:64750659~projID:P055230~theSitePK:3177341,00.html"}]}
+          }      
         }      
-      }      
+      }
     }
   }
-}
 
-SECTORS = {
-  :public => {:name => "Public administration Law, Justice"},
-  :agriculture => {:name => "Agriculture, fishing, forestry"},
-  :health => {:name => "Health, other Social"},
-  :communications => {:name => "Communications"},
-  :energy => {:name => "Energy, Mining"},
-  :finance => {:name => "Finance"},
-  :industry => {:name => "Industry and Trade"},
-  :transporation => {:name => "Transportation"},
-  :water => {:name => "Water, Sanitation, flood protection"},
-  :education => {:name => "Education"}
-  }
+  PROJECT_FIELDS = ["id","project_name","totalamt","mjsector1","boardapprovaldate"]
+  SECTORS = {
+    :public => {:name => "Public administration Law, Justice"},
+    :agriculture => {:name => "Agriculture, fishing, forestry"},
+    :health => {:name => "Health, other Social"},
+    :communications => {:name => "Communications"},
+    :energy => {:name => "Energy, Mining"},
+    :finance => {:name => "Finance"},
+    :industry => {:name => "Industry and Trade"},
+    :transporation => {:name => "Transportation"},
+    :water => {:name => "Water, Sanitation, flood protection"},
+    :education => {:name => "Education"}
+    }
 
 
-MAPS = PLATFORM_API_URL =~ /geocommons/ ? WBSTAGING : LOCAL 
+  MAPS = PLATFORM_API_URL =~ /geocommons/ ? WBSTAGING : LOCAL 
+  
+  def self.get_project_data(country)
+    # url = URI.parse(WB_PROJECTS_API.gsub(/COUNTRY_CODE/,country[:isocode]))
+    # projects_data = Yajl::HttpStream.get(url)
+    projects_data = Yajl::Parser.parse(open("#{country[:isocode]}.json").read)
+    projects_total = projects_data["total"]
+    country[:projects] = projects_total
+    country[:project_list] = projects_data["projects"]
+    return country
+  end
+end
 
-require 'erb'
+
+include WorldBank
 
 get '/' do
   @country = MAPS[:world]
@@ -133,6 +147,7 @@ get '/:region/:country' do
     erb :about
   else
     @country = @region[:countries][params[:country].to_sym]
+    @country = WorldBank.get_project_data(@country)
     erb :index
   end
 end
@@ -153,5 +168,20 @@ helpers do
       link += %Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/#region:#{@country[:region].gsub(/ /,'').downcase}">#{@country[:region]}</a><span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">#{@country[:name]}</a></span>}
     end
     link
-  end  
+  end
+  def cleanup_attributes(attribute, value)
+    case attribute
+    when /boardapprovaldate/
+      return DateTime.parse(value).strftime("%b-%Y")
+    when /totalamt/
+      return "$#{value} million"
+    when /mjsector1/
+      return value.match(/([\w]{2})\!\$\!(.*)/)[2]
+    else
+      return value
+    end
+    
+  end
+
+  
 end
