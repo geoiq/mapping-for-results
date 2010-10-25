@@ -344,7 +344,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
               
             wb_sector.funding += attr["totalamt"];
             wb_sector.projects.push(project);
-            self.total_funding += wb_sector.funding;
+            self.total_funding += attr["totalamt"];
           }
           // self.projects[attr["project id"]]["activity count"] += 1;
 
@@ -396,6 +396,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
           projects.push(self.sectors[sn].projects);
           funding += self.sectors[sn].funding;
         }
+        sector_names = "All"
         projects = projects.flatten(); 
       } else {
         // projects = self.sectors[sector_name].projects;
@@ -422,6 +423,11 @@ if(typeof(F1)=='undefined') {F1 = {}}
             
       jq('#sector_funding_title').html("Project Funding for " + sector_names + " Projects <a href='#footnote' title='(as of June 30,2010)'>[1]</a>")
       jq('#sector_funding_total').html(funding + " Million");
+      
+      if(projects.length == 1){
+        jq('#chart-left-pie-chart').hide();
+        return;
+      }
       
       var links = jq.map(projects, function (project) { 
           return "javascript:wb.highlightProject('" + project["id"] + "');";  
