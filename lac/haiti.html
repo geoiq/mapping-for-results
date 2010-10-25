@@ -243,6 +243,26 @@
   
 </div>
 
+<div id="chart-left" class="">
+  <div id="chart-left-title">
+    <h1 id="sector_funding_title">Funding by Project</h1>
+  </div>
+  <div id="chart-left-stat">
+    <h1 id="sector_funding_total"></h1>
+    <h2 id="sector_funding_description"></h2>
+  </div>
+  <div id="chart-left-pie-chart"></div>
+</div>
+
+<div id="chart-right" class="">
+  <div id="chart-right-title">
+    <h1>Overview Funding By Sector</h1>
+  </div>
+  <div id="chart-right-stat-subtitle">
+    <h1 id="funding_total"></h1>
+  </div>
+  <div id="chart-right-graph"></div>
+</div>
 
 
 <!--Project Search Bar Begins-->
@@ -267,59 +287,59 @@
   var wb = new F1.WorldBank();
   
   var projects = [
-        {id: 'P113623',project_name: 'Strengthening the Management of Agriculture Public Services (GFRP)',totalamt: '$5 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2009'},
+        {id: 'P113623',project_name: 'Strengthening the Management of Agriculture Public Services (GFRP)',totalamt: 5,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Jun-2009'},
       
-        {id: 'P111667',project_name: 'AVIAN INFLUENZA CONTROL AND HUMAN INFLUENZA EMERGENCY PREPARDNESS AND CONTROL',totalamt: '$1.56 million',mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2008'},
+        {id: 'P111667',project_name: 'AVIAN INFLUENZA CONTROL AND HUMAN INFLUENZA EMERGENCY PREPARDNESS AND CONTROL',totalamt: 1.56,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2008'},
       
-        {id: 'P120895',project_name: 'Infrastructure &amp; Institutions Emergency Recovery',totalamt: '$65 million',mjsector1: 'Transportation',boardapprovaldate: 'Mar-2010'},
+        {id: 'P120895',project_name: 'Infrastructure &amp; Institutions Emergency Recovery',totalamt: 65,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2010'},
       
-        {id: 'P115261',project_name: 'HT: Emergency School Reconstruction Project',totalamt: '$5 million',mjsector1: 'Education',boardapprovaldate: 'Mar-2009'},
+        {id: 'P115261',project_name: 'HT: Emergency School Reconstruction Project',totalamt: 5,mjsector1: 'Education',boardapprovaldate: 'Mar-2009'},
       
-        {id: 'P114174',project_name: 'Haiti Education for All Fast-Track Initiative Catalytic Fund',totalamt: '$0 million',mjsector1: 'Education',boardapprovaldate: 'May-2010'},
+        {id: 'P114174',project_name: 'Haiti Education for All Fast-Track Initiative Catalytic Fund',totalamt: 0,mjsector1: 'Education',boardapprovaldate: 'May-2010'},
       
-        {id: 'P121193',project_name: 'Education for All Project - Additional Financing',totalamt: '$12 million',mjsector1: 'Education',boardapprovaldate: 'May-2010'},
+        {id: 'P121193',project_name: 'Education for All Project - Additional Financing',totalamt: 12,mjsector1: 'Education',boardapprovaldate: 'May-2010'},
       
-        {id: 'P099918',project_name: 'HT Education For All Adaptable Program Grant Phase 1',totalamt: '$25 million',mjsector1: 'Education',boardapprovaldate: 'Apr-2007'},
+        {id: 'P099918',project_name: 'HT Education For All Adaptable Program Grant Phase 1',totalamt: 25,mjsector1: 'Education',boardapprovaldate: 'Apr-2007'},
       
-        {id: 'P101975',project_name: 'HT-School Feeding Program (TF056944 DGF)',totalamt: '$0 million',mjsector1: 'Education',boardapprovaldate: 'Jul-2006'},
+        {id: 'P101975',project_name: 'HT-School Feeding Program (TF056944 DGF)',totalamt: 0,mjsector1: 'Education',boardapprovaldate: 'Jul-2006'},
       
-        {id: 'P121690',project_name: 'Household Development Agent Pilot',totalamt: '$0 million',mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2010'},
+        {id: 'P121690',project_name: 'Household Development Agent Pilot',totalamt: 0,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Sep-2010'},
       
-        {id: 'P114936',project_name: 'Rural Water and Sanitation Project - SPF',totalamt: '$0 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2008'},
+        {id: 'P114936',project_name: 'Rural Water and Sanitation Project - SPF',totalamt: 0,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Nov-2008'},
       
-        {id: 'P112164',project_name: 'HT (AF) Electricity Loss Reduction Project',totalamt: '$5 million',mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2009'},
+        {id: 'P112164',project_name: 'HT (AF) Electricity Loss Reduction Project',totalamt: 5,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2009'},
       
-        {id: 'P093640',project_name: 'Haiti Community Driven Development (CDD) Project / PRODEP',totalamt: '$38 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2005'},
+        {id: 'P093640',project_name: 'Haiti Community Driven Development (CDD) Project / PRODEP',totalamt: 38,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Jul-2005'},
       
-        {id: 'P118139',project_name: 'Rural Community Driven Development - Additional Financing II',totalamt: '$15 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2010'},
+        {id: 'P118139',project_name: 'Rural Community Driven Development - Additional Financing II',totalamt: 15,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'May-2010'},
       
-        {id: 'P114059',project_name: 'Transport and Territorial Development Additional Financing',totalamt: '$12 million',mjsector1: 'Transportation',boardapprovaldate: 'Dec-2009'},
+        {id: 'P114059',project_name: 'Transport and Territorial Development Additional Financing',totalamt: 12,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2009'},
       
-        {id: 'P106621',project_name: 'HT - MEETING TEACHER NEEDS FOR EFA',totalamt: '$6 million',mjsector1: 'Education',boardapprovaldate: 'Apr-2008'},
+        {id: 'P106621',project_name: 'HT - MEETING TEACHER NEEDS FOR EFA',totalamt: 6,mjsector1: 'Education',boardapprovaldate: 'Apr-2008'},
       
-        {id: 'P098531',project_name: 'HT Electricity Project',totalamt: '$6 million',mjsector1: 'Energy and mining',boardapprovaldate: 'Aug-2006'},
+        {id: 'P098531',project_name: 'HT Electricity Project',totalamt: 6,mjsector1: 'Energy and Mining',boardapprovaldate: 'Aug-2006'},
       
-        {id: 'P114775',project_name: 'Community-Driven Development (CDD) Additional Financing',totalamt: '$8 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jan-2009'},
+        {id: 'P114775',project_name: 'Community-Driven Development (CDD) Additional Financing',totalamt: 8,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Jan-2009'},
       
-        {id: 'P106699',project_name: 'Haiti - Urban Community Driven Development Project / PRODEPUR',totalamt: '$15.7 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2008'},
+        {id: 'P106699',project_name: 'Haiti - Urban Community Driven Development Project / PRODEPUR',totalamt: 15.7,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Jun-2008'},
       
-        {id: 'P095523',project_name: 'Haiti Transport and Territorial Development Project',totalamt: '$16 million',mjsector1: 'Transportation',boardapprovaldate: 'Apr-2006'},
+        {id: 'P095523',project_name: 'Haiti Transport and Territorial Development Project',totalamt: 16,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2006'},
       
-        {id: 'P090159',project_name: 'Emergency Recovery and Disaster Management',totalamt: '$12 million',mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2005'},
+        {id: 'P090159',project_name: 'Emergency Recovery and Disaster Management',totalamt: 12,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Jan-2005'},
       
-        {id: 'P120914',project_name: 'Emergency program for solar power generation and lighting for Haiti, as a consequence of the Earthquake in Port au Prince.',totalamt: '$0 million',mjsector1: 'Energy and mining',boardapprovaldate: 'May-2010'},
+        {id: 'P120914',project_name: 'Emergency program for solar power generation and lighting for Haiti, as a consequence of the Earthquake in Port au Prince.',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'May-2010'},
       
-        {id: 'P114292',project_name: 'HT Emergency Bridge Reconst &amp; Vulnerab Reduction Project',totalamt: '$20 million',mjsector1: 'Transportation',boardapprovaldate: 'Nov-2008'},
+        {id: 'P114292',project_name: 'HT Emergency Bridge Reconst &amp; Vulnerab Reduction Project',totalamt: 20,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2008'},
       
-        {id: 'P108937',project_name: 'HT-Avian and Human Influenza (AHI)',totalamt: '$0 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Feb-2008'},
+        {id: 'P108937',project_name: 'HT-Avian and Human Influenza (AHI)',totalamt: 0,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Feb-2008'},
       
-        {id: 'P106689',project_name: 'Haiti Emergency Recovery and Disaster Management (Additional Financing)',totalamt: '$7.4 million',mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2008'},
+        {id: 'P106689',project_name: 'Haiti Emergency Recovery and Disaster Management (Additional Financing)',totalamt: 7.4,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Jan-2008'},
       
-        {id: 'P089839',project_name: 'Haiti Rural Water and Sanitation Project',totalamt: '$5 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jan-2007'},
+        {id: 'P089839',project_name: 'Haiti Rural Water and Sanitation Project',totalamt: 5,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Jan-2007'},
       
-        {id: 'P104690',project_name: 'Haiti Catastrophe Insurance Project',totalamt: '$9 million',mjsector1: 'Finance',boardapprovaldate: 'Mar-2007'},
+        {id: 'P104690',project_name: 'Haiti Catastrophe Insurance Project',totalamt: 9,mjsector1: 'Finance',boardapprovaldate: 'Mar-2007'},
       
-        {id: 'P095371',project_name: 'HT Economic Governance TAG II',totalamt: '$2 million',mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2006'},
+        {id: 'P095371',project_name: 'HT Economic Governance TAG II',totalamt: 2,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2006'},
       ];
   
       

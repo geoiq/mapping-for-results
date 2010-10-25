@@ -19,7 +19,7 @@
   <%# partial :infowindow %>
 </div>
 
-<%# partial :charts %>
+<%= partial :charts %>
 
 <%= partial :projects_table unless @country[:name] == "World" %>
 
@@ -29,7 +29,7 @@
   var wb = new F1.WorldBank();
   <% unless @country[:name] == "World" %>
   var projects = [<% @country[:project_list].each do |project_id, project| %>
-        {<%= PROJECT_FIELDS.collect {|key| "#{key}: '#{cleanup_attributes(key, project[key])}'"}.join(",") %>},
+        {<%= PROJECT_FIELDS.collect {|key| "#{key}: #{cleanup_attributes(key, project[key])}"}.join(",") %>},
       <% end %>];
   <% else %>
   var projects = [];

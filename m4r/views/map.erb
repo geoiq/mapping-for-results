@@ -208,7 +208,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.setMapTitle();
       self.showVisibleSectors();
       //jq('#sector_funding_description').html("Description about " + sector);
-      //self.sectorPieChart(sector);
+      self.sectorPieChart(sector);
       return false;
     },
     showVisibleSectors: function() {
@@ -281,8 +281,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       var highlightExpression = "$[project id] == '"+project_id+"'";
       this.map.swf.clearHighlights(self.stylelayers["Project Locations"].order);
       this.map.swf.addHighlight(self.stylelayers["Project Locations"].order,highlightExpression);
-      return false;
-      return false;
+      // return false;
     },
     sortData: function(data) {
       var self = this;
@@ -319,6 +318,40 @@ if(typeof(F1)=='undefined') {F1 = {}}
         }
       });      
     },
+    sortProjects: function(data) {
+      var self = this;
+      self.activities = jq.map(data, function(feature) { 
+        if (feature) {
+          attr = feature;
+          if(self.projects[attr["id"]] == null) { // first time we've seen this project ID
+            var project = {};
+
+            // Get the project level attributes
+            for(var i = 0;i<project_attributes.length;i++) {
+              // if(project_attributes[i] != "activity count")
+                project[project_attributes[i]] = attr[project_attributes[i]];
+            }
+            project["financing amount"] = attr["totalamt"];
+            // project["activity count"] = 0;
+            self.projects[attr["id"]] = project
+            
+            // Add to sector funding and project count
+            var sector_name = project["mjsector1"];
+            var wb_sector = self.sectors[self.sector_names[sector_name]];
+
+            if(wb_sector == null)
+              wb_sector = self.sectors["public"];
+              
+            wb_sector.funding += attr["totalamt"];
+            wb_sector.projects.push(project);
+            self.total_funding += wb_sector.funding;
+          }
+          // self.projects[attr["project id"]]["activity count"] += 1;
+
+          return attr;
+        }
+      });      
+    },    
     projectTable: function(data) {
         var self = this;
 
@@ -388,15 +421,15 @@ if(typeof(F1)=='undefined') {F1 = {}}
       }
             
       jq('#sector_funding_title').html("Project Funding for " + sector_names + " Projects <a href='#footnote' title='(as of June 30,2010)'>[1]</a>")
-      jq('#sector_funding_total').html(funding.toFixed(1) + " Million");
+      jq('#sector_funding_total').html(funding + " Million");
       
       var links = jq.map(projects, function (project) { 
-          return "javascript:wb.highlighProject('" + project["project id"] + "');";  
+          return "javascript:wb.highlightProject('" + project["id"] + "');";  
         });
       
       pie_options = {"features":projects, 
           "attributes": {"data":{"name": "Funding","original_name": "financing amount"},
-          "description":{"name": "Project","original_name": "project id"}, 
+          "description":{"name": "Project","original_name": "id"}, 
           "sort":{"name": "Funding","original_name": "financing amount"} } };
       jq('#chart-left-pie-chart').show();
 
@@ -410,14 +443,14 @@ if(typeof(F1)=='undefined') {F1 = {}}
 
       for(s in self.sectors) { 
         features.push(self.sectors[s]);
-        links.push( self.sectors[s]["sector"] );
+        links.push( self.sectors[s]["shortname"] );
       }
 
       jq('#funding_total').html(self.total_funding.toFixed(1) + " Million");
       
       bar_options = {"features":features, "attributes": {
             "data":{"name": "Total Amount", "original_name": "funding"}, 
-            "description":{"name": "Sector", "original_name": "sector1"}, 
+            "description":{"name": "Sector", "original_name": "name"}, 
             "sort":{"name": "Total Amount","original_name": "funding"} } };
       F1.Visualizer.charts.bar(180, 455, bar_options, "chart-right-graph", {href: links, label: function() {
         return links[this.bar.index];
@@ -500,6 +533,9 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq('#project_count').html(self.country_attrs["projects_count"]);
       jq('#activity_count').html(self.country_attrs["locations_count"]);
       self.projectTable(self.projects);
+      self.sortProjects(self.projects);
+      self.sectorFundingBars();
+      self.sectorPieChart(self.projects);
       self.hideLoading();
       self.initialized = true;
       

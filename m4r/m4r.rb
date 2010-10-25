@@ -191,15 +191,15 @@ module WorldBank
 
   PROJECT_FIELDS = ["id","project_name","totalamt","mjsector1","boardapprovaldate"]
   SECTORS = {
-    :public => {:name => "Public administration Law, Justice"},
-    :agriculture => {:name => "Agriculture, fishing, forestry"},
+    :public => {:name => "Public Administration Law, and Justice"},
+    :agriculture => {:name => "Agriculture, Fishing, and Forestry"},
     :health => {:name => "Health, other Social"},
     :communications => {:name => "Communications"},
     :energy => {:name => "Energy, Mining"},
     :finance => {:name => "Finance"},
     :industry => {:name => "Industry and Trade"},
     :transporation => {:name => "Transportation"},
-    :water => {:name => "Water, Sanitation, flood protection"},
+    :water => {:name => "Water, Sanitation, and Flood Protection"},
     :education => {:name => "Education"}
     }
 
@@ -320,13 +320,14 @@ helpers do
   def cleanup_attributes(attribute, value)
     case attribute
     when /boardapprovaldate/
-      return DateTime.parse(value).strftime("%b-%Y")
+      return "'#{DateTime.parse(value).strftime("%b-%Y")}'"
     when /totalamt/
-      return "$#{value} million"
-    when /mjsector1/
-      return value.match(/([\w]{2})\!\$\!(.*)/)[2]
-    else
       return value
+      # return "$#{value} million"
+    when /mjsector1/
+      return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[2].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')}'"
+    else
+      return "'#{value}'"
     end
     
   end
