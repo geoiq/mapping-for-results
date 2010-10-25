@@ -1,0 +1,6 @@
+body {width: 1020px}
+#mhlogo {background-image: url(/images/worldbank_logo.gif)}
+#header_master {margin: 10px 30px;}
+#header_master a {color: #444444}
+#mh_search input.nice {background: none}
+#user_header .mh_find_icon {display: none}

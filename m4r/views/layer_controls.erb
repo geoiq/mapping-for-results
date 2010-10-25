@@ -7,7 +7,7 @@
   <ul class="dropmenu">
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
-        <% if true || @country[:name] == "World" %>
+        <% if @country[:name] == "World" %>
           <% MAPS[:world][:regions].each do |region, region_attr| %>
             <% region_attr[:countries].each do |country, country_attr| %>
             <% if (country_attr[:status] == 'active') %>
@@ -16,9 +16,7 @@
             <% end %>
           <% end  %>              
         <% elsif(@country.keys.include?(:adm1)) %>
-        <% @country[:adm1].each do |adm_attr| %>
-        <li><a href="#" onclick="return wb.setLocation('<%= adm_attr[:name] %>',<%= adm_attr[:lat] %>,<%= adm_attr[:lon] %>,<%= adm_attr[:zoom] %>)"><%= adm_attr[:name] %></a></li>                
-        <% end %>
+            <%= menu_options(@country[:adm1]) %>
         <% end %>
       </ul>
     </li>

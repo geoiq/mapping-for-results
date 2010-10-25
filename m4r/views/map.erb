@@ -517,14 +517,15 @@ if(typeof(F1)=='undefined') {F1 = {}}
       //   }
       },
       styleWorldMap: function() {
-          var self = this;
+         var self = this;
          self.highlightRegions(["Kenya","Philippines","Bolivia"]);
-          jq('#project_count').html("2,505");
-          jq('#activity_count').html("12,000");
+         jq('#project_count').html(self.country_attrs["projects_count"]);
+         jq('#activity_count').html("12,000");
+
+         self.map.swf.addLayerInfoWindowFilter(1, {title: "$[project_n0]", subtitle: "$[mjsector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[id0]'>$[id0]</a>\nProject Name: $[project_n0]\nSector:$[mjsector1]\nTotal Amount: $ $[totalamt0] million"}]});
+
           
           self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
-          
-          
          self.hideLoading();
       },
       loadedMap: function() {

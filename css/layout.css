@@ -456,6 +456,10 @@ margin-bottom:10px;
 .dropmenuholder {float:right; margin: 10px 40px 0 0px;}
 .worldmenuholder {float:left; margin: 0}
 
+.column_2 {margin-left: 124px;}
+.column_3 {margin-left: 248px;}
+.column_4 {margin-left: 372px;}
+.column_5 {margin-left: 496px;}
 
 .worldmenu {
 	margin: 0 10px 0 0;

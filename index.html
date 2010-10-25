@@ -27,6 +27,9 @@
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
   <script type="text/javascript" src="/js/effects.js"></script>
+  <script type="text/javascript" src="/js/ddsmoothmenu.js"></script>
+  <script type="text/javascript" src="/js/anylinkcssmenu.js"></script>
+  
 
 <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/f1.api.js"></script>
@@ -71,7 +74,7 @@
       <div class="navigation"> <a class="network-home" href="http://www.worldbank.org">The World Bank</a>
         <ul class="links network-links">
           <li><a href="http://www.worldbank.org/about">About</a></li>
-          <li><a class="active" href="http://wbstaging.geocommons.com">Maps</a></li>
+          <li><a class="active" href="http://data.worldbank.org">Data</a></li>
           <li><a href="http://econ.worldbank.org">Research</a></li>
           <li><a href="http://www.worldbank.org/wbi">Learning</a></li>
           <li><a href="http://www.worldbank.org/news">News</a></li>
@@ -134,17 +137,17 @@
             <ul>
               
               
-              <li><a href="#" onclick="return wb.setLocation('Latin America and Caribbean',-25,-57.8,3)">Latin America and Caribbean</a></li>
-              
-              <li><a href="#" onclick="return wb.setLocation('East Asia and Pacific',19,105.5,4)">East Asia and Pacific</a></li>
+              <li><a href="#" onclick="return wb.setLocation('Africa',-4,21,3)">Africa</a></li>
               
               <li><a href="#" onclick="return wb.setLocation('Europe and Central Asia',42.68,68.9,4)">Europe and Central Asia</a></li>
               
               <li><a href="#" onclick="return wb.setLocation('Middle East and North Africa',26.1,25.7,4)">Middle East and North Africa</a></li>
               
-              <li><a href="#" onclick="return wb.setLocation('Africa',-4,21,3)">Africa</a></li>
-              
               <li><a href="#" onclick="return wb.setLocation('South Asia',15.5,91.8,4)">South Asia</a></li>
+              
+              <li><a href="#" onclick="return wb.setLocation('East Asia and Pacific',19,105.5,4)">East Asia and Pacific</a></li>
+              
+              <li><a href="#" onclick="return wb.setLocation('Latin America and Caribbean',-25,-57.8,3)">Latin America and Caribbean</a></li>
               
               
             </ul>
@@ -180,10 +183,14 @@
           
             
             
+            <li><a href="/afr/kenya" class="active">Kenya</a></li>
             
             
-            <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
+          
             
+          
+            
+          
             
           
             
@@ -193,15 +200,11 @@
             
           
             
-          
-            
-          
             
             
-            <li><a href="/afr/kenya" class="active">Kenya</a></li>
             
+            <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
             
-          
             
                         
         
@@ -233,12 +236,19 @@
 
 
 <script type="text/javascript" charset="utf-8">
+
+
   var wb = new F1.WorldBank();
-  wb.init(353,  "World", {projects_count: 1517, locations_count: 12000});
+  
+  var projects = [];
+  
+      
+  wb.init(353,  "World", {projects_count: 2669, locations_count: 12000, projects: projects});
+  
 </script>
 
 
-        <div id="footnote">Current projects as of June 30, 2010.</div>
+        <div id="footnote">Current locations as of June 30, 2010.</div>
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>

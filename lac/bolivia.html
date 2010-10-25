@@ -27,6 +27,9 @@
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
   <script type="text/javascript" src="/js/effects.js"></script>
+  <script type="text/javascript" src="/js/ddsmoothmenu.js"></script>
+  <script type="text/javascript" src="/js/anylinkcssmenu.js"></script>
+  
 
 <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/f1.api.js"></script>
@@ -71,7 +74,7 @@
       <div class="navigation"> <a class="network-home" href="http://www.worldbank.org">The World Bank</a>
         <ul class="links network-links">
           <li><a href="http://www.worldbank.org/about">About</a></li>
-          <li><a class="active" href="http://wbstaging.geocommons.com">Maps</a></li>
+          <li><a class="active" href="http://data.worldbank.org">Data</a></li>
           <li><a href="http://econ.worldbank.org">Research</a></li>
           <li><a href="http://www.worldbank.org/wbi">Learning</a></li>
           <li><a href="http://www.worldbank.org/news">News</a></li>
@@ -191,33 +194,7 @@
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
         
-          
-            
-            
-            
-            
-            <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
-            
-            
-          
-            
-            
-            <li><a href="/eap/philippines" class="active">Philippines</a></li>
-            
-            
-          
-            
-          
-            
-          
-            
-            
-            <li><a href="/afr/kenya" class="active">Kenya</a></li>
-            
-            
-          
-            
-                        
+            <div class="column column_1"><ul><li><a href="#" onclick="return wb.setLocation('Chuquisaca',-19.91639089,-63.94717775,9)">Chuquisaca</a></li><li><a href="#" onclick="return wb.setLocation('Cochabamba',-17.22959421,-65.59480594,9)">Cochabamba</a></li><li><a href="#" onclick="return wb.setLocation('El Beni',-13.42445187,-64.5442714,9)">El Beni</a></li></ul></div><div class="column column_2"><ul><li><a href="#" onclick="return wb.setLocation('La Paz',-14.94456585,-68.18528065,9)">La Paz</a></li><li><a href="#" onclick="return wb.setLocation('Oruro',-18.59702433,-67.606991,9)">Oruro</a></li><li><a href="#" onclick="return wb.setLocation('Pando',-11.08158361,-67.42260436,9)">Pando</a></li></ul></div><div class="column column_3"><ul><li><a href="#" onclick="return wb.setLocation('Potosi',-20.34719881,-66.74823433,9)">Potosi</a></li><li><a href="#" onclick="return wb.setLocation('Santa Cruz',-16.96804972,-61.14741229,9)">Santa Cruz</a></li><li><a href="#" onclick="return wb.setLocation('Tarija',-21.87133887,-63.8372801,9)">Tarija</a></li></ul></div>
         
       </ul>
     </li>
@@ -294,12 +271,53 @@
 
 
 <script type="text/javascript" charset="utf-8">
+
+
   var wb = new F1.WorldBank();
-  wb.init(262,  "Bolivia", {projects_count: 17, locations_count: 638});
+  
+  var projects = [
+        {id: 'P106449',project_name: 'Emergency Recovery and Disaster Management Project',totalamt: '$12.5 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2007'},
+      
+        {id: 'P006187',project_name: 'FIN SCTR',totalamt: '$9.1 million',mjsector1: 'Finance',boardapprovaldate: 'Oct-1989'},
+      
+        {id: 'P083979',project_name: 'Bolivia Urban Infrastructure Project',totalamt: '$30 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2006'},
+      
+        {id: 'P073367',project_name: 'Decentralized Infrastructure for Rural Transformation',totalamt: '$20 million',mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2003'},
+      
+        {id: 'P101084',project_name: 'BO:  Investing in Children and Youth',totalamt: '$17 million',mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2008'},
+      
+        {id: 'P101206',project_name: 'Expanding Access to Reduce Health Inequities Project (APL III)--Former Health Sector Reform - Third Phase (APL III)',totalamt: '$18.5 million',mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2008'},
+      
+        {id: 'P101426',project_name: 'Lake Titicaca Local Sustainable Development',totalamt: '$20 million',mjsector1: 'Industry and trade',boardapprovaldate: 'Dec-2007'},
+      
+        {id: 'P068968',project_name: 'Road Rehabilitation and Maintenance Project',totalamt: '$77 million',mjsector1: 'Transportation',boardapprovaldate: 'Apr-2002'},
+      
+        {id: 'P104092',project_name: 'Bolivia Urban Wastewater Methane Gas Capture',totalamt: '$0 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2007'},
+      
+        {id: 'P006192',project_name: 'FIN SEC ADJ SUPLM III',totalamt: '$14.5 million',mjsector1: 'Finance',boardapprovaldate: 'Nov-1990'},
+      
+        {id: 'P087925',project_name: 'Bolivia Land for Agricultural Development Project.',totalamt: '$15 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Oct-2007'},
+      
+        {id: 'P083051',project_name: 'BO Rural Alliances',totalamt: '$28.4 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2005'},
+      
+        {id: 'P102479',project_name: 'Bolivia Decentralized Electricity for Universal Access',totalamt: '$0 million',mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2007'},
+      
+        {id: 'P101298',project_name: 'Second Participatory Rural Investment',totalamt: '$20 million',mjsector1: 'Transportation',boardapprovaldate: 'Dec-2007'},
+      
+        {id: 'P111863',project_name: 'BO (AF) Rural Alliances',totalamt: '$30 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2009'},
+      
+        {id: 'P083965',project_name: 'BO-Secondary Education Transformation',totalamt: '$10 million',mjsector1: 'Education',boardapprovaldate: 'Oct-2007'},
+      
+        {id: 'P109057',project_name: 'Emergency Recovery and Disaster Management Project (AF)',totalamt: '$4.4 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2008'},
+      ];
+  
+      
+  wb.init(262,  "Bolivia", {projects_count: 17, locations_count: 638, projects: projects});
+  
 </script>
 
 
-        <div id="footnote">Current projects as of June 30, 2010.</div>
+        <div id="footnote">Current locations as of June 30, 2010.</div>
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>

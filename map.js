@@ -1,5 +1,6 @@
 var proxy_host = "http://wbstaging.geocommons.com";    
-var project_attributes = ["project title", "project id", "activity count", "financing", "sector1", "approval date"];
+//var project_attributes = ["project title", "project id", "financing", "sector1", "approval date"];
+var project_attributes = ["id","project_name","totalamt","mjsector1","boardapprovaldate"]
 
 // , "General agriculture, fishing and forestry sector":"agriculture"
 if(typeof(F1)=='undefined') {F1 = {}}
@@ -49,7 +50,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       
       var self = this;
       this.activities = {};
-      this.projects = {};
+      this.projects = country_attrs.projects;
       this.visibleSectors = [];
       this.sectors = {};
       this.total_funding = 0;
@@ -319,31 +320,37 @@ if(typeof(F1)=='undefined') {F1 = {}}
       });      
     },
     projectTable: function(data) {
-      var self = this;
-      data.attributes["activity count"] = {original_name: "activity county", name: "Locations"}
-      data.attributes["financing"] = {original_name: "financing", name: "Total Amount"}
-      data.features = this.projects;
+        var self = this;
 
-      F1.Visualizer.charts.grid(500, 960, data, "projects-table", project_attributes, {"project-id": "project id"});
-      
-      jq("#projects-table_grid tr").click(function() {
-        self.highlightProject(jq(this).attr("project-id"));
-      });
-      jq("#projects-bar").click(function() {
-          if(jQuery(this).hasClass("expanded")) {
-            jq("#projects-table").hide("blind", { direction: "vertical" }, 2000);
-            jq(this).removeClass("expanded").addClass("collapsed");      
-          } else {
-            jq("#projects-table").show("blind", { direction: "vertical" }, 2000);
-            jq(this).removeClass("collapsed").addClass("expanded");  
-          }
-      });  
+        var table = '<table id="projects-table_grid"><thead><tr>';
+        jq.each(["Project ID","Project Name","Financing Amount","Major Sector","Approval Date"], function(index,header) {
+            table += tmpl(table_templates.th, {header: header});
+        });
+        table += "</tr></thead><tbody>"
 
+        jq.each(data, function(index, project) {
+            project["even"] = ((index+1) % 2 == 0) ? "row_even" : "row_odd";
+            table += tmpl(table_templates.project, project);
+        });
+        table += "</tbody></table>"
+        jq("#projects-table").append(table);
 
-      // jq('#project_count').html(Object.size(this.projects));
-      jq('#activity_count').html(this.activities.length);
-          
-      
+        jq("#projects-table tr").live("click", function() {
+            self.highlightProject(jq(this).attr("project-id"));
+        });
+        jq("#projects-bar").click(function() {
+            if(jQuery(this).hasClass("expanded")) {
+                jq("#projects-table").hide("blind", { direction: "vertical" }, 2000);
+                jq(this).removeClass("expanded").addClass("collapsed");      
+            } else {
+                jq("#projects-table").show("blind", { direction: "vertical" }, 2000);
+                jq(this).removeClass("collapsed").addClass("expanded");  
+            }
+        });  
+
+        // jq('#project_count').html(Object.size(this.projects));
+        // jq('#activity_count').html(this.activities.length);
+
     },
     sectorPieChart: function(sector_name) {
       var self = this;
@@ -492,28 +499,33 @@ if(typeof(F1)=='undefined') {F1 = {}}
       wb.toggleSector("counts_admin1",true);
       jq('#project_count').html(self.country_attrs["projects_count"]);
       jq('#activity_count').html(self.country_attrs["locations_count"]);
-      if(self.country_attrs["locations_count"] < 2000) {
-          F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""),   
-            function(data) {
-              self.sortData(data);
-              self.projectTable(data);
-              self.hideLoading();
-              self.initialized = true;
-            }, self.map);
-        } else {
-          self.hideLoading();
-          self.initialized = true;
-        }
+      self.projectTable(self.projects);
+      self.hideLoading();
+      self.initialized = true;
+      
+      // if(self.country_attrs["locations_count"] < 2000) {
+      //     F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""),   
+      //       function(data) {
+      //         self.sortData(data);
+      //         self.projectTable(data);
+      //         self.hideLoading();
+      //         self.initialized = true;
+      //       }, self.map);
+      //   } else {
+      //     self.hideLoading();
+      //     self.initialized = true;
+      //   }
       },
       styleWorldMap: function() {
-          var self = this;
+         var self = this;
          self.highlightRegions(["Kenya","Philippines","Bolivia"]);
-          jq('#project_count').html("2,505");
-          jq('#activity_count').html("12,000");
+         jq('#project_count').html(self.country_attrs["projects_count"]);
+         jq('#activity_count').html("12,000");
+
+         self.map.swf.addLayerInfoWindowFilter(1, {title: "$[project_n0]", subtitle: "$[mjsector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[id0]'>$[id0]</a>\nProject Name: $[project_n0]\nSector:$[mjsector1]\nTotal Amount: $ $[totalamt0] million"}]});
+
           
           self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
-          
-          
          self.hideLoading();
       },
       loadedMap: function() {

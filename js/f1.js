@@ -2,7 +2,7 @@ var table_templates = {
     tr : '<tr><%= row %></tr>',
     th : '<th><%= header %></th>',
     td : '<td><%= cell %></td>',
-    project: '<tr class="<%= even %>" project-id="<%= id %>"><td><%= id %></td><td><%= project_name %></td><td><%= boardapprovaldate %></td><td><%= totalamt %></td><td><%= mjsector1 %></td></tr>'
+    project: '<tr class="<%= even %>" project-id="<%= id %>"><td><%= id %></td><td><%= project_name %></td><td><%= totalamt %></td><td><%= mjsector1 %></td><td><%= boardapprovaldate %></td></tr>'
 };
 
 var UserHeader = Class.create({

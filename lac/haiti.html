@@ -27,6 +27,9 @@
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
   <script type="text/javascript" src="/js/effects.js"></script>
+  <script type="text/javascript" src="/js/ddsmoothmenu.js"></script>
+  <script type="text/javascript" src="/js/anylinkcssmenu.js"></script>
+  
 
 <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://wbstaging.geocommons.com/javascripts/f1.api.js"></script>
@@ -71,7 +74,7 @@
       <div class="navigation"> <a class="network-home" href="http://www.worldbank.org">The World Bank</a>
         <ul class="links network-links">
           <li><a href="http://www.worldbank.org/about">About</a></li>
-          <li><a class="active" href="http://wbstaging.geocommons.com">Maps</a></li>
+          <li><a class="active" href="http://data.worldbank.org">Data</a></li>
           <li><a href="http://econ.worldbank.org">Research</a></li>
           <li><a href="http://www.worldbank.org/wbi">Learning</a></li>
           <li><a href="http://www.worldbank.org/news">News</a></li>
@@ -191,33 +194,7 @@
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
         
-          
-            
-            
-            
-            
-            <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
-            
-            
-          
-            
-            
-            <li><a href="/eap/philippines" class="active">Philippines</a></li>
-            
-            
-          
-            
-          
-            
-          
-            
-            
-            <li><a href="/afr/kenya" class="active">Kenya</a></li>
-            
-            
-          
-            
-                        
+            <div class="column column_1"><ul><li><a href="#" onclick="return wb.setLocation('Grand-Anse',18.53,-74.13,11)">Grand-Anse</a></li><li><a href="#" onclick="return wb.setLocation('Sud',18.272,-73.72,10)">Sud</a></li><li><a href="#" onclick="return wb.setLocation('Nippes',18.45,-73.313,10)">Nippes</a></li></ul></div><div class="column column_2"><ul><li><a href="#" onclick="return wb.setLocation('Sud-Est',18.277,-72.369,10)">Sud-Est</a></li><li><a href="#" onclick="return wb.setLocation('Ouest',18.45,-72.266,10)">Ouest</a></li><li><a href="#" onclick="return wb.setLocation('Centre',18.98,-71.95,10)">Centre</a></li></ul></div><div class="column column_3"><ul><li><a href="#" onclick="return wb.setLocation('Artibonite',18.16,-72.53,11)">Artibonite</a></li><li><a href="#" onclick="return wb.setLocation('Nord-Est',18.455,-71.9,11)">Nord-Est</a></li><li><a href="#" onclick="return wb.setLocation('Nord',19.577,-72.29,11)">Nord</a></li></ul></div><div class="column column_4"><ul><li><a href="#" onclick="return wb.setLocation('Nord-Ouest',19.65,-72.86,11)">Nord-Ouest</a></li></ul></div>
         
       </ul>
     </li>
@@ -288,12 +265,73 @@
 
 
 <script type="text/javascript" charset="utf-8">
+
+
   var wb = new F1.WorldBank();
-  wb.init(114,  "Haiti", {projects_count: 27, locations_count: 319});
+  
+  var projects = [
+        {id: 'P113623',project_name: 'Strengthening the Management of Agriculture Public Services (GFRP)',totalamt: '$5 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2009'},
+      
+        {id: 'P111667',project_name: 'AVIAN INFLUENZA CONTROL AND HUMAN INFLUENZA EMERGENCY PREPARDNESS AND CONTROL',totalamt: '$1.56 million',mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2008'},
+      
+        {id: 'P120895',project_name: 'Infrastructure &amp; Institutions Emergency Recovery',totalamt: '$65 million',mjsector1: 'Transportation',boardapprovaldate: 'Mar-2010'},
+      
+        {id: 'P115261',project_name: 'HT: Emergency School Reconstruction Project',totalamt: '$5 million',mjsector1: 'Education',boardapprovaldate: 'Mar-2009'},
+      
+        {id: 'P114174',project_name: 'Haiti Education for All Fast-Track Initiative Catalytic Fund',totalamt: '$0 million',mjsector1: 'Education',boardapprovaldate: 'May-2010'},
+      
+        {id: 'P121193',project_name: 'Education for All Project - Additional Financing',totalamt: '$12 million',mjsector1: 'Education',boardapprovaldate: 'May-2010'},
+      
+        {id: 'P099918',project_name: 'HT Education For All Adaptable Program Grant Phase 1',totalamt: '$25 million',mjsector1: 'Education',boardapprovaldate: 'Apr-2007'},
+      
+        {id: 'P101975',project_name: 'HT-School Feeding Program (TF056944 DGF)',totalamt: '$0 million',mjsector1: 'Education',boardapprovaldate: 'Jul-2006'},
+      
+        {id: 'P121690',project_name: 'Household Development Agent Pilot',totalamt: '$0 million',mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2010'},
+      
+        {id: 'P114936',project_name: 'Rural Water and Sanitation Project - SPF',totalamt: '$0 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2008'},
+      
+        {id: 'P112164',project_name: 'HT (AF) Electricity Loss Reduction Project',totalamt: '$5 million',mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2009'},
+      
+        {id: 'P093640',project_name: 'Haiti Community Driven Development (CDD) Project / PRODEP',totalamt: '$38 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2005'},
+      
+        {id: 'P118139',project_name: 'Rural Community Driven Development - Additional Financing II',totalamt: '$15 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2010'},
+      
+        {id: 'P114059',project_name: 'Transport and Territorial Development Additional Financing',totalamt: '$12 million',mjsector1: 'Transportation',boardapprovaldate: 'Dec-2009'},
+      
+        {id: 'P106621',project_name: 'HT - MEETING TEACHER NEEDS FOR EFA',totalamt: '$6 million',mjsector1: 'Education',boardapprovaldate: 'Apr-2008'},
+      
+        {id: 'P098531',project_name: 'HT Electricity Project',totalamt: '$6 million',mjsector1: 'Energy and mining',boardapprovaldate: 'Aug-2006'},
+      
+        {id: 'P114775',project_name: 'Community-Driven Development (CDD) Additional Financing',totalamt: '$8 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jan-2009'},
+      
+        {id: 'P106699',project_name: 'Haiti - Urban Community Driven Development Project / PRODEPUR',totalamt: '$15.7 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2008'},
+      
+        {id: 'P095523',project_name: 'Haiti Transport and Territorial Development Project',totalamt: '$16 million',mjsector1: 'Transportation',boardapprovaldate: 'Apr-2006'},
+      
+        {id: 'P090159',project_name: 'Emergency Recovery and Disaster Management',totalamt: '$12 million',mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2005'},
+      
+        {id: 'P120914',project_name: 'Emergency program for solar power generation and lighting for Haiti, as a consequence of the Earthquake in Port au Prince.',totalamt: '$0 million',mjsector1: 'Energy and mining',boardapprovaldate: 'May-2010'},
+      
+        {id: 'P114292',project_name: 'HT Emergency Bridge Reconst &amp; Vulnerab Reduction Project',totalamt: '$20 million',mjsector1: 'Transportation',boardapprovaldate: 'Nov-2008'},
+      
+        {id: 'P108937',project_name: 'HT-Avian and Human Influenza (AHI)',totalamt: '$0 million',mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Feb-2008'},
+      
+        {id: 'P106689',project_name: 'Haiti Emergency Recovery and Disaster Management (Additional Financing)',totalamt: '$7.4 million',mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2008'},
+      
+        {id: 'P089839',project_name: 'Haiti Rural Water and Sanitation Project',totalamt: '$5 million',mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jan-2007'},
+      
+        {id: 'P104690',project_name: 'Haiti Catastrophe Insurance Project',totalamt: '$9 million',mjsector1: 'Finance',boardapprovaldate: 'Mar-2007'},
+      
+        {id: 'P095371',project_name: 'HT Economic Governance TAG II',totalamt: '$2 million',mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2006'},
+      ];
+  
+      
+  wb.init(114,  "Haiti", {projects_count: 27, locations_count: 319, projects: projects});
+  
 </script>
 
 
-        <div id="footnote">Current projects as of June 30, 2010.</div>
+        <div id="footnote">Current locations as of June 30, 2010.</div>
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>

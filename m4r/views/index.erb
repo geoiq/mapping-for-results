@@ -27,9 +27,13 @@
 
 
   var wb = new F1.WorldBank();
-  projects = [<% @country[:project_list].each do |project_id, project| %>
+  <% unless @country[:name] == "World" %>
+  var projects = [<% @country[:project_list].each do |project_id, project| %>
         {<%= PROJECT_FIELDS.collect {|key| "#{key}: '#{cleanup_attributes(key, project[key])}'"}.join(",") %>},
       <% end %>];
+  <% else %>
+  var projects = [];
+  <% end %>
       
   wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", {projects_count: <%= @country[:projects_count] %>, locations_count: <%= @country[:locations_count] %>, projects: projects});
   
