@@ -62,25 +62,27 @@
 
 
 /*LEFT CHART*/
-#chart-left {margin-top:20px; margin-bottom:17px; width:474px; height:260px; float:left; border-right:1px solid #b3b3b3;}
+#chart-left {margin-top:20px; margin-bottom:7px; width:474px; height:280px; float:left; border-right:1px solid #b3b3b3;}
 #chart-left #chart-left-title  { width:440px; height:25px; border-bottom: solid 1px #ececec; margin-top:10px; margin-left:10px;}
 #chart-left h1 {font-family:Arial,sans-serif; font-size:14px; color:#8a8a8a; margin-left:0px;}
 
-#chart-left-stat { width:175px; height:210px; float:left;margin-left:10px;}
+#chart-left-stat { width:475px; height:20px; float:left;margin-left:10px;}
 #chart-left-stat h1 {font-family:Georgia, serif; font-size:26px; color:#970001; font-weight:bold; margin-top:16px;}
-#chart-left-stat h2 {font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f; line-height:17px; padding-right:18px;}
+#chart-left-stat h2 {font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f; line-height:17px; padding-right:18px; width: 150px;}
 
-#chart-left-pie-chart {width:262px; height:210px; float:left; margin-top: 40px; margin-left: -30px;}
+#chart-left-pie-chart {width:562px; height:170px; float:left; margin-top: 30px; margin-left: 20px;}
 
 /*RIGHT CHART*/
 #chart-right {margin-top:20px;margin-bottom:17px; width:476px; height:260px; float:left;}
-#chart-right-title  { width:440px; height:25px; border-bottom: solid 1px #ececec; margin-top:10px; margin-left:25px; margin-bottom:12px;}
+#chart-right-title  { width:44  0px; height:25px; border-bottom: solid 1px #ececec; margin-top:10px; margin-left:25px; margin-bottom:12px;}
 #chart-right h1 {font-family:Arial,sans-serif; font-size:14px; color:#8a8a8a; margin-left:0px;}
 #chart-right-stat-subtitle {width:200px; height:30px; margin-left:25px;}
 #chart-right-stat-subtitle h1 {font-family:Georgia, serif; font-size:26px; color:#970001; font-weight:bold;}
 #subtitle-comment { width:100px; height:30px;font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f;}
-#chart-right-graph {width:440px; height:155px; margin-left:25px;}
+#chart-right-graph {width:440px; height:170px; margin-left:25px;}
 	
+.subtotal {color: rgb(136, 136, 136); font-size: 0.8em;}
+.chart_about {margin-left: 10px;color:#8A8A8A;}
 /* ........................................................END NEW 9/23/2010.................................................................. */
 
 .block-title { font-family:arial, sans serif;  background:none repeat scroll 0 0 transparent;  border-bottom:1px solid #E0E0E0;
@@ -96,6 +98,7 @@
 /*.......................................................NEW 9/23/2010.................................................................*/
 
 /*PROJECT TABLE STYLING*/
+#projects-table { overflow-x:hidden; overflow-y:auto;}
 table#projects-table_grid  {border-collapse: collapse;width:960px;font-family:Arial, sans-serif;font-size:12px;color:#000;}
 table {height: 400px;overflow-y: scroll; overflow-x: hidden;}
 #project-search-box {display: none;}
@@ -114,9 +117,8 @@ td h1 {font-family: Georgia, Times, serif; font-size:13px; font-weight:100; line
 .project-th {background: url(../images/table-th-project-list-bg.gif) repeat-x; border:: 1px solid #dadcd1;}
 
 .background-colored-cell, .row_even {background-color:#eeefe9;}
+
 table#projects-table_grid tbody {height: 400px;overflow-x:hidden;overflow-y:auto;}
-
-
 
 /*Table Header 2-line titles styling*/
 

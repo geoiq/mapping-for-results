@@ -191,18 +191,17 @@ module WorldBank
 
   PROJECT_FIELDS = ["id","project_name","totalamt","mjsector1","boardapprovaldate"]
   SECTORS = {
-    :public => {:name => "Public Administration Law, and Justice"},
+    :public => {:name => "Public Administration, Law, and Justice"},
     :agriculture => {:name => "Agriculture, Fishing, and Forestry"},
     :health => {:name => "Health, other Social"},
     :communications => {:name => "Communications"},
-    :energy => {:name => "Energy, Mining"},
+    :energy => {:name => "Energy and Mining"},
     :finance => {:name => "Finance"},
     :industry => {:name => "Industry and Trade"},
     :transporation => {:name => "Transportation"},
     :water => {:name => "Water, Sanitation, and Flood Protection"},
     :education => {:name => "Education"}
     }
-
 
   MAPS = PLATFORM_API_URL =~ /geocommons/ ? WBSTAGING : LOCAL 
 
@@ -326,6 +325,8 @@ helpers do
       # return "$#{value} million"
     when /mjsector1/
       return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[2].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')}'"
+    when /sector_code/
+      return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[1]}'"
     else
       return "'#{value}'"
     end

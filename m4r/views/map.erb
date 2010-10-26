@@ -5,6 +5,8 @@ var project_attributes = ["id","project_name","totalamt","mjsector1","boardappro
 // , "General agriculture, fishing and forestry sector":"agriculture"
 if(typeof(F1)=='undefined') {F1 = {}}
 (function(){
+    
+
   Object.size = function(obj) {
       var size = 0, key;
       for (key in obj) {
@@ -67,21 +69,25 @@ if(typeof(F1)=='undefined') {F1 = {}}
       // });
       		
       this.wbicons = {"Agriculture, Fishing, and Forestry":"<%= PLATFORM_API_URL %>/images/icons/worldbank/agriculture-on.png","Communications":"<%= PLATFORM_API_URL %>/images/icons/worldbank/communication-on.png","Education":"<%= PLATFORM_API_URL %>/images/icons/worldbank/education-on.png","Energy and Mining":"<%= PLATFORM_API_URL %>/images/icons/worldbank/energy-on.png","Finance":"<%= PLATFORM_API_URL %>/images/icons/worldbank/finance-on.png","Health and Other Social Services":"<%= PLATFORM_API_URL %>/images/icons/worldbank/health-on.png","Industry and Trade":"<%= PLATFORM_API_URL %>/images/icons/worldbank/industry-on.png","Public Administration, Law, and Justice":"<%= PLATFORM_API_URL %>/images/icons/worldbank/public-on.png","Transportation":"<%= PLATFORM_API_URL %>/images/icons/worldbank/transportation-on.png","Water, Sanitation, and Flood Protection":"<%= PLATFORM_API_URL %>/images/icons/worldbank/water-on.png"};
-      this.wbsectors = ["agriculture","public","education","health","water","transportation","energy","finance"]
+      var color_index = 3;
       this.sectors = {
-        "agriculture": {name: "Agriculture, Fishing, and Forestry", funding: 0, projects: [], activities: 0, shortname: "agriculture", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/agriculture-on.png"}, 
-        "communications": {name: "Communications", funding: 0, projects: [], activities: 0, shortname: "communications", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/communication-on.png"},
-        "education": {name: "Education", funding: 0, projects: [], activities: 0, shortname: "education", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/education-on.png"}, 
-        "energy": {name: "Energy and Mining", funding: 0, projects: [], activities: 0, shortname: "energy", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/energy-on.png"},
-        "finance": {name: "Finance", funding: 0, projects: [], activities: 0, shortname: "finance", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/finance-on.png"},
-        "health": {name: "Health and Other Social Services", funding: 0, projects: [], activities: 0, shortname: "health", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/health-on.png"},
-        "industry": {name: "Industry and Trade", funding: 0, projects: [], activities: 0, shortname: "industry", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/industry-on.png"},
-        "public": {name: "Public Administration, Law, and Justice", funding: 0, projects: [], activities: 0, shortname: "public", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/public-on.png"},
-        "water": {name: "Water, Sanitation, and Flood Protection", funding: 0, projects: [], activities: 0, shortname: "water", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/water-on.png"},
-        "transportation": {name: "Transportation", funding: 0, projects: [], activities: 0, shortname: "transportation", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/transportation-on.png"}};
+        "agriculture": {name: "Agriculture, Fishing, and Forestry", sector_code: "AX", color: self.fadeHex("#8bb131","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "agriculture", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/agriculture-on.png"}, 
+        "communications": {name: "Communications", sector_code: "CX", color: self.fadeHex("#395f8f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "communications", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/communication-on.png"},
+        "education": {name: "Education", sector_code: "EX", color: self.fadeHex("#eebd00","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "education", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/education-on.png"}, 
+        "energy": {name: "Energy and Mining", sector_code: "LX", color: self.fadeHex("#880000","#FFFFFF",10)[color_index],  funding: 0, projects: [], activities: 0, shortname: "energy", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/energy-on.png"},
+        "finance": {name: "Finance", sector_code: "FX", color: self.fadeHex("#40823f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "finance", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/finance-on.png"},
+        "health": {name: "Health and Other Social Services", sector_code: "JX", color: self.fadeHex("#c23001","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "health", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/health-on.png"},
+        "industry": {name: "Industry and Trade", sector_code: "YX", color: self.fadeHex("#7f4410","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "industry", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/industry-on.png"},
+        "public": {name: "Public Administration, Law, and Justice", sector_code: "PX", color: self.fadeHex("#8060a4","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "public", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/public-on.png"},
+        "water": {name: "Water, Sanitation, and Flood Protection", sector_code: "WX", color: self.fadeHex("#369fd0","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "water", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/water-on.png"},
+        "transportation": {name: "Transportation", sector_code: "TX", color: self.fadeHex("#d28807","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "transportation", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/transportation-on.png"}};
         
       this.sector_names = {};
-      jq.each(self.sectors, function(sector) {return self.sector_names[self.sectors[sector].name] = sector });
+      this.sector_codes = {};
+      jq.each(self.sectors, function(index, sector) { 
+          self.sector_names[sector.name] = index; 
+          self.sector_codes[sector.sector_code] = sector;
+     });
         
       this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
                 uiZoom: true,uiLayers: false,uiLegend: false,uiStyles: true,
@@ -131,7 +137,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq('#map-title').html(title)
       return false;
     },
-    toggleSector: function(sector,visible) {
+    toggleSector: function(sector,visible,refreshCharts) {
       var self = this;
       var visibleExpression = "";
 
@@ -143,7 +149,10 @@ if(typeof(F1)=='undefined') {F1 = {}}
       } else if(sector == 'all') {
         if(visible == null)
           visible = (jq("#sall").is(':checked'));
+          
+
         if(visible) {
+          self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
           jq.each(self.sectors, function(sector) {
             if(Object.include(self.visibleSectors, sector) == null)
               self.visibleSectors.push(sector);
@@ -152,6 +161,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
           self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
           self.visibleSectors = [];
         }
+        
+        jq("#sall").attr('checked', visible);
         self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
         self.map.showLayer(self.stylelayers["Project Counts"].order, !visible);
         jq('#layercontrol_sectors').html("By Sector");
@@ -175,6 +186,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
         self.map.showLayer(self.stylelayers["Project Locations"].order, false);
         self.map.showLayer(self.stylelayers["Project Counts"].order, false);
       } else {
+        jq("#sall").attr('checked', false);          
         if(visible == null)
           visible = !(jq("#sectorcontrol_" + sector).hasClass('active'));
 
@@ -208,18 +220,19 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.setMapTitle();
       self.showVisibleSectors();
       //jq('#sector_funding_description').html("Description about " + sector);
-      self.sectorPieChart(sector);
+      if(refreshCharts == null || refreshCharts == true)
+        self.sectorPieChart(sector, false);
       return false;
     },
     showVisibleSectors: function() {
       var self = this;
       var sectorcontrols = jq('.sectorcontrol');
-
-      jq.each(sectorcontrols, function(sc) {
-        var sector_dom = jq("#" + sectorcontrols[sc].id);
+      
+      jq.each(sectorcontrols, function(index, sc) {
+        var sector_dom = jq("#" + sc.id);
         var sector = sector_dom.attr("sector-name");
 
-        if(Object.include(wb.visibleSectors, sector) != null) {
+        if(Object.include(self.visibleSectors, sector) != null) {
           sector_dom.removeClass('inactive').addClass('active');
         } else {
           sector_dom.removeClass('active').addClass('inactive');            
@@ -314,9 +327,11 @@ if(typeof(F1)=='undefined') {F1 = {}}
           }
           self.projects[attr["project id"]]["activity count"] += 1;
 
+        
           return attr;
         }
-      });      
+      });
+      
     },
     sortProjects: function(data) {
       var self = this;
@@ -350,7 +365,11 @@ if(typeof(F1)=='undefined') {F1 = {}}
 
           return attr;
         }
-      });      
+      });
+   
+        self.projects.sort(function (a, b) {
+            return b.totalamt - a.totalamt;
+        });     
     },    
     projectTable: function(data) {
         var self = this;
@@ -385,61 +404,98 @@ if(typeof(F1)=='undefined') {F1 = {}}
         // jq('#activity_count').html(this.activities.length);
 
     },
-    sectorPieChart: function(sector_name) {
-      var self = this;
+    sectorPieChart: function(sector_name, refreshControls) {
+        var self = this;
 
-      var projects = [];
-      var funding = 0;
-      var sector_names = "";
-      if(sector_name == "all") {
-        for(var sn in self.sectors) {
-          projects.push(self.sectors[sn].projects);
-          funding += self.sectors[sn].funding;
-        }
-        sector_names = "All"
-        projects = projects.flatten(); 
-      } else {
-        // projects = self.sectors[sector_name].projects;
-        // funding = self.sectors[sector_name].funding;
-        for(var sn=0;sn<self.visibleSectors.length;sn++) {
-          if(self.sectors[self.visibleSectors[sn]] != null) {
-            projects.push(self.sectors[self.visibleSectors[sn]].projects);
-            funding += self.sectors[self.visibleSectors[sn]].funding;
-            if(sn != 0){
-              sector_names += ", ";
-            }
-            sector_names += self.visibleSectors[sn].capitalize();
-          }
-        }
+        var projects = [];
+        var funding = 0;
+        var sector_names = "";
+        var opts = {}
         
-        projects = projects.flatten();
-      }
-      
-      if(projects.length == 0){
-        jq('#chart-left-pie-chart').hide();
-        jq('#sector_funding_total').html("There are no projects in this sector.");
-        return;
-      }
-            
-      jq('#sector_funding_title').html("Project Funding for " + sector_names + " Projects <a href='#footnote' title='(as of June 30,2010)'>[1]</a>")
-      jq('#sector_funding_total').html(funding + " Million");
-      
-      if(projects.length == 1){
-        jq('#chart-left-pie-chart').hide();
-        return;
-      }
-      
-      var links = jq.map(projects, function (project) { 
-          return "javascript:wb.highlightProject('" + project["id"] + "');";  
-        });
-      
-      pie_options = {"features":projects, 
-          "attributes": {"data":{"name": "Funding","original_name": "financing amount"},
-          "description":{"name": "Project","original_name": "id"}, 
-          "sort":{"name": "Funding","original_name": "financing amount"} } };
-      jq('#chart-left-pie-chart').show();
+        if(refreshControls == null || refreshControls == true){
+            self.toggleSector("all", false, false); // watch recursion
+            self.toggleSector(sector_name, true,false); // watch recursion
+        }
+        var projects = []
+        var links = []
+        var colors = [];
+        var labels = [];
+   
+        if(sector_name == "all") {
 
-      F1.Visualizer.charts.pie(180, 505, pie_options, "chart-left-pie-chart", {href: links });
+            sector_names = "All"
+            jq.each(self.sectors, function (sector,sector_attrs) { 
+                projects.push(sector_attrs)
+            });
+            projects.sort(function (a, b) {
+                return b.funding - a.funding;
+            });        
+            jq.each(projects, function (index,project) { 
+                links.push("javascript:wb.sectorPieChart('" + self.sector_codes[project.sector_code].shortname + "', true);");  
+                colors.push(project.color)
+                labels.push(project.name + " - $" + project.funding + "m" )
+            });
+
+            pie_options = {"features":projects, 
+            "attributes": {"data":{"name": "Funding","original_name": "funding"},
+            "description":{"name": "Project","original_name": "name"}, 
+            "sort":{"name": "Funding","original_name": "funding"} }};
+            
+            funding = self.total_funding;
+            opts["chart"] = {"colors": colors, "legend": labels, onclick: function() {wb.toggleSector(links[this.bar.index]);}};
+            
+            jq('#sector_funding_total').html("$" + funding + " Million");
+            jq('#sector_funding_title').html("Financing for " + sector_names + " Sectors")
+
+        } else {
+            // projects = self.sectors[sector_name].projects;
+            // funding = self.sectors[sector_name].funding;
+            // for(var sn=0;sn<self.visibleSectors.length;sn++) {
+            //     if(self.sectors[self.visibleSectors[sn]] != null) {
+            //         projects.push(self.sectors[self.visibleSectors[sn]].projects);
+            //         funding += self.sectors[self.visibleSectors[sn]].funding;
+            //         if(sn != 0){
+            //             sector_names += ", ";
+            //         }
+            //         sector_names += self.visibleSectors[sn].capitalize();
+            //     }
+            // }
+            
+            projects = self.sectors[sector_name].projects;
+            funding = self.sectors[sector_name].funding;
+
+            var links = jq.map(projects, function (project,index) { 
+                labels.push(project.project_name + " - $" + project.totalamt + "m" )
+                return "javascript:wb.highlightProject('" + project["id"] + "');";  
+            });
+
+            pie_options = {"features":projects, 
+                            "attributes": {"data":{"name": "Funding","original_name": "financing amount"},
+                            "description":{"name": "Project","original_name": "project_name"}, 
+                            "sort":{"name": "Funding","original_name": "financing amount"} } };
+            
+            sector_names = wb.sectors[sector_name].name;
+            opts["chart"] = {legend: labels, colors: self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8)}
+            jq('#sector_funding_total').html("$" + funding + " Million <span class='subtotal'>/ $"+wb.total_funding +" million</span>");
+            jq('#sector_funding_title').html("Financing for " + sector_names + " Sector")
+        }
+
+           if(projects.length == 0){
+                jq('#sector_funding_total').hide();
+                jq('#chart-left-bar-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
+                return;
+            }
+
+            if(projects.length == 1){
+                jq('#chart-left-pie-chart').html("<br />" + projects[0].project_name + ".<br />There is only a single project in this sector.");
+                return;
+            }
+
+            jq('#sector_funding_total').show();
+            jq('#chart-left-pie-chart').show();
+            opts["href"] = links
+            F1.Visualizer.charts.pie(180, 505, pie_options, "chart-left-pie-chart", opts);        
+
     },
     sectorFundingBars: function() {
       var self = this;
@@ -452,18 +508,42 @@ if(typeof(F1)=='undefined') {F1 = {}}
         links.push( self.sectors[s]["shortname"] );
       }
 
-      jq('#funding_total').html(self.total_funding.toFixed(1) + " Million");
+      jq('#funding_total').html("$" + self.total_funding.toFixed(1) + " Million");
       
       bar_options = {"features":features, "attributes": {
-            "data":{"name": "Total Amount", "original_name": "funding"}, 
-            "description":{"name": "Sector", "original_name": "name"}, 
-            "sort":{"name": "Total Amount","original_name": "funding"} } };
-      F1.Visualizer.charts.bar(180, 455, bar_options, "chart-right-graph", {href: links, label: function() {
-        return links[this.bar.index];
+          "data":{"name": "Total Amount", "original_name": "funding"}, 
+          "description":{"name": "Sector", "original_name": "name"}, 
+          "sort":{"name": "Total Amount","original_name": "funding"} } };
+      F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, label: function() {
+          return links[this.bar.index];
       }, onclick: function() {
           wb.toggleSector(links[this.bar.index]);
-         }});
+          }});
     },
+    projectFundingBars: function() {
+      var self = this;
+      var s;
+      var features = [];
+      var links = [];
+      var colors = [];
+      jq.each(self.projects, function(index, project) {
+        features.push(project);
+        links.push( "javascript:wb.highlightProject('" + project["id"] + "');"  );
+        colors.push(self.sector_codes[project.sector_code].color);
+      });
+
+      jq('#funding_total').html("$" + self.total_funding.toFixed(1) + " Million");
+      
+      bar_options = {"features":features, "attributes": {
+          "data":{"name": "Financing Amount", "original_name": "totalamt"}, 
+          "description":{"name": "Project", "original_name": "project_name"}, 
+          "sort":{"name": "Total Amount","original_name": "totalamt"} } };
+      F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {data_label: true, href: links, colors: colors, label: function() {
+          return links[this.bar.index];
+      }, onclick: function() {
+          wb.highlightProject(features[this.bar.index].id);;
+          }});
+    },    
     getLayers: function() {
       var self = this;
       var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"];
@@ -528,59 +608,87 @@ if(typeof(F1)=='undefined') {F1 = {}}
     },
     drawCharts: function() {
       var self = this;
-      // jq("#sall").attr('checked', false); // clear the checkbox
       
       if( self.initialized ) {return;}
-
       self.getLayers(self.map);
       self.styleMap(self.map);
-      wb.setIndicator("Poverty");
-      wb.toggleSector("counts_admin1",true);
+      self.setIndicator("Poverty");
+      // self.toggleSector("counts_admin1",true);
       jq('#project_count').html(self.country_attrs["projects_count"]);
       jq('#activity_count').html(self.country_attrs["locations_count"]);
-      self.projectTable(self.projects);
       self.sortProjects(self.projects);
-      self.sectorFundingBars();
-      self.sectorPieChart(self.projects);
+      self.projectTable(self.projects);
+      self.projectFundingBars();
+      self.sectorPieChart("all");
       self.hideLoading();
       self.initialized = true;
-      
-      // if(self.country_attrs["locations_count"] < 2000) {
-      //     F1.Visualizer.utils.get_data_from_flash(self.stylelayers["Project Locations"].source.replace("finder:",""),   
-      //       function(data) {
-      //         self.sortData(data);
-      //         self.projectTable(data);
-      //         self.hideLoading();
-      //         self.initialized = true;
-      //       }, self.map);
-      //   } else {
-      //     self.hideLoading();
-      //     self.initialized = true;
-      //   }
-      },
-      styleWorldMap: function() {
-         var self = this;
-         self.highlightRegions(["Kenya","Philippines","Bolivia"]);
-         jq('#project_count').html(self.country_attrs["projects_count"]);
-         jq('#activity_count').html("12,000");
+  },
+  styleWorldMap: function() {
+      var self = this;
+      self.highlightRegions(["Kenya","Philippines","Bolivia"]);
+      jq('#project_count').html(self.country_attrs["projects_count"]);
+      jq('#activity_count').html("12,000");
 
-         self.map.swf.addLayerInfoWindowFilter(1, {title: "$[project_n0]", subtitle: "$[mjsector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[id0]'>$[id0]</a>\nProject Name: $[project_n0]\nSector:$[mjsector1]\nTotal Amount: $ $[totalamt0] million"}]});
+      self.map.swf.addLayerInfoWindowFilter(1, {title: "$[project_n0]", subtitle: "$[mjsector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[id0]'>$[id0]</a>\nProject Name: $[project_n0]\nSector:$[mjsector1]\nTotal Amount: $ $[totalamt0] million"}]});
 
-          
-          self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
-         self.hideLoading();
-      },
-      loadedMap: function() {
-         var self = this;
-         self.styleLegend();
-         if(self.region != "World"){
-            self.drawCharts();
-         } else {
-             self.styleWorldMap();
-         }
+
+      self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
+      self.hideLoading();
+  },
+  loadedMap: function() {
+      var self = this;
+      self.styleLegend();
+      if(self.region != "World"){
+          self.drawCharts();
+      } else {
+          self.styleWorldMap();
       }
+  },
+      
+    //
+    // Returns an array of colors between and including Hex1 and Hex2.
+    fadeHex: function(hex1, hex2, steps){
+        if(hex1.charAt(0) == "#") 
+            hex1 = hex1.slice(1);
+        hex1 = hex1.toUpperCase();
+        hex1 = +("0x"+hex1);
+
+        if(hex2.charAt(0) == "#") 
+            hex2 = hex2.slice(1);
+        hex2 = hex2.toUpperCase();
+        hex2 = +("0x"+hex2);
+        
+        var newArry = ["#" + hex1.toString(16)];
+        //
+        // Break Hex1 into RGB components.
+        var r = hex1 >> 16;
+        var g = hex1 >> 8 & 0xFF;
+        var b = hex1 & 0xFF;
+        //
+        // Determine RGB differences between Hex1 and Hex2.
+        var rd = (hex2 >> 16)-r;
+        var gd = (hex2 >> 8 & 0xFF)-g;
+        var bd = (hex2 & 0xFF)-b;
+        //
+        steps++;
+        // For each new color.
+        for (var i=1; i<steps; i++){
+            //
+            // Determine where the color lies between the 2 end colors.
+            var ratio = i/steps;
+            //
+            // Calculate new color and add it to the array.
+            newArry.push("#" + ((r+rd*ratio)<<16 | (g+gd*ratio)<<8 | (b+bd*ratio)).toString(16));
+        }
+        //
+        // Add Hex2 to the array and return it.
+        newArry.push("#" + hex2.toString(16));
+        return newArry;
+    }
+      
   }
 
+jq("#sall").attr('checked', true); // clear the checkbox
 
 })();  // preserving the global namespace
   

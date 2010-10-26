@@ -1,20 +1,22 @@
 <div id="chart-left" class="<%= "inactivepanel" if @country[:name] == "World" %>">
   <div id="chart-left-title">
-    <h1 id="sector_funding_title">Funding by Project</h1>
+    <h1 id="sector_funding_title">Financing by Sector</h1>
   </div>
   <div id="chart-left-stat">
     <h1 id="sector_funding_total"></h1>
     <h2 id="sector_funding_description"></h2>
   </div>
   <div id="chart-left-pie-chart"></div>
+  <div id="chart-left-pie-chart-description" class="chart_about">Financing as a percentage of country and sector financing.</div>
 </div>
 
 <div id="chart-right" class="<%= "inactivepanel" if @country[:name] == "World" %>">
   <div id="chart-right-title">
-    <h1>Overview Funding By Sector</h1>
+    <h1>Overview Financing By Project</h1>
   </div>
   <div id="chart-right-stat-subtitle">
     <h1 id="funding_total"></h1>
   </div>
   <div id="chart-right-graph"></div>
+  <div id="chart-right-graph-description" class="chart_about">Individual financing by each project in <%= @country[:name] %>, colorized by the major sector.</div>
 </div>

@@ -2,21 +2,20 @@
       <div id="banner">
         <h1 id="banner-header" title="Click to hide the overview information">
           <span>Mapping for Results</span>
-          <div class="collapsible-header expanded" content_id="collapsible-banner" >
+          <div class="collapsible-header <%= (@country.nil? || @country[:name] == 'World') ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>
         </h1>
-        
         <div id="banner-content">
-          <div class="collapsible-content" id="collapsible-banner" style="">
+          <div class="collapsible-content" id="collapsible-banner" style="<%= (@country.nil? || @country[:name] == 'World') ? '': 'display:none'%>">
             <div id="block-nodeasblock-3273" class="block block-nodeasblock ">
               <div class="content">
                 <div class="overview-links">
                   <p>Overview »</p>
                   <ul>
-                    <li><a href="/about#context">Context</a></li>
-                    <li><a href="/about#partners">Partners</a></li>
-                    <li><a href="/about#feedback">Feedback</a></li>
+                    <li><a href="/about#Context">Context</a></li>
+                    <li><a href="/about#Partners">Partners</a></li>
+                    <li><a href="/about#Feedback">Feedback</a></li>
                   </ul>
                 </div>
                 <div class="overview-text">The <strong>Mapping for Results Platform</strong> (<em>beta version</em>) provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <a class="readmore" href="/about">Read More »</a></div>
