@@ -42,7 +42,7 @@ module WorldBank
           :zoom => 4, :lat => 19, :lon => 105.5,
           :countries => {
             # 263
-            :philippines => {:name => "Philippines", :isocode => "PH", :map => 355, :project_data => 636, :region => "East Asia and Pacific", :status => "active",
+            :philippines => {:name => "Philippines", :isocode => "PH", :map => 355, :locations_layer => 642, :region => "East Asia and Pacific", :status => "active",
                         :projects_count => 48, :locations_count => 4764, 
               :results => [{:name  => "Country Profile", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:20203978~menuPK:332990~pagePK:141137~piPK:141127~theSitePK:332982~isCURL:Y,00.html"},
                   {:name => "Kapitbisig Laban sa Kahirapan - Comprehensive And Integrated Delivery Of Social Services Project (KALAHI-CIDSS)", :link => "http://www.worldbank.org.ph/WBSITE/EXTERNAL/COUNTRIES/EASTASIAPACIFICEXT/PHILIPPINESEXTN/0,,contentMDK:22190322~pagePK:141137~piPK:141127~theSitePK:332982,00.html"},
@@ -219,11 +219,8 @@ module WorldBank
       end
       projects["projects"].merge!(projects_data["projects"])
       project_count += projects_data["rows"].to_i
-      puts project_count
-      puts projects["projects"].keys.length
       i += 1
     end
-    # projects_data = Yajl::Parser.parse(open("world.json").read)
     projects
   end
     
@@ -246,6 +243,7 @@ module WorldBank
     projects_total = projects_data["total"]
     country[:projects] = projects_total
     country[:project_list] = projects_data["projects"]
+    country[:projects_count] = projects_total
     return country
   end
   
@@ -325,6 +323,7 @@ get '/:region/:country' do
   else
     @country = @region[:countries][params[:country].to_sym]
     @country = WorldBank.get_project_data(@country)
+    
     erb :index
   end
 end

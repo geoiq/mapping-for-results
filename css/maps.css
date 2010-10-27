@@ -76,7 +76,7 @@
 #chart-right {margin-top:20px;margin-bottom:17px; width:476px; height:260px; float:left;}
 #chart-right-title  { width:44  0px; height:25px; border-bottom: solid 1px #ececec; margin-top:10px; margin-left:25px; margin-bottom:12px;}
 #chart-right h1 {font-family:Arial,sans-serif; font-size:14px; color:#8a8a8a; margin-left:0px;}
-#chart-right-stat-subtitle {width:200px; height:30px; margin-left:25px;}
+#chart-right-stat-subtitle {width:400px; height:30px; margin-left:25px;}
 #chart-right-stat-subtitle h1 {font-family:Georgia, serif; font-size:26px; color:#970001; font-weight:bold;}
 #subtitle-comment { width:100px; height:30px;font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f;}
 #chart-right-graph {width:440px; height:170px; margin-left:25px;}
@@ -98,7 +98,7 @@
 /*.......................................................NEW 9/23/2010.................................................................*/
 
 /*PROJECT TABLE STYLING*/
-#projects-table { overflow-x:hidden; overflow-y:auto;}
+#projects-table { height: 470px; overflow-x:hidden; overflow-y:auto;}
 table#projects-table_grid  {border-collapse: collapse;width:960px;font-family:Arial, sans-serif;font-size:12px;color:#000;}
 table {height: 400px;overflow-y: scroll; overflow-x: hidden;}
 #project-search-box {display: none;}

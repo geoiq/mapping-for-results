@@ -28,11 +28,11 @@
 
   var wb = new F1.WorldBank();
   <% unless @country[:name] == "World" %>
-  var projects = [<% @country[:project_list].each do |project_id, project| %>
-        {<%= (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") %>},
-      <% end %>];
+  var projects = [<%= @country[:project_list].collect do |project_id, project|
+         "{" + (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
+       end.join(",") %>];
       
-  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', projects: projects});
+  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', projects: projects, locations_layer: <%= @country[:locations_layer] || 0 %>});
   <% else %>
   var projects = [];
   var sectors = <%= @financing[:sectors].to_json %>;

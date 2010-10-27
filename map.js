@@ -1,8 +1,6 @@
 var proxy_host = "http://wbstaging.geocommons.com";    
-//var project_attributes = ["project title", "project id", "financing", "sector1", "approval date"];
 var project_attributes = ["id","project_name","totalamt","mjsector1","boardapprovaldate"]
 
-// , "General agriculture, fishing and forestry sector":"agriculture"
 if(typeof(F1)=='undefined') {F1 = {}}
 (function(){
     
@@ -67,10 +65,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.current_projects = true;
       this.region = region;
       this.country_attrs = country_attrs;
-      // icons = {};
-      // jq.each(self.sectors, function(sector) {
-      //   icons[self.sectors[sector].name] = self.sectors[sector].icon;
-      // });
       		
       this.wbicons = {"Agriculture, Fishing, and Forestry":"http://wbstaging.geocommons.com/images/icons/worldbank/agriculture-on.png","Communications":"http://wbstaging.geocommons.com/images/icons/worldbank/communication-on.png","Education":"http://wbstaging.geocommons.com/images/icons/worldbank/education-on.png","Energy and Mining":"http://wbstaging.geocommons.com/images/icons/worldbank/energy-on.png","Finance":"http://wbstaging.geocommons.com/images/icons/worldbank/finance-on.png","Health and Other Social Services":"http://wbstaging.geocommons.com/images/icons/worldbank/health-on.png","Industry and Trade":"http://wbstaging.geocommons.com/images/icons/worldbank/industry-on.png","Public Administration, Law, and Justice":"http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png","Transportation":"http://wbstaging.geocommons.com/images/icons/worldbank/transportation-on.png","Water, Sanitation, and Flood Protection":"http://wbstaging.geocommons.com/images/icons/worldbank/water-on.png"};
       var color_index = 3;
@@ -82,7 +76,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
         "finance": {name: "Finance", sector_code: "FX", color: self.fadeHex("#40823f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "finance", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/finance-on.png"},
         "health": {name: "Health and Other Social Services", sector_code: "JX", color: self.fadeHex("#c23001","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "health", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/health-on.png"},
         "industry": {name: "Industry and Trade", sector_code: "YX", color: self.fadeHex("#7f4410","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "industry", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/industry-on.png"},
-        "public": {name: "Public Administration, Law, and Justice", sector_code: "PX", color: self.fadeHex("#8060a4","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "public", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png"},
+        "public": {name: "Public Administration, Law, and Justice", sector_code: "BX", color: self.fadeHex("#8060a4","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "public", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png"},
         "water": {name: "Water, Sanitation, and Flood Protection", sector_code: "WX", color: self.fadeHex("#369fd0","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "water", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/water-on.png"},
         "transportation": {name: "Transportation", sector_code: "TX", color: self.fadeHex("#d28807","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "transportation", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/transportation-on.png"}};
 
@@ -149,8 +143,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       var self = this;
       var visibleExpression = "";
 
-      // World Map
-      if(self.stylelayers["Project Locations"] == null)
+      if(self.stylelayers["Project Locations"] == null) // World Map
         return;
         
       self.current_projects = visible;
@@ -162,7 +155,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
         if(visible == null)
           visible = (jq("#sall").is(':checked'));
           
-
         if(visible) {
           self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
           jq.each(self.sectors, function(sector) {
@@ -219,7 +211,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
           jq('#layercontrol_sectors').html("By Sector");
 
         } else if(visible == false){
-          // self.map.showLayer(self.stylelayers["Project Counts"].order, false);
+
           self.map.swf.removeFilter(self.stylelayers["Project Locations"].order, 
           {expression: self.complexSectorExpression(self.visibleSectors)});
           self.visibleSectors = jQuery.grep(self.visibleSectors, function(value) {
@@ -231,7 +223,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       }
       self.setMapTitle();
       self.showVisibleSectors();
-      //jq('#sector_funding_description').html("Description about " + sector);
+
       if(refreshCharts == null || refreshCharts == true)
         self.sectorPieChart(sector, false);
       return false;
@@ -298,7 +290,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       }
       self.current_indicator = indicator;
       self.setMapTitle();
-      return false;
+      // return false;
       
     },
     highlightProject: function(project_id) {
@@ -306,7 +298,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
       var highlightExpression = "$[project id] == '"+project_id+"'";
       this.map.swf.clearHighlights(self.stylelayers["Project Locations"].order);
       this.map.swf.addHighlight(self.stylelayers["Project Locations"].order,highlightExpression);
-      // return false;
     },
     sortData: function(data) {
       var self = this;
@@ -459,24 +450,11 @@ if(typeof(F1)=='undefined') {F1 = {}}
             if(self.stylelayers["Project Locations"] != null)
                 opts["chart"]["onclick"] = function() {wb.toggleSector(links[this.bar.index])};
                  
-            var financing_total = funding > 1000 ? funding/1000 + " Billion" : funding + " Million";
-            jq('#sector_funding_total').html("$" + financing_total + " <span class='subtotal' title='Global Financing'>/ $136.912 Billion</span>");
+            var financing_total = funding > 1000 ? (funding/1000).toFixed(2) + " Billion" : funding + " Million";
+            jq('#sector_funding_total').html("$" + financing_total); // + " <span class='subtotal' title='Global Financing'>/ $136.912 Billion</span>"
             jq('#sector_funding_title').html("Financing for " + sector_names + " Sectors")
 
         } else {
-            // projects = self.sectors[sector_name].projects;
-            // funding = self.sectors[sector_name].funding;
-            // for(var sn=0;sn<self.visibleSectors.length;sn++) {
-            //     if(self.sectors[self.visibleSectors[sn]] != null) {
-            //         projects.push(self.sectors[self.visibleSectors[sn]].projects);
-            //         funding += self.sectors[self.visibleSectors[sn]].funding;
-            //         if(sn != 0){
-            //             sector_names += ", ";
-            //         }
-            //         sector_names += self.visibleSectors[sn].capitalize();
-            //     }
-            // }
-            
             projects = self.sectors[sector_name].projects;
             funding = self.sectors[sector_name].funding;
 
@@ -492,7 +470,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
             
             sector_names = wb.sectors[sector_name].name;
             opts["chart"] = {legend: labels, colors: self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8)}
-            var financing_total = self.total_funding > 1000 ? self.total_funding/1000 + " Billion" : self.total_funding + " Million"
+            var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding + " Million"
 
             jq('#sector_funding_total').html("$" + funding + " Million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");
             jq('#sector_funding_title').html("Financing for " + sector_names + " Sector")
@@ -511,7 +489,10 @@ if(typeof(F1)=='undefined') {F1 = {}}
 
             jq('#sector_funding_total').show();
             jq('#chart-left-pie-chart').show();
-            opts["href"] = links
+
+            if(self.stylelayers["Project Locations"] != null)
+                opts["href"] = links;
+                
             F1.Visualizer.charts.pie(180, 505, pie_options, "chart-left-pie-chart", opts);        
 
     },
@@ -549,7 +530,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
         links.push( "javascript:wb.highlightProject('" + project["id"] + "');"  );
         colors.push(self.sector_codes[project.sector_code].color);
       });
-      console.log(colors)
 
       jq('#funding_total').html("$" + self.total_funding.toFixed(1) + " Million");
       
@@ -600,9 +580,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"}]});
       
       self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "", tabs:[{title:"About", type:"text", value: "There are $[project count] active projects in the region."}]});
-      
-      // self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "Total Projects working in $[adm1 name]", tabs:[{title: "Projects", type: "text", value:"<ul><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid1]'>$[pid1]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid2]'>$[pid2]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid3]'>$[pid3]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid4]'>$[pid4]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid5]'>$[pid5]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid6]'>$[pid6]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid7]'>$[pid7]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid8]'>$[pid8]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid9]'>$[pid9]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid10]'>$[pid10]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid11]'>$[pid11]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid12]'>$[pid12]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid13]'>$[pid13]</a></li><li><a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[pid14]'>$[pid14]</a></li></ul>"}]});
-
     },
     styleLegend: function() {
       this.map.showControl("Legend",true);
@@ -647,9 +624,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq('#activity_count').html(self.country_attrs["locations_count"]);
       self.sectorPieChart("all", false);
       self.regionFundingBars();
-      
-      // self.map.swf.addLayerInfoWindowFilter(1, {title: "$[project_n0]", subtitle: "$[mjsector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[id0]'>$[id0]</a>\nProject Name: $[project_n0]\nSector:$[mjsector1]\nTotal Amount: $ $[totalamt0] million"}]});
-
 
       self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
       self.hideLoading();
@@ -664,8 +638,6 @@ if(typeof(F1)=='undefined') {F1 = {}}
       }
   },
       
-    //
-    // Returns an array of colors between and including Hex1 and Hex2.
     fadeHex: function(hex1, hex2, steps){
         if(hex1.charAt(0) == "#") 
             hex1 = hex1.slice(1);
@@ -678,36 +650,25 @@ if(typeof(F1)=='undefined') {F1 = {}}
         hex2 = +("0x"+hex2);
         
         var newArry = ["#" + hex1.toString(16)];
-        //
-        // Break Hex1 into RGB components.
         var r = hex1 >> 16;
         var g = hex1 >> 8 & 0xFF;
         var b = hex1 & 0xFF;
-        //
-        // Determine RGB differences between Hex1 and Hex2.
         var rd = (hex2 >> 16)-r;
         var gd = (hex2 >> 8 & 0xFF)-g;
         var bd = (hex2 & 0xFF)-b;
         //
         steps++;
-        // For each new color.
         for (var i=1; i<steps; i++){
-            //
-            // Determine where the color lies between the 2 end colors.
             var ratio = i/steps;
-            //
-            // Calculate new color and add it to the array.
             newArry.push("#" + ((r+rd*ratio)<<16 | (g+gd*ratio)<<8 | (b+bd*ratio)).toString(16));
         }
-        //
-        // Add Hex2 to the array and return it.
         newArry.push("#" + hex2.toString(16));
         return newArry;
     }
       
   }
 
-jq("#sall").attr('checked', true); // clear the checkbox
+jq("#sall").attr('checked', true);
 
-})();  // preserving the global namespace
+})();
   
