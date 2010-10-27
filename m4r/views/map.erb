@@ -533,7 +533,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
           "data":{"name": "Financing Amount $m", "original_name": "financing"}, 
           "description":{"name": "Region", "original_name": "name"}, 
           "sort":{"name": "Financing Amount $m","original_name": "financing"} } };
-      F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, labels: labels ,label: function() {
+      F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {
           return links[this.bar.index];
       }});
     },
