@@ -19,7 +19,7 @@
   <%# partial :infowindow %>
 </div>
 
-<%= partial :charts unless @country[:name] == "World"%>
+<%= partial :charts %>
 
 <%= partial :projects_table unless @country[:name] == "World" %>
 
@@ -31,10 +31,16 @@
   var projects = [<% @country[:project_list].each do |project_id, project| %>
         {<%= (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") %>},
       <% end %>];
+      
+  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', projects: projects});
   <% else %>
   var projects = [];
+  var sectors = <%= @financing[:sectors].to_json %>;
+  var regions = <%= @financing[:regions].to_json %>;
+     
+     
+  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', sectors: sectors, regions: regions });
+
   <% end %>
-      
-  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", {projects_count: <%= @country[:projects_count] %>, locations_count: <%= @country[:locations_count] %>, projects: projects});
   
 </script>

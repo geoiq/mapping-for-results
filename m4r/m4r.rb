@@ -1,4 +1,4 @@
-%w{ rubygems sinatra open-uri yajl erb  yajl/gzip yajl/deflate yajl/http_stream faster_csv }.each {|gem| require gem}
+%w{ rubygems sinatra open-uri yajl erb  yajl/gzip yajl/deflate yajl/http_stream faster_csv json}.each {|gem| require gem}
 
 PLATFORM_API_URL = "http://wbstaging.geocommons.com"
 # PLATFORM_API_URL = "http://geoiq.local"
@@ -14,9 +14,9 @@ SUBDOMAIN = ""
 module WorldBank
 
 
-  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,mjsector1&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL"
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,mjsector1,regionname&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL"
   WBSTAGING = {
-    :world => {:name => "World", :map => 353, :projects_count => 1517, :locations_count => 12000, :regions => {
+    :world => {:name => "World", :map => 353, :projects_count => 1517, :locations_count => "15,246", :regions => {
       :afr => {
         :name => "Africa",
         :zoom => 3, :lat => -4, :lon => 21,
@@ -206,31 +206,59 @@ module WorldBank
   MAPS = PLATFORM_API_URL =~ /geocommons/ ? WBSTAGING : LOCAL 
 
   def self.get_all_projects
-    # url = URI.parse(WB_PROJECTS_API + "&geocode=")
-    # projects_data = Yajl::HttpStream.get(url)
-    projects_data = Yajl::Parser.parse(open("world.json").read)
-    projects_data
+    i = 0
+    project_count = 0
+    total_projects = 1000000
+    projects = {}
+    while(project_count < total_projects)
+      url = URI.parse(WB_PROJECTS_API + "&geocode=&os=#{500*i}")
+      projects_data = Yajl::HttpStream.get(url)
+      if project_count == 0
+        total_projects = projects_data["total"].to_i
+        projects = projects_data
+      end
+      projects["projects"].merge!(projects_data["projects"])
+      project_count += projects_data["rows"].to_i
+      puts project_count
+      puts projects["projects"].keys.length
+      i += 1
+    end
+    # projects_data = Yajl::Parser.parse(open("world.json").read)
+    projects
   end
     
   
-  def self.get_active_projects
+  def self.get_active_projects    
     # url = URI.parse(WB_PROJECTS_API + "&geocode=")
     # projects_data = Yajl::HttpStream.get(url)
-    projects_data = Yajl::Parser.parse(open("wb1.json").read)
-    projects = projects_data["projects"]
-    # url = URI.parse(WB_PROJECTS_API + "&geocode=&os=501")
-    # projects_data = Yajl::HttpStream.get(url)
-    projects_data = Yajl::Parser.parse(open("wb2.json").read)
-    return projects.merge(projects_data["projects"])    
+    # projects_data = Yajl::Parser.parse(open("wb1.json").read)
+    # projects = projects_data["projects"]
+    # # url = URI.parse(WB_PROJECTS_API + "&geocode=&os=501")
+    # # projects_data = Yajl::HttpStream.get(url)
+    # projects_data = Yajl::Parser.parse(open("wb2.json").read)
+    # return projects.merge(projects_data["projects"])    
+    self.get_all_projects["projects"]
   end
   def self.get_project_data(country)
-    # url = URI.parse(WB_PROJECTS_API + "&geocode=&countrycode[]=COUNTRY_CODE")
-    # projects_data = Yajl::HttpStream.get(url)
-    projects_data = Yajl::Parser.parse(open("#{country[:isocode]}.json").read)
+    url = URI.parse(WB_PROJECTS_API + "&geocode=&countrycode[]=" + country[:isocode])
+    projects_data = Yajl::HttpStream.get(url)
+    # projects_data = Yajl::Parser.parse(open("#{country[:isocode]}.json").read)
     projects_total = projects_data["total"]
     country[:projects] = projects_total
     country[:project_list] = projects_data["projects"]
     return country
+  end
+  
+  def self.calculate_financing(projects)
+    calculations = {:sectors => {}, :regions => {}}
+    projects.each do |project_id, project|
+      name = project["mjsector1"]["Name"].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')
+      calculations[:sectors][name] = 0 unless calculations[:sectors].include?(name)
+      calculations[:sectors][name] += project["totalamt"].to_i
+      calculations[:regions][project["regionname"]] = 0 unless calculations[:regions].include?(project["regionname"])
+      calculations[:regions][project["regionname"]] += project["totalamt"].to_i
+    end
+    calculations
   end
 end
 
@@ -239,7 +267,8 @@ include WorldBank
 
 get '/' do
   @country = MAPS[:world]
-  @projects = WorldBank.get_all_projects
+  @projects ||= WorldBank.get_all_projects
+  @financing ||= WorldBank.calculate_financing(@projects["projects"])
   @country[:projects_count] = @projects["total"]
   erb :index
 end
@@ -258,28 +287,29 @@ end
 
 get '/projects.csv' do 
   @projects = WorldBank.get_active_projects
-  
+
   csv_string = FasterCSV.generate do |csv|
     csv << (WorldBank::PROJECT_FIELDS + ["latitude", "longitude"]).flatten
 
     @projects.each do |pid, project|
-      location_string = project["location"]
-      locations = []
-      location_string.scan(/([\d]{10})\!\$\!([\d\.-]+)\!\$\!([\d\.-]+)\!\$\!([\d\.-]+)\!\$\!([\w]{2})/) {|s| locations << s}
-      puts "#{project["countrycode"]}: #{project['locations'].inspect} #{locations.length}"
+      # location_string = project["location"]
+      # locations = []
+      # location_string.scan(/([\d]{10})\!\$\!([\d\.-]+)\!\$\!([\d\.-]+)\!\$\!([\d\.-]+)\!\$\!([\w]{2})/) {|s| locations << s}
+      locations = project["locations"] || []
 
-      rows = WorldBank::PROJECT_FIELDS.collect {|f| f == "mjsector1" ? project[f].match(/([\w]{2})\!\$\!(.*)/)[2] : project[f] }
+      rows = WorldBank::PROJECT_FIELDS.collect {|f| f == "mjsector1" ? project[f]["Name"] : project[f] }
       if(locations.length == 0)
-        rows += [project["locations"]["location"]["latitude"], project["locations"]["location"]["longitude"]]
+        # rows += [project["locations"]["location"]["latitude"], project["locations"]["location"]["longitude"]]
+        rows += [0,0]
         csv << rows.flatten
       else
         locations.each do |loc|
-          csv <<  (rows + [loc[2], loc[3]]).flatten      
+          csv <<  (rows + [loc["latitude"], loc["longitude"]]).flatten      
         end
       end
     end
   end
-  
+
   csv_string
 end
 
@@ -305,7 +335,7 @@ helpers do
   def partial(page, options={})
     erb page, options.merge!(:layout => false)
   end
-  
+
   # Create the link to the country in the footer
   # 
   # e.g Map / World / Latin America and Caribbean / Haiti
@@ -324,15 +354,16 @@ helpers do
       return value
       # return "$#{value} million"
     when /mjsector1/
-      return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[2].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')}'"
+      # return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[2].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')}'"
+      return "'#{value["Name"].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and').gsub(/Sanitation /,'Sanitation, ')}'"
     when /sector_code/
-      return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[1]}'"
+      return "'#{value["Code"]}'"
     else
       return "'#{value}'"
     end
-    
+
   end
-  
+
   def menu_options(collection, options = {})
     menu = ""
     options[:max_height] ||= 6
@@ -349,9 +380,7 @@ helpers do
       i += 1
       menu << "</ul></div>"
     end
-    
+
     return menu
   end
-
-  
 end

@@ -1,6 +1,8 @@
 <div id="layerinfo">
   <ul>
-    <li class="">Choose the indicator data and portfolio projects below to investigate mapping for results:</li>
+    <li class="">
+    <% unless @country[:name] == "World" %>Choose the indicator data and portfolio projects below to investigate mapping for results:<% else %>
+    There are currently several countries available in "Locations" below, and more being added continuously.<% end %></li>
   </ul>
 </div>
 <div class="dropmenuholder">

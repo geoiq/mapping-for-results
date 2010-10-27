@@ -93,21 +93,20 @@
       <div id="banner">
         <h1 id="banner-header" title="Click to hide the overview information">
           <span>Mapping for Results</span>
-          <div class="collapsible-header expanded" content_id="collapsible-banner" >
+          <div class="collapsible-header collapsed" content_id="collapsible-banner" >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>
         </h1>
-        
         <div id="banner-content">
-          <div class="collapsible-content" id="collapsible-banner" style="">
+          <div class="collapsible-content" id="collapsible-banner" style="display:none">
             <div id="block-nodeasblock-3273" class="block block-nodeasblock ">
               <div class="content">
                 <div class="overview-links">
                   <p>Overview »</p>
                   <ul>
-                    <li><a href="/about#context">Context</a></li>
-                    <li><a href="/about#partners">Partners</a></li>
-                    <li><a href="/about#feedback">Feedback</a></li>
+                    <li><a href="/about#Context">Context</a></li>
+                    <li><a href="/about#Partners">Partners</a></li>
+                    <li><a href="/about#Feedback">Feedback</a></li>
                   </ul>
                 </div>
                 <div class="overview-text">The <strong>Mapping for Results Platform</strong> (<em>beta version</em>) provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <a class="readmore" href="/about">Read More »</a></div>
@@ -149,15 +148,15 @@
         <div id="map-content-icons2">
           <ul>
             <li class="sectors">MAJOR SECTORS:</li>
-            <li class="s1"><a  sector-name="public" original-title="Public administration Law, Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#">1</a></li>
-            <li class="s2"><a  sector-name="agriculture" original-title="Agriculture, fishing, forestry" class="sectorcontrol inactive" id="sectorcontrol_agriculture" href="#">2</a></li>
+            <li class="s1"><a  sector-name="public" original-title="Public Administration, Law, and Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#">1</a></li>
+            <li class="s2"><a  sector-name="agriculture" original-title="Agriculture, Fishing, and Forestry" class="sectorcontrol inactive" id="sectorcontrol_agriculture" href="#">2</a></li>
             <li class="s3"><a  sector-name="health" original-title="Health, other social" class="sectorcontrol inactive" id="sectorcontrol_health" href="#">3</a></li>
             <li class="s4"><a  sector-name="communications" original-title="Communications" class="sectorcontrol inactive" id="sectorcontrol_communications" href="#">4</a></li>
-            <li class="s5"><a  sector-name="energy" original-title="Energy, mining" class="sectorcontrol inactive" id="sectorcontrol_energy" href="#">5</a></li>
+            <li class="s5"><a  sector-name="energy" original-title="Energy and Mining" class="sectorcontrol inactive" id="sectorcontrol_energy" href="#">5</a></li>
             <li class="s6"><a  sector-name="finance" original-title="Finance" class="sectorcontrol inactive" id="sectorcontrol_finance" href="#">6</a></li>
-            <li class="s7"><a  sector-name="industry" original-title="Industry, trade" class="sectorcontrol inactive" id="sectorcontrol_industry" href="#">7</a></li>
+            <li class="s7"><a  sector-name="industry" original-title="Industry and Trade" class="sectorcontrol inactive" id="sectorcontrol_industry" href="#">7</a></li>
             <li class="s8"><a  sector-name="transportation" original-title="Transportation" class="sectorcontrol inactive" id="sectorcontrol_transportation" href="#">8</a></li>
-            <li class="s9"><a  sector-name="water" original-title="Water, Sanitation, flood protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
+            <li class="s9"><a  sector-name="water" original-title="Water, Sanitation, and Flood Protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
             <li class="s10"><a sector-name="education" original-title="Education" class="sectorcontrol inactive" id="sectorcontrol_education" href="#">10</a> </li>            
             <li class="s11"><form action="" method="get">
                 <input name="input" id="sall" class="" type="checkbox" value=""/>
@@ -183,7 +182,8 @@
       </div>    
       <div id="layerinfo">
   <ul>
-    <li class="">Choose the indicator data and portfolio projects below to investigate mapping for results:</li>
+    <li class="">
+    Choose the indicator data and portfolio projects below to investigate mapping for results:</li>
   </ul>
 </div>
 <div class="dropmenuholder">
@@ -245,23 +245,25 @@
 
 <div id="chart-left" class="">
   <div id="chart-left-title">
-    <h1 id="sector_funding_title">Funding by Project</h1>
+    <h1 id="sector_funding_title">Financing by Sector</h1>
   </div>
   <div id="chart-left-stat">
     <h1 id="sector_funding_total"></h1>
     <h2 id="sector_funding_description"></h2>
   </div>
   <div id="chart-left-pie-chart"></div>
+  <div id="chart-left-pie-chart-description" class="chart_about">Financing as a percentage of country and sector financing.</div>
 </div>
 
 <div id="chart-right" class="">
   <div id="chart-right-title">
-    <h1>Overview Funding By Sector</h1>
+    <h1>Overview Financing By Project</h1>
   </div>
   <div id="chart-right-stat-subtitle">
     <h1 id="funding_total"></h1>
   </div>
   <div id="chart-right-graph"></div>
+  <div id="chart-right-graph-description" class="chart_about">Individual financing by each project in Philippines, colorized by the major sector.</div>
 </div>
 
 
@@ -287,105 +289,105 @@
   var wb = new F1.WorldBank();
   
   var projects = [
-        {id: 'P089082',project_name: 'PH-GEF-Manila Third Sewerage Project',totalamt: 0,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Jun-2007'},
+        {id: 'P089082',project_name: 'PH-GEF-Manila Third Sewerage Project',totalamt: 0,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Jun-2007',sector_code: 'WX'},
       
-        {id: 'P066532',project_name: 'Electric Cooperative System Loss Reduction Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Apr-2004'},
+        {id: 'P075464',project_name: 'National Sector  Support for Health Reform',totalamt: 110,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Jun-2006',sector_code: 'JX'},
       
-        {id: 'P075464',project_name: 'National Sector  Support for Health Reform',totalamt: 110,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Jun-2006'},
+        {id: 'P072096',project_name: 'Supplemental Project to the Rural Power Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Dec-2003',sector_code: 'LX'},
       
-        {id: 'P072096',project_name: 'Supplemental Project to the Rural Power Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Dec-2003'},
+        {id: 'P066532',project_name: 'Electric Cooperative System Loss Reduction Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Apr-2004',sector_code: 'LX'},
       
-        {id: 'P114119',project_name: 'PH - Chiller Energy Efficiency Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Jun-2010'},
+        {id: 'P082144',project_name: 'PH-Social Welfare and Development Reform',totalamt: 405,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Nov-2009',sector_code: 'JX'},
       
-        {id: 'P082144',project_name: 'PH-Social Welfare and Development Reform',totalamt: 405,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Nov-2009'},
+        {id: 'P064925',project_name: 'Support for Strategic Local Development and Investment Project',totalamt: 100,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Jun-2006',sector_code: 'WX'},
       
-        {id: 'P064925',project_name: 'Support for Strategic Local Development and Investment Project',totalamt: 100,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Jun-2006'},
+        {id: 'P114119',project_name: 'PH - Chiller Energy Efficiency Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Jun-2010',sector_code: 'LX'},
       
-        {id: 'P068898',project_name: 'PHRD GRANT - PH PRIVATE SECTOR INFRASTRUCTURE',totalamt: 0,mjsector1: 'Finance',boardapprovaldate: 'Nov-1996'},
+        {id: 'P068898',project_name: 'PHRD GRANT - PH PRIVATE SECTOR INFRASTRUCTURE',totalamt: 0,mjsector1: 'Finance',boardapprovaldate: 'Nov-1996',sector_code: 'FX'},
       
-        {id: 'P073488',project_name: 'ARMM Social Fund Project',totalamt: 33.6,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Dec-2002'},
+        {id: 'P120181',project_name: 'Encouraging More Resilient Communities in Conflict-affected Areas of the Philippines',totalamt: 0,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Mar-2010',sector_code: 'JX'},
       
-        {id: 'P120181',project_name: 'Encouraging More Resilient Communities in Conflict-affected Areas of the Philippines',totalamt: 0,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Mar-2010'},
+        {id: 'P073488',project_name: 'ARMM Social Fund Project',totalamt: 33.6,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Dec-2002',sector_code: 'JX'},
       
-        {id: 'P004406',project_name: 'PH ODS INVESTMENT PROJECT',totalamt: 0,mjsector1: 'Industry and Trade',boardapprovaldate: 'Sep-1994'},
+        {id: 'P004406',project_name: 'PH ODS INVESTMENT PROJECT',totalamt: 0,mjsector1: 'Industry and Trade',boardapprovaldate: 'Sep-1994',sector_code: 'YX'},
       
-        {id: 'P112031',project_name: 'PH - Additional Financing for the Second Agrarian Reform Communities Development Project',totalamt: 10,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Mar-2009'},
+        {id: 'P101964',project_name: 'National Program Support for Tax Administration Reform.',totalamt: 11,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007',sector_code: 'BX'},
       
-        {id: 'P101964',project_name: 'National Program Support for Tax Administration Reform.',totalamt: 11,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007'},
+        {id: 'P084967',project_name: 'Mindanao Rural Development Project - Phase 2',totalamt: 83.75,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2007',sector_code: 'TX'},
       
-        {id: 'P084967',project_name: 'Mindanao Rural Development Project - Phase 2',totalamt: 83.75,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2007'},
+        {id: 'P079935',project_name: 'National Roads Improvement and Management (APL) Phase 2',totalamt: 232,mjsector1: 'Transportation',boardapprovaldate: 'May-2008',sector_code: 'TX'},
       
-        {id: 'P079935',project_name: 'National Roads Improvement and Management (APL) Phase 2',totalamt: 232,mjsector1: 'Transportation',boardapprovaldate: 'May-2008'},
+        {id: 'P112031',project_name: 'PH - Additional Financing for the Second Agrarian Reform Communities Development Project',totalamt: 10,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Mar-2009',sector_code: 'AX'},
       
-        {id: 'P113714',project_name: 'Review of the CDS Program in the Philippines and Preparation and Publication of the State of Philippine Cities Report',totalamt: 0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2008'},
+        {id: 'P113714',project_name: 'Review of the CDS Program in the Philippines and Preparation and Publication of the State of Philippine Cities Report',totalamt: 0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2008',sector_code: 'BX'},
       
-        {id: 'P098572',project_name: 'Northern Negros Geothermal Power Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Feb-2007'},
+        {id: 'P094573',project_name: 'Laguna de Bay Community Watershed Rehab',totalamt: 0,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Jun-2006',sector_code: 'WX'},
       
-        {id: 'P094573',project_name: 'Laguna de Bay Community Watershed Rehab',totalamt: 0,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Jun-2006'},
+        {id: 'P079661',project_name: 'Manila Third Sewerage Project',totalamt: 64,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Jun-2005',sector_code: 'WX'},
       
-        {id: 'P079661',project_name: 'Manila Third Sewerage Project',totalamt: 64,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Jun-2005'},
+        {id: 'P079628',project_name: 'Second Women&apos;s Health &amp; Safe Motherhood',totalamt: 16,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Apr-2005',sector_code: 'JX'},
       
-        {id: 'P079628',project_name: 'Second Women&apos;s Health &amp; Safe Motherhood',totalamt: 16,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Apr-2005'},
+        {id: 'P070899',project_name: 'Laguna de Bay Institutional Strengthening and Community Participation/LISCOP',totalamt: 5,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Dec-2003',sector_code: 'WX'},
       
-        {id: 'P070899',project_name: 'Laguna de Bay Institutional Strengthening and Community Participation/LISCOP',totalamt: 5,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Dec-2003'},
+        {id: 'P098572',project_name: 'Northern Negros Geothermal Power Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Feb-2007',sector_code: 'LX'},
       
-        {id: 'P118908',project_name: 'TF Philippines Local Government Grants for Sanitation Pilots',totalamt: 0,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Dec-2009'},
+        {id: 'P118908',project_name: 'TF Philippines Local Government Grants for Sanitation Pilots',totalamt: 0,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Dec-2009',sector_code: 'WX'},
       
-        {id: 'P106443',project_name: 'PH-Support for Basic Ed. Sector Reform',totalamt: 0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008'},
+        {id: 'P106443',project_name: 'PH-Support for Basic Ed. Sector Reform',totalamt: 0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008',sector_code: 'EX'},
       
-        {id: 'P096174',project_name: 'National Program Support for Environment and Natural Resources Management Project',totalamt: 50,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Jun-2007'},
+        {id: 'P101076',project_name: 'Climate Change Adaptation Program',totalamt: 0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2010',sector_code: 'BX'},
       
-        {id: 'P091147',project_name: 'GEF Program supporting the National Program for Environment and Natural Resources Management Project',totalamt: 0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2007'},
+        {id: 'P096174',project_name: 'National Program Support for Environment and Natural Resources Management Project',totalamt: 50,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Jun-2007',sector_code: 'AX'},
       
-        {id: 'P073206',project_name: 'LAND ADMINISTRATION AND MANAGEMENT II PROJECT',totalamt: 19,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2005'},
+        {id: 'P091147',project_name: 'GEF Program supporting the National Program for Environment and Natural Resources Management Project',totalamt: 0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2007',sector_code: 'BX'},
       
-        {id: 'P066076',project_name: 'PH Judicial Reform Support Project',totalamt: 21.9,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2003'},
+        {id: 'P073206',project_name: 'LAND ADMINISTRATION AND MANAGEMENT II PROJECT',totalamt: 19,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2005',sector_code: 'BX'},
       
-        {id: 'P101076',project_name: 'Climate Change Adaptation Program',totalamt: 0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2010'},
+        {id: 'P066076',project_name: 'PH Judicial Reform Support Project',totalamt: 21.9,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2003',sector_code: 'BX'},
       
-        {id: 'P118910',project_name: 'ARMM Social Fund Project',totalamt: 30,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'May-2010'},
+        {id: 'P088926',project_name: 'Participatory Irrigation Development Project',totalamt: 70.36,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Jun-2009',sector_code: 'AX'},
       
-        {id: 'P115080',project_name: 'Philippines: Methane Recovery from Waste Management Project',totalamt: 0,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Jan-2010'},
+        {id: 'P088002',project_name: 'Laguna de Bay Community Carbon Finance Project',totalamt: 0,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Jun-2006',sector_code: 'WX'},
       
-        {id: 'P106885',project_name: 'Integrated POPs Management',totalamt: 0,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'May-2010'},
+        {id: 'P118910',project_name: 'ARMM Social Fund Project',totalamt: 30,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'May-2010',sector_code: 'JX'},
       
-        {id: 'P088926',project_name: 'Participatory Irrigation Development Project',totalamt: 70.36,mjsector1: 'Agriculture, Fishing, and Forestry',boardapprovaldate: 'Jun-2009'},
+        {id: 'P115080',project_name: 'Philippines: Methane Recovery from Waste Management Project',totalamt: 0,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Jan-2010',sector_code: 'WX'},
       
-        {id: 'P088002',project_name: 'Laguna de Bay Community Carbon Finance Project',totalamt: 0,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Jun-2006'},
+        {id: 'P106885',project_name: 'Integrated POPs Management',totalamt: 0,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'May-2010',sector_code: 'WX'},
       
-        {id: 'P114048',project_name: 'KALAHI-CIDSS (Additional Financing) Project',totalamt: 59.12,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Sep-2010'},
+        {id: 'P114048',project_name: 'KALAHI-CIDSS (Additional Financing) Project',totalamt: 59.12,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Sep-2010',sector_code: 'WX'},
       
-        {id: 'P106775',project_name: 'Manila Water Supply',totalamt: 0,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Oct-2007'},
+        {id: 'P106775',project_name: 'Manila Water Supply',totalamt: 0,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Oct-2007',sector_code: 'WX'},
       
-        {id: 'P106732',project_name: 'Philippines Ethanol Plant Wastewater Biogas Project',totalamt: 0,mjsector1: 'Industry and Trade',boardapprovaldate: 'Jan-2009'},
+        {id: 'P116889',project_name: 'DISASTER RISK REDUCTION CITY-TO-CITY SHARING INITIATIVE for DEVELOPING COUNTRIES',totalamt: 0,mjsector1: 'Industry and Trade',boardapprovaldate: 'Nov-2009',sector_code: 'YX'},
       
-        {id: 'P096836',project_name: 'Mindanao Rural Development Program (MRDP) Phase II - Natural Resource Management Component',totalamt: 0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2009'},
+        {id: 'P096836',project_name: 'Mindanao Rural Development Program (MRDP) Phase II - Natural Resource Management Component',totalamt: 0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2009',sector_code: 'BX'},
       
-        {id: 'P087464',project_name: 'Philippines: Northwind Bangui Bay Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Dec-2004'},
+        {id: 'P087464',project_name: 'Philippines: Northwind Bangui Bay Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Dec-2004',sector_code: 'LX'},
       
-        {id: 'P066397',project_name: 'Rural Power Project',totalamt: 10,mjsector1: 'Energy and Mining',boardapprovaldate: 'Dec-2003'},
+        {id: 'P066397',project_name: 'Rural Power Project',totalamt: 10,mjsector1: 'Energy and Mining',boardapprovaldate: 'Dec-2003',sector_code: 'LX'},
       
-        {id: 'P116889',project_name: 'DISASTER RISK REDUCTION CITY-TO-CITY SHARING INITIATIVE for DEVELOPING COUNTRIES',totalamt: 0,mjsector1: 'Industry and Trade',boardapprovaldate: 'Nov-2009'},
+        {id: 'P106732',project_name: 'Philippines Ethanol Plant Wastewater Biogas Project',totalamt: 0,mjsector1: 'Industry and Trade',boardapprovaldate: 'Jan-2009',sector_code: 'YX'},
       
-        {id: 'P113159',project_name: 'Additional Financing for Rural Power',totalamt: 40,mjsector1: 'Energy and Mining',boardapprovaldate: 'Apr-2009'},
+        {id: 'P113159',project_name: 'Additional Financing for Rural Power',totalamt: 40,mjsector1: 'Energy and Mining',boardapprovaldate: 'Apr-2009',sector_code: 'LX'},
       
-        {id: 'P106260',project_name: 'EDSA Bus Reduction Project',totalamt: 0,mjsector1: 'Transportation',boardapprovaldate: 'Jan-2010'},
+        {id: 'P106260',project_name: 'EDSA Bus Reduction Project',totalamt: 0,mjsector1: 'Transportation',boardapprovaldate: 'Jan-2010',sector_code: 'TX'},
       
-        {id: 'P094063',project_name: 'National Support for Basic Ed',totalamt: 200,mjsector1: 'Education',boardapprovaldate: 'Jun-2006'},
+        {id: 'P102513',project_name: 'PH-EC TF for Health Sector Reform',totalamt: 0,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Jun-2007',sector_code: 'JX'},
       
-        {id: 'P071007',project_name: 'Second Agrarian Reform Communities Development Project',totalamt: 50,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2002'},
+        {id: 'P094063',project_name: 'National Support for Basic Ed',totalamt: 200,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',sector_code: 'EX'},
       
-        {id: 'P102513',project_name: 'PH-EC TF for Health Sector Reform',totalamt: 0,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Jun-2007'},
+        {id: 'P071007',project_name: 'Second Agrarian Reform Communities Development Project',totalamt: 50,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2002',sector_code: 'BX'},
       
-        {id: 'P089576',project_name: '20 MW Palinpinon II Geothermal Optimization Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Dec-2005'},
+        {id: 'P095173',project_name: 'MULTI DONOR FACILIT Y - PH MINDANAO RECONSTRUCTION &amp; DEVELOPMENT',totalamt: 0,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Jul-2005',sector_code: 'JX'},
       
-        {id: 'P077012',project_name: 'Kapitbisig Laban sa Kahirapan-Comprehensive and Integrated Delivery of Social Services (KALAHI-CIDSS) Project',totalamt: 100,mjsector1: 'Water, Sanitation and Flood Protection',boardapprovaldate: 'Sep-2002'},
+        {id: 'P089576',project_name: '20 MW Palinpinon II Geothermal Optimization Project',totalamt: 0,mjsector1: 'Energy and Mining',boardapprovaldate: 'Dec-2005',sector_code: 'LX'},
       
-        {id: 'P095173',project_name: 'MULTI DONOR FACILIT Y - PH MINDANAO RECONSTRUCTION &amp; DEVELOPMENT',totalamt: 0,mjsector1: 'Health and Other Social Services',boardapprovaldate: 'Jul-2005'},
+        {id: 'P077012',project_name: 'Kapitbisig Laban sa Kahirapan-Comprehensive and Integrated Delivery of Social Services (KALAHI-CIDSS) Project',totalamt: 100,mjsector1: 'Water, Sanitation, and Flood Protection',boardapprovaldate: 'Sep-2002',sector_code: 'WX'},
       ];
-  
       
-  wb.init(355,  "Philippines", {projects_count: 48, locations_count: 4764, projects: projects});
+  wb.init(355,  "Philippines", {projects_count: '48', locations_count: '4764', projects: projects});
+  
   
 </script>
 

@@ -97,7 +97,6 @@
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>
         </h1>
-        
         <div id="banner-content">
           <div class="collapsible-content" id="collapsible-banner" style="">
             <div id="block-nodeasblock-3273" class="block block-nodeasblock ">
@@ -105,9 +104,9 @@
                 <div class="overview-links">
                   <p>Overview »</p>
                   <ul>
-                    <li><a href="/about#context">Context</a></li>
-                    <li><a href="/about#partners">Partners</a></li>
-                    <li><a href="/about#feedback">Feedback</a></li>
+                    <li><a href="/about#Context">Context</a></li>
+                    <li><a href="/about#Partners">Partners</a></li>
+                    <li><a href="/about#Feedback">Feedback</a></li>
                   </ul>
                 </div>
                 <div class="overview-text">The <strong>Mapping for Results Platform</strong> (<em>beta version</em>) provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <a class="readmore" href="/about">Read More »</a></div>
@@ -169,7 +168,9 @@
       </div>    
       <div id="layerinfo">
   <ul>
-    <li class="">Choose the indicator data and portfolio projects below to investigate mapping for results:</li>
+    <li class="">
+    
+    There are currently several countries available in "Locations" below, and more being added continuously.</li>
   </ul>
 </div>
 <div class="dropmenuholder">
@@ -228,6 +229,28 @@
   
 </div>
 
+<div id="chart-left" class="">
+  <div id="chart-left-title">
+    <h1 id="sector_funding_title">Financing by Sector</h1>
+  </div>
+  <div id="chart-left-stat">
+    <h1 id="sector_funding_total"></h1>
+    <h2 id="sector_funding_description"></h2>
+  </div>
+  <div id="chart-left-pie-chart"></div>
+  <div id="chart-left-pie-chart-description" class="chart_about">Financing as a percentage of country and sector financing.</div>
+</div>
+
+<div id="chart-right" class="">
+  <div id="chart-right-title">
+    <h1>Overview Financing By Region</h1>
+  </div>
+  <div id="chart-right-stat-subtitle">
+    <h1 id="funding_total"></h1>
+  </div>
+  <div id="chart-right-graph"></div>
+  <div id="chart-right-graph-description" class="chart_about">Financing by each Region across all Sectors</div>
+</div>
 
 
 
@@ -238,9 +261,13 @@
   var wb = new F1.WorldBank();
   
   var projects = [];
+  var sectors = {"(Historic)Industry":9,"Public Administration, Law, and Justice":19226,"Health and Other Social Services":17208,"Industry and Trade":4454,"Transportation":34324,"(Historic)Oil & Gas":0,"Information and Communications":624,"Agriculture, Fishing, and Forestry":14855,"Water, Sanitation and Flood Protection":19649,"Finance":10197,"Education":11756,"Energy and Mining":24892,"(Historic)Multisector":0,"(Historic)Economic Policy":0};
+  var regions = {"SOUTH ASIA":32668,"MIDDLE EAST AND NORTH AFRICA":7731,"EAST ASIA AND PACIFIC":27108,"LATIN AMERICA AND CARIBBEAN":32369,"AFRICA":35667,"OTHER":0,"EUROPE AND CENTRAL ASIA":21651};
+     
+     
+  wb.init(353,  "World", {projects_count: '2669', locations_count: '15,246', sectors: sectors, regions: regions });
+
   
-      
-  wb.init(353,  "World", {projects_count: 2669, locations_count: 12000, projects: projects});
   
 </script>
 
