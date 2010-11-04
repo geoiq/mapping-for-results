@@ -1,12 +1,12 @@
     <div id="map-content-header">
       <div class="worldmenuholder">
         <ul class="worldmenu">
-          <li class="first"><a href="javascript:return false;" ><%= @country[:name].upcase %> <%= @country[:name] == "World" ? ' / Number of Projects' : '/ <span id="map-title">Projects by Poverty</span>' %></a>
+          <li class="first"><a href="javascript:return false;" ><%= @country[:name].upcase %> <%= (@country[:name] == "World" || !@region.nil?) ? ' / Projects' : '/ <span id="map-title">Projects by Poverty</span>' %></a>
             <ul>
-              <% if @country[:name] == "World" %>
+              <% if @country[:name] == "World"   %>
               <% @country[:regions].each do |region, region_attr| %>
               <li><a href="#" onclick="return wb.setLocation('<%= region_attr[:name] %>',<%= region_attr[:lat] %>,<%= region_attr[:lon] %>,<%= region_attr[:zoom] %>)"><%= region_attr[:name] %></a></li>
-              <% end %>
+              <% end unless @country[:regions].nil? %>
               <% else %>
                 <% if @country[:indicators].include?("Poverty") %><li><a href="#" onclick="return wb.setState(null,'Poverty')">MDG1: Extreme Poverty</a></li><% end %>
                 <% if @country[:indicators].include?("Malnutrition") %><li><a href="#" onclick="return wb.setState(null,'Malnutrition')">MDG1: Malnutrition</a></li><% end %>
@@ -20,5 +20,5 @@
           </li>
         </ul>
       </div>
-      <%= partial :sector_controls unless @country[:name] == "World" %>
+      <%= partial :sector_controls unless @country[:name] == "World" || !@region.nil? %>
     </div>

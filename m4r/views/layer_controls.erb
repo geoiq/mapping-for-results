@@ -1,7 +1,7 @@
 <div id="layerinfo">
   <ul>
     <li class="">
-    <% unless @country[:name] == "World" %>Choose the indicator data and portfolio projects below to investigate mapping for results:<% else %>
+    <% unless @country[:name] == "World" || !@region.nil? %>Choose the indicator data and portfolio projects below to investigate mapping for results:<% else %>
     Investigate World Bank projects in currently highlighted countries using "Locations" tab.<% end %></li>
   </ul>
 </div>
@@ -9,7 +9,7 @@
   <ul class="dropmenu">
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
-        <% if @country[:name] == "World" %>
+        <% if @country[:name] == "World" || !@region.nil? %>
           <% MAPS[:world][:regions].each do |region, region_attr| %>
             <% region_attr[:countries].each do |country, country_attr| %>
             <% if (country_attr[:status] == 'active') %>
@@ -23,9 +23,9 @@
       </ul>
     </li>
   </ul>
-  <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
+  <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" || !@region.nil? %>">
     <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
-      <% unless @country[:name] == "World" %>
+      <% unless @country[:name] == "World" || !@region.nil? %>
       <ul>
         <% @country[:indicators].each do |indicator| %>
         <li><a href="#" onclick="return wb.setIndicator('<%= indicator %>')"><%= indicator %></a></li>
@@ -34,9 +34,9 @@
       <% end %>
     </li>
   </ul>
-  <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %>">
+  <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" || !@region.nil? %>">
     <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
-      <% unless @country[:name] == "World" %>
+      <% unless @country[:name] == "World" || !@region.nil? %>
       <ul>
         <li><a href="#" onclick="return wb.toggleSector('counts_admin1', true)">Number by Province</a></li>
         <li><a href="#" onclick="return wb.toggleSector('counts_admin2', true)">Number by District</a></li>
@@ -46,9 +46,9 @@
       <% end %>
     </li>
   </ul>
-  <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" %> ">
+  <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" || !@region.nil? %> ">
     <li title=""><a href="#" onclick="return false">RESULTS</a>
-      <% unless @country[:name] == "World" %>
+      <% unless @country[:name] == "World" || !@region.nil? %>
       <ul>
         <% @country[:results].each do |result| %>
         <li><a href="<%= result[:link] %>" target="_new"><%= result[:name] %></a></li>

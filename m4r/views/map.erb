@@ -631,7 +631,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
   loadedMap: function() {
       var self = this;
       self.styleLegend();
-      if(self.region != "World"){
+      if(self.region != "World" && self.region != "Latin America and Caribbean" && self.region != "Africa"){
           self.drawCharts();
       } else {
           self.styleWorldMap();

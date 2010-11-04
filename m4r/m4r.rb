@@ -14,12 +14,15 @@ SUBDOMAIN = ""
 module WorldBank
 
 
-  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,mjsector1,regionname&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL"
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,mjsector1,regionname,countryname&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL"
   WBSTAGING = {
     :world => {:name => "World", :map => 353, :projects_count => 1517, :locations_count => "15,246", :regions => {
       :afr => {
         :name => "Africa",
+        :map => 356,
         :zoom => 3, :lat => -4, :lon => 21,
+        :locations_count => 4402, 
+        :indicators => [], :adm1 => [], :results => [],
         :countries => {
           :kenya => {:name => "Kenya", :map => 255, :isocode => "KE", :region => "Africa", :status => "active",
                         :projects_count => 37, :locations_count => 231, 
@@ -40,6 +43,7 @@ module WorldBank
         :eap => {
           :name => "East Asia and Pacific",
           :zoom => 4, :lat => 19, :lon => 105.5,
+          :indicators => [], :adm1 => [], :results => [],
           :countries => {
             # 263
             :philippines => {:name => "Philippines", :isocode => "PH", :map => 355, :locations_layer => 642, :region => "East Asia and Pacific", :status => "active",
@@ -134,22 +138,28 @@ module WorldBank
       },
         :eca => {
           :name => "Europe and Central Asia",
+        :indicators => [], :adm1 => [], :results => [],
           :zoom => 4, :lat => 42.68, :lon => 68.90,
           :countries => {}
         },
         :mena => {
           :name => "Middle East and North Africa",
+          :indicators => [], :adm1 => [], :results => [],
           :zoom => 4, :lat => 26.1, :lon => 25.7,
           :countries => {}
         },
         :sar => {
           :name => "South Asia",
+        :indicators => [], :adm1 => [], :results => [],
           :zoom => 4, :lat => 15.5, :lon => 91.8,
           :countries => {}
         },                
       :lac =>  {
         :name => "Latin America and Caribbean",
         :zoom => 3, :lat => -25, :lon => -57.8,
+        :locations_count => 5192, 
+        :indicators => [], :adm1 => [], :results => [],
+        :map => 357,
         :countries => {
           :haiti => {:name => "Haiti", :map => 114, :isocode => "HT", :projects => 108, :region => "Latin America and Caribbean", :status => "inactive", 
                         :projects_count => 27, :locations_count => 319, 
@@ -225,15 +235,7 @@ module WorldBank
   end
     
   
-  def self.get_active_projects    
-    # url = URI.parse(WB_PROJECTS_API + "&geocode=")
-    # projects_data = Yajl::HttpStream.get(url)
-    # projects_data = Yajl::Parser.parse(open("wb1.json").read)
-    # projects = projects_data["projects"]
-    # # url = URI.parse(WB_PROJECTS_API + "&geocode=&os=501")
-    # # projects_data = Yajl::HttpStream.get(url)
-    # projects_data = Yajl::Parser.parse(open("wb2.json").read)
-    # return projects.merge(projects_data["projects"])    
+  def self.get_active_projects       
     self.get_all_projects["projects"]
   end
   def self.get_project_data(country)
@@ -247,14 +249,34 @@ module WorldBank
     return country
   end
   
-  def self.calculate_financing(projects)
+  def self.get_region_data(region)
+    i = 0
+    project_count = 0
+    total_projects = 1000000
+    projects = {}
+    while(project_count < total_projects)
+      url = URI.parse(WB_PROJECTS_API + "&geocode=&os=#{500*i}&regionname[]=" + region[:name].upcase.gsub(/\s/,'+'))
+
+      projects_data = Yajl::HttpStream.get(url)
+      if project_count == 0
+        total_projects = projects_data["total"].to_i
+        projects = projects_data
+      end
+      projects["projects"].merge!(projects_data["projects"])
+      project_count += projects_data["rows"].to_i
+      i += 1
+    end
+    projects
+  end
+  
+  def self.calculate_financing(projects, regionname = "regionname")
     calculations = {:sectors => {}, :regions => {}}
     projects.each do |project_id, project|
       name = project["mjsector1"]["Name"].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')
       calculations[:sectors][name] = 0 unless calculations[:sectors].include?(name)
       calculations[:sectors][name] += project["totalamt"].to_i
-      calculations[:regions][project["regionname"]] = 0 unless calculations[:regions].include?(project["regionname"])
-      calculations[:regions][project["regionname"]] += project["totalamt"].to_i
+      calculations[:regions][project[regionname]] = 0 unless calculations[:regions].include?(project[regionname])
+      calculations[:regions][project[regionname]] += project["totalamt"].to_i
     end
     calculations
   end
@@ -316,6 +338,22 @@ get '/map.js' do
   erb :map, :layout => false
 end
 
+get '/:region' do
+  @country = @region = MAPS[:world][:regions][params[:region].to_sym]
+  if(@region.nil?)
+    erb :about
+  else
+    @projects = @region
+    @projects = WorldBank.get_region_data(@region)
+    @financing ||= WorldBank.calculate_financing(@projects["projects"], "countryname")
+    
+    @country[:projects_count] = @projects["total"]
+    
+    erb :index
+  end
+  
+end
+
 get '/:region/:country' do
   @region = MAPS[:world][:regions][params[:region].to_sym]
   if(@region.nil?)
@@ -371,6 +409,7 @@ helpers do
       height = (collection.length / i).ceil if height > options[:max_height]
     end
     i = 1
+    
     collection.each_slice(height) do |column|
       menu << "<div class=\"column column_#{i}\"><ul>"
       column.each do |row|
@@ -378,7 +417,7 @@ helpers do
       end
       i += 1
       menu << "</ul></div>"
-    end
+    end unless collection.length == 0
 
     return menu
   end
