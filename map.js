@@ -631,8 +631,8 @@ if(typeof(F1)=='undefined') {F1 = {}}
   loadedMap: function() {
       var self = this;
       self.styleLegend();
-      if(self.projects.length == 0)
-	return;
+      if(self.projects.length == 0 && self.sectors.length == 0)
+        return;
       if(self.region != "World"){
           self.drawCharts();
       } else {
