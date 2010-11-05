@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for Results</title>
+  <title>The World Bank - Mapping for Results<%= @page_subtitle %></title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
   
@@ -72,11 +72,11 @@
       <div class="navigation"> <a class="network-home" href="http://www.worldbank.org">The World Bank</a>
         <ul class="links network-links">
           <li><a href="http://www.worldbank.org/about">About</a></li>
-          <li><a class="active" href="http://data.worldbank.org">Data</a></li>
+          <li><a href="http://data.worldbank.org">Data</a></li>
           <li><a href="http://econ.worldbank.org">Research</a></li>
           <li><a href="http://www.worldbank.org/wbi">Learning</a></li>
           <li><a href="http://www.worldbank.org/news">News</a></li>
-          <li><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></li>
+          <li><a href="http://www.worldbank.org/projects" class="active">Projects &amp; Operations</a></li>
           <li class="last"><a href="http://www.worldbank.org/reference">Publications</a></li>
         </ul>
         <ul class="links network-special-links">
@@ -97,14 +97,5 @@
 </div>
 <!-- /#wrapper -->
 <!-- /layout -->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-18962568-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+<%= partial :analytics %>
 </body></html>
