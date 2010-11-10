@@ -24,11 +24,11 @@
     </li>
   </ul>
   <ul class="dropmenu <%= 'inactive' if @country[:name] == "World" || !@region.nil? %>">
-    <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
+    <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator(); return false">INDICATORS</a>
       <% unless @country[:name] == "World" || !@region.nil? %>
       <ul>
         <% @country[:indicators].each do |indicator| %>
-        <li><a href="#" onclick="return wb.setIndicator('<%= indicator %>')"><%= indicator %></a></li>
+        <li><a href="#" onclick="wb.setIndicator('<%= indicator %>'); return false"><%= indicator %></a></li>
         <% end %>
       </ul>
       <% end %>

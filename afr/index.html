@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for Results</title>
+  <title>The World Bank - Mapping for Results, Africa</title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
   
@@ -71,11 +71,11 @@
       <div class="navigation"> <a class="network-home" href="http://www.worldbank.org">The World Bank</a>
         <ul class="links network-links">
           <li><a href="http://www.worldbank.org/about">About</a></li>
-          <li><a class="active" href="http://data.worldbank.org">Data</a></li>
+          <li><a href="http://data.worldbank.org">Data</a></li>
           <li><a href="http://econ.worldbank.org">Research</a></li>
           <li><a href="http://www.worldbank.org/wbi">Learning</a></li>
           <li><a href="http://www.worldbank.org/news">News</a></li>
-          <li><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></li>
+          <li><a href="http://www.worldbank.org/projects" class="active">Projects &amp; Operations</a></li>
           <li class="last"><a href="http://www.worldbank.org/reference">Publications</a></li>
         </ul>
         <ul class="links network-special-links">
@@ -126,6 +126,7 @@
 
 
     
+
     <div id="map-content-header">
       <div class="worldmenuholder">
         <ul class="worldmenu">
@@ -204,7 +205,7 @@
     </li>
   </ul>
   <ul class="dropmenu inactive">
-    <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator()">INDICATORS</a>
+    <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator(); return false">INDICATORS</a>
       
     </li>
   </ul>
@@ -237,7 +238,7 @@
 
 <div id="chart-right" class="">
   <div id="chart-right-title">
-    <h1>Overview Financing By Country</h1>
+    <h1>Overview Financing By Project</h1>
   </div>
   <div id="chart-right-stat-subtitle">
     <h1 id="funding_total"></h1>
@@ -255,11 +256,11 @@
   var wb = new F1.WorldBank();
   
   var projects = [];
-  var sectors = {"(Historic)Industry":9,"Public Administration, Law, and Justice":4246,"Health and Other Social Services":4667,"Industry and Trade":1145,"Transportation":8094,"Finance":1560,"Agriculture, Fishing, and Forestry":3998,"Information and Communications":415,"Water, Sanitation and Flood Protection":4097,"Energy and Mining":12083,"Education":3084,"(Historic)Economic Policy":0,"(Historic)Multisector":0};
-  var regions = {"Eastern Africa":0,"Syrian Arab Republic":0,"Republic of Djibouti":50,"Middle East and North Africa":0,"Republic of Mali":605,"Republic of Rwanda":261,"Republic of South Africa":3750,"Republic of Guinea":57,"Republic of Niger":238,"Republic of Liberia":207,"Somali Democratic Republic":0,"Gabonese Republic":40,"Central African Republic":82,"Democratic Republic of the Congo":2132,"Republic of Kenya":2286,"Republic of Cameroon":406,"People&apos;s Republic of Angola":427,"Republic of Benin":417,"Republic of Guinea-Bissau":38,"Republic of Malawi":452,"United Republic of Tanzania":2988,"Federal Republic of Nigeria":4353,"Republic of Seychelles":0,"Union of the Comoros":26,"People&apos;s Democratic Republic of Algeria":0,"Federal Democratic Republic of Ethiopia":3651,"Republic of Uganda":1937,"Republic of Zimbabwe":0,"Democratic Republic of Sao Tome and Prin":8,"Republic of Cote d&apos;Ivoire":778,"Republic of Burundi":421,"Republic of Chad":120,"Republic of Senegal":698,"Republic of Zambia":421,"Republic of The Gambia":42,"Republic of Botswana":614,"Republic of the Sudan":0,"Republic of Ghana":1237,"Republic of Namibia":7,"Kingdom of Morocco":1061,"Republic of Madagascar":812,"Africa":3656,"Republic of Sierra Leone":218,"Lebanese Republic":308,"Burkina Faso":652,"Southern Africa":0,"Republic of Cape Verde":24,"State of Eritrea":75,"Islamic Republic of Mauritania":250,"Kingdom of Lesotho":90,"Republic of Mozambique":825,"Republic of Yemen":1004,"West Bank and Gaza":0,"Republic of Congo":166,"Islamic Republic of Iran":344,"Republic of Togo":62,"Republic of Mauritius":138,"Republic of Equatorial Guinea":0,"Republic of Tunisia":747,"Western Africa":0,"Arab Republic of Egypt":3421,"Hashemite Kingdom of Jordan":288,"Republic of Iraq":508};
+  var sectors = {"(Historic)Industry":9,"Public Administration, Law, and Justice":4163,"Health and Other Social Services":4667,"Industry and Trade":1109,"Transportation":8094,"Finance":1579,"Agriculture, Fishing, and Forestry":3948,"Information and Communications":415,"Water, Sanitation and Flood Protection":4297,"Energy and Mining":12033,"Education":3034,"(Historic)Economic Policy":0,"(Historic)Multisector":0};
+  var regions = {"Eastern Africa":0,"Syrian Arab Republic":0,"Republic of Djibouti":50,"Middle East and North Africa":0,"Republic of Mali":605,"Republic of Rwanda":261,"Republic of South Africa":3750,"Republic of Guinea":57,"Republic of Niger":238,"Republic of Liberia":207,"Somali Democratic Republic":0,"Gabonese Republic":40,"Central African Republic":82,"Democratic Republic of the Congo":2132,"Republic of Kenya":2286,"Republic of Cameroon":406,"People&apos;s Republic of Angola":427,"Republic of Benin":417,"Republic of Guinea-Bissau":38,"Republic of Malawi":452,"United Republic of Tanzania":2988,"Federal Republic of Nigeria":4353,"Republic of Seychelles":0,"Union of the Comoros":26,"People&apos;s Democratic Republic of Algeria":0,"Federal Democratic Republic of Ethiopia":3651,"Republic of Uganda":1937,"Republic of Zimbabwe":0,"Democratic Republic of Sao Tome and Prin":8,"Republic of Cote d&apos;Ivoire":778,"Republic of Burundi":371,"Republic of Chad":120,"Republic of Senegal":698,"Republic of Zambia":421,"Republic of The Gambia":42,"Republic of Botswana":614,"Republic of the Sudan":0,"Republic of Ghana":1237,"Republic of Namibia":7,"Kingdom of Morocco":1061,"Republic of Madagascar":812,"Africa":3656,"Republic of Sierra Leone":218,"Lebanese Republic":308,"Burkina Faso":652,"Southern Africa":0,"Republic of Cape Verde":24,"State of Eritrea":75,"Islamic Republic of Mauritania":250,"Kingdom of Lesotho":90,"Republic of Mozambique":825,"Republic of Yemen":1004,"West Bank and Gaza":0,"Republic of Congo":166,"Islamic Republic of Iran":344,"Republic of Togo":62,"Republic of Mauritius":138,"Republic of Tunisia":747,"Western Africa":0,"Arab Republic of Egypt":3421,"Hashemite Kingdom of Jordan":288,"Republic of Iraq":508};
      
      
-  wb.init(356,  "Africa", {projects_count: '1031', locations_count: '4402', sectors: sectors, regions: regions });
+  wb.init(356,  "Africa", {projects_count: '1032', locations_count: '4402', sectors: sectors, regions: regions });
 
   
   
@@ -299,10 +300,11 @@
   <div id="share-pane">
     <span class="close">Close</span>
     <ul class="links">
-      <li class="twitter first"><a href="http://twitter.com/?status=World+Bank+Maps+http%3A%2F%2Fmaps.worldbank.org" target="_new">Twitter</a></li>
-      <li class="facebook"><a href="http://facebook.com/share.php?u=http%3A%2F%2Fmaps.worldbank.org" target="_new">Facebook</a></li>
-      <li class="delicious"><a href="http://delicious.com/save?v=5&noui&jump=close&url=http%3A%2F%2Fmaps.worldbank.org" target="_new">Delicious</a></li>
-      <li class="email last"><a href="mailto:?Subject=World%20Bank%20Maps&Body=World%20Bank%20Maps%20%28http%3A%2F%2Fmaps.worldbank.org">E-Mail</a></li>
+      
+      <li class="twitter first"><a href="http://twitter.com/?status=World+Bank+Maps+http%3A%2F%2Fmaps.worldbank.org%2Fafr%2Fafrica"  target="_new">Twitter</a></li>
+      <li class="facebook"><a href="http://facebook.com/share.php?u=http%3A%2F%2Fmaps.worldbank.org%2Fafr%2Fafrica" target="_new">Facebook</a></li>
+      <li class="delicious"><a href="http://delicious.com/save?v=5&noui&jump=close&url=http%3A%2F%2Fmaps.worldbank.org%2Fafr%2Fafrica" target="_new">Delicious</a></li>
+      <li class="email last"><a href="mailto:?Subject=World%20Bank%20Maps&Body=World%20Bank%20Maps%20%28http%3A%2F%2Fmaps.worldbank.org%2Fafr%2Fafrica">E-Mail</a></li>
     </ul>
   </div>
   <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -319,4 +321,46 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 </script>
+<!-- code for http://maps.worldbank.org -->
+<!-- SiteCatalyst code version: G.6. Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
+<script language="JavaScript">
+<!--
+var s_pageName="";
+var s_channel="WBG Mapping for Results EXT";
+var s_hier1 = "WBG,WBG Mapping for Results EXT";
+var s_prop1 = "";
+var s_prop2 = "Not Available"; /* Author /
+var s_prop3 = "Not Available"; / Date /
+var s_prop4 = "Not Available"; / Topic /
+var s_prop5 = "Not Available"; / Sub Topic /
+var s_prop6 = "Not Available"; / Region /
+var s_prop7 = "Not Available"; / Country /
+var s_prop8 = "Not Available"; / DocType /
+var s_prop9 = "Not Available"; / MDK or unique identifier /
+var s_prop10 = "Live"; / Site Status /
+var s_prop11 = "Not Available"; / Data Source /
+var s_prop13 = "WBG"; / VPU /
+var s_prop16="English"; / doc language /
+var s_prop17="English"; / site language */
+
+var omnitureCookieContent= getCookieValueByName('omniture');
+var s_prop18 =getVPU(omnitureCookieContent);
+var s_prop19 =getDutyStation(omnitureCookieContent);
+var s_prop20 =getUserType(omnitureCookieContent);
+
+var sTitle = document.title;
+var asTitleParts = sTitle.split("-");
+while (sTitle.indexOf(",") > -1)
+sTitle = sTitle.replace(",", "");
+
+s_pageName = sTitle;
+s_prop1 = sTitle;
+s_hier1 += ", " + sTitle;
+
+var s_account="wbnispextgeomfr";
+//-->
+</script>
+<script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.6. -->
 </body></html>

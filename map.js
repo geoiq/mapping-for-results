@@ -423,8 +423,9 @@ if(typeof(F1)=='undefined') {F1 = {}}
         var links = []
         var colors = [];
         var labels = [];
-   
-        if(sector_name == "all") {
+        if (sector_name == 'none') {
+            return;
+        } else if(sector_name == "all") {
 
             sector_names = "All"
             jq.each(self.sectors, function (sector,sector_attrs) { 
@@ -631,9 +632,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
   loadedMap: function() {
       var self = this;
       self.styleLegend();
-      if(self.region == "Project") {
-        return; 
-      } else if(self.region != "World"){
+      if(self.region != "World" && self.region != "Latin America and Caribbean" && self.region != "Africa"){
           self.drawCharts();
       } else {
           self.styleWorldMap();

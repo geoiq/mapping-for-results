@@ -423,8 +423,9 @@ if(typeof(F1)=='undefined') {F1 = {}}
         var links = []
         var colors = [];
         var labels = [];
-   
-        if(sector_name == "all") {
+        if (sector_name == 'none') {
+            return;
+        } else if(sector_name == "all") {
 
             sector_names = "All"
             jq.each(self.sectors, function (sector,sector_attrs) { 
