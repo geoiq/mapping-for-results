@@ -164,8 +164,7 @@
       <div id="layerinfo">
   <ul>
     <li class="">
-    
-    Investigate World Bank projects in currently highlighted countries using "Locations" tab.</li>
+    Choose the indicator data and portfolio projects below to investigate mapping for results:</li>
   </ul>
 </div>
 <div class="dropmenuholder">
@@ -173,49 +172,56 @@
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
         
-          
-            
-            
-            <li><a href="/afr/kenya" class="active">Kenya</a></li>
-            
-            
-          
-            
-          
-            
-          
-            
-          
-            
-            
-            <li><a href="/eap/philippines" class="active">Philippines</a></li>
-            
-            
-          
-            
-            
-            
-            
-            <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
-            
-            
-                        
+            <div class="column column_1"><ul><li><a href="#" onclick="return wb.setLocation('Chuquisaca',-19.91639089,-63.94717775,9)">Chuquisaca</a></li><li><a href="#" onclick="return wb.setLocation('Cochabamba',-17.22959421,-65.59480594,9)">Cochabamba</a></li><li><a href="#" onclick="return wb.setLocation('El Beni',-13.42445187,-64.5442714,9)">El Beni</a></li></ul></div><div class="column column_2"><ul><li><a href="#" onclick="return wb.setLocation('La Paz',-14.94456585,-68.18528065,9)">La Paz</a></li><li><a href="#" onclick="return wb.setLocation('Oruro',-18.59702433,-67.606991,9)">Oruro</a></li><li><a href="#" onclick="return wb.setLocation('Pando',-11.08158361,-67.42260436,9)">Pando</a></li></ul></div><div class="column column_3"><ul><li><a href="#" onclick="return wb.setLocation('Potosi',-20.34719881,-66.74823433,9)">Potosi</a></li><li><a href="#" onclick="return wb.setLocation('Santa Cruz',-16.96804972,-61.14741229,9)">Santa Cruz</a></li><li><a href="#" onclick="return wb.setLocation('Tarija',-21.87133887,-63.8372801,9)">Tarija</a></li></ul></div>
         
       </ul>
     </li>
   </ul>
-  <ul class="dropmenu inactive">
+  <ul class="dropmenu ">
     <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator(); return false">INDICATORS</a>
       
-    </li>
-  </ul>
-  <ul class="dropmenu inactive">
-    <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
+      <ul>
+        
+        <li><a href="#" onclick="wb.setIndicator('Population'); return false">Population</a></li>
+        
+        <li><a href="#" onclick="wb.setIndicator('Poverty'); return false">Poverty</a></li>
+        
+        <li><a href="#" onclick="wb.setIndicator('Infant Mortality'); return false">Infant Mortality</a></li>
+        
+        <li><a href="#" onclick="wb.setIndicator('Maternal Health'); return false">Maternal Health</a></li>
+        
+        <li><a href="#" onclick="wb.setIndicator('Malnutrition'); return false">Malnutrition</a></li>
+        
+      </ul>
       
     </li>
   </ul>
-  <ul class="dropmenu inactive ">
+  <ul class="dropmenu ">
+    <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
+      
+      <ul>
+        <li><a href="#" onclick="return wb.toggleSector('counts_admin1', true)">Number by Province</a></li>
+        <li><a href="#" onclick="return wb.toggleSector('counts_admin2', true)">Number by District</a></li>
+        <li><a href="#" onclick="return wb.toggleSector('all', true)">All Projects</a></li>
+        <li><a href="#" onclick="return wb.toggleSector('none',false)">No Projects</a></li>
+      </ul>
+      
+    </li>
+  </ul>
+  <ul class="dropmenu  ">
     <li title=""><a href="#" onclick="return false">RESULTS</a>
+      
+      <ul>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/BOLIVIAEXTN/0,,menuPK:322289~pagePK:141132~piPK:141107~theSitePK:322279,00.html#projects" target="_new">Country Profile</a></li>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html" target="_new">Decentralized Infrastructure for Rural Transformation Project (IDTR)</a></li>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/EXTLACPROJECTSRESULTS/0,,contentMDK:21217923~contenttypepk:64745485~dataclass:CNTRY~folderpk:64748632~mdk:82648~pagePK:64750647~piPK:64750659~projID:P060392~theSitePK:3177341,00.html" target="_new">Improving Access to Essential Maternal and Child Health Services (2007)</a></li>
+        
+        <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/EXTLACPROJECTSRESULTS/0,,contentMDK:21359569~contenttypepk:64745485~dataclass:CNTRY~folderpk:64748632~mdk:82648~pagePK:64750647~piPK:64750659~projID:P055230~theSitePK:3177341,00.html" target="_new">Stimulating Local Economic Development and Regional Integration - the Abapo-Camiri Highway (2007)</a></li>
+        
+      </ul>
       
     </li>
   </ul>
@@ -247,6 +253,20 @@
   <div id="chart-right-graph-description" class="chart_about">Individual financing by each project in Bolivia, colorized by the major sector.</div>
 </div>
 
+
+<!--Project Search Bar Begins-->
+<div id="projects-bar" class="expanded">
+  <div class="project-bar-text"><img src="/images/down-arrow-black.gif" alt="" width="11" height="7" class="img-margins" />&nbsp;&nbsp;&nbsp;&nbsp;Total Project List / Bolivia</div>
+  <div id="div">
+    <form action="/" accept-charset="UTF-8" method="post" id="search-theme-form">
+      <input maxlength="128" name="search_theme_form" id="project-search-box" size="15" value="" class="project-search-box-text" type="text" />
+    </form>
+  </div>
+</div>
+<!--Table Data Begins-->
+<div id="projects-table" style="width:960px; float:left">
+</div>
+<!--Data Table Ends-->
 
 
 

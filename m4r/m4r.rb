@@ -343,7 +343,6 @@ get '/:region' do
   if(@region.nil?)
     erb :about
   else
-    @projects = @region
     @projects = WorldBank.get_region_data(@region)
     @financing ||= WorldBank.calculate_financing(@projects["projects"], "countryname")
     

@@ -633,7 +633,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
   loadedMap: function() {
       var self = this;
       self.styleLegend();
-      if(self.region != "World" && self.region != "Latin America and Caribbean" && self.region != "Africa" && self.region != "East Asia and Pacific"){
+      if(self.region != "World" && (self.region != self.country)){
           self.drawCharts();
       } else {
           self.styleWorldMap();

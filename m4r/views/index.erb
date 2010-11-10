@@ -22,7 +22,7 @@
 
 <%= partial :charts %>
 
-<%= partial :projects_table unless @country[:name] == "World" || !@region.nil? %>
+<%= partial :projects_table unless @country[:name] == "World" || (@region == @country) %>
 
 <script type="text/javascript" charset="utf-8">
 
@@ -33,7 +33,7 @@
          "{" + (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
        end.join(",") %>];
       
-  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', projects: projects, locations_layer: <%= @country[:locations_layer] || 0 %>});
+  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", "<%= @country[:region].to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', projects: projects, locations_layer: <%= @country[:locations_layer] || 0 %>});
   <% else %>
   var projects = [];
   var sectors = <%= @financing[:sectors].to_json %>;
