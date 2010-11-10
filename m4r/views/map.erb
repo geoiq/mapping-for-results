@@ -46,7 +46,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
     "Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com/ubo.html'>Statoids"}
 	},
   F1.WorldBank.prototype = {
-    init: function(map_id, region, country_attrs) {
+    init: function(map_id, country, region, country_attrs) {
       
       var self = this;
       this.activities = {};
@@ -63,6 +63,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.initialized = false;
       this.current_indicator = "Poverty";
       this.current_projects = true;
+      this.country = country;
       this.region = region;
       this.country_attrs = country_attrs;
       		
@@ -632,7 +633,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
   loadedMap: function() {
       var self = this;
       self.styleLegend();
-      if(self.region != "World" && self.region != "Latin America and Caribbean" && self.region != "Africa"){
+      if(self.region != "World" && self.region != "Latin America and Caribbean" && self.region != "Africa" && self.region != "East Asia and Pacific"){
           self.drawCharts();
       } else {
           self.styleWorldMap();
