@@ -40,7 +40,7 @@
   var regions = <%= @financing[:regions].to_json %>;
      
      
-  wb.init(<%= @country[:map].to_s %>,  "<%= (@country[:region] || @country[:name]).to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', sectors: sectors, regions: regions });
+  wb.init(<%= @country[:map].to_s %>,  "<%= (@country[:name] || "").to_s %>",  "<%= (@country[:region] || "").to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', sectors: sectors, regions: regions });
 
   <% end %>
   

@@ -20,5 +20,5 @@
           </li>
         </ul>
       </div>
-      <%= partial :sector_controls unless @country[:name] == "World" || !@region.nil? %>
+      <%= partial :sector_controls unless @country[:name] == "World" || (@region == @country) %>
     </div>

@@ -145,7 +145,27 @@
           </li>
         </ul>
       </div>
-      
+            <div id="map-content-icons">
+        <div id="map-content-icons2">
+          <ul>
+            <li class="sectors">MAJOR SECTORS:</li>
+            <li class="s1"><a  sector-name="public" original-title="Public Administration, Law, and Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#">1</a></li>
+            <li class="s2"><a  sector-name="agriculture" original-title="Agriculture, Fishing, and Forestry" class="sectorcontrol inactive" id="sectorcontrol_agriculture" href="#">2</a></li>
+            <li class="s3"><a  sector-name="health" original-title="Health, other social" class="sectorcontrol inactive" id="sectorcontrol_health" href="#">3</a></li>
+            <li class="s4"><a  sector-name="communications" original-title="Communications" class="sectorcontrol inactive" id="sectorcontrol_communications" href="#">4</a></li>
+            <li class="s5"><a  sector-name="energy" original-title="Energy and Mining" class="sectorcontrol inactive" id="sectorcontrol_energy" href="#">5</a></li>
+            <li class="s6"><a  sector-name="finance" original-title="Finance" class="sectorcontrol inactive" id="sectorcontrol_finance" href="#">6</a></li>
+            <li class="s7"><a  sector-name="industry" original-title="Industry and Trade" class="sectorcontrol inactive" id="sectorcontrol_industry" href="#">7</a></li>
+            <li class="s8"><a  sector-name="transportation" original-title="Transportation" class="sectorcontrol inactive" id="sectorcontrol_transportation" href="#">8</a></li>
+            <li class="s9"><a  sector-name="water" original-title="Water, Sanitation, and Flood Protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
+            <li class="s10"><a sector-name="education" original-title="Education" class="sectorcontrol inactive" id="sectorcontrol_education" href="#">10</a> </li>            
+            <li class="s11"><form action="" method="get">
+                <input name="input" id="sall" class="" type="checkbox" value=""/>
+              </form></li>
+            <li class="all">ALL</li>
+          </ul>
+        </div>
+      </div>
     </div>
 <div id="map-content">
   <div id="wb_map_wrapper" style="z-index: -1; height: 514px; 958px">
@@ -172,7 +192,7 @@
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
         
-            <div class="column column_1"><ul><li><a href="#" onclick="return wb.setLocation('Chuquisaca',-19.91639089,-63.94717775,9)">Chuquisaca</a></li><li><a href="#" onclick="return wb.setLocation('Cochabamba',-17.22959421,-65.59480594,9)">Cochabamba</a></li><li><a href="#" onclick="return wb.setLocation('El Beni',-13.42445187,-64.5442714,9)">El Beni</a></li></ul></div><div class="column column_2"><ul><li><a href="#" onclick="return wb.setLocation('La Paz',-14.94456585,-68.18528065,9)">La Paz</a></li><li><a href="#" onclick="return wb.setLocation('Oruro',-18.59702433,-67.606991,9)">Oruro</a></li><li><a href="#" onclick="return wb.setLocation('Pando',-11.08158361,-67.42260436,9)">Pando</a></li></ul></div><div class="column column_3"><ul><li><a href="#" onclick="return wb.setLocation('Potosi',-20.34719881,-66.74823433,9)">Potosi</a></li><li><a href="#" onclick="return wb.setLocation('Santa Cruz',-16.96804972,-61.14741229,9)">Santa Cruz</a></li><li><a href="#" onclick="return wb.setLocation('Tarija',-21.87133887,-63.8372801,9)">Tarija</a></li></ul></div>
+            <div class="column column_1"><ul><li><a href="#" onclick="wb.setLocation('Chuquisaca',-19.91639089,-63.94717775,9); return false">Chuquisaca</a></li><li><a href="#" onclick="wb.setLocation('Cochabamba',-17.22959421,-65.59480594,9); return false">Cochabamba</a></li><li><a href="#" onclick="wb.setLocation('El Beni',-13.42445187,-64.5442714,9); return false">El Beni</a></li></ul></div><div class="column column_2"><ul><li><a href="#" onclick="wb.setLocation('La Paz',-14.94456585,-68.18528065,9); return false">La Paz</a></li><li><a href="#" onclick="wb.setLocation('Oruro',-18.59702433,-67.606991,9); return false">Oruro</a></li><li><a href="#" onclick="wb.setLocation('Pando',-11.08158361,-67.42260436,9); return false">Pando</a></li></ul></div><div class="column column_3"><ul><li><a href="#" onclick="wb.setLocation('Potosi',-20.34719881,-66.74823433,9); return false">Potosi</a></li><li><a href="#" onclick="wb.setLocation('Santa Cruz',-16.96804972,-61.14741229,9); return false">Santa Cruz</a></li><li><a href="#" onclick="wb.setLocation('Tarija',-21.87133887,-63.8372801,9); return false">Tarija</a></li></ul></div>
         
       </ul>
     </li>
@@ -200,10 +220,10 @@
     <li class="first" title="Layer: Projects"><a href="#" id="layercontrol_projects" onclick="return wb.toggleSector('none',false)">PROJECTS</a>
       
       <ul>
-        <li><a href="#" onclick="return wb.toggleSector('counts_admin1', true)">Number by Province</a></li>
-        <li><a href="#" onclick="return wb.toggleSector('counts_admin2', true)">Number by District</a></li>
-        <li><a href="#" onclick="return wb.toggleSector('all', true)">All Projects</a></li>
-        <li><a href="#" onclick="return wb.toggleSector('none',false)">No Projects</a></li>
+        <li><a href="#" onclick="wb.toggleSector('counts_admin1', true); return false">Number by Province</a></li>
+        <li><a href="#" onclick="wb.toggleSector('counts_admin2', true); return false">Number by District</a></li>
+        <li><a href="#" onclick="wb.toggleSector('all', true); return false">All Projects</a></li>
+        <li><a href="#" onclick="wb.toggleSector('none',false); return false">No Projects</a></li>
       </ul>
       
     </li>

@@ -412,7 +412,7 @@ helpers do
     collection.each_slice(height) do |column|
       menu << "<div class=\"column column_#{i}\"><ul>"
       column.each do |row|
-        menu << %Q{<li><a href="#" onclick="return wb.setLocation('#{ row[:name] }',#{ row[:lat] },#{ row[:lon] },#{ row[:zoom] })">#{ row[:name] }</a></li>}
+        menu << %Q{<li><a href="#" onclick="wb.setLocation('#{ row[:name] }',#{ row[:lat] },#{ row[:lon] },#{ row[:zoom] }); return false">#{ row[:name] }</a></li>}
       end
       i += 1
       menu << "</ul></div>"
