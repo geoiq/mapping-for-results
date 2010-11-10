@@ -30,14 +30,14 @@ module WorldBank
                   {:name => "World Bank Approves US$100 Million Credit for Kenya’s Health Sector", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:22632909~menuPK:50003484~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"},
                   {:name => "World Bank Approves US$154.5 Million to Support Poorest People in Western Kenya", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:21275229~menuPK:356530~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"}],
               :indicators => ["Population","Poverty","Infant Mortality","Maternal Health","Malnutrition"],
-              :adm1 => [{:name => "Rift Valley", :lat => 1.150021, :lon => 36.03213547},
-                        {:name => "Eastern", :lat => 0.701907163, :lon => 37.75840251},
-                        {:name => "Nairobi", :lat => -1.297822064, :lon => 36.88437406},
-                        {:name => "Coast", :lat => -2.332949245, :lon => 39.56448882},
-                        {:name => "Nyanza", :lat => -0.536004493, :lon => 34.63615441},
-                        {:name => "Western", :lat => 0.55589916, :lon => 34.54934945},
-                        {:name => "Central", :lat => -0.587079669, :lon => 36.84799556},
-                        {:name => "North-Eastern", :lat => 1.112081207, :lon => 40.27493157}]}
+              :adm1 => [{:name => "Rift Valley", :lat => 1.150021, :lon => 36.03213547, :zoom => 10},
+                        {:name => "Eastern", :lat => 0.701907163, :lon => 37.75840251, :zoom => 10},
+                        {:name => "Nairobi", :lat => -1.297822064, :lon => 36.88437406, :zoom => 10},
+                        {:name => "Coast", :lat => -2.332949245, :lon => 39.56448882, :zoom => 10},
+                        {:name => "Nyanza", :lat => -0.536004493, :lon => 34.63615441, :zoom => 10},
+                        {:name => "Western", :lat => 0.55589916, :lon => 34.54934945, :zoom => 10},
+                        {:name => "Central", :lat => -0.587079669, :lon => 36.84799556, :zoom => 10},
+                        {:name => "North-Eastern", :lat => 1.112081207, :lon => 40.27493157, :zoom => 10}]}
         }
       },
         :eap => {
