@@ -1,0 +1,21 @@
+<script type="text/javascript" charset="utf-8">
+
+
+  var wb = new F1.WorldBank();
+  <% unless @country[:name] == "World" || @country[:adm1].length == 0 %>
+  var projects = [<%= @country[:project_list].collect do |project_id, project|
+         "{" + (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
+       end.join(",") %>];
+      
+  wb.init(<%= @country[:map].to_s %>,  "<%= @country[:name].to_s %>", "<%= @country[:region].to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', projects: projects, locations_layer: <%= @country[:locations_layer] || 0 %>});
+  <% else %>
+  var projects = [];
+  var sectors = <%= @financing[:sectors].to_json %>;
+  var regions = <%= @financing[:regions].to_json %>;
+     
+     
+  wb.init(<%= (@country[:map] || "''").to_s %>,  "<%= (@country[:name] || "").to_s %>",  "<%= (@country[:region] || 'World').to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', sectors: sectors, regions: regions });
+
+  <% end %>
+  
+</script>

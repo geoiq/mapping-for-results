@@ -16,3 +16,8 @@ cp lac/index.html lac.html
 cp afr/index.html afr.html
 curl http://localhost:4567/eap/philippines > eap/philippines.html
 curl http://localhost:4567/about > about.html
+
+mkdir -p productline/PE/
+curl http://localhost:4567/productline/PE/charts > productline/PE/charts.html
+mkdir -p productline/CN/
+curl http://localhost:4567/productline/CN/charts > productline/CN/charts.html

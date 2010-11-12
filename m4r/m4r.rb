@@ -250,12 +250,21 @@ module WorldBank
   end
   
   def self.get_region_data(region)
+    projects = paginated_projects(WB_PROJECTS_API + "&geocode=&regionname[]=" + region[:name].upcase.gsub(/\s/,'+'))
+  end
+  def self.get_product_data(product)
+    projects = paginated_projects(WB_PROJECTS_API + "&prodline[]=" + product)
+    puts projects
+    projects
+  end
+  
+  def self.paginated_projects(uri)
     i = 0
     project_count = 0
     total_projects = 1000000
     projects = {}
     while(project_count < total_projects)
-      url = URI.parse(WB_PROJECTS_API + "&geocode=&os=#{500*i}&regionname[]=" + region[:name].upcase.gsub(/\s/,'+'))
+      url = URI.parse(uri + "&os=#{500*i}")
 
       projects_data = Yajl::HttpStream.get(url)
       if project_count == 0
@@ -351,6 +360,17 @@ get '/:region' do
     erb :index
   end
   
+end
+
+get '/productline/:product/charts' do
+  @country = @region = {:name => "World", :adm1 => ""}
+
+  @projects = WorldBank.get_product_data(params[:product].upcase)
+  @financing ||= WorldBank.calculate_financing(@projects["projects"], "regionname")
+  
+  @country[:projects_count] = @projects["total"]
+  
+  erb :charts, :layout => :embed
 end
 
 get '/:region/:country' do
