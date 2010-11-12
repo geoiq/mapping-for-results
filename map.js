@@ -52,7 +52,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       this.activities = {};
       this.projects = country_attrs.projects;
       this.visibleSectors = [];
-      
+      this.map_id = map_id;
       if(country_attrs.regions != null)
         this.regions = country_attrs.regions;
       else
@@ -91,13 +91,17 @@ if(typeof(F1)=='undefined') {F1 = {}}
           self.sector_names[sector.name] = index; 
           self.sector_codes[sector.sector_code] = sector;
      });
-        
-      this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
-                uiZoom: true,uiLayers: false,uiLegend: false,uiStyles: true,
-                uiHeader: true,hideGCLogo: true,hideGILogo: true,
-                core_host:  proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
-                onload: function() { self.loadedMap() }
-      });
+     if(map_id != null && map_id.length != 0){
+         this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
+         uiZoom: true,uiLayers: false,uiLegend: false,uiStyles: true,
+         uiHeader: true,hideGCLogo: true,hideGILogo: true,
+         core_host:  proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
+         onload: function() { self.loadedMap() }
+         });
+      } else {
+          self.sectorPieChart("all", false);
+          self.regionFundingBars();
+      }
     },
     setBookmark: function(key, value) {
       
@@ -461,7 +465,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
             funding = self.sectors[sector_name].funding;
 
             var links = jq.map(projects, function (project,index) { 
-                labels.push(Textify.elide_during(project.project_name, 35, '...'   ) + " - $" + project.totalamt + "m" )
+                labels.push(Textify.elide_during(project.project_name, 35, '...'   ) + " - $" + project.totalamt.toFixed(2) + "m" )
                 return "javascript:wb.highlightProject('" + project["id"] + "');";  
             });
 
