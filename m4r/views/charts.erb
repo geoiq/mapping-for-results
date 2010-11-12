@@ -1,5 +1,3 @@
-<%= partial :initialize %>
-
 <div id="chart-left" class="">
   <div id="chart-left-title">
     <h1 id="sector_funding_title">Financing by Sector</h1>
@@ -22,4 +20,4 @@
   <div id="chart-right-graph"></div>
   <div id="chart-right-graph-description" class="chart_about"><%= @country[:name] == "World" ? "Financing by each Region across all Sectors" : "Individual financing by each project in #{@country[:name]}, colorized by the major sector." %></div>
 </div>
-
+<%= partial :initialize %>
