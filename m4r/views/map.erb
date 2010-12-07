@@ -456,7 +456,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
             if(self.stylelayers["Project Locations"] != null)
                 opts["chart"]["onclick"] = function() {wb.toggleSector(links[this.bar.index])};
                  
-            var financing_total = funding > 1000 ? (funding/1000).toFixed(2) + " Billion" : funding + " Million";
+            var financing_total = funding > 1000 ? (funding/1000).toFixed(2) + " Billion" : funding.toFixed(2) + " Million";
             jq('#sector_funding_total').html("$" + financing_total); // + " <span class='subtotal' title='Global Financing'>/ $136.912 Billion</span>"
             jq('#sector_funding_title').html("Financing for " + sector_names + " Sectors")
 
@@ -476,7 +476,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
             
             sector_names = wb.sectors[sector_name].name;
             opts["chart"] = {legend: labels, colors: self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8)}
-            var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding + " Million"
+            var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding.toFixed(2) + " Million"
 
             jq('#sector_funding_total').html("$" + funding + " Million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");
             jq('#sector_funding_title').html("Financing for " + sector_names + " Sector")
