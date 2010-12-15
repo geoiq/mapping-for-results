@@ -25,7 +25,7 @@ module WorldBank
         :indicators => [], :adm1 => [], :results => [],
         :countries => {
           :kenya => {:name => "Kenya", :map => 255, :isocode => "KE", :region => "Africa", :status => "active",
-                        :projects_count => 37, :locations_count => 231, 
+                        :projects_count => 37, :locations_count => 265, 
               :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,menuPK:356520~pagePK:141132~piPK:141107~theSitePK:356509,00.html"},
                   {:name => "World Bank Approves US$100 Million Credit for Kenya’s Health Sector", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:22632909~menuPK:50003484~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"},
                   {:name => "World Bank Approves US$154.5 Million to Support Poorest People in Western Kenya", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/AFRICAEXT/KENYAEXTN/0,,contentMDK:21275229~menuPK:356530~pagePK:2865066~piPK:2865079~theSitePK:356509,00.html"}],
