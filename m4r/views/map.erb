@@ -1,5 +1,5 @@
 var proxy_host = "<%= PLATFORM_API_URL %>";    
-var project_attributes = ["id","project_name","totalamt","mjsector1","boardapprovaldate"]
+var project_attributes = ["id","project_name","totalamt","mjsector1","boardapprovaldate","majorsector_percent"]
 
 if(typeof(F1)=='undefined') {F1 = {}}
 (function(){
@@ -23,7 +23,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
   Array.prototype.flatten = function flatten(){
      var flat = [];
      for (var i = 0, l = this.length; i < l; i++){
-         var type = Object.prototype.toString.call(this[i]).split(' ').pop().split(']').shift().toLowerCase();
+         var type = Object.prototype.toString.call(this[i]).split(' ').pop().split(']').shift().toLowerCase().trim();
          if (type) { flat = flat.concat(/^(array|collection|arguments)$/.test(type) ? flatten.call(this[i]) : this[i]); }
      }
      return flat;
@@ -88,7 +88,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
             sector.funding = country_attrs.sectors[sector.name];
             self.total_funding += country_attrs.sectors[sector.name];
           }
-          self.sector_names[sector.name] = index; 
+          self.sector_names[sector.name.toLowerCase().trim()] = index; 
           self.sector_codes[sector.sector_code] = sector;
      });
      if(map_id != null && map_id.length != 0){
@@ -324,7 +324,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
             
             // Add to sector funding and project count
             var sector_name = project["sector1"];
-            var wb_sector = self.sectors[self.sector_names[sector_name]];
+            var wb_sector = self.sectors[self.sector_names[sector_name.toLowerCase().trim()]];
 
             if(wb_sector == null)
               wb_sector = self.sectors["public"];
@@ -356,17 +356,30 @@ if(typeof(F1)=='undefined') {F1 = {}}
             }
             project["financing amount"] = attr["totalamt"];
             // project["activity count"] = 0;
+            var mjsector_percent = {}
+
             self.projects[attr["id"]] = project
             
             // Add to sector funding and project count
-            var sector_name = project["mjsector1"];
-            var wb_sector = self.sectors[self.sector_names[sector_name]];
+            jq.each(project["majorsector_percent"], function(index,sector) {
+                var sector_name = sector["Name"].toLowerCase().trim();
+                var wb_sector = self.sectors[self.sector_names[sector_name]];
 
-            if(wb_sector == null)
-              wb_sector = self.sectors["public"];
-              
-            wb_sector.funding += attr["totalamt"];
-            wb_sector.projects.push(project);
+                if(wb_sector == null)
+                    wb_sector = self.sectors["public"];
+
+                if(project["sector_funding"] == null)
+                    project["sector_funding"] = {}
+                if(project["sector_funding"][wb_sector.shortname] == null)
+                    project["sector_funding"][wb_sector.shortname] = 0
+                
+                var actual_funding = (parseInt(sector["Percent"],10) / 100.0) * project["totalamt"];
+                project["sector_funding"][wb_sector.shortname] += actual_funding
+                wb_sector.funding += actual_funding
+                // There are duplicates in the Major Sector Percent listings
+                if(Object.include(wb_sector.projects, project) == null)                
+                    wb_sector.projects.push(project);
+            });
             self.total_funding += attr["totalamt"];
           }
           // self.projects[attr["project id"]]["activity count"] += 1;
@@ -440,9 +453,10 @@ if(typeof(F1)=='undefined') {F1 = {}}
                 return b.funding - a.funding;
             });        
             jq.each(projects, function (index,project) {
-                links.push("javascript:wb.sectorPieChart('" + self.sector_codes[project.sector_code].shortname + "', true);");  
+                // self.sectors[self.sector_names[project.mjsector1.toLowerCase().trim()]].shortname
+                links.push("javascript:wb.sectorPieChart('" + project.shortname + "', true);");  
                 colors.push(project.color)
-                var financing = project.funding > 1000 ? project.funding/1000 + "b" : project.funding + "m"
+                var financing = project.funding > 1000 ? (project.funding/1000).toFixed(2) + "b" : project.funding.toFixed(2) + "m"
                 labels.push(project.name + " - $" + financing )
             });
 
@@ -465,7 +479,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
             funding = self.sectors[sector_name].funding;
 
             var links = jq.map(projects, function (project,index) { 
-                labels.push(Textify.elide_during(project.project_name, 35, '...'   ) + " - $" + project.totalamt.toFixed(2) + "m" )
+                labels.push(Textify.elide_during(project.project_name, 35, '...'   ) + " - $" + project.sector_funding[sector_name].toFixed(2) + "m" )
                 return "javascript:wb.highlightProject('" + project["id"] + "');";  
             });
 
@@ -478,7 +492,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
             opts["chart"] = {legend: labels, colors: self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8)}
             var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding.toFixed(2) + " Million"
 
-            jq('#sector_funding_total').html("$" + funding + " Million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");
+            jq('#sector_funding_total').html("$" + funding.toFixed(2) + " Million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");
             jq('#sector_funding_title').html("Financing for " + sector_names + " Sector")
         }
 
@@ -534,7 +548,7 @@ if(typeof(F1)=='undefined') {F1 = {}}
       jq.each(self.projects, function(index, project) {
         features.push(project);
         links.push( "javascript:wb.highlightProject('" + project["id"] + "');"  );
-        colors.push(self.sector_codes[project.sector_code].color);
+        colors.push(self.sectors[self.sector_names[project.mjsector1.toLowerCase().trim()]].color);
       });
 
       jq('#funding_total').html("$" + self.total_funding.toFixed(1) + " Million");
@@ -631,7 +645,11 @@ if(typeof(F1)=='undefined') {F1 = {}}
       self.sectorPieChart("all", false);
       self.regionFundingBars();
 
-      self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
+      if(self.region != "World")
+        self.map.swf.addLayerCategoryFilter(0, {attribute:"sector1",categories:self.wbicons});
+     else
+        self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
+        
       self.hideLoading();
   },
   loadedMap: function() {

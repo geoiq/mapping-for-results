@@ -14,7 +14,7 @@ SUBDOMAIN = ""
 module WorldBank
 
 
-  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,mjsector1,regionname,countryname&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL"
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,mjsector1,regionname,countryname,majorsector_percent&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL"
   WBSTAGING = {
     :world => {:name => "World", :map => 353, :projects_count => 1517, :locations_count => "15,246", :regions => {
       :afr => {
@@ -199,7 +199,7 @@ module WorldBank
     }
   }
 
-  PROJECT_FIELDS = ["id","project_name","totalamt","mjsector1","boardapprovaldate"]
+  PROJECT_FIELDS = ["id","project_name","totalamt","mjsector1","boardapprovaldate","majorsector_percent"]
   SECTORS = {
     :public => {:name => "Public Administration, Law, and Justice"},
     :agriculture => {:name => "Agriculture, Fishing, and Forestry"},
@@ -240,6 +240,7 @@ module WorldBank
   end
   def self.get_project_data(country)
     url = URI.parse(WB_PROJECTS_API + "&geocode=&countrycode[]=" + country[:isocode])
+    puts "Fetching: #{url}"
     projects_data = Yajl::HttpStream.get(url)
     # projects_data = Yajl::Parser.parse(open("#{country[:isocode]}.json").read)
     projects_total = projects_data["total"]
@@ -254,7 +255,6 @@ module WorldBank
   end
   def self.get_product_data(product)
     projects = paginated_projects(WB_PROJECTS_API + "&prodline[]=" + product)
-    puts projects
     projects
   end
   
@@ -281,11 +281,13 @@ module WorldBank
   def self.calculate_financing(projects, regionname = "regionname")
     calculations = {:sectors => {}, :regions => {}}
     projects.each do |project_id, project|
-      name = project["mjsector1"]["Name"].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')
-      calculations[:sectors][name] = 0 unless calculations[:sectors].include?(name)
-      calculations[:sectors][name] += project["totalamt"].to_i
-      calculations[:regions][project[regionname]] = 0 unless calculations[:regions].include?(project[regionname])
-      calculations[:regions][project[regionname]] += project["totalamt"].to_i
+        project["majorsector_percent"].each do |percent|
+            name = percent["Name"].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')
+            calculations[:sectors][name] = 0 unless calculations[:sectors].include?(name)
+            calculations[:sectors][name] += percent["Percent"].to_i / 100.0 * project["totalamt"].to_i
+        end
+        calculations[:regions][project[regionname]] = 0 unless calculations[:regions].include?(project[regionname])
+        calculations[:regions][project[regionname]] += project["totalamt"].to_i
     end
     calculations
   end
@@ -404,14 +406,16 @@ helpers do
   end
   def cleanup_attributes(attribute, value)
     case attribute
+    when /majorsector_percent/
+      return value.to_json
     when /boardapprovaldate/
       return "'#{DateTime.parse(value).strftime("%b-%Y")}'"
     when /totalamt/
-      return value
+      return value.to_f
       # return "$#{value} million"
     when /mjsector1/
       # return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[2].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')}'"
-      return "'#{value["Name"].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and').gsub(/Sanitation /,'Sanitation, ')}'"
+      return "'#{value.gsub(/\b\w/){$&.upcase}.gsub(/And/,'and').gsub(/Sanitation /,'Sanitation, ')}'"
     when /sector_code/
       return "'#{value["Code"]}'"
     else

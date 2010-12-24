@@ -45,23 +45,7 @@
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
 
-    <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
-  
-  var projects = [];
-  var sectors = {"(Historic)Industry":9,"Health and Other Social Services":17398,"Public Administration, Law, and Justice":18347,"Industry and Trade":4448,"Transportation":33975,"(Historic)Oil & Gas":0,"Information and Communications":624,"Water, Sanitation and Flood Protection":19849,"Agriculture, Fishing, and Forestry":14554,"Finance":9966,"Education":11836,"Energy and Mining":22539,"(Historic)Multisector":0,"(Historic)Economic Policy":0};
-  var regions = {"SOUTH ASIA":32679,"MIDDLE EAST AND NORTH AFRICA":7586,"EAST ASIA AND PACIFIC":26593,"LATIN AMERICA AND CARIBBEAN":31024,"AFRICA":34455,"EUROPE AND CENTRAL ASIA":21208};
-     
-     
-  wb.init('',  "World",  "World", {projects_count: '1771', locations_count: '', sectors: sectors, regions: regions });
-
-  
-  
-</script>
-
-<div id="chart-left" class="">
+    <div id="chart-left" class="">
   <div id="chart-left-title">
     <h1 id="sector_funding_title">Financing by Sector</h1>
   </div>
@@ -83,7 +67,21 @@
   <div id="chart-right-graph"></div>
   <div id="chart-right-graph-description" class="chart_about">Financing by each Region across all Sectors</div>
 </div>
+<script type="text/javascript" charset="utf-8">
 
+
+  var wb = new F1.WorldBank();
+  
+  var projects = [];
+  var sectors = {"":0.0,"Education ":4826.08,"Transportation ":14188.28,"Public Administration, Law, and Justice ":9590.64,"Health and Other Social Services ":5861.36,"Energy and Mining ":6023.69,"Industry and Trade ":1813.26,"Information and Communications ":157.11,"Water, Sanitation and Flood Protection ":8286.64,"Agriculture, Fishing, and Forestry ":5232.43,"Finance ":2776.51};
+  var regions = {"SOUTH ASIA":15773,"MIDDLE EAST AND NORTH AFRICA":2506,"EAST ASIA AND PACIFIC":11936,"LATIN AMERICA AND CARIBBEAN":6604,"AFRICA":14480,"EUROPE AND CENTRAL ASIA":7466};
+     
+     
+  wb.init('',  "World",  "World", {projects_count: '855', locations_count: '', sectors: sectors, regions: regions });
+
+  
+  
+</script>
 
 
 <script type="text/javascript">
