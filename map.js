@@ -1,7 +1,7 @@
 var proxy_host = "http://wbstaging.geocommons.com";    
 var project_attributes = ["id","project_name","totalamt","mjsector1","boardapprovaldate","majorsector_percent"];
 
-if(typeof(F1)=='undefined') {F1 = {}};
+if(typeof(F1)=='undefined') {F1 = {};}
 (function(){
     
 
@@ -53,11 +53,11 @@ if(typeof(F1)=='undefined') {F1 = {}};
       this.projects = country_attrs.projects;
       this.visibleSectors = [];
       this.map_id = map_id;
-      if(country_attrs.regions != null)
-        this.regions = country_attrs.regions;
-      else
+      if(country_attrs.regions !== null) {
+        this.regions = country_attrs.regions; 
+      } else {
         this.regions = {};
-        
+       } 
       this.total_funding = 0;
       this.stylelayers = {};
       this.initialized = false;
@@ -84,14 +84,14 @@ if(typeof(F1)=='undefined') {F1 = {}};
       this.sector_names = {};
       this.sector_codes = {};
       jq.each(self.sectors, function(index, sector) {
-          if(country_attrs.sectors != null && country_attrs.sectors[sector.name] != null) { 
+          if(country_attrs.sectors !== null && country_attrs.sectors[sector.name] !== null) { 
             sector.funding = country_attrs.sectors[sector.name];
             self.total_funding += country_attrs.sectors[sector.name];
           }
           self.sector_names[sector.name.toLowerCase().trim()] = index; 
           self.sector_codes[sector.sector_code] = sector;
      });
-     if(map_id != null && map_id.length != 0){
+     if(map_id !== null && map_id.length !== 0){
          this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
          uiZoom: true,uiLayers: false,uiLegend: false,uiStyles: true,
          uiHeader: true,hideGCLogo: true,hideGILogo: true,
@@ -108,11 +108,11 @@ if(typeof(F1)=='undefined') {F1 = {}};
     },
     setState: function(location,indicator,project,sectors) {
       var self = this;
-      if(location != null)
+      if(location !== null)
         setLocation("",location.lat,location.lon,location.zoom);
-      if(indicator != null)
+      if(indicator !== null)
         this.setIndicator(indicator);
-      if(sectors != null){
+      if(sectors !== null){
         jq.each(sectors, function(sector) {
           self.toggleSector(sectors[sector], true);
         })
@@ -148,7 +148,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
       var self = this;
       var visibleExpression = "";
 
-      if(self.stylelayers["Project Locations"] == null) // World Map
+      if(self.stylelayers["Project Locations"] === null) // World Map
         return;
         
       self.current_projects = visible;
@@ -157,13 +157,13 @@ if(typeof(F1)=='undefined') {F1 = {}};
         self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
         self.map.showLayer(self.stylelayers["Project Counts"].order, visible);        
       } else if(sector == 'all') {
-        if(visible == null)
+        if(visible === null)
           visible = (jq("#sall").is(':checked'));
           
         if(visible) {
           self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
           jq.each(self.sectors, function(sector) {
-            if(Object.include(self.visibleSectors, sector) == null)
+            if(Object.include(self.visibleSectors, sector) === null)
               self.visibleSectors.push(sector);
           });
         } else {
@@ -191,21 +191,21 @@ if(typeof(F1)=='undefined') {F1 = {}};
       } else if(sector == 'counts') {
         self.map.showLayer(self.stylelayers["Project Counts"].order, visible);
         self.map.showLayer(self.stylelayers["Project Locations"].order, !visible);
-      } else if(sector == null) {
+      } else if(sector === null) {
         self.map.showLayer(self.stylelayers["Project Locations"].order, false);
         self.map.showLayer(self.stylelayers["Project Counts"].order, false);
       } else {
         jq("#sall").attr('checked', false);          
-        if(visible == null)
+        if(visible === null)
           visible = !(jq("#sectorcontrol_" + sector).hasClass('active'));
 
-        if(visible == true){
+        if(visible === true){
           self.map.showLayer(self.stylelayers["Project Counts"].order, false);
           self.map.showLayer(self.stylelayers["Project Locations"].order, false);
           self.map.swf.removeFilter(self.stylelayers["Project Locations"].order, 
           {expression: self.complexSectorExpression(self.visibleSectors)});
 
-          if(Object.include(self.visibleSectors, sector) == null) {
+          if(Object.include(self.visibleSectors, sector) === null) {
             self.visibleSectors.push(sector);    
 
             self.map.swf.addFilter(self.stylelayers["Project Locations"].order, 
@@ -229,7 +229,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
       self.setMapTitle();
       self.showVisibleSectors();
 
-      if(refreshCharts == null || refreshCharts == true)
+      if(refreshCharts === null || refreshCharts === true)
         self.sectorPieChart(sector, false);
       return false;
     },
@@ -241,7 +241,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
         var sector_dom = jq("#" + sc.id);
         var sector = sector_dom.attr("sector-name");
 
-        if(Object.include(self.visibleSectors, sector) != null) {
+        if(Object.include(self.visibleSectors, sector) !== null) {
           sector_dom.removeClass('inactive').addClass('active');
         } else {
           sector_dom.removeClass('active').addClass('inactive');            
@@ -252,20 +252,20 @@ if(typeof(F1)=='undefined') {F1 = {}};
     complexSectorExpression: function(sectorFilters, sector_attribute) {
       var self = this;
       var expression = "";
-      if(sector_attribute == null)
+      if(sector_attribute === null)
         sector_attribute = "sector1";
         
       for(var sector=0;sector<sectorFilters.length; sector++) {
         expression += "$["+sector_attribute+"] == '" + self.sectors[sectorFilters[sector]].name + "'";
         if(sector != sectorFilters.length-1)
           expression += " OR ";
-      };
+      }
       return expression;
     },    
     setIndicator: function(indicator,visible) {
       var self = this;
       self.map.showLayer(self.stylelayers[self.current_indicator].order, false);
-      if(indicator == null) {
+      if(indicator === null) {
         jq('#layercontrol_indicators').html("Indicators");
         self.map.showLayer(self.stylelayers[indicator].order, false);
       }
@@ -279,12 +279,12 @@ if(typeof(F1)=='undefined') {F1 = {}};
             self.map.setLayerStyle(self.stylelayers[indicator].order, style);
             
         var infotabs = [];
-        if(F1.WorldBank.indicators[indicator].table != null)
-          infotabs.push({title: "Data", type:"table", value:F1.WorldBank.indicators[indicator].table})
-        if(F1.WorldBank.indicators[indicator].description != null)
-          infotabs.push({title: "About", type: "text", value:F1.WorldBank.indicators[indicator].description})
+        if(F1.WorldBank.indicators[indicator].table !== null)
+          infotabs.push({title: "Data", type:"table", value:F1.WorldBank.indicators[indicator].table});
+        if(F1.WorldBank.indicators[indicator].description !== null)
+          infotabs.push({title: "About", type: "text", value:F1.WorldBank.indicators[indicator].description});
         var infosub = F1.WorldBank.indicators[indicator].subtitle;
-        if(F1.WorldBank.indicators[indicator].infosubtitle != null)
+        if(F1.WorldBank.indicators[indicator].infosubtitle !== null)
           infosub = F1.WorldBank.indicators[indicator].infosubtitle
           
         self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: indicator + ": $["+ F1.WorldBank.indicators[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
@@ -309,7 +309,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
       self.activities = jq.map(data.features, function(feature) { 
         if (feature) {
           attr = feature.attributes;
-          if(self.projects[attr["project id"]] == null) { // first time we've seen this project ID
+          if(self.projects[attr["project id"]] === null) { // first time we've seen this project ID
             var project = {};
 
             // Get the project level attributes
@@ -326,7 +326,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
             var sector_name = project["sector1"];
             var wb_sector = self.sectors[self.sector_names[sector_name.toLowerCase().trim()]];
 
-            if(wb_sector == null)
+            if(wb_sector === null)
               wb_sector = self.sectors["public"];
               
             wb_sector.funding += attr["total amt"];
@@ -346,7 +346,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
       self.activities = jq.map(data, function(feature) { 
         if (feature) {
           attr = feature;
-          if(self.projects[attr["id"]] == null) { // first time we've seen this project ID
+          if(self.projects[attr["id"]] === null) { // first time we've seen this project ID
             var project = {};
 
             // Get the project level attributes
@@ -365,19 +365,19 @@ if(typeof(F1)=='undefined') {F1 = {}};
                 var sector_name = sector["Name"].toLowerCase().trim();
                 var wb_sector = self.sectors[self.sector_names[sector_name]];
 
-                if(wb_sector == null)
+                if(wb_sector === null)
                     wb_sector = self.sectors["public"];
 
-                if(project["sector_funding"] == null)
+                if(project["sector_funding"] === null)
                     project["sector_funding"] = {}
-                if(project["sector_funding"][wb_sector.shortname] == null)
+                if(project["sector_funding"][wb_sector.shortname] === null)
                     project["sector_funding"][wb_sector.shortname] = 0
                 
                 var actual_funding = (parseInt(sector["Percent"],10) / 100.0) * project["totalamt"];
                 project["sector_funding"][wb_sector.shortname] += actual_funding
                 wb_sector.funding += actual_funding
                 // There are duplicates in the Major Sector Percent listings
-                if(Object.include(wb_sector.projects, project) == null)                
+                if(Object.include(wb_sector.projects, project) === null)                
                     wb_sector.projects.push(project);
             });
             self.total_funding += attr["totalamt"];
@@ -433,7 +433,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
         var sector_names = "";
         var opts = {}
         
-        if(refreshControls == null || refreshControls == true){
+        if(refreshControls === null || refreshControls === true){
             self.toggleSector("all", false, false); // watch recursion
             self.toggleSector(sector_name, true,false); // watch recursion
         }
@@ -467,7 +467,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
             
             funding = self.total_funding;
             opts["chart"] = {"colors": colors, "legend": labels};
-            if(self.stylelayers["Project Locations"] != null)
+            if(self.stylelayers["Project Locations"] !== null)
                 opts["chart"]["onclick"] = function() {wb.toggleSector(links[this.bar.index])};
                  
             var financing_total = funding > 1000 ? (funding/1000).toFixed(2) + " Billion" : funding.toFixed(2) + " Million";
@@ -512,7 +512,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
             jq('#sector_funding_total').show();
             jq('#chart-left-pie-chart').show();
 
-            if(self.stylelayers["Project Locations"] != null)
+            if(self.stylelayers["Project Locations"] !== null)
                 opts["href"] = links;
                 
             F1.Visualizer.charts.pie(180, 505, pie_options, "chart-left-pie-chart", opts);        
@@ -572,7 +572,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
       var index;
       jq.each(possibleLayers, function(layer) {
         index = Object.include(findlayers, possibleLayers[layer].title);
-        if(index != null){
+        if(index !== null){
           self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
           if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition"], possibleLayers[layer].title)) {
             F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
@@ -610,7 +610,7 @@ if(typeof(F1)=='undefined') {F1 = {}};
     },
     highlightRegions: function(regions, region_attr) {
         var self = this;
-        if(region_attr == null)
+        if(region_attr === null)
             region_attr = "Country_1";
         
         self.map.swf.clearHighlights(0);
