@@ -18,7 +18,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       if (arr[i] == obj) {return i;}
     }
     return null;
-  }
+  };
 
   Array.prototype.flatten = function flatten(){
      var flat = [];
@@ -96,7 +96,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
          uiZoom: true,uiLayers: false,uiLegend: false,uiStyles: true,
          uiHeader: true,hideGCLogo: true,hideGILogo: true,
          core_host:  proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
-         onload: function() { self.loadedMap() }
+         onload: function() { self.loadedMap(); }
          });
       } else {
           self.sectorPieChart("all", false);
@@ -368,13 +368,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 if(wb_sector === null)
                     wb_sector = self.sectors["public"];
 
-                if(project["sector_funding"] === null)
-                    project["sector_funding"] = {}
-                if(project["sector_funding"][wb_sector.shortname] === null)
-                    project["sector_funding"][wb_sector.shortname] = 0
+                if(project.sector_funding === null)
+                    project.sector_funding = {}
+                if(project.sector_funding[wb_sector.shortname] === null)
+                    project.sector_funding[wb_sector.shortname] = 0
                 
-                var actual_funding = (parseInt(sector["Percent"],10) / 100.0) * project["totalamt"];
-                project["sector_funding"][wb_sector.shortname] += actual_funding
+                var actual_funding = (parseInt(sector.Percent,10) / 100.0) * project["totalamt"];
+                project.sector_funding[wb_sector.shortname] += actual_funding
                 wb_sector.funding += actual_funding
                 // There are duplicates in the Major Sector Percent listings
                 if(Object.include(wb_sector.projects, project) === null)                
@@ -647,10 +647,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
       self.sectorPieChart("all", false);
       self.regionFundingBars();
 
-      if(self.region != "World")
+      if(self.region != "World") {
         self.map.swf.addLayerCategoryFilter(0, {attribute:"sector1",categories:self.wbicons});
-      else
+      } else {
         self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
+       }
 
   //    self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
       self.hideLoading();
@@ -658,7 +659,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
   loadedMap: function() {
       var self = this;
       self.styleLegend();
-      if(self.region != "World" && (self.region != self.country)){
+      if(self.region !== "World" && (self.region !== self.country)){
           self.drawCharts();
       } else {
           self.styleWorldMap();
