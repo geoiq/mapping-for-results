@@ -251,7 +251,7 @@ module WorldBank
   end
   
   def self.get_region_data(region)
-    projects = paginated_projects(WB_PROJECTS_API + "&geocode=&regionname[]=" + region[:name].upcase.gsub(/\s/,'+'))
+    projects = paginated_projects(WB_PROJECTS_API + "&geocode=&regionname[]=" + region[:name].upcase.strip.gsub(/\s/,'+'))
   end
   def self.get_product_data(product)
     projects = paginated_projects(WB_PROJECTS_API + "&prodline[]=" + product)
@@ -282,7 +282,8 @@ module WorldBank
     calculations = {:sectors => {}, :regions => {}}
     projects.each do |project_id, project|
         project["majorsector_percent"].each do |percent|
-            name = percent["Name"].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')
+            name = percent["Name"].gsub(/\b\w/){$&.upcase}.strip.gsub(/And/,'and')
+            next if name.length == 0
             calculations[:sectors][name] = 0 unless calculations[:sectors].include?(name)
             calculations[:sectors][name] += percent["Percent"].to_i / 100.0 * project["totalamt"].to_i
         end
@@ -415,7 +416,7 @@ helpers do
       # return "$#{value} million"
     when /mjsector1/
       # return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[2].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')}'"
-      return "'#{value.gsub(/\b\w/){$&.upcase}.gsub(/And/,'and').gsub(/Sanitation /,'Sanitation, ')}'"
+      return "'#{value.gsub(/\b\w/){$&.upcase}.gsub(/And/,'and').strip.gsub(/Sanitation /,'Sanitation, ')}'"
     when /sector_code/
       return "'#{value["Code"]}'"
     else
