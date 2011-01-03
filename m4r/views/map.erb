@@ -1,15 +1,15 @@
 var proxy_host = "<%= PLATFORM_API_URL %>";    
-var project_attributes = ["id","project_name","totalamt","mjsector1","boardapprovaldate","majorsector_percent"]
+var project_attributes = ["id","project_name","totalamt","mjsector1","boardapprovaldate","majorsector_percent"];
 
 if(typeof(F1)=='undefined') {F1 = {};}
 (function(){
     
 
     if(typeof String.prototype.trim != 'function') {
-      String.prototype.trim = function() {
-        return this.replace(/^\s+|\s+$/g, '');
-      }
-    }
+        String.prototype.trim = function() {
+            return this.replace(/^\s+|\s+$/g, '');
+        }
+    };
 
 
   Object.size = function(obj) {
