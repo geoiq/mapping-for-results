@@ -161,7 +161,7 @@ module WorldBank
         :indicators => [], :adm1 => [], :results => [],
         :map => 357,
         :countries => {
-          :haiti => {:name => "Haiti", :map => 114, :isocode => "HT", :projects => 108, :region => "Latin America and Caribbean", :status => "inactive", 
+          :haiti => {:name => "Haiti", :map => 114, :isocode => "HT", :projects => 108, :region => "Latin America and Caribbean", :status => "active", 
                         :projects_count => 27, :locations_count => 319, 
               :results => [{:name  => "Country Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/HAITIEXTN/0,,contentMDK:22251393~pagePK:1497618~piPK:217854~theSitePK:338165,00.html#projects"},
                   {:name => "Decentralized Infrastructure for Rural Transformation Project (IDTR)", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,contentMDK:22707543~menuPK:141310~pagePK:34370~piPK:34424~theSitePK:4607,00.html"}],          
