@@ -2,12 +2,12 @@
       <div id="banner">
         <h1 id="banner-header" title="Click to hide the overview information">
           <span>Mapping for Results</span>
-          <div class="collapsible-header <%= (@country.nil? || @country[:name] == 'World') ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
+          <div class="collapsible-header <%= (@country.nil? || @country[:name] == 'World' || @country[:name] == "Haiti") ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>
         </h1>
         <div id="banner-content">
-          <div class="collapsible-content" id="collapsible-banner" style="<%= (@country.nil? || @country[:name] == 'World') ? '': 'display:none'%>">
+          <div class="collapsible-content" id="collapsible-banner" style="<%= (@country.nil? || @country[:name] == 'World' || @country[:name] == "Haiti") ? '': 'display:none'%>">
             <div id="block-nodeasblock-3273" class="block block-nodeasblock ">
               <div class="content">
                 <div class="overview-links">
@@ -18,8 +18,15 @@
                     <li><a href="/about#Feedback">Feedback</a></li>
                   </ul>
                 </div>
+                <%- if @country[:name] == "Haiti" -%>
+                <div class="overview-text"><p>Following the earthquake, the Haiti portfolio was restructured to direct resources toward urgent post-earthquake priorities through the reallocation of funds and the modification of activities in order to adapt to institutional capacity changes. To help Haiti recover from the January 12, 2010 earthquake, the World Bank Group has pledged US$479 million by mid-2011, including cancelling Haiti's remaining US$39 million debt to IDA, thanks to contributions by IDA.</p>
+<p>      As of today, the World Bank has delivered over half of this support: US$91 million are available to Government in the form of new projects, over US$106 million have been disbursed, of which 40 percent is in the form of budget support. The remaining 60 percent has been spent on community reconstruction, transitional offices and equipment for the Ministry of Finance, repairing damaged bridges and roads, draining canals, paying tuition fees for school children and providing them with meals, strengthening Haiti's resilience to disasters, and figuring out how to better manage and recycle debris
+</p>
+<p>Read more about the World Bank funding and projects on the <a class="readmore" href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/HAITIEXTN/0,,contentMDK:22251393~pagePK:1497618~piPK:217854~theSitePK:338165,00.html#wbsupport">Haiti Country Page »</a></p></div>
+<%- else -%>                
                 <div class="overview-text">The <strong>Mapping for Results Platform</strong> (<em>beta version</em>) provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <a class="readmore" href="/about">Read More »</a></div>
               </div>
+              <%- end -%>
             </div>
           </div>
         </div>

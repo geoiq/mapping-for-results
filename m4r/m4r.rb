@@ -163,11 +163,8 @@ module WorldBank
         :countries => {
           :haiti => {:name => "Haiti", :map => 114, :isocode => "HT", :projects => 108, :region => "Latin America and Caribbean", :status => "active", 
                         :projects_count => 27, :locations_count => 319, 
-              :results => [{:name => "Project Profiles", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/IDA/0,,cntryMDK:82597~menuPK:4752068~pagePK:4752891~piPK:4752125~theSitePK:73154,00.html"},
-                  {:name  => "Results Profile", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/NEWS/0,,cntryMDK:82597~menuPK:141310~pagePK:49567~piPK:139214~theSitePK:4607,00.html"},
-                  {:name => "Restoring Hope, Delivering Credibility", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/IDA/0,,contentMDK:21366516~pagePK:51236175~piPK:437394~theSitePK:73154,00.html"},
-                  {:name => "Rural Communities Take Charge of Their Own Development", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/IDA/0,,contentMDK:21366478~menuPK:4752068~pagePK:51236175~piPK:437394~theSitePK:73154,00.html"},
-                  {:name => "Supporting the Plan to Build Back Better (PDF)", :link => "http://siteresources.worldbank.org/IDA/Resources/73153-1285271432420/IDA_AT_WORK_Haiti_2010.pdf"}
+              :results => [{:name => "IDA At Work: Haiti", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/IDA/0,,contentMDK:21366516~pagePK:51236175~piPK:437394~theSitePK:73154,00.html"},
+                  {:name => "Response to Haiti Earthquake", :link => "http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/HAITIEXTN/0,,contentMDK:22446701~pagePK:1497618~piPK:217854~theSitePK:338165,00.html"}
                   ],
             :indicators => ["Population","Poverty","Infant Mortality","Malnutrition"],
             :adm1  => [{ :name => "Grand-Anse", :zoom => 11, :lat => 18.53, :lon => -74.13},
