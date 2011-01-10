@@ -353,6 +353,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
       self.activities = jq.map(data, function(feature) { 
         if (feature) {
           attr = feature;
+          var amount = attr["totalamt"];
+          
           if(self.projects[attr["id"]] == null) { // first time we've seen this project ID
             var project = {};
 
@@ -361,8 +363,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
               // if(project_attributes[i] != "activity count")
                 project[project_attributes[i]] = attr[project_attributes[i]];
             }
-            var amount = attr["totalamt"];
-            if(amount == 0) { amount = attr["grantamt"] }
             project["financing amount"] = amount
             // project["activity count"] = 0;
             var mjsector_percent = {}
