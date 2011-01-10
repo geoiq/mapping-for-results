@@ -4,6 +4,10 @@
   var wb = new F1.WorldBank();
   <% unless @country[:name] == "World" || @country[:adm1].length == 0 %>
   var projects = [<%= @country[:project_list].collect do |project_id, project|
+         if(project["totalamt"].to_i == 0) 
+            project["totalamt"] = project["grantamt"]
+         end
+         
          "{" + (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
        end.join(",") %>];
       

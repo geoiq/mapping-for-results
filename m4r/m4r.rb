@@ -14,7 +14,7 @@ SUBDOMAIN = ""
 module WorldBank
 
 
-  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,mjsector1,regionname,countryname,majorsector_percent&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL"
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL"
   WBSTAGING = {
     :world => {:name => "World", :map => 353, :projects_count => 1517, :locations_count => "15,246", :regions => {
       :afr => {
@@ -200,7 +200,7 @@ module WorldBank
     }
   }
 
-  PROJECT_FIELDS = ["id","project_name","totalamt","mjsector1","boardapprovaldate","majorsector_percent"]
+  PROJECT_FIELDS = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent"]
   SECTORS = {
     :public => {:name => "Public Administration, Law, and Justice"},
     :agriculture => {:name => "Agriculture, Fishing, and Forestry"},
@@ -282,14 +282,19 @@ module WorldBank
   def self.calculate_financing(projects, regionname = "regionname")
     calculations = {:sectors => {}, :regions => {}}
     projects.each do |project_id, project|
+        # some projects are financed through loans, some are grants.
+        amount = project["totalamt"].to_i
+        amount = project["grantamt"].to_i if(amount == 0)
+        
         project["majorsector_percent"].each do |percent|
             name = percent["Name"].gsub(/\b\w/){$&.upcase}.strip.gsub(/And/,'and')
             next if name.length == 0
             calculations[:sectors][name] = 0 unless calculations[:sectors].include?(name)
-            calculations[:sectors][name] += percent["Percent"].to_i / 100.0 * project["totalamt"].to_i
+            calculations[:sectors][name] += percent["Percent"].to_i / 100.0 * amount
         end
         calculations[:regions][project[regionname]] = 0 unless calculations[:regions].include?(project[regionname])
-        calculations[:regions][project[regionname]] += project["totalamt"].to_i
+
+        calculations[:regions][project[regionname]] += amount
     end
     calculations
   end
@@ -413,7 +418,9 @@ helpers do
     when /boardapprovaldate/
       return "'#{DateTime.parse(value).strftime("%b-%Y")}'"
     when /totalamt/
-      return value.to_f
+      return value.gsub(/,/,'').to_f / 1000000
+    when /grantamt/
+      return value.gsub(/,/,'').to_f / 1000000
       # return "$#{value} million"
     when /mjsector1/
       # return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[2].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')}'"

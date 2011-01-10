@@ -1,15 +1,15 @@
 var proxy_host = "http://wbstaging.geocommons.com";    
-var project_attributes = ["id","project_name","totalamt","mjsector1","boardapprovaldate","majorsector_percent"]
+var project_attributes = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 
 if(typeof(F1)=='undefined') {F1 = {};}
 (function(){
     
 
     if(typeof String.prototype.trim != 'function') {
-      String.prototype.trim = function() {
-        return this.replace(/^\s+|\s+$/g, '');
-      }
-    }
+        String.prototype.trim = function() {
+            return this.replace(/^\s+|\s+$/g, '');
+        }
+    };
 
 
   Object.size = function(obj) {
@@ -230,7 +230,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             return value != sector;
           });
           self.map.swf.addFilter(self.stylelayers["Project Locations"].order, {expression: self.complexSectorExpression(self.visibleSectors)});
-          jq('#layercontrol_sectors').html("Projects");
+          jq('#layercontrol_sectors').html("Overview");
         }
       }
       self.setMapTitle();
@@ -361,7 +361,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
               // if(project_attributes[i] != "activity count")
                 project[project_attributes[i]] = attr[project_attributes[i]];
             }
-            project["financing amount"] = attr["totalamt"];
+            var amount = attr["totalamt"];
+            if(amount == 0) { amount = attr["grantamt"] }
+            project["financing amount"] = amount
             // project["activity count"] = 0;
             var mjsector_percent = {}
 
@@ -380,14 +382,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 if(project["sector_funding"][wb_sector.shortname] == null)
                     project["sector_funding"][wb_sector.shortname] = 0
                 
-                var actual_funding = (parseInt(sector["Percent"],10) / 100.0) * project["totalamt"];
+                var actual_funding = (parseInt(sector["Percent"],10) / 100.0) * amount;
                 project["sector_funding"][wb_sector.shortname] += actual_funding
                 wb_sector.funding += actual_funding
                 // There are duplicates in the Major Sector Percent listings
                 if(Object.include(wb_sector.projects, project) == null)                
                     wb_sector.projects.push(project);
             });
-            self.total_funding += attr["totalamt"];
+            self.total_funding += amount;
           }
           // self.projects[attr["project id"]]["activity count"] += 1;
 
@@ -654,10 +656,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
       if(self.region != "World")
         self.map.swf.addLayerCategoryFilter(0, {attribute:"sector1",categories:self.wbicons});
-     else if (self.country == "World")
+      else if (self.country == "World")
         self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
       // else
       //   self.map.swf.addLayerInfoWindowFilter(0, {"title": "$[project title]","subtitle": "$[country]- $[sector1]","tabs": [{"title": "Financing","type": "text","value": "Project ID: \u003Ca target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627\u0026piPK=73230\u0026theSitePK=40941\u0026menuPK=228424\u0026Projectid=$[project id]'\u003E$[project id]\u003C/a\u003E\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt]million"},{"title": "Location","type": "text","value": "Country: $[country]\nProvince: $[adm1]\nDistrict: $[adm2]\nLatitude:$[latitude]\nLongitude:$[longitude]"}]})
+        
       self.hideLoading();
   },
   loadedMap: function() {

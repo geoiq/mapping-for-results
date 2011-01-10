@@ -59,7 +59,7 @@
 
 <div id="chart-right" class="">
   <div id="chart-right-title">
-    <h1>Overview Financing By Region</h1>
+    <h1>Portfolio Overview By Region</h1>
   </div>
   <div id="chart-right-stat-subtitle">
     <h1 id="funding_total"></h1>
@@ -73,8 +73,8 @@
   var wb = new F1.WorldBank();
   
   var projects = [];
-  var sectors = {"Public Administration, Law, and Justice":0.0,"Health and Other Social Services":0.0,"Industry and Trade":0.0,"Transportation":0.0,"Information and Communications":0.0,"Water, Sanitation and Flood Protection":0.0,"Agriculture, Fishing, and Forestry":0.0,"Education":0.0,"Energy and Mining":0.0};
-  var regions = {"SOUTH ASIA":0,"MIDDLE EAST AND NORTH AFRICA":0,"EAST ASIA AND PACIFIC":0,"AFRICA":0,"LATIN AMERICA AND CARIBBEAN":0,"EUROPE AND CENTRAL ASIA":0};
+  var sectors = {"Public Administration, Law, and Justice":2.45,"Health and Other Social Services":0.2,"Industry and Trade":1722.8,"Transportation":13.0,"Information and Communications":0.0,"Water, Sanitation and Flood Protection":2545.5,"Agriculture, Fishing, and Forestry":1734.15,"Education":0.0,"Energy and Mining":2760.9};
+  var regions = {"SOUTH ASIA":60,"MIDDLE EAST AND NORTH AFRICA":60,"EAST ASIA AND PACIFIC":1677,"AFRICA":1007,"LATIN AMERICA AND CARIBBEAN":5306,"EUROPE AND CENTRAL ASIA":669};
      
      
   wb.init('',  "World",  "World", {projects_count: '140', locations_count: '', sectors: sectors, regions: regions });

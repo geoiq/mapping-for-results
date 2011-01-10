@@ -1,5 +1,5 @@
 var proxy_host = "<%= PLATFORM_API_URL %>";    
-var project_attributes = ["id","project_name","totalamt","mjsector1","boardapprovaldate","majorsector_percent"];
+var project_attributes = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 
 if(typeof(F1)=='undefined') {F1 = {};}
 (function(){
@@ -361,7 +361,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
               // if(project_attributes[i] != "activity count")
                 project[project_attributes[i]] = attr[project_attributes[i]];
             }
-            project["financing amount"] = attr["totalamt"];
+            var amount = attr["totalamt"];
+            if(amount == 0) { amount = attr["grantamt"] }
+            project["financing amount"] = amount
             // project["activity count"] = 0;
             var mjsector_percent = {}
 
@@ -380,14 +382,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 if(project["sector_funding"][wb_sector.shortname] == null)
                     project["sector_funding"][wb_sector.shortname] = 0
                 
-                var actual_funding = (parseInt(sector["Percent"],10) / 100.0) * project["totalamt"];
+                var actual_funding = (parseInt(sector["Percent"],10) / 100.0) * amount;
                 project["sector_funding"][wb_sector.shortname] += actual_funding
                 wb_sector.funding += actual_funding
                 // There are duplicates in the Major Sector Percent listings
                 if(Object.include(wb_sector.projects, project) == null)                
                     wb_sector.projects.push(project);
             });
-            self.total_funding += attr["totalamt"];
+            self.total_funding += amount;
           }
           // self.projects[attr["project id"]]["activity count"] += 1;
 

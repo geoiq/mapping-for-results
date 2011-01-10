@@ -109,8 +109,10 @@
                     <li><a href="/about#Feedback">Feedback</a></li>
                   </ul>
                 </div>
+                
                 <div class="overview-text">The <strong>Mapping for Results Platform</strong> (<em>beta version</em>) provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <a class="readmore" href="/about">Read More »</a></div>
               </div>
+              
             </div>
           </div>
         </div>
@@ -145,7 +147,27 @@
           </li>
         </ul>
       </div>
-      
+            <div id="map-content-icons">
+        <div id="map-content-icons2">
+          <ul>
+            <li class="sectors">MAJOR SECTORS:</li>
+            <li class="s1"><a  sector-name="public" original-title="Public Administration, Law, and Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#">1</a></li>
+            <li class="s2"><a  sector-name="agriculture" original-title="Agriculture, Fishing, and Forestry" class="sectorcontrol inactive" id="sectorcontrol_agriculture" href="#">2</a></li>
+            <li class="s3"><a  sector-name="health" original-title="Health, other social" class="sectorcontrol inactive" id="sectorcontrol_health" href="#">3</a></li>
+            <li class="s4"><a  sector-name="communications" original-title="Communications" class="sectorcontrol inactive" id="sectorcontrol_communications" href="#">4</a></li>
+            <li class="s5"><a  sector-name="energy" original-title="Energy and Mining" class="sectorcontrol inactive" id="sectorcontrol_energy" href="#">5</a></li>
+            <li class="s6"><a  sector-name="finance" original-title="Finance" class="sectorcontrol inactive" id="sectorcontrol_finance" href="#">6</a></li>
+            <li class="s7"><a  sector-name="industry" original-title="Industry and Trade" class="sectorcontrol inactive" id="sectorcontrol_industry" href="#">7</a></li>
+            <li class="s8"><a  sector-name="transportation" original-title="Transportation" class="sectorcontrol inactive" id="sectorcontrol_transportation" href="#">8</a></li>
+            <li class="s9"><a  sector-name="water" original-title="Water, Sanitation, and Flood Protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
+            <li class="s10"><a sector-name="education" original-title="Education" class="sectorcontrol inactive" id="sectorcontrol_education" href="#">10</a> </li>            
+            <li class="s11"><form action="" method="get">
+                <input name="input" id="sall" class="" type="checkbox" value=""/>
+              </form></li>
+            <li class="all">ALL</li>
+          </ul>
+        </div>
+      </div>
     </div>
 <div id="map-content">
   <div id="wb_map_wrapper" style="z-index: -1; height: 514px; 958px">
@@ -194,6 +216,8 @@
           
             
             
+            <li><a href="/lac/haiti" class="active">Haiti</a></li>
+            
             
             
             <li><a href="/lac/bolivia" class="active">Bolivia</a></li>
@@ -238,7 +262,7 @@
 
 <div id="chart-right" class="">
   <div id="chart-right-title">
-    <h1>Portfolio Overview by Sector</h1>
+    <h1>Portfolio Overview By Project</h1>
   </div>
   <div id="chart-right-stat-subtitle">
     <h1 id="funding_total"></h1>
@@ -252,11 +276,11 @@
   var wb = new F1.WorldBank();
   
   var projects = [];
-  var sectors = {"Public Administration, Law, and Justice":6135.05,"Health and Other Social Services":4312.3,"Industry and Trade":1218.69,"Transportation":8135.66,"Agriculture, Fishing, and Forestry":3464.06,"Finance":1633.57,"Information and Communications":397.11,"Water, Sanitation and Flood Protection":4445.55,"Energy and Mining":8039.77,"Education":2681.24};
-  var regions = {"Eastern Africa":0,"Syrian Arab Republic":0,"Republic of Djibouti":50,"Middle East and North Africa":0,"Republic of Mali":605,"Republic of Rwanda":261,"Republic of South Africa":3,"Republic of Guinea":157,"Republic of Niger":238,"Republic of Liberia":206,"Somali Democratic Republic":0,"Gabonese Republic":40,"Central African Republic":82,"Democratic Republic of the Congo":2212,"Republic of Kenya":2341,"Republic of Cameroon":406,"People&apos;s Republic of Angola":427,"Republic of Benin":417,"Republic of Guinea-Bissau":32,"Republic of Malawi":420,"United Republic of Tanzania":2812,"Federal Republic of Nigeria":4353,"Republic of Seychelles":9,"Union of the Comoros":26,"People&apos;s Democratic Republic of Algeria":0,"Federal Democratic Republic of Ethiopia":3651,"Republic of Uganda":1837,"Republic of Zimbabwe":0,"Democratic Republic of Sao Tome and Prin":8,"Republic of Cote d&apos;Ivoire":778,"Republic of Burundi":446,"Republic of Chad":174,"Republic of Senegal":698,"Republic of Zambia":436,"Republic of The Gambia":42,"Republic of Botswana":614,"Republic of Ghana":1242,"Republic of the Sudan":0,"Republic of Namibia":7,"Kingdom of Morocco":1199,"Republic of Madagascar":859,"Africa":3656,"Republic of Sierra Leone":228,"Burkina Faso":672,"Lebanese Republic":548,"Southern Africa":0,"Republic of Cape Verde":34,"State of Eritrea":75,"Islamic Republic of Mauritania":250,"Kingdom of Lesotho":90,"Republic of Mozambique":910,"Republic of Yemen":1016,"West Bank and Gaza":0,"Republic of Congo":176,"Islamic Republic of Iran":344,"Republic of Togo":62,"Republic of Mauritius":138,"Republic of Tunisia":538,"Western Africa":0,"Arab Republic of Egypt":3851,"Hashemite Kingdom of Jordan":288,"Republic of Iraq":508};
+  var sectors = {"Public Administration, Law, and Justice":12473.32,"Health and Other Social Services":4907.4,"Industry and Trade":1658.68,"Transportation":8285.26,"Agriculture, Fishing, and Forestry":13180.73,"Finance":4874.07,"Information and Communications":1587.24,"Water, Sanitation and Flood Protection":6263.98,"Energy and Mining":15176.46,"Education":4106.86};
+  var regions = {"Eastern Africa":1820,"Syrian Arab Republic":1113,"Republic of Djibouti":953,"Middle East and North Africa":0,"Republic of Mali":826,"Republic of Rwanda":564,"Republic of South Africa":858,"Republic of Guinea":893,"Republic of Niger":547,"Republic of Liberia":3055,"Somali Democratic Republic":1,"Gabonese Republic":50,"Central African Republic":432,"Democratic Republic of the Congo":3755,"Republic of Kenya":2890,"Republic of Cameroon":851,"People&apos;s Republic of Angola":427,"Republic of Benin":522,"Republic of Guinea-Bissau":50,"United Republic of Tanzania":3500,"Republic of Malawi":1287,"Federal Republic of Nigeria":5964,"Republic of Seychelles":902,"Union of the Comoros":29,"People&apos;s Democratic Republic of Algeria":370,"Federal Democratic Republic of Ethiopia":4259,"Republic of Uganda":2357,"Republic of Zimbabwe":13,"Democratic Republic of Sao Tome and Prin":11,"Republic of Cote d&apos;Ivoire":941,"Republic of Burundi":439,"Republic of Chad":84,"Republic of Senegal":712,"Republic of Zambia":1855,"Republic of The Gambia":78,"Republic of Botswana":619,"Republic of Ghana":1266,"Republic of the Sudan":432,"Republic of Namibia":268,"Kingdom of Morocco":2318,"Republic of Madagascar":1821,"Africa":7425,"Republic of Sierra Leone":1188,"Burkina Faso":735,"Lebanese Republic":608,"Southern Africa":541,"Republic of Cape Verde":24,"State of Eritrea":75,"Islamic Republic of Mauritania":550,"Kingdom of Lesotho":116,"Republic of Mozambique":1267,"Republic of Yemen":1294,"West Bank and Gaza":812,"Republic of Congo":376,"Islamic Republic of Iran":120,"Republic of Togo":546,"Republic of Mauritius":163,"Republic of Tunisia":1114,"Western Africa":2,"Arab Republic of Egypt":3892,"Hashemite Kingdom of Jordan":829,"Republic of Iraq":1714};
      
      
-  wb.init(356,  "Africa",  "World", {projects_count: '1063', locations_count: '4402', sectors: sectors, regions: regions });
+  wb.init(356,  "Africa",  "World", {projects_count: '1015', locations_count: '4402', sectors: sectors, regions: regions });
 
   
   
