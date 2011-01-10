@@ -109,10 +109,8 @@
                     <li><a href="/about#Feedback">Feedback</a></li>
                   </ul>
                 </div>
-                
                 <div class="overview-text">The <strong>Mapping for Results Platform</strong> (<em>beta version</em>) provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <a class="readmore" href="/about">Read More »</a></div>
               </div>
-              
             </div>
           </div>
         </div>
@@ -147,27 +145,7 @@
           </li>
         </ul>
       </div>
-            <div id="map-content-icons">
-        <div id="map-content-icons2">
-          <ul>
-            <li class="sectors">MAJOR SECTORS:</li>
-            <li class="s1"><a  sector-name="public" original-title="Public Administration, Law, and Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#">1</a></li>
-            <li class="s2"><a  sector-name="agriculture" original-title="Agriculture, Fishing, and Forestry" class="sectorcontrol inactive" id="sectorcontrol_agriculture" href="#">2</a></li>
-            <li class="s3"><a  sector-name="health" original-title="Health, other social" class="sectorcontrol inactive" id="sectorcontrol_health" href="#">3</a></li>
-            <li class="s4"><a  sector-name="communications" original-title="Communications" class="sectorcontrol inactive" id="sectorcontrol_communications" href="#">4</a></li>
-            <li class="s5"><a  sector-name="energy" original-title="Energy and Mining" class="sectorcontrol inactive" id="sectorcontrol_energy" href="#">5</a></li>
-            <li class="s6"><a  sector-name="finance" original-title="Finance" class="sectorcontrol inactive" id="sectorcontrol_finance" href="#">6</a></li>
-            <li class="s7"><a  sector-name="industry" original-title="Industry and Trade" class="sectorcontrol inactive" id="sectorcontrol_industry" href="#">7</a></li>
-            <li class="s8"><a  sector-name="transportation" original-title="Transportation" class="sectorcontrol inactive" id="sectorcontrol_transportation" href="#">8</a></li>
-            <li class="s9"><a  sector-name="water" original-title="Water, Sanitation, and Flood Protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
-            <li class="s10"><a sector-name="education" original-title="Education" class="sectorcontrol inactive" id="sectorcontrol_education" href="#">10</a> </li>            
-            <li class="s11"><form action="" method="get">
-                <input name="input" id="sall" class="" type="checkbox" value=""/>
-              </form></li>
-            <li class="all">ALL</li>
-          </ul>
-        </div>
-      </div>
+      
     </div>
 <div id="map-content">
   <div id="wb_map_wrapper" style="z-index: -1; height: 514px; 958px">
@@ -180,8 +158,8 @@
       </div>
       <div class="console-info">
         <div id="loading">Loading Map Data...</div>
-        <p class="loaded" style="display: none" title="Active projects as of June 30, 2010">active projects working in</p>
-        <p class="loaded" style="display: none" title="Project locations as of June 30, 2010">mapped project locations</p>
+        <p class="loaded" style="display: none" title="Active projects as of December 31, 2010">active projects working in</p>
+        <p class="loaded" style="display: none" title="Project locations as of December 31, 2010">mapped project locations</p>
       </div>    
       <div id="layerinfo">
   <ul>
@@ -215,8 +193,6 @@
             
           
             
-            
-            <li><a href="/lac/haiti" class="active">Haiti</a></li>
             
             
             
@@ -262,7 +238,7 @@
 
 <div id="chart-right" class="">
   <div id="chart-right-title">
-    <h1>Portfolio Overview By Project</h1>
+    <h1>Portfolio Overview by Sector</h1>
   </div>
   <div id="chart-right-stat-subtitle">
     <h1 id="funding_total"></h1>
@@ -276,11 +252,11 @@
   var wb = new F1.WorldBank();
   
   var projects = [];
-  var sectors = {"Health and Other Social Services":4790.48,"Public Administration, Law, and Justice":13818.11,"Industry and Trade":2811.48,"Transportation":7665.84,"Information and Communications":513.07,"Finance":1343.96,"Water, Sanitation and Flood Protection":7463.6,"Agriculture, Fishing, and Forestry":10765.56,"Education":2065.84,"Energy and Mining":4471.06};
-  var regions = {"Republic of El Salvador":1028,"Oriental Republic of Uruguay":1104,"Republic of Panama":911,"Republic of Chile":872,"Republic of Peru":3483,"Grenada":16,"Caribbean":749,"Belize":1265,"Republic of Haiti":844,"Central America":192,"Republic of Colombia":4134,"Barbados":35,"Republic of Paraguay":1009,"Republic of Ecuador":4230,"United Mexican States":6130,"Republic of Guyana":65,"Dominican Republic":948,"Andean Countries":457,"Republic of Nicaragua":1450,"Jamaica":139,"St. Vincent and the Grenadines":13,"Republic of Costa Rica":2847,"Republic of Honduras":632,"Federative Republic of Brazil":9402,"Republic of Trinidad and Tobago":2,"Organization of Eastern Caribbean States":14,"Latin America":2242,"St. Lucia":13,"Argentine Republic":9467,"Republic of Guatemala":1682,"Plurinational State of Bolivia":334};
+  var sectors = {"Health and Other Social Services":3571.49,"Public Administration, Law, and Justice":4663.86,"Industry and Trade":921.49,"Transportation":7413.63,"Information and Communications":156.07,"Finance":629.91,"Water, Sanitation and Flood Protection":3950.88,"Agriculture, Fishing, and Forestry":1163.55,"Education":2917.93,"Energy and Mining":1616.19};
+  var regions = {"Republic of El Salvador":292,"Oriental Republic of Uruguay":384,"Republic of Panama":135,"Republic of Chile":102,"Republic of Peru":2224,"Grenada":16,"Caribbean":0,"Belize":15,"Republic of Haiti":322,"Central America":0,"Republic of Colombia":2499,"Barbados":35,"Republic of Paraguay":275,"Republic of Ecuador":15,"United Mexican States":3332,"Republic of Guyana":46,"Commonwealth of Dominica":1,"Dominican Republic":307,"Andean Countries":0,"Republic of Nicaragua":337,"Jamaica":135,"St. Vincent and the Grenadines":13,"Republic of Costa Rica":197,"Republic of Honduras":379,"Federative Republic of Brazil":8181,"Republic of Trinidad and Tobago":0,"Organization of Eastern Caribbean States":25,"Latin America":0,"St. Lucia":13,"Argentine Republic":6871,"Republic of Guatemala":530,"Plurinational State of Bolivia":324};
      
      
-  wb.init(357,  "Latin America and Caribbean",  "World", {projects_count: '474', locations_count: '5192', sectors: sectors, regions: regions });
+  wb.init(357,  "Latin America and Caribbean",  "World", {projects_count: '488', locations_count: '5192', sectors: sectors, regions: regions });
 
   
   
@@ -291,7 +267,7 @@
 
 
 
-        <div id="footnote">Current locations as of June 30, 2010.</div>
+        <div id="footnote">Current locations as of December 31, 2010.</div>
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
