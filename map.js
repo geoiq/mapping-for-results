@@ -646,7 +646,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
   },
   styleWorldMap: function() {
       var self = this;
-      self.highlightRegions(["Kenya","Philippines","Bolivia"]);
+      self.highlightRegions(["Haiti","Kenya","Philippines","Bolivia"]);
       jq('#project_count').html(self.country_attrs["projects_count"]);
       jq('#activity_count').html(self.country_attrs["locations_count"]);
       self.sectorPieChart("all", false);
