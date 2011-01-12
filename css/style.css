@@ -912,7 +912,7 @@ span#infoicon a:hover span {display: block;
 #sidebar-right .item-list li {list-style-type: none;}
 
 .block p {color: #333;}
-.overview-text p { width: 730px;}
+.overview-text p { width: 720px;}
 
 /* Stats */
 #stats {}
