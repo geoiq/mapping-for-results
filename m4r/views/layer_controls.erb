@@ -17,7 +17,7 @@
             <% end %>
             <% end %>
           <% end  %>              
-        <% elsif(@country.keys.include?(:adm1)) %>
+        <% elsif(@country.adm1 != nil) %>
             <%= menu_options(@country[:adm1]) %>
         <% end %>
       </ul>
@@ -52,7 +52,7 @@
       <ul>
         <% @country[:results].each do |result| %>
         <li><a href="<%= result[:link] %>" target="_new"><%= result[:name] %></a></li>
-        <% end %>
+        <% end if false %>
       </ul>
       <% end %>
     </li>

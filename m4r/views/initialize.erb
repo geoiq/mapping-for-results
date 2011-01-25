@@ -2,7 +2,8 @@
 
 
   var wb = new F1.WorldBank();
-  <% unless @country[:name] == "World" || @country[:adm1].length == 0 %>
+  <% if @country.page_type == "country" %>
+
   var projects = [<%= @country[:project_list].collect do |project_id, project|
          if(project["totalamt"].to_i == 0) 
             project["totalamt"] = project["grantamt"]
