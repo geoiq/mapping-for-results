@@ -12,12 +12,13 @@
 
 <div id="chart-right" class="">
   <div id="chart-right-title">
-    <h1>Portfolio Overview By <%= @country[:name] == "World" ? "Region" : "Project" %></h1>
+    <h1>Portfolio Overview By <%= @country[:name] == "World" ? "Region" : "Product Line" %></h1>
   </div>
   <div id="chart-right-stat-subtitle">
     <h1 id="funding_total"></h1>
   </div>
   <div id="chart-right-graph"></div>
-  <div id="chart-right-graph-description" class="chart_about"><%= @country[:name] == "World" ? "Financing by each Region across all Sectors" : "Individual financing by each project in #{@country[:name]}, colorized by the major sector." %></div>
+  <div id="chart-right-graph-description" class="chart_about"><%= @country[:name] == "World" ? "Financing by each Region across all Sectors" : "Financing by each Product Line across all Projects." %></div>
 </div>
 <%= partial :initialize %>
+

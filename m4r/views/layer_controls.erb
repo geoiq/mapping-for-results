@@ -10,10 +10,10 @@
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
         <% if @country[:name] == "World" || (@region == @country) %>
-          <% MAPS[:world][:regions].each do |region, region_attr| %>
-            <% region_attr[:countries].each do |country, country_attr| %>
+          <% @country.children.each do |region_attr| %>
+            <% region_attr.children.each do |country_attr| %>
             <% if (country_attr[:status] == 'active') %>
-            <li><a href="<%= (country_attr[:status] == 'inactive') ? "#" : "/#{region}/#{country}" %>" class="<%= country_attr[:status] %>"><%= country_attr[:name] %></a></li>
+            <li><a href="<%= (country_attr[:status] == 'inactive') ? "#" : "/#{region_attr.shortname}/#{country_attr.shortname}" %>" class="<%= country_attr[:status] %>"><%= country_attr[:name] %></a></li>
             <% end %>
             <% end %>
           <% end  %>              

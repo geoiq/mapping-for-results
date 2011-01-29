@@ -43,6 +43,40 @@ helpers do
 
   end
 
+  def region_select(country, options = {})
+      regions = Page.all
+      html = ""
+      html << '<select name="page[region]" id="page[region]" >'
+      regions.each do |region|
+          html << "<option value='#{region.name}' #{country.region == region.name ? 'selected' : ""}>#{region.name}</option>"
+      end
+      html << "<option value='' #{country.region == '' ? 'selected' : ""}>-- root level</option>"      
+      html << "</select>"
+      html
+  end
+  def admin_link(page, options = {})
+      html = ""
+      link = case page.page_type 
+      when "region" 
+          "/#{page.shortname}"
+      when "country" 
+          "/#{page.parent.shortname}/#{page.shortname}"
+      when "project" 
+          "/#{page.parent.parent.shortname}/#{page.parent.shortname}/#{page.shortname}"
+      else
+          "/#{page.shortname}"
+      end
+      html << %Q{<li><a href="#{link}">#{page.name}</a> (<a href="/admin/#{page.shortname}/edit">edit</a> -- <a href="/admin/#{page.shortname}/sync">sync with project API</a>)}
+      if((children = page.children).length > 0)
+          html << "<ul>"
+          children.each do |child|
+              html << admin_link(child)
+          end
+          html << "</ul>"
+      end
+      html << "</li>"
+      html
+  end 
   def menu_options(collection, options = {})
     menu = ""
     options[:max_height] ||= 6

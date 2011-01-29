@@ -1,4 +1,4 @@
-    <% unless @country.nil? %><div id="footnote">Current locations as of December 31, 2010.</div><% end %>
+    <% unless @country.nil? %><div id="footnote">Current active projects as of <%= (@country.sync_updated_at || Time.now).strftime("%B %e, %Y") %>.</div><% end %>
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
@@ -38,4 +38,3 @@
       <li class="email last"><a href="mailto:?Subject=World%20Bank%20Maps&Body=World%20Bank%20Maps%20%28<%= link %>">E-Mail</a></li>
     </ul>
   </div>
-  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
