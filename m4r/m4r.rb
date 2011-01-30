@@ -3,10 +3,10 @@
 require 'helpers'
 require 'models/page'
   
-# PLATFORM_API_URL = "http://wbstaging.geocommons.com"
-# SUBDOMAIN="http://wbstaging.geocommons.com"
-PLATFORM_API_URL = "http://geoiq.local"
-SUBDOMAIN        = "http://geoiq.local"
+PLATFORM_API_URL = "http://wbstaging.geocommons.com"
+SUBDOMAIN="http://wbstaging.geocommons.com"
+# PLATFORM_API_URL = "http://geoiq.local"
+# SUBDOMAIN        = "http://geoiq.local"
 
 require "worldbank"
 include WorldBank

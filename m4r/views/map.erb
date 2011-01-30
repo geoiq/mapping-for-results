@@ -497,8 +497,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             "sort":{"name": "Funding","original_name": "funding"} }};
             
             funding = self.total_funding;
-            opts["chart"] = {"legend": labels};
-            opts["colors"] = colors;
+            opts["chart"] = {"legend": labels, "colors": colors}; // in here for pre-1.8 api calls
+            opts["colors"] = colors; // for 1.8+ calls
             if(self.stylelayers["Project Locations"] != null)
                 opts["chart"]["onclick"] = function() {wb.toggleSector(links[this.bar.index])};
                  
@@ -521,8 +521,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
                             "sort":{"name": "Funding","original_name": "financing amount"} } };
             
             sector_names = wb.sectors[sector_name].name;
-            opts["chart"] = {legend: labels};
-            opts["colors"] = self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8)
+            var colors = self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8);
+            opts["chart"] = {legend: labels, colors: colors};
+            opts["colors"] = colors;
             var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding.toFixed(2) + " Million"
 
             jq('#sector_funding_total').html("$" + funding.toFixed(2) + " Million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");

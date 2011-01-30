@@ -1,4 +1,4 @@
-var proxy_host = "http://geoiq.local";    
+var proxy_host = "http://wbstaging.geocommons.com";    
 var project_attributes = ["id","project_name","totalamt","prodline","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 
 if(typeof(F1)=='undefined') {F1 = {};}
@@ -75,19 +75,19 @@ if(typeof(F1)=='undefined') {F1 = {};}
       this.country_attrs = country_attrs;
       this.productlines = {}
       
-      this.wbicons = {"Agriculture, fishing, and forestry":"http://geoiq.local/images/icons/worldbank/agriculture-on.png","Information and communications":"http://geoiq.local/images/icons/worldbank/communication-on.png","Education":"http://geoiq.local/images/icons/worldbank/education-on.png","Energy and mining":"http://geoiq.local/images/icons/worldbank/energy-on.png","Finance":"http://geoiq.local/images/icons/worldbank/finance-on.png","Health and other social services":"http://geoiq.local/images/icons/worldbank/health-on.png","Industry and trade":"http://geoiq.local/images/icons/worldbank/industry-on.png","Public Administration, Law, and Justice":"http://geoiq.local/images/icons/worldbank/public-on.png","Transportation":"http://geoiq.local/images/icons/worldbank/transportation-on.png","Water, sanitation and flood protection":"http://geoiq.local/images/icons/worldbank/water-on.png"};
+      this.wbicons = {"Agriculture, fishing, and forestry":"http://wbstaging.geocommons.com/images/icons/worldbank/agriculture-on.png","Information and communications":"http://wbstaging.geocommons.com/images/icons/worldbank/communication-on.png","Education":"http://wbstaging.geocommons.com/images/icons/worldbank/education-on.png","Energy and mining":"http://wbstaging.geocommons.com/images/icons/worldbank/energy-on.png","Finance":"http://wbstaging.geocommons.com/images/icons/worldbank/finance-on.png","Health and other social services":"http://wbstaging.geocommons.com/images/icons/worldbank/health-on.png","Industry and trade":"http://wbstaging.geocommons.com/images/icons/worldbank/industry-on.png","Public Administration, Law, and Justice":"http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png","Transportation":"http://wbstaging.geocommons.com/images/icons/worldbank/transportation-on.png","Water, sanitation and flood protection":"http://wbstaging.geocommons.com/images/icons/worldbank/water-on.png"};
       var color_index = 3;
       this.sectors = {
-        "agriculture": {name: "Agriculture, fishing, and forestry", sector_code: "AX", color: self.fadeHex("#8bb131","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "agriculture", icon: "http://geoiq.local/images/icons/worldbank/agriculture-on.png"}, 
-        "communications": {name: "Information and communications", sector_code: "CX", color: self.fadeHex("#395f8f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "communications", icon: "http://geoiq.local/images/icons/worldbank/communication-on.png"},
-        "education": {name: "Education", sector_code: "EX", color: self.fadeHex("#eebd00","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "education", icon: "http://geoiq.local/images/icons/worldbank/education-on.png"}, 
-        "energy": {name: "Energy and mining", sector_code: "LX", color: self.fadeHex("#880000","#FFFFFF",10)[color_index],  funding: 0, projects: [], activities: 0, shortname: "energy", icon: "http://geoiq.local/images/icons/worldbank/energy-on.png"},
-        "finance": {name: "Finance", sector_code: "FX", color: self.fadeHex("#40823f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "finance", icon: "http://geoiq.local/images/icons/worldbank/finance-on.png"},
-        "health": {name: "Health and other social services", sector_code: "JX", color: self.fadeHex("#c23001","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "health", icon: "http://geoiq.local/images/icons/worldbank/health-on.png"},
-        "industry": {name: "Industry and trade", sector_code: "YX", color: self.fadeHex("#7f4410","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "industry", icon: "http://geoiq.local/images/icons/worldbank/industry-on.png"},
-        "public": {name: "Public Administration, Law, and Justice", sector_code: "BX", color: self.fadeHex("#8060a4","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "public", icon: "http://geoiq.local/images/icons/worldbank/public-on.png"},
-        "water": {name: "Water, sanitation, and flood protection", sector_code: "WX", color: self.fadeHex("#369fd0","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "water", icon: "http://geoiq.local/images/icons/worldbank/water-on.png"},
-        "transportation": {name: "Transportation", sector_code: "TX", color: self.fadeHex("#d28807","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "transportation", icon: "http://geoiq.local/images/icons/worldbank/transportation-on.png"}};
+        "agriculture": {name: "Agriculture, fishing, and forestry", sector_code: "AX", color: self.fadeHex("#8bb131","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "agriculture", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/agriculture-on.png"}, 
+        "communications": {name: "Information and communications", sector_code: "CX", color: self.fadeHex("#395f8f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "communications", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/communication-on.png"},
+        "education": {name: "Education", sector_code: "EX", color: self.fadeHex("#eebd00","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "education", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/education-on.png"}, 
+        "energy": {name: "Energy and mining", sector_code: "LX", color: self.fadeHex("#880000","#FFFFFF",10)[color_index],  funding: 0, projects: [], activities: 0, shortname: "energy", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/energy-on.png"},
+        "finance": {name: "Finance", sector_code: "FX", color: self.fadeHex("#40823f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "finance", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/finance-on.png"},
+        "health": {name: "Health and other social services", sector_code: "JX", color: self.fadeHex("#c23001","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "health", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/health-on.png"},
+        "industry": {name: "Industry and trade", sector_code: "YX", color: self.fadeHex("#7f4410","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "industry", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/industry-on.png"},
+        "public": {name: "Public Administration, Law, and Justice", sector_code: "BX", color: self.fadeHex("#8060a4","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "public", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/public-on.png"},
+        "water": {name: "Water, sanitation, and flood protection", sector_code: "WX", color: self.fadeHex("#369fd0","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "water", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/water-on.png"},
+        "transportation": {name: "Transportation", sector_code: "TX", color: self.fadeHex("#d28807","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "transportation", icon: "http://wbstaging.geocommons.com/images/icons/worldbank/transportation-on.png"}};
 
       this.sector_names = {};
       this.sector_codes = {};
@@ -497,8 +497,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             "sort":{"name": "Funding","original_name": "funding"} }};
             
             funding = self.total_funding;
-            opts["chart"] = {"legend": labels};
-            opts["colors"] = colors;
+            opts["chart"] = {"legend": labels, "colors": colors}; // in here for pre-1.8 api calls
+            opts["colors"] = colors; // for 1.8+ calls
             if(self.stylelayers["Project Locations"] != null)
                 opts["chart"]["onclick"] = function() {wb.toggleSector(links[this.bar.index])};
                  
@@ -521,8 +521,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
                             "sort":{"name": "Funding","original_name": "financing amount"} } };
             
             sector_names = wb.sectors[sector_name].name;
-            opts["chart"] = {legend: labels};
-            opts["colors"] = self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8)
+            var colors = self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8);
+            opts["chart"] = {legend: labels, colors: colors};
+            opts["colors"] = colors;
             var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding.toFixed(2) + " Million"
 
             jq('#sector_funding_total').html("$" + funding.toFixed(2) + " Million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");
@@ -649,7 +650,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
           // we'll set the title & subtitle later
       });
 
-      jq('#download_data').attr('href','http://geoiq.local/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
+      jq('#download_data').attr('href','http://wbstaging.geocommons.com/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
        return false;
     },
     styleMap: function() {

@@ -26,6 +26,8 @@ label:after { content: ": " }
   <label for="region">Region</label>
   <%= region_select(@page) %><br />
 
+  <label for="page[locations_count]"># of Locations</label><input type="text" name="page[locations_count]" value="<%= @page.locations_count %>" id="locations_count"><br />  
+
   <label for="page[overview]">Page Overview (optional)</label><br />
   <textarea name="page[overview]" rows="8" cols="60"><%= @page.overview || "" %></textarea><br />
   <label for="page[content]">Page Content (optional)</label><br />

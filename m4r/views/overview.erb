@@ -19,12 +19,8 @@
                   </ul>
                 </div>
                 <div class="overview-text">
-                <% if !@page.overview.nil? %>
+                <% if !@page.overview.nil? && @page.overview.length != 0 %>
                 <%= @page.overview %>
-                <% elsif !@page.nil? && @page[:name] == "Haiti" %>
-                Following the January 12, 2010 earthquake in Haiti, the World Bank Group restructured its Haiti portfolio by reallocating resources and modifying activities toward urgent post-earthquake priorities. The World Bank Group pledged US$479 million for the first two years and has cancelled Haiti's remaining US$39 million debt to IDA.</p>
-<p>The following interactive map shows the World Bank's active project portfolio in Haiti as of January 2011 (including IDA and various grant-financed projects).</p>
-<p>Learn more about the World Bank's overall strategy in the <a class="readmore" href="http://web.worldbank.org/WBSITE/EXTERNAL/COUNTRIES/LACEXT/HAITIEXTN/0,,contentMDK:22251393~pagePK:1497618~piPK:217854~theSitePK:338165,00.html#wbsupport" target="new">Haiti Country Brief »</a>
                 <% else %>
                 The <strong>Mapping for Results Platform</strong> (<em>beta version</em>) provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <a class="readmore" href="/about">Read More »</a>
               <% end %>
