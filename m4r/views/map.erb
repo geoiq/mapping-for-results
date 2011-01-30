@@ -1,5 +1,5 @@
 var proxy_host = "<%= PLATFORM_API_URL %>";    
-var project_attributes = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
+var project_attributes = ["id","project_name","totalamt","prodline","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 
 if(typeof(F1)=='undefined') {F1 = {};}
 (function(){
@@ -384,7 +384,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             
             var prodname = project["prodline"];
             if(prodname != undefined) {
-                if(self.productline[prodname] == undefined || self.productline[prodname] == null) { 
+                if(self.productlines[prodname] == undefined || self.productlines[prodname] == null) { 
                     self.productlines[prodname] = 0; 
                 }
                 self.productlines[prodname] += amount;
@@ -425,7 +425,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         var self = this;
 
         var table = '<table id="projects-table_grid"><thead><tr>';
-        jq.each(["Project ID","Project Name","Financing Amount","Major Sector","Approval Date"], function(index,header) {
+        jq.each(["Project ID","Project Name","Financing Amount","Product Line","Major Sector","Approval Date"], function(index,header) {
             table += tmpl(table_templates.th, {header: header});
         });
         table += "</tr></thead><tbody>"
@@ -481,21 +481,24 @@ if(typeof(F1)=='undefined') {F1 = {};}
             projects.sort(function (a, b) {
                 return b.funding - a.funding;
             });        
+            var data = []
             jq.each(projects, function (index,project) {
                 // self.sectors[self.sector_names[project.mjsector1.toLowerCase().trim()]].shortname
                 links.push("javascript:wb.sectorPieChart('" + project.shortname + "', true);");  
                 colors.push(project.color)
                 var financing = project.funding > 1000 ? (project.funding/1000).toFixed(2) + "b" : project.funding.toFixed(2) + "m"
                 labels.push(project.name + " - $" + financing )
+                data.push({name:project.name + " - $" + financing,funding: project.funding})
             });
 
-            pie_options = {"features":projects, 
+            pie_options = {"features":data, 
             "attributes": {"data":{"name": "Funding","original_name": "funding"},
             "description":{"name": "Project","original_name": "name"}, 
             "sort":{"name": "Funding","original_name": "funding"} }};
             
             funding = self.total_funding;
-            opts["chart"] = {"colors": colors, "legend": labels};
+            opts["chart"] = {"legend": labels};
+            opts["colors"] = colors;
             if(self.stylelayers["Project Locations"] != null)
                 opts["chart"]["onclick"] = function() {wb.toggleSector(links[this.bar.index])};
                  
@@ -518,7 +521,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
                             "sort":{"name": "Funding","original_name": "financing amount"} } };
             
             sector_names = wb.sectors[sector_name].name;
-            opts["chart"] = {legend: labels, colors: self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8)}
+            opts["chart"] = {legend: labels};
+            opts["colors"] = self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8)
             var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding.toFixed(2) + " Million"
 
             jq('#sector_funding_total').html("$" + funding.toFixed(2) + " Million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");
@@ -572,28 +576,25 @@ if(typeof(F1)=='undefined') {F1 = {};}
       var s;
       var features = [];
       var links = [];
-      var colors = [];
-
-      jq.each(self.projects, function(index, project) {
-        features.push(project);
-        links.push( "javascript:wb.highlightProject('" + project["id"] + "');"  );
-        var sname = project.mjsector1.toLowerCase().trim();
-        if(Object.include(self.sector_names, sname) && Object.include(self.sectors, self.sector_names[sname]))
-            colors.push(self.sectors[self.sector_names[sname]].color);
+      var labels = [];
+      jq.each(self.productlines, function(s, financing) {
+        features.push({name: s, financing: financing});
+        labels.push(s)
+        links.push("#" + s);
       });
 
-      jq('#funding_total').html("$" + self.total_funding.toFixed(1) + " Million");
+      jq('#funding_total').hide();
       
       bar_options = {"features":features, "attributes": {
-          "data":{"name": "Financing Amount", "original_name": "totalamt"}, 
-          "description":{"name": "Project", "original_name": "project_name"}, 
-          "sort":{"name": "Total Amount","original_name": "totalamt"} } };
-      F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {data_label: true, href: links, colors: colors, label: function() {
+          "data":{"name": "Financing Amount $m", "original_name": "financing"}, 
+          "description":{"name": "Product line", "original_name": "name"}, 
+          "sort":{"name": "Financing Amount $m","original_name": "financing"} } };
+      F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {
           return links[this.bar.index];
       }, onclick: function() {
           wb.highlightProject(features[this.bar.index].id);;
-          }});
-    },    
+         }});
+    }, 
     projectFundingBars: function() {
       var self = this;
       var s;
@@ -605,8 +606,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
         features.push(project);
         links.push( "javascript:wb.highlightProject('" + project["id"] + "');"  );
         var sname = project.mjsector1.toLowerCase().trim();
-        if(Object.include(self.sector_names, sname) && Object.include(self.sectors, self.sector_names[sname]))
+        // if(Object.include(self.sector_names, sname) && Object.include(self.sectors, self.sector_names[sname])) {
             colors.push(self.sectors[self.sector_names[sname]].color);
+        // }
       });
 
       jq('#funding_total').html("$" + self.total_funding.toFixed(1) + " Million");
@@ -696,7 +698,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
       jq('#activity_count').html(self.country_attrs["locations_count"]);
       self.sortProjects(self.projects);
       self.projectTable(self.projects);
-      self.projectFundingBars();
+      // self.projectFundingBars();
+      self.productlineFundingBars();
       self.sectorPieChart("all");
       self.hideLoading();
       self.initialized = true;

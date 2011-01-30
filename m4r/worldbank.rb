@@ -217,7 +217,7 @@ module WorldBank
     :education => {:name => "Education"}
     }
 
-  MAPS = PLATFORM_API_URL =~ /geocommons/ ? WBSTAGING : LOCAL 
+  MAPS = WBSTAGING # PLATFORM_API_URL =~ /geocommons/ ? WBSTAGING : LOCAL 
 
   def self.build_page_database(pages, parent = nil)
     pages.each do |key, values|

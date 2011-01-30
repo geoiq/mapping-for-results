@@ -1,0 +1,10 @@
+<style type="text/css" media="screen">
+  ul#pages li { margin-left: 25px; list-style-type: disc; }
+</style>
+<ul id="pages">
+  <% @pages.each do |page| %>
+    <%= admin_link(page) %>
+  <% end %>
+</ul>
+
+<a href="/admin/new">New Country Page</a>
