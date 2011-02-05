@@ -138,7 +138,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     hideSectors: function() {
       var self = this;
       jq.each(self.sectors, function (sector) {
-        self.map.addFilter(self.stylelayers["Project Locations"].order, {expression: "$[sector1] == " + self.sectors[sector].shortname});
+        self.map.addFilter(self.stylelayers["Project Locations"].order, {expression: "$[sector 1] == " + self.sectors[sector].shortname});
       });
       return false;
     },
@@ -269,7 +269,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       var self = this;
       var expression = "";
       if(sector_attribute == null)
-        sector_attribute = "sector1";
+        sector_attribute = "sector 1";
         
       for(var sector=0;sector<sectorFilters.length; sector++) {
         expression += "$["+sector_attribute+"] == '" + self.sectors[sectorFilters[sector]].name + "'";
@@ -343,7 +343,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.projects[attr["project id"]] = project
             
             // Add to sector funding and project count
-            var sector_name = project["sector1"];
+            var sector_name = project["sector 1"];
             var wb_sector = self.sectors[self.sector_names[sector_name.toLowerCase().trim()]];
 
             if(wb_sector == null)
@@ -658,11 +658,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
             
       // icons
       if(self.stylelayers["Project Locations"] != undefined) {
-        self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector1",categories:self.wbicons});
+        self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector 1",categories:self.wbicons});
       }
       // infowindow
       if(self.stylelayers["Project Locations"] != undefined) {
-        self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"}]});
+        self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector 1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[sector 1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"}]});
       }
       if(self.stylelayers["Project Counts"] != undefined) {
         self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "", tabs:[{title:"About", type:"text", value: "There are $[project count] active projects in the region."}]});
@@ -718,7 +718,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       self.regionFundingBars();
 
       if(self.country != "World")
-        self.map.swf.addLayerCategoryFilter(0, {attribute:"sector1",categories:self.wbicons});
+        self.map.swf.addLayerCategoryFilter(0, {attribute:"sector 1",categories:self.wbicons});
       else if (self.country == "World")
         self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
       // else
