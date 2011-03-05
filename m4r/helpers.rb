@@ -16,8 +16,8 @@ helpers do
   # e.g Map / World / Latin America and Caribbean / Haiti
   def map_link(country, options={})
     link = %Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/" title='World Bank: World'>World</a>}    
-    unless @country[:region].nil?
-      link += %Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/#region:#{@country[:region].gsub(/ /,'').downcase}">#{@country[:region]}</a><span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">#{@country[:name]}</a></span>}
+    unless country[:region].nil?
+      link += %Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/#region:#{country[:region].gsub(/ /,'').downcase}">#{country[:region]}</a><span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">#{country[:name]}</a></span>}
     end
     link
   end
@@ -34,7 +34,7 @@ helpers do
       # return "$#{value} million"
     when /mjsector1/
       # return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[2].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')}'"
-      return "'#{value.gsub(/\b\w/){$&.upcase}.gsub(/And/,'and').strip.gsub(/Sanitation /,'Sanitation, ')}'"
+      return "'#{value["Name"].strip}'"
     when /sector_code/
       return "'#{value["Code"]}'"
     else

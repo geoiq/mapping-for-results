@@ -1,9 +1,9 @@
-    <% unless @country.nil? %><div id="footnote">Current active projects as of <%= (@country.sync_updated_at || Time.now).strftime("%B %e, %Y") %>.</div><% end %>
+    <% unless @page.nil? %><div id="footnote">Current active projects as of <%= (@page.sync_updated_at || Time.now).strftime("%B %e, %Y") %>.</div><% end %>
     <!--Red Footer Begins-->
     <div id="network-breadcrumb">
       <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
         <span class="breadcrumb-link breadcrumb-first"><a href="<%= PLATFORM_API_URL %>">Map</a></span>
-        <%= map_link(@country) unless @country.nil? %>
+        <%= map_link(@page) unless @page.nil? %>
         </div>
     </div>
     <!--Grey Footer Begins-->
@@ -31,7 +31,7 @@
   <div id="share-pane">
     <span class="close">Close</span>
     <ul class="links">
-      <% link = "http%3A%2F%2Fmaps.worldbank.org%2F#{[params[:region] || nil,@country.nil? ? nil : @country[:name].downcase].compact.join("%2F")}" %>
+      <% link = "http%3A%2F%2Fmaps.worldbank.org%2F#{[params[:region] || nil, @page.nil? ? nil : (@page[:name] || "").downcase].compact.join("%2F")}" %>
       <li class="twitter first"><a href="http://twitter.com/?status=World+Bank+Maps+<%= link %>"  target="_new">Twitter</a></li>
       <li class="facebook"><a href="http://facebook.com/share.php?u=<%= link %>" target="_new">Facebook</a></li>
       <li class="delicious"><a href="http://delicious.com/save?v=5&noui&jump=close&url=<%= link %>" target="_new">Delicious</a></li>

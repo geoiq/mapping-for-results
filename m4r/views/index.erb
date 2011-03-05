@@ -1,4 +1,4 @@
-<% @page_subtitle = ", " + [@country[:region],@country[:name]].compact.join(" > ") %>
+<% @page_subtitle = ", " + [@page[:region],@page[:name]].compact.join(" > ") %>
 <%# partial :map %>
 <%= partial :map_header %>
 <div id="map-content">
@@ -12,7 +12,7 @@
       </div>
       <div class="console-info">
         <div id="loading">Loading Map Data...</div>
-        <p class="loaded" style="display: none" title="Active projects as of December 31, 2010">active projects working in</p>
+        <p class="loaded" style="display: none" title="">active projects working in</p>
         <p class="loaded" style="display: none" title="Project locations as of December 31, 2010">mapped project locations</p>
       </div>    
       <%= partial :layer_controls %>
@@ -22,6 +22,6 @@
 
 <%= partial :charts %>
 
-<%= partial :projects_table unless @country[:name] == "World" || (@region == @country) %>
+<%= partial :projects_table unless @page[:name] == "World" || (@region == @page) %>
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 

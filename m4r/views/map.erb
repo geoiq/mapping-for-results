@@ -1,5 +1,5 @@
 var proxy_host = "<%= PLATFORM_API_URL %>";    
-var project_attributes = ["id","project_name","totalamt","prodline","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
+var project_attributes = ["id","project_name","totalamt","prodlinetext","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 
 if(typeof(F1)=='undefined') {F1 = {};}
 (function(){
@@ -75,7 +75,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       this.country_attrs = country_attrs;
       this.productlines = {}
       
-      this.wbicons = {"Agriculture, fishing, and forestry":"<%= PLATFORM_API_URL %>/images/icons/worldbank/agriculture-on.png","Information and communications":"<%= PLATFORM_API_URL %>/images/icons/worldbank/communication-on.png","Education":"<%= PLATFORM_API_URL %>/images/icons/worldbank/education-on.png","Energy and mining":"<%= PLATFORM_API_URL %>/images/icons/worldbank/energy-on.png","Finance":"<%= PLATFORM_API_URL %>/images/icons/worldbank/finance-on.png","Health and other social services":"<%= PLATFORM_API_URL %>/images/icons/worldbank/health-on.png","Industry and trade":"<%= PLATFORM_API_URL %>/images/icons/worldbank/industry-on.png","Public Administration, Law, and Justice":"<%= PLATFORM_API_URL %>/images/icons/worldbank/public-on.png","Transportation":"<%= PLATFORM_API_URL %>/images/icons/worldbank/transportation-on.png","Water, sanitation and flood protection":"<%= PLATFORM_API_URL %>/images/icons/worldbank/water-on.png"};
+      // this.wbicons = {"Agriculture, fishing, and forestry":"<%= PLATFORM_API_URL %>/images/icons/worldbank/agriculture-on.png","Information and communications":"<%= PLATFORM_API_URL %>/images/icons/worldbank/communication-on.png","Education":"<%= PLATFORM_API_URL %>/images/icons/worldbank/education-on.png","Energy and mining":"<%= PLATFORM_API_URL %>/images/icons/worldbank/energy-on.png","Finance":"<%= PLATFORM_API_URL %>/images/icons/worldbank/finance-on.png","Health and other social services":"<%= PLATFORM_API_URL %>/images/icons/worldbank/health-on.png","Industry and trade":"<%= PLATFORM_API_URL %>/images/icons/worldbank/industry-on.png","Public Administration, Law, and Justice":"<%= PLATFORM_API_URL %>/images/icons/worldbank/public-on.png","Transportation":"<%= PLATFORM_API_URL %>/images/icons/worldbank/transportation-on.png","Water, sanitation and flood protection":"<%= PLATFORM_API_URL %>/images/icons/worldbank/water-on.png"};
       var color_index = 3;
       this.sectors = {
         "agriculture": {name: "Agriculture, fishing, and forestry", sector_code: "AX", color: self.fadeHex("#8bb131","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "agriculture", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/agriculture-on.png"}, 
@@ -86,7 +86,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         "health": {name: "Health and other social services", sector_code: "JX", color: self.fadeHex("#c23001","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "health", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/health-on.png"},
         "industry": {name: "Industry and trade", sector_code: "YX", color: self.fadeHex("#7f4410","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "industry", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/industry-on.png"},
         "public": {name: "Public Administration, Law, and Justice", sector_code: "BX", color: self.fadeHex("#8060a4","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "public", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/public-on.png"},
-        "water": {name: "Water, sanitation, and flood protection", sector_code: "WX", color: self.fadeHex("#369fd0","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "water", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/water-on.png"},
+        "water": {name: "Water, sanitation and flood protection", sector_code: "WX", color: self.fadeHex("#369fd0","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "water", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/water-on.png"},
         "transportation": {name: "Transportation", sector_code: "TX", color: self.fadeHex("#d28807","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "transportation", icon: "<%= PLATFORM_API_URL %>/images/icons/worldbank/transportation-on.png"}};
 
       this.sector_names = {};
@@ -138,7 +138,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     hideSectors: function() {
       var self = this;
       jq.each(self.sectors, function (sector) {
-        self.map.addFilter(self.stylelayers["Project Locations"].order, {expression: "$[sector 1] == " + self.sectors[sector].shortname});
+        self.map.addFilter(self.stylelayers["Project Locations"].order, {expression: "$[mjsector 1] == " + self.sectors[sector].shortname});
       });
       return false;
     },
@@ -269,7 +269,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       var self = this;
       var expression = "";
       if(sector_attribute == null)
-        sector_attribute = "sector 1";
+        sector_attribute = "mjsector 1";
         
       for(var sector=0;sector<sectorFilters.length; sector++) {
         expression += "$["+sector_attribute+"] == '" + self.sectors[sectorFilters[sector]].name + "'";
@@ -343,7 +343,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.projects[attr["project id"]] = project
             
             // Add to sector funding and project count
-            var sector_name = project["sector 1"];
+            var sector_name = project["mjsector 1"];
             var wb_sector = self.sectors[self.sector_names[sector_name.toLowerCase().trim()]];
 
             if(wb_sector == null)
@@ -382,7 +382,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
             self.projects[attr["id"]] = project
             
-            var prodname = project["prodline"];
+            var prodname = project["prodlinetext"];
             if(prodname != undefined) {
                 if(self.productlines[prodname] == undefined || self.productlines[prodname] == null) { 
                     self.productlines[prodname] = 0; 
@@ -579,7 +579,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       var links = [];
       var labels = [];
       jq.each(self.productlines, function(s, financing) {
-        features.push({name: s, financing: financing});
+        features.push({name: s, financing: financing.toFixed(2)});
         labels.push(s)
         links.push("#" + s);
       });
@@ -628,6 +628,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
       var self = this;
       var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"];
       var possibleLayers = self.map.getLayers();
+      if(possibleLayers == undefined) {
+          self.stylelayers["Project Locations"] = {order: 0, source: "", sharedLayer: false};
+          return;
+      } else {
       var index;
       jq.each(possibleLayers, function(layer) {
         index = Object.include(findlayers, possibleLayers[layer].title);
@@ -649,7 +653,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
           }
           // we'll set the title & subtitle later
       });
-
+  }
       jq('#download_data').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
        return false;
     },
@@ -657,13 +661,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
       var self = this;
             
       // icons
-      if(self.stylelayers["Project Locations"] != undefined) {
-        self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"sector 1",categories:self.wbicons});
-      }
+      // if(self.stylelayers["Project Locations"] != undefined) {
+      //   self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"mjsector 1",categories:self.wbicons});
+      // }
       // infowindow
-      if(self.stylelayers["Project Locations"] != undefined) {
-        self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[sector 1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[sector 1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"}]});
-      }
+      // if(self.stylelayers["Project Locations"] != undefined) {
+      //   self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[mjsector 1]", tabs:[{title: "Financing", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[mjsector 1]\nTotal Amount: $ $[total amt] million"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"}]});
+      // }
       if(self.stylelayers["Project Counts"] != undefined) {
         self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "", tabs:[{title:"About", type:"text", value: "There are $[project count] active projects in the region."}]});
       }
@@ -717,10 +721,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
       self.sectorPieChart("all", false);
       self.regionFundingBars();
 
-      if(self.country != "World")
-        self.map.swf.addLayerCategoryFilter(0, {attribute:"sector 1",categories:self.wbicons});
-      else if (self.country == "World")
-        self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]});
+      if(self.country != "World") {
+        // self.map.swf.addLayerCategoryFilter(0, {attribute:"mjsector 1",categories:self.wbicons});
+      } else if (self.country == "World") {
+        self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]}); }
       // else
       //   self.map.swf.addLayerInfoWindowFilter(0, {"title": "$[project title]","subtitle": "$[country]- $[sector1]","tabs": [{"title": "Financing","type": "text","value": "Project ID: \u003Ca target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627\u0026piPK=73230\u0026theSitePK=40941\u0026menuPK=228424\u0026Projectid=$[project id]'\u003E$[project id]\u003C/a\u003E\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt]million"},{"title": "Location","type": "text","value": "Country: $[country]\nProvince: $[adm1]\nDistrict: $[adm2]\nLatitude:$[latitude]\nLongitude:$[longitude]"}]})
         

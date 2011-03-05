@@ -2,12 +2,12 @@
       <div id="banner">
         <h1 id="banner-header" title="Click to hide the overview information">
           <span>Mapping for Results</span>
-          <div class="collapsible-header <%= (@country.nil? || @country[:name] == 'World' || @country[:name] == "Haiti") ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
+          <div class="collapsible-header <%= (@page.nil? || @page[:name] == 'World' || @page[:name] == "Haiti") ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>
         </h1>
         <div id="banner-content">
-          <div class="collapsible-content" id="collapsible-banner" style="<%= (@country.nil? || @country[:name] == 'World' || @country[:name] == "Haiti") ? '': 'display:none'%>">
+          <div class="collapsible-content" id="collapsible-banner" style="<%= (@page.nil? || @page[:name] == 'World' || @page[:name] == "Haiti") ? '': 'display:none'%>">
             <div id="block-nodeasblock-3273" class="block block-nodeasblock ">
               <div class="content">
                 <div class="overview-links">

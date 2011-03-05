@@ -2,7 +2,7 @@
 
 
   var wb = new F1.WorldBank();
-  <% if @country.page_type == "country" %>
+  <% if @page.page_type == "country" %>
 
   var projects = [<%= @projects.collect do |project_id, project|
          if(project["totalamt"].to_i == 0) 
@@ -10,18 +10,28 @@
          end
          
          "{" + (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
-       end.join(",") %>];
+       end.join("\n,") %>];
       
-  wb.init(<%= @country[:map].to_s %>,  "<%= @country.name.to_s %>", "<%= @country.region.to_s %>", {projects_count: '<%= @country.projects_count %>', locations_count: '<%= @country.locations_count %>', projects: projects, locations_layer: <%= @country.locations_layer || 0 %>});
-  <% else %>
+  wb.init(<%= @page[:map].to_s %>,  "<%= @page.name.to_s %>", "<%= @page.region.to_s %>", {projects_count: '<%= @page.projects_count %>', locations_count: '<%= @page.locations_count %>', projects: projects, locations_layer: <%= @page.locations_layer || 0 %>});
+  <% elsif %w{country region}.include?(@page.page_type) %>
   var projects = [];
-  var prodline = <%= @financing[:productline].to_json %>;
+  var productline = <%= @financing[:productline].to_json %>;
   var sectors = <%= @financing[:sectors].to_json %>;
   var regions = <%= @financing[:regions].to_json %>;
      
      
-  wb.init(<%= (@country[:map] || "''").to_s %>,  "<%= (@country[:name] || "").to_s %>",  "<%= (@country[:region] || 'World').to_s %>", {projects_count: '<%= @country[:projects_count] %>', locations_count: '<%= @country[:locations_count] %>', sectors: sectors, regions: regions });
+  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= @page[:projects_count] %>', locations_count: '<%= @page[:locations_count] %>', sectors: sectors, regions: regions });
 
+  <% else %>
+  
+  var projects = [];
+  var productline = <%= @financing[:productline].to_json %>;
+  var sectors = <%= @financing[:sectors].to_json %>;
+  var regions = <%= @financing[:regions].to_json %>;
+     
+     
+  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= @page[:projects_count] %>', locations_count: '<%= @page[:locations_count] %>', sectors: sectors, regions: regions });
+  
   <% end %>
   
 </script>
