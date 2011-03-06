@@ -71,7 +71,7 @@ end
 
 get '/admin' do
     @pages = Page.all(:parent_id => nil)
-    @page = @pages.first
+    @page = Page.new
     erb :admin
 end
 get '/admin/:name/edit' do

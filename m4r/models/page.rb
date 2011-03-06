@@ -1,8 +1,4 @@
-require 'datamapper'
-require 'dm-is-tree'
-
-# DataMapper.setup(:default, 'sqlite:///worldbank.db')
-DataMapper.setup(:default, 'postgres://postgres@localhost/worldbank_dev')  
+require "database.rb"
 
 class Page
   include DataMapper::Resource
@@ -36,5 +32,5 @@ end
 
 
 # DataMapper.finalize
-# DataMapper.auto_migrate! # destructively clears the db
-DataMapper.auto_upgrade! # just update, but don't clear the db
+ DataMapper.auto_migrate! # destructively clears the db
+#DataMapper.auto_upgrade! # just update, but don't clear the db
