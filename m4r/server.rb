@@ -165,7 +165,6 @@ get '/:region/:country' do
   else
     @page = Page.first(:shortname => params[:country]) #@region[:countries][params[:country].to_sym]
     @projects = @page.data[:projects]
-    puts @projects.first.inspect
     erb :index
   end
 end
