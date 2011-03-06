@@ -1,5 +1,4 @@
-require "database.rb"
-
+require(File.join(File.dirname(__FILE__), 'database'))
 class Page
   include DataMapper::Resource
 
