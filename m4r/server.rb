@@ -129,7 +129,7 @@ end
 # 
 
 get '/:region' do
-  @region = @page = Page.first(:shortname => params[:region])
+  @region = @page = Page.first(:shortname => params[:region].downcase)
   if(@page.nil?)
     erb :about
   elsif(@page.page_type == "page")
@@ -155,11 +155,11 @@ end
 
 get '/:region/:country' do
   # @region = MAPS[:world][:regions][params[:region].to_sym]
-  @region = Page.first(:shortname => params[:region])
+  @region = Page.first(:shortname => params[:region].downcase)
   if(@region.nil?)
     erb :about
   else
-    @page = Page.first(:shortname => params[:country]) #@region[:countries][params[:country].to_sym]
+    @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
     @projects = @page.data[:projects]
     erb :index
   end
@@ -167,7 +167,7 @@ end
 
 get '/:region/:country/:shortname' do
   # @region = MAPS[:world][:regions][params[:region].to_sym]
-  @page = Page.first(:shortname => params[:shortname])
+  @page = Page.first(:shortname => params[:shortname].downcase)
   if(@page.nil?)
     erb :about
   else
