@@ -66,7 +66,7 @@ helpers do
       else
           "/#{page.shortname}"
       end
-      html << %Q{<li><a href="#{link}">#{page.name}</a> [#{page.projects_count} projects] (<a href="/admin/#{page.shortname}/edit">edit</a> -- <a href="/admin/#{page.shortname}/sync">sync with project API</a>)}
+      html << %Q{<li><a href="#{link}">#{page.name}</a> [#{page.projects_count} projects from #{page.sync_updated_at.nil? ? 'never' : page.sync_updated_at.strftime("%m-%d-%Y")}] (<a href="/admin/#{page.shortname}/edit">edit</a> -- <a href="/admin/#{page.shortname}/sync">sync with project API</a>)}
       if((children = page.children).length > 0)
           html << "<ul>"
           children.each do |child|
