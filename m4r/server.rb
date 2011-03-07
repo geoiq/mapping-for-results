@@ -97,8 +97,8 @@ get '/admin/:shortname/sync' do
     when "region"
         @projects = WorldBank.get_region_data(@page)
         @page.projects_count = @projects["total"]
-        @financing = WorldBank.calculate_financing(@projects, "countryname")
-        @page.data = {:projects => @projects, :financing => @financing }
+        @financing = WorldBank.calculate_financing(@projects["projects"], "countryname")
+        @page.data = {:projects => @projects["projects"], :financing => @financing }
     when "country"
         @projects = WorldBank.get_project_data(@page)
         @page.data = { :projects => @projects }
@@ -110,9 +110,7 @@ get '/admin/:shortname/sync' do
 end
 
 post '/admin/:id/update' do
-    puts params.inspect
     @id = params.delete("id")
-    puts "Updating: '#{@id}'"
     unless @id.nil? || @id == "new"
         @page = Page.get(@id)
         @page.update_attributes(params[:page])
@@ -124,10 +122,8 @@ post '/admin/:id/update' do
     @page.data[:results] = JSON.parse(params[:data].delete(:results)) if params[:data].include?(:results)
 
     @region = Page.first(:name => params[:page][:region])
-    puts "Region? #{@region.inspect}"
     @page.parent = @region
     @page.save
-    puts "Country: #{@page.inspect}"
     redirect "/admin"    
 end
 
@@ -137,7 +133,7 @@ end
 # 
 
 get '/:region' do
-  @region = @page = Page.first(:shortname => params[:region])
+  @region = @page = Page.first(:shortname => params[:region].downcase)
   if(@page.nil?)
     erb :about
   elsif(@page.page_type == "page")
@@ -163,24 +159,23 @@ end
 
 get '/:region/:country' do
   # @region = MAPS[:world][:regions][params[:region].to_sym]
-  @region = Page.first(:shortname => params[:region])
+  @region = Page.first(:shortname => params[:region].downcase)
   if(@region.nil?)
     erb :about
   else
-    @page = Page.first(:shortname => params[:country]) #@region[:countries][params[:country].to_sym]
+    @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
     @projects = @page.data[:projects]
-    puts @projects.first.inspect
     erb :index
   end
 end
 
 get '/:region/:country/:shortname' do
   # @region = MAPS[:world][:regions][params[:region].to_sym]
-  @page = Page.first(:shortname => params[:shortname])
+  @page = Page.first(:shortname => params[:shortname].downcase)
   if(@page.nil?)
     erb :about
   else
-    erb @page.page_type.to_sym
+    erb :index # @page.page_type.to_sym
   end
 end
 

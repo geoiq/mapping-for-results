@@ -22,12 +22,15 @@
      
   wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= @page[:projects_count] %>', locations_count: '<%= @page[:locations_count] %>', sectors: sectors, regions: regions });
 
+  <% elsif @page.page_type == "project" %>
+  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {title: '<%= @page[:name] %>'});
+
   <% else %>
   
   var projects = [];
-  var productline = <%= @financing[:productline].to_json %>;
-  var sectors = <%= @financing[:sectors].to_json %>;
-  var regions = <%= @financing[:regions].to_json %>;
+  var productline = <%= (@financing[:productline] || {}).to_json %>;
+  var sectors = <%= (@financing[:sectors] || {}).to_json %>;
+  var regions = <%= (@financing[:regions] || {}).to_json %>;
      
      
   wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= @page[:projects_count] %>', locations_count: '<%= @page[:locations_count] %>', sectors: sectors, regions: regions });

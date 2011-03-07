@@ -277,7 +277,7 @@ module WorldBank
   end
   
   def self.get_region_data(region)
-    projects = paginated_projects(WB_PROJECTS_API + "&geocode=&regionname[]=" + region[:name].upcase.strip.gsub(/\s/,'+'))
+    projects = paginated_projects(WB_PROJECTS_API + "&geocode=&regionname[]=" + region[:isocode])# .upcase.strip.gsub(/\s/,'+'))
   end
   def self.get_product_data(product)
     projects = paginated_projects(WB_PROJECTS_API + "&prodlinetext[]=" + product)
@@ -314,10 +314,8 @@ module WorldBank
         name = project["prodlinetext"]
         calculations[:productline][name] = 0 unless calculations[:productline].include?(name)
         calculations[:productline][name] += amount
-        
         project["majorsector_percent"].each do |percent|
             name = percent["Name"].strip
-            puts "Sector: #{name}"
             next if name.length == 0
             calculations[:sectors][name] = 0 unless calculations[:sectors].include?(name)
             calculations[:sectors][name] += percent["Percent"].to_i / 100.0 * amount            

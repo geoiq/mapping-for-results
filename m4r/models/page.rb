@@ -1,9 +1,4 @@
-require 'datamapper'
-require 'dm-is-tree'
-
-# DataMapper.setup(:default, 'sqlite:///worldbank.db')
-DataMapper.setup(:default, 'postgres://postgres@localhost/worldbank_dev')  
-
+require(File.join(File.dirname(__FILE__), 'database'))
 class Page
   include DataMapper::Resource
 
