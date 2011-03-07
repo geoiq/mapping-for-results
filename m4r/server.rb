@@ -171,7 +171,7 @@ get '/:region/:country/:shortname' do
   if(@page.nil?)
     erb :about
   else
-    erb @page.page_type.to_sym
+    erb :index # @page.page_type.to_sym
   end
 end
 
