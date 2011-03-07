@@ -71,7 +71,7 @@ end
 
 get '/admin' do
     @pages = Page.all(:parent_id => nil)
-    @page = @pages.first
+    @page = Page.new
     erb :admin
 end
 get '/admin/:name/edit' do
@@ -119,6 +119,10 @@ post '/admin/:id/update' do
     else
         @page = Page.first_or_create(params[:page])
     end
+
+    @page.data[:locations] = JSON.parse(params[:data].delete(:locations)) if params[:data].include?(:locations)
+    @page.data[:results] = JSON.parse(params[:data].delete(:results)) if params[:data].include?(:results)
+
     @region = Page.first(:name => params[:page][:region])
     puts "Region? #{@region.inspect}"
     @page.parent = @region
