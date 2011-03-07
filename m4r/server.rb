@@ -97,8 +97,8 @@ get '/admin/:shortname/sync' do
     when "region"
         @projects = WorldBank.get_region_data(@page)
         @page.projects_count = @projects["total"]
-        @financing = WorldBank.calculate_financing(@projects, "countryname")
-        @page.data = {:projects => @projects, :financing => @financing }
+        @financing = WorldBank.calculate_financing(@projects["projects"], "countryname")
+        @page.data = {:projects => @projects["projects"], :financing => @financing }
     when "country"
         @projects = WorldBank.get_project_data(@page)
         @page.data = { :projects => @projects }
@@ -110,9 +110,7 @@ get '/admin/:shortname/sync' do
 end
 
 post '/admin/:id/update' do
-    puts params.inspect
     @id = params.delete("id")
-    puts "Updating: '#{@id}'"
     unless @id.nil? || @id == "new"
         @page = Page.get(@id)
         @page.update_attributes(params[:page])
@@ -120,10 +118,8 @@ post '/admin/:id/update' do
         @page = Page.first_or_create(params[:page])
     end
     @region = Page.first(:name => params[:page][:region])
-    puts "Region? #{@region.inspect}"
     @page.parent = @region
     @page.save
-    puts "Country: #{@page.inspect}"
     redirect "/admin"    
 end
 
