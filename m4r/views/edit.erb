@@ -12,7 +12,15 @@ input, label, textarea, select {
 }
 label:after { content: ": " }
 </style>
+<p style="">
+<a href="/admin">« Back to Admin Console</a>
+<% unless @page.shortname.nil? || @page.shortname.length == 0 %>
+ -or- <a href="<%= link_to_page(@page) %>">Open Page</a>  
+<% end %>
+</p>
 <form action="/admin/<%= @page.id || "new" %>/update" method="post" accept-charset="utf-8">
+  <fieldset>
+    <legend>Page configuration (required)</legend>
   <label for="page[page_type]">Type</label><select name="page[page_type]" id="status" onchange="" size="1"><br />
     <% %w{region country project page world}.each do |s| %>
     <option value="<%= s %>" <%= @page.page_type == s ? 'selected="selected"' : "" %>><%= s %></option>
@@ -25,24 +33,29 @@ label:after { content: ": " }
   <label for="isocode">ISO Code</label><input type="text" name="page[isocode]" value="<%= @page.isocode %>" id="isocode"><br />
   <label for="region">Region</label>
   <%= region_select(@page) %><br />
-
   <label for="page[locations_count]"># of Locations</label><input type="text" name="page[locations_count]" value="<%= @page.locations_count %>" id="locations_count"><br />  
-
+</fieldset>
+  
+  <fieldset>
+    <legend>Page description (optional)</legend>
+  
   <label for="data[locations]">Locations (optional)</label><br />
-  <textarea name="data[locations]" rows="8" cols="60"><%= @page.data[:locations] || "" %></textarea><br />
+  <textarea name="data[locations]" rows="8" cols="60"><%= @page.data[:locations].to_json %></textarea><br />
   <label for="data[results]">Result Links</label><br />
-  <textarea name="data[results]" rows="8" cols="60"><%= @page.data[:results] || "" %></textarea><br />
+  <textarea name="data[results]" rows="8" cols="60"><%= (@page.data[:results].nil? ? nil : @page.data[:results].to_json) %></textarea><br />
 
   <label for="page[overview]">Page Overview (optional)</label><br />
   <textarea name="page[overview]" rows="8" cols="60"><%= @page.overview || "" %></textarea><br />
   <label for="page[content]">Page Content (optional)</label><br />
   <textarea name="page[content]" rows="16" cols="60"><%= @page.content || "" %></textarea><br />
-  
+  </fieldset>
+
   <label for="status">Status</label><select name="page[status]" id="status" onchange="" size="1"><br />
     <% %w{active closed}.each do |s| %>
     <option value="<%= s %>" <%= @page.status == s ? 'selected="selected"' : "" %>><%= s %></option>
     <% end %>
   </select><br />
-  
+
   <p><input type="submit" value="Continue &rarr;"></p>
 </form>
+
