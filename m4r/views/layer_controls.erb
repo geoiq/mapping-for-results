@@ -5,11 +5,13 @@
     Investigate World Bank projects in currently highlighted countries using "Locations" tab.<% end %></li>
   </ul>
 </div>
+<p>Keys: <%= @page.data.keys %></p>
+<p>Locations? <%= @page.data[:locations].inspect %></p>
 <div class="dropmenuholder">
   <ul class="dropmenu">
     <li class="first" title="Zoom to Locations"><a href="#" onclick="return false;">LOCATIONS</a>
       <ul id="locations_list">
-        <% if @page[:name] == "World" || (@region == @page) %>
+        <% if %w{world region}.include?(@page.page_type) %>
           <% @page.children.each do |region_attr| %>
             <% region_attr.children.each do |country_attr| %>
             <% if (country_attr[:status] == 'active') %>
@@ -17,7 +19,7 @@
             <% end %>
             <% end %>
           <% end  %>              
-        <% elsif(@page.adm1 != nil) %>
+        <% elsif(!@page.data[:locations].nil?) %>
             <%= menu_options(@page[:adm1]) %>
         <% end %>
       </ul>
@@ -50,7 +52,7 @@
     <li title=""><a href="#" onclick="return false">RESULTS</a>
       <% unless @page[:name] == "World" || (@region == @page) %>
       <ul>
-        <% @page[:results].each do |result| %>
+        <% @page.data[:results].each do |result| %>
         <li><a href="<%= result[:link] %>" target="_new"><%= result[:name] %></a></li>
         <% end if false %>
       </ul>

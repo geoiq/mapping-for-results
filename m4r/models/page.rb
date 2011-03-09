@@ -1,4 +1,8 @@
 require(File.join(File.dirname(__FILE__), 'database'))
+
+require(File.join(File.dirname(__FILE__), '../','worldbank'))
+include WorldBank
+
 class Page
   include DataMapper::Resource
 
@@ -27,9 +31,32 @@ class Page
   property :locations_count, Integer, :default  => 0
   property :locations_layer, Integer, :default  => 0
   property :sync_updated_at, DateTime
+  
+  def update_data!
+    self.data ||= {}
+    case self.page_type
+    when "world"
+        @projects  = WorldBank.get_all_projects
+        @financing = WorldBank.calculate_financing(@projects["projects"])
+        self.projects_count = @projects["total"]
+        self.data[:financing] = @financing
+    when "region"
+        @projects = WorldBank.get_region_data(self)
+        self.projects_count = @projects["total"]
+        @financing = WorldBank.calculate_financing(@projects["projects"], "countryname")
+        self.data[:financing] = @financing
+    when "country"
+        @projects = WorldBank.get_project_data(self)
+        self.projects_count = @projects.length
+    end
+    self.data[:projects] = @projects["projects"]
+    self.sync_updated_at = Time.now
+    self.save
+  end    
 end
 
 
 # DataMapper.finalize
 # DataMapper.auto_migrate! # destructively clears the db
 DataMapper.auto_upgrade! # just update, but don't clear the db
+DataMapper::Model.raise_on_save_failure = true

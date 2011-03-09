@@ -75,8 +75,8 @@ get '/admin' do
     erb :admin
 end
 get '/admin/:name/edit' do
-    # @region = MAPS[:world][:regions][params[:region].to_sym]
     @page = Page.first(:shortname => params[:name])
+    puts @page.data.keys
     erb :edit
 end
 
@@ -88,24 +88,7 @@ end
 
 get '/admin/:shortname/sync' do
     @page = Page.first(:shortname => params[:shortname])
-    case @page.page_type
-    when "world"
-        @projects  = WorldBank.get_all_projects
-        @financing = WorldBank.calculate_financing(@projects["projects"])
-        @page.projects_count = @projects["total"]
-        @page.data = {:projects => @projects["projects"], :financing => @financing }
-    when "region"
-        @projects = WorldBank.get_region_data(@page)
-        @page.projects_count = @projects["total"]
-        @financing = WorldBank.calculate_financing(@projects["projects"], "countryname")
-        @page.data = {:projects => @projects["projects"], :financing => @financing }
-    when "country"
-        @projects = WorldBank.get_project_data(@page)
-        @page.data = { :projects => @projects }
-    end
-    @page.projects_count = @page.data[:projects].length
-    @page.sync_updated_at = Time.now
-    @page.save
+    @page.update_data!
     redirect "/admin"
 end
 
@@ -113,14 +96,23 @@ post '/admin/:id/update' do
     @id = params.delete("id")
     unless @id.nil? || @id == "new"
         @page = Page.get(@id)
-        @page.update_attributes(params[:page])
+        @page.update(params[:page])
     else
         @page = Page.first_or_create(params[:page])
     end
+    # Memory pointers and serialization or something with DataMapper.
+    data = @page.data
+    @page = Page.get(@id)
+    data[:locations] = JSON.parse(params[:data]["locations"]) if params[:data].include?("locations") && params[:data]["locations"].length != 0  
+    data[:results] = JSON.parse(params[:data]["results"]) if params[:data].include?("results") && params[:data]["results"].length != 0
+
+    @page.data = {}
+    @page.data = data
+
     @region = Page.first(:name => params[:page][:region])
-    @page.parent = @region
+    @page.parent = @region    
     @page.save
-    redirect "/admin"    
+    redirect "/admin/#{@page.shortname}/edit"    
 end
 
 

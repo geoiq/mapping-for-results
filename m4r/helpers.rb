@@ -54,8 +54,8 @@ helpers do
       html << "</select>"
       html
   end
-  def admin_link(page, options = {})
-      html = ""
+  
+  def link_to_page(page, options = {})
       link = case page.page_type 
       when "region" 
           "/#{page.shortname}"
@@ -65,7 +65,11 @@ helpers do
           "/#{page.parent.parent.shortname}/#{page.parent.shortname}/#{page.shortname}"
       else
           "/#{page.shortname}"
-      end
+      end    
+  end
+  def admin_link(page, options = {})
+      html = ""
+      link = link_to_page(page, options)
       html << %Q{<li><a href="#{link}">#{page.name}</a> [#{page.projects_count} projects from #{page.sync_updated_at.nil? ? 'never' : page.sync_updated_at.strftime("%m-%d-%Y")}] (<a href="/admin/#{page.shortname}/edit">edit</a> -- <a href="/admin/#{page.shortname}/sync">sync with project API</a>)}
       if((children = page.children).length > 0)
           html << "<ul>"
@@ -73,7 +77,7 @@ helpers do
               html << admin_link(child)
           end
           html << "</ul>"
-      end
+      end      
       html << "</li>"
       html
   end 
