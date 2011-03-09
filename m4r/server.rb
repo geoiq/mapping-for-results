@@ -101,13 +101,11 @@ post '/admin/:id/update' do
         @page = Page.first_or_create(params[:page])
     end
     # Memory pointers and serialization or something with DataMapper.
-    data = @page.data
-    @page = Page.get(@id)
+    data = {}
     data[:locations] = JSON.parse(params[:data]["locations"]) if params[:data].include?("locations") && params[:data]["locations"].length != 0  
     data[:results] = JSON.parse(params[:data]["results"]) if params[:data].include?("results") && params[:data]["results"].length != 0
 
-    @page.data = {}
-    @page.data = data
+    @page.data = @page.data.merge(data)
 
     @region = Page.first(:name => params[:page][:region])
     @page.parent = @region    

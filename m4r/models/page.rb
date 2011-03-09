@@ -46,10 +46,12 @@ class Page
         @financing = WorldBank.calculate_financing(@projects["projects"], "countryname")
         self.data[:financing] = @financing
     when "country"
-        @projects = WorldBank.get_project_data(self)
-        self.projects_count = @projects.length
+        @projects = {"projects" => WorldBank.get_project_data(self)}
+        self.projects_count = @projects["projects"].length
     end
-    self.data[:projects] = @projects["projects"]
+    data = self.data.merge(:projects => @projects["projects"])
+    self.data = {}
+    self.data = data
     self.sync_updated_at = Time.now
     self.save
   end    

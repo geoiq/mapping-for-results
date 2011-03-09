@@ -70,7 +70,12 @@ helpers do
   def admin_link(page, options = {})
       html = ""
       link = link_to_page(page, options)
-      html << %Q{<li><a href="#{link}">#{page.name}</a> [#{page.projects_count} projects from #{page.sync_updated_at.nil? ? 'never' : page.sync_updated_at.strftime("%m-%d-%Y")}] (<a href="/admin/#{page.shortname}/edit">edit</a> -- <a href="/admin/#{page.shortname}/sync">sync with project API</a>)}
+      html << %Q{<li><a href="#{link}">#{page.name}</a> } 
+      if !page.sync_updated_at.nil? && page.data.include?(:projects) && !page.data[:projects].nil?
+        html << %Q{[#{page.data[:projects].length} projects from #{page.sync_updated_at.strftime("%m-%d-%Y")}] }
+      end
+      
+      html << %Q{(<a href="/admin/#{page.shortname}/edit">edit</a> -- <a href="/admin/#{page.shortname}/sync">sync with project API</a>)}
       if((children = page.children).length > 0)
           html << "<ul>"
           children.each do |child|
@@ -93,6 +98,7 @@ helpers do
     collection.each_slice(height) do |column|
       menu << "<div class=\"column column_#{i}\"><ul>"
       column.each do |row|
+        row.symbolize_keys!
         menu << %Q{<li><a href="#" onclick="wb.setLocation('#{ row[:name] }',#{ row[:lat] },#{ row[:lon] },#{ row[:zoom] }); return false">#{ row[:name] }</a></li>}
       end
       i += 1
