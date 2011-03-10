@@ -102,7 +102,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
      });
      if(map_id != null && map_id.length != 0){
          var map_engine = "Wrapper";
-         if(projects.length > 2000) map_engine="Sputnik";
+         if(self.country_attrs["locations_count"] > 2000) map_engine="Sputnik";
          // if("no_flash") map_engine="javascript";
          
          this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 

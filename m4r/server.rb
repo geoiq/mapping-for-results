@@ -2,6 +2,7 @@
 
 require 'helpers'
 require 'models/page'
+require 'lib/m4r_extensions.rb'
   
 PLATFORM_API_URL  = "http://maps.worldbank.org"
 SUBDOMAIN         = "http://maps.worldbank.org"
@@ -126,8 +127,8 @@ get '/:region' do
   elsif(@page.page_type == "page")
     erb :wiki
   else
-    @projects = @page.projects[:projects]
-    @financing  = @page.projects[:financing]
+    @projects = @page.data[:projects]
+    @financing  = @page.data[:financing]
     erb :index
   end
 end
