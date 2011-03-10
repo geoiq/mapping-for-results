@@ -2,6 +2,7 @@
 
 require 'helpers'
 require 'models/page'
+require 'lib/m4r_extensions.rb'
   
 PLATFORM_API_URL  = "http://maps.worldbank.org"
 SUBDOMAIN         = "http://maps.worldbank.org"
