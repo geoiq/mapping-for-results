@@ -12,7 +12,7 @@
          "{" + (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
        end.join("\n,") %>];
       
-  wb.init(<%= @page[:map].to_s %>,  "<%= @page.name.to_s %>", "<%= @page.region.to_s %>", {projects_count: '<%= @page.projects_count %>', locations_count: '<%= @page.locations_count %>', projects: projects, locations_layer: <%= @page.locations_layer || 0 %>});
+  wb.init(<%= @page[:map].to_s %>,  "<%= @page.name.to_s %>", "<%= @page.region.to_s %>", {projects_count: '<%= @page.projects_count %>', locations_count: '<%= @page.locations_count %>', projects: projects, locations_layer: <%= @page.locations_layer || 0 %>, indicators: [<%= (@page.data[:indicators] || []).collect {|i| "'#{i}'"}.join(",") %>]});
   <% elsif %w{country region}.include?(@page.page_type) %>
   var projects = [];
   var productline = <%= @financing[:productline].to_json %>;

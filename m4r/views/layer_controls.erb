@@ -27,7 +27,7 @@
     <li class="first" title="Layer: Indicators"><a href="#" id="layercontrol_indicators" onclick="wb.setIndicator(); return false">INDICATORS</a>
       <% unless %w{world region}.include?(@page.page_type) %>
       <ul>
-        <% @page[:indicators].each do |indicator| %>
+        <% (@page.data[:indicators] || []).each do |indicator| %>
         <li><a href="#" onclick="wb.setIndicator('<%= indicator %>'); return false"><%= indicator %></a></li>
         <% end %>
       </ul>

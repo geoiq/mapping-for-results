@@ -102,8 +102,9 @@ post '/admin/:id/update' do
     end
     # Memory pointers and serialization or something with DataMapper.
     data = {}
-    data[:locations] = JSON.parse(params[:data]["locations"]) if params[:data].include?("locations") && params[:data]["locations"].length != 0  
-    data[:results] = JSON.parse(params[:data]["results"]) if params[:data].include?("results") && params[:data]["results"].length != 0
+    params[:data].each do |k,v|
+      data[k.to_sym] = JSON.parse(params[:data][k]) if params[:data][k].length != 0  
+    end
 
     @page.data = @page.data.merge(data)
 

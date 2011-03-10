@@ -68,12 +68,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
       this.total_funding = 0;
       this.stylelayers = {};
       this.initialized = false;
-      this.current_indicator = "Poverty";
       this.current_projects = true;
       this.country = country;
       this.region = region;
       this.country_attrs = country_attrs;
       this.productlines = {}
+      this.current_indicator = (country_attrs.indicators != undefined && country_attrs.length > 0) ? country_attrs.indicators[0] : null;
+      
       
       this.wbicons = {"Agriculture, fishing, and forestry":"<%= PLATFORM_API_URL %>/images/icons/worldbank/agriculture-on.png","Information and communications":"<%= PLATFORM_API_URL %>/images/icons/worldbank/communication-on.png","Education":"<%= PLATFORM_API_URL %>/images/icons/worldbank/education-on.png","Energy and mining":"<%= PLATFORM_API_URL %>/images/icons/worldbank/energy-on.png","Finance":"<%= PLATFORM_API_URL %>/images/icons/worldbank/finance-on.png","Health and other social services":"<%= PLATFORM_API_URL %>/images/icons/worldbank/health-on.png","Industry and trade":"<%= PLATFORM_API_URL %>/images/icons/worldbank/industry-on.png","Public Administration, Law, and Justice":"<%= PLATFORM_API_URL %>/images/icons/worldbank/public-on.png","Transportation":"<%= PLATFORM_API_URL %>/images/icons/worldbank/transportation-on.png","Water, sanitation and flood protection":"<%= PLATFORM_API_URL %>/images/icons/worldbank/water-on.png"};
       var color_index = 3;
@@ -100,7 +101,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
           self.sector_codes[sector.sector_code] = sector;
      });
      if(map_id != null && map_id.length != 0){
-         var map_engine = "flash";
+         var map_engine = "Wrapper";
          if(projects.length > 2000) map_engine="Sputnik";
          // if("no_flash") map_engine="javascript";
          
@@ -285,11 +286,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
     },    
     setIndicator: function(indicator,visible) {
       var self = this;
-      if(self.stylelayers[self.current_indicator] == undefined)
-        return;
+      if(self.stylelayers[self.current_indicator] != undefined)
+        self.map.showLayer(self.stylelayers[self.current_indicator].order, false);
         
         
-      self.map.showLayer(self.stylelayers[self.current_indicator].order, false);
       if(indicator == null) {
         jq('#layercontrol_indicators').html("Indicators");
         self.map.showLayer(self.stylelayers[indicator].order, false);
@@ -652,14 +652,15 @@ if(typeof(F1)=='undefined') {F1 = {};}
       })
 
       // second pass if we missed any
-      jq.each(findlayers, function(layer) {
+      jq.each(self.country_attrs["indicators"], function(index,layer) {
           if(self.stylelayers["Indicators"] != undefined) {
-              self.stylelayers[findlayers[layer]] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
+              self.stylelayers[layer] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
           }
           // we'll set the title & subtitle later
       });
   }
-      jq('#download_data').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
+      if(self.stylelayers["Project Locations"] != undefined)
+        jq('#download_data').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
        return false;
     },
     styleMap: function() {
@@ -702,7 +703,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
       if( self.initialized ) { return; }
       self.getLayers(self.map);
       self.styleMap(self.map);
-      self.setIndicator("Poverty");
+
+      if(self.country_attrs.indicators != undefined && self.stylelayers[self.country_attrs.indicators[0]] != undefined)
+        self.setIndicator(self.country_attrs.indicators[0]);
+
       // self.toggleSector("counts_admin1",true);
       jq('#project_count').html(self.country_attrs["projects_count"]);
       jq('#activity_count').html(self.country_attrs["locations_count"]);
