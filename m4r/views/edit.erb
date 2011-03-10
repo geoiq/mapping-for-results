@@ -40,7 +40,7 @@ label:after { content: ": " }
     <legend>Page description (optional)</legend>
   
   <label for="data[locations]">Locations (optional)</label><br />
-  <textarea name="data[locations]" rows="8" cols="60"><%= @page.data[:locations].to_json %></textarea><br />
+  <textarea name="data[locations]" rows="8" cols="60"><%= (@page.data[:locations].nil? ? nil : @page.data[:locations].to_json) %></textarea><br />
   <label for="data[results]">Result Links</label><br />
   <textarea name="data[results]" rows="8" cols="60"><%= (@page.data[:results].nil? ? nil : @page.data[:results].to_json) %></textarea><br />
 
