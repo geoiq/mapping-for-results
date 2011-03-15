@@ -47,9 +47,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
   F1.WorldBank.indicators = {
     "Poverty": {source: "finder:", title:"Poverty", subtitle: "Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [16709541,16698989,15500308,11422722,6694150], categories: 5, classificationNumClasses: 6, classificationType: "St Dev", opacity: 0.75, selectedAttribute: "poverty" }}, infosubtitle: null, table: null, description: "<p>These data sets involve econometric or quantitative indirect estimation procedures that combine spatial precision (such as censuses) with substantive depth (such as surveys). They have been developed and implemented by the World Bank Development Economics Research Group and colleagues, in collaboration with country teams for the implementation of Poverty Reduction Strategy Programmes.</p><p>Though spatial information may be used in the process of generating these estimates, the spatial data is generally separated prior to the analysis, reporting and dissemination of the poverty estimates. Thus, CIESIN's database of sub-national small area estimates contains poverty and inequality data with reconstructed boundary information, using basic geographic information system (GIS) tools. (Text obtained from the source of data at <a href='http://sedac.ciesin.columbia.edu/povmap/methods_nat_sae.jsp'>CIESIN</a>)</p><p>Source: <a href='http://www.measuredhs.com/'>Demographic and Health Surveys (DHS)</a></p>"},
-    "Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "WFAB2SD" }}, infosubtitle: null, table: null, description: "Prevalence of child malnutrition is the percentage of children under age 5 whose weight for age is more than two standard deviations below the median for the international reference population ages 0-59 months. The data are based on the WHO's new child growth standards released in 2006.\nSource: World Health Organization, Global Database on Child Growth and Malnutrition.\nCatalog Sources: World Development Indicators"},
+    "Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Wfab2 Sd" }}, infosubtitle: null, table: null, description: "Prevalence of child malnutrition is the percentage of children under age 5 whose weight for age is more than two standard deviations below the median for the international reference population ages 0-59 months. The data are based on the WHO's new child growth standards released in 2006.\nSource: World Health Organization, Global Database on Child Growth and Malnutrition.\nCatalog Sources: World Development Indicators"},
     "Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "IM1q0"}}, infosubtitle: null, table: null, description: "Mortality rate, infant (per 1,000 live births) Infant mortality rate is the number of infants dying before reaching one year of age, per 1,000 live births in a given year.\nSource: Inter-agency Group for Child Mortality Estimation (UNICEF, WHO, World Bank, UNPD, universities and research institutions).\nCatalog Source: World Development Indicators"},  
-    "Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "DBHP"}}, infosubtitle: null,table: null, description: "Births attended by skilled health staff (% of total), are the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and advice to women during pregnancy, labor, and the postpartum period; to conduct deliveries on their own; and to care for newborns.\nSource: UNICEF, State of the World's Children, Childinfo, and Demographic and Health Surveys by Macro International."},
+    "Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [16573399,14924738,12619965,8608676,5313667], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "dbhp"}}, infosubtitle: null,table: null, description: "Births attended by skilled health staff (% of total), are the percentage of deliveries attended by personnel trained to give the necessary supervision, care, and advice to women during pregnancy, labor, and the postpartum period; to conduct deliveries on their own; and to care for newborns.\nSource: UNICEF, State of the World's Children, Childinfo, and Demographic and Health Surveys by Macro International."},
     "Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"}
 	};
   F1.WorldBank.prototype = {
@@ -101,13 +101,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
           self.sector_codes[sector.sector_code] = sector;
      });
      if(map_id != null && map_id.length != 0){
-         var map_engine = "Wrapper";
+         var map_engine = "Wrapper_181";
          if(self.country_attrs["locations_count"] > 2000) map_engine="Sputnik";
          // if("no_flash") map_engine="javascript";
          
          this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
-         uiZoom: true,uiLayers: false,uiLegend: false,uiStyles: true,
-         uiHeader: true,hideGCLogo: true,hideGILogo: true,
+         uiZoom: false,uiLayers: false,uiLegend: false,uiStyles: true,
+         uiHeader: true,hideGCLogo: true,hideGILogo: false,
          view: map_engine,
          core_host:  proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
          onload: function() { self.loadedMap() }
@@ -632,7 +632,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     getLayers: function() {
       var self = this;
       var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"];
-      var possibleLayers = self.map.getLayers();
+      var possibleLayers = eval("(" + self.map.getLayers() + ")");
       if(possibleLayers == undefined) {
           self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
           return;
@@ -680,7 +680,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
     },
     styleLegend: function() {
       this.map.showControl("Legend",true);
-      this.map.swf.setStyle( { legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:95}}});      
+      this.map.showControl("Zoom",true);
+      this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:95}}});      
+      this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5}})
       return false;
     },
     highlightRegions: function(regions, region_attr) {
