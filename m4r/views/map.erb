@@ -101,13 +101,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
           self.sector_codes[sector.sector_code] = sector;
      });
      if(map_id != null && map_id.length != 0){
-         var map_engine = "Wrapper";
+         var map_engine = "Wrapper_181";
          if(self.country_attrs["locations_count"] > 2000) map_engine="Sputnik";
          // if("no_flash") map_engine="javascript";
          
          this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
-         uiZoom: true,uiLayers: false,uiLegend: false,uiStyles: true,
-         uiHeader: true,hideGCLogo: true,hideGILogo: true,
+         uiZoom: false,uiLayers: false,uiLegend: false,uiStyles: true,
+         uiHeader: true,hideGCLogo: true,hideGILogo: false,
          view: map_engine,
          core_host:  proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
          onload: function() { self.loadedMap() }
@@ -632,7 +632,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     getLayers: function() {
       var self = this;
       var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"];
-      var possibleLayers = self.map.getLayers();
+      var possibleLayers = eval("(" + self.map.getLayers() + ")");
       if(possibleLayers == undefined) {
           self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
           return;
@@ -680,7 +680,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
     },
     styleLegend: function() {
       this.map.showControl("Legend",true);
-      this.map.swf.setStyle( { legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:95}}});      
+      this.map.showControl("Zoom",true);
+      this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:95}}});      
+      this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5}})
       return false;
     },
     highlightRegions: function(regions, region_attr) {
