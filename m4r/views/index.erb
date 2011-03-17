@@ -20,8 +20,10 @@
   <%# partial :infowindow %>
 </div>
 
-<%= partial :charts %>
+<%= partial :charts unless @page.page_type == "project" %>
+<%= partial :initialize unless @page.new_record? %>
 
-<%= partial :projects_table unless @page[:name] == "World" || (@region == @page) %>
+<%= partial :projects_table unless %w{world project}.include?(@page.page_type) %>
+<% unless @page.page_type == "project" %>
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-
+<% end %>

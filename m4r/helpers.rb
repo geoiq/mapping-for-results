@@ -15,15 +15,13 @@ helpers do
   # 
   # e.g Map / World / Latin America and Caribbean / Haiti
   def map_link(country, options={})
-    link = %Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/" title='World Bank: World'>World</a>}    
-    unless country.parent.nil?
-      link << %Q{<a class="breadcrumb-link #{country.children.nil? ? '' : 'breadcrumb-last'}" href="#{SUBDOMAIN}/#{country.page_type == 'region' ? '#region:' : ''}#{country.shortname}">#{country.name}</a>}
-      #link << %Q{<span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">#{country[:name]}</a></span>} if country.children.nil?
+    link = []
+    while !country.nil? && country.page_type != "world"
+      link << [%Q{<a class="breadcrumb-link #{(country.children.nil? || country.children.length != 0) ? '' : 'breadcrumb-last'}" href="#{SUBDOMAIN}/#{country.page_type == 'region' ? '#region:' : ''}#{country.shortname}">#{country.name}</a>}]
+      country = country.parent
     end
-#    unless country[:region].nil?
-#      link += %Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/#region:#{country[:region].gsub(/ /,'').downcase}">#{country[:region]}</a><span class="breadcrumb-link breadcrumb-last"><a class="active" href="#">#{country[:name]}</a></span>}
-#    end
-    link
+    link << [%Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/" title='World Bank: World'>World</a>}]
+    link.reverse.join("")
   end
   def cleanup_attributes(attribute, value)
     case attribute

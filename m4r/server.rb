@@ -18,7 +18,7 @@ get '/' do
   @projects = @page.data[:projects]
   @financing = @page.data[:financing]
     
-  erb :index
+  erb :home
 end
 
 get '/404' do 
