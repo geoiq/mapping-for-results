@@ -25,8 +25,10 @@ get '/world' do
   @page = Page.first(:shortname => "world")
   @projects = @page.data[:projects]
   @financing = @page.data[:financing]
-    
-  erb :
+  
+  @pages = Page.all( {:conditions => {:page_type => "country"}, :order => [:name.desc]})
+  
+  erb :home
 end
 
 get '/404' do 
@@ -161,7 +163,7 @@ get '/:region/:country' do
   else
     @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
     @projects = @page.data[:projects]
-    erb :index
+    erb :country
   end
 end
 

@@ -1,29 +1,35 @@
 <% @page_subtitle = ", " + [@page[:region],@page[:name]].compact.join(" > ") %>
-<%# partial :map %>
+<style type="text/css" media="screen">
+  #wrapper, #container, #projects-bar, #projects-table, #map-content, #projects-table, #table#projects-table_grid, th {width: 100%;}
+  #projects-bar {margin: 0}
+</style>
+<div id="map-table"  style="float:left; width: 70%">
 <%= partial :map_header %>
+
 <div id="map-content">
-  <div id="wb_map_wrapper" style="z-index: -1; height: 514px; 958px">
+  <div id="wb_map_wrapper" style="z-index: -1; height: 514px; ">
   <div id="wb_map" class="" style="height: 520px"></div>
   </div>
-  <div id="map_console">
+  <div id="map_console" style="display:none">
       <div class="console-title">
-        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
       </div>
       <div class="console-info">
         <div id="loading">Loading Map Data...</div>
         <p class="loaded" style="display: none" title="">active projects working in</p>
         <p class="loaded" style="display: none" title="Project locations as of December 31, 2010">mapped project locations</p>
       </div>    
-      <%= partial :layer_controls %>
   </div>
   <%# partial :infowindow %>
 </div>
+<%= partial :projects_table if @page.page_type == "country" %>
+</div>
 
-<%= partial :charts unless @page.page_type == "project" || @page.page_type == "region" %>
+<div id="sidebar" style="float:right; width: 30%;">
+  <%= partial :charts unless @page.page_type == "project" || @page.page_type == "region" %>
+</div>
+
 <%= partial :initialize unless @page.new? %>
 
-<%= partial :projects_table if @page.page_type == "country" %>
 <% unless @page.page_type == "project" %>
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 <% end %>

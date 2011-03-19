@@ -468,7 +468,7 @@ table#project-list tr.odd td, table#project-list tr.even td {padding: 15px 10px;
 table#project-list tr.odd {background: white;}
 table#project-list tr.even {background: #eeefe9;}
 
-#country-list-row {width: 823px;
+#country-list-row {width: 943px;
 border: 1px solid #d9dccf;
 border-top:2px solid #980101;
 margin: 20px 0px 0px;
@@ -486,7 +486,7 @@ color: #ddd;
 .alpha a, .alpha a:visited, .alpha-inactive{color: 333;
 text-transform: uppercase;
 font-weight: bold;
-padding: 0px 7px;}
+padding: 0px 12px;}
 
 .alpha-inactive {color: #ddd;}
 
@@ -536,7 +536,7 @@ margin-top: 22px;}
   float: right;
   margin: 0;
   padding: 0;
-  width: 839px;
+  width: 959px;
 }
 #content-wrapper .dot-divider {
   border-bottom: 1px dotted #979797;

@@ -60,5 +60,5 @@ end
 
 # DataMapper.finalize
 # DataMapper.auto_migrate! # destructively clears the db
-DataMapper.auto_upgrade! # just update, but don't clear the db
+# DataMapper.auto_upgrade! # just update, but don't clear the db
 DataMapper::Model.raise_on_save_failure = true

@@ -1,0 +1,57 @@
+  <div id="main-content">
+
+    <div id="secondlevel" style=""> <!--Start main left col landing page -->
+
+<%= partial :map_header %>
+<div id="map-content">
+  <div id="wb_map_wrapper" style="z-index: -1; height: 514px; 958px">
+  <div id="wb_map" class="" style="height: 520px"></div>
+  </div>
+  <div id="map_console">
+      <div class="console-title">
+        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
+      </div>
+      <div class="console-info">
+        <div id="loading">Loading Map Data...</div>
+        <p class="loaded" style="display: none" title="">active projects working in</p>
+        <p class="loaded" style="display: none" title="Project locations as of December 31, 2010">mapped project locations</p>
+      </div>    
+      <%= partial :layer_controls %>
+  </div>
+</div>
+<%= partial :initialize unless @page.new_record? %>
+
+      <!-- <img src="images/country-top-block-new.jpg" border="0"/> -->
+
+      <div id="country-list-row"> <!--Start countyr list -->
+
+        <a name="top"></a><div class="alpha-row"> <!--Start Alphabet row -->
+          <%= ('A'..'Z').collect { |letter| %Q{<span class="alpha"><a href="##{letter.downcase}">#{letter.downcase}</a></span>} }.join(" | ") %>
+        </div> <!--End Alphabet row -->
+
+        <% ('A'..'Z').each do |letter| %>
+        <% countries = @pages.select {|p| p.name.match(/^#{letter}/)}  %>
+        <% next if countries.length == 0 %>
+        <a name="<%= letter.downcase %>"></a><div class="thin-divider country-row"> <!--Start A -->
+          <p class="alpha-header"><strong><%= letter.upcase %></strong></p>
+          <% countries.each_slice(3) do |links| %>
+          <div class="countrylist-col">
+            <ul>
+              <% links.each do |country| %>
+              <li><a href="<%= (country.status == 'inactive') ? "#" : "/#{country.parent.shortname}/#{country.shortname}" %>" class="<%= country.status %>"><%= country.name %></a></li>
+              <% end %>
+              </ul>
+            </div>
+            <% end %>
+          </div> <!--End A -->
+        <% end %>
+
+                  </div> <!--End country list -->
+
+                </div> <!---end main left col landing page -->
+
+
+
+              </div> <!-- End Main Content Wrapper -->
+
