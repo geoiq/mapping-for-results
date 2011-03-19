@@ -18,7 +18,15 @@ get '/' do
   @projects = @page.data[:projects]
   @financing = @page.data[:financing]
     
-  erb :home
+  erb :index
+end
+
+get '/world' do
+  @page = Page.first(:shortname => "world")
+  @projects = @page.data[:projects]
+  @financing = @page.data[:financing]
+    
+  erb :
 end
 
 get '/404' do 
