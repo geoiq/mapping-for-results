@@ -39,9 +39,6 @@ label:after { content: ": " }
   <fieldset>
     <legend>Page description (optional)</legend>
 
-  <label for="data[layers]">Layers (optional)</label><br />
-  <textarea name="data[layers]" rows="4" cols="60"><%= (@page.data[:layers].nil? ? nil : @page.data[:layers].to_json) %></textarea><br />
-
   <label for="data[indicators]">Indicators (optional)</label><br />
   <textarea name="data[indicators]" rows="1" cols="60"><%= (@page.data[:indicators].nil? ? nil : @page.data[:indicators].to_json) %></textarea><br />
   
