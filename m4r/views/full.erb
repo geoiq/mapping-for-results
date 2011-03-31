@@ -1,0 +1,102 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The World Bank - Mapping for Results<%= @page_subtitle %></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="<%= PLATFORM_API_URL %>/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/mapping.css">
+    <%= partial :javascript %>
+</head>
+
+<body>
+	<div id="container" class="clearfix">
+        <div id="header" class="clearfix">
+        	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
+            <div id="hdrLang">
+            	<ul class="links network-language-links">
+                    <li class="en first"><a class="active" href="http://www.worldbank.org">English</a></li>
+                    <li class="es"><a href="http://www.bancomundial.org">Español</a></li>
+                    <li class="fr"><a href="http://www.banquemondiale.org">Français</a></li>
+                    <li class="ru"><a href="http://www.worldbank.org/russian">Pусский</a></li>
+                    <li class="ar"><a href="http://www.albankaldawli.org">عربي</a></li>
+                    <li class="cn"><a href="http://www.worldbank.org.cn/Chinese">中文</a></li>
+                    <li class="more last"><a href=	"http://web.worldbank.org/WBSITE/EXTERNAL/0,,contentMDK:20130470~pagePK:50016803~piPK:50016805~theSitePK:13,00.html">View more</a></li>
+				</ul>
+            </div>
+            <div class="network-search">
+                <form id="wbbase-search-form" method="post" accept-charset="UTF-8" action="/">
+                    <div>
+                        <div id="edit-search-wrapper" class=" form-item">
+                            <input type="text" class="form-text fluid" value="Search" id="edit-search" name="search" maxlength="128">
+                        </div>
+                        <input type="submit" class="form-submit" value="Go" id="edit-submit-2" name="op">
+                        <input type="hidden" value="form-75689b15b8ef25b8092598b8620c6cb4" id="form-75689b15b8ef25b8092598b8620c6cb4" name="form_build_id">
+                        <input type="hidden" value="wbbase_search_form" id="edit-wbbase-search-form" name="form_id">
+                    </div>
+                </form>
+            </div>
+            <div class="socialLinks clearfix">
+            	<a href="http://www.facebook.com/worldbank"><img src="/assets/img/icon_fb.png" alt="facebook" width="16" height="16" /></a> | 
+            	<a href="http://www.twitter.com/worldbank"><img src="/assets/img/icon_twitter.png" alt="twitter" width="16" height="16" /></a>
+            </div><!--#socialLinks//-->
+            <div class="navigation clearfix main">
+                <div class="bgRedHome"><a class="network-home" href="http://www.worldbank.org">The World Bank</a></div>
+                <ul class="links network-links"><li class="about first"><a href="http://www.worldbank.org/about">About<span class="point"></span></a></li>
+                    <li class="data"><a href="http://data.worldbank.org/">Data<span class="point"></span></a></li>
+                    <li class="research"><a href="http://econ.worldbank.org">Research<span class="point"></span></a></li>
+                    <li class="learning"><a href="http://www.worldbank.org/wbi">Learning<span class="point"></span></a></li>
+                    <li class="news"><a href="http://www.worldbank.org/news">News<span class="point"></span></a></li>
+                    <li class="projects"><a class="active" href="http://www.worldbank.org/projects">Projects &amp; Operations<span class="point"></span></a></li>
+                    <li class="publications last"><a href="http://www.worldbank.org/reference">Publications<span class="point"></span></a></li>
+                </ul>
+                <ul class="links network-special-links">
+                    <li class="countries first"><a href="http://www.worldbank.org/countries">Countries<span class="point"></span></a></li>
+                    <li class="topics last"><a href="http://www.worldbank.org/topics">Topics<span class="point"></span></a></li>
+                </ul>
+            </div><!--.navigation//-->
+            <div id="local" class="clearfix">
+            	<div class="site-name"><a class="active" href="<%= PLATFORM_API_URL %>">Mapping for Results</a></div>
+            </div>
+        </div><!--#header//-->
+        <div id="main-wrap">
+          <%= partial :share %>
+    	<div class="main clearfix" id="main-map">
+        	<div id="map-content-header">
+      <div class="worldmenuholder">
+      	<a class="mag-glass" href="#"></a>
+        <ul class="worldmenu">
+          <li class="first"><a href="javascript:return false;"><%= @page[:name].upcase %></a>
+          </li>
+        </ul>
+        <%= partial :summary %>
+      </div>
+      </div>
+      <div id="map-area">
+      <div id="map-content-hdr2">
+        <%= partial :layer_controls %>
+        <%= partial :sector_controls %>
+      </div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+  </div>
+        <%= partial :projects_table if @page.page_type == "country" %>
+        </div><!--#main-map//-->
+        </div><!--#main-wrap//-->
+        <%= partial :sidebar %>
+        </div><!--#main-wrap//-->
+        <%= partial :footer %>
+
+        <%= partial :initialize unless @page.new? %>
+        <% unless @page.page_type == "project" %>
+        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
+        <% end %>
+
+    </div><!--#container//-->
+</body>
+</html>

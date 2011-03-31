@@ -1,4 +1,17 @@
-<div id="layerinfo">
+          <ul class="map-options dropmenu <%= 'inactive' if @page[:name] == "World" || (@region == @page) %>">
+            <li><span>BASE MAP:</span></li>
+            <li>
+              <a href="#" id="layercontrol_indicators" class="arwOrange" onclick="wb.setIndicator(); return false">INDICATORS</a>
+              <ul class="dropmenu_options">
+                <% (@page.data[:indicators] || []).each do |indicator| %>
+                <li><a href="#" onclick="wb.setIndicator('<%= indicator %>'); return false"><%= indicator %></a></li>
+                <% end %>
+              </ul>
+            </li>
+           
+          </ul>  
+          
+<!-- <div id="layerinfo">
   <ul>
     <li class="">
     <% unless %w{world region}.include?(@page.page_type) %>Choose the indicator data and portfolio projects below to investigate mapping for results:<% else %>
@@ -58,4 +71,4 @@
       <% end %>
     </li>
   </ul>
-</div>
+</div> -->

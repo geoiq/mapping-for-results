@@ -1,39 +1,27 @@
-    <% unless @page.nil? %><div id="footnote">Current active projects as of <%= (@page.sync_updated_at || Time.now).strftime("%B %e, %Y") %>.</div><% end %>
-    <!--Red Footer Begins-->
-    <div id="network-breadcrumb">
-      <div class="limiter"> <span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span>
-        <span class="breadcrumb-link breadcrumb-first"><a href="<%= PLATFORM_API_URL %>">Map</a></span>
-        <%= map_link(@page) unless @page.nil? %>
+        <br class="clear" />
+        <% unless @page.nil? %><div id="footnote">Current active projects as of <%= (@page.sync_updated_at || Time.now).strftime("%B %e, %Y") %>.</div><% end %>
+        <div id="network-breadcrumb"><div class="limiter clear-block">
+    	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
+    	<span class="breadcrumb-link breadcrumb-first"><a href="<%= PLATFORM_API_URL %>">Map</a></span>
+        <%= map_link(@page) unless @page.nil? %>   
         </div>
-    </div>
-    <!--Grey Footer Begins-->
-    <div id="network-footer">
-      <div class="limiter"> <a class="network-name" href="http://www.worldbank.org">The World Bank</a>
+        </div>
+        <div id="network-footer">
+      <div class="limiter"> <a href="http://www.worldbank.org" class="network-name">The World Bank</a>
         <div class="network-footer-nav">
           <ul class="links network-footer-links">
-            <li ><a href="http://www.worldbank.org/sitemap">Site Map</a></li>
-            <li ><a href="http://www.worldbank.org/siteindex">Index</a></li>
+            <li><a href="http://www.worldbank.org/sitemap">Site Map</a></li>
+            <li><a href="http://www.worldbank.org/siteindex">Index</a></li>
             <li><a href="http://www.worldbank.org/help">FAQs</a></li>
-            <li ><a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/0,,contentMDK:20041066~menuPK:34582~pagePK:43912~piPK:44037~theSitePK:29708,00.html">Contact Us</a></li>
-            <li ><a href="http://www.worldbank.org/search.htm">Search</a></li>
+            <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/0,,contentMDK:20041066~menuPK:34582~pagePK:43912~piPK:44037~theSitePK:29708,00.html">Contact Us</a></li>
+            <li><a href="http://www.worldbank.org/search.htm">Search</a></li>
             <li><a href="http://developer.worldbank.org">API</a></li>
             <li class="rss last"><a href="http://www.worldbank.org/rss">RSS</a></li>
           </ul>
-          <div class="network-footer-legal"> &copy; 2011 <a href="http://www.worldbankgroup.org">The World Bank Group</a>, All Rights Reserved. <a href="http://web.worldbank.org/WBSITE/EXTERNAL/0,,contentMDK:20146401~pagePK:50016803~piPK:50016805~theSitePK:13,00.html">Legal</a>.</div>
+          <div class="network-footer-legal"> &copy; 2010 <a href="http://www.worldbankgroup.org">The World Bank Group</a>, All Rights Reserved. <a href="http://web.worldbank.org/WBSITE/EXTERNAL/0,,contentMDK:20146401~pagePK:50016803~piPK:50016805~theSitePK:13,00.html">Legal</a>.</div>
         </div>
-        <div class="network-footer-hotline"> <a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/ORGANIZATION/ORGUNITS/EXTDOII/0,,contentMDK:20659616~menuPK:1702202~pagePK:64168445~piPK:64168309~theSitePK:588921,00.html">Fraud &amp; Corruption Hotline</a><br />
+        <div class="network-footer-hotline"> <a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/ORGANIZATION/ORGUNITS/EXTDOII/0,,contentMDK:20659616~menuPK:1702202~pagePK:64168445~piPK:64168309~theSitePK:588921,00.html">Fraud &amp; Corruption Hotline</a><br>
           <a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/ORGANIZATION/ORGUNITS/EXTDOII/0,,contentMDK:20659616~menuPK:1702202~pagePK:64168445~piPK:64168309~theSitePK:588921,00.html">1-800-831-0463</a></div>
       </div>
     </div>
-    <!--Grey Footer Ends-->
-  </div>
-  <!-- /#footer -->
-  <div id="share-pane">
-    <span class="close">Close</span>
-    <ul class="links">
-      <% link = "http%3A%2F%2Fmaps.worldbank.org%2F#{[params[:region] || nil, @page.nil? ? nil : (@page[:name] || "").downcase].compact.join("%2F")}" %>
-      <li class="twitter first"><a href="http://twitter.com/?status=World+Bank+Maps+<%= link %>"  target="_new">Twitter</a></li>
-      <li class="facebook"><a href="http://facebook.com/share.php?u=<%= link %>" target="_new">Facebook</a></li>
-      <li class="email last"><a href="mailto:?Subject=World%20Bank%20Maps&Body=World%20Bank%20Maps%20%28<%= link %>">E-Mail</a></li>
-    </ul>
-  </div>
+    <br class="clear" />

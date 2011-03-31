@@ -133,7 +133,7 @@ class MappingForResults < Sinatra::Base
       @region = Page.first(:name => params[:page][:region])
       @page.parent = @region    
       @page.save
-      cache_expire(@page.url)
+      # cache_expire(@page.url)
       redirect "/admin/#{@page.shortname}/edit"    
   end
 
@@ -178,7 +178,7 @@ class MappingForResults < Sinatra::Base
       
       if(params[:full].to_i == 1)
         # cache(erb :country)
-        erb :country
+        erb :full, :layout => false
       else
         erb :index
       end

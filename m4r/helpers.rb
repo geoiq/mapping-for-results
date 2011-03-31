@@ -41,7 +41,7 @@ module Sinatra
         # return "$#{value} million"
       when /mjsector1/
         # return "'#{value.match(/([\w]{2})\!\$\!(.*)/)[2].gsub(/\b\w/){$&.upcase}.gsub(/And/,'and')}'"
-        return "'#{value["Name"].strip}'"
+        return "'#{(value["Name"] || "").strip}'"
       when /sector_code/
         return "'#{value["Code"]}'"
       else

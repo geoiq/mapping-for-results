@@ -1,0 +1,51 @@
+<div class="rightCol clearfix" id="rightCol">
+  <div id="rightHdr"><a class="mag-glass" href="#"></a></div>
+  <div id="rightInfo" class="clearfix">
+    <h3 class="clearfix"><span class="rightHdr">ACTIVE PORTFOLIO BY SECTOR</span> <a class="arwOrange" style="display:none" href="javascript: return false;">BY SECTOR</a></h3>
+    <span id="chart-left-stat">                
+      <h4 id="sector_funding_total" class="bigNumber"></h4>
+      <h2 id="sector_funding_description" style="display: none"></h2>
+    </span>
+    <div id="chart-left-pie-chart"></div>
+    <br class="clear" />
+    <span id="chart-left-pie-chart-description" class="chart_about">Financing as a percentage of country and sector financing.</span>
+    
+    <div style="display:none">
+    <div id="chart-right-stat-subtitle">
+      <h4 id="funding_total" class="txtRed txtGeorgia"></h4>
+    </div>
+    <div id="chart-right-stat">                
+      <h4 id="sector_funding_total" class="txtRed txtGeorgia"></h4>
+    </div>
+    <div id="chart-right-graph"></div>
+    <br class="clear" />
+    <div id="chart-right-graph-description" class="chart_about"><%= @page[:name] == "World" ? "Financing by each Region across all Sectors" : "Financing by each Product Line across all Projects." %></div>
+  </div>        
+
+    <a class="moreData" href="http://data.worldbank.org/country/<%= @page[:shortname] %>" title="more data">MORE DATA</a>
+    <br class="clear" />
+  </div>
+  <div id="rightDesc">
+      <% if @page.data.include?(:results) && @page.data[:results].length > 0 %>
+      <h3><%= @page[:name].upcase %> RESULTS</h3>
+      <ul class="disc">
+        <% @page.data[:results].each do |result| %>
+        <% result.symbolize_keys! %>
+        <li><a href="<%= result[:link] %>" target="_new"><%= result[:name] %></a></li>
+        <% end %>
+      </ul>
+      <% end %>    
+    <p class="desc">
+      <a class="txtRed" href="#">See All Results for <%= @page[:name] %> &raquo;</a>
+    </p>
+    <h3>MAPPING &amp; <%= @page[:name].upcase %></h3>
+      <% if !@page.overview.nil? && @page.overview.length != 0 %>
+      <%= @page.overview %>
+      <% else %>
+      <p>The <strong>Mapping for Results Platform</strong> (<em>beta version</em>) provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <a class="readmore" href="/about">Read More »</a></p>
+      <% end %>
+    <!-- <p class="desc">
+      Learn more about the World Bank's overall strategy in the <a href="#" class="txtRed"><%= @page[:name].upcase %> Country Overview &raquo;</a>
+    </p> -->
+  </div>
+</div>
