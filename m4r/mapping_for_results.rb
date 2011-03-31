@@ -176,6 +176,7 @@ class MappingForResults < Sinatra::Base
       @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
       @projects = @page.data[:projects]
       
+      @page_subtitle = [@page[:name],@page[:region]].compact.join(", ") + " > "
       erb :full, :layout => false
 
     end
