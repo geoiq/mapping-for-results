@@ -199,3 +199,34 @@ color:#000; text-align:left; padding-left:18px; margin-top:10px; margin-left:-10
 .load_link {display :none;}
 #map-title{ font-size: 0.9em;}
 #locations_list .inactive {opacity: 0.5;}
+
+#map-summary{
+/*  font-size: 30px;*/
+	padding: 8px 0;
+	margin-top: 0px;
+	float:left;
+}
+.ie7 #map-summary{
+	margin: -5px 0 7px 0;	
+}
+#map-summary .smallHdr{
+	color: #666;
+	font-size: 16px;
+}
+.txtGeorgia{
+	font-family: Georgia, "Times New Roman", Times, serif;	
+}
+.txtRed, a.txtRed, a .txtRed{
+	color: #900;
+}
+.bgRed{
+	color: #fff;
+	background: #900;	
+}
+.bigNumber {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    color: #970001;
+    font-weight: bold;
+    margin-top: 16px;
+}

@@ -176,12 +176,8 @@ class MappingForResults < Sinatra::Base
       @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
       @projects = @page.data[:projects]
       
-      if(params[:full].to_i == 1)
-        # cache(erb :country)
-        erb :full, :layout => false
-      else
-        erb :index
-      end
+      erb :full, :layout => false
+
     end
   end
 
