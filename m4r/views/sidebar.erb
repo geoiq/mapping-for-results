@@ -31,13 +31,13 @@
       <ul class="disc">
         <% @page.data[:results].each do |result| %>
         <% result.symbolize_keys! %>
-        <li><a href="<%= result[:link] %>" target="_new"><%= result[:name] %></a></li>
+        <li><a href="<%= result[:link] %>" target="_new"><%= result[:name] %> &raquo;</a></li>
         <% end %>
       </ul>
       <% end %>    
-    <p class="desc">
+    <!-- <p class="desc">
       <a class="txtRed" href="#">See All Results for <%= @page[:name] %> &raquo;</a>
-    </p>
+    </p> -->
     <h3>MAPPING &amp; <%= @page[:name].upcase %></h3>
       <% if !@page.overview.nil? && @page.overview.length != 0 %>
       <%= @page.overview %>

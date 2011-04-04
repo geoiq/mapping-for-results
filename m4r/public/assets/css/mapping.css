@@ -16,7 +16,7 @@ body{
 	padding: 0 10px 10px;
 }
 div{position: relative;}
-a{
+a, a:visited{
 	color: #989A94;
 	text-decoration: none;
 }
