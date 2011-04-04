@@ -4,7 +4,7 @@
           <li class="first"><a href="javascript:return false;" ><%= @page[:name].upcase %> <%= (@page[:name] == "World" || !@region.nil?) ? ' / <span id="map-title">Overview</span>' : '/ <span id="map-title">Projects by Poverty</span>' %></a>
             <ul>
               <% if @page[:name] == "World"   %>
-              <% @page.children.each do |region_attr| %>
+              <% Page.all(:page_type => "region").each do |region_attr| %>
               <li><a href="#" onclick="return wb.setLocation('<%= region_attr[:name] %>',<%= region_attr[:lat] %>,<%= region_attr[:lon] %>,<%= region_attr[:zoom] %>)"><%= region_attr[:name] %></a></li>
               <% end unless @page.children.nil? %>
               <% else %>

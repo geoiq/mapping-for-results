@@ -33,7 +33,7 @@ class Page
   property :sync_updated_at, DateTime
   
   def url(options = {})
-    return "/#{self.shortname}" if self.parent.nil?
+    return "#{self.shortname}" if self.parent.nil?
     link = ""
     page = self
     while(page.parent != nil)
