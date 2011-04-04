@@ -1,5 +1,6 @@
   <div id="share">
   	<ul class="dropmenu">
+  	    <% if %w{country}.include?(@page.page_type) %>
           <li class="download"><a title="download" href="#" id="download_data"><span></span>DOWNLOAD</a>     
               <ul class="dropmenu_options">
                 <li><a href="#" id="project_locations_csv">Project Locations (csv)</a></li>
@@ -15,5 +16,6 @@
                 <li><a href="#" id="">Embed the Map</a></li>
               </ul>
           </li>
+          <% end %>
       </ul>
   </div>

@@ -13,9 +13,9 @@
                 <div class="overview-links">
                   <p>Mapping Overview »</p>
                   <ul>
-                    <li><a href="/about#Context">Context</a></li>
-                    <li><a href="/about#Partners">Partners</a></li>
-                    <li><a href="/about#Feedback">Feedback</a></li>
+                    <% Page.first(:shortname => "about").children.each do |child| %>
+                    <li><a href="<%= child.url %>"><%= child.name %></a></li>
+                    <% end %>
                   </ul>
                 </div>
                 <div class="overview-text">
