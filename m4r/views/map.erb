@@ -1,6 +1,25 @@
 var proxy_host = "<%= PLATFORM_API_URL %>";	   
 var project_attributes = ["id","project_name","totalamt","prodlinetext","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 
+
+startList = function() {
+if (document.all&&document.getElementById) {
+navRoot = document.getElementById("navmenu");
+for (i=0; i<navRoot.childNodes.length; i++) {
+node = navRoot.childNodes[i];
+if (node.nodeName=="LI") {
+node.onmouseover=function() {
+this.className+=" over";
+  }
+  node.onmouseout=function() {
+  this.className=this.className.replace(" over", "");
+   }
+   }
+  }
+ }
+}
+window.onload=startList;
+
 if(typeof(F1)=='undefined') {F1 = {};}
 (function(){
 	
@@ -688,7 +707,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  });
   }
 	  if(self.stylelayers["Project Locations"] != undefined)
-		jq('#download_data').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
+		jq('#project_locations_csv').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
+	  if(self.stylelayers["Project Counts"] != undefined)
+		jq('#project_counts_csv').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Project Counts"].source.replace("finder:","")  + ".csv")
+	  if(self.stylelayers["Maternal Health"] != undefined)
+		jq('#indicators_shp').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Maternal Health"].source.replace("finder:","")  + ".shp")
+	  if(self.stylelayers["Population"] != undefined)
+		jq('#population_csv').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Population"].source.replace("finder:","")  + ".csv")
 	   return false;
 	},
 	styleMap: function() {

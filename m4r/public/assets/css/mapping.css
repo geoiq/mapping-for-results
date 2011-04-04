@@ -245,63 +245,17 @@ ul.links li, ul.links li a{
 }
 #share {
     float: right;
-	margin: 0;
-	padding: 0;
-	width: 100%;
+    margin: 0;
+    padding: 0;
 }
+
 #share ul {
     float: right;
     list-style: none outside none;
     margin: 0 0 10px 0;
     padding: 0;
-	width: 100%;
 }
-#share ul li {
-	color: #c8c8c8;
-    float: right;
-	height: 22px;
-	line-height: 22px;
-	margin: 0;
-}
-#share ul li a{
-	float: right;
-	height: 13px;
-	padding: 0 8px;
-	position: relative;
-	width: 13px;
-}
-#share li.print a{
-	background: url('img/sprite2.png') no-repeat 4px -329px;
-	top: 3px;
-}
-#share li.email a{
-	background: url('img/sprite2.png') no-repeat 4px -267px;
-	top: 3px;
-}
-#share li.share a span{
-	background: url('img/share_closed.png') no-repeat 0 0;
-	float: left;
-	height: 13px;
-	margin-right: 6px;
-	position: relative;
-	top: 3px;
-	width: 13px;
-}
-#share li.share a{
-	font-size: 11px;
-	text-transform: uppercase;
-	top: 1px;
-	width: 58px;
-}
-#share li.facebook a{
-	background: url('img/fb_like.png') no-repeat 0 0;
-	height: 18px;
-	top: 1px;
-	width: 47px;
-}
-.ie7 #share .facebook{
-	width: 61px;	
-}
+
 #main-map{
 	padding-right: 390px;
 	z-index: 1;	
@@ -614,6 +568,14 @@ ul.links li, ul.links li a{
 	zoom: 1;
 }
 .menu-regions{
+	background: #d9dccf;
+	font-size: 12px;
+	padding: 5px 0;
+	position: absolute;
+/*  top: 47px;*/
+	width: 210px;
+	z-index: 20;
+	zoom: 1;    
 	margin: 3px 0;
 	z-index: 21;
 	zoom: 1;
@@ -1056,17 +1018,19 @@ tr.row_even td{
     padding:5px;
     color: #000;width:116px;
 }
+map-options.dropmenu li a {
+    background-color: #97382A;
+/*    border: #5F2017 solid 1px;    */
+}
 .dropmenu li a {
     display: block;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     font-weight: bold;
     color: white;
-    background-color: #97382A;
     text-decoration: none;
     /*background-image: url(../images/btn-dropmenu.gif);*/
     background-repeat: no-repeat;
-    border: #5F2017 solid 1px;
     text-transform: uppercase;
 }	
 .dropmenu li {
@@ -1076,5 +1040,27 @@ tr.row_even td{
 .dropmenu li li a:hover, .worldmenu li li a:hover {
     background-color: #d9dccf; }
 .dropmenu li ul.dropmenu_options {
-    margin-top: 20px;
+/*    margin-top: 20px;*/
+    z-index:10;
 }
+
+#download_data, #share_options {
+    -moz-border-radius: 2px 2px 2px 2px;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #DDDDDD;
+    color: #989A94;
+    cursor: pointer;
+    display: block;
+    font-size: 10px;
+    line-height: 18px;
+    padding: 0 4px 0 0;
+}
+#share ul li a#download_data {background:#fff url("img/sprite2.png") 0px -20px no-repeat;padding-left:19px;}
+#share a#share_options {background: url("img/sprite2.png") no-repeat scroll 0 -61px #FFFFFF;padding-left: 19px;}
+.download{ margin-right: 5px;float:right;}
+#share .simpleshare_link a {
+    background: url("img/sprite2.png") no-repeat scroll 0 -61px #FFFFFF;
+    padding-left: 19px;
+}
+.dropmenu_options a:hover {color:#aa2222}
+

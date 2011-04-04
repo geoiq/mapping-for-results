@@ -2,6 +2,7 @@
 
 require 'helpers'
 require 'models/page'
+require 'sinatra/sessionauth'
 require 'lib/m4r_extensions.rb'
   
 PLATFORM_API_URL  = "http://maps.worldbank.org"
@@ -16,9 +17,12 @@ include WorldBank
 # require 'sinatra/cache'
 
 class MappingForResults < Sinatra::Base
+  register(Sinatra::SessionAuth)
   # register(Sinatra::Cache)
   # set :cache_enabled, true  # turn it on 
   # set :cache_output_dir, "/Users/ajturner/Projects/fortiusone/customers/WorldBank/wb-new/m4r/cache"
+    
+  set :sessions, true
     
   helpers Sinatra::PartialHelper, Sinatra::MappingHelper
   
@@ -91,6 +95,11 @@ class MappingForResults < Sinatra::Base
   # Admin
   # 
 
+  # before '/admin|/admin/*' do 
+  #     pass unless !authorized?
+  #     halt "<a href='/login'>Please Login</a>"
+  # end
+  
   get '/admin' do
       @pages = Page.all(:parent => nil)
       @page = Page.new

@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title><%= @page_subtitle %>The World Bank - Mapping for Results</title>
+    <title><%= @page_title = @page_subtitle + 'The World Bank - Mapping for Results' %></title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,14 +70,27 @@
           <%= partial :share %>
     	<div class="main clearfix" id="main-map">
         	<div id="map-content-header">
-      <div class="worldmenuholder">
-      	<a class="mag-glass" href="#"></a>
-        <ul class="worldmenu">
-          <li class="first"><a href="javascript:return false;"><%= @page[:name].upcase %></a>
-          </li>
-        </ul>
-        <%= partial :summary %>
-      </div>
+            <div class="worldmenuholder">
+            	<a class="mag-glass" href="#"></a>
+              <ul class="worldmenu">
+                <li class="first"><a href="javascript:return false;"><%= @page[:name].upcase %></a>
+                <div class="menu-world-options">
+                  <ul class="menu-regions2" id="navmenu" style="display:none">
+                <li class="first"><a href="/">World</a></li>
+                <% Page.all(:page_type => "region").each do |region_page|  %>
+                <li class="<%= region_page[:shortname] == @page.parent[:shortname] ? 'active' : '' %>"><a href="<%= region_page.url %>"><%= region_page.name %></a>
+                  <ul>
+                    <% region_page.children.each do |country_page| %>
+                    <li><a href="<%= country_page.url %>"><%= country_page.name %></a></li>
+                    <% end %>
+                  </ul>
+                  </li>
+                <% end %> 
+                </ul></div>
+                </li>
+              </ul>
+              <%= partial :summary %>
+            </div>
       </div>
       <div id="map-area">
       <div id="map-content-hdr2">

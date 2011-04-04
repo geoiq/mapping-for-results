@@ -1,7 +1,19 @@
   <div id="share">
-  	<ul>
-          <li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="http://worldbank.org" data-related="worldbank">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></li>
-          <!-- <li class="facebook"><a href="#" title="Facebook"></a></li> -->
-          <li class="share"><a title="share" href="#"><span></span>SHARE</a></li>
+  	<ul class="dropmenu">
+          <li class="download"><a title="download" href="#" id="download_data"><span></span>DOWNLOAD</a>     
+              <ul class="dropmenu_options">
+                <li><a href="#" id="project_locations_csv">Project Locations (csv)</a></li>
+                <li><a href="#" id="project_counts_csv">Project Counts (csv)</a></li>
+                <li><a href="#" id="indicators">Indicators (shp)</a></li>
+                <li><a href="#" id="population_csv">Population (csv)</a></li>
+              </ul>
+           </li>     
+          <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
+              <ul class="dropmenu_options">
+                <li><a href="http://twitter.com/home?status=@page_title+<%= PLATFORM_API_URL + request.env["REQUEST_URI"] %>" target="_new" id="">Twitter</a></li>
+                <li><a href="#" id="">Facebook</a></li>
+                <li><a href="#" id="">Embed the Map</a></li>
+              </ul>
+          </li>
       </ul>
   </div>
