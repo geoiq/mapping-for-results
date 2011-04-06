@@ -73,7 +73,8 @@ module Sinatra
           html << %Q{[#{page.data[:projects].length} projects from #{page.sync_updated_at.strftime("%m-%d-%Y")}] }
         end
       
-        html << %Q{(<a href="/admin/#{page.shortname}/edit">edit</a> -- <a href="/admin/#{page.shortname}/sync">sync with project API</a>)}
+        html << %Q{<a href="/admin/#{page.shortname}/edit">edit</a>}
+        html << %Q{<a href="/admin/#{page.shortname}/sync">sync with project API</a>} unless page.page_type == "page"
         if((children = page.children).length > 0)
             html << "<ul>"
             children.each do |child|
