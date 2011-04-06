@@ -176,6 +176,13 @@ class MappingForResults < Sinatra::Base
     erb :charts, :layout => :embed
   end
 
+  get '/about/:page' do
+    # @region = MAPS[:world][:regions][params[:region].to_sym]
+    @page = Page.first(:shortname => params[:page].downcase)
+    erb :about
+  end
+
+
   get '/:region/:country' do
     # @region = MAPS[:world][:regions][params[:region].to_sym]
     @region = Page.first(:shortname => params[:region].downcase)
