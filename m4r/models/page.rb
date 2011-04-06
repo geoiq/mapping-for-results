@@ -67,9 +67,10 @@ class Page
         @financing = WorldBank.calculate_financing(@projects["projects"], "countryname")
         self.data[:financing] = @financing
     when "country"
-        @projects = {"projects" => WorldBank.get_project_data(self)}
-        self.projects_count = @projects["projects"].length
+        @projects = WorldBank.get_project_data(self)
+        self.projects_count = @projects["total"]
     end
+    @projects["total"] = WorldBank.filter_projects_count(@projects["projects"])
     data = self.data.merge(:projects => @projects["projects"])
     self.data = {}
     self.data = data
@@ -82,5 +83,6 @@ end
 
 # DataMapper.finalize
 # DataMapper.auto_migrate! # destructively clears the db
-# DataMapper.auto_upgrade! # just update, but don't clear the db
+DataMapper.auto_upgrade! # just update, but don't clear the db
+DataMapper::Property::String.length(255)
 DataMapper::Model.raise_on_save_failure = true

@@ -15,7 +15,7 @@ label:after { content: ": " }
 <p style="">
 <a href="/admin">« Back to Admin Console</a>
 <% unless @page.shortname.nil? || @page.shortname.length == 0 %>
- -or- <a href="<%= link_to_page(@page) %>">Open Page</a>  
+ -or- <a href="<%= @page.url %>">Open Page</a>  
 <% end %>
 </p>
 <form action="/admin/<%= @page.id || "new" %>/update" method="post" accept-charset="utf-8">
@@ -29,7 +29,7 @@ label:after { content: ": " }
 
   <label for="name">Name</label><input type="text" name="page[name]" value="<%= @page.name %>" id="page[name]"><br />
   <label for="shortname">Short Name</label><input type="text" name="page[shortname]" value="<%= @page.shortname %>" id="page[shortname]"><br />
-  <label for="map">Map ID</label><input type="text" name="page[map]" value="<%= @page.map %>" id="map"> <a href="/maps/<%= @page.map %>">open in GeoIQ</a><br />  
+  <label for="map">Map ID</label><input type="text" name="page[map]" value="<%= @page.map %>" id="map"> <a href="<%= PLATFORM_API_URL %>/maps/<%= @page.map %>">open in GeoIQ</a><br />  
   <label for="isocode">ISO Code</label><input type="text" name="page[isocode]" value="<%= @page.isocode %>" id="isocode"><br />
   <label for="region">Region</label>
   <%= region_select(@page) %><br />

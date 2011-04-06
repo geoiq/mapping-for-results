@@ -1,11 +1,11 @@
     <div id="container">
       <div id="banner">
-        <h1 id="banner-header" title="Click to hide the overview information">
+        <a href="/"><h1 id="banner-header" title="Click to hide the overview information">
           <span>Mapping for Results</span>
           <div class="collapsible-header <%= (@page.nil? || @page[:name] == 'World' || @page[:name] == "Haiti") ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>
-        </h1>
+        </h1></a>
         <div id="banner-content">
           <div class="collapsible-content" id="collapsible-banner" style="<%= (@page.nil? || @page[:name] == 'World' || @page[:name] == "Haiti") ? '': 'display:none'%>">
             <div id="block-nodeasblock-3273" class="block block-nodeasblock ">
@@ -13,9 +13,10 @@
                 <div class="overview-links">
                   <p>Mapping Overview »</p>
                   <ul>
-                    <% Page.first(:shortname => "about").children.each do |child| %>
-                    <li><a href="<%= child.url %>"><%= child.name %></a></li>
-                    <% end %>
+                    <li><a href="/about/context">Context</a></li>
+                    <li><a href="/about/partners">Methodology</a></li>
+                    <li><a href="/about/partners">Data Sources</a></li>
+                    <li><a href="/about/partners">Partners</a></li>
                   </ul>
                 </div>
                 <div class="overview-text">

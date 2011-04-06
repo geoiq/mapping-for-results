@@ -1,5 +1,5 @@
         <br class="clear" />
-        <% unless @page.nil? %><div id="footnote">Current active projects as of <%= (@page.sync_updated_at || Time.now).strftime("%B %e, %Y") %>.</div><% end %>
+        <% if !@page.nil? && %w{world region country}.include?(@page.page_type) %><div id="footnote">Current active projects as of <%= (@page.sync_updated_at || Time.now).strftime("%B %e, %Y") %>.</div><% end %>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="<%= PLATFORM_API_URL %>">Map</a></span>

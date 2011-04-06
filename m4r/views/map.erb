@@ -422,7 +422,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  
 		  if(self.projects[attr["id"]] == null) { // first time we've seen this project ID
 			var project = {};
-
+			
+			// Filter project
+            // only count those with supplementprojectflg: "N"
+            // recipient executed activities, count those with commitment amount is >=$5mUSD
+            
 			// Get the project level attributes
 			for(var i = 0;i<project_attributes.length;i++) {
 			  // if(project_attributes[i] != "activity count")
@@ -706,14 +710,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  // we'll set the title & subtitle later
 	  });
   }
-	  if(self.stylelayers["Project Locations"] != undefined)
-		jq('#project_locations_csv').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Project Locations"].source.replace("finder:","")  + ".csv")
+	  if(self.stylelayers["Project Locations"] != undefined) {
+		jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Locations'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
 	  if(self.stylelayers["Project Counts"] != undefined)
-		jq('#project_counts_csv').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Project Counts"].source.replace("finder:","")  + ".csv")
-	  if(self.stylelayers["Malnutrition"] != undefined)
-		jq('#indicators_shp').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Maternal Health"].source.replace("finder:","")  + ".shp")
+		jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Counts'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
+	  if(self.stylelayers["Indicators"] != undefined)
+		jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Indicators'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
 	  if(self.stylelayers["Population"] != undefined)
-		jq('#population_csv').attr('href','<%= PLATFORM_API_URL %>/datasets/' + self.stylelayers["Population"].source.replace("finder:","")  + ".csv")
+		jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Population'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
 	   return false;
 	},
 	styleMap: function() {

@@ -1,7 +1,7 @@
     <div id="map-content-header">
       <div class="worldmenuholder">
         <ul class="worldmenu">
-          <li class="first"><a href="javascript:return false;" ><%= @page[:name].upcase %> <%= (@page[:name] == "World" || !@region.nil?) ? ' / <span id="map-title">Overview</span>' : '/ <span id="map-title">Projects by Poverty</span>' %></a>
+          <li class="first"><a href="javascript:return false;" style="<%= @page[:name].length > 26 ? 'padding-top: 6px' : ''%>"><%= @page[:name].upcase %></a>
             <ul>
               <% if @page[:name] == "World"   %>
               <% Page.all(:page_type => "region").each do |region_attr| %>

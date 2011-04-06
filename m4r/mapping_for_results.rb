@@ -186,8 +186,14 @@ class MappingForResults < Sinatra::Base
       @projects = @page.data[:projects]
       
       @page_subtitle = [@page[:name],@page[:region]].compact.join(", ") + " > "
-      erb :full, :layout => false
-
+      
+      if(@page.page_type == "country")
+        erb :full, :layout => false
+      elsif(@page.page_type == "page")
+        erb :about
+      else
+        erb :index
+      end
     end
   end
 

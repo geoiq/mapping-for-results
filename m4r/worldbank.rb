@@ -7,7 +7,7 @@
 %w{ rubygems yajl yajl/gzip yajl/deflate yajl/http_stream faster_csv  }.each {|gem| require gem}
 module WorldBank
 
-  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent,prodlinetext,productlinetype&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
 
   PROJECT_FIELDS = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent","prodlinetext"]
   SECTORS = {
@@ -74,10 +74,13 @@ module WorldBank
   def self.get_project_data(country)
     url = URI.parse(WB_PROJECTS_API + "&geocode=&countrycode[]=" + country.isocode)
     puts "Fetching: #{url}"
-    projects_data = Yajl::HttpStream.get(url)
+    projects_data = {}
+    data = Yajl::HttpStream.get(url)
+    projects_data["projects"] = data["projects"]
     # projects_data = Yajl::Parser.parse(open("#{country[:isocode]}.json").read)
-
-    return projects_data["projects"]
+    projects_data["total"] = projects_data["projects"].length
+    
+    return projects_data
   end
   
   def self.get_region_data(region)
@@ -114,6 +117,8 @@ module WorldBank
         # some projects are financed through loans, some are grants.
         amount = project["totalamt"].to_i
         amount = project["grantamt"].to_i if(amount == 0)
+        # Special filter from Johannes Kiess on April 4, 2011 for filtering only 'large' RE projects
+        next if project["prodlinetext"] == "Recipient Executed Activities" && amount < 5_000_000
         
         name = project["prodlinetext"]
         calculations[:productline][name] = 0 unless calculations[:productline].include?(name)
@@ -129,5 +134,16 @@ module WorldBank
         calculations[:regions][project[regionname]] += amount
     end
     calculations
+  end
+  
+  
+  # Filters out projects that shouldn't be counted as part of the overall total count of projects
+  def self.filter_projects_count(projects)
+    total = 0
+    projects.each do |i,p|
+      total += 1 if p["supplementprojectflg"].downcase == "n"
+    end
+    
+    total
   end
 end
