@@ -35,10 +35,15 @@ label:after { content: ": " }
 
   <label for="name">Name</label><input type="text" name="page[name]" value="<%= @page.name %>" id="page[name]"><br />
   <label for="shortname">Short Name</label><input type="text" name="page[shortname]" value="<%= @page.shortname %>" id="page[shortname]"><br />
+  <label for="region">Parent</label>
+  <%= region_select(@page) %><br />
+  
+  </fieldset>
+  <fieldset>
+    <legend>Map Configuration (for regions, countries, and projects)</legend>
+  
   <label for="map">Map ID</label><input type="text" name="page[map]" value="<%= @page.map %>" id="map"> <a href="<%= PLATFORM_API_URL %>/maps/<%= @page.map %>">open in GeoIQ</a><br />  
   <label for="isocode">ISO Code</label><input type="text" name="page[isocode]" value="<%= @page.isocode %>" id="isocode"><br />
-  <label for="region">Region</label>
-  <%= region_select(@page) %><br />
   <label for="page[locations_count]"># of Locations</label><input type="text" name="page[locations_count]" value="<%= @page.locations_count %>" id="locations_count"><br />  
 </fieldset>
   

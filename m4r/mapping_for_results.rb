@@ -163,13 +163,26 @@ class MappingForResults < Sinatra::Base
   # Pages
   # 
 
+  
+  get '/:page' do
+    @page = Page.first(:shortname => params[:page].downcase)
+    pass if @page.nil?
+    erb :about
+  end
+  
+  get '/about/:page' do
+    @page = Page.first(:shortname => params[:page].downcase)
+    erb :about
+  end
+
+
   get '/:region' do
     @region = @page = Page.first(:shortname => params[:region].downcase)
     pass if @region.nil?
     if(@page.nil?)
       erb :about
     elsif(@page.page_type == "page")
-      erb :wiki
+      erb :about
     else
       @projects = @page.data[:projects]
       @financing  = @page.data[:financing]
@@ -188,18 +201,6 @@ class MappingForResults < Sinatra::Base
   
     erb :charts, :layout => :embed
   end
-  
-  get '/:page' do
-    @page = Page.first(:shortname => params[:page].downcase)
-    pass if @page.nil?
-    erb :about
-  end
-  
-  get '/about/:page' do
-    @page = Page.first(:shortname => params[:page].downcase)
-    erb :about
-  end
-
 
   get '/:region/:country' do
     # @region = MAPS[:world][:regions][params[:region].to_sym]

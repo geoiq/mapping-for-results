@@ -41,16 +41,6 @@ class Page
       page = page.parent
     end
     link
-    # link = case self.page_type 
-    # when "region"
-    #   "/#{page.shortname}"
-    # when "country" 
-    #   "/#{page.parent.shortname}/#{page.shortname}"
-    # when "project" 
-    #   "/#{page.parent.parent.shortname}/#{page.parent.shortname}/#{page.shortname}"
-    # else
-    #   "/#{page.shortname}"
-    # end        
   end
   
   def update_data!
