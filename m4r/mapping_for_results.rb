@@ -111,12 +111,24 @@ class MappingForResults < Sinatra::Base
       erb :edit
   end
 
+  delete '/admin/:id' do
+      @page = Page.get(params[:id])
+      @page.destroy unless @page.nil?
+      redirect "/admin"
+  end
+
   get '/admin/new' do
       # @region = MAPS[:world][:regions][params[:region].to_sym]
       @page = Page.new
       erb :edit
   end
 
+  get '/admin/all/sync' do
+    Page.all(:page_type => "country").each {|p| p.update_data!}
+    Page.all(:page_type => "region").each {|p| p.update_data!}
+    Page.all(:page_type => "world").each {|p| p.update_data!}
+    redirect "/admin"    
+  end
   get '/admin/:shortname/sync' do
       @page = Page.first(:shortname => params[:shortname])
       @page.update_data!
@@ -139,7 +151,7 @@ class MappingForResults < Sinatra::Base
 
       @page.data = @page.data.merge(data)
 
-      @region = Page.first(:name => params[:page][:region])
+      @region = params[:page][:region].length == 0 ? nil : Page.first(:name => params[:page][:region])
       @page.parent = @region    
       @page.save
       # cache_expire(@page.url)

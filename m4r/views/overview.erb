@@ -13,9 +13,9 @@
                 <div class="overview-links">
                   <p>Mapping Overview »</p>
                   <ul>
-                    <li><a href="/about/context">Context</a></li>
-                    <li><a href="/about/partners">Methodology</a></li>
-                    <li><a href="/about/partners">Data Sources</a></li>
+                    <li><a href="/about">Context</a></li>
+                    <li><a href="/about/methodology">Methodology</a></li>
+                    <li><a href="/about/datasources">Data Sources</a></li>
                     <li><a href="/about/partners">Partners</a></li>
                   </ul>
                 </div>
@@ -32,4 +32,4 @@
         </div>
       </div>
 
-    <%= partial :share %>
+    <%= partial :share unless @page.page_type == "page" %>

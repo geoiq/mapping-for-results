@@ -680,63 +680,63 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  wb.highlightProject(features[this.bar.index].id);;
 		  }});
 	},	  
-	getLayers: function() {
-	  var self = this;
-	  var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"];
-	  var possibleLayers = eval("(" + self.map.getLayers() + ")");
-	  if(possibleLayers == undefined) {
-		  self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
-		  return;
-	  } else {
-	  var index;
-	  jq.each(possibleLayers, function(layer) {
-		index = Object.include(findlayers, possibleLayers[layer].title);
-		if(index != null){
-		  self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
-		  if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition"], possibleLayers[layer].title)) {
-			F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
-		  }
-		  // self.map.swf.setLayerTitle(possibleLayers[layer].order, F1.WorldBank.indicators[possibleLayers[layer].title]);
-		  // self.map.swf.setLayerSubTitle(possibleLayers[layer].order, F1.WorldBank.indicators[possibleLayers[layer].subtitle]);
-		  findlayers.splice(index,1);
-		}		 
-	  })
+    getLayers: function() {
+        var self = this;
+        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"];
+        var possibleLayers = eval("(" + self.map.getLayers() + ")");
+        if(possibleLayers == undefined) {
+            self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
+            return;
+        } else {
+            var index;
+            jq.each(possibleLayers, function(layer) {
+                index = Object.include(findlayers, possibleLayers[layer].title);
+                if(index != null){
+                    self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
+                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition"], possibleLayers[layer].title)) {
+                        F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
+                    }
+                    // self.map.swf.setLayerTitle(possibleLayers[layer].order, F1.WorldBank.indicators[possibleLayers[layer].title]);
+                    // self.map.swf.setLayerSubTitle(possibleLayers[layer].order, F1.WorldBank.indicators[possibleLayers[layer].subtitle]);
+                    findlayers.splice(index,1);
+                }		 
+            })
 
-	  // second pass if we missed any
-	  jq.each(self.country_attrs["indicators"], function(index,layer) {
-		  if(self.stylelayers["Indicators"] != undefined) {
-			  self.stylelayers[layer] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
-		  }
-		  // we'll set the title & subtitle later
-	  });
-  }
-	  if(self.stylelayers["Project Locations"] != undefined) {
-		jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Locations'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
-	  if(self.stylelayers["Project Counts"] != undefined)
-		jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Counts'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
-	  if(self.stylelayers["Indicators"] != undefined)
-		jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Indicators'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
-	  if(self.stylelayers["Population"] != undefined)
-		jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Population'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
-	   return false;
-	},
-	styleMap: function() {
-	  var self = this;
-			
-	  // icons
-	  if(self.stylelayers["Project Locations"] != undefined) {
-		self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"mjsector 1",categories:self.wbicons});
-	  }
-	  // infowindow
-	  if(self.stylelayers["Project Locations"] != undefined) {
-		self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[mjsector 1]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[mjsector 1]\nTotal Amount: $ $[total amt] million\n\n$[development objectives]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"},
-		{title:"Results", type: "text", value: "No Results Stories Available."}
-		]});
-	  }
-	  if(self.stylelayers["Project Counts"] != undefined) {
-		self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "", tabs:[{title:"About", type:"text", value: "There are $[project count] active projects in the region."}]});
-	  }
-	},
+            // second pass if we missed any
+            jq.each(self.country_attrs["indicators"], function(index,layer) {
+                if(self.stylelayers["Indicators"] != undefined) {
+                    self.stylelayers[layer] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
+                }
+                // we'll set the title & subtitle later
+            });
+        }
+        if(self.stylelayers["Project Locations"] != undefined) 
+            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Locations'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
+        if(self.stylelayers["Project Counts"] != undefined)
+            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Counts'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
+        if(self.stylelayers["Indicators"] != undefined)
+            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Indicators'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
+        if(self.stylelayers["Population"] != undefined)
+            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Population'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
+        return false;
+    },
+        styleMap: function() {
+            var self = this;
+
+            // icons
+            if(self.stylelayers["Project Locations"] != undefined) {
+                self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"mjsector 1",categories:self.wbicons});
+            }
+            // infowindow
+            if(self.stylelayers["Project Locations"] != undefined) {
+                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[mjsector 1]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[mjsector 1]\nTotal Amount: $ $[total amt] million\n\n$[development objectives]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"},
+                {title:"Results", type: "text", value: "No Results Stories Available."}
+                ]});
+            }
+            if(self.stylelayers["Project Counts"] != undefined) {
+                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "", tabs:[{title:"About", type:"text", value: "There are $[project count] active projects in the region."}]});
+            }
+        },
 	styleLegend: function() {
 	  this.map.showControl("Legend",true);
 	  this.map.showControl("Zoom",true);

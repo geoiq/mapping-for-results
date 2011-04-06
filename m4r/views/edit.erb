@@ -12,6 +12,12 @@ input, label, textarea, select {
 }
 label:after { content: ": " }
 </style>
+<form action="/admin/<%= @page.id %>" method="post">
+  <div style="float:right">
+  <p><input type="submit" value="Delete this page"></p>
+    <input name="_method" type="hidden" value="delete" />
+  </div>
+</form>
 <p style="">
 <a href="/admin">« Back to Admin Console</a>
 <% unless @page.shortname.nil? || @page.shortname.length == 0 %>
@@ -59,6 +65,9 @@ label:after { content: ": " }
     <% end %>
   </select><br />
 
-  <p><input type="submit" value="Continue &rarr;"></p>
+  <p><input type="submit" value="Update &rarr;"></p>
 </form>
+
+
+
 

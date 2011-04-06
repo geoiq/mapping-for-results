@@ -1,8 +1,8 @@
 <div class="static_display">
   <h4><%= @page.name %></h4>
   <ul style="float:right">
-    <% Page.all(:page_type => "page", :order => [:name.desc]).each do |about_page| %>
-    <li><a href="/<%= about_page.url %>"><%= about_page.name %></a></li>
+    <% Page.all(:page_type => "page", :order => [:name.asc]).each do |about_page| %>
+    <li><a href="<%= about_page.url %>"><%= about_page.name %></a></li>
     <% end %>
   </ul>
 

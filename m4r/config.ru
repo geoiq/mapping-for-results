@@ -7,6 +7,7 @@ Sinatra::Base.set(:env, ENV['RACK_ENV'])
 #require 'rack/pagespeed'
 require 'mapping_for_results'
 
+use Rack::MethodOverride
 use Rack::Session::Cookie, :key => 'rack.session',
                            :httponly => true,
                            :secure => true,

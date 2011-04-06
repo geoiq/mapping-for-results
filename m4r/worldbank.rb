@@ -141,7 +141,7 @@ module WorldBank
   def self.filter_projects_count(projects)
     total = 0
     projects.each do |i,p|
-      total += 1 if p["supplementprojectflg"].downcase == "n"
+      total += 1 if !p.keys.include?("supplementprojectflg") || p["supplementprojectflg"].downcase == "n"
     end
     
     total

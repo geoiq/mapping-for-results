@@ -70,11 +70,11 @@ module Sinatra
         link = page.url(options)
         html << %Q{<li><a href="#{link}">#{page.name}</a> } 
         if !page.sync_updated_at.nil? && page.data.include?(:projects) && !page.data[:projects].nil?
-          html << %Q{[#{page.data[:projects].length} projects from #{page.sync_updated_at.strftime("%m-%d-%Y")}] }
+          html << %Q{ has #{page.data[:projects].length} projects as of #{page.sync_updated_at.strftime("%B %d, %Y")}. }
         end
       
-        html << %Q{<a href="/admin/#{page.shortname}/edit">edit</a>}
-        html << %Q{<a href="/admin/#{page.shortname}/sync">sync with project API</a>} unless page.page_type == "page"
+        html << %Q{ You can <a href="/admin/#{page.shortname}/edit">edit</a> this page}
+        html << %Q{, or <a href="/admin/#{page.shortname}/sync">sync with project API</a>.} unless page.page_type == "page"
         if((children = page.children).length > 0)
             html << "<ul>"
             children.each do |child|
