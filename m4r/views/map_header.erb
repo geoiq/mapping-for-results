@@ -4,7 +4,7 @@
           <li class="first"><a href="javascript:return false;" style="<%= @page[:name].length > 26 ? 'padding-top: 6px' : ''%>"><%= @page[:name].upcase %></a>
             <ul>
               <% if @page[:name] == "World"   %>
-              <% Page.all(:page_type => "region", :order => [name.asc]).each do |region_attr| %>
+              <% Page.all(:page_type => "region", :order => [:name.asc]).each do |region_attr| %>
               <li><a href="<%= region_attr.url %>"><%= region_attr[:name] %></a></li>
               <% end unless @page.children.nil? %>
               <% else %>
