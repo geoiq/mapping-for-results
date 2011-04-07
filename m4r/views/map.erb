@@ -702,13 +702,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 }		 
             })
 
-            // second pass if we missed any
-            jq.each(self.country_attrs["indicators"], function(index,layer) {
-                if(self.stylelayers["Indicators"] != undefined) {
-                    self.stylelayers[layer] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
-                }
-                // we'll set the title & subtitle later
-            });
+            if(self.country_attrs["indicators"] != undefined) {
+                // second pass if we missed any
+                jq.each(self.country_attrs["indicators"], function(index,layer) {
+                    if(self.stylelayers["Indicators"] != undefined) {
+                        self.stylelayers[layer] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
+                    }
+                });
+            }
         }
         if(self.stylelayers["Project Locations"] != undefined) 
             jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Locations'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
@@ -774,11 +775,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	    count = 1;
 	  jq('#project_count').html(count);
 	  jq('#activity_count').html(self.country_attrs["locations_count"]);
-	  self.sortProjects(self.projects);
-	  self.projectTable(self.projects);
-	  // self.projectFundingBars();
-	  self.productlineFundingBars();
-	  self.sectorPieChart("all");
+	  if(self.projects != undefined && self.projects != null) {
+    	  self.sortProjects(self.projects);
+    	  self.projectTable(self.projects);
+    	  // self.projectFundingBars();
+    	  self.productlineFundingBars();
+    	  self.sectorPieChart("all");
+	  }
 	  self.hideLoading();
 	  self.initialized = true;
   },
@@ -797,7 +800,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  if(self.country != "World") {
 		// self.map.swf.addLayerCategoryFilter(0, {attribute:"mjsector 1",categories:self.wbicons});
 	  } else if (self.country == "World") {
-		self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "$[count] Active Projects", tabs: [{title:"About", type: "text", value: "There are currently $[count] active World Bank projects in $[Country_1].\n\nYou can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]}); }
+		self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country_1]", subtitle: "", tabs: [{title:"About", type: "text", value: "You can explore the growing list of available project profiles in countries through the 'Locations' option at the bottom of the map."}]}); }
 	  // else
 	  //   self.map.swf.addLayerInfoWindowFilter(0, {"title": "$[project title]","subtitle": "$[country]- $[sector1]","tabs": [{"title": "Financing","type": "text","value": "Project ID: \u003Ca target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627\u0026piPK=73230\u0026theSitePK=40941\u0026menuPK=228424\u0026Projectid=$[project id]'\u003E$[project id]\u003C/a\u003E\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt]million"},{"title": "Location","type": "text","value": "Country: $[country]\nProvince: $[adm1]\nDistrict: $[adm2]\nLatitude:$[latitude]\nLongitude:$[longitude]"}]})
 		

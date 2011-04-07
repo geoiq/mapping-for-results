@@ -23,7 +23,7 @@
   wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= @page[:projects_count] %>', locations_count: '<%= @page[:locations_count] %>', sectors: sectors, regions: regions });
 
   <% elsif @page.page_type == "project" %>
-  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {title: '<%= @page[:name] %>'});
+  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {title: '<%= @page[:name] %>',locations_count: '<%= @page.locations_count %>'});
 
   <% else %>
   

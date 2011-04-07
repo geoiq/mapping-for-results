@@ -42,7 +42,7 @@ label:after { content: ": " }
   <fieldset>
     <legend>Map Configuration (for regions, countries, and projects)</legend>
   
-  <label for="map">Map ID</label><input type="text" name="page[map]" value="<%= @page.map %>" id="map"> <a href="<%= PLATFORM_API_URL %>/maps/<%= @page.map %>">open in GeoIQ</a><br />  
+  <label for="map">Map ID</label><input type="text" name="page[map]" value="<%= @page.map %>" id="map"> <% unless @page.map.nil? || @page.map.length == 0 %><a href="<%= PLATFORM_API_URL %>/maps/<%= @page.map %>">open in GeoIQ</a><% end %><br />  
   <label for="isocode">ISO Code</label><input type="text" name="page[isocode]" value="<%= @page.isocode %>" id="isocode"><br />
   <label for="page[locations_count]"># of Locations</label><input type="text" name="page[locations_count]" value="<%= @page.locations_count %>" id="locations_count"><br />  
 </fieldset>

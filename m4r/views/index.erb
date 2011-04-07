@@ -20,7 +20,7 @@
   <%# partial :infowindow %>
 </div>
 
-<%= partial :charts if %w{world region country}.include?(@page.page_type) %>
+<%= partial :charts if %w{world country}.include?(@page.page_type) %>
 <%= partial :initialize if %w{world region country project}.include?(@page.page_type) %>
 
 <%= partial :projects_table if @page.page_type == "country" %>
