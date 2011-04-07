@@ -20,10 +20,8 @@
   <%# partial :infowindow %>
 </div>
 
-<% if %w{world region country}.include?(@page.page_type) %>
-<%= partial :charts %>
-<%= partial :initialize %>
-<% end %>
+<%= partial :charts if %w{world region country}.include?(@page.page_type) %>
+<%= partial :initialize if %w{world region country project}.include?(@page.page_type) %>
 
 <%= partial :projects_table if @page.page_type == "country" %>
 <% unless @page.page_type == "project" %>

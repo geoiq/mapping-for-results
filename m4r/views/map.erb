@@ -729,12 +729,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
             }
             // infowindow
             if(self.stylelayers["Project Locations"] != undefined) {
-                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[mjsector 1]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[mjsector 1]\nTotal Amount: $ $[total amt] million\n\n$[development objectives]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"},
-                {title:"Results", type: "text", value: "No Results Stories Available."}
+                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[mjsector 1]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[mjsector 1]\n\n$[development objectives]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"},
+                {title:"Results", type: "text", value: "$[results]"}
                 ]});
             }
             if(self.stylelayers["Project Counts"] != undefined) {
-                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "", tabs:[{title:"About", type:"text", value: "There are $[project count] active projects in the region."}]});
+                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "$[adm1] $[adm2]", tabs:[{title:"About", type:"text", value: "Counts are determined by the total number of active projects working within or at this administrative level."}]});
             }
         },
 	styleLegend: function() {
@@ -769,7 +769,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		self.setIndicator(self.country_attrs.indicators[0]);
 
 	  // self.toggleSector("counts_admin1",true);
-	  jq('#project_count').html(self.country_attrs["projects_count"]);
+	  count = self.country_attrs["projects_count"];
+	  if(count == 0)
+	    count = 1;
+	  jq('#project_count').html(count);
 	  jq('#activity_count').html(self.country_attrs["locations_count"]);
 	  self.sortProjects(self.projects);
 	  self.projectTable(self.projects);
