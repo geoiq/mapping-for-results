@@ -36,13 +36,7 @@ class MappingForResults < Sinatra::Base
   end
 
   get '/world' do
-    @page = Page.first(:shortname => "world")
-    @projects = @page.data[:projects]
-    @financing = @page.data[:financing]
-  
-    @pages = Page.all( {:conditions => {:page_type => "country"}, :order => [:name.desc]})
-  
-    erb :home
+    redirect '/'
   end
 
   get '/404' do 
