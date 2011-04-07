@@ -22,7 +22,7 @@ module Sinatra
     def map_link(country, options={})
       link = []
       while !country.nil? && country.page_type != "world"
-        link << [%Q{<a class="breadcrumb-link #{(country.children.nil? || country.children.length != 0) ? '' : 'breadcrumb-last'}" href="#{SUBDOMAIN}/#{country.page_type == 'region' ? '#region:' : ''}#{country.shortname}">#{country.name}</a>}]
+        link << [%Q{<a class="breadcrumb-link #{(country.children.nil? || country.children.length != 0) ? '' : 'breadcrumb-last'}" href="#{country.url}">#{country.name}</a>}]
         country = country.parent
       end
       link << [%Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/" title='World Bank: World'>World</a>}]

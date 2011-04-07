@@ -7,7 +7,8 @@
 %w{ rubygems yajl yajl/gzip yajl/deflate yajl/http_stream faster_csv  }.each {|gem| require gem}
 module WorldBank
 
-  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg&status[]=active&rows=500&format=json"
+  #&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
 
   PROJECT_FIELDS = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent","prodlinetext"]
   SECTORS = {
@@ -54,7 +55,7 @@ module WorldBank
     total_projects = 100
     projects = {}
     while(project_count < total_projects)
-      url = URI.parse(WB_PROJECTS_API + "&geocode=&os=#{500*i}")
+      url = URI.parse(WB_PROJECTS_API + "&os=#{500*i}") #&geocode=
       projects_data = Yajl::HttpStream.get(url)
       if project_count == 0
         total_projects = projects_data["total"].to_i

@@ -893,6 +893,7 @@ tr.row_even td{
 #chart-left-pie-chart {
     width: 340px;
     height: 170px;
+    margin-left: -10px;
 }
 #network-breadcrumb {
 	clear: both;

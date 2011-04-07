@@ -63,7 +63,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="<%= PLATFORM_API_URL %>">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap">
@@ -79,7 +79,7 @@
                 <li class="first"><a href="/">World</a></li>
                 <% Page.all(:page_type => "region").each do |region_page|  %>
                 <li class="<%= region_page[:shortname] == @page.parent[:shortname] ? 'active' : '' %>"><a href="<%= region_page.url %>"><%= region_page.name %></a>
-                <% if false && region_page[:shortname] == @page.parent[:shortname] %><span class="pointer"></span><% end %>
+                <% if  region_page[:shortname] == @page.parent[:shortname] %><span class="pointer"></span><% end %>
                     <div class="menu-country-options">
                       <ul class="menu-countries dropmenu_options">
                         <% region_page.children.each do |country_page| %>
@@ -88,7 +88,7 @@
                       </ul>
                   </div>
                   </li>
-                <% end %> 
+                <% end if false%> 
                 </ul></div>
                 </li>
               </ul>
