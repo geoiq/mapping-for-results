@@ -72,18 +72,21 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#"></a>
-              <ul class="worldmenu">
+              <ul class="worldmenu dropmenu">
                 <li class="first"><a href="javascript:return false;"><%= @page[:name].upcase %></a>
                 <div class="menu-world-options">
-                  <ul class="menu-regions2" id="navmenu" style="display:none">
+                  <ul class="menu-regions dropmenu_options" id="navmenu" style="">
                 <li class="first"><a href="/">World</a></li>
                 <% Page.all(:page_type => "region").each do |region_page|  %>
                 <li class="<%= region_page[:shortname] == @page.parent[:shortname] ? 'active' : '' %>"><a href="<%= region_page.url %>"><%= region_page.name %></a>
-                  <ul>
-                    <% region_page.children.each do |country_page| %>
-                    <li><a href="<%= country_page.url %>"><%= country_page.name %></a></li>
-                    <% end %>
-                  </ul>
+                <% if false && region_page[:shortname] == @page.parent[:shortname] %><span class="pointer"></span><% end %>
+                    <div class="menu-country-options">
+                      <ul class="menu-countries dropmenu_options">
+                        <% region_page.children.each do |country_page| %>
+                        <li><a href="<%= country_page.url %>"><%= country_page.name %></a></li>
+                        <% end %>
+                      </ul>
+                  </div>
                   </li>
                 <% end %> 
                 </ul></div>
