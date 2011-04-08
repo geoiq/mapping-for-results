@@ -517,7 +517,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var funding = 0;
 		var sector_names = "";
 		var opts = {}
-		
+		var width = 380;
+		var char_length = 15;
+		if( self.country == "World") {
+		    width = 400;
+		    char_length = 45;
+		    }
+
 		if(refreshControls == null || refreshControls == true){
 			self.toggleSector("all", false, false); // watch recursion
 			self.toggleSector(sector_name, true,false); // watch recursion
@@ -543,7 +549,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 				links.push("javascript:wb.sectorPieChart('" + project.shortname + "', true);");	 
 				colors.push(project.color)
 				var financing = project.funding > 1000 ? (project.funding/1000).toFixed(2) + "b" : project.funding.toFixed(2) + "m"
-				labels.push(Textify.elide_during(project.name, 15, '...'   ) + " - $" + financing )
+				labels.push(Textify.elide_during(project.name, char_length, '...'   ) + " - $" + financing )
 				data.push({name:project.name + " - $" + financing,funding: project.funding})
 			});
 
@@ -603,9 +609,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			if(self.stylelayers["Project Locations"] != null)
 				opts["href"] = links;
 			
-			var width = 380;
-			if( self.country == "World")
-			    width = 400;
 			F1.Visualizer.charts.pie(180, width, pie_options, "chart-left-pie-chart", opts);		  
 
 	},
