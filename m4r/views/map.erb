@@ -195,7 +195,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
 		if(self.stylelayers["Project Counts"] != undefined)
 			self.map.showLayer(self.stylelayers["Project Counts"].order, visible);		  
-        jq('#layercontrol_projects').html("No Projects");
+        jq('#layercontrol_projects').html("No Activities");
         jq('#map-content-icons').hide()
         jq('#map-content-regions').hide()
 	  } else if(sector == 'all') {
@@ -481,7 +481,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var self = this;
 
 		var table = '<table id="project-info"><thead><tr>';
-		jq.each(["Title","Project ID","Commitment Amount","Sector","Approval Date","Product Line"], function(index,header) {
+		jq.each(["Title","Project ID","Amount","Sector","Approval Date","Product Line"], function(index,header) {
 			table += tmpl(table_templates.th, {id: index,header: header});
 		});
 		table += "</tr></thead><tbody>"
@@ -589,7 +589,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding.toFixed(2) + " Million"
 
 			jq('#sector_funding_total').html("$" + funding.toFixed(2) + " Million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");
-			jq('#sector_funding_title').html("Active Portfolio for " + sector_names + " Sector")
+			jq('#sector_funding_title').html("Financed Activities for " + sector_names + " Sector")
 		}
 
 		   if(projects.length == 0){
