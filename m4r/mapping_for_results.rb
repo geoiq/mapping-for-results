@@ -32,7 +32,7 @@ class MappingForResults < Sinatra::Base
     @financing = @page.data[:financing]
     
     # cache(erb :index)
-    headers 'Last-Modified' => @page.sync_updated_at.httpdate
+    # headers 'Last-Modified' => @page.sync_updated_at.httpdate
     erb :index    
   end
 
@@ -180,7 +180,7 @@ class MappingForResults < Sinatra::Base
     elsif(@page.page_type == "page")
       erb :about
     else
-      headers 'Last-Modified' =>( @page.sync_updated_at || Time.now).httpdate
+      # headers 'Last-Modified' =>( @page.sync_updated_at || Time.now).httpdate
       @projects = @page.data[:projects]
       @financing  = @page.data[:financing]
       erb :index
@@ -210,7 +210,7 @@ class MappingForResults < Sinatra::Base
       
       @page_subtitle = [@page[:name],@page[:region]].compact.join(", ") + " > "
       
-      headers 'Last-Modified' =>( @page.sync_updated_at || Time.now).httpdate
+      # headers 'Last-Modified' =>( @page.sync_updated_at || Time.now).httpdate
       if(@page.page_type == "country")
         erb :full, :layout => false
       elsif(@page.page_type == "page")
