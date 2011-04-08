@@ -583,7 +583,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 							"sort":{"name": "Funding","original_name": "financing amount"} } };
 			
 			sector_names = wb.sectors[sector_name].name;
-			var colors = self.fadeHex(self.sectors[sector_name].color, "#ffffff", 8);
+			var colors = self.fadeHex(self.sectors[sector_name].color, "#aaaaaa", 8);
 			opts["chart"] = {legend: labels, colors: colors};
 			opts["colors"] = colors;
 			var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding.toFixed(2) + " Million"

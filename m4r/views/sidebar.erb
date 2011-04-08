@@ -25,7 +25,7 @@
   </div>
   <div id="rightDesc">
       <% if @page.data.include?(:results) && !@page.data[:results].nil? && @page.data[:results].length > 0 %>
-      <h3><%= @page[:name].upcase %> RESULTS</h3>
+      <h3><%= @page[:name].upcase %> LINKS</h3>
       <ul class="disc">
         <% @page.data[:results].each do |result| %>
         <% result.symbolize_keys! %>
