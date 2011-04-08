@@ -7,8 +7,7 @@
 %w{ rubygems yajl yajl/gzip yajl/deflate yajl/http_stream faster_csv  }.each {|gem| require gem}
 module WorldBank
 
-  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg&status[]=active&rows=500&format=json"
-  #&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
 
   PROJECT_FIELDS = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent","prodlinetext"]
   SECTORS = {
@@ -116,8 +115,8 @@ module WorldBank
     calculations = {:sectors => {}, :regions => {}, :productline => {}}
     projects.each do |project_id, project|
         # some projects are financed through loans, some are grants.
-        amount = project["totalamt"].gsub(/,/,'').to_i / 1_000_000
-        amount = project["grantamt"].gsub(/,/,'').to_i / 1_000_000 if(amount == 0)
+        amount = project["totalamt"].gsub(/,/,'').to_i / 1_000_000.0
+        amount = project["grantamt"].gsub(/,/,'').to_i / 1_000_000.0 if(amount == 0)
         # Special filter from Johannes Kiess on April 4, 2011 for filtering only 'large' RE projects
         # next if project["prodlinetext"] == "Recipient Executed Activities" && amount < 5_000_000
         
