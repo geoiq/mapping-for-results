@@ -126,7 +126,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	 });
 	 if(map_id != null && map_id.length != 0){
 		 var map_engine = "Wrapper_181";
-		 //if(self.country != "World" && self.country_attrs["locations_count"] > 1000) map_engine="Sputnik";
+         //if(self.country == "World" || self.country_attrs["locations_count"] > 3000) map_engine="Sputnik";
 		 // if("no_flash") map_engine="javascript";
 		 
 		 this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
@@ -736,7 +736,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             }
             // infowindow
             if(self.stylelayers["Project Locations"] != undefined) {
-                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[mjsector 1]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[mjsector 1]\n\n$[development objectives]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"},
+                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[mjsector 1]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[mjsector 1]\n\n$[development objective]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"},
                 {title:"Results", type: "text", value: "$[results]"}
                 ]});
             }
