@@ -51,7 +51,7 @@ module Sinatra
     end
 
     def region_select(country, options = {})
-      regions = Page.all
+      regions = Page.all(:order => [:name.asc])
       html = ""
       html << '<select name="page[region]" id="page[region]" >'
       regions.each do |region|

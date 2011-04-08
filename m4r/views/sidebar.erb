@@ -36,12 +36,8 @@
     <!-- <p class="desc">
       <a class="txtRed" href="#">See All Results for <%= @page[:name] %> &raquo;</a>
     </p> -->
-    <h3>MAPPING &amp; <%= @page[:name].upcase %></h3>
-      <% if !@page.overview.nil? && @page.overview.length != 0 %>
-      <%= @page.overview %>
-      <% else %>
-      <p>The <strong>Mapping for Results Platform</strong> (<em>beta version</em>) provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <a class="readmore" href="/about">Read More »</a></p>
-      <% end %>
+    <h3><%= @page[:name].upcase %></h3>
+      <%= @page.overview || "" %>
     <!-- <p class="desc">
       Learn more about the World Bank's overall strategy in the <a href="#" class="txtRed"><%= @page[:name].upcase %> Country Overview &raquo;</a>
     </p> -->
