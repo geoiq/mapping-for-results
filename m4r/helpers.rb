@@ -15,7 +15,7 @@ module Sinatra
     end
   end
   module MappingHelper
-    
+
     # Create the link to the country in the footer
     # 
     # e.g Map / World / Latin America and Caribbean / Haiti
@@ -51,39 +51,39 @@ module Sinatra
     end
 
     def region_select(country, options = {})
-        regions = Page.all
-        html = ""
-        html << '<select name="page[region]" id="page[region]" >'
-        regions.each do |region|
-            html << "<option value='#{region.name}' #{country.region == region.name ? 'selected' : ""}>#{region.name}</option>"
-        end
-        html << "<option value='' #{country.region == '' ? 'selected' : ""}>-- root level</option>"      
-        html << "</select>"
-        html
+      regions = Page.all
+      html = ""
+      html << '<select name="page[region]" id="page[region]" >'
+      regions.each do |region|
+        html << "<option value='#{region.name}' #{country.region == region.name ? 'selected' : ""}>#{region.name}</option>"
+      end
+      html << "<option value='' #{country.region == '' ? 'selected' : ""}>-- root level</option>"      
+      html << "</select>"
+      html
     end
-  
+
     def link_to_page(page, options = {})
       page.url(options)
     end
     def admin_link(page, options = {})
-        html = ""
-        link = page.url(options)
-        html << %Q{<li><a href="#{link}">#{page.name}</a> } 
-        if !page.sync_updated_at.nil? && page.data.include?(:projects) && !page.data[:projects].nil?
-          html << %Q{ has #{page.data[:projects].length} projects as of #{page.sync_updated_at.strftime("%B %d, %Y")}. }
+      html = ""
+      link = page.url(options)
+      html << %Q{<li><a href="#{link}">#{page.name}</a> } 
+      if !page.sync_updated_at.nil? && page.data.include?(:projects) && !page.data[:projects].nil?
+        html << %Q{ has #{page.data[:projects].length} projects as of #{page.sync_updated_at.strftime("%B %d, %Y")}. }
+      end
+
+      html << %Q{ You can <a href="/admin/#{page.shortname}/edit">edit</a> this page}
+      html << %Q{, or <a href="/admin/#{page.shortname}/sync">sync with project API</a>.} unless page.page_type == "page"
+      if((children = page.children).length > 0)
+        html << "<ul>"
+        children.each do |child|
+          html << admin_link(child)
         end
-      
-        html << %Q{ You can <a href="/admin/#{page.shortname}/edit">edit</a> this page}
-        html << %Q{, or <a href="/admin/#{page.shortname}/sync">sync with project API</a>.} unless page.page_type == "page"
-        if((children = page.children).length > 0)
-            html << "<ul>"
-            children.each do |child|
-                html << admin_link(child)
-            end
-            html << "</ul>"
-        end      
-        html << "</li>"
-        html
+        html << "</ul>"
+      end      
+      html << "</li>"
+      html
     end 
     def menu_options(collection, options = {})
       menu = ""
@@ -93,7 +93,7 @@ module Sinatra
         height = (collection.length / i).ceil if height > options[:max_height]
       end
       i = 1
-    
+
       collection.each_slice(height) do |column|
         menu << "<div class=\"column column_#{i}\"><ul>"
         column.each do |row|
@@ -106,5 +106,14 @@ module Sinatra
 
       return menu
     end
+    def commify(number)
+      c = { :value => "", :length => 0 }
+      r = number.to_s.reverse.split("").inject(c) do |t, e|  
+        iv, il = t[:value], t[:length]
+        iv += ',' if il % 3 == 0 && il != 0    
+        { :value => iv + e, :length => il + 1 }
+      end
+      r[:value].reverse!
+    end    
   end
 end
