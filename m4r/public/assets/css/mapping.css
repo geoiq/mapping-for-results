@@ -1069,4 +1069,5 @@ map-options.dropmenu li a {
     padding-left: 19px;
 }
 .dropmenu_options a:hover {color:#aa2222}
+.subtotal {color: rgb(136, 136, 136); font-size: 0.8em; cursor: pointer;}
 

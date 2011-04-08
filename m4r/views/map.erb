@@ -708,7 +708,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             if(self.country_attrs["indicators"] != undefined) {
                 // second pass if we missed any
                 jq.each(self.country_attrs["indicators"], function(index,layer) {
-                    if(self.stylelayers["Indicators"] != undefined) {
+                    if(self.stylelayers["Indicators"] != undefined && self.stylelayers[layer] == undefined) {
                         self.stylelayers[layer] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
                     }
                 });
