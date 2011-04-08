@@ -116,10 +116,10 @@ module WorldBank
     calculations = {:sectors => {}, :regions => {}, :productline => {}}
     projects.each do |project_id, project|
         # some projects are financed through loans, some are grants.
-        amount = project["totalamt"].to_i
-        amount = project["grantamt"].to_i if(amount == 0)
+        amount = project["totalamt"].gsub(/,/,'').to_i / 1_000_000
+        amount = project["grantamt"].gsub(/,/,'').to_i / 1_000_000 if(amount == 0)
         # Special filter from Johannes Kiess on April 4, 2011 for filtering only 'large' RE projects
-        next if project["prodlinetext"] == "Recipient Executed Activities" && amount < 5_000_000
+        # next if project["prodlinetext"] == "Recipient Executed Activities" && amount < 5_000_000
         
         name = project["prodlinetext"]
         calculations[:productline][name] = 0 unless calculations[:productline].include?(name)
