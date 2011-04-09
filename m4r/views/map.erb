@@ -126,7 +126,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	 });
 	 if(map_id != null && map_id.length != 0){
 		 var map_engine = "Wrapper_181";
-         if(self.country == "Sputnik" ) map_engine="Sputnik"; //|| self.country_attrs["locations_count"] > 3000
+         if(self.country == "Latin American & Carribbean"
+            || self.country == "Africa" 
+            || self.country == "East Asia & the Pacific" 
+            || self.country == "Europe and Central Asia"
+            || self.country == "Middle East and North Africa"
+            || self.country == "South Asia" ) {
+                map_engine="Sputnik"; //|| self.country_attrs["locations_count"] > 3000
+        }
 		 // if("no_flash") map_engine="javascript";
 		 
 		 this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
