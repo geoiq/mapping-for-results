@@ -777,8 +777,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
 	  // self.toggleSector("counts_admin1",true);
 	  count = self.country_attrs["projects_count"];
-	  if(count == undefined || count == 0) 
-	    count = 1;
+
 	  jq('#project_count').html(count);
 	  if(count == 1)
 	    jq('#active_projects_header').html("active project working in")
