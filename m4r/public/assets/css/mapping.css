@@ -16,10 +16,11 @@ body{
 	padding: 0 10px 10px;
 }
 div{position: relative;}
-a, a:visited{
-	color: #989A94;
-	text-decoration: none;
+/*a, a:visited{
+    color: #989A94;
+    text-decoration: none;
 }
+*/
 .ie7 tbody th{
 	vertical-align: top;
 }

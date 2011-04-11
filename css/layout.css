@@ -208,7 +208,6 @@ margin : 0;
 }
 #search-box label { position:absolute; left : -45px; ; top: 6px; font-weight : normal;}
 #search-box label.over-input {
-  left :30px;
   font-size:0.9em;
   color:#534741;
 
