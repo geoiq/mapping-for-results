@@ -6,14 +6,15 @@
                 <style type="text/css" media="screen">
                   li.region-option:hover div { display: block; }
                 </style>
-                <% Page.all(:page_type => "region").each do |region_page|  %>
+                <% Page.all(:page_type => "region").each do |region_page| %>
                 <li class="region-option <%= active_class(region_page, @page) %>"><a href="<%= region_page.url %>"><span><%= region_page.name %></span><% if  active_class(region_page, @page) == "active" %><span class="pointer"></span><% end %></a>
                 
                     <div class="menu-country-options">
                       <ul class="menu-countries">
-                        <% region_page.children.each do |country_page| %>
-                        <li><a href="<%= country_page.url %>" class="<%= active_class(country_page, @page) %>"><%= country_page.name %></a></li>
-                        <% end %>
+                        <% i = 0; region_page.children.each do |country_page| 
+                        next if country_page.page_type != "country" %>
+                        <% if i%4 == 0 %><li><% end %><a href="<%= country_page.url %>" class="<%= active_class(country_page, @page) %>"><%= country_page.name %></a><% if i%4 == 0 %></li><% end %>
+                        <% i += 1; end %>
                       </ul>
                   </div>
                   </li>

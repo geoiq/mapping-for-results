@@ -1,4 +1,5 @@
 var proxy_host = "<%= PLATFORM_API_URL %>";	   
+var map_engine = "Wrapper_181";
 var project_attributes = ["id","project_name","totalamt","prodlinetext","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 
 
@@ -125,7 +126,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  self.sector_codes[sector.sector_code] = sector;
 	 });
 	 if(map_id != null && map_id.length != 0){
-		 var map_engine = "Wrapper_181";
+
          if(self.country == "Latin American & Caribbean"
             || self.country == "Africa" 
             || self.country == "East Asia & the Pacific" 
@@ -754,8 +755,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
             }
         },
 	styleLegend: function() {
-	  this.map.showControl("Legend",true);
-	  this.map.showControl("Zoom",true);
+	  if(map_engine != "Sputnik") {
+    	  this.map.showControl("Legend",true);
+    	  this.map.showControl("Zoom",true);
+	  }
 	  this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});		
 	  this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
 	  return false;
