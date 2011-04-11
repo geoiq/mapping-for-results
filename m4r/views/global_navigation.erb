@@ -1,5 +1,5 @@
               <ul class="worldmenu dropmenu">
-                <li class="first"><a href="javascript:return false;"><%= @page[:name].upcase %></a>
+                <li class="first"><a href="javascript:return false;" style="<%= @page[:name].length > 19 ? "padding: 5px 15px 5px 30px;" : 0 %>"><%= @page[:name].upcase %></span></a>
                 <div class="menu-world-options">
                   <ul class="menu-regions dropmenu_options" id="navmenu" style="">
                 <li class="first"><a href="/">World</a></li>
