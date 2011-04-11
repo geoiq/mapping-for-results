@@ -1,7 +1,7 @@
 /********************
 reset
 ********************/
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,input,select,textarea,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,tr.even,tr.odd,tr.drag,tbody,tbody th,thead th,.breadcrumb,.error,div.error,tr.error,.warning,div.warning,tr.warning,.ok,div.ok,tr.ok,.item-list .icon,.item-list .title,.item-list ul,.item-list ul li,ol.task-list li.active,.form-item,tr.odd .form-item,tr.even .form-item,tr.merge-down,tr.merge-up,.form-item .description,.form-item label,.form-item label.option,.form-checkboxes,.form-radios,.form-checkboxes .form-item,.form-radios .form-item,.marker,.form-required,.more-link,.more-help-link,.item-list .pager,.item-list .pager li,.pager-current,.tips,dl.multiselect dd.b,dl.multiselect dd.b .form-item,dl.multiselect dd.b select,dl.multiselect dd.a,dl.multiselect dd.a .form-item,dl.multiselect dt,dl.multiselect dd,dl.multiselect .form-item,ul.primary,ul.primary li,ul.primary li a,ul.primary li.active a,ul.primary li a:hover,ul.secondary,ul.secondary li,ul.secondary a,ul.secondary a.active,html.js fieldset.collapsible legend a,html.js fieldset.collapsed legend a,.resizable-textarea{margin:0px;padding:0px;border:0px;outline:0px;font-size:100%;vertical-align:baseline;background:transparent;line-height:inherit;}ol,ul,.item-list ul,.item-list ul li{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}:focus{outline:0px;}ins{text-decoration:none;}del{text-decoration:line-through;}table{border-collapse:collapse;border-spacing:0px;}input,select,textarea,body{font:13px/20px Arial,Helvetica,sans-serif;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,form,table,caption,tbody,tfoot,thead,tr,th,td,tr.even,tr.odd,tr.drag,tbody,tbody th,thead th,.breadcrumb,.error,div.error,tr.error,.warning,div.warning,tr.warning,.ok,div.ok,tr.ok,.item-list .icon,.item-list .title,.item-list ul,.item-list ul li,ol.task-list li.active,.form-item,tr.odd .form-item,tr.even .form-item,tr.merge-down,tr.merge-up,.form-item .description,.form-item label,.form-item label.option,.form-checkboxes,.form-radios,.form-checkboxes .form-item,.form-radios .form-item,.marker,.form-required,.more-link,.more-help-link,.item-list .pager,.item-list .pager li,.pager-current,.tips,dl.multiselect dd.b,dl.multiselect dd.b .form-item,dl.multiselect dd.b select,dl.multiselect dd.a,dl.multiselect dd.a .form-item,dl.multiselect dt,dl.multiselect dd,dl.multiselect .form-item,ul.primary,ul.primary li,ul.primary li a,ul.primary li.active a,ul.primary li a:hover,ul.secondary,ul.secondary li,ul.secondary a,ul.secondary a.active,.resizable-textarea{margin:0px;padding:0px;border:0px;outline:0px;font-size:100%;vertical-align:baseline;background:transparent;line-height:inherit;}ol,ul,.item-list ul,.item-list ul li{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}:focus{outline:0px;}ins{text-decoration:none;}del{text-decoration:line-through;}table{border-collapse:collapse;border-spacing:0px;}input,select,textarea,body{font:13px/20px Arial,Helvetica,sans-serif;}
 html{
 	background: #d9dccf;
 	padding: 0 10px 10px;
@@ -16,11 +16,11 @@ body{
 	padding: 0 10px 10px;
 }
 div{position: relative;}
-/*a, a:visited{
-    color: #989A94;
-    text-decoration: none;
+a, a:visited{
+	color: #840202;
+	text-decoration: none;
 }
-*/
+
 .ie7 tbody th{
 	vertical-align: top;
 }
