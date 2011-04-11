@@ -1,0 +1,23 @@
+              <ul class="worldmenu dropmenu">
+                <li class="first"><a href="javascript:return false;"><%= @page[:name].upcase %></a>
+                <div class="menu-world-options">
+                  <ul class="menu-regions dropmenu_options" id="navmenu" style="">
+                <li class="first"><a href="/">World</a></li>
+                <style type="text/css" media="screen">
+                  li.region-option:hover div { display: block; }
+                </style>
+                <% Page.all(:page_type => "region").each do |region_page|  %>
+                <li class="region-option <%= active_class(region_page, @page) %>"><a href="<%= region_page.url %>"><span><%= region_page.name %></span><% if  active_class(region_page, @page) == "active" %><span class="pointer"></span><% end %></a>
+                
+                    <div class="menu-country-options">
+                      <ul class="menu-countries">
+                        <% region_page.children.each do |country_page| %>
+                        <li><a href="<%= country_page.url %>" class="<%= active_class(country_page, @page) %>"><%= country_page.name %></a></li>
+                        <% end %>
+                      </ul>
+                  </div>
+                  </li>
+                <% end %> 
+                </ul></div>
+                </li>
+              </ul>
