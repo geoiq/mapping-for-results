@@ -125,14 +125,15 @@ ul.partnership a {
  */
 
 .overview-links {
-border-left:1px solid #C1C4BA;
-color:#840202;
-float:right;
-font-size:1.1em;
-margin:10px 20px 0;
-padding:0 10px 0 30px;
-position:relative;
-width:150px;
+    border-left:1px solid #C1C4BA;
+    color:#840202;
+    float:right;
+    font-size:1.1em;
+    margin:10px 20px 0;
+    padding:0 10px 0 30px;
+    position:relative;
+    width:150px;
+    z-index: 20;
 }
 .ie6.overview-links {
   width:110px;

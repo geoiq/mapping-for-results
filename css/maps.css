@@ -2,7 +2,7 @@
 #geoiq_map{width:958px; height:514px;}
 
 #map-content {width:958px; height:514px; min-height: 514px; border-left:solid 1px #d9dbcd; border-bottom:solid 1px #d9dbcd;  border-right:solid 1px #d9dbcd; background:#FFFFFF;}
-#map-content-header{background-image:url(../images/map.nav.header.gif); border:medium none;height:47px;  overflow:hidden;  padding:0 0 0 0}
+#map-content-header{background-image:url(../images/map.nav.header.gif); border:medium none;height:47px;  padding:0 0 0 0}
 #map-content-title {font-family:arial;font-size:13px; color:#000; white-space:normal;float:left; margin-top:10px; margin-left:15px; padding-top:6px; } 
 #map-content-sectors {font-family:arial;font-size:13px; color:#777876; white-space:normal;float:right; margin-top:10px; margin-right:25px; margin-left:15px; padding-top:6px; } 
 
@@ -191,25 +191,10 @@ color:#000; text-align:left; padding-left:18px; margin-top:10px; margin-left:-10
 
 #footer-maps #separator { float:left; margin-left:31px;}
 
-/*Pending */
-.chart {color: #883333; padding: 50px 50px;}
-
-.inactivepanel {opacity: 0.6;}
-.sort_icon {display: none;}
-.load_link {display :none;}
-#map-title{ font-size: 0.9em;}
-#locations_list .inactive {opacity: 0.5;}
-
-#map-summary{
-/*  font-size: 30px;*/
-	padding: 8px 0;
-	margin-top: 0px;
-	float:left;
+/*.ie7 #map-summary{
+    margin: -5px 0 7px 0;   
 }
-.ie7 #map-summary{
-	margin: -5px 0 7px 0;	
-}
-#map-summary .smallHdr{
+*/#map-summary .smallHdr{
 	color: #666;
 	font-size: 16px;
 }

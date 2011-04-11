@@ -43,6 +43,18 @@ class Page
     link
   end
   
+  # Returns the list of the hierarchy of this page
+  def hierarchy
+    p = self
+    h = []
+    while(p.parent != nil)
+      h = [p] + h
+      p = p.parent
+    end
+    h = [p] + h
+    
+    h
+  end
   def update_data!
     self.data ||= {}
     case self.page_type

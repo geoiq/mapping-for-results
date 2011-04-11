@@ -1,23 +1,10 @@
-<% @page_subtitle = ", " + [@page[:region],@page[:name]].compact.join(" > ") %>
+<% @page_subtitle = @page[:name] == "World" ? "" : [@page[:name],@page[:region] || nil].compact.compact.join(", ") + " > " %>
 <%# partial :map %>
 <%= partial :map_header %>
 <div id="map-content">
-  <div id="wb_map_wrapper" style="z-index: -1; height: 514px; 958px">
+  <div id="wb_map_wrapper" style="z-index: 5; height: 514px; 958px">
   <div id="wb_map" class="" style="height: 520px"></div>
   </div>
-  <!-- <div id="map_console">
-      <div class="console-title">
-        <p id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</p>
-      </div>
-      <div class="console-info">
-        <div id="loading">Loading Map Data...</div>
-        <p class="loaded" style="display: none" title="">financed activities working in</p>
-        <p class="loaded" style="display: none" title="">mapped project locations</p>
-      </div>    
-      <%# partial :layer_controls %>
-  </div> -->
-  <%# partial :infowindow %>
 </div>
 
 <%= partial :charts if %w{world country}.include?(@page.page_type) %>

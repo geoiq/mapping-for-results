@@ -1,15 +1,6 @@
     <div id="map-content-header">
       <div class="worldmenuholder">
-        <ul class="worldmenu">
-          <li class="first"><a href="javascript:return false;" style="<%= @page[:name].length > 26 ? 'padding-top: 6px' : ''%>"><%= @page[:name].upcase %></a>
-            <ul>
-              <% unless @page.parent.nil? %><li><a href="<%= @page.parent.url %>">&laquo;<%= @page.parent.name %></a></li><% end %>
-              <% @page.children.each do |region_attr| %>
-              <li><a href="<%= region_attr.url %>"><%= region_attr[:name] %></a></li>
-              <% end unless @page.children.nil? %>
-            </ul>
-          </li>
-        </ul>
+      <%= partial :global_navigation %>
       <%= partial :summary %>
       </div>
     </div>

@@ -25,7 +25,7 @@ module Sinatra
         link << [%Q{<a class="breadcrumb-link #{(country.children.nil? || country.children.length != 0) ? '' : 'breadcrumb-last'}" href="#{country.url}">#{country.name}</a>}]
         country = country.parent
       end
-      link << [%Q{<a class="breadcrumb-link" href="#{SUBDOMAIN}/" title='World Bank: World'>World</a>}]
+      link << [%Q{<a class="breadcrumb-link" href="/" title='World Bank: World'>World</a>}]
       link.reverse.join("")
     end
     def cleanup_attributes(attribute, value)
@@ -62,6 +62,15 @@ module Sinatra
       html
     end
 
+    # Returns 'active' if this rendered_page is the current page
+    def active_class(rendered_page, current_page)
+      if rendered_page[:shortname] == current_page[:shortname]
+        return 'active'
+      elsif (current_page.page_type == "country" && !current_page.parent.nil? && rendered_page[:shortname] == current_page.parent[:shortname])
+        return 'active'
+      end
+      return ''   
+    end
     def link_to_page(page, options = {})
       page.url(options)
     end

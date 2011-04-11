@@ -6,13 +6,10 @@ require 'sinatra/sessionauth'
 require 'lib/m4r_extensions.rb'
   
 PLATFORM_API_URL  = "http://maps.worldbank.org"
-SUBDOMAIN         = "http://maps.worldbank.org"
 # PLATFORM_API_URL = "http://geoiq.local"
-# SUBDOMAIN        = "http://geoiq.local"
 
 require "worldbank"
 include WorldBank
-# WorldBank.build_page_database(MAPS)
 
 # require 'sinatra/cache'
 

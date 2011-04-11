@@ -7,12 +7,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><%= @page_title = @page_subtitle + 'The World Bank - Mapping for Results' %></title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="<%= @page.hierarchy.reverse.collect(&:name).join(",") %>,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="<%= PLATFORM_API_URL %>/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
+    <link rel="stylesheet" href="/assets/css/menu.css">
     <%= partial :javascript %>
 </head>
 
@@ -72,26 +73,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#"></a>
-              <ul class="worldmenu dropmenu">
-                <li class="first"><a href="javascript:return false;"><%= @page[:name].upcase %></a>
-                <div class="menu-world-options">
-                  <ul class="menu-regions dropmenu_options" id="navmenu" style="">
-                <li class="first"><a href="/">World</a></li>
-                <% Page.all(:page_type => "region").each do |region_page|  %>
-                <li class="<%= region_page[:shortname] == @page.parent[:shortname] ? 'active' : '' %>"><a href="<%= region_page.url %>"><%= region_page.name %></a>
-                <% if  region_page[:shortname] == @page.parent[:shortname] %><span class="pointer"></span><% end %>
-                    <div class="menu-country-options">
-                      <ul class="menu-countries dropmenu_options">
-                        <% region_page.children.each do |country_page| %>
-                        <li><a href="<%= country_page.url %>"><%= country_page.name %></a></li>
-                        <% end %>
-                      </ul>
-                  </div>
-                  </li>
-                <% end if false%> 
-                </ul></div>
-                </li>
-              </ul>
+              <%= partial :global_navigation %>
               <%= partial :summary %>
             </div>
       </div>
@@ -115,5 +97,6 @@
         <% end %>
 
     </div><!--#container//-->
+<%= partial :analytics %>
 </body>
 </html>

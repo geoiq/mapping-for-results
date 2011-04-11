@@ -730,7 +730,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         if(self.stylelayers["Project Counts"] != undefined)
             jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Counts'].source.replace('finder:','') +".csv'>Project Counts (csv)</a></li>");
         if(self.stylelayers["Indicators"] != undefined)
-            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Indicators'].source.replace('finder:','') +".shp'>Indicators (shapefile)</a></li>");
+            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Indicators'].source.replace('finder:','') +".zip'>Indicators (shapefile)</a></li>");
         if(self.stylelayers["Population"] != undefined)
             jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Population'].source.replace('finder:','') +".csv'>Population (csv)</a></li>");
         return false;

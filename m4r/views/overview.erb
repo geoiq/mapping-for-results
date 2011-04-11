@@ -1,6 +1,6 @@
     <div id="container">
       <div id="banner">
-        <a href="/"><h1 id="banner-header" title="Click to hide the overview information">
+        <a href="<%= @page.name == "World" ? "#" : "/" %>"><h1 id="banner-header" title="Click to hide the overview information">
           <span>Mapping for Results</span>
           <div class="collapsible-header <%= (@page.nil? || @page[:name] == 'World' || @page[:name] == "Haiti") ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
@@ -32,4 +32,4 @@
         </div>
       </div>
 
-    <%= partial :share unless @page.page_type == "page" %>
+    <%= partial :share unless @page.page_type == "page" %> <br /><br />

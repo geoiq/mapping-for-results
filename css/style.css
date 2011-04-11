@@ -438,7 +438,7 @@ color: #9f9894; padding: 1px;}
 }
 #banner #banner-header .banner-open-image {
   position : absolute;
-  top:30px;
+  top:15px;
   right:17px;
   background : url(../images/background-images/overview-drop-arrow-open-color.gif) 0 0 no-repeat;
   height : 10px;
@@ -612,10 +612,6 @@ div.plus1-widget div.plus1-vote {
 }
 
 /* Universal */
-a {
-  color:#840202;
-  text-decoration: none;
-}
 a:hover {
   text-decoration: underline;
 }
