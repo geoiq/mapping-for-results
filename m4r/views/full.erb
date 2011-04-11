@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><%= @page_title = (@page_subtitle || "") + 'The World Bank - Mapping for Results' %></title>
-    <meta name="description" content="<%= @page.hierarchy.reverse.collect(&:name).join(",") %>,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="description" content="<%= @page.hierarchy.reverse.collect {|c| c.name}.join(",") %>,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="<%= PLATFORM_API_URL %>/favicon.ico">
