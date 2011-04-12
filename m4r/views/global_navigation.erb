@@ -13,7 +13,7 @@
                       <ul class="menu-countries">
                         <% i = 0; region_page.children.each do |country_page| 
                         next if country_page.page_type != "country" %>
-                        <% if i%4 == 0 %><li><% end %><a href="<%= country_page.url %>" class="<%= active_class(country_page, @page) %>"><%= country_page.name %></a><% if i%4 == 0 %></li><% end %>
+                        <% if i%4 == 0 %><li><% end %><a href="<%= country_page.url %>" class="<%= active_class(country_page, @page) %>"><%= country_page.name %></a><% if (i+1)%4 == 0 %></li><% end %>
                         <% i += 1; end %>
                       </ul>
                   </div>
