@@ -132,8 +132,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             || self.country == "East Asia & the Pacific" 
             || self.country == "Europe and Central Asia"
             || self.country == "Middle East and North Africa"
-            || self.country == "South Asia" 
-            || self.country == "Philippines") {
+            || self.country == "South Asia") {
                 map_engine="Sputnik"; //|| self.country_attrs["locations_count"] > 3000
         }
 		 // if("no_flash") map_engine="javascript";
@@ -751,15 +750,15 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 ]});
             }
             if(self.stylelayers["Project Counts"] != undefined) {
-                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Projects: $[project count]", subtitle: "$[adm1] $[adm2]", tabs:[{title:"About", type:"text", value: "Counts are determined by the total number of active projects working within or at this administrative level."}]});
+                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Activities: $[project count]", subtitle: "$[adm1] $[adm2]", tabs:[{title:"About", type:"text", value: "Counts are determined by the total number of activities working within or at this administrative level."}]});
             }
         },
 	styleLegend: function() {
 	  if(map_engine != "Sputnik") {
     	  this.map.showControl("Legend",true);
     	  this.map.showControl("Zoom",true);
+	      this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});
 	  }
-	  this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});		
 	  this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
 	  return false;
 	},
