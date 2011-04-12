@@ -1,6 +1,7 @@
 var proxy_host = "<%= PLATFORM_API_URL %>";	   
 var map_engine = "Wrapper_181";
 var project_attributes = ["id","project_name","totalamt","prodlinetext","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
+var major_sector_name = "mjsector 1";
 
 
 startList = function() {
@@ -177,7 +178,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	hideSectors: function() {
 	  var self = this;
 	  jq.each(self.sectors, function (sector) {
-		self.map.addFilter(self.stylelayers["Project Locations"].order, {expression: "$[mjsector 1] == " + self.sectors[sector].shortname});
+		self.map.addFilter(self.stylelayers["Project Locations"].order, {expression: "$[" + major_sector_name + "] == " + self.sectors[sector].shortname});
 	  });
 	  return false;
 	},
@@ -332,7 +333,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var self = this;
 	  var expression = "";
 	  if(sector_attribute == null)
-		sector_attribute = "mjsector 1";
+		sector_attribute = major_sector_name;
 		
 	  for(var sector=0;sector<sectorFilters.length; sector++) {
 		expression += "$["+sector_attribute+"] == '" + self.sectors[sectorFilters[sector]].name + "'";
@@ -404,7 +405,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			self.projects[attr["project id"]] = project
 			
 			// Add to sector funding and project count
-			var sector_name = project["mjsector 1"];
+			var sector_name = project[major_sector_name];
 			var wb_sector = self.sectors[self.sector_names[sector_name.toLowerCase().trim()]];
 
 			if(wb_sector == null)
@@ -741,11 +742,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
             // icons
             if(self.stylelayers["Project Locations"] != undefined) {
-                self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:"mjsector 1",categories:self.wbicons});
+                self.map.swf.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:major_sector_name,categories:self.wbicons});
             }
             // infowindow
             if(self.stylelayers["Project Locations"] != undefined) {
-                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$[mjsector 1]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$[mjsector 1]\n\n$[development objective]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"},
+                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$["+major_sector_name+"]\n\n$[development objective]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"},
                 {title:"Results", type: "text", value: "$[results]"}
                 ]});
             }
@@ -819,7 +820,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  self.regionFundingBars();
 
 	  if(self.country != "World") {
-		// self.map.swf.addLayerCategoryFilter(0, {attribute:"mjsector 1",categories:self.wbicons});
+		// self.map.swf.addLayerCategoryFilter(0, {attribute:major_sector_name,categories:self.wbicons});
 	  } else if (self.country == "World") {
 		self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country]", subtitle: "", tabs: [{title:"About", type: "text", value: "You can explore the growing list of available project profiles of World Bank activities across the world. $[Description]"}]}); }
 	  // else
@@ -830,6 +831,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
   loadedMap: function() {
 	  var self = this;
 	  self.styleLegend();
+      // if(self.country == "Philippines")
+      //   major_sector_name = "sector1";
 	  if(self.country != "World" && (self.region != self.country)){
 		  self.drawCharts();
 	  } else {
