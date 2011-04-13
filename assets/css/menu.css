@@ -120,7 +120,7 @@
 	z-index: 1;
 }
 .menu-countries a, .menu-provinces a{
-	background: url('img/sprite.png') no-repeat -290px -332px;
+	background: url('img/sprite.png') no-repeat -290px -328px;
 	display: block;
 	padding: 1px 0 1px 10px;
 }
