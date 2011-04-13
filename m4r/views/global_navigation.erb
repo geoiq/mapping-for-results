@@ -9,7 +9,7 @@
                 <% Page.all(:page_type => "region", :order => [:name.asc]).each do |region_page| %>
                 <li class="region-option <%= active_class(region_page, @page) %>"><a href="#<%# region_page.url %>"><span><%= region_page.name %></span><% if  active_class(region_page, @page) == "active" %><span class="pointer" onclick="return false"></span><% end %></a>
                     <div class="menu-country-options">
-                      <ul class="menu-countries" style="<%= (region_page.children.length < 4) ? (region_page.children * 125) : '' %>" >
+                      <ul class="menu-countries" style="" >
                       <% row_size = (region_page.children.length / 4.0).ceil %>
                         <% i = 0; region_page.children.each do |country_page| 
                         next if country_page.page_type != "country" %>

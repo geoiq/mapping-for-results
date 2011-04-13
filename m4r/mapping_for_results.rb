@@ -37,6 +37,13 @@ class MappingForResults < Sinatra::Base
     redirect '/'
   end
 
+  not_found do
+    erb :missing
+  end
+  error do
+    erb :missing
+  end
+
   get '/404' do 
     erb :missing
   end
