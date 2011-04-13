@@ -9,8 +9,8 @@
                 <% Page.all(:page_type => "region", :order => [:name.asc]).each do |region_page| %>
                 <li class="region-option <%= active_class(region_page, @page) %>"><a href="#<%# region_page.url %>"><span><%= region_page.name %></span><% if  active_class(region_page, @page) == "active" %><span class="pointer"></span><% end %></a>
                     <div class="menu-country-options">
-                      <ul class="menu-countries" style="<%= region_page.children < 4 ? region_page.children * 125 : '' %>" >
-                      <% row_size = (region_page.children / 4.0).ceil %>
+                      <ul class="menu-countries" style="<%= (region_page.children.length < 4) ? (region_page.children * 125) : '' %>" >
+                      <% row_size = (region_page.children.length / 4.0).ceil %>
                         <% i = 0; region_page.children.each do |country_page| 
                         next if country_page.page_type != "country" %>
                         <% if i%row_size == 0 %><li><% end %><a href="<%= country_page.url %>" class="<%= active_class(country_page, @page) %>"><%= country_page.name %></a><% if (i+1)%row_size == 0 || i == (region_page.children.length - 1) %></li><% end %>
