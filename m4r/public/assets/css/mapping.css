@@ -705,8 +705,9 @@ tr.row_even td{
 }
 #chart-left-pie-chart {
     width: 340px;
-    height: 195px;
+    height: 175px;
     margin-left: -10px;
+    padding-top: 20px;
 }
 #network-breadcrumb {
 	clear: both;
