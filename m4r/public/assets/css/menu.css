@@ -110,7 +110,6 @@
 }
 .menu-countries, .menu-provinces{
 	float: left;
-	margin: 10px 10px 10px 20px;
 	width: 100%;
 	z-index: 1;
 }
@@ -185,7 +184,12 @@
 }
 
 .dropmenu_options, .menu-country-options {  display: none; }
-.dropmenu li ul.menu-countries { display: block; }
+.dropmenu li ul.menu-countries { display: block; 
+    background: none repeat scroll 0 0 #D9DCCF;
+	margin: 0px 10px 0px 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    }
 .dropmenu li:hover ul, .worldmenu li:hover ul {
     display: block;
 }
