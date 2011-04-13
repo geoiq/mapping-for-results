@@ -256,8 +256,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
         jq('#map-content-icons').hide()
 		jq('#map-content-regions').show()
         jq('#layercontrol_projects').html("By Count");
+        
         $('input:radio[name="by_region"]').filter('[value="province"]').attr('checked', false);
         $('input:radio[name="by_region"]').filter('[value="district"]').attr('checked', true);
+
 	  } else if(sector == 'counts') {
 		if(self.stylelayers["Project Counts"] != undefined)
 			self.map.showLayer(self.stylelayers["Project Counts"].order, visible);
@@ -327,6 +329,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  sector_dom.removeClass('active').addClass('inactive');			
 		}
 	  });
+	  
 	  return false;
 	},
 	complexSectorExpression: function(sectorFilters, sector_attribute) {
@@ -755,12 +758,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
             }
         },
 	styleLegend: function() {
+	    
 	  if(map_engine != "Sputnik") {
     	  this.map.showControl("Legend",true);
     	  this.map.showControl("Zoom",true);
 	      this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});
 	  }
-	  this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
+      this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
 	  return false;
 	},
 	highlightRegions: function(regions, region_attr) {
