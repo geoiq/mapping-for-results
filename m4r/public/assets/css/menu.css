@@ -124,7 +124,7 @@
 	display: block;
 	padding: 1px 0 1px 10px;
 }
-.menu-countries a.active {
+.menu-countries a.active, .worldmenu .menu-countries a.active {
 	background: #7a7979 url('img/sprite.png') no-repeat -281px -364px;
 	color: #fff;
 	margin-left: -10px;
