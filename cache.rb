@@ -4,6 +4,12 @@ host = "http://localhost:4567"
   puts "#{page.name}"
   system "curl #{host}/#{page} > #{page}"
 end
+@pages = Page.all :page_type => "page"
+@pages.each do |pages|
+  puts "#{pages.name}"
+  system "curl #{host}#{page.url} > about/#{page.url}.html"
+end
+
 @regions = Page.all :page_type => "region"
 @regions.each do |region|
   puts "#{region.name}"
@@ -13,6 +19,6 @@ end
 @pages.each do |page|
   puts "#{page.name}"
   system "mkdir -p .#{page.url}"
-  system "curl #{host}#{page.url.gsub(/^(\w)/,'/$1')} > .#{page.url}.html"
+  system "curl #{host}#{page.url} > .#{page.url}.html"
   system "cp .#{page.url}.html .#{page.url}/index.html"
 end
