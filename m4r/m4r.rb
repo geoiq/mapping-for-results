@@ -1,4 +1,5 @@
-%w{ rubygems sinatra open-uri yajl erb  yajl/gzip yajl/deflate yajl/http_stream faster_csv json}.each {|gem| require gem}
+# -*- coding: utf-8 -*-
+%w{ rubygems bundler/setup sinatra open-uri yajl erb  yajl/gzip yajl/deflate yajl/http_stream faster_csv json}.each {|gem| require gem}
 
 PLATFORM_API_URL = "http://wbstaging.geocommons.com"
 # PLATFORM_API_URL = "http://geoiq.local"
