@@ -532,7 +532,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var width = 380;
 		var char_length = 13;
 		if( self.country == "World") {
-		    width = 400;
+		    width = 380;
 		    char_length = 45;
 		    }
 
@@ -621,7 +621,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			if(self.stylelayers["Project Locations"] != null)
 				opts["href"] = links;
 			
-			F1.Visualizer.charts.pie(180, width, pie_options, "chart-left-pie-chart", opts);		  
+			F1.Visualizer.charts.pie(170, width, pie_options, "chart-left-pie-chart", opts);		  
 
 	},
 	regionFundingBars: function() {

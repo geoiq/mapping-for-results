@@ -70,7 +70,7 @@
 #chart-left-stat h1 {font-family:Georgia, serif; font-size:26px; color:#970001; font-weight:bold; margin-top:16px;}
 #chart-left-stat h2 {font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f; line-height:17px; padding-right:18px; width: 150px;}
 
-#chart-left-pie-chart {width:562px; height:170px; float:left; margin-top: 30px; margin-left: 0px;}
+#chart-left-pie-chart {width:562px; height:190px; float:left; margin-top: 15px; margin-left: 0px;}
 
 /*RIGHT CHART*/
 #chart-right {margin-top:20px;margin-bottom:17px; width:476px; height:260px; float:left;}
