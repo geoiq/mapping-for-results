@@ -4,7 +4,7 @@
     <title>The World Bank - Mapping for Results</title>
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
     <meta name="description" content="The World Bank - Mapping for Results">
-    <meta name="keywords" content="About the Mapping for Results Platform,health,poverty,millenium development goals,indicators,development,humanitarian">
+    <meta name="keywords" content="Methodology,About the Mapping for Results Platform,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/mapping.css">
@@ -128,7 +128,7 @@
 
     <div id="content-wrapper">
     <div class="static_display">
-  <h4>About the Mapping for Results Platform</h4>
+  <h4>Methodology</h4>
   <ul style="float:right">
     
     <li><a href="about">About the Mapping for Results Platform</a></li>
@@ -145,15 +145,39 @@
     
   </ul>
 
-<p>As part of the World Bank’s new Policy on Access to Information and building on the success of the Open Data initiative, the World Bank launched the interactive Mapping for Results (M4R) platform in October 2010. The initiative visualizes the location of World Bank projects to better monitor project and impact on people; to enhance transparency and social accountability; and to enable citizens and other stakeholders to provide direct feedback.</p>
+<p>Geo-coding is the process of mapping foreign aid projects to the location of their intended recipients.  The Mapping for Results initiative used the <a href="http://open.aiddata.org" title="UCDP/AidData coding methodology" target="_new">UCDP/AidData coding methodology</a>  which assigns latitudes and longitudes to project locations, while also specifying the geographic precision and scope of the location (i.e. city, district, province, country). Small modifications were made to this methodology in order to meet the specifications of World Bank documentation and mapping needs. For more details see the <a href="/files/worldbank_geocoding_manual.pdf" target-"_new">Geocoding Manual</a>.
+</p>
+<p>The precision of each project depends on the quality of the publicly available project documentation. Sources vary in the precision that locations are reported; sometimes the exact location is named and in other instances the general area is reported. The system of georeferencing used by the World Bank copes with coordinates in four main levels, ranging from point locations, through two administrative divisions, to the country level.  
+</p>
+<p>Nine precision categories are connected to the coordinates in order for researchers to select subsets of the dataset that contain different levels of precision. When selecting a single project activity, a window will appear including a description of the precision of that location.
+</p>
+<p>National and Budget support projects are not represented in the map, but are listed below in the dashboard. 
+</p>
+<p>Each of the following main sectors are included in the maps, each of them is sub classified in sub sectors:
+</p>
+<ul>
+<li>Agriculture, Fishing, and Forestry</li>
+<li>Public Administration, Law, and Justice</li>
+<li>Information and Communications</li>
+<li>Education</li>
+<li>Finance</li>
+<li>Health and Other Social Services</li>
+<li>Industry and Trade</li>
+<li>Energy and Mining</li>
+<li>Transportation</li>
+<li>Water, Sanitation, and Flood Protection</li>
+</ul>
 
-<p>For the 2011 World Bank Spring Meetings, the World Bank has released maps of the subnational locations of active projects of all 79 IDA countries. For select countries, the Mapping for Results platform provides not only geographic information of WB-financed programs at the sub-national level, but also allows users to overlay disaggregated poverty and human development data (i.e. infant mortality rates).</p>
-
-<p>An experienced team of researchers geo-coded more than 16,000 project locations for more than 2,700 active Bank activities across 105 countries including all IDA recipient countries. </p>
-
-<p>The local project data has been made available to the public through the API of the <a href="http://data.worldbank.org/" title="Data | The World Bank" target="_new">Open Data Initiative</a> the Bank's new Policy on <a target="_new" href="http://go.worldbank.org/TRCDVYJ440" title="Access to Information">Access to Information</a>.</p>
-
-<object width="640" height="390"><param name="movie" value="http://www.youtube.com/v/Iyf3Dz1w2Zo?fs=1&hl=en_US&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/Iyf3Dz1w2Zo?fs=1&hl=en_US&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="390"></embed></object>
+<p>The maps display the number of activities of a given World Bank project. For example a project in health may have different hospital locations; the project activities layer will show all these locations on the map.
+</p>
+<p>Project locations listed in various documents including Integrated Safeguards Data Sheet (ISDS), Project Appraisal Document (PAD), Environmental Assessments (EA), as well as other project documents were included in the project. Although this information is publicly available the Mapping for Results platform makes this information easily accessible and increases transparency and accountability.  In cases where little project documentation or location information is available, Task Team Leaders (TTL), the managers of these projects, were contacted to request additional location information. 
+</p>
+<p>After documents such as the ISDS, PAD, EA are reviewed and locations were geo referenced, M4R communicated with Transaction Team Leaders in select countries in order to request for validation of M4R findings. TTLs review M4R findings and either confirm, delete or add project locations to the ones identified.
+</p>
+<p>Based on TTL input Mapping for results updates the locations to produce the final georeferenced locations for a project that will be included in the map.
+</p>
+<p>Not all data has been validated by TTLs, may be updated, and be subject to change.
+</p>
 </div>
 
     </div>
@@ -163,7 +187,7 @@
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
-        <a class="breadcrumb-link" href="/" title='World Bank: World'>World</a><a class="breadcrumb-link " href="about">About the Mapping for Results Platform</a>   
+        <a class="breadcrumb-link" href="/" title='World Bank: World'>World</a><a class="breadcrumb-link " href="about">About the Mapping for Results Platform</a><a class="breadcrumb-link breadcrumb-last" href="/methodology">Methodology</a>   
         </div>
         </div>
         <div id="network-footer">
@@ -208,8 +232,8 @@ var s_pageName="Home > Maps > ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT";
 var s_prop1 = "";
-var s_prop6 = ""; / Region /
-var s_prop7 = "About the Mapping for Results Platform"; / Country /
+var s_prop6 = "About the Mapping for Results Platform"; / Region /
+var s_prop7 = "Methodology"; / Country /
 var s_prop2 = "Not Available"; /* Author /
 var s_prop3 = "Not Available"; / Date /
 var s_prop4 = "Not Available"; / Topic /
