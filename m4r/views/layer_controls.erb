@@ -8,9 +8,9 @@
                 <li><a href="#" onclick="wb.setIndicator('<%= category %>'); return false"><%= category %></a></li>
                 <% else %>
                 <li class="dropmenu_category"><%= category %></li>
-                <% end %>
                 <% indicators.each do |indicator| %>
                 <li><a href="#" onclick="wb.setIndicator('<%= indicator %>'); return false"><%= indicator %></a></li>
+                <% end %>
                 <% end %>
                 <% end %>
               </ul>
