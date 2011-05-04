@@ -119,7 +119,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  this.sector_names = {};
 	  this.sector_codes = {};
 	  jq.each(self.sectors, function(index, sector) {
-		  if(country_attrs.sectors !== null && country_attrs.sectors[sector.name] !== null) { 
+		  if(country_attrs.sectors !== undefined && country_attrs.sectors !== null && country_attrs.sectors[sector.name] !== null) { 
 			sector.funding = country_attrs.sectors[sector.name];
 			self.total_funding += country_attrs.sectors[sector.name];
 		  }
