@@ -390,7 +390,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  self.activities = jq.map(data.features, function(feature) { 
 		if (feature) {
 		  attr = feature.attributes;
-		  if(self.projects[attr["project id"]] === null) { // first time we've seen this project ID
+		  if(self.projects[attr["project id"]] === undefined || self.projects[attr["project id"]] === null) { // first time we've seen this project ID
 			var project = {};
 
 			// Get the project level attributes
