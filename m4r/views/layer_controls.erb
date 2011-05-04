@@ -3,8 +3,15 @@
             <li>
               <a href="#" id="layercontrol_indicators" class="arwOrange" onclick="wb.setIndicator(); return false">INDICATORS</a>
               <ul class="dropmenu_options">
-                <% (@page.data[:indicators] || []).each do |indicator| %>
+                <% (@page.data[:indicators] || {}).each do |category,indicators| %>
+                <% if indicators.nil? %>
+                <li><a href="#" onclick="wb.setIndicator('<%= category %>'); return false"><%= category %></a></li>
+                <% else %>
+                <li class="dropmenu_category"><%= category %></li>
+                <% end %>
+                <% indicators.each do |indicator| %>
                 <li><a href="#" onclick="wb.setIndicator('<%= indicator %>'); return false"><%= indicator %></a></li>
+                <% end %>
                 <% end %>
               </ul>
             </li>
