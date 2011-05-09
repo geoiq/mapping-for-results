@@ -1,6 +1,8 @@
   <div id="share">
   	<ul class="dropmenu map-options">
   	    <% if %w{country}.include?(@page.page_type) %>
+          <li class="embed"><a title="embed" href="#" id="embed_map"><span></span>EMBED</a>     
+           </li>     
           <li class="download"><a title="download" href="#" id="download_data"><span></span>DOWNLOAD</a>     
               <ul class="dropmenu_options" id="data_links">
               </ul>
@@ -8,7 +10,7 @@
         <% end %>
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
-                <li><a href="http://twitter.com/home?status=<%= @page_title.gsub(/\s/,'+') %>+<%= PLATFORM_API_URL + request.env["REQUEST_URI"] %>" target="_new" id="">Twitter</a></li>
+                <li><a href="http://twitter.com/home?status=<%= @page_title.gsub(/\s/,'+') %>+<%= PLATFORM_API_URL + request.env["REQUEST_URI"] %>" target="_new" id="twitter_link">Twitter</a></li>
                 <li><a href="http://facebook.com/worldbank" id="">Facebook</a></li>
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>

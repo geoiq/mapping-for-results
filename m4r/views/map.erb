@@ -79,13 +79,17 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"}
 	};
   F1.WorldBank.prototype = {
-	init: function(map_id, country, region, country_attrs) {
+	init: function(map_id, country, region, country_attrs, embed) {
 	  
 	  var self = this;
 	  this.activities = {};
 	  this.projects = country_attrs.projects;
 	  this.visibleSectors = [];
 	  this.map_id = map_id;
+	  if(embed !== undefined && embed !== null)
+	    this.embed = embed;
+      else
+        this.embed = false;
 	  if(country_attrs.regions !== undefined && country_attrs.regions !== null)
 		this.regions = country_attrs.regions;
 	  else
@@ -167,6 +171,71 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  }
 	  return false;
 	},
+	setBookmark: function(key, value) {
+        var options = document.location.hash.split("&")
+        document.location.hash = "";
+        jq.each(options, function(index,option) {
+            if(option !== undefined && option !== null && option != "" && option != "#") {
+                var vals = option.split("=")
+                if(vals[0] === key) {
+                    vals[1] = value 
+                    key = null;
+                }
+                document.location.hash += "&" + vals[0] + "=" + vals[1]; 
+            }
+        }); 
+        if(key !== undefined && key !== null)
+            document.location.hash += "&" + key + "=" + value;
+        return false;
+    },
+    getBookmark: function(key) {
+        var options = document.location.hash.split("&")
+        var value = null;
+        jq.each(options, function(index,option) {
+            var vals = option.split("=")
+            if(vals[0] === key)
+                value = vals[1]
+        });
+        return value;
+    },
+	// updates the URL hash with current states
+	saveState: function() {
+        var center = this.map.swf.getCenterZoom();
+        this.setBookmark("location",center[0].lat.toFixed(6) + "," + center[0].lon.toFixed(6) + "," + center[1])
+	    var vs = ""
+        jq.each(this.visibleSectors, function(index,sector) { vs += sector + ","; });
+	    this.setBookmark("sectors",vs);
+	    this.setBookmark("indicator",this.current_indicator);
+	    return false;
+	},
+	updateTwitterLink: function() {
+        this.saveState();
+        var base_link = wb.country + " - Mapping for Results " + document.location.protocol + "//" + document.location.host + document.location.pathname
+        url = "http://twitter.com/home?status=" + base_link + document.location.hash.replace(/#/g,'%23').replace(/&/g,'%26');
+        jq("#twitter_link").attr("href", url);
+        return false;
+	},
+	// uses the URL hash to set current viewed state
+	loadState: function() {
+	    var self = this;
+	    var center = this.getBookmark("location");
+	    if(center !== undefined && center !== null) {
+	        var loc = center.split(",")
+	        self.setLocation("",loc[0],loc[1],loc[2])
+	    }
+	    var vs = this.getBookmark("sectors");
+	    if(vs !== undefined && vs !== null) {
+	        self.toggleSector("none", false, false)
+	        var sectors = vs.split(",");
+	        jq.each(sectors, function(index, sector) { if(self.sectors[sector] !== undefined) self.toggleSector(sector, true, false)})
+	    }
+	    var indicator = this.getBookmark("indicator");
+	    if(indicator !== undefined && indicator !== null) {
+	        self.setIndicator(indicator);
+	    }
+
+	    return false;	    
+	},
 	setLocation: function(region,lat,lon,zoom) {
 	  this.map.swf.setCenterZoom(lat,lon,zoom);
 	  return false;
@@ -202,6 +271,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		if(self.stylelayers["Project Counts"] !== undefined && self.stylelayers["Project Counts"] !== null)
 			self.map.showLayer(self.stylelayers["Project Counts"].order, visible);		  
         jq('#layercontrol_projects').html("No Activities");
+        self.visibleSectors = [];
         jq('#map-content-icons').hide()
         jq('#map-content-regions').hide()
 	  } else if(sector == 'all') {
@@ -319,7 +389,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var sector_dom = jq("#" + sc.id);
 		var sector = sector_dom.attr("sector-name");
 
-		if(Object.include(self.visibleSectors, sector) !== undefined || Object.include(self.visibleSectors, sector) !== null) {
+		if(Object.include(self.visibleSectors, sector) != undefined || Object.include(self.visibleSectors, sector) != null) {
 		  sector_dom.removeClass('inactive').addClass('active');
 		} else {
 		  sector_dom.removeClass('active').addClass('inactive');			
@@ -756,11 +826,17 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	styleLegend: function() {
 	    
 	  if(map_engine != "Sputnik") {
-    	  this.map.showControl("Legend",true);
+	      if(!this.embed){
+    	      this.map.showControl("Legend",true);
+	          this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});
+    	  }
     	  this.map.showControl("Zoom",true);
-	      this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});
 	  }
-      this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
+	  if(this.embed)
+        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, offset: {x:15,y:15}}})
+	  else
+        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
+        
 	  return false;
 	},
 	highlightRegions: function(regions, region_attr) {
@@ -777,36 +853,40 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  jq("#loading").hide();
 	  jq(".loaded").show();
 	},
-	drawCharts: function() {
-	  var self = this;
-	  
-	  if( self.initialized ) { return; }
-	  self.getLayers(self.map);
-	  self.styleMap(self.map);
+    drawCharts: function() {
+        var self = this;
 
-	  if(self.country_attrs.indicators !== undefined && self.stylelayers[self.country_attrs.indicators[0]] !== undefined)
-		self.setIndicator(self.country_attrs.indicators[0]);
+        if( self.initialized ) { return; }
+        self.getLayers(self.map);
+        self.styleMap(self.map);
 
-	  // self.toggleSector("counts_admin1",true);
-	  count = self.country_attrs["projects_count"];
+        if(self.country_attrs.indicators !== undefined && self.stylelayers[self.country_attrs.indicators[0]] !== undefined)
+        self.setIndicator(self.country_attrs.indicators[0]);
+        // self.toggleSector("counts_admin1",true);
+        count = self.country_attrs["projects_count"];
+	    self.loadState();
 
-	  jq('#project_count').html(count);
-	  if(count == 1)
-	    jq('#active_projects_header').html("active project working in")
-	  jq('#activity_count').html(self.country_attrs["locations_count"]);
-	  if(self.country_attrs["locations_count"] == 1)
-	    jq('#mapped_locations_header').html("mapped location")
+        jq('#project_count').html(count);
+        if(count == 1)
+        jq('#active_projects_header').html("active project working in")
+        jq('#activity_count').html(self.country_attrs["locations_count"]);
+        if(self.country_attrs["locations_count"] == 1)
+        jq('#mapped_locations_header').html("mapped location")
 
-	  if(self.projects !== undefined && self.projects !== null) {
-    	  self.sortProjects(self.projects);
-    	  self.projectTable(self.projects);
-    	  // self.projectFundingBars();
-    	  self.productlineFundingBars();
-    	  self.sectorPieChart("all");
-	  }
-	  self.hideLoading();
-	  self.initialized = true;
-  },
+        if(self.projects !== undefined && self.projects !== null) {
+            self.sortProjects(self.projects);
+            self.projectTable(self.projects);
+            // self.projectFundingBars();
+            self.productlineFundingBars();
+            self.sectorPieChart("all", false);
+            self.toggleSector("all", true, false);
+        }
+	    self.loadState();
+        
+        self.hideLoading();
+        
+        self.initialized = true;
+    },
   styleWorldMap: function() {
 	  var self = this;
 	  var active_countries = [];
@@ -839,7 +919,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  self.styleWorldMap();
 	  }
   },
-	  
 	fadeHex: function(hex1, hex2, steps){
 		if(hex1.charAt(0) == "#") 
 			hex1 = hex1.slice(1);

@@ -22,6 +22,10 @@ jq(function() {
     jq('#sall').click(function(){
         wb.toggleSector('all');
     });
+    jq('#twitter_link').hover(function() {
+        wb.updateTwitterLink()
+    });
+    
     jq('.subtotal').live('click',function() {
         wb.sectorPieChart("all");
     });

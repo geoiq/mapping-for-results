@@ -1,3 +1,4 @@
+<% unless @page.name.include?('Admin') %>
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
@@ -15,8 +16,8 @@
 <!--
 var s_pageName="Home > Maps > <%= @page_subtitle %>";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT";
-var s_prop1 = "";
+var s_hier1 = "WBG,WBG Mapping for Results EXT<%= @page.hierarchy.join(',') %>";
+var s_prop1 = "<%= @page_title %>";
 var s_prop6 = "<%= @page[:region] unless @page.nil? %>"; / Region /
 var s_prop7 = "<%= @page[:name] unless @page.nil? %>"; / Country /
 var s_prop2 = "Not Available"; /* Author /
@@ -45,8 +46,9 @@ s_pageName = sTitle;
 s_prop1 = sTitle;
 s_hier1 += ", " + sTitle;
 
-var s_account="wbnispextgeomfr";
+var s_account="wbnispextgeomfr,wbglobalext";
 //-->
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+<% end %>

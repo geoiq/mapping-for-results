@@ -12,7 +12,7 @@
          "{" + (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
        end.join("\n,") %>];
       
-  wb.init(<%= @page[:map].to_s %>,  "<%= @page.name.to_s %>", "<%= @page.region.to_s %>", {projects_count: '<%= commify(@page.projects_count) %>', locations_count: '<%= commify(@page.locations_count) %>', projects: projects, locations_layer: <%= @page.locations_layer || 0 %>, indicators: [<%= (@page.data[:indicators] || []).collect {|i| "'#{i}'"}.join(",") %>], layers: <%= @page.data[:layers].to_json %>});
+  wb.init(<%= @page[:map].to_s %>,  "<%= @page.name.to_s %>", "<%= @page.region.to_s %>", {projects_count: '<%= commify(@page.projects_count) %>', locations_count: '<%= commify(@page.locations_count) %>', projects: projects, locations_layer: <%= @page.locations_layer || 0 %>, indicators: [<%= (@page.data[:indicators] || []).collect {|i| "'#{i}'"}.join(",") %>], layers: <%= @page.data[:layers].to_json %>}, <%= @embed || false %>);
   <% elsif %w{country region}.include?(@page.page_type) %>
   var projects = [];
   var productline = <%= @financing[:productline].to_json %>;
@@ -20,10 +20,10 @@
   var regions = <%= @financing[:regions].to_json %>;
      
      
-  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions });
+  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions }, <%= @embed || false %>);
 
   <% elsif @page.page_type == "project" %>
-  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {title: '<%= @page[:name] %>',locations_count: '<%= commify(@page.locations_count.to_s) %>'});
+  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {title: '<%= @page[:name] %>',locations_count: '<%= commify(@page.locations_count.to_s) %>'}, <%= @embed || false %>);
 
   <% else %>
   
@@ -33,7 +33,7 @@
   var regions = <%= (@financing[:regions] || {}).to_json %>;
      
      
-  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions });
+  wb.init(<%= (@page[:map] || "''").to_s %>,  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions }, <%= @embed || false %>);
   
   <% end %>
   
