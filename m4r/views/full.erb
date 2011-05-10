@@ -82,12 +82,12 @@
             </div>
       </div>
       <div id="map-area">
-      <div id="map-content-hdr2">
-        <%= partial :layer_controls %>
-        <%= partial :sector_controls %>
-      </div>
+        <div id="map-content-hdr2">
+          <%= partial :layer_controls %>
+          <%= partial :sector_controls %>
+        </div>
         <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
-  </div>
+      </div>
         <%= partial :projects_table if @page.page_type == "country" %>
         </div><!--#main-map//-->
         </div><!--#main-wrap//-->

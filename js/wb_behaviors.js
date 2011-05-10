@@ -8,7 +8,14 @@ jq(function() {
             jq(this).removeClass("collapsed").addClass("expanded");  
         }
     });
-
+    
+    jq("#embed_map").click(function() {
+        jq("#share_window").fadeIn()
+    });
+    jq("#close_embed").click(function() {
+        jq("#share_window").fadeOut()
+    });
+    
     jq("#locations_list .inactive").click(function () {
         return false;
     });

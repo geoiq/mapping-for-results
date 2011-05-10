@@ -79,7 +79,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"}
 	};
   F1.WorldBank.prototype = {
-	init: function(map_id, country, region, country_attrs, embed) {
+	init: function(map_id, country, region, country_attrs, embed, callback) {
 	  
 	  var self = this;
 	  this.activities = {};
@@ -104,7 +104,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  this.country_attrs = country_attrs;
 	  this.productlines = {}
 	  this.current_indicator = (country_attrs.indicators !== undefined && country_attrs.length > 0) ? country_attrs.indicators[0] : null;
-	  
+	  this.cb = callback;
 	  
 	  this.wbicons = {"Agriculture, fishing, and forestry":"<%= PLATFORM_API_URL %>/images/icons/round/agriculture-16.png","Information and communications":"<%= PLATFORM_API_URL %>/images/icons/round/communication-16.png","Education":"<%= PLATFORM_API_URL %>/images/icons/round/education-16.png","Energy and mining":"<%= PLATFORM_API_URL %>/images/icons/round/energy-16.png","Finance":"<%= PLATFORM_API_URL %>/images/icons/round/finance-16.png","Health and other social services":"<%= PLATFORM_API_URL %>/images/icons/round/health-16.png","Industry and trade":"<%= PLATFORM_API_URL %>/images/icons/round/industry-16.png","Public Administration, Law, and Justice":"<%= PLATFORM_API_URL %>/images/icons/round/public-16.png","Transportation":"<%= PLATFORM_API_URL %>/images/icons/round/transportation-16.png","Water, sanitation and flood protection":"<%= PLATFORM_API_URL %>/images/icons/round/water-16.png"};
 	  var color_index = 3;
@@ -824,18 +824,19 @@ if(typeof(F1)=='undefined') {F1 = {};}
             }
         },
 	styleLegend: function() {
+	  // for embedded maps
+    var y = 50;
+    var ch = jq("#map-content-hdr2");
+    if (ch !== undefined && ch.length == 0)
+      y = 10
 	    
-	  if(map_engine != "Sputnik") {
-	      if(!this.embed){
-    	      this.map.showControl("Legend",true);
-	          this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});
-    	  }
-    	  this.map.showControl("Zoom",true);
-	  }
-	  if(this.embed)
-        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, offset: {x:15,y:15}}})
-	  else
+	  this.map.showControl("Zoom",true);
+    if(!this.embed){
+	      this.map.showControl("Legend",true);
+        this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});
         this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
+	  } else {
+        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:y}}}) }
         
 	  return false;
 	},
@@ -917,6 +918,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  self.drawCharts();
 	  } else {
 		  self.styleWorldMap();
+	  }
+	  if(this.callback !== undefined && this.callback !== null) {
+	    this.callback.call(self)
 	  }
   },
 	fadeHex: function(hex1, hex2, steps){
