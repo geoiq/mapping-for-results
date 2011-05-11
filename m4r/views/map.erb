@@ -212,7 +212,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         this.saveState();
         var base_link = document.location.protocol + "//" + document.location.host + document.location.pathname;
         var url = base_link + document.location.hash;
-        var iframe = "<iframe src='http://localhost:4567/afr/kenya/embed?width=800&height=400" + document.location.hash.replace(/&/g,'&') + "' height='400' width='800' scrolling='no' frameborder='0'></iframe>"
+        var iframe = "<iframe src='" + base_link + "/embed?width=800&height=400" + document.location.hash.replace(/&/g,'&') + "' height='400' width='800' scrolling='no' frameborder='0'></iframe>"
         jq("#embed_code").val(iframe);
         jq("#share_link").attr("value", url);
         return false;

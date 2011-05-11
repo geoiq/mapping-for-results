@@ -12,9 +12,11 @@ jq(function() {
     jq("#embed_map").click(function() {
         wb.updateEmbedLink();
         jq("#share_window").fadeIn()        
+        return false;
     });
     jq("#close_embed").click(function() {
         jq("#share_window").fadeOut()
+        return false;
     });
     
     jq("#locations_list .inactive").click(function () {
