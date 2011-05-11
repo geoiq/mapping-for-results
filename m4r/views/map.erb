@@ -205,24 +205,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	    var vs = ""
         jq.each(this.visibleSectors, function(index,sector) { vs += sector + ","; });
 	    this.setBookmark("sectors",vs);
-	    this.setBookmark("indicator",this.current_indicator.gsub(/ /g,'_'););
+	    this.setBookmark("indicator",this.current_indicator.gsub(/ /g,'_'));
 	    return false;
-	},
-	updateEmbedLink: function() {
-        this.saveState();
-        var base_link = document.location.protocol + "//" + document.location.host + document.location.pathname;
-        var url = base_link + document.location.hash;
-        var iframe = "<iframe src='" + base_link + "/embed?width=800&height=400" + document.location.hash.replace(/&/g,'&') + "' height='400' width='800' scrolling='no' frameborder='0'></iframe>"
-        jq("#embed_code").val(iframe);
-        jq("#share_link").attr("value", url);
-        return false;
-	},
-	updateTwitterLink: function() {
-        this.saveState();
-        var base_link = wb.country + " - Mapping for Results " + document.location.protocol + "//" + document.location.host + document.location.pathname
-        url = "http://twitter.com/home?status=" + base_link + document.location.hash.replace(/#/g,'%23').replace(/&/g,'%26');
-        jq("#twitter_link").attr("href", url);
-        return false;
 	},
 	// uses the URL hash to set current viewed state
 	loadState: function() {
@@ -240,11 +224,28 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	    }
 	    var indicator = this.getBookmark("indicator");
 	    if(indicator !== undefined && indicator !== null) {
-	        self.setIndicator(indicator.gsub(/_/g,' '););
+	        self.setIndicator(indicator.gsub(/_/g,' '));
 	    }
 
 	    return false;	    
+	},	
+	updateEmbedLink: function() {
+        this.saveState();
+        var base_link = document.location.protocol + "//" + document.location.host + document.location.pathname;
+        var url = base_link + document.location.hash;
+        var iframe = "<iframe src='" + base_link + "/embed?width=800&height=400" + document.location.hash.replace(/&/g,'&') + "' height='400' width='800' scrolling='no' frameborder='0'></iframe>"
+        jq("#embed_code").val(iframe);
+        jq("#share_link").attr("value", url);
+        return false;
 	},
+	updateTwitterLink: function() {
+        this.saveState();
+        var base_link = wb.country + " - Mapping for Results " + document.location.protocol + "//" + document.location.host + document.location.pathname
+        url = "http://twitter.com/home?status=" + base_link + document.location.hash.replace(/#/g,'%23').replace(/&/g,'%26');
+        jq("#twitter_link").attr("href", url);
+        return false;
+	},
+
 	setLocation: function(region,lat,lon,zoom) {
 	  this.map.swf.setCenterZoom(lat,lon,zoom);
 	  return false;
