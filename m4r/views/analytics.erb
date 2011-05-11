@@ -1,4 +1,4 @@
-<% unless @page.name.include?('Admin') %>
+<% unless @page.name.nil? || @page.name.include?('Admin') %>
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
