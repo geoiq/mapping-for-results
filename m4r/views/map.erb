@@ -205,7 +205,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	    var vs = ""
         jq.each(this.visibleSectors, function(index,sector) { vs += sector + ","; });
 	    this.setBookmark("sectors",vs);
-	    this.setBookmark("indicator",this.current_indicator);
+	    this.setBookmark("indicator",this.current_indicator.gsub(/ /g,'_'););
 	    return false;
 	},
 	updateEmbedLink: function() {
@@ -240,7 +240,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	    }
 	    var indicator = this.getBookmark("indicator");
 	    if(indicator !== undefined && indicator !== null) {
-	        self.setIndicator(indicator);
+	        self.setIndicator(indicator.gsub(/_/g,' '););
 	    }
 
 	    return false;	    
