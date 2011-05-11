@@ -611,6 +611,14 @@ a.moreData{
 #project-info th a{
 	color: #000;
 }
+#share_window {z-index: 10000; padding: 10px 10px; background-color: #888; position: absolute; top:20px; left: 80px;}
+#close_embed {
+	background: url('img/sprite2.png') no-repeat -285px -705px;
+/*    text-indent: -500em;*/
+	height: 10px;
+	width: 10px;
+	color: #FFF; float: right
+}
 a.mag-glass{
 	background: url('img/sprite2.png') no-repeat right top;
 	color: #000;

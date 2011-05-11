@@ -10,7 +10,8 @@ jq(function() {
     });
     
     jq("#embed_map").click(function() {
-        jq("#share_window").fadeIn()
+        wb.updateEmbedLink();
+        jq("#share_window").fadeIn()        
     });
     jq("#close_embed").click(function() {
         jq("#share_window").fadeOut()
