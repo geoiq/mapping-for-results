@@ -7,8 +7,12 @@ jq(function() {
             jq("#collapsible-banner").show("blind", { direction: "vertical" }, 2000);
             jq(this).removeClass("collapsed").addClass("expanded");  
         }
+        return false;
     });
-    
+    jq("#share").hover(function() {
+        wb.saveState();
+        return false;
+    })
     jq("#embed_map").click(function() {
         wb.updateEmbedLink();
         jq("#share_window").fadeIn()        
@@ -31,13 +35,11 @@ jq(function() {
     });
     jq('#sall').click(function(){
         wb.toggleSector('all');
+        return false;
     });
-    jq('#twitter_link').hover(function() {
-        wb.updateTwitterLink()
-    });
-    
     jq('.subtotal').live('click',function() {
         wb.sectorPieChart("all");
+        return false;
     });
     jq('table#projects-table_grid tr').hover(function() { jq(this).addClass('active')},function() { jq(this).removeClass('active')})
     jq('.simpleshare_link').click(function() { jq('#share-pane').toggle() });

@@ -1,3 +1,4 @@
+<% if (params[:controls] || false).to_s != "true" %>
 <ul class="map-options dropmenu">
               <li class="sectors"><span>ACTIVITIES: </span></li>
               <li><a href="#" id="layercontrol_projects" class="arwOrange" onclick="return wb.toggleSector('none',false)">By Sector</a>
@@ -8,6 +9,7 @@
               </ul>
             </li>      
 </ul>
+<% end %>
       <div id="map-content-icons">
         <div id="map-content-icons2">
           <ul>                  
