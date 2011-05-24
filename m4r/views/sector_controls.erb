@@ -1,13 +1,13 @@
 <% if (params[:controls] || false).to_s != "true" %>
-<ul class="map-options dropmenu">
-              <li class="sectors"><span>ACTIVITIES: </span></li>
-              <li><a href="#" id="layercontrol_projects" class="arwOrange" onclick="return wb.toggleSector('none',false)">By Sector</a>
-              <ul class="dropmenu_options">
-                <li><a href="#" onclick="wb.toggleSector('all', true); return false">By Sector</a></li>
-                <li><a href="#" onclick="wb.toggleSector('counts_admin1', true); return false">By Count</a></li>
-                <li><a href="#" onclick="wb.toggleSector('none',false); return false">No Activities</a></li>
-              </ul>
-            </li>      
+<ul id="activities_menu" class="map-options dropmenu">
+  <li class="sectors"><span>ACTIVITIES: </span></li>
+  <li><a href="#" id="layercontrol_projects" class="arwOrange" onclick="return wb.toggleSector('none',false)">By Sector</a>
+    <ul class="dropmenu_options">
+      <li><a href="#" onclick="wb.toggleSector('all', true); return false">By Sector</a></li>
+      <li><a href="#" onclick="wb.toggleSector('counts_admin1', true); return false">By Count</a></li>
+      <li><a href="#" onclick="wb.toggleSector('none',false); return false">No Activities</a></li>
+    </ul>
+  </li>
 </ul>
 <% end %>
       <div id="map-content-icons">
@@ -48,21 +48,4 @@
         </ul>
       </div>       
 
-              <!-- <div id="map-content-icons" class="clearfix">
-              <ul class="clearfix">
-                <li class="s1"><a href="#" id="sectorcontrol_public" class="sectorcontrol inactive" original-title="Public Administration, Law, and Justice" sector-name="public">1</a></li>
-                <li class="s2"><a href="#" id="sectorcontrol_agriculture" class="sectorcontrol inactive" original-title="Agriculture, fishing, and forestry" sector-name="agriculture">2</a></li>
-                <li class="s3"><a href="#" id="sectorcontrol_health" class="sectorcontrol inactive" original-title="Health and other social services" sector-name="health">3</a></li>
-                <li class="s4"><a href="#" id="sectorcontrol_communications" class="sectorcontrol inactive" original-title="Information and communications" sector-name="communications">4</a></li>
-                <li class="s5"><a href="#" id="sectorcontrol_energy" class="sectorcontrol inactive" original-title="Energy and mining" sector-name="energy">5</a></li>
-                <li class="s6"><a href="#" id="sectorcontrol_finance" class="sectorcontrol inactive" original-title="Finance" sector-name="finance">6</a></li>
-                <li class="s7"><a href="#" id="sectorcontrol_industry" class="sectorcontrol inactive" original-title="Industry and Trade" sector-name="industry">7</a></li>
-                <li class="s8"><a href="#" id="sectorcontrol_transportation" class="sectorcontrol inactive" original-title="Transportation" sector-name="transportation">8</a></li>
-                <li class="s9"><a href="#" id="sectorcontrol_water" class="sectorcontrol inactive" original-title="Water, sanitation and flood protection" sector-name="water">9</a></li>
-                <li class="s10"><a href="#" id="sectorcontrol_education" class="sectorcontrol inactive" original-title="Education" sector-name="education">10</a> </li>            
-                <li class="s11"><form method="get" action="">
-                    <input type="checkbox" value="" class="" id="sall" name="input">
-                  </form></li>
-                <li class="all">ALL</li>
-              </ul>
-          </div> -->
+  

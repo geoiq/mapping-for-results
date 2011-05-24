@@ -55,7 +55,7 @@ module Sinatra
       html = ""
       html << '<select name="page[region]" id="page[region]" >'
       regions.each do |region|
-        html << "<option value='#{region.name}' #{country.region == region.name ? 'selected' : ""}>#{region.name}</option>"
+        html << "<option value='#{region.id}' #{country.region == region.name ? 'selected' : ""}>#{region.hierarchy.collect(&:name).reverse.join(" - ")}</option>"
       end
       html << "<option value='' #{country.region == '' ? 'selected' : ""}>-- root level</option>"      
       html << "</select>"
@@ -82,8 +82,8 @@ module Sinatra
         html << %Q{ has #{page.data[:projects].length} projects as of #{page.sync_updated_at.strftime("%B %d, %Y")}. }
       end
 
-      html << %Q{ You can <a href="/admin/#{page.shortname}/edit">edit</a> this page}
-      html << %Q{, or <a href="/admin/#{page.shortname}/sync">sync with project API</a>.} unless page.page_type == "page"
+      html << %Q{ You can <a href="/admin/#{page.id}/edit">edit</a> this page}
+      html << %Q{, or <a href="/admin/#{page.id}/sync">sync with project API</a>.} unless page.page_type == "page"
       if((children = page.children).length > 0)
         html << "<ul>"
         children.each do |child|

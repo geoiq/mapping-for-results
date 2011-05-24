@@ -86,9 +86,14 @@
           <%= partial :layer_controls %>
           <%= partial :sector_controls %>
         </div>
+        <% if defined?(@additional_controls) %>
+        <div id="map-content-hdr3">
+        <%= partial @additional_controls %>
+        </div>
+        <% end %>
         <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
       </div>
-        <%= partial :projects_table if @page.page_type == "country" %>
+        <%= partial :projects_table if @page.page_type == "country" && @additional_controls != :extractives_controls %>
         </div><!--#main-map//-->
         </div><!--#main-wrap//-->
         <%= partial :sidebar %>

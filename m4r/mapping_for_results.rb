@@ -105,7 +105,8 @@ class MappingForResults < Sinatra::Base
       erb :admin
   end
   get '/admin/:name/edit' do
-      @page = Page.first(:shortname => params[:name])
+      @page = Page.first(:id => params[:name])
+      @page = Page.first(:shortname => params[:name]) if @page.nil?
       puts @page.data.keys
       erb :edit
   end
@@ -150,11 +151,13 @@ class MappingForResults < Sinatra::Base
 
       @page.data = @page.data.merge(data)
 
-      @region = params[:page][:region].length == 0 ? nil : Page.first(:name => params[:page][:region])
-      @page.parent = @region    
+      puts params.inspect
+      @region = params[:page][:region].length == 0 ? nil : Page.get(params[:page][:region])
+      @page.parent = @region
+      @page.region = @region.name
       @page.save
       # cache_expire(@page.url)
-      redirect "/admin/#{@page.shortname}/edit"    
+      redirect "/admin/#{@page.id}/edit"
   end
 
 
@@ -174,7 +177,6 @@ class MappingForResults < Sinatra::Base
     @page = Page.first(:shortname => params[:page].downcase)
     erb :about
   end
-
 
   get '/:region' do
     @region = @page = Page.first(:shortname => params[:region].downcase)
@@ -219,6 +221,7 @@ class MappingForResults < Sinatra::Base
       erb :about
     else
       @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
+      redirect "/#{params[:region]}" if @page.nil?
       @projects = @page.data[:projects]
       
       @page_subtitle = [@page[:name],@page[:region]].compact.join(", ") + " > "
@@ -236,9 +239,20 @@ class MappingForResults < Sinatra::Base
     end
   end
 
+  get '/boost/:region/:country' do 
+    @page = Page.first(:shortname => params[:country].downcase)
+    erb :boost
+  end
+  get '/extractives/:region/:country' do 
+    @page = Page.first(:shortname => params[:country].downcase)
+    @additional_controls = :extractives_controls
+    erb :full, :layout => false
+  end
+  
   get '/:region/:country/:shortname' do
     # @region = MAPS[:world][:regions][params[:region].to_sym]
     @page = Page.first(:shortname => params[:shortname].downcase)
+    
     if(@page.nil?)
       erb :about
     else

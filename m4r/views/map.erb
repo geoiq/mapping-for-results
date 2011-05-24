@@ -79,7 +79,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	"Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Weightfora" }}, infosubtitle: null, table: null, description: "Percent of children under age 5 whose weight-for-age is more than two standard deviations below the median for the international reference population ages 0-59 months. The data are based on the World Health Organization’s child growth standards released in 2006.\nSource: Demographic and Health Surveys implemented by ICF Macro."},
 	"Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Infant_mor"}}, infosubtitle: null, table: null, description: "Mortality rate, infant deaths per 1,000 live births. Infant mortality rate is the number of infant deaths (deaths before reaching one year of age) per 1,000 for the ten year period preceding the survey.\nSource: Demographic and Health Surveys implemented by ICF Macro."},	
 	"Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "dbhp"}}, infosubtitle: null,table: null, description: "Percent of live births in the last three years preceding the survey assisted by a skilled health provider (doctor or other health professional).\nSource: Demographic and Health Surveys implemented by ICF Macro."},
-	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"}
+	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"},
+	"Unemployment Rate": {source: "finder:", title:"Unemployment Rate", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Unemployment rate"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The percentage of the population in each first-order administrative unit that were not employed in the 12 months prior to the survey. Source:  <a href='http://www.measuredhs.com/countries/country_main.cfm?ctry_id=14' target='_new'>Demographic and Health Surveys by Macro International</a>."},	
+	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: ""}
+	
 	};
   F1.WorldBank.prototype = {
 	init: function(map_id, country, region, country_attrs, embed, callback) {
@@ -264,6 +267,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		
 	  jq('#map-title').html(title)
 	  return false;
+	},
+	toggleExtractives: function(indicator, attribute, visible) {
+	  var self = this;
+	  self.map.showLayer(self.stylelayers["Mines"].order, false);
+	  self.map.showLayer(self.stylelayers["Oil wells"].order, false);
+	  self.map.showLayer(self.stylelayers["District revenues"].order, false);
+	  self.map.showLayer(self.stylelayers[indicator].order, visible);
+	  self.map.setLayerStyle(self.stylelayers[indicator].order, {selected_attribute: attribute});
 	},
 	toggleSector: function(sector,visible,refreshCharts) {
 	  var self = this;
@@ -452,6 +463,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var infosub = F1.WorldBank.indicators[indicator].subtitle;
 		if(F1.WorldBank.indicators[indicator].infosubtitle !== undefined && F1.WorldBank.indicators[indicator].infosubtitle !== null)
 		  infosub = F1.WorldBank.indicators[indicator].infosubtitle
+		
+		//infotabs.push({title:"Other Indicators", type: "text", value: "Maternal health: $[Maternal health]% of births attended by skilled health provider\nInfant mortality: $[Infant mortality] per 1000 live births\nMalnutrition: $[Malnutrition]%\nUnemployment rate: $[Unemployment rate]%\nRegional population: $[Regional population] people\nRegional population year: $[Regional population year]\nWealth quintile - highest: $[Wealth quintile - highest]%\nWealth quintile - second highest: $[Wealth quintile - second highest]%\nWealth quintile - fourth highest: $[Wealth quintile - fourth highest]%\nWealth quintile - lowest: $[Wealth quintile - lowest]%\nWealth quintile - middle: $[Wealth quintile - middle]%\nFor further information about these indicators, refer to the <a href='http://maps.worldbank.org/extractives/about' target='_new'>About page</a>"})
 		  
 		self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: indicator + ": $["+ F1.WorldBank.indicators[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
 
@@ -783,7 +796,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
     getLayers: function() {
         var self = this;
-        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition"];
+        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "District revenues"];
         var possibleLayers = eval("(" + self.map.getLayers() + ")");
         if(possibleLayers == undefined) {
             self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
@@ -794,11 +807,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 index = Object.include(findlayers, possibleLayers[layer].title);
                 if(index !== undefined && index !== null){
                     self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
-                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition"], possibleLayers[layer].title)) {
+                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density"], possibleLayers[layer].title)) {
                         F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
                     }
-                    // self.map.swf.setLayerTitle(possibleLayers[layer].order, F1.WorldBank.indicators[possibleLayers[layer].title]);
-                    // self.map.swf.setLayerSubTitle(possibleLayers[layer].order, F1.WorldBank.indicators[possibleLayers[layer].subtitle]);
                     findlayers.splice(index,1);
                 }		 
             })
@@ -812,14 +823,38 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 });
             }
         }
-        if(self.stylelayers["Project Locations"] !== undefined) 
-            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Locations'].source.replace('finder:','') +".csv'>Project Locations (csv)</a></li>");
-        if(self.stylelayers["Project Counts"] !== undefined)
-            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Counts'].source.replace('finder:','') +".csv'>Project Counts (csv)</a></li>");
-        if(self.stylelayers["Indicators"] !== undefined)
-            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Indicators'].source.replace('finder:','') +".zip'>Indicators (shapefile)</a></li>");
-        if(self.stylelayers["Population"] !== undefined)
-            jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Population'].source.replace('finder:','') +".csv'>Population (csv)</a></li>");
+        var downloads = {"Project Locations": "csv",
+            "Project Counts": "csv",
+            "Indicators": "shapefile",
+            "Population": "shapefile",
+            "Mineral deposits": "shapefile",
+            "IFC projects": "csv",
+            "World Bank projects": "csv",
+            "Mines": "csv",
+            "District revenues": "csv",
+            "Oil wells": "csv",
+            "Oil fields": "shapefile",
+            "Oil blocks": "shapefile",
+            "Population density": "shapefile",
+            "Regional socioeconomic indicators": "shapefile"};
+            
+        jq.each(downloads, function(index,download) {
+            if(download == "shapefile")
+                format = "zip";
+            else
+                format = download
+            if(self.stylelayers[index] !== undefined) 
+                jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers[index].source.replace('finder:','') +"."+format+"'>"+index+" ("+download+")</a></li>");
+            
+        })
+        // if(self.stylelayers["Project Counts"] !== undefined)
+        //     jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Project Counts'].source.replace('finder:','') +".csv'>Project Counts (csv)</a></li>");
+        // if(self.stylelayers["Indicators"] !== undefined)
+        //     jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Indicators'].source.replace('finder:','') +".zip'>Indicators (shapefile)</a></li>");
+        // if(self.stylelayers["Population"] !== undefined)
+        //     jq("#data_links").append("<li><a href='<%= PLATFORM_API_URL %>/datasets/" + self.stylelayers['Population'].source.replace('finder:','') +".csv'>Population (csv)</a></li>");
+        // 
+            
         return false;
     },
         styleMap: function() {
