@@ -40,9 +40,6 @@ class MappingForResults < Sinatra::Base
   not_found do
     erb :missing
   end
-  error do
-    erb :missing
-  end
 
   get '/404' do 
     erb :missing

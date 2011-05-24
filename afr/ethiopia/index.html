@@ -14,11 +14,15 @@
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-      <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
+    <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
-    if (top.frames.length!=0)
-      top.location=self.document.location;
     </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   <script type="text/javascript" src="/js/jquery_002.js"></script>
@@ -98,17 +102,27 @@
         
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
-                <li><a href="http://twitter.com/home?status=Ethiopia,+Africa+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/afr/ethiopia" target="_new" id="">Twitter</a></li>
-                <li><a href="http://facebook.com/worldbank" id="">Facebook</a></li>
+                <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
+                <li><a href="http://twitter.com/home?status=Ethiopia,+Africa+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/afr/ethiopia" target="_new" id="twitter_link" onclick="return twt_click()">Twitter</a></li>
+                <li><a rel="nofollow" href="http://www.facebook.com/share.php?u=http://maps.worldbank.org/afr/ethiopia" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Facebook</a> </li>
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
       </ul>
   </div>
+    <div id="share_window" style="display: none;">
+    <a id="close_embed" href="#" style="" title="Close this embed window.">[x]</a>
+    <h3 style="color: #FFF">Embed this map by copying the text below and pasting it into your blog or website.</h3>
+    <textarea cols="120" rows="5" readonly="readonly" style="font-size: 0.9em" id="embed_code">
+    </textarea><br />
+    <h3 style="color: #FFF">...or copy and paste this link to share the current view with others.</h3>
+    <input type="text" size="109" id="share_link" value="" />
+  </div>
+  
     	<div class="main clearfix" id="main-map">
         	<div id="map-content-header">
             <div class="worldmenuholder">
-            	<a class="mag-glass" href="#"></a>
+            	<a class="mag-glass" href="#" id="map_mag"></a>
                             <ul class="worldmenu dropmenu">
                 <li class="first"><a href="javascript:return false;" style="0">ETHIOPIA</span></a>
                 <div class="menu-world-options">
@@ -135,7 +149,7 @@
                         
                         <a href="/afr/capeverde" class="">Cape Verde</a>
                         
-                        <a href="/afr/central-african-republic" class="">Central African Republic</a>
+                        <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
                         <a href="/afr/chad" class="">Chad</a>
                         
@@ -347,23 +361,30 @@
             </div>
       </div>
       <div id="map-area">
-      <div id="map-content-hdr2">
-                  <ul class="map-options dropmenu ">
+        <div id="map-content-hdr2">
+                    <ul class="map-options dropmenu ">
             <li><span>BASE MAP:</span></li>
             <li>
               <a href="#" id="layercontrol_indicators" class="arwOrange" onclick="wb.setIndicator(); return false">INDICATORS</a>
               <ul class="dropmenu_options">
                 
+                
                 <li><a href="#" onclick="wb.setIndicator('Malnutrition'); return false">Malnutrition</a></li>
+                
+                
                 
                 <li><a href="#" onclick="wb.setIndicator('Infant Mortality'); return false">Infant Mortality</a></li>
                 
+                
+                
                 <li><a href="#" onclick="wb.setIndicator('Maternal Health'); return false">Maternal Health</a></li>
+                
                 
               </ul>
             </li>
           </ul>
-        <ul class="map-options dropmenu">
+          
+<ul class="map-options dropmenu">
               <li class="sectors"><span>ACTIVITIES: </span></li>
               <li><a href="#" id="layercontrol_projects" class="arwOrange" onclick="return wb.toggleSector('none',false)">By Sector</a>
               <ul class="dropmenu_options">
@@ -373,9 +394,11 @@
               </ul>
             </li>      
 </ul>
+
       <div id="map-content-icons">
         <div id="map-content-icons2">
-          <ul>                  
+          <ul>
+          
             <li class="s1"><a  sector-name="public" original-title="Public Administration, Law, and Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#">1</a></li>
             <li class="s2"><a  sector-name="agriculture" original-title="Agriculture, fishing, and forestry" class="sectorcontrol inactive" id="sectorcontrol_agriculture" href="#">2</a></li>
             <li class="s3"><a  sector-name="health" original-title="Health and other social services" class="sectorcontrol inactive" id="sectorcontrol_health" href="#">3</a></li>
@@ -386,10 +409,12 @@
             <li class="s8"><a  sector-name="transportation" original-title="Transportation" class="sectorcontrol inactive" id="sectorcontrol_transportation" href="#">8</a></li>
             <li class="s9"><a  sector-name="water" original-title="Water, sanitation and flood protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
             <li class="s10"><a sector-name="education" original-title="Education" class="sectorcontrol inactive" id="sectorcontrol_education" href="#">10</a> </li>            
+              
             <li class="s11"><form action="" method="get">
                 <input name="input" id="sall" class="" type="checkbox" value=""/>
               </form></li>
             <li class="all">ALL</li>
+            
           </ul>
         </div>
       </div>
@@ -424,9 +449,9 @@
                 <li class="all">ALL</li>
               </ul>
           </div> -->
-      </div>
+        </div>
         <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
-  </div>
+      </div>
         <!--Table Data Begins-->
 <div id="map-table">
 </div>
@@ -564,7 +589,7 @@
 ,{id: 'P106228',project_name: 'ET-Ethiopia Nutrition (FY08)',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":57},{"Name":"Public Administration, Law, and Justice","Percent":36},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: ''}
 ,{id: 'P049395',project_name: 'ENERGY ACCESS PROJECT',totalamt: 132.7,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Sep-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Agriculture, fishing, and forestry","Percent":5},{"Name":"Energy and mining","Percent":5},{"Name":"Industry and trade","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: ''}];
       
-  wb.init(446,  "Ethiopia", "Africa", {projects_count: '38', locations_count: '382', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health'], layers: null});
+  wb.init(446,  "Ethiopia", "Africa", {projects_count: '38', locations_count: '382', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health'], layers: null}, false);
   
   
 </script>
@@ -574,6 +599,7 @@
         
 
     </div><!--#container//-->
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
@@ -591,8 +617,8 @@
 <!--
 var s_pageName="Home > Maps > Ethiopia, Africa > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT";
-var s_prop1 = "";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab6cc6e48>,#<Page:0x2aaab6a59278>,#<Page:0x2aaab6b32898>";
+var s_prop1 = "Ethiopia, Africa > The World Bank - Mapping for Results";
 var s_prop6 = "Africa"; / Region /
 var s_prop7 = "Ethiopia"; / Country /
 var s_prop2 = "Not Available"; /* Author /
@@ -621,10 +647,11 @@ s_pageName = sTitle;
 s_prop1 = sTitle;
 s_hier1 += ", " + sTitle;
 
-var s_account="wbnispextgeomfr";
+var s_account="wbnispextgeomfr,wbglobalext";
 //-->
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 </body>
 </html>

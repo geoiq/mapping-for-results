@@ -6,8 +6,8 @@ host = "http://wbstaging.geocommons.com"
   system "curl #{host}/#{page} > #{page}"
 end
 @pages = Page.all :page_type => "page"
-@pages.each do |pages|
-  puts "#{pages.name}"
+@pages.each do |page|
+  puts "#{page.name}"
   system "curl #{host}#{page.url} > about/#{page.url}.html"
 end
 

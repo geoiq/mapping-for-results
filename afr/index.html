@@ -7,8 +7,11 @@
     <meta name="keywords" content="Africa,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/mapping.css">
-      
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
+    <link rel="stylesheet" href="/assets/css/mapping.css">      
   <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css" />
    <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/css/style.css" />
@@ -19,11 +22,11 @@
   <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/assets/css/menu.css" />
 
-    <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
-    if (top.frames.length!=0)
-      top.location=self.document.location;
     </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   <script type="text/javascript" src="/js/jquery_002.js"></script>
@@ -115,7 +118,7 @@
                 </div>
                 <div class="overview-text">
                 
-                The <strong>Mapping for Results Platform</strong> provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <br /><a class="readmore" href="/about">Read More »</a>
+                The <strong>Mapping for Results Platform</strong> provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <br />Prior to the Spring Meetings 2011, Mapping for Results has identified more than 1250 active Bank financed activities working in 16,520 locations. These activities are a subset of more than 2,500 active financed Bank activities with a volume of more than $160 billion.<br /><a class="readmore" href="/about">Read More »</a>
               
               </div>
               </div>
@@ -129,13 +132,23 @@
   	    
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
-                <li><a href="http://twitter.com/home?status=Africa,+World+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/afr" target="_new" id="">Twitter</a></li>
-                <li><a href="http://facebook.com/worldbank" id="">Facebook</a></li>
+                <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
+                <li><a href="http://twitter.com/home?status=Africa,+World+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/afr" target="_new" id="twitter_link" onclick="return twt_click()">Twitter</a></li>
+                <li><a rel="nofollow" href="http://www.facebook.com/share.php?u=http://maps.worldbank.org/afr" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Facebook</a> </li>
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
       </ul>
-  </div> <br /><br />
+  </div>
+    <div id="share_window" style="display: none;">
+    <a id="close_embed" href="#" style="" title="Close this embed window.">[x]</a>
+    <h3 style="color: #FFF">Embed this map by copying the text below and pasting it into your blog or website.</h3>
+    <textarea cols="120" rows="5" readonly="readonly" style="font-size: 0.9em" id="embed_code">
+    </textarea><br />
+    <h3 style="color: #FFF">...or copy and paste this link to share the current view with others.</h3>
+    <input type="text" size="109" id="share_link" value="" />
+  </div>
+   <br /><br />
 
     <div id="content-wrapper">
     
@@ -168,7 +181,7 @@
                         
                         <a href="/afr/capeverde" class="">Cape Verde</a>
                         
-                        <a href="/afr/central-african-republic" class="">Central African Republic</a>
+                        <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
                         <a href="/afr/chad" class="">Chad</a>
                         
@@ -397,7 +410,7 @@
   var regions = {"Eastern Africa":1.72,"Middle East and North Africa":0.0,"Republic of Mali":569.21,"Kingdom of Lesotho":116.95,"Republic of South Africa":3765.97,"Republic of Malawi":491.7,"Islamic Republic of Iran":120.0,"Gabonese Republic":50.0,"Union of the Comoros":34.51,"Central African Republic":137.3,"Republic of Togo":161.12,"Republic of Iraq":878.53,"Republic of Kenya":2266.44,"Republic of Cameroon":453.1,"Democratic Republic of Sao Tome and Prin":12.2,"Republic of Djibouti":59.44,"People&apos;s Republic of Angola":362.5,"Republic of Rwanda":273.99,"Republic of Guinea-Bissau":55.03,"Republic of Chad":152.7,"Republic of Burundi":422.8,"Republic of Guinea":81.82,"Federal Republic of Nigeria":4806.34,"Republic of Niger":198.18,"Republic of Cote d&apos;Ivoire":803.63,"Kingdom of Swaziland":46.9,"Somali Democratic Republic":3.24,"Democratic Republic of the Congo":2023.5,"Republic of Botswana":621.05,"People&apos;s Democratic Republic of Algeria":0.37,"Republic of Senegal":718.15,"Republic of Benin":532.52,"United Republic of Tanzania":2689.1,"Republic of Sierra Leone":231.63,"Republic of Seychelles":2.9,"Republic of The Gambia":82.4,"Republic of Uganda":1847.17,"Federal Democratic Republic of Ethiopia":4192.92,"Republic of the Sudan":428.36,"Republic of Zimbabwe":14.55,"Southern Africa":2.16,"Kingdom of Morocco":1497.15,"Republic of Namibia":5.15,"Republic of Madagascar":846.77,"Burkina Faso":682.49,"Republic of Ghana":1571.71,"Republic of Zambia":437.79,"West Bank and Gaza":829.43,"Arab Republic of Egypt":3858.07,"Western Africa":2.6,"Islamic Republic of Mauritania":287.59,"Africa":4088.45,"Syrian Arab Republic":4.83,"Republic of Liberia":300.41,"Republic of Mozambique":973.73,"Lebanese Republic":610.08,"Republic of Yemen":985.43,"Republic of Congo":176.7,"Republic of Cape Verde":24.5,"Republic of Mauritius":113.67,"Hashemite Kingdom of Jordan":330.95,"State of Eritrea":75.3,"Republic of Tunisia":519.29};
      
      
-  wb.init(356,  "Africa",  "World", {projects_count: '1,072', locations_count: '5,649', sectors: sectors, regions: regions });
+  wb.init(356,  "Africa",  "World", {projects_count: '1,072', locations_count: '5,649', sectors: sectors, regions: regions }, false);
 
   
   
@@ -441,6 +454,7 @@
     </div>
 <!-- /#wrapper -->
 <!-- /layout -->
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
@@ -458,8 +472,8 @@
 <!--
 var s_pageName="Home > Maps > Africa, World > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT";
-var s_prop1 = "";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab39c9ba8>,#<Page:0x2aaab48a9268>";
+var s_prop1 = "Africa, World > The World Bank - Mapping for Results";
 var s_prop6 = "World"; / Region /
 var s_prop7 = "Africa"; / Country /
 var s_prop2 = "Not Available"; /* Author /
@@ -488,9 +502,10 @@ s_pageName = sTitle;
 s_prop1 = sTitle;
 s_hier1 += ", " + sTitle;
 
-var s_account="wbnispextgeomfr";
+var s_account="wbnispextgeomfr,wbglobalext";
 //-->
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 </body></html>

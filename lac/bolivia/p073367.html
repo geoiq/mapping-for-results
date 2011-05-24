@@ -7,8 +7,11 @@
     <meta name="keywords" content="Decentralized Infrastructure...,Bolivia,Latin America & Caribbean,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/mapping.css">
-      
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
+    <link rel="stylesheet" href="/assets/css/mapping.css">      
   <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css" />
    <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/css/style.css" />
@@ -19,11 +22,11 @@
   <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/assets/css/menu.css" />
 
-    <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
-    if (top.frames.length!=0)
-      top.location=self.document.location;
     </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   <script type="text/javascript" src="/js/jquery_002.js"></script>
@@ -133,13 +136,23 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
   	    
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
-                <li><a href="http://twitter.com/home?status=Decentralized+Infrastructure...,+Bolivia+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/lac/bolivia/p073367" target="_new" id="">Twitter</a></li>
-                <li><a href="http://facebook.com/worldbank" id="">Facebook</a></li>
+                <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
+                <li><a href="http://twitter.com/home?status=Decentralized+Infrastructure...,+Bolivia+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/lac/bolivia/p073367" target="_new" id="twitter_link" onclick="return twt_click()">Twitter</a></li>
+                <li><a rel="nofollow" href="http://www.facebook.com/share.php?u=http://maps.worldbank.org/lac/bolivia/p073367" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Facebook</a> </li>
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
       </ul>
-  </div> <br /><br />
+  </div>
+    <div id="share_window" style="display: none;">
+    <a id="close_embed" href="#" style="" title="Close this embed window.">[x]</a>
+    <h3 style="color: #FFF">Embed this map by copying the text below and pasting it into your blog or website.</h3>
+    <textarea cols="120" rows="5" readonly="readonly" style="font-size: 0.9em" id="embed_code">
+    </textarea><br />
+    <h3 style="color: #FFF">...or copy and paste this link to share the current view with others.</h3>
+    <input type="text" size="109" id="share_link" value="" />
+  </div>
+   <br /><br />
 
     <div id="content-wrapper">
     
@@ -172,7 +185,7 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
                         
                         <a href="/afr/capeverde" class="">Cape Verde</a>
                         
-                        <a href="/afr/central-african-republic" class="">Central African Republic</a>
+                        <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
                         <a href="/afr/chad" class="">Chad</a>
                         
@@ -395,7 +408,7 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
 
   var wb = new F1.WorldBank();
   
-  wb.init(116,  "Decentralized Infrastructure...",  "Bolivia", {title: 'Decentralized Infrastructure...',locations_count: '0'});
+  wb.init(116,  "Decentralized Infrastructure...",  "Bolivia", {title: 'Decentralized Infrastructure...',locations_count: '0'}, false);
 
   
   
@@ -437,6 +450,7 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
     </div>
 <!-- /#wrapper -->
 <!-- /layout -->
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
@@ -454,8 +468,8 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
 <!--
 var s_pageName="Home > Maps > Decentralized Infrastructure..., Bolivia > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT";
-var s_prop1 = "";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab3503d30>,#<Page:0x2aaab3278408>,#<Page:0x2aaab32d8178>,#<Page:0x2aaab415bc40>";
+var s_prop1 = "Decentralized Infrastructure..., Bolivia > The World Bank - Mapping for Results";
 var s_prop6 = "Bolivia"; / Region /
 var s_prop7 = "Decentralized Infrastructure..."; / Country /
 var s_prop2 = "Not Available"; /* Author /
@@ -484,9 +498,10 @@ s_pageName = sTitle;
 s_prop1 = sTitle;
 s_hier1 += ", " + sTitle;
 
-var s_account="wbnispextgeomfr";
+var s_account="wbnispextgeomfr,wbglobalext";
 //-->
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 </body></html>
