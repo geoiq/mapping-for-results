@@ -33,6 +33,9 @@ jq(function() {
             return wb.toggleSector(sector_name);
         })
     });
+    jq('#mines_sectors li').click(function() {
+        wb.toggleMines("Mines", jq(this).attr("original-title"))
+    })
     jq('#sall').click(function(){
         wb.toggleSector('all');
         return false;

@@ -84,10 +84,10 @@ class MappingForResults < Sinatra::Base
     csv_string
   end
 
-  get '/map.js' do 
+  get '/script/:name.js' do 
     content_type 'application/javascript', :charset => 'utf-8'
     # cache(erb :map, :layout => false)
-    erb :map, :layout => false    
+    erb params[:name].to_sym, :layout => false    
   end
 
   # 

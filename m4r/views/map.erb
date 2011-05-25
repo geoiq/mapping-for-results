@@ -242,7 +242,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         var base_link = document.location.protocol + "//" + document.location.host + document.location.pathname;
         var view_link = document.location.hash.replace(/&/g,'&');
         var url = base_link + document.location.hash;
-        var iframe = "<iframe src='" + base_link + "/embed?width=800&height=400" + view_link + "' height='400' width='800' scrolling='no' frameborder='0'></iframe><a href='" + url + "'>World Bank's Mapping for Results</a>"
+        var iframe = "<iframe src='" + base_link + "/embed?width=800&height=400" + view_link + "' height='400' width='800' scrolling='no' frameborder='0'></iframe><br /><a href='" + url + "'>World Bank's Mapping for Results</a>"
         jq("#embed_code").val(iframe);
         jq("#share_link").attr("value", url);
         return false;
@@ -268,14 +268,30 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  jq('#map-title').html(title)
 	  return false;
 	},
-	toggleExtractives: function(indicator, attribute, visible) {
+	setExtractiveIndicator: function(indicator, attribute, visible) {
 	  var self = this;
 	  self.map.showLayer(self.stylelayers["Mines"].order, false);
 	  self.map.showLayer(self.stylelayers["Oil wells"].order, false);
 	  self.map.showLayer(self.stylelayers["District revenues"].order, false);
 	  self.map.showLayer(self.stylelayers[indicator].order, visible);
-	  self.map.setLayerStyle(self.stylelayers[indicator].order, {selected_attribute: attribute});
+	  if(attribute == "Icons"){
+        self.map.swf.addLayerCategoryFilter(self.stylelayers[indicator].order, F1.WorldBank.extractives[indicator]["Icons"]);
+	  } else {
+    	  var s = F1.WorldBank.extractives[indicator][attribute];
+    	  s.icon.selectedAttribute = attribute;
+	      self.map.setLayerStyle(self.stylelayers[indicator].order, s);
+	  }
+	  
+	  
 	},
+	toggleExtractive: function(layer,sector,visible) {
+             console.log(sector);
+        // if(visible === undefined || visible === null)
+        //   visible = !(jq("#sectorcontrol_" + sector).hasClass('active'));
+        //      
+        //      this.map.showLayer(self.stylelayers["Project Locations"]);
+	    
+    },
 	toggleSector: function(sector,visible,refreshCharts) {
 	  var self = this;
 	  var visibleExpression = "";
@@ -796,18 +812,26 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
     getLayers: function() {
         var self = this;
-        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "District revenues"];
+        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "District revenues", "Mineral deposits"];
         var possibleLayers = eval("(" + self.map.getLayers() + ")");
         if(possibleLayers == undefined) {
-            self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
-            return;
-        } else {
+            possibleLayers = [];
+            for(var i=0; i<15; i++) {
+                var l = self.map.getLayer(i);
+                if(l !== null && l !== undefined){
+                    l.order = i;
+                    possibleLayers.push(l)
+                }
+            }
+            // self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
+            // return;
+        } //else {
             var index;
             jq.each(possibleLayers, function(layer) {
                 index = Object.include(findlayers, possibleLayers[layer].title);
                 if(index !== undefined && index !== null){
                     self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
-                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density"], possibleLayers[layer].title)) {
+                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mineral deposits"], possibleLayers[layer].title)) {
                         F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
                     }
                     findlayers.splice(index,1);
@@ -822,7 +846,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     }
                 });
             }
-        }
+        //}
         var downloads = {"Project Locations": "csv",
             "Project Counts": "csv",
             "Indicators": "shapefile",

@@ -311,7 +311,7 @@ ul.links li, ul.links li a{
 	width: 100%;
 	z-index: 10;
 }
-#map-content-hdr3 { margin-top:45px; }
+#map-content-hdr3 { margin-top:45px; z-index: 9;}
 
 .ie7 #map-content-hdr2{
 	margin-top: -5px;	
@@ -486,7 +486,7 @@ ul.links li, ul.links li a{
     width: 19px;
 }
 #map-content-icons ul li.egolddeposit a {
-    background: url("img/extractivse-icons.gif") no-repeat scroll 0px 0 transparent;
+    background: url("img/extractives-icons.gif") no-repeat scroll 0px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
@@ -505,7 +505,7 @@ ul.links li, ul.links li a{
 }
 
 #map-content-icons ul li.ebauxitedeposit a {
-    background: url("img/extractivse-icons.gif") no-repeat scroll -50px 0 transparent;
+    background: url("img/extractives-icons.gif") no-repeat scroll -50px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
@@ -524,7 +524,7 @@ ul.links li, ul.links li a{
 }
 
 #map-content-icons ul li.emanganesedeposit a {
-    background: url("img/extractivse-icons.gif") no-repeat scroll -100px 0 transparent;
+    background: url("img/extractives-icons.gif") no-repeat scroll -100px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
@@ -543,7 +543,7 @@ ul.links li, ul.links li a{
 }
 
 #map-content-icons ul li.eoildeposit a {
-    background: url("img/extractivse-icons.gif") no-repeat scroll -150px 0 transparent;
+    background: url("img/extractives-icons.gif") no-repeat scroll -150px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
@@ -562,7 +562,7 @@ ul.links li, ul.links li a{
 }
 
 #map-content-icons ul li.eotherdeposit a {
-    background: url("img/extractivse-icons.gif") no-repeat scroll -200px 0 transparent;
+    background: url("img/extractives-icons.gif") no-repeat scroll -200px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
