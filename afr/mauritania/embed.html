@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>The World Bank - Mapping for ResultsMauritania, Africa > </title>
+
+  <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
+
+  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
+  <link rel="stylesheet" href="/assets/css/mapping.css">
+  <link rel="stylesheet" href="/assets/css/menu.css">
+  <script type="text/javascript" charset="utf-8">
+  // if (top.frames.length!=0)
+  //   top.location=self.document.location;
+  </script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var jq = jQuery.noConflict();
+    </script>  
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <script type="text/javascript" src="/js/ui.js"></script>
+  <script type="text/javascript" src="/js/effects_002.js"></script>
+  <script type="text/javascript" src="/js/effects.js"></script>  
+
+<!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
+
+<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
+
+
+<script src="/map.js" type="text/javascript"></script>
+
+
+  <style type="text/css" media="screen">
+  body, html {background-color: #FFFFFF; padding: 0; margin: 0;min-width:0}
+  h1 {text-align: left;}
+  </style>
+
+</head>
+<body class=" region-left region-right region-far-right region-content-top">
+  
+<div style="height: 200px; width: 200px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<script type="text/javascript" charset="utf-8">
+
+
+  var wb = new F1.WorldBank();
+  
+
+  var projects = [{id: 'P122367',project_name: 'Mauritania:  Phase II: EITI Implementation',totalamt: 0.28,grantamt: 0.28,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
+,{id: 'P035581',project_name: 'MR-Public Sector SAC SIL (FY94)',totalamt: 1.3,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jan-1994',majorsector_percent: [{"Name":"Industry and trade","Percent":38},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Transportation","Percent":18},{"Name":"Industry and trade","Percent":7},{"Name":"Industry and trade","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P078368',project_name: ' Multisector HIV/AIDS Control Project',totalamt: 21.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2003',majorsector_percent: [{"Name":"Health and other social services","Percent":44},{"Name":"Public Administration, Law, and Justice","Percent":36},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P069095',project_name: 'Urban Development Program',totalamt: 70.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2001',majorsector_percent: [{"Name":"Transportation","Percent":22},{"Name":"Water, sanitation and flood protection","Percent":22},{"Name":"Education","Percent":22},{"Name":"Industry and trade","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P118974',project_name: 'Skills Development Support Project',totalamt: 16.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Education","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P089672',project_name: 'MAURITANIA: TRANSPORT  SECTOR INSTITUTIONAL DEVELOPMENT AND TECHNICAL ASSISTANCE PROJECT',totalamt: 4.5,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P087670',project_name: 'Community Based Watershed Management Project',totalamt: 6.01,grantamt: 6.01,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":53},{"Name":"Public Administration, Law, and Justice","Percent":29},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Health and other social services","Percent":5}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
+,{id: 'P094278',project_name: 'Health and Nutrition Support Project',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Health and other social services","Percent":63},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Finance","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P078383',project_name: 'SECOND MINING SECTOR CAPACITY BUILDING PROJECT',totalamt: 18.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P109078',project_name: 'EFA/FTI: Education Sector Development Program',totalamt: 14.0,grantamt: 14.0,mjsector1: 'Education',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Education","Percent":86},{"Name":"Public Administration, Law, and Justice","Percent":14}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
+,{id: 'P082888',project_name: 'Public Sector Capacity Building Project',totalamt: 13.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2006',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":85},{"Name":"Public Administration, Law, and Justice","Percent":11},{"Name":"Public Administration, Law, and Justice","Percent":3},{"Name":"Health and other social services","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P088828',project_name: 'MR:INTEGRATED DEVELOPMENT PROGRAM FOR IRRIGATED AGRIC. APL # 2',totalamt: 39.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2005',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Industry and trade","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P119900',project_name: 'Urban Development Project - Additional Financing',totalamt: 25.5,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Transportation","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Education","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P100078',project_name: '2nd Mining Sector Cap.Building Supplemental',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":52},{"Name":"Public Administration, Law, and Justice","Percent":48}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P087180',project_name: 'Higher education Project',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Aug-2004',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P081368',project_name: 'Community-Based Rural Development',totalamt: 45.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2004',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":40},{"Name":"Health and other social services","Percent":30},{"Name":"Industry and trade","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Transportation","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}];
+      
+  wb.init(457,  "Mauritania", "Africa", {projects_count: '16', locations_count: '61', projects: projects, locations_layer: 0, indicators: [], layers: null}, true);
+  
+  
+</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
+
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18962568-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- code for http://maps.worldbank.org -->
+<!-- SiteCatalyst code version: G.6. Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
+<script language="JavaScript">
+<!--
+var s_pageName="Home > Maps > Mauritania, Africa > ";
+var s_channel="WBG Mapping for Results EXT";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab3cdc228>,#<Page:0x2aaab3cd6a30>,#<Page:0x2aaab3de21e0>";
+var s_prop1 = "";
+var s_prop6 = "Africa"; / Region /
+var s_prop7 = "Mauritania"; / Country /
+var s_prop2 = "Not Available"; /* Author /
+var s_prop3 = "Not Available"; / Date /
+var s_prop4 = "Not Available"; / Topic /
+var s_prop5 = "Not Available"; / Sub Topic /
+var s_prop8 = "Not Available"; / DocType /
+var s_prop9 = "Not Available"; / MDK or unique identifier /
+var s_prop10 = "Live"; / Site Status /
+var s_prop11 = "Not Available"; / Data Source /
+var s_prop13 = "WBG"; / VPU /
+var s_prop16="English"; / doc language /
+var s_prop17="English"; / site language */
+
+var omnitureCookieContent= getCookieValueByName('omniture');
+var s_prop18 =getVPU(omnitureCookieContent);
+var s_prop19 =getDutyStation(omnitureCookieContent);
+var s_prop20 =getUserType(omnitureCookieContent);
+
+var sTitle = document.title;
+var asTitleParts = sTitle.split("-");
+while (sTitle.indexOf(",") > -1)
+sTitle = sTitle.replace(",", "");
+
+s_pageName = sTitle;
+s_prop1 = sTitle;
+s_hier1 += ", " + sTitle;
+
+var s_account="wbnispextgeomfr,wbglobalext";
+//-->
+</script>
+<script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.6. -->
+
+</body></html>

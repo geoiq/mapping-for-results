@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>The World Bank - Mapping for ResultsPakistan, South Asia > </title>
+
+  <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
+
+  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
+  <link rel="stylesheet" href="/assets/css/mapping.css">
+  <link rel="stylesheet" href="/assets/css/menu.css">
+  <script type="text/javascript" charset="utf-8">
+  // if (top.frames.length!=0)
+  //   top.location=self.document.location;
+  </script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var jq = jQuery.noConflict();
+    </script>  
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <script type="text/javascript" src="/js/ui.js"></script>
+  <script type="text/javascript" src="/js/effects_002.js"></script>
+  <script type="text/javascript" src="/js/effects.js"></script>  
+
+<!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
+
+<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
+
+
+<script src="/map.js" type="text/javascript"></script>
+
+
+  <style type="text/css" media="screen">
+  body, html {background-color: #FFFFFF; padding: 0; margin: 0;min-width:0}
+  h1 {text-align: left;}
+  </style>
+
+</head>
+<body class=" region-left region-right region-far-right region-content-top">
+  
+<div style="height: 200px; width: 200px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<script type="text/javascript" charset="utf-8">
+
+
+  var wb = new F1.WorldBank();
+  
+
+  var projects = [{id: 'P125109',project_name: 'AF for Third Partnership for Polio Eradication Project',totalamt: 41.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P107300',project_name: 'SINDH EDUCATION SECTOR PROJECT (SEP)',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Education","Percent":25},{"Name":"Education","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P105075',project_name: 'Third Pakistan Poverty Alleviation Fund Project',totalamt: 250.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Finance","Percent":36},{"Name":"Health and other social services","Percent":34},{"Name":"Industry and trade","Percent":10},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Education","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
+,{id: 'P094086',project_name: 'Balochistan Education Support Project - BESP',totalamt: 22.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Education","Percent":79},{"Name":"Health and other social services","Percent":21}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P116355',project_name: 'Additional Financing for Sindh On-Farm Water Management Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":98},{"Name":"Agriculture, fishing, and forestry","Percent":1},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P076872',project_name: 'Second Improvement to Financial Reporting and Auditing Project',totalamt: 84.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":53},{"Name":"Public Administration, Law, and Justice","Percent":45},{"Name":"Finance","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P121394',project_name: ' KP and FATA Emergency Recovery Project',totalamt: 250.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":65},{"Name":"Education","Percent":14},{"Name":"Health and other social services","Percent":14},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P112902',project_name: 'Karachi Port Improvement Project',totalamt: 115.8,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P084302',project_name: 'Sindh Water Sector Improvement Project Phase I',totalamt: 150.2,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Sep-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P115638',project_name: 'Social Safety Nets Development Policy Credit',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P078997',project_name: 'Sindh On-Farm Water Management Project',totalamt: 61.14,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":80},{"Name":"Health and other social services","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Agriculture, fishing, and forestry","Percent":3},{"Name":"Agriculture, fishing, and forestry","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P122756',project_name: 'Additional Financing for the Punjab Education Sector Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P122635',project_name: 'Second Improvement to Financial Reporting and Auditing Project - Additional Financing',totalamt: 24.5,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":53},{"Name":"Public Administration, Law, and Justice","Percent":45},{"Name":"Finance","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P096745',project_name: 'Punjab Barrages Improvement Phase II Project (PBIP-II)',totalamt: 145.6,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":14},{"Name":"Water, sanitation and flood protection","Percent":8},{"Name":"Water, sanitation and flood protection","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P102608',project_name: 'Punjab Education Sector Project',totalamt: 350.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Education","Percent":39},{"Name":"Education","Percent":39},{"Name":"Public Administration, Law, and Justice","Percent":22}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P106652',project_name: 'Pakistan: Lahore Composting project',totalamt: 5.52,grantamt: 5.52,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Aug-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
+,{id: 'P095982',project_name: 'Electricity Distribution and Transmission Improvement Project',totalamt: 256.7,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":92},{"Name":"Energy and mining","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P083929',project_name: 'Punjab Municipal Services Improvement Project (PMSIP)',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Transportation","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P099040',project_name: 'HIGHWAYS REHABILITATION PROJECT',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Transportation","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P010556',project_name: 'Highways Rehabilitation',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Transportation","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Agriculture, fishing, and forestry","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P069043',project_name: 'PK: Hub Power Guarantee',totalamt: 240.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-1994',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Guarantees',sector_code: 'LX'}
+,{id: 'P118779',project_name: 'Tertiary Education Support Project',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P124913',project_name: 'Sindh Education Sector Additional Financing',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Education","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":40}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P076711',project_name: 'FSD Kashf Foundation Pakistan',totalamt: 0.6,grantamt: 0.6,mjsector1: 'Finance',boardapprovaldate: 'Aug-2001',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}
+,{id: 'P125105',project_name: 'Flood Emergency Cash Transfer Project',totalamt: 125.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P103160',project_name: 'Social Safety Net Technical Assistance Project',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P114508',project_name: 'Third Partnership for Polio Eradication Project',totalamt: 74.68,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P077306',project_name: 'Pakistan Tax Administration Reforms Project',totalamt: 102.9,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P123914',project_name: 'Additional Financing and Restructuring for the Pakistan Earthquake Emergency Recovery Credit',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P089378',project_name: 'Balochistan Small Scale Irrigation Project',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Feb-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P101684',project_name: 'Trade and Transport Facilitation II',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":76},{"Name":"Public Administration, Law, and Justice","Percent":24}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P101640',project_name: 'Pakistan Community-Based Renewable Energy Development in Northern Areas and Chithral',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P110099',project_name: 'Water Sector Capacity Buildling and Advisory Services Project (WCAP)',totalamt: 38.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":53},{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Energy and mining","Percent":14}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P090501',project_name: 'Land Records Management and Information Systems Program (LRMIS-P) Province of Punjab',totalamt: 45.65,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P100155',project_name: 'Highways Rehabilitation Project',totalamt: 65.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Transportation","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P099110',project_name: 'PK: Pakistan Earthquake ERC',totalamt: 400.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Industry and trade","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Health and other social services","Percent":5},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P123311',project_name: 'Highways Rehabilitation Project',totalamt: 130.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Transportation","Percent":80},{"Name":"Water, sanitation and flood protection","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Agriculture, fishing, and forestry","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P040547',project_name: 'Uch Power Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-1996',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Guarantees',sector_code: 'LX'}];
+      
+  wb.init(460,  "Pakistan", "South Asia", {projects_count: '38', locations_count: '189', projects: projects, locations_layer: 0, indicators: [], layers: null}, true);
+  
+  
+</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
+
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18962568-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- code for http://maps.worldbank.org -->
+<!-- SiteCatalyst code version: G.6. Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
+<script language="JavaScript">
+<!--
+var s_pageName="Home > Maps > Pakistan, South Asia > ";
+var s_channel="WBG Mapping for Results EXT";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab6f18750>,#<Page:0x2aaab535b198>,#<Page:0x2aaab54b5818>";
+var s_prop1 = "";
+var s_prop6 = "South Asia"; / Region /
+var s_prop7 = "Pakistan"; / Country /
+var s_prop2 = "Not Available"; /* Author /
+var s_prop3 = "Not Available"; / Date /
+var s_prop4 = "Not Available"; / Topic /
+var s_prop5 = "Not Available"; / Sub Topic /
+var s_prop8 = "Not Available"; / DocType /
+var s_prop9 = "Not Available"; / MDK or unique identifier /
+var s_prop10 = "Live"; / Site Status /
+var s_prop11 = "Not Available"; / Data Source /
+var s_prop13 = "WBG"; / VPU /
+var s_prop16="English"; / doc language /
+var s_prop17="English"; / site language */
+
+var omnitureCookieContent= getCookieValueByName('omniture');
+var s_prop18 =getVPU(omnitureCookieContent);
+var s_prop19 =getDutyStation(omnitureCookieContent);
+var s_prop20 =getUserType(omnitureCookieContent);
+
+var sTitle = document.title;
+var asTitleParts = sTitle.split("-");
+while (sTitle.indexOf(",") > -1)
+sTitle = sTitle.replace(",", "");
+
+s_pageName = sTitle;
+s_prop1 = sTitle;
+s_hier1 += ", " + sTitle;
+
+var s_account="wbnispextgeomfr,wbglobalext";
+//-->
+</script>
+<script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.6. -->
+
+</body></html>
