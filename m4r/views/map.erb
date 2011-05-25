@@ -213,7 +213,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	    var vs = ""
         jq.each(this.visibleSectors, function(index,sector) { vs += sector + ","; });
 	    this.setBookmark("sectors",vs);
-	    this.setBookmark("indicator",this.current_indicator.replace(/ /g,'_'));
+	    if(this.current_indicator !== undefined && this.current_indicator !== null)
+	        this.setBookmark("indicator",this.current_indicator.replace(/ /g,'_'));
 	    return false;
 	},
 	// uses the URL hash to set current viewed state
