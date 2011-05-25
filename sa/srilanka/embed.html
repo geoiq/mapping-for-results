@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>The World Bank - Mapping for ResultsSri Lanka , South Asia > </title>
+
+  <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
+
+  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
+  <link rel="stylesheet" href="/assets/css/mapping.css">
+  <link rel="stylesheet" href="/assets/css/menu.css">
+  <script type="text/javascript" charset="utf-8">
+  // if (top.frames.length!=0)
+  //   top.location=self.document.location;
+  </script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var jq = jQuery.noConflict();
+    </script>  
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <script type="text/javascript" src="/js/ui.js"></script>
+  <script type="text/javascript" src="/js/effects_002.js"></script>
+  <script type="text/javascript" src="/js/effects.js"></script>  
+
+<!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
+
+<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
+
+
+<script src="/map.js" type="text/javascript"></script>
+
+
+  <style type="text/css" media="screen">
+  body, html {background-color: #FFFFFF; padding: 0; margin: 0;min-width:0}
+  h1 {text-align: left;}
+  </style>
+
+</head>
+<body class=" region-left region-right region-far-right region-content-top">
+  
+<div style="height: 200px; width: 200px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<script type="text/javascript" charset="utf-8">
+
+
+  var wb = new F1.WorldBank();
+  
+
+  var projects = [{id: 'P113709',project_name: 'Sustainable Tourism Development Project',totalamt: 18.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":74},{"Name":"Industry and trade","Percent":13},{"Name":"Industry and trade","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P113402',project_name: 'Sri Lanka - Higher Education for the Twenty First Century Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Education","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P110278',project_name: 'Sri Lanka - Education Sector Development Project - AF',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Education","Percent":45},{"Name":"Education","Percent":45},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P101699',project_name: 'LK: Renewable Energy - AF',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P100390',project_name: 'Sri Lanka: Puttalam Housing Project',totalamt: 32.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Feb-2007',majorsector_percent: [{"Name":"Industry and trade","Percent":52},{"Name":"Water, sanitation and flood protection","Percent":31},{"Name":"Public Administration, Law, and Justice","Percent":7},{"Name":"Water, sanitation and flood protection","Percent":5},{"Name":"Transportation","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P121328',project_name: 'Small and Medium Enterprise Development Facility',totalamt: 57.4,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Industry and trade","Percent":25},{"Name":"Finance","Percent":25},{"Name":"Finance","Percent":25},{"Name":"Finance","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P110324',project_name: 'Sri Lanka: Road Sector Assistance Project : Additional Credit',totalamt: 98.1,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P116742',project_name: 'Sri Lanka - Road Sector Assistance Project - Second Additional Financing',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P093132',project_name: 'Dam Safety and Water Resources Planning (DSWRPP)',totalamt: 65.33,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":72},{"Name":"Public Administration, Law, and Justice","Percent":27},{"Name":"Health and other social services","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P086411',project_name: 'SL- Road Sector Assistance Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P105079',project_name: 'Child Centered Peace and Community Building in the North East',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Information and communications',boardapprovaldate: 'Jan-2007',majorsector_percent: [{"Name":"Information and communications","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'CX'}
+,{id: 'P097329',project_name: 'Public Sector Capacity Building',totalamt: 22.6,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P084580',project_name: 'Sri Lanka Education Sector Development Project',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Education","Percent":45},{"Name":"Education","Percent":35},{"Name":"Education","Percent":8},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Education","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P081771',project_name: 'E-Lanka Development',totalamt: 53.0,grantamt: 0.0,mjsector1: 'Information and communications',boardapprovaldate: 'Sep-2004',majorsector_percent: [{"Name":"Information and communications","Percent":40},{"Name":"Information and communications","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'CX'}
+,{id: 'P110317',project_name: 'Sri Lanka: Second North East Housing Reconstruction Program',totalamt: 43.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Industry and trade","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P083932',project_name: 'Sri Lanka: North East Housing Reconstruction Program',totalamt: 75.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Industry and trade","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P107847',project_name: 'Provincial Roads',totalamt: 105.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P087145',project_name: 'Second Community Development and Livelihood Improvement Project',totalamt: 75.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Industry and trade","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P076702',project_name: 'Renewable Energy for Rural Economic Development',totalamt: 75.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":99},{"Name":"Energy and mining","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P113036',project_name: 'North East Local Services Improvement Project (NELSIP)',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Transportation","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Water, sanitation and flood protection","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P118870',project_name: 'Sri Lanka: Emergency Northern Recovery Project',totalamt: 65.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":44},{"Name":"Agriculture, fishing, and forestry","Percent":18},{"Name":"Water, sanitation and flood protection","Percent":18},{"Name":"Transportation","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P119152',project_name: 'Additional Financing Community Livelihoods in Conflict Affected Areas Project',totalamt: 12.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":40},{"Name":"Health and other social services","Percent":30},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Industry and trade","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P086747',project_name: 'Community Livelihoods in Conflict Affected Areas Project ( Yali Pibedemu Viyapruthiya) (Maru Eluchchithittum)',totalamt: 64.7,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":75},{"Name":"Health and other social services","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Transportation","Percent":5},{"Name":"Agriculture, fishing, and forestry","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}];
+      
+  wb.init(504,  "Sri Lanka ", "South Asia", {projects_count: '23', locations_count: '363', projects: projects, locations_layer: 0, indicators: [], layers: null}, true);
+  
+  
+</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
+
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18962568-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- code for http://maps.worldbank.org -->
+<!-- SiteCatalyst code version: G.6. Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
+<script language="JavaScript">
+<!--
+var s_pageName="Home > Maps > Sri Lanka , South Asia > ";
+var s_channel="WBG Mapping for Results EXT";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab702a648>,#<Page:0x2aaab5423008>,#<Page:0x2aaab5559d78>";
+var s_prop1 = "";
+var s_prop6 = "South Asia"; / Region /
+var s_prop7 = "Sri Lanka "; / Country /
+var s_prop2 = "Not Available"; /* Author /
+var s_prop3 = "Not Available"; / Date /
+var s_prop4 = "Not Available"; / Topic /
+var s_prop5 = "Not Available"; / Sub Topic /
+var s_prop8 = "Not Available"; / DocType /
+var s_prop9 = "Not Available"; / MDK or unique identifier /
+var s_prop10 = "Live"; / Site Status /
+var s_prop11 = "Not Available"; / Data Source /
+var s_prop13 = "WBG"; / VPU /
+var s_prop16="English"; / doc language /
+var s_prop17="English"; / site language */
+
+var omnitureCookieContent= getCookieValueByName('omniture');
+var s_prop18 =getVPU(omnitureCookieContent);
+var s_prop19 =getDutyStation(omnitureCookieContent);
+var s_prop20 =getUserType(omnitureCookieContent);
+
+var sTitle = document.title;
+var asTitleParts = sTitle.split("-");
+while (sTitle.indexOf(",") > -1)
+sTitle = sTitle.replace(",", "");
+
+s_pageName = sTitle;
+s_prop1 = sTitle;
+s_hier1 += ", " + sTitle;
+
+var s_account="wbnispextgeomfr,wbglobalext";
+//-->
+</script>
+<script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.6. -->
+
+</body></html>
