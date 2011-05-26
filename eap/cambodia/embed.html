@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>The World Bank - Mapping for ResultsCambodia, East Asia & the Pacific > </title>
+
+  <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
+
+  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
+  <link rel="stylesheet" href="/assets/css/mapping.css">
+  <link rel="stylesheet" href="/assets/css/menu.css">
+  <script type="text/javascript" charset="utf-8">
+  // if (top.frames.length!=0)
+  //   top.location=self.document.location;
+  </script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var jq = jQuery.noConflict();
+    </script>  
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <script type="text/javascript" src="/js/ui.js"></script>
+  <script type="text/javascript" src="/js/effects_002.js"></script>
+  <script type="text/javascript" src="/js/effects.js"></script>  
+
+<!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
+
+<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
+
+
+<script src="/map.js" type="text/javascript"></script>
+
+
+  <style type="text/css" media="screen">
+  body, html {background-color: #FFFFFF; padding: 0; margin: 0;min-width:0}
+  h1 {text-align: left;}
+  </style>
+
+</head>
+<body class=" region-left region-right region-far-right region-content-top">
+  
+<div style="height: 200px; width: 200px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<script type="text/javascript" charset="utf-8">
+
+
+  var wb = new F1.WorldBank();
+  
+
+  var projects = [{id: 'P121963',project_name: 'Cambodia Business Incubation (ASP 8 &amp; 9)',totalamt: 0.87,grantamt: 0.87,mjsector1: 'Information and communications',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Information and communications","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'CX'}
+,{id: 'P102284',project_name: 'Cambodia Second Health Sector Support Program',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":44},{"Name":"Public Administration, Law, and Justice","Percent":24},{"Name":"Public Administration, Law, and Justice","Percent":24},{"Name":"Health and other social services","Percent":4},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P106603',project_name: 'Road Asset Management Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P121809',project_name: 'Cambodia Agribusiness Access to Finance Project',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Industry and trade","Percent":50},{"Name":"Finance","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P071591',project_name: 'Renewable Energy Development Project',totalamt: 5.75,grantamt: 5.75,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P073311',project_name: 'Provincial and Peri-Urban Water and Sanitation Project',totalamt: 19.9,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2003',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Water, sanitation and flood protection","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P106605',project_name: 'Higher Education Quality and Capacity Improvement Project',totalamt: 23.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":52},{"Name":"Education","Percent":48}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P105329',project_name: 'GMS Power Trade (Cambodia) Project',totalamt: 18.5,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P089196',project_name: 'Cambodia Trade Facilitation and Competitiveness (Julian Clark co-TTL)',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Industry and trade","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P070668',project_name: 'Basic Education Project',totalamt: 28.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'May-2005',majorsector_percent: [{"Name":"Education","Percent":45},{"Name":"Health and other social services","Percent":25},{"Name":"Education","Percent":14},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Education","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P071207',project_name: 'Provincial and Rural Infrastructure Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2003',majorsector_percent: [{"Name":"Transportation","Percent":83},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P121075',project_name: 'Ketsana Emergency Reconstruction and Rehabilitation Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Transportation","Percent":69},{"Name":"Water, sanitation and flood protection","Percent":15},{"Name":"Water, sanitation and flood protection","Percent":8},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P115198',project_name: 'Cambodia-Land Administration Management and Distribution',totalamt: 2.23,grantamt: 2.23,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
+,{id: 'P100084',project_name: 'Avian and Human Influenza Control and Preparedness Emergency Project',totalamt: 6.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":49},{"Name":"Agriculture, fishing, and forestry","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Health and other social services","Percent":8},{"Name":"Agriculture, fishing, and forestry","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P109648',project_name: 'Cambodia Trade Development Support Program (RETF093573)',totalamt: 12.35,grantamt: 12.35,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P087945',project_name: 'Cambodia Public Financial Management and Accountability',totalamt: 14.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P109925',project_name: 'KH--EDUCATION FOR ALL FAST TRACK INITIATIVE CATALYTIC TRUST FUND',totalamt: 57.4,grantamt: 57.4,mjsector1: 'Education',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Education","Percent":71},{"Name":"Education","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
+,{id: 'P084787',project_name: 'Land Allocation for Social and Economic Development',totalamt: 11.5,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":35}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P064844',project_name: 'Rural Electrification and Transmission Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":78},{"Name":"Public Administration, Law, and Justice","Percent":14},{"Name":"Energy and mining","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P070542',project_name: 'Health Sector Support Project',totalamt: 27.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2002',majorsector_percent: [{"Name":"Health and other social services","Percent":80},{"Name":"Finance","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P101156',project_name: 'Demand for Good Governance Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Health and other social services","Percent":23},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Information and communications","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
+      
+  wb.init(434,  "Cambodia", "East Asia & the Pacific", {projects_count: '21', locations_count: '84', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health'], layers: null}, true);
+  
+  
+</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
+
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18962568-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- code for http://maps.worldbank.org -->
+<!-- SiteCatalyst code version: G.6. Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
+<script language="JavaScript">
+<!--
+var s_pageName="Home > Maps > Cambodia, East Asia & the Pacific > ";
+var s_channel="WBG Mapping for Results EXT";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab5f5ebc0>,#<Page:0x2aaab6966bb8>,#<Page:0x2aaab6ca6738>";
+var s_prop1 = "";
+var s_prop6 = "East Asia & the Pacific"; / Region /
+var s_prop7 = "Cambodia"; / Country /
+var s_prop2 = "Not Available"; /* Author /
+var s_prop3 = "Not Available"; / Date /
+var s_prop4 = "Not Available"; / Topic /
+var s_prop5 = "Not Available"; / Sub Topic /
+var s_prop8 = "Not Available"; / DocType /
+var s_prop9 = "Not Available"; / MDK or unique identifier /
+var s_prop10 = "Live"; / Site Status /
+var s_prop11 = "Not Available"; / Data Source /
+var s_prop13 = "WBG"; / VPU /
+var s_prop16="English"; / doc language /
+var s_prop17="English"; / site language */
+
+var omnitureCookieContent= getCookieValueByName('omniture');
+var s_prop18 =getVPU(omnitureCookieContent);
+var s_prop19 =getDutyStation(omnitureCookieContent);
+var s_prop20 =getUserType(omnitureCookieContent);
+
+var sTitle = document.title;
+var asTitleParts = sTitle.split("-");
+while (sTitle.indexOf(",") > -1)
+sTitle = sTitle.replace(",", "");
+
+s_pageName = sTitle;
+s_prop1 = sTitle;
+s_hier1 += ", " + sTitle;
+
+var s_account="wbnispextgeomfr,wbglobalext";
+//-->
+</script>
+<script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.6. -->
+
+</body></html>
