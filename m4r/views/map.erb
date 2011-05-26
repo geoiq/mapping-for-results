@@ -312,7 +312,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                      self.map.showLayer(self.stylelayers["Oil wells"].order, true);	      
                      jq("#oilwells_control").removeClass('inactive').addClass('active');                     
                  }
-             } else if (sector == "Oil deposits") {
+             } else if (sector == "Oil fields") {
                  if(visible != true || jq("#oildeposits_control").hasClass("active")) {
                      self.map.showLayer(self.stylelayers["Oil fields"].order, false);	      
                      jq("#oildeposits_control").removeClass('active').addClass('inactive');                     
@@ -324,7 +324,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
          } else if(layer == "Mines") {
              var classname = "#" + sector + "mine_control";
              if(visible == true || jq(classname).hasClass("inactive")) {
-                 self.map.showLayer(self.stylelayers["Oil wells"].order, true);	                       
+                 self.map.showLayer(self.stylelayers["Mines"].order, true);	                       
                  if(sector == "all") {
                     jq.each(jq('#mines_sectors li a'), function(el,index) {
                         jq(el).removeClass('inactive').addClass('active');
@@ -383,23 +383,30 @@ if(typeof(F1)=='undefined') {F1 = {};}
             if( jq(el).hasClass('active'))
             return jq(el).attr("original-title")
         })                        
-        if(visibleDeposits.length != 0 )
+        if(visibleDeposits.length != 0 ){
+            self.map.showLayer(self.stylelayers[layer].order, false);
+            
             self.map.swf.addFilter(self.stylelayers[layer].order, 
-                {expression: self.complexFilterExpression(visibleDeposits, "Mineral type")});              
+                {expression: self.complexFilterExpression(visibleDeposits, "Mineral type")});
+        } else {
+            self.map.showLayer(self.stylelayers[layer].order, true);
+        }
     },
     showVisibleDeposits: function() {
         var self = this;
         var layer = "Mineral deposits"
         self.map.swf.clearFilters(self.stylelayers[layer].order);             
-        self.map.showLayer(self.stylelayers[layer].order, true);
         var visibleDeposits = jq.map(jq('#ore_sectors li a'), function(el,index) {
             if( jq(el).hasClass('active'))
             return jq(el).attr("original-title")
         })
-        if(visibleDeposits.length != 0 )
+        if(visibleDeposits.length != 0 ){
+            self.map.showLayer(self.stylelayers[layer].order, true);
             self.map.swf.addFilter(self.stylelayers[layer].order, 
                 {expression: self.complexFilterExpression(visibleDeposits, "Mineral type")});             
-        
+        } else {
+            self.map.showLayer(self.stylelayers[layer].order, false);
+        }
     },
 	toggleSector: function(sector,visible,refreshCharts) {
 	  var self = this;

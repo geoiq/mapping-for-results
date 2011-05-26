@@ -245,7 +245,7 @@ class MappingForResults < Sinatra::Base
     erb :boost
   end
   get '/extractives/:region/:country' do 
-    @page = Page.first(:shortname => params[:country].downcase)
+    @page = Page.last(:shortname => params[:country].downcase)
     @additional_controls = :extractives_controls
     @title = "Mapping the Extractive Industries"
     erb :full, :layout => false
