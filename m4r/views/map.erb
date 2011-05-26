@@ -324,7 +324,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
          } else if(layer == "Mines") {
              var classname = "#" + sector + "mine_control";
              if(visible == true || jq(classname).hasClass("inactive")) {
-                 self.map.showLayer(self.stylelayers["Mines"].order, true);	                       
                  if(sector == "all") {
                     jq.each(jq('#mines_sectors li a'), function(el,index) {
                         jq(el).removeClass('inactive').addClass('active');
@@ -384,12 +383,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
             return jq(el).attr("original-title")
         })                        
         if(visibleDeposits.length != 0 ){
-            self.map.showLayer(self.stylelayers[layer].order, false);
+            self.map.showLayer(self.stylelayers[layer].order, true);
             
             self.map.swf.addFilter(self.stylelayers[layer].order, 
                 {expression: self.complexFilterExpression(visibleDeposits, "Mineral type")});
         } else {
-            self.map.showLayer(self.stylelayers[layer].order, true);
+            self.map.showLayer(self.stylelayers[layer].order, false);
         }
     },
     showVisibleDeposits: function() {
@@ -988,6 +987,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             "Population density": "shapefile",
             "Regional socioeconomic indicators": "shapefile"};
             
+        jq("#data_links").html("")
         jq.each(downloads, function(index,download) {
             if(download == "shapefile")
                 format = "zip";
@@ -1086,8 +1086,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#mapped_locations_header').html("mapped locations")
             self.toggleExtractive("Mines","all", true)
             self.toggleExtractive("Mineral deposits","all", false)
-            self.toggleExtractive("Oil fields","all", true)            
+            self.toggleExtractive("Oil fields","all", true)     
+            self.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:80}}})
+                   
         }
+        jq("#map-summary").show();
 	    self.loadState();
 
 
