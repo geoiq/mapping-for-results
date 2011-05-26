@@ -486,97 +486,97 @@ ul.links li, ul.links li a{
     width: 19px;
 }
 #map-content-icons ul li.egolddeposit a {
-    background: url("img/extractives-icons.gif") no-repeat scroll 0px 0 transparent;
-    margin-right: 11px;
-    width: 19px;
-}
-#map-content-icons ul li.egolddeposit a:hover, #map-content-icons ul li.egolddeposit a.active {
-    background: url("img/extractives-icons.gif") no-repeat scroll 0px -19px transparent;
-    width: 19px;
-}
-#map-content-icons ul li.egoldmine a {
-    background: url("img/extractives-icons.gif") no-repeat scroll -25px 0 transparent;
-    margin-right: 11px;
-    width: 19px;
-}
-#map-content-icons ul li.egoldmine a:hover, #map-content-icons ul li.egoldmine a.active {
-    background: url("img/extractives-icons.gif") no-repeat scroll -25px -19px transparent;
-    width: 19px;
-}
-
-#map-content-icons ul li.ebauxitedeposit a {
-    background: url("img/extractives-icons.gif") no-repeat scroll -50px 0 transparent;
-    margin-right: 11px;
-    width: 19px;
-}
-#map-content-icons ul li.ebauxitedeposit a:hover, #map-content-icons ul li.ebauxitedeposit a.active {
-    background: url("img/extractives-icons.gif") no-repeat scroll -50px -19px transparent;
-    width: 19px;
-}
-#map-content-icons ul li.ebauxitemine a {
-    background: url("img/extractives-icons.gif") no-repeat scroll -75px 0 transparent;
-    margin-right: 11px;
-    width: 19px;
-}
-#map-content-icons ul li.ebauxitemine a:hover, #map-content-icons ul li.ebauxitemine a.active {
-    background: url("img/extractives-icons.gif") no-repeat scroll -75px -19px transparent;
-    width: 19px;
-}
-
-#map-content-icons ul li.emanganesedeposit a {
     background: url("img/extractives-icons.gif") no-repeat scroll -100px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
-#map-content-icons ul li.emanganesedeposit a:hover, #map-content-icons ul li.emanganesedeposit a.active {
+#map-content-icons ul li.egolddeposit a:hover, #map-content-icons ul li.egolddeposit a.active {
     background: url("img/extractives-icons.gif") no-repeat scroll -100px -19px transparent;
     width: 19px;
 }
-#map-content-icons ul li.emanganesemine a {
+#map-content-icons ul li.egoldmine a {
+    background: url("img/extractives-icons.gif") no-repeat scroll 0px 0 transparent;
+    margin-right: 11px;
+    width: 19px;
+}
+#map-content-icons ul li.egoldmine a:hover, #map-content-icons ul li.egoldmine a.active {
+    background: url("img/extractives-icons.gif") no-repeat scroll 0px -19px transparent;
+    width: 19px;
+}
+
+#map-content-icons ul li.ebauxitedeposit a {
     background: url("img/extractives-icons.gif") no-repeat scroll -125px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
-#map-content-icons ul li.emanganesemine a:hover, #map-content-icons ul li.emanganesemine a.active {
+#map-content-icons ul li.ebauxitedeposit a:hover, #map-content-icons ul li.ebauxitedeposit a.active {
     background: url("img/extractives-icons.gif") no-repeat scroll -125px -19px transparent;
     width: 19px;
 }
+#map-content-icons ul li.ebauxitemine a {
+    background: url("img/extractives-icons.gif") no-repeat scroll -25px 0 transparent;
+    margin-right: 11px;
+    width: 19px;
+}
+#map-content-icons ul li.ebauxitemine a:hover, #map-content-icons ul li.ebauxitemine a.active {
+    background: url("img/extractives-icons.gif") no-repeat scroll -25px -19px transparent;
+    width: 19px;
+}
 
-#map-content-icons ul li.eoildeposit a {
+#map-content-icons ul li.emanganesedeposit a {
     background: url("img/extractives-icons.gif") no-repeat scroll -150px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
-#map-content-icons ul li.eoildeposit a:hover, #map-content-icons ul li.eoildeposit a.active {
+#map-content-icons ul li.emanganesedeposit a:hover, #map-content-icons ul li.emanganesedeposit a.active {
     background: url("img/extractives-icons.gif") no-repeat scroll -150px -19px transparent;
     width: 19px;
 }
-#map-content-icons ul li.eoilwell a {
-    background: url("img/extractives-icons.gif") no-repeat scroll -175px 0 transparent;
+#map-content-icons ul li.emanganesemine a {
+    background: url("img/extractives-icons.gif") no-repeat scroll -50px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
-#map-content-icons ul li.eoilwell a:hover, #map-content-icons ul li.eoilwell a.active {
-    background: url("img/extractives-icons.gif") no-repeat scroll -175px -19px transparent;
+#map-content-icons ul li.emanganesemine a:hover, #map-content-icons ul li.emanganesemine a.active {
+    background: url("img/extractives-icons.gif") no-repeat scroll -50px -19px transparent;
     width: 19px;
 }
 
-#map-content-icons ul li.eotherdeposit a {
+#map-content-icons ul li.eoildeposit a {
     background: url("img/extractives-icons.gif") no-repeat scroll -200px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
-#map-content-icons ul li.eotherdeposit a:hover, #map-content-icons ul li.eotherdeposit a.active {
+#map-content-icons ul li.eoildeposit a:hover, #map-content-icons ul li.eoildeposit a.active {
     background: url("img/extractives-icons.gif") no-repeat scroll -200px -19px transparent;
     width: 19px;
 }
-#map-content-icons ul li.eothermine a {
+#map-content-icons ul li.eoilwell a {
     background: url("img/extractives-icons.gif") no-repeat scroll -225px 0 transparent;
     margin-right: 11px;
     width: 19px;
 }
-#map-content-icons ul li.eothermine a:hover, #map-content-icons ul li.eothermine a.active {
+#map-content-icons ul li.eoilwell a:hover, #map-content-icons ul li.eoilwell a.active {
     background: url("img/extractives-icons.gif") no-repeat scroll -225px -19px transparent;
+    width: 19px;
+}
+
+#map-content-icons ul li.eotherdeposit a {
+    background: url("img/extractives-icons.gif") no-repeat scroll -175px 0 transparent;
+    margin-right: 11px;
+    width: 19px;
+}
+#map-content-icons ul li.eotherdeposit a:hover, #map-content-icons ul li.eotherdeposit a.active {
+    background: url("img/extractives-icons.gif") no-repeat scroll -175px -19px transparent;
+    width: 19px;
+}
+#map-content-icons ul li.eothermine a {
+    background: url("img/extractives-icons.gif") no-repeat scroll -75px 0 transparent;
+    margin-right: 11px;
+    width: 19px;
+}
+#map-content-icons ul li.eothermine a:hover, #map-content-icons ul li.eothermine a.active {
+    background: url("img/extractives-icons.gif") no-repeat scroll -75px -19px transparent;
     width: 19px;
 }
 #map_console {

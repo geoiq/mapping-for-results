@@ -55,7 +55,7 @@ module Sinatra
       html = ""
       html << '<select name="page[region]" id="page[region]" >'
       regions.each do |region|
-        html << "<option value='#{region.id}' #{country.region == region.name ? 'selected' : ""}>#{region.hierarchy.collect(&:name).reverse.join(" - ")}</option>"
+        html << "<option value='#{region.id}' #{country.region == region.name ? 'selected' : ""}>#{region.hierarchy.collect {|n| n.name}.reverse.join(" - ")}</option>"
       end
       html << "<option value='' #{country.region == '' ? 'selected' : ""}>-- root level</option>"      
       html << "</select>"

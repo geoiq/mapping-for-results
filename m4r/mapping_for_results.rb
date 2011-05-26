@@ -241,11 +241,13 @@ class MappingForResults < Sinatra::Base
 
   get '/boost/:region/:country' do 
     @page = Page.first(:shortname => params[:country].downcase)
+    @title = "Mapping Government Expenditures"
     erb :boost
   end
   get '/extractives/:region/:country' do 
     @page = Page.first(:shortname => params[:country].downcase)
     @additional_controls = :extractives_controls
+    @title = "Mapping the Extractive Industries"
     erb :full, :layout => false
   end
   

@@ -80,8 +80,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	"Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Infant_mor"}}, infosubtitle: null, table: null, description: "Mortality rate, infant deaths per 1,000 live births. Infant mortality rate is the number of infant deaths (deaths before reaching one year of age) per 1,000 for the ten year period preceding the survey.\nSource: Demographic and Health Surveys implemented by ICF Macro."},	
 	"Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "dbhp"}}, infosubtitle: null,table: null, description: "Percent of live births in the last three years preceding the survey assisted by a skilled health provider (doctor or other health professional).\nSource: Demographic and Health Surveys implemented by ICF Macro."},
 	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"},
-	"Unemployment Rate": {source: "finder:", title:"Unemployment Rate", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Unemployment rate"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The percentage of the population in each first-order administrative unit that were not employed in the 12 months prior to the survey. Source:  <a href='http://www.measuredhs.com/countries/country_main.cfm?ctry_id=14' target='_new'>Demographic and Health Surveys by Macro International</a>."},	
-	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: ""}
+	"Unemployment Rate": {source: "finder:", title:"Unemployment Rate", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Unemployment Rate"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The percentage of the population in each first-order administrative unit that were not employed in the 12 months prior to the survey. Source:  <a href='http://www.measuredhs.com/countries/country_main.cfm?ctry_id=14' target='_new'>Demographic and Health Surveys by Macro International</a>."},	
+	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: ""},
+	"Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
+	"Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
+	"Oil wells": {source: "finder:", title:"Oil wells", selectedAttribute: "oil", styles: {}}, 
+	"District revenues": {source: "finder:", title:"District revenues", selectedAttribute: "TOTAL_REC", styles: {}}
 	
 	};
   F1.WorldBank.prototype = {
@@ -111,7 +115,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  this.productlines = {}
 	  this.current_indicator = (country_attrs.indicators !== undefined && country_attrs.length > 0) ? country_attrs.indicators[0] : null;
 	  this.cb = callback;
-	  
+	  this.page_type = country_attrs.page_type;
+	  this.thematic_area = country_attrs.thematic_area;
 	  this.wbicons = {"Agriculture, fishing, and forestry":"<%= PLATFORM_API_URL %>/images/icons/round/agriculture-16.png","Information and communications":"<%= PLATFORM_API_URL %>/images/icons/round/communication-16.png","Education":"<%= PLATFORM_API_URL %>/images/icons/round/education-16.png","Energy and mining":"<%= PLATFORM_API_URL %>/images/icons/round/energy-16.png","Finance":"<%= PLATFORM_API_URL %>/images/icons/round/finance-16.png","Health and other social services":"<%= PLATFORM_API_URL %>/images/icons/round/health-16.png","Industry and trade":"<%= PLATFORM_API_URL %>/images/icons/round/industry-16.png","Public Administration, Law, and Justice":"<%= PLATFORM_API_URL %>/images/icons/round/public-16.png","Transportation":"<%= PLATFORM_API_URL %>/images/icons/round/transportation-16.png","Water, sanitation and flood protection":"<%= PLATFORM_API_URL %>/images/icons/round/water-16.png"};
 	  var color_index = 3;
 	  this.sectors = {
@@ -145,7 +150,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
             || self.country == "Middle East and North Africa"
             || self.country == "South Asia") {
                 map_engine="Sputnik"; //|| self.country_attrs["locations_count"] > 3000
+        } else if(map_id.search(/^\d+$/) == -1) {
+            map_engine = map_id;
         }
+        
 		 // if("no_flash") map_engine="javascript";
 		 
 		 this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
@@ -269,12 +277,19 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  jq('#map-title').html(title)
 	  return false;
 	},
-	setExtractiveIndicator: function(indicator, attribute, visible) {
+	setExtractiveIndicator: function(indicator, attribute, title, visible) {
 	  var self = this;
-	  self.map.showLayer(self.stylelayers["Mines"].order, false);
-	  self.map.showLayer(self.stylelayers["Oil wells"].order, false);
-	  self.map.showLayer(self.stylelayers["District revenues"].order, false);
-	  self.map.showLayer(self.stylelayers[indicator].order, visible);
+	  if(indicator == "District revenues") {
+          self.map.showLayer(self.stylelayers["Mines"].order, false);
+          self.map.showLayer(self.stylelayers["Oil wells"].order, false);	      
+          self.map.showLayer(self.stylelayers["District revenues"].order, true);
+	  }
+	  else {
+          self.map.showLayer(self.stylelayers["District revenues"].order, false);
+          self.map.showLayer(self.stylelayers["Mines"].order, true);
+          self.map.showLayer(self.stylelayers["Oil wells"].order, true);	      
+	  }
+
 	  if(attribute == "Icons"){
         self.map.swf.addLayerCategoryFilter(self.stylelayers[indicator].order, F1.WorldBank.extractives[indicator]["Icons"]);
 	  } else {
@@ -282,16 +297,109 @@ if(typeof(F1)=='undefined') {F1 = {};}
     	  s.icon.selectedAttribute = attribute;
 	      self.map.setLayerStyle(self.stylelayers[indicator].order, s);
 	  }
-	  
-	  
+	  self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], subtitle: attribute + ": $["+ attribute +"]", tabs:F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
+	  jq('#layercontrol_extractives').html(title);
+	  return false;
 	},
-	toggleExtractive: function(layer,sector,visible) {
-             console.log(sector);
-        // if(visible === undefined || visible === null)
-        //   visible = !(jq("#sectorcontrol_" + sector).hasClass('active'));
-        //      
-        //      this.map.showLayer(self.stylelayers["Project Locations"]);
-	    
+	toggleExtractive: function(layer,sector,visible) {   
+	    var self = this;
+         if(layer == "Oil") {
+             if(sector == "Oil wells") {
+                 if(visible != true || jq("#oilwells_control").hasClass("active")) {
+                     self.map.showLayer(self.stylelayers["Oil wells"].order, false);	      
+                     jq("#oilwells_control").removeClass('active').addClass('inactive');                     
+                 } else {
+                     self.map.showLayer(self.stylelayers["Oil wells"].order, true);	      
+                     jq("#oilwells_control").removeClass('inactive').addClass('active');                     
+                 }
+             } else if (sector == "Oil deposits") {
+                 if(visible != true || jq("#oildeposits_control").hasClass("active")) {
+                     self.map.showLayer(self.stylelayers["Oil fields"].order, false);	      
+                     jq("#oildeposits_control").removeClass('active').addClass('inactive');                     
+                 } else {
+                     self.map.showLayer(self.stylelayers["Oil fields"].order, true);	      
+                     jq("#oildeposits_control").removeClass('inactive').addClass('active');                     
+                 }                 
+             }
+         } else if(layer == "Mines") {
+             var classname = "#" + sector + "mine_control";
+             if(visible == true || jq(classname).hasClass("inactive")) {
+                 self.map.showLayer(self.stylelayers["Oil wells"].order, true);	                       
+                 if(sector == "all") {
+                    jq.each(jq('#mines_sectors li a'), function(el,index) {
+                        jq(el).removeClass('inactive').addClass('active');
+                    })
+                    jq("#allmine_control").attr("checked", "checked")
+                 } else {                 
+                     jq(classname).removeClass('inactive').addClass('active');
+                 }
+             } else {
+                 if(sector == "all") {
+                    jq.each(jq('#mines_sectors li a'), function(el,index) {
+                        jq(el).removeClass('active').addClass('inactive');
+                    })
+                     self.map.showLayer(self.stylelayers["Oil wells"].order, false);
+                    jq("#allmine_control").attr("checked", false)
+                 } else {                     
+                     jq(classname).removeClass('active').addClass('inactive');                                      
+                     jq("#allmine_control").attr("checked", false)
+                     
+                 }
+             }
+             self.showVisibleMines();            
+         } else if(layer == "Mineral deposits") {
+             var classname = "#" + sector + "deposit_control";
+             if(visible == true || jq(classname).hasClass("inactive")) {
+                 if(sector == "all") {
+                    jq.each(jq('#ore_sectors li a'), function(el,index) {
+                        jq(el).removeClass('inactive').addClass('active');
+                    })
+                    jq("#alldeposit_control").attr("checked", true)
+                 } else {                 
+                     jq(classname).removeClass('inactive').addClass('active');
+                 }
+             } else {
+                 if(sector == "all") {
+                    jq.each(jq('#ore_sectors li a'), function(el,index) {
+                        jq(el).removeClass('active').addClass('inactive');
+                    })
+                    jq("#alldeposit_control").attr("checked", false)
+                 } else {                     
+                     jq(classname).removeClass('active').addClass('inactive');                                      
+                     jq("#alldeposit_control").attr("checked", false)
+                     
+                 }
+             }
+             self.showVisibleDeposits();
+         }
+	    return false;
+    },
+    showVisibleMines: function() {
+        var self = this;
+        var layer = "Mines"
+        self.map.swf.clearFilters(self.stylelayers[layer].order);             
+        self.map.showLayer(self.stylelayers[layer].order, true);
+        var visibleDeposits = jq.map(jq('#mines_sectors li a'), function(el,index) {
+            if( jq(el).hasClass('active'))
+            return jq(el).attr("original-title")
+        })                        
+        if(visibleDeposits.length != 0 )
+            self.map.swf.addFilter(self.stylelayers[layer].order, 
+                {expression: self.complexFilterExpression(visibleDeposits, "Mineral type")});              
+    },
+    showVisibleDeposits: function() {
+        var self = this;
+        var layer = "Mineral deposits"
+        self.map.swf.clearFilters(self.stylelayers[layer].order);             
+        self.map.showLayer(self.stylelayers[layer].order, true);
+        var visibleDeposits = jq.map(jq('#ore_sectors li a'), function(el,index) {
+            if( jq(el).hasClass('active'))
+            return jq(el).attr("original-title")
+        })
+        if(visibleDeposits.length != 0 )
+            self.map.swf.addFilter(self.stylelayers[layer].order, 
+                {expression: self.complexFilterExpression(visibleDeposits, "Mineral type")});             
+        
     },
 	toggleSector: function(sector,visible,refreshCharts) {
 	  var self = this;
@@ -313,7 +421,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         jq('#map-content-regions').hide()
 	  } else if(sector == 'all') {
 		if(visible === undefined || visible === null)
-		  visible = (jq("#sall").is(':checked'));
+		  visible = !(jq("#sall").attr('checked'));
 		  
 		if(visible) {
 		  self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
@@ -325,7 +433,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
 		  self.visibleSectors = [];
 		}
-		
 		jq("#sall").attr('checked', visible);
 		self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
 		if(self.stylelayers["Project Counts"] !== undefined)
@@ -439,6 +546,17 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  
 	  return false;
 	},
+	complexFilterExpression: function(sectorFilters, sector_attribute) {
+	  var self = this;
+	  var expression = "";
+		
+	  for(var sector=0;sector<sectorFilters.length; sector++) {
+    		expression += "$["+sector_attribute+"] == '" + sectorFilters[sector] + "'";
+    		if(sector != sectorFilters.length-1)
+    		  expression += " OR ";
+    	}
+	  return expression;
+	},	  	
 	complexSectorExpression: function(sectorFilters, sector_attribute) {
 	  var self = this;
 	  var expression = "";
@@ -813,7 +931,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
     getLayers: function() {
         var self = this;
-        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "District revenues", "Mineral deposits"];
+        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits"];
         var possibleLayers = eval("(" + self.map.getLayers() + ")");
         if(possibleLayers == undefined) {
             possibleLayers = [];
@@ -832,7 +950,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 index = Object.include(findlayers, possibleLayers[layer].title);
                 if(index !== undefined && index !== null){
                     self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
-                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mineral deposits"], possibleLayers[layer].title)) {
+                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density"], possibleLayers[layer].title)) {
                         F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
                     }
                     findlayers.splice(index,1);
@@ -908,7 +1026,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     var y = 50;
     var ch = jq("#map-content-hdr2");
     if (ch !== undefined && ch.length == 0)
-      y = 10
+      y = 20
 	    
       this.map.showControl("Zoom",true);
       this.map.showControl("Legend",true);
@@ -945,15 +1063,26 @@ if(typeof(F1)=='undefined') {F1 = {};}
         self.setIndicator(self.country_attrs.indicators[0]);
         // self.toggleSector("counts_admin1",true);
         count = self.country_attrs["projects_count"];
-        self.toggleSector("all",true,false);
+        if(self.thematic_area == 'm4r'){
+            self.toggleSector("all",true,false);
+            jq('#project_count').html(count);
+            if(count == 1)
+            jq('#active_projects_header').html("active project working in")
+            jq('#activity_count').html(self.country_attrs["locations_count"]);
+            if(self.country_attrs["locations_count"] == 1)
+            jq('#mapped_locations_header').html("mapped location")
+            
+        } else if(self.thematic_area == "extractives_controls") {
+            jq('#project_count').html("282,595,781");
+            jq('#active_projects_header').html("Ghana Cedis of revenue in")
+            jq('#activity_count').html(14);
+            jq('#mapped_locations_header').html("mapped locations")
+            self.toggleExtractive("Mines","all", true)
+            self.toggleExtractive("Mineral deposits","all", false)
+            self.toggleExtractive("Oil fields","all", true)            
+        }
 	    self.loadState();
 
-        jq('#project_count').html(count);
-        if(count == 1)
-        jq('#active_projects_header').html("active project working in")
-        jq('#activity_count').html(self.country_attrs["locations_count"]);
-        if(self.country_attrs["locations_count"] == 1)
-        jq('#mapped_locations_header').html("mapped location")
 
         if(self.projects !== undefined && self.projects !== null) {
             self.sortProjects(self.projects);
