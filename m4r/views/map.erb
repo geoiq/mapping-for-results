@@ -296,6 +296,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     	  var s = F1.WorldBank.extractives[indicator][attribute];
     	  s.icon.selectedAttribute = attribute;
 	      self.map.setLayerStyle(self.stylelayers[indicator].order, s);
+
 	  }
 	  self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], subtitle: attribute + ": $["+ attribute +"]", tabs:F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
 	  jq('#layercontrol_extractives').html(title);
@@ -305,7 +306,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	    var self = this;
          if(layer == "Oil") {
              if(sector == "Oil wells") {
-                 if(visible != true || jq("#oilwells_control").hasClass("active")) {
+                 if((visible !== undefined && visible !== null && visible != true) || jq("#oilwells_control").hasClass("active")) {
                      self.map.showLayer(self.stylelayers["Oil wells"].order, false);	      
                      jq("#oilwells_control").removeClass('active').addClass('inactive');                     
                  } else {
@@ -313,7 +314,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                      jq("#oilwells_control").removeClass('inactive').addClass('active');                     
                  }
              } else if (sector == "Oil fields") {
-                 if(visible != true || jq("#oildeposits_control").hasClass("active")) {
+                 if((visible !== undefined && visible !== null && visible != true) || jq("#oildeposits_control").hasClass("active")) {
                      self.map.showLayer(self.stylelayers["Oil fields"].order, false);	      
                      jq("#oildeposits_control").removeClass('active').addClass('inactive');                     
                  } else {
@@ -323,6 +324,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
              }
          } else if(layer == "Mines") {
              var classname = "#" + sector + "mine_control";
+             if(sector == "all" && (visible === undefined || visible === null)) {
+                 visible = !jq("#allmine_control").attr("checked")
+             }
              if(visible == true || jq(classname).hasClass("inactive")) {
                  if(sector == "all") {
                     jq.each(jq('#mines_sectors li a'), function(el,index) {
@@ -1087,8 +1091,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Mines","all", true)
             self.toggleExtractive("Mineral deposits","all", false)
             self.toggleExtractive("Oil fields","all", true)     
-            self.map.swf.setStyle( { offset: {x:15,y:80}}} )
-                   
+            self.map.swf.setStyle( {zoom: { offset: {x:15,y:80}}} )    
+            self.map.swf.addLayerCategoryFilter(11,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
         }
         jq("#map-summary").show();
 	    self.loadState();

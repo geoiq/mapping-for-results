@@ -33,24 +33,24 @@ jq(function() {
             return wb.toggleSector(sector_name);
         })
     });
-    jq.each(jq('#mines_sectors li a'), function(el, index) {
+    jq.each(jq('#mines_sectors li a'), function(index,el) {
        jq(el).tipsy({gravity:  jq.fn.tipsy.autoNS});
+       jq(el).click(function() {
+           return wb.toggleExtractive("Mines", jq(this).attr("original-title"))
+       });
     });
-    jq.each(jq('#ore_sectors li a'), function(el, index) {
+    jq.each(jq('#ore_sectors li a'), function(index,el) {
        jq(el).tipsy({gravity:  jq.fn.tipsy.autoNS});
+       jq(el).click(function() {
+           return wb.toggleExtractive("Mineral deposits", jq(this).attr("original-title"))
+       });
     });
-    jq.each(jq('#oil_sectors li a'), function(el, index) {
+    jq.each(jq('#oil_sectors li a'), function(index,el) {
        jq(el).tipsy({gravity:  jq.fn.tipsy.autoNS});
+       jq(el).click(function() {
+           return wb.toggleExtractive("Oil", jq(this).attr("original-title"))
+       });
     });
-    jq('#mines_sectors li a').click(function() {
-        return wb.toggleExtractive("Mines", jq(this).attr("original-title"))
-    })
-    jq('#ore_sectors li a').click(function() {
-        return wb.toggleExtractive("Mineral deposits", jq(this).attr("original-title"))
-    })
-    jq('#oil_sectors li a').click(function() {
-        return wb.toggleExtractive("Oil fields", jq(this).attr("original-title"))
-    })
     jq('#allmine_control').click(function(){
         wb.toggleExtractive("Mines",'all');
         return false;
@@ -63,7 +63,6 @@ jq(function() {
         wb.toggleExtractive("Oil fields",'all');
         return false;
     });
-
     jq('#sall').click(function(){
         wb.toggleSector('all',!jq("#sall").attr('checked'));
         return false;

@@ -13,7 +13,7 @@
       <div id="map-content-icons">
         <div id="map-content-icons2">
           <ul>
-          <% if (params[:controls] || false).to_s == "true" %>
+          <% if defined?(@additional_controls) || (params[:controls] || false).to_s == "true" %>
           <li style="margin-left: 11px; margin-right: 11px;">Sector:</li>
           <% end %>
             <li class="s1"><a  sector-name="public" original-title="Public Administration, Law, and Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#">1</a></li>
@@ -27,7 +27,7 @@
             <li class="s9"><a  sector-name="water" original-title="Water, sanitation and flood protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
             <li class="s10"><a sector-name="education" original-title="Education" class="sectorcontrol inactive" id="sectorcontrol_education" href="#">10</a> </li>            
               <% if (params[:controls] || false).to_s != "true" %>
-            <li class="s11"><form action="" method="get">
+            <li class="s11 all"><form action="" method="get">
                 <input name="input" id="sall" class="" type="checkbox" value=""/>
               </form></li>
             <li class="all">ALL</li>
