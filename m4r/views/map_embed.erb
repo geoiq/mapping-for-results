@@ -1,4 +1,8 @@
 <% if (params[:controls] || false).to_s == "true" %><div id="map-content-hdr2"><%# partial :layer_controls %><%= partial :sector_controls %></div><% end %>
-<div style="height: <%= params[:height] || 200 %>px; width: <%= params[:width] || 200 %>px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<div id="map_embed_container" style="height: <%= params[:height] || 200 %>px; width: <%= params[:width] || 200 %>px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <%= partial :initialize unless @page.new? %>
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
+<script type="text/javascript" charset="utf-8">
+  jq("#map_embed_container").width(getQuerystring("width", 200))
+  jq("#map_embed_container").height(getQuerystring("height", 200))
+</script>

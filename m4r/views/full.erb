@@ -101,9 +101,7 @@
         <%= partial :footer %>
 
         <%= partial :initialize unless @page.new? %>
-        <% unless @page.page_type == "project" %>
         <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-        <% end %>
 
     </div><!--#container//-->
 <%= partial :analytics %>

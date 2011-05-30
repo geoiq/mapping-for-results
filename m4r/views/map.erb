@@ -65,6 +65,18 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	 return flat;
   };
 
+  function getQuerystring(key, default_)
+  {
+    if (default_==null) default_="";
+    key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
+    var qs = regex.exec(window.location.href);
+    if(qs == null)
+      return default_;
+    else
+      return qs[1];
+  }
+
   String.prototype.capitalize = function(){
 	return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
   };  
@@ -117,6 +129,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  this.cb = callback;
 	  this.page_type = country_attrs.page_type;
 	  this.thematic_area = country_attrs.thematic_area;
+	  if(this.thematic_area === undefined || this.thematic_area === null)
+	    this.thematic_area = "m4r";
+	    
 	  this.wbicons = {"Agriculture, fishing, and forestry":"<%= PLATFORM_API_URL %>/images/icons/round/agriculture-16.png","Information and communications":"<%= PLATFORM_API_URL %>/images/icons/round/communication-16.png","Education":"<%= PLATFORM_API_URL %>/images/icons/round/education-16.png","Energy and mining":"<%= PLATFORM_API_URL %>/images/icons/round/energy-16.png","Finance":"<%= PLATFORM_API_URL %>/images/icons/round/finance-16.png","Health and other social services":"<%= PLATFORM_API_URL %>/images/icons/round/health-16.png","Industry and trade":"<%= PLATFORM_API_URL %>/images/icons/round/industry-16.png","Public Administration, Law, and Justice":"<%= PLATFORM_API_URL %>/images/icons/round/public-16.png","Transportation":"<%= PLATFORM_API_URL %>/images/icons/round/transportation-16.png","Water, sanitation and flood protection":"<%= PLATFORM_API_URL %>/images/icons/round/water-16.png"};
 	  var color_index = 3;
 	  this.sectors = {

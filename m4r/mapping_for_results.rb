@@ -214,6 +214,17 @@ class MappingForResults < Sinatra::Base
     @embed = true
     erb :map_embed, :layout => :embed 
   end
+  get '/:region/:country/:project/embed' do
+    # @region = MAPS[:world][:regions][params[:region].to_sym]
+    @region = Page.first(:shortname => params[:region].downcase)
+    @page = Page.first(:shortname => params[:project].downcase) #@region[:countries][params[:country].to_sym]
+    @projects = @page.data[:projects]
+    
+    @page_subtitle = [@page[:name],@page[:region]].compact.join(", ") + " > "
+    @embed = true
+    erb :map_embed, :layout => :embed 
+  end
+  
   get '/:region/:country' do
     # @region = MAPS[:world][:regions][params[:region].to_sym]
     @region = Page.first(:shortname => params[:region].downcase)
