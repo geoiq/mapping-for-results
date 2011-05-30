@@ -1,14 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>P117417, Nepal > The World Bank - Mapping for Results</title>
+    <title>P117417, Nepal >  - The World Bank - Mapping for Results</title>
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
-    <meta name="description" content="P117417, Nepal > The World Bank - Mapping for Results">
+    <meta name="description" content="P117417, Nepal >  - The World Bank - Mapping for Results">
     <meta name="keywords" content="P117417,Nepal,South Asia,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/mapping.css">
-      
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
+    <link rel="stylesheet" href="/assets/css/mapping.css">      
   <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css" />
    <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/css/style.css" />
@@ -19,11 +22,11 @@
   <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/assets/css/menu.css" />
 
-    <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
-    if (top.frames.length!=0)
-      top.location=self.document.location;
     </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   <script type="text/javascript" src="/js/jquery_002.js"></script>
@@ -38,7 +41,7 @@
 <script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
-<script src="/map.js" type="text/javascript"></script>
+<script src="/script/map.js" type="text/javascript"></script>
 
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
@@ -115,7 +118,7 @@
                 </div>
                 <div class="overview-text">
                 
-                The <strong>Mapping for Results Platform</strong> provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <br /><a class="readmore" href="/about">Read More »</a>
+                The <strong>Mapping for Results Platform</strong> provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <br />Prior to the Spring Meetings 2011, Mapping for Results has identified more than 1250 active Bank financed activities working in 16,520 locations. These activities are a subset of more than 2,500 active financed Bank activities with a volume of more than $160 billion.<br /><a class="readmore" href="/about">Read More »</a>
               
               </div>
               </div>
@@ -129,13 +132,23 @@
   	    
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
-                <li><a href="http://twitter.com/home?status=P117417,+Nepal+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/sa/nepal/p117417" target="_new" id="">Twitter</a></li>
-                <li><a href="http://facebook.com/worldbank" id="">Facebook</a></li>
+                <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
+                <li><a href="http://twitter.com/home?status=P117417,+Nepal+>++-+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/sa/nepal/p117417" target="_new" id="twitter_link" onclick="return twt_click()">Twitter</a></li>
+                <li><a rel="nofollow" href="http://www.facebook.com/share.php?u=http://maps.worldbank.org/sa/nepal/p117417" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Facebook</a> </li>
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
       </ul>
-  </div> <br /><br />
+  </div>
+    <div id="share_window" style="display: none;">
+    <a id="close_embed" href="#" style="" title="Close this embed window.">[x]</a>
+    <h3 style="color: #FFF">Embed this map by copying the text below and pasting it into your blog or website.</h3>
+    <textarea cols="120" rows="5" readonly="readonly" style="font-size: 0.9em" id="embed_code">
+    </textarea><br />
+    <h3 style="color: #FFF">...or copy and paste this link to share the current view with others.</h3>
+    <input type="text" size="109" id="share_link" value="" />
+  </div>
+   <br /><br />
 
     <div id="content-wrapper">
     
@@ -143,7 +156,8 @@
     <div id="map-content-header">
       <div class="worldmenuholder">
                     <ul class="worldmenu dropmenu">
-                <li class="first"><a href="javascript:return false;" style="0">P117417</span></a>
+                <li class="first"><a href="#" onclick="return false;" style="0">P117417</span></a>
+                
                 <div class="menu-world-options">
                   <ul class="menu-regions dropmenu_options" id="navmenu" style="">
                 <li class="first"><a href="/">World</a></li>
@@ -168,7 +182,7 @@
                         
                         <a href="/afr/capeverde" class="">Cape Verde</a>
                         
-                        <a href="/afr/central-african-republic" class="">Central African Republic</a>
+                        <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
                         <a href="/afr/chad" class="">Chad</a>
                         
@@ -232,7 +246,7 @@
                         
                         <a href="/afr/zambia" class="">Zambia</a>
                         
-                        <a href="/afr/zimbabwe" class="">Zimbabwe</a></li>
+                        <a href="/afr/zimbabwe" class="">Zimbabwe</a>
                         
                       </ul>
                   </div>
@@ -368,6 +382,7 @@
                   </li>
                  
                 </ul></div>
+                
                 </li>
               </ul>
       <div id="map-summary-container" style="float:left">
@@ -389,7 +404,7 @@
 
   var wb = new F1.WorldBank();
   
-  wb.init(665,  "P117417",  "Nepal", {title: 'P117417',locations_count: '75'});
+  wb.init("665",  "P117417",  "Nepal", {title: 'P117417',locations_count: '75', thematic_area: "m4r"}, false);
 
   
   
@@ -428,9 +443,11 @@
     </div>
     <br class="clear" />
 
+    <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
     </div>
 <!-- /#wrapper -->
 <!-- /layout -->
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
@@ -448,8 +465,8 @@
 <!--
 var s_pageName="Home > Maps > P117417, Nepal > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT";
-var s_prop1 = "";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab55bb2f8>,#<Page:0x2aaab544b788>,#<Page:0x2aaab5473080>,#<Page:0x2aaab62237c0>";
+var s_prop1 = "P117417, Nepal >  - The World Bank - Mapping for Results";
 var s_prop6 = "Nepal"; / Region /
 var s_prop7 = "P117417"; / Country /
 var s_prop2 = "Not Available"; /* Author /
@@ -478,9 +495,10 @@ s_pageName = sTitle;
 s_prop1 = sTitle;
 s_hier1 += ", " + sTitle;
 
-var s_account="wbnispextgeomfr";
+var s_account="wbnispextgeomfr,wbglobalext";
 //-->
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 </body></html>

@@ -1,14 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Latin America & Caribbean, World > The World Bank - Mapping for Results</title>
+    <title>Latin America & Caribbean, World >  - The World Bank - Mapping for Results</title>
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
-    <meta name="description" content="Latin America & Caribbean, World > The World Bank - Mapping for Results">
+    <meta name="description" content="Latin America & Caribbean, World >  - The World Bank - Mapping for Results">
     <meta name="keywords" content="Latin America & Caribbean,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/mapping.css">
-      
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
+    <link rel="stylesheet" href="/assets/css/mapping.css">      
   <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css" />
    <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/css/style.css" />
@@ -19,11 +22,11 @@
   <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/assets/css/menu.css" />
 
-    <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
-    if (top.frames.length!=0)
-      top.location=self.document.location;
     </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   <script type="text/javascript" src="/js/jquery_002.js"></script>
@@ -38,7 +41,7 @@
 <script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
-<script src="/map.js" type="text/javascript"></script>
+<script src="/script/map.js" type="text/javascript"></script>
 
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
@@ -115,7 +118,7 @@
                 </div>
                 <div class="overview-text">
                 
-                The <strong>Mapping for Results Platform</strong> provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <br /><a class="readmore" href="/about">Read More »</a>
+                The <strong>Mapping for Results Platform</strong> provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <br />Prior to the Spring Meetings 2011, Mapping for Results has identified more than 1250 active Bank financed activities working in 16,520 locations. These activities are a subset of more than 2,500 active financed Bank activities with a volume of more than $160 billion.<br /><a class="readmore" href="/about">Read More »</a>
               
               </div>
               </div>
@@ -129,13 +132,23 @@
   	    
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
-                <li><a href="http://twitter.com/home?status=Latin+America+&+Caribbean,+World+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/lac" target="_new" id="">Twitter</a></li>
-                <li><a href="http://facebook.com/worldbank" id="">Facebook</a></li>
+                <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
+                <li><a href="http://twitter.com/home?status=Latin+America+&+Caribbean,+World+>++-+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/lac" target="_new" id="twitter_link" onclick="return twt_click()">Twitter</a></li>
+                <li><a rel="nofollow" href="http://www.facebook.com/share.php?u=http://maps.worldbank.org/lac" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Facebook</a> </li>
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
       </ul>
-  </div> <br /><br />
+  </div>
+    <div id="share_window" style="display: none;">
+    <a id="close_embed" href="#" style="" title="Close this embed window.">[x]</a>
+    <h3 style="color: #FFF">Embed this map by copying the text below and pasting it into your blog or website.</h3>
+    <textarea cols="120" rows="5" readonly="readonly" style="font-size: 0.9em" id="embed_code">
+    </textarea><br />
+    <h3 style="color: #FFF">...or copy and paste this link to share the current view with others.</h3>
+    <input type="text" size="109" id="share_link" value="" />
+  </div>
+   <br /><br />
 
     <div id="content-wrapper">
     
@@ -143,7 +156,8 @@
     <div id="map-content-header">
       <div class="worldmenuholder">
                     <ul class="worldmenu dropmenu">
-                <li class="first"><a href="javascript:return false;" style="padding: 5px 15px 11px 30px;">LATIN AMERICA & CARIBBEAN</span></a>
+                <li class="first"><a href="#" onclick="return false;" style="padding: 5px 15px 11px 30px;">LATIN AMERICA & CARIBBEAN</span></a>
+                
                 <div class="menu-world-options">
                   <ul class="menu-regions dropmenu_options" id="navmenu" style="">
                 <li class="first"><a href="/">World</a></li>
@@ -168,7 +182,7 @@
                         
                         <a href="/afr/capeverde" class="">Cape Verde</a>
                         
-                        <a href="/afr/central-african-republic" class="">Central African Republic</a>
+                        <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
                         <a href="/afr/chad" class="">Chad</a>
                         
@@ -232,7 +246,7 @@
                         
                         <a href="/afr/zambia" class="">Zambia</a>
                         
-                        <a href="/afr/zimbabwe" class="">Zimbabwe</a></li>
+                        <a href="/afr/zimbabwe" class="">Zimbabwe</a>
                         
                       </ul>
                   </div>
@@ -309,23 +323,21 @@
                         
                         <li><a href="/lac/bolivia" class="">Bolivia</a>
                         
-                        <a href="/lac/dominica" class="">Dominica</a>
+                        <a href="/lac/dominican-republic" class="">Dominican Republic</a>
                         
-                        <a href="/lac/dominican-republic" class="">Dominican Republic</a></li>
+                        <a href="/lac/grenada" class="">Grenada</a></li>
                         
-                        <li><a href="/lac/grenada" class="">Grenada</a>
+                        <li><a href="/lac/guyana" class="">Guyana</a>
                         
-                        <a href="/lac/guyana" class="">Guyana</a>
+                        <a href="/lac/haiti" class="">Haiti</a>
                         
-                        <a href="/lac/haiti" class="">Haiti</a></li>
+                        <a href="/lac/honduras" class="">Honduras</a></li>
                         
-                        <li><a href="/lac/honduras" class="">Honduras</a>
+                        <li><a href="/lac/nicaragua" class="">Nicaragua</a>
                         
-                        <a href="/lac/nicaragua" class="">Nicaragua</a>
+                        <a href="/lac/st-lucia" class="">St. Lucia</a>
                         
-                        <a href="/lac/st-lucia" class="">St. Lucia</a></li>
-                        
-                        <li><a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a></li>
+                        <a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a></li>
                         
                       </ul>
                   </div>
@@ -370,6 +382,7 @@
                   </li>
                  
                 </ul></div>
+                
                 </li>
               </ul>
       <div id="map-summary-container" style="float:left">
@@ -392,12 +405,12 @@
   var wb = new F1.WorldBank();
   
   var projects = [];
-  var productline = {"Debt Reduction Facility":42.0,"Recipient Executed Activities":142.77,"Guarantees":850.3,"Global Environment Project":393.39,"IBRD\/IDA":32610.74,"Carbon Offset":150.0,"Montreal Protocol":0.0,"GEF Medium Sized Program":15.15,"Rainforest":4.19};
-  var sectors = {"Public Administration, Law, and Justice":6245.9924,"Water, sanitation and flood protection":4251.4508,"Transportation":7331.6136,"Energy and mining":1787.2372,"Industry and trade":1593.0947,"Finance":1983.6715,"Education":2325.2646,"Information and communications":160.0075,"Health and other social services":7226.7775,"Agriculture, fishing, and forestry":1303.4302};
-  var regions = {"Republic of Panama":237.48,"Republic of Peru":2104.66,"Belize":19.25,"Latin America":15.13,"Caribbean":50.2,"Republic of El Salvador":349.34,"Organization of Eastern Caribbean States":15.9,"Republic of Colombia":2429.09,"Republic of Guatemala":567.64,"Republic of Chile":127.97,"Republic of Ecuador":27.54,"Oriental Republic of Uruguay":306.88,"Republic of Guyana":56.88,"Dominican Republic":310.54,"Central America":12.87,"Republic of Haiti":363.0,"Republic of Paraguay":280.73,"Andean Countries":7.94,"Barbados":35.0,"Republic of Nicaragua":403.45,"United Mexican States":7733.7,"Republic of Honduras":339.28,"Jamaica":155.3,"St. Vincent and the Grenadines":18.2,"Federative Republic of Brazil":9979.02,"Plurinational State of Bolivia":386.58,"St. Lucia":28.97,"Republic of Trinidad and Tobago":2.6,"Argentine Republic":7614.0,"Grenada":19.26,"Republic of Costa Rica":210.14};
+  var productline = {"Debt Reduction Facility":42.0,"Recipient Executed Activities":211.62,"Guarantees":850.3,"Global Environment Project":385.64,"IBRD\/IDA":33272.74,"Carbon Offset":150.0,"Montreal Protocol":0.0,"GEF Medium Sized Program":15.15,"Rainforest":4.19};
+  var sectors = {"Public Administration, Law, and Justice":5979.5232,"Water, sanitation and flood protection":4229.4008,"Transportation":7466.2036,"Energy and mining":1821.7412,"Industry and trade":1513.1111,"Finance":1898.7359,"Education":2327.1146,"Information and communications":257.7519,"Health and other social services":8140.5225,"Agriculture, fishing, and forestry":1297.5352};
+  var regions = {"Republic of Panama":337.48,"Republic of Peru":2164.16,"Belize":19.25,"Latin America":15.78,"Caribbean":50.2,"Republic of El Salvador":349.34,"Organization of Eastern Caribbean States":15.9,"Republic of Colombia":2429.09,"Republic of Guatemala":567.64,"Republic of Chile":127.97,"Republic of Ecuador":27.54,"Oriental Republic of Uruguay":306.88,"Republic of Guyana":56.88,"Dominican Republic":310.54,"Central America":12.87,"Republic of Haiti":428.0,"Republic of Paraguay":280.73,"Andean Countries":7.94,"Barbados":35.0,"Republic of Nicaragua":403.45,"United Mexican States":7735.4,"Republic of Honduras":339.28,"Jamaica":155.3,"St. Vincent and the Grenadines":11.2,"Federative Republic of Brazil":9971.27,"Plurinational State of Bolivia":497.58,"St. Lucia":28.97,"Republic of Trinidad and Tobago":2.6,"Argentine Republic":8014.0,"Grenada":19.26,"Republic of Costa Rica":210.14};
      
      
-  wb.init(628,  "Latin America & Caribbean",  "World", {projects_count: '498', locations_count: '1,797', sectors: sectors, regions: regions });
+  wb.init(""628"",  "Latin America & Caribbean",  "World", {projects_count: '504', locations_count: '1,797', sectors: sectors, regions: regions, thematic_area: "m4r" }, false);
 
   
   
@@ -411,7 +424,7 @@
     </div>
     
             <br class="clear" />
-        <div id="footnote">Active financed activities as of April 12, 2011.</div>
+        <div id="footnote">Active financed activities as of May 24, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -438,9 +451,11 @@
     </div>
     <br class="clear" />
 
+    <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
     </div>
 <!-- /#wrapper -->
 <!-- /layout -->
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
@@ -458,8 +473,8 @@
 <!--
 var s_pageName="Home > Maps > Latin America & Caribbean, World > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT";
-var s_prop1 = "";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaac2eb8150>,#<Page:0x2aaac3b54a80>";
+var s_prop1 = "Latin America & Caribbean, World >  - The World Bank - Mapping for Results";
 var s_prop6 = "World"; / Region /
 var s_prop7 = "Latin America & Caribbean"; / Country /
 var s_prop2 = "Not Available"; /* Author /
@@ -488,9 +503,10 @@ s_pageName = sTitle;
 s_prop1 = sTitle;
 s_hier1 += ", " + sTitle;
 
-var s_account="wbnispextgeomfr";
+var s_account="wbnispextgeomfr,wbglobalext";
 //-->
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 </body></html>

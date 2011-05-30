@@ -1,14 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Decentralized Infrastructure..., Bolivia > The World Bank - Mapping for Results</title>
+    <title>Decentralized Infrastructure..., Bolivia >  - The World Bank - Mapping for Results</title>
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
-    <meta name="description" content="Decentralized Infrastructure..., Bolivia > The World Bank - Mapping for Results">
+    <meta name="description" content="Decentralized Infrastructure..., Bolivia >  - The World Bank - Mapping for Results">
     <meta name="keywords" content="Decentralized Infrastructure...,Bolivia,Latin America & Caribbean,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/mapping.css">
-      
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
+    <link rel="stylesheet" href="/assets/css/mapping.css">      
   <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css" />
    <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/css/style.css" />
@@ -19,11 +22,11 @@
   <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/assets/css/menu.css" />
 
-    <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
-    if (top.frames.length!=0)
-      top.location=self.document.location;
     </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   <script type="text/javascript" src="/js/jquery_002.js"></script>
@@ -38,7 +41,7 @@
 <script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
-<script src="/map.js" type="text/javascript"></script>
+<script src="/script/map.js" type="text/javascript"></script>
 
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
@@ -133,13 +136,23 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
   	    
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
-                <li><a href="http://twitter.com/home?status=Decentralized+Infrastructure...,+Bolivia+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/lac/bolivia/p073367" target="_new" id="">Twitter</a></li>
-                <li><a href="http://facebook.com/worldbank" id="">Facebook</a></li>
+                <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
+                <li><a href="http://twitter.com/home?status=Decentralized+Infrastructure...,+Bolivia+>++-+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/lac/bolivia/p073367" target="_new" id="twitter_link" onclick="return twt_click()">Twitter</a></li>
+                <li><a rel="nofollow" href="http://www.facebook.com/share.php?u=http://maps.worldbank.org/lac/bolivia/p073367" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Facebook</a> </li>
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
       </ul>
-  </div> <br /><br />
+  </div>
+    <div id="share_window" style="display: none;">
+    <a id="close_embed" href="#" style="" title="Close this embed window.">[x]</a>
+    <h3 style="color: #FFF">Embed this map by copying the text below and pasting it into your blog or website.</h3>
+    <textarea cols="120" rows="5" readonly="readonly" style="font-size: 0.9em" id="embed_code">
+    </textarea><br />
+    <h3 style="color: #FFF">...or copy and paste this link to share the current view with others.</h3>
+    <input type="text" size="109" id="share_link" value="" />
+  </div>
+   <br /><br />
 
     <div id="content-wrapper">
     
@@ -147,7 +160,8 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
     <div id="map-content-header">
       <div class="worldmenuholder">
                     <ul class="worldmenu dropmenu">
-                <li class="first"><a href="javascript:return false;" style="padding: 5px 15px 11px 30px;">DECENTRALIZED INFRASTRUCTURE...</span></a>
+                <li class="first"><a href="#" onclick="return false;" style="padding: 5px 15px 11px 30px;">DECENTRALIZED INFRASTRUCTURE...</span></a>
+                
                 <div class="menu-world-options">
                   <ul class="menu-regions dropmenu_options" id="navmenu" style="">
                 <li class="first"><a href="/">World</a></li>
@@ -172,7 +186,7 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
                         
                         <a href="/afr/capeverde" class="">Cape Verde</a>
                         
-                        <a href="/afr/central-african-republic" class="">Central African Republic</a>
+                        <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
                         <a href="/afr/chad" class="">Chad</a>
                         
@@ -236,7 +250,7 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
                         
                         <a href="/afr/zambia" class="">Zambia</a>
                         
-                        <a href="/afr/zimbabwe" class="">Zimbabwe</a></li>
+                        <a href="/afr/zimbabwe" class="">Zimbabwe</a>
                         
                       </ul>
                   </div>
@@ -313,23 +327,21 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
                         
                         <li><a href="/lac/bolivia" class="">Bolivia</a>
                         
-                        <a href="/lac/dominica" class="">Dominica</a>
+                        <a href="/lac/dominican-republic" class="">Dominican Republic</a>
                         
-                        <a href="/lac/dominican-republic" class="">Dominican Republic</a></li>
+                        <a href="/lac/grenada" class="">Grenada</a></li>
                         
-                        <li><a href="/lac/grenada" class="">Grenada</a>
+                        <li><a href="/lac/guyana" class="">Guyana</a>
                         
-                        <a href="/lac/guyana" class="">Guyana</a>
+                        <a href="/lac/haiti" class="">Haiti</a>
                         
-                        <a href="/lac/haiti" class="">Haiti</a></li>
+                        <a href="/lac/honduras" class="">Honduras</a></li>
                         
-                        <li><a href="/lac/honduras" class="">Honduras</a>
+                        <li><a href="/lac/nicaragua" class="">Nicaragua</a>
                         
-                        <a href="/lac/nicaragua" class="">Nicaragua</a>
+                        <a href="/lac/st-lucia" class="">St. Lucia</a>
                         
-                        <a href="/lac/st-lucia" class="">St. Lucia</a></li>
-                        
-                        <li><a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a></li>
+                        <a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a></li>
                         
                       </ul>
                   </div>
@@ -374,6 +386,7 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
                   </li>
                  
                 </ul></div>
+                
                 </li>
               </ul>
       <div id="map-summary-container" style="float:left">
@@ -395,7 +408,7 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
 
   var wb = new F1.WorldBank();
   
-  wb.init(116,  "Decentralized Infrastructure...",  "Bolivia", {title: 'Decentralized Infrastructure...',locations_count: '0'});
+  wb.init("116",  "Decentralized Infrastructure...",  "Bolivia", {title: 'Decentralized Infrastructure...',locations_count: '0', thematic_area: "m4r"}, false);
 
   
   
@@ -434,9 +447,11 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
     </div>
     <br class="clear" />
 
+    <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
     </div>
 <!-- /#wrapper -->
 <!-- /layout -->
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
@@ -454,8 +469,8 @@ The purpose of the program is to assist the government of Bolivia (GOB) in expan
 <!--
 var s_pageName="Home > Maps > Decentralized Infrastructure..., Bolivia > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT";
-var s_prop1 = "";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaac3267a08>,#<Page:0x2aaac302eea8>,#<Page:0x2aaac3071fa0>,#<Page:0x2aaac375fe20>";
+var s_prop1 = "Decentralized Infrastructure..., Bolivia >  - The World Bank - Mapping for Results";
 var s_prop6 = "Bolivia"; / Region /
 var s_prop7 = "Decentralized Infrastructure..."; / Country /
 var s_prop2 = "Not Available"; /* Author /
@@ -484,9 +499,10 @@ s_pageName = sTitle;
 s_prop1 = sTitle;
 s_hier1 += ", " + sTitle;
 
-var s_account="wbnispextgeomfr";
+var s_account="wbnispextgeomfr,wbglobalext";
 //-->
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 </body></html>

@@ -14,11 +14,15 @@
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-      <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
+    <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
-    if (top.frames.length!=0)
-      top.location=self.document.location;
     </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   <script type="text/javascript" src="/js/jquery_002.js"></script>
@@ -33,7 +37,7 @@
 <script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
-<script src="/map.js" type="text/javascript"></script>
+<script src="/script/map.js" type="text/javascript"></script>
 
 </head>
 
@@ -98,19 +102,30 @@
         
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
-                <li><a href="http://twitter.com/home?status=Philippines,+East+Asia+&+the+Pacific+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/eap/philippines" target="_new" id="">Twitter</a></li>
-                <li><a href="http://facebook.com/worldbank" id="">Facebook</a></li>
+                <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
+                <li><a href="http://twitter.com/home?status=Philippines,+East+Asia+&+the+Pacific+>+The+World+Bank+-+Mapping+for+Results+http://maps.worldbank.org/eap/philippines" target="_new" id="twitter_link" onclick="return twt_click()">Twitter</a></li>
+                <li><a rel="nofollow" href="http://www.facebook.com/share.php?u=http://maps.worldbank.org/eap/philippines" class="fb_share_button" onclick="return fbs_click()" target="_blank" style="text-decoration:none;">Facebook</a> </li>
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
       </ul>
   </div>
+    <div id="share_window" style="display: none;">
+    <a id="close_embed" href="#" style="" title="Close this embed window.">[x]</a>
+    <h3 style="color: #FFF">Embed this map by copying the text below and pasting it into your blog or website.</h3>
+    <textarea cols="120" rows="5" readonly="readonly" style="font-size: 0.9em" id="embed_code">
+    </textarea><br />
+    <h3 style="color: #FFF">...or copy and paste this link to share the current view with others.</h3>
+    <input type="text" size="109" id="share_link" value="" />
+  </div>
+  
     	<div class="main clearfix" id="main-map">
         	<div id="map-content-header">
             <div class="worldmenuholder">
-            	<a class="mag-glass" href="#"></a>
+            	<a class="mag-glass" href="#" id="map_mag"></a>
                             <ul class="worldmenu dropmenu">
-                <li class="first"><a href="javascript:return false;" style="0">PHILIPPINES</span></a>
+                <li class="first"><a href="#" onclick="return false;" style="0">PHILIPPINES</span></a>
+                
                 <div class="menu-world-options">
                   <ul class="menu-regions dropmenu_options" id="navmenu" style="">
                 <li class="first"><a href="/">World</a></li>
@@ -135,7 +150,7 @@
                         
                         <a href="/afr/capeverde" class="">Cape Verde</a>
                         
-                        <a href="/afr/central-african-republic" class="">Central African Republic</a>
+                        <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
                         <a href="/afr/chad" class="">Chad</a>
                         
@@ -199,7 +214,7 @@
                         
                         <a href="/afr/zambia" class="">Zambia</a>
                         
-                        <a href="/afr/zimbabwe" class="">Zimbabwe</a></li>
+                        <a href="/afr/zimbabwe" class="">Zimbabwe</a>
                         
                       </ul>
                   </div>
@@ -276,23 +291,21 @@
                         
                         <li><a href="/lac/bolivia" class="">Bolivia</a>
                         
-                        <a href="/lac/dominica" class="">Dominica</a>
+                        <a href="/lac/dominican-republic" class="">Dominican Republic</a>
                         
-                        <a href="/lac/dominican-republic" class="">Dominican Republic</a></li>
+                        <a href="/lac/grenada" class="">Grenada</a></li>
                         
-                        <li><a href="/lac/grenada" class="">Grenada</a>
+                        <li><a href="/lac/guyana" class="">Guyana</a>
                         
-                        <a href="/lac/guyana" class="">Guyana</a>
+                        <a href="/lac/haiti" class="">Haiti</a>
                         
-                        <a href="/lac/haiti" class="">Haiti</a></li>
+                        <a href="/lac/honduras" class="">Honduras</a></li>
                         
-                        <li><a href="/lac/honduras" class="">Honduras</a>
+                        <li><a href="/lac/nicaragua" class="">Nicaragua</a>
                         
-                        <a href="/lac/nicaragua" class="">Nicaragua</a>
+                        <a href="/lac/st-lucia" class="">St. Lucia</a>
                         
-                        <a href="/lac/st-lucia" class="">St. Lucia</a></li>
-                        
-                        <li><a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a></li>
+                        <a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a></li>
                         
                       </ul>
                   </div>
@@ -337,6 +350,7 @@
                   </li>
                  
                 </ul></div>
+                
                 </li>
               </ul>
               <div id="map-summary-container" style="">
@@ -347,37 +361,48 @@
             </div>
       </div>
       <div id="map-area">
-      <div id="map-content-hdr2">
-                  <ul class="map-options dropmenu ">
+        <div id="map-content-hdr2">
+                    <ul class="map-options dropmenu ">
             <li><span>BASE MAP:</span></li>
             <li>
               <a href="#" id="layercontrol_indicators" class="arwOrange" onclick="wb.setIndicator(); return false">INDICATORS</a>
               <ul class="dropmenu_options">
                 
+                
                 <li><a href="#" onclick="wb.setIndicator('Poverty'); return false">Poverty</a></li>
+                
+                
                 
                 <li><a href="#" onclick="wb.setIndicator('Infant Mortality'); return false">Infant Mortality</a></li>
                 
+                
+                
                 <li><a href="#" onclick="wb.setIndicator('Maternal Health'); return false">Maternal Health</a></li>
                 
+                
+                
                 <li><a href="#" onclick="wb.setIndicator('Population'); return false">Population</a></li>
+                
                 
               </ul>
             </li>
           </ul>
-        <ul class="map-options dropmenu">
-              <li class="sectors"><span>ACTIVITIES: </span></li>
-              <li><a href="#" id="layercontrol_projects" class="arwOrange" onclick="return wb.toggleSector('none',false)">By Sector</a>
-              <ul class="dropmenu_options">
-                <li><a href="#" onclick="wb.toggleSector('all', true); return false">By Sector</a></li>
-                <li><a href="#" onclick="wb.toggleSector('counts_admin1', true); return false">By Count</a></li>
-                <li><a href="#" onclick="wb.toggleSector('none',false); return false">No Activities</a></li>
-              </ul>
-            </li>      
+          
+<ul id="activities_menu" class="map-options dropmenu">
+  <li class="sectors"><span>ACTIVITIES: </span></li>
+  <li><a href="#" id="layercontrol_projects" class="arwOrange" onclick="return wb.toggleSector('none',false)">By Sector</a>
+    <ul class="dropmenu_options">
+      <li><a href="#" onclick="wb.toggleSector('all', true); return false">By Sector</a></li>
+      <li><a href="#" onclick="wb.toggleSector('counts_admin1', true); return false">By Count</a></li>
+      <li><a href="#" onclick="wb.toggleSector('none',false); return false">No Activities</a></li>
+    </ul>
+  </li>
 </ul>
+
       <div id="map-content-icons">
         <div id="map-content-icons2">
-          <ul>                  
+          <ul>
+          
             <li class="s1"><a  sector-name="public" original-title="Public Administration, Law, and Justice" class="sectorcontrol inactive" id="sectorcontrol_public" href="#">1</a></li>
             <li class="s2"><a  sector-name="agriculture" original-title="Agriculture, fishing, and forestry" class="sectorcontrol inactive" id="sectorcontrol_agriculture" href="#">2</a></li>
             <li class="s3"><a  sector-name="health" original-title="Health and other social services" class="sectorcontrol inactive" id="sectorcontrol_health" href="#">3</a></li>
@@ -388,10 +413,12 @@
             <li class="s8"><a  sector-name="transportation" original-title="Transportation" class="sectorcontrol inactive" id="sectorcontrol_transportation" href="#">8</a></li>
             <li class="s9"><a  sector-name="water" original-title="Water, sanitation and flood protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
             <li class="s10"><a sector-name="education" original-title="Education" class="sectorcontrol inactive" id="sectorcontrol_education" href="#">10</a> </li>            
-            <li class="s11"><form action="" method="get">
+              
+            <li class="s11 all"><form action="" method="get">
                 <input name="input" id="sall" class="" type="checkbox" value=""/>
               </form></li>
             <li class="all">ALL</li>
+            
           </ul>
         </div>
       </div>
@@ -408,27 +435,11 @@
         </ul>
       </div>       
 
-              <!-- <div id="map-content-icons" class="clearfix">
-              <ul class="clearfix">
-                <li class="s1"><a href="#" id="sectorcontrol_public" class="sectorcontrol inactive" original-title="Public Administration, Law, and Justice" sector-name="public">1</a></li>
-                <li class="s2"><a href="#" id="sectorcontrol_agriculture" class="sectorcontrol inactive" original-title="Agriculture, fishing, and forestry" sector-name="agriculture">2</a></li>
-                <li class="s3"><a href="#" id="sectorcontrol_health" class="sectorcontrol inactive" original-title="Health and other social services" sector-name="health">3</a></li>
-                <li class="s4"><a href="#" id="sectorcontrol_communications" class="sectorcontrol inactive" original-title="Information and communications" sector-name="communications">4</a></li>
-                <li class="s5"><a href="#" id="sectorcontrol_energy" class="sectorcontrol inactive" original-title="Energy and mining" sector-name="energy">5</a></li>
-                <li class="s6"><a href="#" id="sectorcontrol_finance" class="sectorcontrol inactive" original-title="Finance" sector-name="finance">6</a></li>
-                <li class="s7"><a href="#" id="sectorcontrol_industry" class="sectorcontrol inactive" original-title="Industry and Trade" sector-name="industry">7</a></li>
-                <li class="s8"><a href="#" id="sectorcontrol_transportation" class="sectorcontrol inactive" original-title="Transportation" sector-name="transportation">8</a></li>
-                <li class="s9"><a href="#" id="sectorcontrol_water" class="sectorcontrol inactive" original-title="Water, sanitation and flood protection" sector-name="water">9</a></li>
-                <li class="s10"><a href="#" id="sectorcontrol_education" class="sectorcontrol inactive" original-title="Education" sector-name="education">10</a> </li>            
-                <li class="s11"><form method="get" action="">
-                    <input type="checkbox" value="" class="" id="sall" name="input">
-                  </form></li>
-                <li class="all">ALL</li>
-              </ul>
-          </div> -->
-      </div>
+  
+        </div>
+        
         <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
-  </div>
+      </div>
         <!--Table Data Begins-->
 <div id="map-table">
 </div>
@@ -438,6 +449,7 @@
         </div><!--#main-map//-->
         </div><!--#main-wrap//-->
         <div class="rightCol clearfix" id="rightCol">
+    
   <div id="rightHdr"><a class="mag-glass" href="#"></a></div>
   <div id="rightInfo" class="clearfix">
     <h3 class="clearfix"><span class="rightHdr">FINANCED ACTIVITIES BY SECTOR</span> <a class="arwOrange" style="display:none" href="javascript: return false;">BY SECTOR</a></h3>
@@ -462,6 +474,7 @@
     <a class="moreData" href="http://data.worldbank.org/country/philippines" title="more data">MORE DATA</a>
     <br class="clear" />
   </div>
+  
   <div id="rightDesc">
       
       <h3>PHILIPPINES LINKS</h3>
@@ -484,7 +497,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of April 12, 2011.</div>
+        <div id="footnote">Active financed activities as of May 23, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -518,63 +531,63 @@
   var wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P120181',project_name: 'Encouraging More Resilient Communities in Conflict-affected Areas of the Philippines',totalamt: 2.57,grantamt: 2.57,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P113159',project_name: 'Additional Financing for Rural Power',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P094063',project_name: 'National Support for Basic Ed',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Education","Percent":60},{"Name":"Education","Percent":40}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P072096',project_name: 'Supplemental Project to the Rural Power Project',totalamt: 9.0,grantamt: 9.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: ''}
-,{id: 'P004406',project_name: 'PH ODS INVESTMENT PROJECT',totalamt: 10.9,grantamt: 10.9,mjsector1: 'Industry and trade',boardapprovaldate: 'Sep-1994',majorsector_percent: [{"Name":"Industry and trade","Percent":67},{"Name":"Industry and trade","Percent":31},{"Name":"Public Administration, Law, and Justice","Percent":1},{"Name":"Finance","Percent":1}],prodlinetext: 'Montreal Protocol',sector_code: ''}
-,{id: 'P082144',project_name: 'PH-Social Welfare and Development Reform',totalamt: 405.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":27},{"Name":"Health and other social services","Percent":27},{"Name":"Education","Percent":27},{"Name":"Public Administration, Law, and Justice","Percent":19}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P084967',project_name: 'Mindanao Rural Development Project - Phase 2',totalamt: 83.75,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Transportation","Percent":55},{"Name":"Health and other social services","Percent":19},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Water, sanitation and flood protection","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P064925',project_name: 'Support for Strategic Local Development and Investment Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Transportation","Percent":20},{"Name":"Energy and mining","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Industry and trade","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P070899',project_name: 'Laguna de Bay Institutional Strengthening and Community Participation/LISCOP',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P073488',project_name: 'ARMM Social Fund Project',totalamt: 33.6,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2002',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P114119',project_name: 'PH - Chiller Energy Efficiency Project',totalamt: 2.6,grantamt: 2.6,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: ''}
-,{id: 'P118908',project_name: 'TF Philippines Local Government Grants for Sanitation Pilots',totalamt: 0.36,grantamt: 0.36,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P079935',project_name: 'National Roads Improvement and Management (APL) Phase 2',totalamt: 232.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Transportation","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P101964',project_name: 'National Program Support for Tax Administration Reform.',totalamt: 11.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P068898',project_name: 'PHRD GRANT - PH PRIVATE SECTOR INFRASTRUCTURE',totalamt: 0.71,grantamt: 0.71,mjsector1: 'Finance',boardapprovaldate: 'Nov-1996',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P094573',project_name: 'Laguna de Bay Community Watershed Rehab',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: ''}
-,{id: 'P079661',project_name: 'Manila Third Sewerage Project',totalamt: 64.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P079628',project_name: 'Second Women&apos;s Health &amp; Safe Motherhood',totalamt: 16.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":75},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":3},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P066076',project_name: 'PH Judicial Reform Support Project',totalamt: 21.9,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2003',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P118910',project_name: 'ARMM Social Fund Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":87},{"Name":"Public Administration, Law, and Justice","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P113714',project_name: 'Review of the CDS Program in the Philippines and Preparation and Publication of the State of Philippine Cities Report',totalamt: 0.2,grantamt: 0.2,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":85},{"Name":"Public Administration, Law, and Justice","Percent":15}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P106443',project_name: 'PH-Support for Basic Ed. Sector Reform',totalamt: 32.0,grantamt: 32.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P101076',project_name: 'Climate Change Adaptation Program',totalamt: 4.97,grantamt: 4.97,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":29},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":11}],prodlinetext: 'Global Environment Project',sector_code: ''}
-,{id: 'P091147',project_name: 'GEF Program supporting the National Program for Environment and Natural Resources Management Project',totalamt: 7.0,grantamt: 7.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":15}],prodlinetext: 'Global Environment Project',sector_code: ''}
-,{id: 'P096174',project_name: 'National Program Support for Environment and Natural Resources Management Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":22},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Energy and mining","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P098572',project_name: 'Northern Negros Geothermal Power Project',totalamt: 6.76,grantamt: 6.76,mjsector1: 'Energy and mining',boardapprovaldate: 'Feb-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: ''}
-,{id: 'P073206',project_name: 'LAND ADMINISTRATION AND MANAGEMENT II PROJECT',totalamt: 19.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P066397',project_name: 'Rural Power Project',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P123385',project_name: 'Traffic and Transport Management for Philippine CDS Cities',totalamt: 0.44,grantamt: 0.44,mjsector1: 'Transportation',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Transportation","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P106885',project_name: 'Integrated POPs Management',totalamt: 8.64,grantamt: 8.64,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'Global Environment Project',sector_code: ''}
-,{id: 'P115080',project_name: 'Philippines: Methane Recovery from Waste Management Project',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: ''}
-,{id: 'P088926',project_name: 'Participatory Irrigation Development Project',totalamt: 70.36,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":71},{"Name":"Public Administration, Law, and Justice","Percent":29}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P106775',project_name: 'Manila Water Supply',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":60},{"Name":"Water, sanitation and flood protection","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P088002',project_name: 'Laguna de Bay Community Carbon Finance Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: ''}
-,{id: 'P116889',project_name: 'DISASTER RISK REDUCTION CITY-TO-CITY SHARING INITIATIVE for DEVELOPING COUNTRIES',totalamt: 0.45,grantamt: 0.45,mjsector1: 'Industry and trade',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P096836',project_name: 'Mindanao Rural Development Program (MRDP) Phase II - Natural Resource Management Component',totalamt: 6.35,grantamt: 6.35,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":69},{"Name":"Health and other social services","Percent":31}],prodlinetext: 'Global Environment Project',sector_code: ''}
-,{id: 'P106732',project_name: 'Philippines Ethanol Plant Wastewater Biogas Project',totalamt: 20.0,grantamt: 20.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jan-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: ''}
-,{id: 'P089576',project_name: '20 MW Palinpinon II Geothermal Optimization Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: ''}
-,{id: 'P087464',project_name: 'Philippines: Northwind Bangui Bay Project',totalamt: 1.4,grantamt: 1.4,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: ''}
-,{id: 'P114048',project_name: 'KALAHI-CIDSS (Additional Financing) Project',totalamt: 59.12,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Transportation","Percent":40},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P089082',project_name: 'PH-GEF-Manila Third Sewerage Project',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":56},{"Name":"Public Administration, Law, and Justice","Percent":37},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'Global Environment Project',sector_code: ''}
-,{id: 'P102513',project_name: 'PH-EC TF for Health Sector Reform',totalamt: 8.62,grantamt: 8.62,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P075464',project_name: 'National Sector  Support for Health Reform',totalamt: 110.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Health and other social services","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":40},{"Name":"Finance","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: ''}
-,{id: 'P066532',project_name: 'Electric Cooperative System Loss Reduction Project',totalamt: 12.0,grantamt: 12.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Apr-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: ''}
-,{id: 'P095173',project_name: 'MULTI DONOR FACILIT Y - PH MINDANAO RECONSTRUCTION &amp; DEVELOPMENT',totalamt: 50.0,grantamt: 50.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: ''}
-,{id: 'P077012',project_name: 'Kapitbisig Laban sa Kahirapan-Comprehensive and Integrated Delivery of Social Services (KALAHI-CIDSS) Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2002',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Education","Percent":20},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: ''}];
+  var projects = [{id: 'P120181',project_name: 'Encouraging More Resilient Communities in Conflict-affected Areas of the Philippines',totalamt: 2.57,grantamt: 2.57,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P113159',project_name: 'Additional Financing for Rural Power',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P094063',project_name: 'National Support for Basic Ed',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Education","Percent":60},{"Name":"Education","Percent":40}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P072096',project_name: 'Supplemental Project to the Rural Power Project',totalamt: 9.0,grantamt: 9.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P004406',project_name: 'PH ODS INVESTMENT PROJECT',totalamt: 10.9,grantamt: 10.9,mjsector1: 'Industry and trade',boardapprovaldate: 'Sep-1994',majorsector_percent: [{"Name":"Industry and trade","Percent":67},{"Name":"Industry and trade","Percent":31},{"Name":"Public Administration, Law, and Justice","Percent":1},{"Name":"Finance","Percent":1}],prodlinetext: 'Montreal Protocol',sector_code: 'YX'}
+,{id: 'P082144',project_name: 'PH-Social Welfare and Development Reform',totalamt: 405.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":27},{"Name":"Health and other social services","Percent":27},{"Name":"Education","Percent":27},{"Name":"Public Administration, Law, and Justice","Percent":19}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P084967',project_name: 'Mindanao Rural Development Project - Phase 2',totalamt: 83.75,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Transportation","Percent":55},{"Name":"Health and other social services","Percent":19},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Water, sanitation and flood protection","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P064925',project_name: 'Support for Strategic Local Development and Investment Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Transportation","Percent":20},{"Name":"Energy and mining","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Industry and trade","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P070899',project_name: 'Laguna de Bay Institutional Strengthening and Community Participation/LISCOP',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P073488',project_name: 'ARMM Social Fund Project',totalamt: 33.6,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2002',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P114119',project_name: 'PH - Chiller Energy Efficiency Project',totalamt: 2.6,grantamt: 2.6,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P118908',project_name: 'TF Philippines Local Government Grants for Sanitation Pilots',totalamt: 0.36,grantamt: 0.36,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P079935',project_name: 'National Roads Improvement and Management (APL) Phase 2',totalamt: 232.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Transportation","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P101964',project_name: 'National Program Support for Tax Administration Reform.',totalamt: 11.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P068898',project_name: 'PHRD GRANT - PH PRIVATE SECTOR INFRASTRUCTURE',totalamt: 0.71,grantamt: 0.71,mjsector1: 'Finance',boardapprovaldate: 'Nov-1996',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}
+,{id: 'P118931',project_name: 'Philippines Development Policy Loan to Foster More Inclusive Growth',totalamt: 250.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P079661',project_name: 'Manila Third Sewerage Project',totalamt: 64.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P079628',project_name: 'Second Women&apos;s Health &amp; Safe Motherhood',totalamt: 16.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":75},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":3},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P066076',project_name: 'PH Judicial Reform Support Project',totalamt: 21.9,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2003',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P118910',project_name: 'ARMM Social Fund Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":87},{"Name":"Public Administration, Law, and Justice","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P113714',project_name: 'Review of the CDS Program in the Philippines and Preparation and Publication of the State of Philippine Cities Report',totalamt: 0.2,grantamt: 0.2,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":85},{"Name":"Public Administration, Law, and Justice","Percent":15}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P106443',project_name: 'PH-Support for Basic Ed. Sector Reform',totalamt: 32.0,grantamt: 32.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
+,{id: 'P117470',project_name: 'Laguna de Bay Institutional Strengthening and Community Participation Project - Additional Financing',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P101076',project_name: 'Climate Change Adaptation Program',totalamt: 4.97,grantamt: 4.97,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":29},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":11}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
+,{id: 'P091147',project_name: 'GEF Program supporting the National Program for Environment and Natural Resources Management Project',totalamt: 7.0,grantamt: 7.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":15}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
+,{id: 'P096174',project_name: 'National Program Support for Environment and Natural Resources Management Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":22},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Energy and mining","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P098572',project_name: 'Northern Negros Geothermal Power Project',totalamt: 6.76,grantamt: 6.76,mjsector1: 'Energy and mining',boardapprovaldate: 'Feb-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P073206',project_name: 'LAND ADMINISTRATION AND MANAGEMENT II PROJECT',totalamt: 19.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P066397',project_name: 'Rural Power Project',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P123385',project_name: 'Traffic and Transport Management for Philippine CDS Cities',totalamt: 0.44,grantamt: 0.44,mjsector1: 'Transportation',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Transportation","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'TX'}
+,{id: 'P106885',project_name: 'Integrated POPs Management',totalamt: 8.64,grantamt: 8.64,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
+,{id: 'P115080',project_name: 'Philippines: Methane Recovery from Waste Management Project',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
+,{id: 'P088926',project_name: 'Participatory Irrigation Development Project',totalamt: 70.36,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":71},{"Name":"Public Administration, Law, and Justice","Percent":29}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P106775',project_name: 'Manila Water Supply',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":60},{"Name":"Water, sanitation and flood protection","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P088002',project_name: 'Laguna de Bay Community Carbon Finance Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
+,{id: 'P116889',project_name: 'DISASTER RISK REDUCTION CITY-TO-CITY SHARING INITIATIVE for DEVELOPING COUNTRIES',totalamt: 0.45,grantamt: 0.45,mjsector1: 'Industry and trade',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'YX'}
+,{id: 'P096836',project_name: 'Mindanao Rural Development Program (MRDP) Phase II - Natural Resource Management Component',totalamt: 6.35,grantamt: 6.35,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":69},{"Name":"Health and other social services","Percent":31}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
+,{id: 'P106732',project_name: 'Philippines Ethanol Plant Wastewater Biogas Project',totalamt: 20.0,grantamt: 20.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jan-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'YX'}
+,{id: 'P089576',project_name: '20 MW Palinpinon II Geothermal Optimization Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P087464',project_name: 'Philippines: Northwind Bangui Bay Project',totalamt: 1.4,grantamt: 1.4,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P114048',project_name: 'KALAHI-CIDSS (Additional Financing) Project',totalamt: 59.12,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Transportation","Percent":40},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P089082',project_name: 'PH-GEF-Manila Third Sewerage Project',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":56},{"Name":"Public Administration, Law, and Justice","Percent":37},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
+,{id: 'P102513',project_name: 'PH-EC TF for Health Sector Reform',totalamt: 8.62,grantamt: 8.62,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P075464',project_name: 'National Sector  Support for Health Reform',totalamt: 110.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Health and other social services","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":40},{"Name":"Finance","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P066532',project_name: 'Electric Cooperative System Loss Reduction Project',totalamt: 12.0,grantamt: 12.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Apr-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P095173',project_name: 'MULTI DONOR FACILIT Y - PH MINDANAO RECONSTRUCTION &amp; DEVELOPMENT',totalamt: 50.0,grantamt: 50.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P077012',project_name: 'Kapitbisig Laban sa Kahirapan-Comprehensive and Integrated Delivery of Social Services (KALAHI-CIDSS) Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2002',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Education","Percent":20},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}];
       
-  wb.init(263,  "Philippines", "East Asia & the Pacific", {projects_count: '46', locations_count: '4,764', projects: projects, locations_layer: 0, indicators: ['Poverty','Infant Mortality','Maternal Health','Population'], layers: null});
+  wb.init("263",  "Philippines", "East Asia & the Pacific", {projects_count: '47', locations_count: '4,764', projects: projects, locations_layer: 0, indicators: ['Poverty','Infant Mortality','Maternal Health','Population'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
   
 </script>
 
-        
         <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-        
 
     </div><!--#container//-->
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
@@ -592,8 +605,8 @@
 <!--
 var s_pageName="Home > Maps > Philippines, East Asia & the Pacific > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT";
-var s_prop1 = "";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab702f198>,#<Page:0x2aaab6cb0378>,#<Page:0x2aaab6d2a290>";
+var s_prop1 = "Philippines, East Asia & the Pacific > The World Bank - Mapping for Results";
 var s_prop6 = "East Asia & the Pacific"; / Region /
 var s_prop7 = "Philippines"; / Country /
 var s_prop2 = "Not Available"; /* Author /
@@ -622,10 +635,11 @@ s_pageName = sTitle;
 s_prop1 = sTitle;
 s_hier1 += ", " + sTitle;
 
-var s_account="wbnispextgeomfr";
+var s_account="wbnispextgeomfr,wbglobalext";
 //-->
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 </body>
 </html>
