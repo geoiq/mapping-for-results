@@ -20,10 +20,10 @@
   var regions = <%= @financing[:regions].to_json %>;
      
      
-  wb.init(""<%= (@page[:map] || "''").to_s %>"",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions }, <%= @embed || false %>);
+  wb.init(""<%= (@page[:map] || "''").to_s %>"",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions, thematic_area: "<%= @additional_controls || "m4r" %>" }, <%= @embed || false %>);
 
   <% elsif @page.page_type == "project" %>
-  wb.init("<%= (@page[:map] || "''").to_s %>",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {title: '<%= @page[:name] %>',locations_count: '<%= commify(@page.locations_count.to_s) %>'}, <%= @embed || false %>);
+  wb.init("<%= (@page[:map] || "''").to_s %>",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {title: '<%= @page[:name] %>',locations_count: '<%= commify(@page.locations_count.to_s) %>', thematic_area: "<%= @additional_controls || "m4r" %>"}, <%= @embed || false %>);
 
   <% else %>
   
@@ -33,7 +33,7 @@
   var regions = <%= (@financing[:regions] || {}).to_json %>;
      
      
-  wb.init("<%= (@page[:map] || "''").to_s %>",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions }, <%= @embed || false %>);
+  wb.init("<%= (@page[:map] || "''").to_s %>",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions, thematic_area: "<%= @additional_controls || "m4r" %>" }, <%= @embed || false %>);
   
   <% end %>
   
