@@ -16,7 +16,7 @@
 <!--
 var s_pageName="Home > Maps > <%= @page_subtitle %>";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT<%= @page.hierarchy.join(',') %>";
+var s_hier1 = "WBG,WBG Mapping for Results EXT,<%= @page.hierarchy.collect {|h| h.name}.join(',') %>";
 var s_prop1 = "<%= @page_title %>";
 var s_prop6 = "<%= @page[:region] unless @page.nil? %>"; / Region /
 var s_prop7 = "<%= @page[:name] unless @page.nil? %>"; / Country /
