@@ -1,6 +1,7 @@
 %w{ rubygems m4r/models/page }.each {|gem| require gem}
 #host = "http://localhost:4567"
 host = "http://wbstaging.geocommons.com"
+
 %w{script/map.js script/extractive.js 404.html 500.html}.each do |page|
   puts "#{page}"
   system "curl #{host}/#{page} > #{page}"
