@@ -22,5 +22,6 @@ end
   puts "#{page.name}"
   system "mkdir -p .#{page.url}"
   system "curl #{host}#{page.url} > .#{page.url}.html"
+  system "curl '#{host}#{page.url}/embed?height=600&width=800' > .#{page.url}/embed.html"
   system "cp .#{page.url}.html .#{page.url}/index.html"
 end

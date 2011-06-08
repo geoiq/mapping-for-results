@@ -4,6 +4,19 @@ var project_attributes = ["id","project_name","totalamt","prodlinetext","grantam
 var major_sector_name = "mjsector 1";
 
 
+function getQuerystring(key, default_)
+{
+  if (default_==null) default_="";
+  key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
+  var qs = regex.exec(window.location.href);
+  if(qs == null)
+    return default_;
+  else
+    return qs[1];
+};
+
+
 startList = function() {
     if (document.all&&document.getElementById) {
         navRoot = document.getElementById("navmenu");
@@ -65,17 +78,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	 return flat;
   };
 
-  function getQuerystring(key, default_)
-  {
-    if (default_==null) default_="";
-    key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-    var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
-    var qs = regex.exec(window.location.href);
-    if(qs == null)
-      return default_;
-    else
-      return qs[1];
-  };
 
   String.prototype.capitalize = function(){
 	return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
@@ -176,7 +178,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 uiHeader: true,hideGCLogo: true,hideGILogo: false,
 		 view: map_engine,
 		 core_host:	 proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
-		 onload: function() { self.loadedMap() }
+		 onload: function() { self.loadedMap() },
+		 flashvars: {country: 'moldova'}
 		 });
 	  } else {
 		  self.sectorPieChart("all", false);
@@ -631,6 +634,16 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		self.map.swf.setLayerTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].title);
 		self.map.swf.setLayerSubTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].subtitle);
 		self.map.showLayer(self.stylelayers[indicator].order, true);
+		
+		// China Indicators for Poverty
+		if(self.stylelayers["No Data"] !== undefined && self.stylelayers["No Data"] !== null && self.country == "China") {
+    		if(indicator == "Poverty") {
+                self.map.showLayer(self.stylelayers["No Data"].order, true);
+    		} else {
+                self.map.showLayer(self.stylelayers["No Data"].order, false);
+    		}
+    	}
+		
 	  }
 	  self.current_indicator = indicator;
 	  self.setMapTitle();
@@ -956,7 +969,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
     getLayers: function() {
         var self = this;
-        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits"];
+        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
         var possibleLayers = eval("(" + self.map.getLayers() + ")");
         if(possibleLayers == undefined) {
             possibleLayers = [];

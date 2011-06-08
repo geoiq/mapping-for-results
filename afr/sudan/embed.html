@@ -31,7 +31,7 @@
 <script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
-<script src="/map.js" type="text/javascript"></script>
+<script src="/script/map.js" type="text/javascript"></script>
 
 
   <style type="text/css" media="screen">
@@ -42,7 +42,7 @@
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
   
-<div style="height: 200px; width: 200px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
 
 
@@ -79,13 +79,16 @@
 ,{id: 'P111061',project_name: 'Southern Sudan - Water Supply and Sanitation Project',totalamt: 30.0,grantamt: 30.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":54},{"Name":"Public Administration, Law, and Justice","Percent":28},{"Name":"Water, sanitation and flood protection","Percent":18}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P101388',project_name: 'South Kordofan State Emergency Project',totalamt: 7.88,grantamt: 7.88,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Agriculture, fishing, and forestry","Percent":30}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}];
       
-  wb.init(466,  "Sudan", "Africa", {projects_count: '29', locations_count: '11', projects: projects, locations_layer: 0, indicators: [], layers: null}, true);
+  wb.init("466",  "Sudan", "Africa", {projects_count: '29', locations_count: '11', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
   
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-
+<script type="text/javascript" charset="utf-8">
+  jq("#map_embed_container").width(getQuerystring("width", 200))
+  jq("#map_embed_container").height(getQuerystring("height", 200))
+</script>
   
 <script type="text/javascript">
   var _gaq = _gaq || [];
@@ -104,7 +107,7 @@
 <!--
 var s_pageName="Home > Maps > Sudan, Africa > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab465ff20>,#<Page:0x2aaab4372588>,#<Page:0x2aaab452e408>";
+var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Africa,Sudan";
 var s_prop1 = "";
 var s_prop6 = "Africa"; / Region /
 var s_prop7 = "Sudan"; / Country /
@@ -139,5 +142,6 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 </body></html>
