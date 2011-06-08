@@ -82,12 +82,12 @@
             </div>
       </div>
       <div id="map-area">
-        <% if !defined?(@additional_controls) || !@additional_controls.nil? %>
         <div id="map-content-hdr2">
+        <% if !defined?(@additional_controls) || !@additional_controls.nil? %>
           <%= partial :layer_controls %>
           <%= partial :sector_controls %>
-        </div>
         <% end %>
+        </div>
         <% if defined?(@additional_controls) && !@additional_controls.nil? %>
         <div id="map-content-hdr3">
         <%= partial @additional_controls %>
