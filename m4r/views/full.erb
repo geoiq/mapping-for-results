@@ -86,7 +86,7 @@
           <%= partial :layer_controls %>
           <%= partial :sector_controls %>
         </div>
-        <% if defined?(@additional_controls) %>
+        <% if defined?(@additional_controls) && !@additional_controls.nil? %>
         <div id="map-content-hdr3">
         <%= partial @additional_controls %>
         </div>

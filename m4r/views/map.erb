@@ -179,7 +179,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 view: map_engine,
 		 core_host:	 proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
 		 onload: function() { self.loadedMap() },
-		 flashvars: {country: 'moldova'}
+		 flashvars: {country: self.country}
 		 });
 	  } else {
 		  self.sectorPieChart("all", false);

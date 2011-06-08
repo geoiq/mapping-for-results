@@ -107,7 +107,6 @@ class MappingForResults < Sinatra::Base
   get '/admin/:name/edit' do
       @page = Page.first(:id => params[:name])
       @page = Page.first(:shortname => params[:name]) if @page.nil?
-      puts @page.data.keys
       erb :edit
   end
 
@@ -151,7 +150,6 @@ class MappingForResults < Sinatra::Base
 
       @page.data = @page.data.merge(data)
 
-      puts params.inspect
       @region = params[:page][:region].length == 0 ? nil : Page.get(params[:page][:region])
       @page.parent = @region
       @page.region = @region.name
@@ -251,9 +249,10 @@ class MappingForResults < Sinatra::Base
   end
 
   get '/boost/:region/:country' do 
-    @page = Page.first(:shortname => params[:country].downcase)
+    @page = Page.last(:shortname => params[:country].downcase)
     @title = "Mapping Government Expenditures"
-    erb :boost
+    @additional_controls = nil
+    erb :full, :layout => false
   end
   get '/extractives/:region/:country' do 
     @page = Page.last(:shortname => params[:country].downcase)
