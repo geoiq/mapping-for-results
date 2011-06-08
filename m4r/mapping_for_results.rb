@@ -250,7 +250,7 @@ class MappingForResults < Sinatra::Base
 
   get '/boost/:region/:country' do 
     @page = Page.last(:shortname => params[:country].downcase)
-    @title = "Mapping Government Expenditures"
+    @title = "BOOST Initiative"
     @additional_controls = nil
     erb :full, :layout => false
   end
