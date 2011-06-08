@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>The World Bank - Mapping for ResultsArmenia, Europe and Central Asia > </title>
+
+  <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
+
+  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
+  <link rel="stylesheet" href="/assets/css/mapping.css">
+  <link rel="stylesheet" href="/assets/css/menu.css">
+  <script type="text/javascript" charset="utf-8">
+  // if (top.frames.length!=0)
+  //   top.location=self.document.location;
+  </script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var jq = jQuery.noConflict();
+    </script>  
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <script type="text/javascript" src="/js/ui.js"></script>
+  <script type="text/javascript" src="/js/effects_002.js"></script>
+  <script type="text/javascript" src="/js/effects.js"></script>  
+
+<!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
+
+<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
+
+
+<script src="/map.js" type="text/javascript"></script>
+
+
+  <style type="text/css" media="screen">
+  body, html {background-color: #FFFFFF; padding: 0; margin: 0;min-width:0}
+  h1 {text-align: left;}
+  </style>
+
+</head>
+<body class=" region-left region-right region-far-right region-content-top">
+  
+<div style="height: 200px; width: 200px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<script type="text/javascript" charset="utf-8">
+
+
+  var wb = new F1.WorldBank();
+  
+
+  var projects = [{id: 'P118157',project_name: 'AM-Social Protection Add&apos;l Financing',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P116760',project_name: 'Lifeline Road Improvement Project - Additional Financing',totalamt: 36.6,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Transportation","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P120028',project_name: 'Community Agricultural Resource Management and Competitiveness Project',totalamt: 16.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":40},{"Name":"Agriculture, fishing, and forestry","Percent":37},{"Name":"Industry and trade","Percent":10},{"Name":"Agriculture, fishing, and forestry","Percent":7},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P118158',project_name: 'Social Investment Fund III Second Additional Financing',totalamt: 7.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P099630',project_name: 'Judicial Reform Project 2',totalamt: 22.5,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Health and other social services","Percent":1},{"Name":"Public Administration, Law, and Justice","Percent":93}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P115647',project_name: 'E-Society and Innovation for Competitiveness (EIC) Project',totalamt: 24.0,grantamt: 0.0,mjsector1: 'Information and communications',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Information and communications","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":24},{"Name":"Information and communications","Percent":20},{"Name":"Industry and trade","Percent":19},{"Name":"Finance","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'CX'}
+,{id: 'P115109',project_name: 'Access to Finance for Small and Medium Enterprises',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
+,{id: 'P057880',project_name: 'Urban Heating Project',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Education","Percent":30},{"Name":"Energy and mining","Percent":25},{"Name":"Health and other social services","Percent":25},{"Name":"Industry and trade","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P063398',project_name: 'Municipal Water and Wastewater Project',totalamt: 23.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":71},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P108294',project_name: 'Second Foreign Investment &amp; Export Facilitation Project',totalamt: 1.98,grantamt: 1.98,mjsector1: 'Industry and trade',boardapprovaldate: 'Nov-2007',majorsector_percent: [{"Name":"Industry and trade","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'YX'}
+,{id: 'P104467',project_name: 'Health System Modernization Project (APL2) in Support of the Second Phase of the Health Sector Reform Program',totalamt: 22.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":86},{"Name":"Public Administration, Law, and Justice","Percent":11},{"Name":"Education","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P121287',project_name: 'LIFELINE ROADS IMPROVEMENT PROJECT - 2ND ADDL. FIN.',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P115486',project_name: 'LIFELINE  ROADS IMPROVEMENT PROJECT',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Transportation","Percent":98},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P107614',project_name: 'ADDITIONAL FINANCING FOR THE MUNICIPAL WATER AND WASTEWATER PROJECT',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":80},{"Name":"Water, sanitation and flood protection","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P090058',project_name: 'Renewable Energy GEF Project',totalamt: 3.0,grantamt: 3.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":45},{"Name":"Public Administration, Law, and Justice","Percent":27},{"Name":"Finance","Percent":18},{"Name":"Industry and trade","Percent":10}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P121728',project_name: 'Additional Financing for the 2nd Health System Modernization Project (APL2) in Support of the 2nd Phase of the Health Sector Reform',totalamt: 19.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":75},{"Name":"Public Administration, Law, and Justice","Percent":23},{"Name":"Education","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P118912',project_name: 'Transaction Advisory Support for PPP for Solid Waste Management for Yerevan City',totalamt: 0.48,grantamt: 0.48,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P114409',project_name: 'GEOFUND 2: ARMENIA GEOTHERMAL PROJECT',totalamt: 1.5,grantamt: 1.5,mjsector1: 'Energy and mining',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P117384',project_name: 'Public Sector Modernization Project II',totalamt: 9.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":57},{"Name":"Public Administration, Law, and Justice","Percent":43}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P094225',project_name: 'Social Investment Fund III',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":22},{"Name":"Education","Percent":22},{"Name":"Health and other social services","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Health and other social services","Percent":14}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P116681',project_name: 'IRRIGATION REHABILITATION EMERGENCY PROJECT',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P087641',project_name: 'Yerevan Water &amp; Wastewater Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Feb-2005',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":99},{"Name":"Water, sanitation and flood protection","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P116451',project_name: 'Second Development Policy Operation',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Education","Percent":15},{"Name":"Information and communications","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Energy and mining","Percent":25},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P107772',project_name: 'Second Education Quality and Relevance (APL 2)',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Education","Percent":47},{"Name":"Education","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Education","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P115743',project_name: 'Social Investment Fund III Additional Financing',totalamt: 8.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Education","Percent":49},{"Name":"Health and other social services","Percent":21},{"Name":"Health and other social services","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Water, sanitation and flood protection","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P083352',project_name: 'Renewable Energy Project',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P087620',project_name: 'Social Protection Administration Project',totalamt: 5.15,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}];
+      
+  wb.init(426,  "Armenia", "Europe and Central Asia", {projects_count: '27', locations_count: '854', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health'], layers: null}, true);
+  
+  
+</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
+
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18962568-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- code for http://maps.worldbank.org -->
+<!-- SiteCatalyst code version: G.6. Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
+<script language="JavaScript">
+<!--
+var s_pageName="Home > Maps > Armenia, Europe and Central Asia > ";
+var s_channel="WBG Mapping for Results EXT";
+var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab428a288>,#<Page:0x2aaab3345e80>,#<Page:0x2aaab34685d8>";
+var s_prop1 = "";
+var s_prop6 = "Europe and Central Asia"; / Region /
+var s_prop7 = "Armenia"; / Country /
+var s_prop2 = "Not Available"; /* Author /
+var s_prop3 = "Not Available"; / Date /
+var s_prop4 = "Not Available"; / Topic /
+var s_prop5 = "Not Available"; / Sub Topic /
+var s_prop8 = "Not Available"; / DocType /
+var s_prop9 = "Not Available"; / MDK or unique identifier /
+var s_prop10 = "Live"; / Site Status /
+var s_prop11 = "Not Available"; / Data Source /
+var s_prop13 = "WBG"; / VPU /
+var s_prop16="English"; / doc language /
+var s_prop17="English"; / site language */
+
+var omnitureCookieContent= getCookieValueByName('omniture');
+var s_prop18 =getVPU(omnitureCookieContent);
+var s_prop19 =getDutyStation(omnitureCookieContent);
+var s_prop20 =getUserType(omnitureCookieContent);
+
+var sTitle = document.title;
+var asTitleParts = sTitle.split("-");
+while (sTitle.indexOf(",") > -1)
+sTitle = sTitle.replace(",", "");
+
+s_pageName = sTitle;
+s_prop1 = sTitle;
+s_hier1 += ", " + sTitle;
+
+var s_account="wbnispextgeomfr,wbglobalext";
+//-->
+</script>
+<script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.6. -->
+
+</body></html>
