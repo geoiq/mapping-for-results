@@ -31,7 +31,7 @@
 <script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
-<script src="/map.js" type="text/javascript"></script>
+<script src="/script/map.js" type="text/javascript"></script>
 
 
   <style type="text/css" media="screen">
@@ -42,7 +42,7 @@
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
   
-<div style="height: 200px; width: 200px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
 
 
@@ -77,13 +77,16 @@
 ,{id: 'P083352',project_name: 'Renewable Energy Project',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P087620',project_name: 'Social Protection Administration Project',totalamt: 5.15,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}];
       
-  wb.init(426,  "Armenia", "Europe and Central Asia", {projects_count: '27', locations_count: '854', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health'], layers: null}, true);
+  wb.init("426",  "Armenia", "Europe and Central Asia", {projects_count: '27', locations_count: '854', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
   
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-
+<script type="text/javascript" charset="utf-8">
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200)))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200)))
+</script>
   
 <script type="text/javascript">
   var _gaq = _gaq || [];
@@ -102,7 +105,7 @@
 <!--
 var s_pageName="Home > Maps > Armenia, Europe and Central Asia > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab428a288>,#<Page:0x2aaab3345e80>,#<Page:0x2aaab34685d8>";
+var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Europe and Central Asia,Armenia";
 var s_prop1 = "";
 var s_prop6 = "Europe and Central Asia"; / Region /
 var s_prop7 = "Armenia"; / Country /
@@ -137,5 +140,6 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 </body></html>

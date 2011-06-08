@@ -31,7 +31,7 @@
 <script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
-<script src="/map.js" type="text/javascript"></script>
+<script src="/script/map.js" type="text/javascript"></script>
 
 
   <style type="text/css" media="screen">
@@ -42,7 +42,7 @@
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
   
-<div style="height: 200px; width: 200px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
 
 
@@ -69,13 +69,16 @@
 ,{id: 'P035655',project_name: 'Education &amp; Training Support',totalamt: 53.3,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'May-1998',majorsector_percent: [{"Name":"Education","Percent":39},{"Name":"Education","Percent":38},{"Name":"Education","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P051572',project_name: 'DEBT&amp;DEBT REDUCTION',totalamt: 20.0,grantamt: 20.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-1997',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Debt Reduction Facility',sector_code: 'BX'}];
       
-  wb.init(443,  "Cote d'Ivoire", "Africa", {projects_count: '19', locations_count: '51', projects: projects, locations_layer: 0, indicators: [], layers: null}, true);
+  wb.init("443",  "Cote d'Ivoire", "Africa", {projects_count: '19', locations_count: '51', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
   
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-
+<script type="text/javascript" charset="utf-8">
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200)))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200)))
+</script>
   
 <script type="text/javascript">
   var _gaq = _gaq || [];
@@ -94,7 +97,7 @@
 <!--
 var s_pageName="Home > Maps > Cote d'Ivoire, Africa > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab42886e0>,#<Page:0x2aaab428a008>,#<Page:0x2aaab2cc3670>";
+var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Africa,Cote d'Ivoire";
 var s_prop1 = "";
 var s_prop6 = "Africa"; / Region /
 var s_prop7 = "Cote d'Ivoire"; / Country /
@@ -129,5 +132,6 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 </body></html>

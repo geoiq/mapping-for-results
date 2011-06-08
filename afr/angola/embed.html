@@ -31,7 +31,7 @@
 <script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
-<script src="/map.js" type="text/javascript"></script>
+<script src="/script/map.js" type="text/javascript"></script>
 
 
   <style type="text/css" media="screen">
@@ -42,7 +42,7 @@
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
   
-<div style="height: 200px; width: 200px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
 
 
@@ -56,13 +56,16 @@
 ,{id: 'P111840',project_name: 'Municipal Health Service Strengthening (Revitaliza&amp;#231;&amp;#227;o)',totalamt: 70.8,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":76},{"Name":"Public Administration, Law, and Justice","Percent":24}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P093699',project_name: 'Market Oriented Smallholder Agriculture Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":14},{"Name":"Agriculture, fishing, and forestry","Percent":9},{"Name":"Agriculture, fishing, and forestry","Percent":9},{"Name":"Water, sanitation and flood protection","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}];
       
-  wb.init(437,  "Angola", "Africa", {projects_count: '6', locations_count: '77', projects: projects, locations_layer: 0, indicators: [], layers: null}, true);
+  wb.init("437",  "Angola", "Africa", {projects_count: '6', locations_count: '77', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
   
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-
+<script type="text/javascript" charset="utf-8">
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200)))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200)))
+</script>
   
 <script type="text/javascript">
   var _gaq = _gaq || [];
@@ -81,7 +84,7 @@
 <!--
 var s_pageName="Home > Maps > Angola, Africa > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT#<Page:0x2aaab701e0f0>,#<Page:0x2aaab6123140>,#<Page:0x2aaab696fdd0>";
+var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Africa,Angola";
 var s_prop1 = "";
 var s_prop6 = "Africa"; / Region /
 var s_prop7 = "Angola"; / Country /
@@ -116,5 +119,6 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 </body></html>
