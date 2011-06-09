@@ -51,11 +51,11 @@ module Sinatra
     end
 
     def region_select(country, options = {})
-      regions = Page.all(:order => [:name.asc])
+      regions = Page.all(:order => [:name.asc], :fields => [:id,:name,:parent_id,:shortname])
       html = ""
       html << '<select name="page[region]" id="page[region]" >'
       regions.each do |region|
-        html << "<option value='#{region.id}' #{country.region == region.name ? 'selected' : ""}>#{region.hierarchy.collect {|n| n.name}.reverse.join(" - ")}</option>"
+        html << "<option value='#{region.id}' #{country.region == region.name ? 'selected' : ""}>#{region.name} - #{region.parent_id}</option>"
       end
       html << "<option value='' #{country.region == '' ? 'selected' : ""}>-- root level</option>"      
       html << "</select>"
