@@ -1,5 +1,7 @@
 <div id="map-summary-container" style="<%= @page.page_type != 'country' ? 'float:left':'' %>">
         <h1 id="map-summary" style="display:none" class="loaded txtRed txtGeorgia">
+      <% unless defined?(@additional_controls)  && @additional_controls.nil? %>
         	<span id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="smallHdr" id="active_projects_header">financed activities working in</span> <span id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="smallHdr" id="mapped_locations_header">mapped locations</span>
+      <% end %>
         </h1>
 </div>        
