@@ -1,21 +1,21 @@
       <div id="banner">
-        <a href="<%= @page.name == "World" ? "#" : "/" %>"><h1 id="banner-header" title="Click to hide the overview information">
-          <span>Mapping for Results</span>
-          <div class="collapsible-header <%= (@page.nil? || @page[:name] == 'World' || @page[:name] == "Haiti") ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
+        <div id="local" class="clearfix collapsible-header ">
+          <div title="Click to hide the overview information" class="site-name"><a class="active" href="/"><%= @title || "Mapping for Results" %></a></div>
+          <div class="collapsible-header <%= (@page.nil? || %w{world haiti boost}.include?(@page.shortname)) ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
-          </div>
-        </h1></a>
+          </div>          
+        </div>
         <div id="banner-content">
-          <div class="collapsible-content" id="collapsible-banner" style="<%= (@page.nil? || @page[:name] == 'World' || @page[:name] == "Haiti") ? '': 'display:none'%>">
+          <div class="collapsible-content" id="collapsible-banner" style="<%= (@page.nil? || %w{world haiti boost}.include?(@page.shortname)) ? '': 'display:none'%>">
             <div id="block-nodeasblock-3273" class="block block-nodeasblock ">
               <div class="content">
                 <div class="overview-links">
-                  <p>Mapping Overview »</p>
+                  <p>Overview »</p>
                   <ul>
-                    <li><a href="/about">Context</a></li>
-                    <li><a href="/about/methodology">Methodology</a></li>
-                    <li><a href="/about/datasources">Data Sources</a></li>
-                    <li><a href="/about/partners">Partners</a></li>
+                    <% (@page.name == "World" ? Page.first(:shortname => "about") : @page).children.each do |child| %>
+                    <% next if child.page_type != "page" %>
+                    <li><a href="<%= child.url %>"><%= child.name %></a></li>
+                    <% end %>
                   </ul>
                 </div>
                 <div class="overview-text">

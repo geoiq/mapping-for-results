@@ -71,7 +71,7 @@
             	<div class="site-name"><a class="active" href="/"><%= @title || "Mapping for Results" %></a></div>
             </div>
         </div><!--#header//-->
-        <div id="main-wrap">
+        <div id="main-wrap" style="<%= defined?(@show_sidebar) && @show_sidebar == false ? 'padding-right: 0px' : ''  %>">
           <%= partial :share %>
     	<div class="main clearfix" id="main-map">
         	<div id="map-content-header">
@@ -82,12 +82,12 @@
             </div>
       </div>
       <div id="map-area">
-        <div id="map-content-hdr2">
         <% if !defined?(@additional_controls) || !@additional_controls.nil? %>
+        <div id="map-content-hdr2">
           <%= partial :layer_controls %>
           <%= partial :sector_controls %>
-        <% end %>
         </div>
+        <% end %>
         <% if defined?(@additional_controls) && !@additional_controls.nil? %>
         <div id="map-content-hdr3">
         <%= partial @additional_controls %>
@@ -98,7 +98,7 @@
         <%= partial :projects_table if @page.page_type == "country" && @additional_controls != :extractives_controls %>
         </div><!--#main-map//-->
         </div><!--#main-wrap//-->
-        <%= partial :sidebar %>
+        <%= partial :sidebar unless defined?(@show_sidebar) && @show_sidebar == false %>
         </div><!--#main-wrap//-->
         <%= partial :footer %>
 

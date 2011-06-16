@@ -178,7 +178,9 @@ class MappingForResults < Sinatra::Base
 
   get '/:region' do
     @region = @page = Page.first(:shortname => params[:region].downcase)
-
+puts "REgion!"
+puts params[:region]
+puts @region.name
     pass if @region.nil?
     if(params[:region] == "boost")
 	    @title = "BOOST Initiative"
@@ -257,6 +259,7 @@ class MappingForResults < Sinatra::Base
     @page = Page.last(:shortname => params[:country].downcase)
     @title = "BOOST Initiative"
     @additional_controls = nil
+    @show_sidebar = false
     erb :full, :layout => false
   end
   get '/extractives/:region/:country' do 
