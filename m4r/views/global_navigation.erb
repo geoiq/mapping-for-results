@@ -1,7 +1,7 @@
               <ul class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="<%= @page[:name].length > 21 ? "padding: 5px 15px 11px 30px;" : 0 %>"><%= @page[:name].upcase %></span></a>
-                <% unless defined?(@additional_controls) %>
-                <div class="menu-world-options">
+                
+                <div class="menu-world-options" style="<%= defined?(@additional_controls) ? 'display:none' : '' %>">
                   <ul class="menu-regions dropmenu_options" id="navmenu" style="">
                 <li class="first"><a href="/">World</a></li>
                 <style type="text/css" media="screen">
@@ -20,7 +20,7 @@
                   </div>
                   </li>
                 <% end %> 
-                </ul></div>
-                <% end %>
+                </ul>
+                </div>
                 </li>
               </ul>
