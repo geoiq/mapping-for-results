@@ -1056,7 +1056,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         
         // getLayers doesn't work with Medusa
         for(var i=0; i<15; i++) {
-            var l = self.map.getLayer(i);
+            var l = self.map.swf.getLayer(i);
             if(l !== null && l !== undefined){
                 l.order = i;
                 possibleLayers.push(l)
