@@ -95,7 +95,7 @@
         <% end %>
         <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
       </div>
-        <%= partial :projects_table if @page.page_type == "country" && @additional_controls != :extractives_controls %>
+        <%= partial :projects_table if @page.page_type == "country" %>
         </div><!--#main-map//-->
         </div><!--#main-wrap//-->
         <%= partial :sidebar unless defined?(@show_sidebar) && @show_sidebar == false %>

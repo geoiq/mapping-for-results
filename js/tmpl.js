@@ -36,7 +36,8 @@ table_templates = {
     tr : '<tr><%= row %></tr>',
     th : '<th id="th-header-<%= id %>"><%= header %></th>',
     td : '<td><%= cell %></td>',
-    project: '<tr id="row_<%= id %>" class="<%= even %> rowsector_<%= sector_code %>" project-id="<%= id %>"><td><%= project_name %></td><td><%= id %></td><td>$<%= totalamt %> million</td><td><%= mjsector1 %></td><td><%= boardapprovaldate %></td><td><%= prodlinetext %></td></tr>'
+    project: '<tr id="row_<%= id %>" class="<%= even %> rowsector_<%= sector_code %>" project-id="<%= id %>"><td><%= project_name %></td><td><%= id %></td><td>$<%= totalamt %> million</td><td><%= mjsector1 %></td><td><%= boardapprovaldate %></td><td><%= prodlinetext %></td></tr>',
+    mine: '<tr id="row_<%= id %>" class="<%= even %>" project-id="<%= Total_company_payments %>"><td><a href="<%= CompanyURL %>" target="_new"><%= Company_name %></a></td><td><%= mineral_type %></td><td><%= Total_company_payments %></td><td><%= Total_government_receipts %></td><td><%= Total_difference %></td><td><a href="<%= CSR_url %>" target="_new"><%= Sustainability_reports_available %></a></td></tr>'
 };
 
 Textify = {

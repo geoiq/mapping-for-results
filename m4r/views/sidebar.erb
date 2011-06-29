@@ -1,8 +1,8 @@
 <div class="rightCol clearfix" id="rightCol">
   <div id="rightHdr"><a class="mag-glass" href="#"></a></div>
-    <% unless defined?(@additional_controls) %>
+    <%# unless defined?(@additional_controls) %>
   <div id="rightInfo" class="clearfix">
-    <h3 class="clearfix"><span class="rightHdr">FINANCED ACTIVITIES BY SECTOR</span> <a class="arwOrange" style="display:none" href="javascript: return false;">BY SECTOR</a></h3>
+    <h3 class="clearfix" id="left-chart-title"><span class="rightHdr">FINANCED ACTIVITIES BY SECTOR</span> <a class="arwOrange" style="display:none" href="javascript: return false;">BY SECTOR</a></h3>
     <span id="chart-left-stat">                
       <h4 id="sector_funding_total" class="bigNumber"></h4>
       <h2 id="sector_funding_description" style="display: none"></h2>
@@ -24,7 +24,7 @@
     <a class="moreData" href="http://data.worldbank.org/country/<%= @page[:shortname] %>" title="more data">MORE DATA</a>
     <br class="clear" />
   </div>
-<% end %>  
+<%# end %>
   <div id="rightDesc">
       <% if @page.data.include?(:results) && !@page.data[:results].nil? && @page.data[:results].length > 0 %>
       <h3><%= @page[:name].upcase %> LINKS</h3>
