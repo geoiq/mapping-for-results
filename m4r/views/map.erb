@@ -95,7 +95,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	"Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "dbhp"}}, infosubtitle: null,table: null, description: "Percent of live births in the last three years preceding the survey assisted by a skilled health provider (doctor or other health professional).\nSource: Demographic and Health Surveys implemented by ICF Macro."},
 	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"},
 	"Unemployment Rate": {source: "finder:", title:"Unemployment Rate", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Unemployment Rate"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The percentage of the population in each first-order administrative unit that were not employed in the 12 months prior to the survey. Source:  <a href='http://www.measuredhs.com/countries/country_main.cfm?ctry_id=14' target='_new'>Demographic and Health Surveys by Macro International</a>."},	
-	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: ""},
+	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: "This information is calculated using population data from the 2000 Ghana Census and the area of each district as determined in a Geographic Information System.  For more information on this data, please refer to the <a href = 'http://maps.worldbank.org/extractives/about_extractives' > About page </a>."},
 	"Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
 	"Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
 	"Oil wells": {source: "finder:", title:"Oil wells", selectedAttribute: "oil", styles: {}}, 
@@ -316,7 +316,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	      self.map.setLayerStyle(self.stylelayers[indicator].order, s);
 
 	  }
-	  self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], subtitle: attribute + ": $["+ attribute +"]", tabs:F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
+	  subtitle = F1.WorldBank.extractives[indicator]["infoWindowFilter"]["subtitle"].replace(/attribute/, attribute)
+	  self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], subtitle: subtitle, tabs:F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
 	  jq('#layercontrol_extractives').html(title);
 	  return false;
 	},
@@ -1051,12 +1052,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
     getLayers: function() {
         var self = this;
-        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
+        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data", "Total employment"];
         possibleLayers = [];
         
         // getLayers doesn't work with Medusa
         for(var i=0; i<15; i++) {
-            var l = self.map.getLayer(i);
+            var l = self.map.swf.getLayer(i);
             if(l !== null && l !== undefined){
                 l.order = i;
                 possibleLayers.push(l)
@@ -1200,7 +1201,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Mines","all", true)
             self.toggleExtractive("Mineral deposits","all", false)
             self.toggleExtractive("Oil fields","all", true)     
-            self.map.swf.setStyle( {zoom: { offset: {x:15,y:80}}} )    
+            self.map.swf.setStyle( {zoom: { offset: {x:15,y:80}}} )
+            self.setExtractiveIndicator('Mines','Total production','Production',true)
             self.map.swf.addLayerCategoryFilter(11,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
             self.minesPieChart() 
         }
