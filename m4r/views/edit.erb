@@ -21,7 +21,7 @@ label:after { content: ": " }
 <p style="">
 <a href="/admin">« Back to Admin Console</a>
 <% unless @page.shortname.nil? || @page.shortname.length == 0 %>
- -or- <a href="<%= @page.url %>">Open Page</a>  -or- <a href="/cache/<%= @page.id %>">Deploy</a>
+ -or- <a href="<%= @page.url %>">Open Page</a>  -or- <a href="/admin/<%= @page.id %>/deploy">Deploy</a>
 <% end %>
 </p>
 <form action="/admin/<%= @page.id || "new" %>/update" method="post" accept-charset="utf-8">

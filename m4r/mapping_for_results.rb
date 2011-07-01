@@ -117,7 +117,7 @@ class MappingForResults < Sinatra::Base
       @page.destroy unless @page.nil?
       redirect "/admin"
   end
-  get '/cache/:id' do
+  get '/admin/:id/deploy' do
     host = DEVELOPMENT_API_URL
     path = PRODUCTION_PATH
     page = Page.get(params[:id])
