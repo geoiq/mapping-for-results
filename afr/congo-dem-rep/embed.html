@@ -79,15 +79,15 @@
 ,{id: 'P083813',project_name: 'Support for the Rehabilitation of the Protected Areas System',totalamt: 7.0,grantamt: 7.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P111621',project_name: 'Rehabilitation and Participatory Management of Key Protected Areas in the DRC',totalamt: 6.0,grantamt: 6.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":52},{"Name":"Agriculture, fishing, and forestry","Percent":32},{"Name":"Public Administration, Law, and Justice","Percent":16}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}];
       
-  wb.init("442",  "Congo, Democratic Republic of", "Africa", {projects_count: '29', locations_count: '464', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("442",  "Congo, Democratic Republic of", "Africa", {projects_count: '29', locations_count: '428', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
   
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 <script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200)))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200)))
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
 </script>
   
 <script type="text/javascript">

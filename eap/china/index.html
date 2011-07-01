@@ -4,6 +4,7 @@
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
 <head>
+<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>China, East Asia & the Pacific > The World Bank - Mapping for Results</title>
@@ -91,7 +92,7 @@
             	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
             </div>
         </div><!--#header//-->
-        <div id="main-wrap">
+        <div id="main-wrap" style="">
             <div id="share">
   	<ul class="dropmenu map-options">
   	    
@@ -126,7 +127,7 @@
                             <ul class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">CHINA</span></a>
                 
-                <div class="menu-world-options">
+                <div class="menu-world-options" style="">
                   <ul class="menu-regions dropmenu_options" id="navmenu" style="">
                 <li class="first"><a href="/">World</a></li>
                 <style type="text/css" media="screen">
@@ -262,6 +263,8 @@
                       <ul class="menu-countries" style="" >
                       
                         
+                        <li><a href="/boost/eca/moldova" class="">Moldova</a></li>
+                        
                       </ul>
                   </div>
                   </li>
@@ -302,19 +305,19 @@
                         
                         <a href="/lac/dominican-republic" class="">Dominican Republic</a>
                         
-                        <a href="/lac/grenada" class="">Grenada</a></li>
+                        <a href="/lac/grenada" class="">Grenada</a>
                         
-                        <li><a href="/lac/guyana" class="">Guyana</a>
+                        <a href="/lac/guyana" class="">Guyana</a></li>
                         
-                        <a href="/lac/haiti" class="">Haiti</a>
+                        <li><a href="/lac/haiti" class="">Haiti</a>
                         
-                        <a href="/lac/honduras" class="">Honduras</a></li>
+                        <a href="/lac/honduras" class="">Honduras</a>
                         
-                        <li><a href="/lac/nicaragua" class="">Nicaragua</a>
+                        <a href="/lac/nicaragua" class="">Nicaragua</a>
                         
-                        <a href="/lac/st-lucia" class="">St. Lucia</a>
+                        <a href="/lac/st-lucia" class="">St. Lucia</a></li>
                         
-                        <a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a></li>
+                        <li><a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a>
                         
                       </ul>
                   </div>
@@ -358,18 +361,23 @@
                   </div>
                   </li>
                  
-                </ul></div>
-                
+                </ul>
+                </div>
                 </li>
               </ul>
+
               <div id="map-summary-container" style="">
         <h1 id="map-summary" style="display:none" class="loaded txtRed txtGeorgia">
+      
         	<span id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="smallHdr" id="active_projects_header">financed activities working in</span> <span id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="smallHdr" id="mapped_locations_header">mapped locations</span>
+      
         </h1>
 </div>        
+
             </div>
       </div>
       <div id="map-area">
+        
         <div id="map-content-hdr2">
                     <ul class="map-options dropmenu ">
             <li><span>BASE MAP:</span></li>
@@ -415,7 +423,7 @@
             <li class="s9"><a  sector-name="water" original-title="Water, sanitation and flood protection" class="sectorcontrol inactive" id="sectorcontrol_water" href="#">9</a></li>
             <li class="s10"><a sector-name="education" original-title="Education" class="sectorcontrol inactive" id="sectorcontrol_education" href="#">10</a> </li>            
               
-            <li class="s11 all"><form action="" method="get">
+             <li class="s11 all"><form action="" method="get">
                 <input name="input" id="sall" class="" type="checkbox" value=""/>
               </form></li>
             <li class="all">ALL</li>
@@ -439,6 +447,7 @@
   
         </div>
         
+        
         <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
       </div>
         <!--Table Data Begins-->
@@ -447,13 +456,14 @@
 <!--Data Table Ends-->
 
 
+
         </div><!--#main-map//-->
         </div><!--#main-wrap//-->
         <div class="rightCol clearfix" id="rightCol">
-    
   <div id="rightHdr"><a class="mag-glass" href="#"></a></div>
+    
   <div id="rightInfo" class="clearfix">
-    <h3 class="clearfix"><span class="rightHdr">FINANCED ACTIVITIES BY SECTOR</span> <a class="arwOrange" style="display:none" href="javascript: return false;">BY SECTOR</a></h3>
+    <h3 class="clearfix" id="left-chart-title"><span class="rightHdr">FINANCED ACTIVITIES BY SECTOR</span> <a class="arwOrange" style="display:none" href="javascript: return false;">BY SECTOR</a></h3>
     <span id="chart-left-stat">                
       <h4 id="sector_funding_total" class="bigNumber"></h4>
       <h2 id="sector_funding_description" style="display: none"></h2>
@@ -475,7 +485,7 @@
     <a class="moreData" href="http://data.worldbank.org/country/china" title="more data">MORE DATA</a>
     <br class="clear" />
   </div>
-  
+
   <div id="rightDesc">
       
       <h3>CHINA LINKS</h3>
@@ -493,7 +503,9 @@
       <a class="txtRed" href="#">See All Results for China &raquo;</a>
     </p> -->
     <h3>CHINA</h3>
-      The World Bank has been active in China since 1980. Today, China’s portfolio is one of the largest in the Bank. World Bank projects support many sectors of the economy, with infrastructure (transport, energy, urban development) accounting for more than half of the total portfolio, and rural development, social sectors (health, education, social protection), and direct poverty reduction programs comprising the remainder. Roughly three-quarters of Bank supported activities have environmental objectives and a strong environment focus runs across sectors with environment-related projects in energy, urban wastewater, water supply and sanitation, and rural development.
+      The World Bank has been active in China since 1980. Today, China’s portfolio is one of the largest in the Bank. World Bank projects support many sectors of the economy, with infrastructure (transport, energy, urban development) accounting for more than half of the total portfolio, and rural development, social sectors (health, education, social protection), and direct poverty reduction programs comprising the remainder. Roughly three-quarters of Bank supported activities have environmental objectives and a strong environment focus runs across sectors with environment-related projects in energy, urban wastewater, water supply and sanitation, and rural development.<br />
+<br />
+The maps displayed on the World Bank web site are for reference only. The boundaries, colors, denominations and any other information shown on these maps do not imply, on the part of the World Bank Group, any judgment on the legal status of any territory, or any endorsement or acceptance of such boundaries.
     <!-- <p class="desc">
       Learn more about the World Bank's overall strategy in the <a href="#" class="txtRed">CHINA Country Overview &raquo;</a>
     </p> -->
@@ -599,55 +611,55 @@
 ,{id: 'P090335',project_name: 'China: China-GEF-World Bank Urban Transport Partnership Program Project',totalamt: 21.0,grantamt: 21.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Transportation","Percent":48},{"Name":"Public Administration, Law, and Justice","Percent":32},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'Global Environment Project',sector_code: 'TX'}
 ,{id: 'P090377',project_name: 'CN-GEF-Second Shandong Environment Project',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Feb-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
 ,{id: 'P039838',project_name: 'Montreal Protocol Ozone Depleting Substances Phase Out Project (04)',totalamt: 100.0,grantamt: 100.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Nov-1997',majorsector_percent: [{"Name":"Industry and trade","Percent":94},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'Montreal Protocol',sector_code: 'YX'}
-,{id: 'P099224',project_name: 'Liaoning Third Medium Cities Infrastructure',totalamt: 191.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":97},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P101988',project_name: 'Jiangxi Shihutang Navigation and Hydropower Complex Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Transportation","Percent":60},{"Name":"Energy and mining","Percent":40}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P108516',project_name: 'China Guangdong Huizhou CCGT project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Energy and mining","Percent":40}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P092618',project_name: 'China-Second Liaoning Medium Cities Infrastructure Project',totalamt: 173.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":42},{"Name":"Water, sanitation and flood protection","Percent":34},{"Name":"Water, sanitation and flood protection","Percent":17},{"Name":"Water, sanitation and flood protection","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P090336',project_name: 'GEF-Ningbo Water and Environment Project',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
-,{id: 'P081348',project_name: 'HENAN TOWNS WATER SUPPLY AND SANITATION PROJECT',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":77},{"Name":"Water, sanitation and flood protection","Percent":9},{"Name":"Water, sanitation and flood protection","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P072721',project_name: 'Heat Reform and Building Energy Efficiency Project',totalamt: 18.0,grantamt: 18.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Mar-2005',majorsector_percent: [{"Name":"Industry and trade","Percent":40},{"Name":"Energy and mining","Percent":32},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Public Administration, Law, and Justice","Percent":11}],prodlinetext: 'Global Environment Project',sector_code: 'YX'}
 ,{id: 'P075728',project_name: 'Guangdong Pearl River Delta Urban Environment Project',totalamt: 128.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":88},{"Name":"Water, sanitation and flood protection","Percent":7},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P083322',project_name: 'Sichuan Urban Development Project',totalamt: 180.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2006',majorsector_percent: [{"Name":"Transportation","Percent":67},{"Name":"Water, sanitation and flood protection","Percent":14},{"Name":"Water, sanitation and flood protection","Percent":13},{"Name":"Agriculture, fishing, and forestry","Percent":4},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P081348',project_name: 'HENAN TOWNS WATER SUPPLY AND SANITATION PROJECT',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":77},{"Name":"Water, sanitation and flood protection","Percent":9},{"Name":"Water, sanitation and flood protection","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P090336',project_name: 'GEF-Ningbo Water and Environment Project',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
+,{id: 'P092618',project_name: 'China-Second Liaoning Medium Cities Infrastructure Project',totalamt: 173.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":42},{"Name":"Water, sanitation and flood protection","Percent":34},{"Name":"Water, sanitation and flood protection","Percent":17},{"Name":"Water, sanitation and flood protection","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P108516',project_name: 'China Guangdong Huizhou CCGT project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Energy and mining","Percent":40}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P101988',project_name: 'Jiangxi Shihutang Navigation and Hydropower Complex Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Transportation","Percent":60},{"Name":"Energy and mining","Percent":40}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P099224',project_name: 'Liaoning Third Medium Cities Infrastructure',totalamt: 191.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":97},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P075730',project_name: 'Hunan Urban Development Project',totalamt: 172.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2004',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":45},{"Name":"Water, sanitation and flood protection","Percent":27},{"Name":"Transportation","Percent":20},{"Name":"Energy and mining","Percent":5},{"Name":"Health and other social services","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P112626',project_name: 'Liuzhou Environment Management Project Phase II',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":96},{"Name":"Water, sanitation and flood protection","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P098078',project_name: 'Huai River Basin Flood Management and Drainage Improvement',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":65},{"Name":"Agriculture, fishing, and forestry","Percent":28},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P083322',project_name: 'Sichuan Urban Development Project',totalamt: 180.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2006',majorsector_percent: [{"Name":"Transportation","Percent":67},{"Name":"Water, sanitation and flood protection","Percent":14},{"Name":"Water, sanitation and flood protection","Percent":13},{"Name":"Agriculture, fishing, and forestry","Percent":4},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P087224',project_name: 'Han River Urban Environment Improvement Project',totalamt: 84.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":59},{"Name":"Water, sanitation and flood protection","Percent":37},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P101829',project_name: 'Xining Flood and Watershed Management',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":60},{"Name":"Health and other social services","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P114182',project_name: 'Provincial Energy Efficiency Scale-up Program',totalamt: 13.39,grantamt: 13.39,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":77},{"Name":"Energy and mining","Percent":23}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
-,{id: 'P101512',project_name: 'China Jiangxi Shihutang Navigation and Hydropower Complex Project',totalamt: 5.84,grantamt: 5.84,mjsector1: 'Transportation',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Transportation","Percent":60},{"Name":"Energy and mining","Percent":40}],prodlinetext: 'Carbon Offset',sector_code: 'TX'}
-,{id: 'P096920',project_name: 'Ningxia Highway Project',totalamt: 250.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P084437',project_name: 'Rural Health Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":36},{"Name":"Public Administration, Law, and Justice","Percent":32},{"Name":"Health and other social services","Percent":27},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P105575',project_name: 'CN-CF-Luojing COREX',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Industry and trade","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'YX'}
-,{id: 'P105872',project_name: 'Integrated Forestry Development Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P084874',project_name: 'China Energy Efficiency Financing',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P098078',project_name: 'Huai River Basin Flood Management and Drainage Improvement',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":65},{"Name":"Agriculture, fishing, and forestry","Percent":28},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P112626',project_name: 'Liuzhou Environment Management Project Phase II',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":96},{"Name":"Water, sanitation and flood protection","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P075732',project_name: 'Shanghai Urban Environment APL Phase 2',totalamt: 180.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P101258',project_name: 'Hubei Yiba Highway',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P084874',project_name: 'China Energy Efficiency Financing',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P105872',project_name: 'Integrated Forestry Development Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P105575',project_name: 'CN-CF-Luojing COREX',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Industry and trade","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'YX'}
+,{id: 'P084437',project_name: 'Rural Health Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":36},{"Name":"Public Administration, Law, and Justice","Percent":32},{"Name":"Health and other social services","Percent":27},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P096920',project_name: 'Ningxia Highway Project',totalamt: 250.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P101512',project_name: 'China Jiangxi Shihutang Navigation and Hydropower Complex Project',totalamt: 5.84,grantamt: 5.84,mjsector1: 'Transportation',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Transportation","Percent":60},{"Name":"Energy and mining","Percent":40}],prodlinetext: 'Carbon Offset',sector_code: 'TX'}
+,{id: 'P114182',project_name: 'Provincial Energy Efficiency Scale-up Program',totalamt: 13.39,grantamt: 13.39,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":77},{"Name":"Energy and mining","Percent":23}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
+,{id: 'P101829',project_name: 'Xining Flood and Watershed Management',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":60},{"Name":"Health and other social services","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P117819',project_name: 'CN-Yunnan Urban Environment-Phase II Additional Financing',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":65},{"Name":"Water, sanitation and flood protection","Percent":33},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P098654',project_name: 'Thermal Power Efficiency',totalamt: 19.7,grantamt: 19.7,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":61},{"Name":"Energy and mining","Percent":26},{"Name":"Energy and mining","Percent":13}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
-,{id: 'P111163',project_name: 'Xinjiang Turfan Water Conservation Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":42},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":23},{"Name":"Agriculture, fishing, and forestry","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P091950',project_name: 'CN-Guizhou Cultural and Natural Heritage Protection and Development',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":43},{"Name":"Health and other social services","Percent":24},{"Name":"Water, sanitation and flood protection","Percent":13},{"Name":"Transportation","Percent":13},{"Name":"Industry and trade","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
-,{id: 'P117107',project_name: 'Liaoning and Shandong Technical and Vocational Education and Training Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P086446',project_name: 'Chongqing Urban-Rural Integration Project',totalamt: 84.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Transportation","Percent":39},{"Name":"Health and other social services","Percent":27},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Education","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P081255',project_name: 'Changjiang/Pearl River Watershed Rehabilitation Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":23},{"Name":"Agriculture, fishing, and forestry","Percent":22},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P070519',project_name: 'Fuzhou Nantai Island Peri-Urban Development Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Transportation","Percent":87},{"Name":"Transportation","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P067625',project_name: 'China - Renewable Energy Scale-up Program (CRESP)',totalamt: 40.22,grantamt: 40.22,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":24}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P101258',project_name: 'Hubei Yiba Highway',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P087291',project_name: 'CN-PCF Jincheng Coal Bed Methane Project',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P085376',project_name: 'Rural Migrant Skills Development and Employment Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Education","Percent":48},{"Name":"Education","Percent":24},{"Name":"Public Administration, Law, and Justice","Percent":21},{"Name":"Health and other social services","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P091949',project_name: 'Gansu Cultural and Natural Heritage Protection and Development Project',totalamt: 38.4,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":55},{"Name":"Transportation","Percent":29},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P096923',project_name: 'Shanghai Urban Environment (APL Phase III)',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":74},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P087292',project_name: 'CN-CF-Inner Mongolia Huitengxile Wind F',totalamt: 13.6,grantamt: 13.6,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P094795',project_name: 'China-PCF-CDCF Hubei Guangrun Hydropower',totalamt: 4.6,grantamt: 4.6,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P067625',project_name: 'China - Renewable Energy Scale-up Program (CRESP)',totalamt: 40.22,grantamt: 40.22,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":24}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P070519',project_name: 'Fuzhou Nantai Island Peri-Urban Development Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Transportation","Percent":87},{"Name":"Transportation","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P081255',project_name: 'Changjiang/Pearl River Watershed Rehabilitation Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":23},{"Name":"Agriculture, fishing, and forestry","Percent":22},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P086446',project_name: 'Chongqing Urban-Rural Integration Project',totalamt: 84.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Transportation","Percent":39},{"Name":"Health and other social services","Percent":27},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Education","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P117107',project_name: 'Liaoning and Shandong Technical and Vocational Education and Training Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P091950',project_name: 'CN-Guizhou Cultural and Natural Heritage Protection and Development',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":43},{"Name":"Health and other social services","Percent":24},{"Name":"Water, sanitation and flood protection","Percent":13},{"Name":"Transportation","Percent":13},{"Name":"Industry and trade","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P111163',project_name: 'Xinjiang Turfan Water Conservation Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":42},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":23},{"Name":"Agriculture, fishing, and forestry","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P098654',project_name: 'Thermal Power Efficiency',totalamt: 19.7,grantamt: 19.7,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":61},{"Name":"Energy and mining","Percent":26},{"Name":"Energy and mining","Percent":13}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
 ,{id: 'P084003',project_name: 'CN-GEF Guangdong PRD Urban Env',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":19},{"Name":"Water, sanitation and flood protection","Percent":11}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
-,{id: 'P099112',project_name: 'Anhui Highway Rehabilitation and Improvement Project',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Transportation","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P091020',project_name: 'Fujian Highway Sector Investment',totalamt: 320.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Transportation","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P094795',project_name: 'China-PCF-CDCF Hubei Guangrun Hydropower',totalamt: 4.6,grantamt: 4.6,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P087292',project_name: 'CN-CF-Inner Mongolia Huitengxile Wind F',totalamt: 13.6,grantamt: 13.6,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P096923',project_name: 'Shanghai Urban Environment (APL Phase III)',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":74},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P091949',project_name: 'Gansu Cultural and Natural Heritage Protection and Development Project',totalamt: 38.4,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":55},{"Name":"Transportation","Percent":29},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P085376',project_name: 'Rural Migrant Skills Development and Employment Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Education","Percent":48},{"Name":"Education","Percent":24},{"Name":"Public Administration, Law, and Justice","Percent":21},{"Name":"Health and other social services","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P082992',project_name: 'Demonstration of alternatives to Chlordane and Mirex in Termite Control Project',totalamt: 14.36,grantamt: 14.36,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Industry and trade","Percent":64},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Industry and trade","Percent":4}],prodlinetext: 'Global Environment Project',sector_code: 'YX'}
-,{id: 'P113766',project_name: 'China Energy Efficiency Financing II',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Finance","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P119654',project_name: 'GEF Guangdong Green Freight Demonstration Project',totalamt: 4.2,grantamt: 4.2,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Transportation","Percent":50},{"Name":"Energy and mining","Percent":40},{"Name":"Industry and trade","Percent":10}],prodlinetext: 'Global Environment Project',sector_code: 'TX'}
-,{id: 'P093882',project_name: 'Shandong Flue Gas Desulfurization',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":49},{"Name":"Energy and mining","Percent":49},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P111421',project_name: 'China: Anhui Medium Cities Urban Transport Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Transportation","Percent":80},{"Name":"Transportation","Percent":19},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P096925',project_name: 'China Bengbu Integrated Environment Improvement Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":11},{"Name":"Transportation","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P091020',project_name: 'Fujian Highway Sector Investment',totalamt: 320.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Transportation","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P099112',project_name: 'Anhui Highway Rehabilitation and Improvement Project',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Transportation","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P087153',project_name: 'CN-PCF Xiaogushan Hydropower  Project',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P082993',project_name: 'PCB Management and Disposal Demonstration Project',totalamt: 18.34,grantamt: 18.34,mjsector1: 'Industry and trade',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Industry and trade","Percent":57},{"Name":"Water, sanitation and flood protection","Percent":33},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'Global Environment Project',sector_code: 'YX'}
-,{id: 'P087153',project_name: 'CN-PCF Xiaogushan Hydropower  Project',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}];
+,{id: 'P096925',project_name: 'China Bengbu Integrated Environment Improvement Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":11},{"Name":"Transportation","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P111421',project_name: 'China: Anhui Medium Cities Urban Transport Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Transportation","Percent":80},{"Name":"Transportation","Percent":19},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P093882',project_name: 'Shandong Flue Gas Desulfurization',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":49},{"Name":"Energy and mining","Percent":49},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P119654',project_name: 'GEF Guangdong Green Freight Demonstration Project',totalamt: 4.2,grantamt: 4.2,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Transportation","Percent":50},{"Name":"Energy and mining","Percent":40},{"Name":"Industry and trade","Percent":10}],prodlinetext: 'Global Environment Project',sector_code: 'TX'}
+,{id: 'P113766',project_name: 'China Energy Efficiency Financing II',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Finance","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}];
       
   wb.init("359",  "China", "East Asia & the Pacific", {projects_count: '113', locations_count: '1,759', projects: projects, locations_layer: 0, indicators: ['Poverty','Population'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   

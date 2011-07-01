@@ -179,7 +179,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 view: map_engine,
 		 core_host:	 proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
 		 onload: function() { self.loadedMap() },
-		 flashvars: {country: 'moldova'}
+		 flashvars: {country: self.country}
 		 });
 	  } else {
 		  self.sectorPieChart("all", false);
@@ -651,6 +651,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
       // self.saveState();
       return false;
 	},
+	highlightMine: function(attribute, mineral) {
+	  var self = this;
+	  var highlightExpression = "$[" + attribute + "] == '"+mineral+"'";
+	  this.map.swf.clearHighlights(self.stylelayers["Mines"].order);
+	  this.map.swf.addHighlight(self.stylelayers["Mines"].order,highlightExpression);
+	},
 	highlightProject: function(project_id) {
 	  var self = this;
 	  var highlightExpression = "$[project id] == '"+project_id+"'";
@@ -893,6 +899,82 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			F1.Visualizer.charts.pie(190, width, pie_options, "chart-left-pie-chart", opts);		  
 
 	},
+	minesPieChart: function() {
+	    jq("#left-chart-title").html("TOTAL GOVERNMENT RECEIPTS")
+		var opts = {};
+		var labels = ["Gold","Magnesium","Bauxite"];
+        var mines = [{"id": 1, "mineral_type": "Gold", "Total_company_payments": 14169108,"CompanyURL": "","CSR_url": "", "Total_government_receipts": "13805875", "Total_difference": "363233", "Sustainability_reports_available": "No", "Company_name": "AngloGold Ashanti - Bibiani"},
+{"id": 2, "mineral_type": "Bauxite", "Total_company_payments": 2368407,"CompanyURL": "","CSR_url": "", "Total_government_receipts": "2366252", "Total_difference": "2155", "Sustainability_reports_available": "No", "Company_name": "Ghana Bauxite Company"},
+{"id": 3, "mineral_type": "Gold", "Total_company_payments": 32305692,"CompanyURL": "http://www.goldfields.co.za/ops_int_damang.php","CSR_url": "http://www.goldfields.co.za/sus_reports.php", "Total_government_receipts": "32581943", "Total_difference": "-276251", "Sustainability_reports_available": "Yes", "Company_name": "Goldfields - Damang"},
+{"id": 4, "mineral_type": "Gold", "Total_company_payments": 122052830,"CompanyURL": "http://www.goldfields.co.za/ops_int_tarkwa.php","CSR_url": "http://www.goldfields.co.za/sus_reports.php", "Total_government_receipts": "121557596", "Total_difference": "495234", "Sustainability_reports_available": "Yes", "Company_name": "Goldfields - Tarkwa"},
+{"id": 5, "mineral_type": "Manganese", "Total_company_payments": 9043739,"CompanyURL": "http://www.ghamang.net/index.html","CSR_url": "http://www.ghamang.net/peo.html", "Total_government_receipts": "9042513", "Total_difference": "1226", "Sustainability_reports_available": "Yes", "Company_name": "Ghana Manganse Company"},
+{"id": 6, "mineral_type": "Gold", "Total_company_payments": 11667129,"CompanyURL": "http://www.gsr.com/Operations/Bogoso.asp","CSR_url": "http://www.gsr.com/Social_Responsibility/index.asp", "Total_government_receipts": "11665765", "Total_difference": "1364", "Sustainability_reports_available": "Yes", "Company_name": "Golden Star Resources - Prestea/Bogosu"},
+{"id": 7, "mineral_type": "Gold", "Total_company_payments": 7461289,"CompanyURL": "http://www.gsr.com/Operations/Wassa.asp","CSR_url": "http://www.gsr.com/Social_Responsibility/index.asphttp://www.gsr.com/Social_Responsibility/index.asp", "Total_government_receipts": "7550526", "Total_difference": "-89237", "Sustainability_reports_available": "Yes", "Company_name": "Golden Star Resources - Wassa"},
+{"id": 8, "mineral_type": "Gold", "Total_company_payments": 22786778,"CompanyURL": "http://www.newmont.com/africa","CSR_url": "http://beyondthemine.com/2010/", "Total_government_receipts": "22786774", "Total_difference": "-4", "Sustainability_reports_available": "Yes", "Company_name": "Newmont Mining Corporation"},
+{"id": 9, "mineral_type": "Gold", "Total_company_payments": 0,"CompanyURL": "http://www.gnpcghana.com/subsidiaries/mining.asp","CSR_url": "", "Total_government_receipts": "", "Total_difference": "", "Sustainability_reports_available": "No", "Company_name": "Prestea Sankofa Gold"},
+{"id": 10, "mineral_type": "Gold", "Total_company_payments": 18993757,"CompanyURL": "http://www.anglogold.com/default.htm","CSR_url": "http://www.anglogold.com/subwebs/InformationForInvestors/Reports10/Sustainability/default.htm", "Total_government_receipts": "18019542", "Total_difference": "974215", "Sustainability_reports_available": "Yes", "Company_name": "AngloGold Ashanti - Iduaprim"},
+{"id": 11, "mineral_type": "Gold", "Total_company_payments": 31782907,"CompanyURL": "http://www.anglogold.com/default.htm","CSR_url": "http://www.anglogold.com/subwebs/InformationForInvestors/Reports10/Sustainability/default.htm", "Total_government_receipts": "30819631", "Total_difference": "963276", "Sustainability_reports_available": "Yes", "Company_name": "AngloGold Ashanti - Obuasi"},
+{"id": 12, "mineral_type": "Gold", "Total_company_payments": 6149323,"CompanyURL": "http://www.centralafricangold.com/","CSR_url": "", "Total_government_receipts": "5742802", "Total_difference": "406521", "Sustainability_reports_available": "No", "Company_name": "Central African Gold"},
+{"id": 13, "mineral_type": "Gold", "Total_company_payments": 6685562,"CompanyURL": "http://www.kinross.com/operations/operation-chirano-ghana.aspx","CSR_url": "http://www.kinross.com/corporate-responsibility/corporate-responsibility-reports.aspx", "Total_government_receipts": "6656562", "Total_difference": "29000", "Sustainability_reports_available": "Yes", "Company_name": "Kinross - Chirano"}]
+        mineral_type = {}
+		total = 0;
+        jq.each(mines, function(i,mine) {
+            if(mineral_type[mine["mineral_type"]] === undefined || mineral_type[mine["mineral_type"]] === null) {
+                mineral_type[mine["mineral_type"]] = 0;
+            }
+            mineral_type[mine["mineral_type"]] += mine["Total_company_payments"]
+            total += mine["Total_company_payments"];
+        })
+        minerals = []
+		var links = []
+        jq.each(mineral_type, function(type,amount) {
+            minerals.push({"Mineral type": type, "Total_government_receipts": amount})
+            links.push("javascript:wb.highlightMine('Mineral type', '" + type + "');")
+        })
+        pie_options = {"features":minerals, 
+        "attributes": {"data":{"name": "Total government receipts","original_name": "Total_government_receipts"},
+        "description":{"name": "Mineral Type","original_name": "mineral_type"}, 
+        "sort":{"name": "Total government receipts","original_name": "Total_government_receipts"} } };
+
+        var colors = ["#ffcc00", "#ff8e3a", "#7a7efe"]
+        opts["chart"] = {legend: labels, colors: colors};
+        opts["colors"] = colors;
+	    opts["href"] = links;
+        F1.Visualizer.charts.pie(190, 380, pie_options, "chart-left-pie-chart", opts);
+
+        jq('#sector_funding_total').hide()
+	    jq("#sector_funding_total").html(total + " Ghana Cedis of revenue")
+	    
+		var self = this;
+
+		var table = '<table id="project-info"><thead><tr>';
+		jq.each(["Company Name", "Resource Type","Company Payments (2004 to 2008)", "Government Receipts (2004 to 2008)", "Total Difference (Payments - Receipts)", "Sustainability Reports Available?"], function(index,header) {
+			table += tmpl(table_templates.th, {id: index,header: header});
+		});
+		table += "</tr></thead><tbody>"
+
+		jq.each(mines, function(index, mine) {
+			mine["even"] = ((index+1) % 2 == 0) ? "row_even" : "row_odd";
+			
+			table += tmpl(table_templates.mine, mine);
+		});
+		table += "</tbody></table>"
+		jq("#map-table").append(table);
+
+		jq("#project-info tr").live("click", function() {
+			self.highlightMine("Total company payments", jq(this).attr("project-id"));
+		});
+		jq("#projects-bar").click(function() {
+			if(jQuery(this).hasClass("expanded")) {
+				jq("#map-table").hide("blind", { direction: "vertical" }, 2000);
+				jq(this).removeClass("expanded").addClass("collapsed");		 
+			} else {
+				jq("#map-table").show("blind", { direction: "vertical" }, 2000);
+				jq(this).removeClass("collapsed").addClass("expanded");	 
+			}
+		});	 
+	    
+	},
 	regionFundingBars: function() {
 	  var self = this;
 	  var s;
@@ -970,40 +1052,39 @@ if(typeof(F1)=='undefined') {F1 = {};}
     getLayers: function() {
         var self = this;
         var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
-        var possibleLayers = eval("(" + self.map.getLayers() + ")");
-        if(possibleLayers == undefined) {
-            possibleLayers = [];
-            for(var i=0; i<15; i++) {
-                var l = self.map.getLayer(i);
-                if(l !== null && l !== undefined){
-                    l.order = i;
-                    possibleLayers.push(l)
+        possibleLayers = [];
+        
+        // getLayers doesn't work with Medusa
+        for(var i=0; i<15; i++) {
+            var l = self.map.getLayer(i);
+            if(l !== null && l !== undefined){
+                l.order = i;
+                possibleLayers.push(l)
+            }
+        }
+        // self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
+        // return;
+        var index;
+        jq.each(possibleLayers, function(layer) {
+            index = Object.include(findlayers, possibleLayers[layer].title);
+            if(index !== undefined && index !== null){
+                self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
+                if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density"], possibleLayers[layer].title)) {
+                    F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
                 }
-            }
-            // self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
-            // return;
-        } //else {
-            var index;
-            jq.each(possibleLayers, function(layer) {
-                index = Object.include(findlayers, possibleLayers[layer].title);
-                if(index !== undefined && index !== null){
-                    self.stylelayers[findlayers[index]] = {order: possibleLayers[layer].order, source: possibleLayers[layer].source, sharedLayer: false};
-                    if(Object.include(["Infant Mortality", "Population", "Poverty", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density"], possibleLayers[layer].title)) {
-                        F1.WorldBank.indicators[possibleLayers[layer].title].styles.fill.selectedAttribute = possibleLayers[layer].styles.fill.selectedAttribute;
-                    }
-                    findlayers.splice(index,1);
-                }		 
-            })
+                findlayers.splice(index,1);
+            }		 
+        })
 
-            if(self.country_attrs["indicators"] !== undefined) {
-                // second pass if we missed any
-                jq.each(self.country_attrs["indicators"], function(index,layer) {
-                    if(self.stylelayers["Indicators"] !== undefined && self.stylelayers[layer] == undefined) {
-                        self.stylelayers[layer] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
-                    }
-                });
-            }
-        //}
+        if(self.country_attrs["indicators"] !== undefined) {
+            // second pass if we missed any
+            jq.each(self.country_attrs["indicators"], function(index,layer) {
+                if(self.stylelayers["Indicators"] !== undefined && self.stylelayers[layer] == undefined) {
+                    self.stylelayers[layer] = {order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
+                }
+            });
+        }
+
         var downloads = {"Project Locations": "csv",
             "Project Counts": "csv",
             "Indicators": "shapefile",
@@ -1121,12 +1202,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Oil fields","all", true)     
             self.map.swf.setStyle( {zoom: { offset: {x:15,y:80}}} )    
             self.map.swf.addLayerCategoryFilter(11,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
+            self.minesPieChart() 
         }
+        self.loadState();
         jq("#map-summary").show();
-	    self.loadState();
 
-
-        if(self.projects !== undefined && self.projects !== null) {
+        if(self.projects !== undefined && self.projects !== null && self.projects.length != 0) {
             self.sortProjects(self.projects);
             self.projectTable(self.projects);
             // self.projectFundingBars();
@@ -1134,10 +1215,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.sectorPieChart("all", false);
             self.toggleSector("all", true, false);
         }
-	    self.loadState();
         
+        self.loadState();
         self.hideLoading();
-        
+                
         self.initialized = true;
     },
   styleWorldMap: function() {
