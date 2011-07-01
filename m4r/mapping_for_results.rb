@@ -6,6 +6,8 @@ require 'sinatra/sessionauth'
 require 'lib/m4r_extensions.rb'
   
 PLATFORM_API_URL  = "http://maps.worldbank.org"
+DEVELOPMENT_API_URL = "http://wbstaging.geocommons.com"
+PRODUCTION_PATH = "/fortiusone/live/apps/geoiq/current/public/"
 # PLATFORM_API_URL = "http://geoiq.local"
 
 require "worldbank"
@@ -115,7 +117,16 @@ class MappingForResults < Sinatra::Base
       @page.destroy unless @page.nil?
       redirect "/admin"
   end
-
+  get '/cache/:id' do
+    host = DEVELOPMENT_API_URL
+    path = PRODUCTION_PATH
+    page = Page.get(params[:id])
+    system "mkdir -p #{path}#{page.url}"
+    system "curl #{host}#{page.url} > #{path}#{page.url}.html"
+    system "curl '#{host}#{page.url}/embed?height=600&width=800' > #{path}#{page.url}/embed.html"
+    system "cp #{path}#{page.url}.html #{path}#{page.url}/index.html"    
+    redirect "/admin/#{page.id}/edit"
+  end
   get '/admin/new' do
       # @region = MAPS[:world][:regions][params[:region].to_sym]
       @page = Page.new
@@ -279,4 +290,6 @@ puts @region.name
       erb :index # @page.page_type.to_sym
     end
   end
+  
+
 end
