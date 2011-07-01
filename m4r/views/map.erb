@@ -307,17 +307,19 @@ if(typeof(F1)=='undefined') {F1 = {};}
           self.map.showLayer(self.stylelayers["Mines"].order, true);
           self.map.showLayer(self.stylelayers["Oil wells"].order, true);	      
 	  }
-
+      
+      var s_attr = F1.WorldBank.extractives[indicator]
 	  if(attribute == "Icons"){
         self.map.swf.addLayerCategoryFilter(self.stylelayers[indicator].order, F1.WorldBank.extractives[indicator]["Icons"]);
 	  } else {
-    	  var s = F1.WorldBank.extractives[indicator][attribute];
-    	  s.icon.selectedAttribute = attribute;
-	      self.map.setLayerStyle(self.stylelayers[indicator].order, s);
-
+    	  s_attr = F1.WorldBank.extractives[indicator][attribute];
+    	  s_attr.icon.selectedAttribute = attribute;
+	      self.map.setLayerStyle(self.stylelayers[indicator].order, s_attr);
 	  }
-	  subtitle = F1.WorldBank.extractives[indicator]["infoWindowFilter"]["subtitle"].replace(/attribute/, attribute)
-	  self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], subtitle: subtitle, tabs:F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
+	  console.log(attribute)
+	  self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {
+	        title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], 
+	        subtitle: s_attr["infoWindowFilter"]["subtitle"], tabs: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
 	  jq('#layercontrol_extractives').html(title);
 	  return false;
 	},
@@ -1056,7 +1058,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
         
         // getLayers doesn't work with Medusa
         for(var i=0; i<15; i++) {
+            
             var l = self.map.swf.getLayer(i);
+            
             if(l !== null && l !== undefined){
                 l.order = i;
                 possibleLayers.push(l)
