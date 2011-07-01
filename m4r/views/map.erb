@@ -443,8 +443,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  if(sector == "none") {
         self.visibleSectors = [sector];
 		self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
-		if(self.stylelayers["Project Counts"] !== undefined && self.stylelayers["Project Counts"] !== null)
-			self.map.showLayer(self.stylelayers["Project Counts"].order, visible);		  
+		if(self.stylelayers["Project Counts"] !== undefined && self.stylelayers["Project Counts"] !== null) {
+			self.map.showLayer(self.stylelayers["Project Counts"].order, visible);
+		}
         jq('#layercontrol_projects').html("No Activities");
         self.visibleSectors = [];
         jq('#map-content-icons').hide()
@@ -461,6 +462,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  });
 		} else {
 		  self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
+          self.map.swf.addFilter(self.stylelayers["Project Counts"].order, {expression: "$[admprecision] == 'ADM2'"});
 		  self.visibleSectors = [];
 		}
         jq("#sall").attr('checked', visible);
