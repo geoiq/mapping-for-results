@@ -433,7 +433,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	toggleSector: function(sector,visible,refreshCharts) {
 	  var self = this;
 	  var visibleExpression = "";
-
 	  if(self.stylelayers["Project Locations"] === undefined || self.stylelayers["Project Locations"] === null) // World Map
 		return;
 		
@@ -462,7 +461,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
 		  self.visibleSectors = [];
 		}
-		jq("#sall").attr('checked', visible);
+        jq("#sall").attr('checked', visible);
 		self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
 		if(self.stylelayers["Project Counts"] !== undefined)
 			self.map.showLayer(self.stylelayers["Project Counts"].order, !visible);
@@ -1288,7 +1287,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  
   }
 
-//jq("#sall").attr('checked', true);
+// jq("#sall").attr('checked', true);
 
 })();
   

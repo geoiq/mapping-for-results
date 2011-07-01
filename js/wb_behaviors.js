@@ -63,9 +63,10 @@ jq(function() {
         wb.toggleExtractive("Oil fields",'all');
         return false;
     });
-    jq('#sall').click(function(){
+    jq('.all').click(function(){
+        jq("#sall").attr('checked', !jq("#sall").attr('checked'))
         wb.toggleSector('all',!jq("#sall").attr('checked'));
-        return false;
+        return true;
     });
     jq('.subtotal').live('click',function() {
         wb.sectorPieChart("all");
