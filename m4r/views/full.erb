@@ -4,7 +4,7 @@
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
 <head>
-<% unless params[:debug] %>
+<% if params[:debug] == "1" %>
 <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
 <% end %>
     <meta charset="utf-8">
