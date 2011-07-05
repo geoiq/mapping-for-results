@@ -7,7 +7,8 @@ require 'lib/m4r_extensions.rb'
   
 PLATFORM_API_URL  = "http://maps.worldbank.org"
 DEVELOPMENT_API_URL = "http://wbstaging.geocommons.com"
-PRODUCTION_PATH = "/fortiusone/live/apps/geoiq/current/public/"
+# PRODUCTION_PATH = "/fortiusone/live/apps/geoiq/current/public/"
+PRODUCTION_PATH = "../"
 # PLATFORM_API_URL = "http://geoiq.local"
 
 require "worldbank"
@@ -124,7 +125,9 @@ class MappingForResults < Sinatra::Base
     system "mkdir -p #{path}#{page.url}"
     system "curl #{host}#{page.url} > #{path}#{page.url}.html"
     system "curl '#{host}#{page.url}/embed?height=600&width=800' > #{path}#{page.url}/embed.html"
-    system "cp #{path}#{page.url}.html #{path}#{page.url}/index.html"    
+    system "cp #{path}#{page.url}.html #{path}#{page.url}/index.html"
+    system "git commit -am 'User update of #{page.url}'"
+    system "git push github production"
     redirect "/admin/#{page.id}/edit"
   end
   get '/admin/new' do
