@@ -27,6 +27,7 @@ a, a:visited{
 a:hover {
     color: #850000;
     text-decoration: underline;
+    cursor: pointer;
 }
 .main{
 	float: left;
