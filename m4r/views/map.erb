@@ -316,7 +316,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
     	  s_attr.icon.selectedAttribute = attribute;
 	      self.map.setLayerStyle(self.stylelayers[indicator].order, s_attr);
 	  }
-	  console.log(attribute)
 	  self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {
 	        title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], 
 	        subtitle: s_attr["infoWindowFilter"]["subtitle"], tabs: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
@@ -966,7 +965,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		jq("#map-table").append(table);
 
 		jq("#project-info tr").live("click", function() {
-			self.highlightMine("Total company payments", jq(this).attr("project-id"));
+			self.highlightMine("Company name", jq(this).attr("project-id"));
 		});
 	    
 	},
