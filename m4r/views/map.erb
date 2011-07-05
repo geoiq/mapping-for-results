@@ -906,7 +906,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	minesPieChart: function() {
 	    jq("#left-chart-title").html("TOTAL GOVERNMENT RECEIPTS")
 		var opts = {};
-		var labels = ["Gold","Magnesium","Bauxite"];
+		var labels = ["Gold","Manganese","Bauxite"];
         var mines = [{"id": 1, "mineral_type": "Gold", "Total_company_payments": 14169108,"CompanyURL": "","CSR_url": "", "Total_government_receipts": "13805875", "Total_difference": "363233", "Sustainability_reports_available": "No", "Company_name": "AngloGold Ashanti - Bibiani"},
 {"id": 2, "mineral_type": "Bauxite", "Total_company_payments": 2368407,"CompanyURL": "","CSR_url": "", "Total_government_receipts": "2366252", "Total_difference": "2155", "Sustainability_reports_available": "No", "Company_name": "Ghana Bauxite Company"},
 {"id": 3, "mineral_type": "Gold", "Total_company_payments": 32305692,"CompanyURL": "http://www.goldfields.co.za/ops_int_damang.php","CSR_url": "http://www.goldfields.co.za/sus_reports.php", "Total_government_receipts": "32581943", "Total_difference": "-276251", "Sustainability_reports_available": "Yes", "Company_name": "Goldfields - Damang"},
@@ -968,15 +968,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		jq("#project-info tr").live("click", function() {
 			self.highlightMine("Total company payments", jq(this).attr("project-id"));
 		});
-		jq("#projects-bar").click(function() {
-			if(jQuery(this).hasClass("expanded")) {
-				jq("#map-table").hide("blind", { direction: "vertical" }, 2000);
-				jq(this).removeClass("expanded").addClass("collapsed");		 
-			} else {
-				jq("#map-table").show("blind", { direction: "vertical" }, 2000);
-				jq(this).removeClass("collapsed").addClass("expanded");	 
-			}
-		});	 
 	    
 	},
 	regionFundingBars: function() {
