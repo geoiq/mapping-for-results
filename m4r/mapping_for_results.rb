@@ -127,7 +127,7 @@ class MappingForResults < Sinatra::Base
     system "curl '#{host}#{page.url}/embed?height=600&width=800' > #{path}#{page.url}/embed.html"
     system "cp #{path}#{page.url}.html #{path}#{page.url}/index.html"
     system "git commit -am 'User update of #{page.url}'"
-    system "git push github production"
+    system "git push origin production"
     redirect "/admin/#{page.id}/edit"
   end
   get '/admin/new' do
