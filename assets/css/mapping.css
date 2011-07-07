@@ -25,7 +25,9 @@ a, a:visited{
 	vertical-align: top;
 }
 a:hover {
-    color: #222222;
+    color: #850000;
+    text-decoration: underline;
+    cursor: pointer;
 }
 .main{
 	float: left;
