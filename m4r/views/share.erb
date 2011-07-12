@@ -1,5 +1,11 @@
   <div id="share">
   	<ul class="dropmenu map-options">
+  	  <% if @page.url =~ /extractives/ %>
+  	  <li>
+  	   <a href="/extractives/about_extractives" id="about_link" title="About">About</a>
+  	   <a href="/extractives/how_extractives" id="how_link" title="How">How</a>
+  	  </li>
+  	  <% end %>
   	    <% if %w{country}.include?(@page.page_type) %>
           <li class="download"><a title="download" href="#" id="download_data"><span></span>DOWNLOAD</a>     
               <ul class="dropmenu_options" id="data_links">

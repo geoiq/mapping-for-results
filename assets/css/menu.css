@@ -271,7 +271,7 @@ map-options.dropmenu li a {
     padding: 0;
     z-index: 100;
 }
-#download_data, #share_options {
+#download_data, #share_options, #about_link {
     -moz-border-radius: 2px 2px 2px 2px;
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #DDDDDD;
@@ -282,6 +282,7 @@ map-options.dropmenu li a {
     line-height: 18px;
     padding: 0 4px 0 0;
 }
+#about_link {padding: 0 9px; margin-right: 4px;}
 #share ul li a#download_data {background:#fff url("img/sprite2.png") 0px -20px no-repeat;padding-left:19px;}
 #share a#share_options {background: url("img/sprite2.png") no-repeat scroll 0 -61px #FFFFFF;padding-left: 19px;}
 .download{ margin-right: 5px;float:right;}

@@ -128,7 +128,7 @@ class MappingForResults < Sinatra::Base
     system "cp #{path}#{page.url}.html #{path}#{page.url}/index.html"
     system "/usr/bin/git add #{path}#{page.url}.html #{path}#{page.url}/embed.html #{path}#{page.url}/index.html"
     system "/usr/bin/git pull"
-    system "/usr/bin/git commit -am 'User update of #{page.url}'"
+    system "/usr/bin/git commit -m 'User update of #{page.url}'"
     system "/usr/bin/git push origin production"
     redirect "/admin/#{page.id}/edit"
   end
