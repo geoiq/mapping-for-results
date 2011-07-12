@@ -2,7 +2,7 @@
 
 
   var wb = new F1.WorldBank();
-  <% if @page.page_type == "country" %>
+  <% if @page[:page_type] == "country" %>
 
   var projects = [<%= (@projects || []).collect do |project_id, project|
          if(project["totalamt"].to_i == 0) 
@@ -12,8 +12,8 @@
          "{" + (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
        end.join("\n,") %>];
       
-  wb.init("<%= @page[:map].to_s %>",  "<%= @page.name.to_s %>", "<%= @page.region.to_s %>", {projects_count: '<%= commify(@page.projects_count) %>', locations_count: '<%= commify(@page.locations_count) %>', projects: projects, locations_layer: <%= @page.locations_layer || 0 %>, indicators: [<%= (@page.data[:indicators] || []).collect {|i| "'#{i}'"}.join(",") %>], layers: <%= @page.data[:layers].to_json %>, page_type: "<%= @page.page_type %>", thematic_area: "<%= @additional_controls || "m4r" %>"}, <%= @embed || false %>);
-  <% elsif %w{country region}.include?(@page.page_type) %>
+  wb.init("<%= @page[:map].to_s %>",  "<%= @page.name.to_s %>", "<%= @page.region.to_s %>", {projects_count: '<%= commify(@page.projects_count) %>', locations_count: '<%= commify(@page.locations_count) %>', projects: projects, locations_layer: <%= @page.locations_layer || 0 %>, indicators: [<%= (@page.data[:indicators] || []).collect {|i| "'#{i}'"}.join(",") %>], layers: <%= @page.data[:layers].to_json %>, page_type: "<%= @page[:page_type] %>", thematic_area: "<%= @additional_controls || "m4r" %>"}, <%= @embed || false %>);
+  <% elsif %w{country region}.include?(@page[:page_type]) %>
   var projects = [];
   var productline = <%= @financing[:productline].to_json %>;
   var sectors = <%= @financing[:sectors].to_json %>;
@@ -22,7 +22,7 @@
      
   wb.init(""<%= (@page[:map] || "''").to_s %>"",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions, thematic_area: "<%= @additional_controls || "m4r" %>" }, <%= @embed || false %>);
 
-  <% elsif @page.page_type == "project" %>
+  <% elsif @page[:page_type] == "project" %>
   wb.init("<%= (@page[:map] || "''").to_s %>",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {title: '<%= @page[:name] %>',locations_count: '<%= commify(@page.locations_count.to_s) %>', thematic_area: "<%= @additional_controls || "m4r" %>"}, <%= @embed || false %>);
 
   <% else %>

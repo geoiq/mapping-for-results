@@ -96,6 +96,7 @@ module WorldBank
     project_count = 0
     total_projects = 100
     projects = {}
+
     while(project_count < total_projects)
       url = URI.parse(uri + "&os=#{500*i}")
 
