@@ -217,13 +217,14 @@ puts @region.name
 
 
   get '/productline/:product/charts' do
-    @region = {:name => "World", :adm1 => ""}
+    @page = {:name => "World", :adm1 => "", :page_type => "productline"}
 
     @projects = WorldBank.get_product_data(params[:product].upcase)
     @financing ||= WorldBank.calculate_financing(@projects["projects"], "regionname")
   
+    puts @projects.inspect
     @page[:projects_count] = @projects["total"]
-  
+
     erb :charts, :layout => :embed
   end
   get '/:region/:country/embed' do
