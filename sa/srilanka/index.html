@@ -4,7 +4,7 @@
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
 <head>
-<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Sri Lanka , South Asia > The World Bank - Mapping for Results</title>
@@ -95,6 +95,7 @@
         <div id="main-wrap" style="">
             <div id="share">
   	<ul class="dropmenu map-options">
+  	  
   	    
           <li class="download"><a title="download" href="#" id="download_data"><span></span>DOWNLOAD</a>     
               <ul class="dropmenu_options" id="data_links">
@@ -328,9 +329,9 @@
                       <ul class="menu-countries" style="" >
                       
                         
-                        <li><a href="/mena/djibouti" class="">Djibouti</a></li>
+                        <li><a href="/mena/djibouti" class="">Djibouti</a>
                         
-                        <li><a href="/mena/yemen-republic" class="">Yemen, Rep.</a></li>
+                        <a href="/mena/yemen-republic" class="">Yemen, Rep.</a></li>
                         
                       </ul>
                   </div>
@@ -425,11 +426,11 @@
       </div>
       <div id="map-content-regions" style="display:none">
         <ul class="radio-prov">
-          <li onclick="wb.toggleSector('counts_admin1', true); return false">
+          <li class="control" onclick="wb.toggleSector('counts_admin1', true); return false">
             <input type="radio" id="select_province" value="province" name="by_region"/>
             <label>PROVINCE</label>
           </li>
-          <li onclick="wb.toggleSector('counts_admin2', true); return false">
+          <li class="control" onclick="wb.toggleSector('counts_admin2', true); return false">
             <input type="radio" id="select_district" value="district"  name="by_region"/>
             <label>DISTRICT</label>
           </li>
