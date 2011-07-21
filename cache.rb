@@ -2,7 +2,7 @@
 #host = "http://localhost:4567"
 host = "http://wbstaging.geocommons.com"
 
-%w{script/map.js script/extractive.js 404.html 500.html}.each do |page|
+%w{script/map.js script/extractives.js 404.html 500.html}.each do |page|
   puts "#{page}"
   system "curl #{host}/#{page} > #{page}"
 end
