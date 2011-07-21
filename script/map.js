@@ -95,7 +95,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	"Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "dbhp"}}, infosubtitle: null,table: null, description: "Percent of live births in the last three years preceding the survey assisted by a skilled health provider (doctor or other health professional).\nSource: Demographic and Health Surveys implemented by ICF Macro."},
 	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"},
 	"Unemployment Rate": {source: "finder:", title:"Unemployment Rate", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Unemployment Rate"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The percentage of the population in each first-order administrative unit that were not employed in the 12 months prior to the survey. Source:  <a href='http://www.measuredhs.com/countries/country_main.cfm?ctry_id=14' target='_new'>Demographic and Health Surveys by Macro International</a>."},	
-	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: ""},
+	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: "This information is calculated using population data from the 2000 Ghana Census and the area of each district as determined in a Geographic Information System.  For more information on this data, please refer to the <a href = 'http://maps.worldbank.org/extractives/about_extractives' > About page </a>."},
 	"Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
 	"Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
 	"Oil wells": {source: "finder:", title:"Oil wells", selectedAttribute: "oil", styles: {}}, 
@@ -307,16 +307,18 @@ if(typeof(F1)=='undefined') {F1 = {};}
           self.map.showLayer(self.stylelayers["Mines"].order, true);
           self.map.showLayer(self.stylelayers["Oil wells"].order, true);	      
 	  }
-
+      
+      var s_attr = F1.WorldBank.extractives[indicator]
 	  if(attribute == "Icons"){
         self.map.swf.addLayerCategoryFilter(self.stylelayers[indicator].order, F1.WorldBank.extractives[indicator]["Icons"]);
 	  } else {
-    	  var s = F1.WorldBank.extractives[indicator][attribute];
-    	  s.icon.selectedAttribute = attribute;
-	      self.map.setLayerStyle(self.stylelayers[indicator].order, s);
-
+    	  s_attr = F1.WorldBank.extractives[indicator][attribute];
+    	  s_attr.icon.selectedAttribute = attribute;
+	      self.map.setLayerStyle(self.stylelayers[indicator].order, s_attr);
 	  }
-	  self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], subtitle: attribute + ": $["+ attribute +"]", tabs:F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
+	  self.map.swf.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {
+	        title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], 
+	        subtitle: s_attr["infoWindowFilter"]["subtitle"], tabs: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
 	  jq('#layercontrol_extractives').html(title);
 	  return false;
 	},
@@ -432,7 +434,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	toggleSector: function(sector,visible,refreshCharts) {
 	  var self = this;
 	  var visibleExpression = "";
-
 	  if(self.stylelayers["Project Locations"] === undefined || self.stylelayers["Project Locations"] === null) // World Map
 		return;
 		
@@ -441,8 +442,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  if(sector == "none") {
         self.visibleSectors = [sector];
 		self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
-		if(self.stylelayers["Project Counts"] !== undefined && self.stylelayers["Project Counts"] !== null)
-			self.map.showLayer(self.stylelayers["Project Counts"].order, visible);		  
+		if(self.stylelayers["Project Counts"] !== undefined && self.stylelayers["Project Counts"] !== null) {
+			self.map.showLayer(self.stylelayers["Project Counts"].order, visible);
+		}
         jq('#layercontrol_projects').html("No Activities");
         self.visibleSectors = [];
         jq('#map-content-icons').hide()
@@ -459,9 +461,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  });
 		} else {
 		  self.map.swf.clearFilters(self.stylelayers["Project Locations"].order);
+          self.map.swf.addFilter(self.stylelayers["Project Counts"].order, {expression: "$[admprecision] == 'ADM2'"});
 		  self.visibleSectors = [];
 		}
-		jq("#sall").attr('checked', visible);
+        jq("#sall").attr('checked', visible);
 		self.map.showLayer(self.stylelayers["Project Locations"].order, visible);
 		if(self.stylelayers["Project Counts"] !== undefined)
 			self.map.showLayer(self.stylelayers["Project Counts"].order, !visible);
@@ -902,7 +905,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	minesPieChart: function() {
 	    jq("#left-chart-title").html("TOTAL GOVERNMENT RECEIPTS")
 		var opts = {};
-		var labels = ["Gold","Magnesium","Bauxite"];
+		var labels = ["Gold","Manganese","Bauxite"];
         var mines = [{"id": 1, "mineral_type": "Gold", "Total_company_payments": 14169108,"CompanyURL": "","CSR_url": "", "Total_government_receipts": "13805875", "Total_difference": "363233", "Sustainability_reports_available": "No", "Company_name": "AngloGold Ashanti - Bibiani"},
 {"id": 2, "mineral_type": "Bauxite", "Total_company_payments": 2368407,"CompanyURL": "","CSR_url": "", "Total_government_receipts": "2366252", "Total_difference": "2155", "Sustainability_reports_available": "No", "Company_name": "Ghana Bauxite Company"},
 {"id": 3, "mineral_type": "Gold", "Total_company_payments": 32305692,"CompanyURL": "http://www.goldfields.co.za/ops_int_damang.php","CSR_url": "http://www.goldfields.co.za/sus_reports.php", "Total_government_receipts": "32581943", "Total_difference": "-276251", "Sustainability_reports_available": "Yes", "Company_name": "Goldfields - Damang"},
@@ -962,17 +965,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		jq("#map-table").append(table);
 
 		jq("#project-info tr").live("click", function() {
-			self.highlightMine("Total company payments", jq(this).attr("project-id"));
+			self.highlightMine("Company name", jq(this).attr("project-id"));
 		});
-		jq("#projects-bar").click(function() {
-			if(jQuery(this).hasClass("expanded")) {
-				jq("#map-table").hide("blind", { direction: "vertical" }, 2000);
-				jq(this).removeClass("expanded").addClass("collapsed");		 
-			} else {
-				jq("#map-table").show("blind", { direction: "vertical" }, 2000);
-				jq(this).removeClass("collapsed").addClass("expanded");	 
-			}
-		});	 
 	    
 	},
 	regionFundingBars: function() {
@@ -1051,12 +1045,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
     getLayers: function() {
         var self = this;
-        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data"];
+        var findlayers = ["Indicators", "Project Locations", "Project Counts", "Population", "Poverty", "Infant Mortality", "Maternal Health", "Malnutrition", "Unemployment Rate", "Population Density", "Mines", "Oil wells", "Oil fields", "District revenues", "Mineral deposits", "No Data", "Total employment"];
         possibleLayers = [];
         
         // getLayers doesn't work with Medusa
         for(var i=0; i<15; i++) {
-            var l = self.map.getLayer(i);
+            
+            var l = self.map.swf.getLayer(i);
+            
             if(l !== null && l !== undefined){
                 l.order = i;
                 possibleLayers.push(l)
@@ -1200,7 +1196,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Mines","all", true)
             self.toggleExtractive("Mineral deposits","all", false)
             self.toggleExtractive("Oil fields","all", true)     
-            self.map.swf.setStyle( {zoom: { offset: {x:15,y:80}}} )    
+            self.map.swf.setStyle( {zoom: { offset: {x:15,y:80}}} )
+            self.setExtractiveIndicator('Mines','Total production','Production',true)
             self.map.swf.addLayerCategoryFilter(11,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
             self.minesPieChart() 
         }
@@ -1286,7 +1283,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  
   }
 
-//jq("#sall").attr('checked', true);
+// jq("#sall").attr('checked', true);
 
 })();
   
