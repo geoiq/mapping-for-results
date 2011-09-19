@@ -9,7 +9,8 @@ require 'sinatra/base'
 module Sinatra
   module GeoiqHelper
     def login(url,login,pass)
-      uri = URI.parse("#{url}/users/#{login}.json")
+      # uri = URI.parse("#{url}/users/#{login}.json")
+      uri = URI.parse("#{url}/admin")
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Get.new(uri.request_uri)
       request.basic_auth(login,pass)
