@@ -126,8 +126,9 @@ class MappingForResults < Sinatra::Base
     system "curl #{host}#{page.url} > #{path}#{page.url}.html"
     system "curl '#{host}#{page.url}/embed?height=600&width=800' > #{path}#{page.url}/embed.html"
     system "cp #{path}#{page.url}.html #{path}#{page.url}/index.html"
+    system "/usr/bin/git add #{path}#{page.url}.html #{path}#{page.url}/embed.html #{path}#{page.url}/index.html"
     system "/usr/bin/git pull"
-    system "/usr/bin/git commit -am 'User update of #{page.url}'"
+    system "/usr/bin/git commit -m 'User update of #{page.url}'"
     system "/usr/bin/git push origin production"
     redirect "/admin/#{page.id}/edit"
   end
@@ -216,13 +217,14 @@ puts @region.name
 
 
   get '/productline/:product/charts' do
-    @region = {:name => "World", :adm1 => ""}
+    @page = {:name => "World", :adm1 => "", :page_type => "productline"}
 
     @projects = WorldBank.get_product_data(params[:product].upcase)
     @financing ||= WorldBank.calculate_financing(@projects["projects"], "regionname")
   
+    puts @projects.inspect
     @page[:projects_count] = @projects["total"]
-  
+
     erb :charts, :layout => :embed
   end
   get '/:region/:country/embed' do
