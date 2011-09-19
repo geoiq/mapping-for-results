@@ -145,7 +145,7 @@ class MappingForResults < Sinatra::Base
     redirect "/admin"    
   end
   get '/admin/:shortname/sync' do
-      @page = Page.first(:shortname => params[:shortname])
+      @page = Page.first(:id => params[:shortname])
       @page.update_data!
       redirect "/admin"
   end

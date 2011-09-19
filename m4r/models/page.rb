@@ -71,6 +71,8 @@ class Page
     when "country"
         @projects = WorldBank.get_project_data(self)
         self.projects_count = @projects["total"]
+    else
+	return
     end
     # @projects["total"] = WorldBank.filter_projects_count(@projects["projects"])
     data = self.data.merge(:projects => @projects["projects"])

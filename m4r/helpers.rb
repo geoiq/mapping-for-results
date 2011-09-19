@@ -45,7 +45,7 @@ module Sinatra
       when /sector_code/
         return "'#{value["Code"]}'"
       else
-        return "'#{value}'"
+        return "'#{value.gsub("'","")}'"
       end
 
     end
