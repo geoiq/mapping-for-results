@@ -1,11 +1,15 @@
-<div class="static_display">
-  <h4><%= @page_subtitle = @page.name %></h4>
-  <ul style="float:right">
-  <% @about_parent = Page.first(:page_type => "page", :shortname => "about") %>
-    <% @about_parent.children.each do |about_page| %>
-    <li><a href="<%= about_page.url == 'about' ? '' : '/about' %><%= about_page.url %>"><%= about_page.name %></a></li>
-    <% end %>
-  </ul>
-
-<%= @page.content %>
+<div id="about-page">
+  <div id="page-content" class="static_display">
+      <h2><%= @page_subtitle = @page.name %></h2>
+      <%= @page.content %>
+  </div>
+    <div id="sidebar-right"  class="static_display">
+      <h6>Related Content</h6>
+      <ul>
+      <% @about_parent = Page.first(:page_type => "page", :shortname => "about") %>
+        <% @about_parent.children.each do |about_page| %>
+        <li><a href="<%= about_page.url == 'about' ? '' : '/about' %><%= about_page.url %>"><%= about_page.name %></a></li>
+        <% end %>
+      </ul>
+    </div>
 </div>
