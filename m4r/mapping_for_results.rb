@@ -1,8 +1,7 @@
-%w{ rubygems sinatra/base open-uri erb json}.each {|gem| require gem}
+%w{ rubygems sinatra/base open-uri erb json net/http}.each {|gem| require gem}
 
 require 'helpers'
 require 'models/page'
-require 'sinatra/sessionauth'
 require 'lib/m4r_extensions.rb'
   
 PLATFORM_API_URL  = "http://maps.worldbank.org"
@@ -17,14 +16,14 @@ include WorldBank
 # require 'sinatra/cache'
 
 class MappingForResults < Sinatra::Base
-  register(Sinatra::SessionAuth)
   # register(Sinatra::Cache)
   # set :cache_enabled, true  # turn it on 
   # set :cache_output_dir, "/Users/ajturner/Projects/fortiusone/customers/WorldBank/wb-new/m4r/cache"
     
-  set :sessions, true
+  # set :sessions, true
+  # enable :sessions
     
-  helpers Sinatra::PartialHelper, Sinatra::MappingHelper
+  helpers Sinatra::GeoiqHelper, Sinatra::PartialHelper, Sinatra::MappingHelper
   
   get '/' do
     @page = Page.first(:shortname => "world")
@@ -97,10 +96,28 @@ class MappingForResults < Sinatra::Base
   # Admin
   # 
 
-  # before '/admin|/admin/*' do 
-  #     pass unless !authorized?
-  #     halt "<a href='/login'>Please Login</a>"
-  # end
+  get "/login" do 
+    erb :login
+  end
+
+  post "/login" do
+    if(login(PLATFORM_API_URL, params[:username], params[:password]))
+      session[:username] = params[:username]
+    end
+  
+    redirect "/admin"
+  end
+
+  get "/logout" do
+    session[:f1_session_auth] = nil
+    redirect "/"
+  end
+
+  before '/admin|/admin/*' do 
+      # pass unless !authorized?
+      # halt "<a href='/login'>Please Login</a>"
+      redirect "/login" if(session == nil || session[:f1_session_auth] == nil)
+  end
   
   get '/admin' do
       @pages = Page.all(:parent => nil)
@@ -145,7 +162,7 @@ class MappingForResults < Sinatra::Base
     redirect "/admin"    
   end
   get '/admin/:shortname/sync' do
-      @page = Page.first(:shortname => params[:shortname])
+      @page = Page.first(:id => params[:shortname])
       @page.update_data!
       redirect "/admin"
   end
@@ -168,7 +185,7 @@ class MappingForResults < Sinatra::Base
 
       @region = params[:page][:region].length == 0 ? nil : Page.get(params[:page][:region])
       @page.parent = @region
-      @page.region = @region.name
+      @page.region = @region.name unless @region.nil?
       @page.save
       # cache_expire(@page.url)
       redirect "/admin/#{@page.id}/edit"
