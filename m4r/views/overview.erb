@@ -1,7 +1,7 @@
       <div id="banner">
-        <div id="local" class="clearfix <%= 'collapsible-header' if !@page.nil? && @page.name == 'World' %>">
+        <div id="local" class="<%= 'collapsible-header' if !@page.nil? && @page.name == 'World' %> <%= (@page.nil? || %w{world haiti boost}.include?(@page.shortname)) ? 'expanded': 'collapsed'%>" content_id="collapsible-banner">
           <div title="Click to hide the overview information" class="site-name"><a class="active" href="/"><%= @title || "Mapping for Results" %></a></div>
-          <div class="collapsible-header <%= (@page.nil? || %w{world haiti boost}.include?(@page.shortname)) ? 'expanded': 'collapsed'%>" content_id="collapsible-banner" >
+          <div  >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>          
         </div>
@@ -22,7 +22,7 @@
                 <% if !@page.overview.nil? && @page.overview.length != 0 %>
                 <%= @page.overview %>
                 <% else %>
-                The <strong>Mapping for Results Platform</strong> provides detailed information about our work to reduce poverty and promote sustainable development around the world. This pilot website aims to visualize the location of our projects and to provide access to information about indicators, sectors, funding and results. <br />Prior to the Spring Meetings 2011, Mapping for Results has identified more than 1250 active Bank financed activities working in 16,520 locations. These activities are a subset of more than 2,500 active financed Bank activities with a volume of more than $160 billion.<br /><a class="readmore" href="/about">Read More »</a>
+                Mapping for Results visualizes the locations of World Bank Bank-financed projects to better monitor development impact, improve aid effectiveness and coordination, and enhance transparency and social accountability. In combination with the subnational socio-economic indicators such as poverty, health, malnutrition, and population density it helps to better target development assistance.<br /><a class="readmore" href="/about">Read More »</a>
               <% end %>
               </div>
               </div>

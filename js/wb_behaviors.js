@@ -1,14 +1,14 @@
 jq(function() {
-    jq(".collapsible-header").click(function () {
-        if(jQuery(this).hasClass("expanded")) {
-            jq("#collapsible-banner").hide("blind", { direction: "vertical" }, 2000);
-            jq(this).removeClass("expanded").addClass("collapsed");      
-        } else {
-            jq("#collapsible-banner").show("blind", { direction: "vertical" }, 2000);
-            jq(this).removeClass("collapsed").addClass("expanded");  
-        }
-        return false;
-    });
+    // jq(".collapsible-header").click(function () {
+    //         if(jQuery(this).hasClass("expanded")) {
+    //             // jq("#collapsible-banner").hide("blind", { direction: "vertical" }, 2000);
+    //             jq(this).removeClass("expanded").addClass("collapsed");      
+    //         } else {
+    //             // jq("#collapsible-banner").show("blind", { direction: "vertical" }, 2000);
+    //             jq(this).removeClass("collapsed").addClass("expanded");  
+    //         }
+    //         return false;
+    //     });
     jq("#share").hover(function() {
         wb.saveState();
         return false;
