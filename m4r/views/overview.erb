@@ -12,7 +12,7 @@
                 <div class="overview-links">
                   <p>Overview »</p>
                   <ul>
-                    <% (@page.name == "World" ? Page.first(:shortname => "about") : @page).children.each do |child| %>
+                    <% (@page.name == "World" ? Page.first(:shortname => "about") : @page).children[0..3].each do |child| %>
                     <% next if child.page_type != "page" %>
                     <li><a href="<%= child.url %>"><%= child.name %></a></li>
                     <% end %>
