@@ -234,7 +234,6 @@ ul.links li, ul.links li a{
     background: url("img/sprite.png") repeat-x scroll 0 -170px transparent;
 	clear: both;
     height: 60px;
-	margin-bottom: 10px;
 }
 #local a {
     color: #fff;

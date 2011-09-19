@@ -1,6 +1,9 @@
 <style type="text/css" media="screen">
   ul#pages li { margin-left: 25px; list-style-type: disc; }
 </style>
+
+user: <%= session[:username] %> (<a href="logout">logout</a>)
+
 <ul id="pages">
   <% @pages.each do |page| %>
     <%= admin_link(page) %>

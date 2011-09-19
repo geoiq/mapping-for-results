@@ -7,6 +7,23 @@
 require 'sinatra/base'
 
 module Sinatra
+  module GeoiqHelper
+    def login(url,login,pass)
+      uri = URI.parse("#{url}/users/#{login}.json")
+      http = Net::HTTP.new(uri.host, uri.port)
+      request = Net::HTTP::Get.new(uri.request_uri)
+      request.basic_auth(login,pass)
+      response = http.request(request)
+      if(response.code == "200")
+        cookies = response["set-cookie"].split(";").first.split("=")
+        session[:f1_session_id] = cookies[0]
+        session[:f1_session_auth] = cookies[1]
+        return true
+      else
+        return false
+      end
+    end
+  end
   module PartialHelper
     # Embed a page partial
     # Usage: partial :foo
