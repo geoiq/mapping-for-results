@@ -465,17 +465,21 @@ margin-bottom:10px;
 }
 
 #footnote {float: right; color: #989A94;}
-.static_display {border-top:2px solid #990d00; border-left:1px solid #dadccf; padding:10px 10px 10px 10px; text-align:left; font-size:12px; line-height:20px;}
-.static_display h4 {font-family:Georgia, "Times New Roman", Times, serif; font-size:27px; color:#990d00; font-weight:normal;}
+#about-page {border-top:2px solid #990d00; border-left:1px solid #dadccf; float: left;}
+.static_display {padding:10px 10px 10px 10px; text-align:left; font-size:12px; line-height:20px;}
+.static_display h2 {font-weight: normal; font-family:Georgia, "Times New Roman", Times, serif;font-size: 2.2em; color: #840202; margin: 10px 0px 20px;}
+.static_display h4 {font-family:Georgia, "Times New Roman", Times, serif; font-size:1.5em; /*color:#990d00; */font-weight:normal; margin-bottom: 10px; color: black;}
 .static_display h5 {font-size:18px; font-family:Georgia, "Times New Roman", Times, serif; margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; line-height:normal; font-weight:500;}
+.static_display h6 {margin-bottom: 10px; text-transform: uppercase; font-weight: bold; font-size: 0.833em; color: #41423F;}
 .static_display ul {margin:0px 0px 0px 0px; padding:10px 0px 10px 10px; list-style:none;}
 .static_display ul li{margin:0px 0px 3px 0px; padding:0px 0px 0px 10px; text-align:left; font-size:13px; background:url(../images/bullet-brown.gif) left 4px no-repeat;}
-.static_display ul li a {color:#690600}
+.static_display ul li a {color:#840202}
 .static_display p {font-size:13px;  text-align:justify; margin:0px 0px 10px 0px;}
-.static_display a {color:#690600}
-.static_display span {color:#690600; font-weight:bold;}
+.static_display a {color:#840202}
+.static_display span {color:#840202; font-weight:bold;}
 #world_link {margin-left: 5px; float: left; font-size: 1.1em;}
-
+#about-page div.static_display#sidebar-right { float: right; width: 200px; padding: 20px 10px 3em; }
+#page-content { float: left; width: 700px; border-right: 1px solid #EAEEE3; }
 
 ul.links{display:block;}
 ul.links li, ul.links li a {float:left;}

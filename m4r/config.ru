@@ -8,13 +8,14 @@ Sinatra::Base.set(:env, ENV['RACK_ENV'])
 require 'mapping_for_results'
 
 use Rack::MethodOverride
-use Rack::Session::Cookie, :key => 'rack.session',
-                           :httponly => true,
-                           :secure => true,
-                           :expire_after => 2592000, # In seconds
-                           :secret => 'Lorem ipsum dolor sit more secret stuff'
+use Rack::Session::Cookie
+# , :key => 'rack.session',
+#                            :httponly => true,
+#                            :secure => true,
+#                            :expire_after => 2592000, # In seconds
+#                            :secret => 'geoiqmapsFTW'
 
-Sinatra::Base.set(:sessions, true)
+# Sinatra::Base.set(:sessions, true)
                            
 #use Rack::PageSpeed, :public => "public" do
 #  # store :disk => "public" #Dir.tmpdir # require 'tmpdir'
