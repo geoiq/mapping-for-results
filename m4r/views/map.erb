@@ -82,7 +82,15 @@ if(typeof(F1)=='undefined') {F1 = {};}
   String.prototype.capitalize = function(){
 	return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
   };  
-  
+  String.prototype.wordwrap = function( width, brk, cut ) {
+      brk = brk || '\n';
+      width = width || 75;
+      cut = cut || false;
+      if (!this) { return this; }
+      var regex = '.{1,' +width+ '}(\\s|$)' + (cut ? '|.{' +width+ '}|.+$' : '|\\S+?(\\s|$)');
+      return this.match( RegExp(regex, 'g') ).join( brk );
+  }  
+
   F1.WorldBank = function(options) {  //constructor
 	this.options = options;
 	// F1.WorldBank.instances[options.id] = this;
@@ -975,9 +983,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var features = [];
 	  var links = [];
 	  var labels = [];
+	  var values = []
 	  jq.each(self.regions, function(s, financing) {
 		features.push({name: s, financing: financing});
-		labels.push(s)
+		values.push(financing/1000)
+		labels.push(s.wordwrap(7, "\n", true))
 		links.push("#" + s);
 	  });
 
@@ -987,9 +997,23 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  "data":{"name": "Financing Amount $m", "original_name": "financing"}, 
 		  "description":{"name": "Region", "original_name": "name"}, 
 		  "sort":{"name": "Financing Amount $m","original_name": "financing"} } };
-	  F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {
-		  return links[this.bar.index];
-	  }});
+          
+      jq("#chart-right-graph").html("")
+      var r = Raphael("chart-right-graph");
+
+      fin = function () {
+          this.flag = r.g.popup(this.bar.x, this.bar.y, "$" + (this.bar.value).toFixed(2) + "b").insertBefore(this);
+      }
+      fout = function () {
+          this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+      }
+      r.g.barchart(10, 10, 420, 170, [values], bar_options).hover(fin, fout);;
+      // r.g.axis(x_start, y_start, x_width, from, to, steps, orientation, labels, type, dashsize)
+      axis = r.g.axis(45,197,405,null,null,labels.length,2,labels, " ", 0);
+      axis.text.attr({font:"9px Arial", fill:"#333", "font-weight": "regular", "color": "#333"});
+      // axis2 = r.g.axis(35,190,300,0,400,10,1);
+      return r;
+      // F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {          return links[this.bar.index]; }});
 	},
 	productlineFundingBars: function() {
 	  var self = this;
@@ -1037,12 +1061,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  "data":{"name": "Financing Amount", "original_name": "totalamt"}, 
 		  "description":{"name": "Project", "original_name": "project_name"}, 
 		  "sort":{"name": "Total Amount","original_name": "totalamt"} } };
-	  barchart = F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {data_label: true, href: links, colors: colors, label: function() {
-		  return links[this.bar.index];
-	  }, onclick: function() {
-		  wb.highlightProject(features[this.bar.index].id);;
-		  }});
-	 
+
+      barchart = F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {data_label: true, href: links, colors: colors, label: function() {
+                       return links[this.bar.index];
+                   }, onclick: function() {
+                       wb.highlightProject(features[this.bar.index].id);;
+               }});
+          
 	},	  
     getLayers: function() {
         var self = this;
@@ -1191,7 +1216,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#mapped_locations_header').html("mapped location")
             
         } else if(self.thematic_area == "extractives_controls") {
-            self.map.swf.setStyle( {zoom: { offset: {x:15,y:80}}} )
             jq('#project_count').html("282,595,781");
             jq('#active_projects_header').html("Ghana Cedis of revenue in")
             jq('#activity_count').html(14);
@@ -1202,6 +1226,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.setExtractiveIndicator('Mines','Total production','Production',true)
             self.map.swf.addLayerCategoryFilter(11,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
             self.minesPieChart() 
+            self.map.swf.setStyle( {zoom: { offset: {x:65,y:80}}} )
         }
         self.loadState();
         jq("#map-summary").show();

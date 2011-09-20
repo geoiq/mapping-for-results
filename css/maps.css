@@ -79,7 +79,7 @@
 #chart-right-stat-subtitle {width:400px; height:30px; margin-left:25px;}
 #chart-right-stat-subtitle h1 {font-family:Georgia, serif; font-size:26px; color:#970001; font-weight:bold;}
 #subtitle-comment { width:100px; height:30px;font-family:Arial, sans-serif; font-size:11px; color:#9f9f9f;}
-#chart-right-graph {width:440px; height:170px; margin-left:25px;}
+#chart-right-graph {width:440px; height:240px; margin-left:25px;}
 #chart-right-graph-description {display: none;}	
 .subtotal {color: rgb(136, 136, 136); font-size: 0.8em; cursor: pointer;}
 .chart_about {margin-left: 10px;color:#8A8A8A;}
