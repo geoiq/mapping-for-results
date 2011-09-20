@@ -474,7 +474,7 @@ margin-bottom:10px;
 .static_display ul {margin:0px 0px 0px 0px; padding:10px 0px 10px 10px; list-style:none;}
 .static_display ul li{margin:0px 0px 3px 0px; padding:0px 0px 0px 10px; text-align:left; font-size:13px; background:url(../images/bullet-brown.gif) left 4px no-repeat;}
 .static_display ul li a {color:#840202}
-.static_display p {font-size:13px;  text-align:justify; margin:0px 0px 10px 0px;}
+.static_display p {font-size:1em; color: #333; line-height: 1.5em; text-align:justify; margin:0px 0px 10px 0px;}
 .static_display a {color:#840202}
 .static_display span {color:#840202; font-weight:bold;}
 #world_link {margin-left: 5px; float: left; font-size: 1.1em;}

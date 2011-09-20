@@ -1151,7 +1151,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
     if(!this.embed){
         this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
 	  } else {
-        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:y}}}) }
+        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:y}}}) 
+    }
         
 	  return false;
 	},
@@ -1190,6 +1191,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#mapped_locations_header').html("mapped location")
             
         } else if(self.thematic_area == "extractives_controls") {
+            self.map.swf.setStyle( {zoom: { offset: {x:15,y:80}}} )
             jq('#project_count').html("282,595,781");
             jq('#active_projects_header').html("Ghana Cedis of revenue in")
             jq('#activity_count').html(14);
@@ -1197,7 +1199,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Mines","all", true)
             self.toggleExtractive("Mineral deposits","all", false)
             self.toggleExtractive("Oil fields","all", true)     
-            self.map.swf.setStyle( {zoom: { offset: {x:15,y:120}}} )
             self.setExtractiveIndicator('Mines','Total production','Production',true)
             self.map.swf.addLayerCategoryFilter(11,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
             self.minesPieChart() 

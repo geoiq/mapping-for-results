@@ -22,7 +22,8 @@ class MappingForResults < Sinatra::Base
     
   # set :sessions, true
   # enable :sessions
-    
+  set :reload_templates, true 
+
   helpers Sinatra::GeoiqHelper, Sinatra::PartialHelper, Sinatra::MappingHelper
   
   get '/' do
