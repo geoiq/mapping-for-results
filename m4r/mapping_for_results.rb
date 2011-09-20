@@ -22,7 +22,7 @@ class MappingForResults < Sinatra::Base
     
   # set :sessions, true
   # enable :sessions
-  set :reload_templates, true 
+  # set :reload_templates, true 
 
   helpers Sinatra::GeoiqHelper, Sinatra::PartialHelper, Sinatra::MappingHelper
   
@@ -90,6 +90,9 @@ class MappingForResults < Sinatra::Base
   get '/script/:name.js' do 
     content_type 'application/javascript', :charset => 'utf-8'
     # cache(erb :map, :layout => false)
+
+    headers 'Last-Modified' => Time.now.httpdate
+
     erb params[:name].to_sym, :layout => false    
   end
 
