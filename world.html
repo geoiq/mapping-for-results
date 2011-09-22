@@ -4,11 +4,14 @@
     <title>The World Bank - Mapping for Results</title>
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
     <meta name="description" content="The World Bank - Mapping for Results">
-    <meta name="keywords" content=",health,poverty,millenium development goals,indicators,development,humanitarian">
+    <meta name="keywords" content="World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/mapping.css">
-      
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
+    <link rel="stylesheet" href="/assets/css/mapping.css">      
   <link type="text/css" rel="stylesheet" media="all" href="/css/system-menus.css" />
    <link type="text/css" rel="stylesheet" media="all" href="/css/collapsible.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/css/style.css" />
@@ -19,11 +22,11 @@
   <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/assets/css/menu.css" />
 
-    <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
-    if (top.frames.length!=0)
-      top.location=self.document.location;
     </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
   <script type="text/javascript" src="/js/jquery_002.js"></script>
@@ -38,7 +41,7 @@
 <script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
-<script src="/map.js" type="text/javascript"></script>
+<script src="/script/map.js" type="text/javascript"></script>
 
 </head>
 <body class=" region-left region-right region-far-right region-content-top">
@@ -93,28 +96,501 @@
     </div> 
     <!-- /#header -->
     <div id="container">
-    
+          <div id="banner">
+        <div id="local" class="collapsible-header expanded" content_id="collapsible-banner">
+          <div title="" class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+          <div  >
+            <div title="More information about Mapping for Results" class="banner-open-image"></div>
+          </div>          
+        </div>
+        <div id="banner-content">
+          <div class="collapsible-content" id="collapsible-banner" style="">
+            <div id="block-nodeasblock-3273" class="block block-nodeasblock ">
+              <div class="content">
+                <div class="overview-links">
+                  <p>Overview »</p>
+                  <ul>
+                    
+                    
+                    <li><a href="/datasources">Data Sources</a></li>
+                    
+                    
+                    <li><a href="/methodology">Methodology</a></li>
+                    
+                    
+                    <li><a href="/opendata">Open Data</a></li>
+                    
+                    
+                    <li><a href="/partners">Partners</a></li>
+                    
+                  </ul>
+                </div>
+                <div class="overview-text">
+                
+                Mapping for Results visualizes the locations of World Bank Bank-financed projects to better monitor development impact, improve aid effectiveness and coordination, and enhance transparency and social accountability. In combination with the subnational socio-economic indicators such as poverty, health, malnutrition, and population density it helps to better target development assistance.<br/><a class="readmore" href="/about">Read More »</a>
+                
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="share">
+  	<ul class="dropmenu map-options">
+  	  
+  	    
+        
+      </ul>
+  </div>
+    <div id="share_window" style="display: none;">
+    <a id="close_embed" href="#" style="" title="Close this embed window.">[x]</a>
+    <h3 style="color: #FFF">Embed this map by copying the text below and pasting it into your blog or website.</h3>
+    <textarea cols="120" rows="5" readonly="readonly" style="font-size: 0.9em" id="embed_code">
+    </textarea><br />
+    <h3 style="color: #FFF">...or copy and paste this link to share the current view with others.</h3>
+    <input type="text" size="109" id="share_link" value="" />
+  </div>
+   <br /><br />
+
     <div id="content-wrapper">
-    <div class="static_display">
-  <h4>Page not found</h4>
+    
 
-<p>We are sorry, but the page you were looking for could not be found. We are continuing to build the World Bank Mapping for Results platform to include more countries and projects. Please <a href="/">explore</a> the currently available countries, data, and project information.</p>
+    <div id="map-content-header">
+      <div class="worldmenuholder">
+                    <ul class="worldmenu dropmenu">
+                <li class="first"><a href="#" onclick="return false;" style="0">Explore Countries</span></a>
+                
+                <div class="menu-world-options" style="">
+                  <ul class="menu-regions dropmenu_options" id="navmenu" style="">
+                <li class="first"><a href="/">World</a></li>
+                <style type="text/css" media="screen">
+                  li.region-option:hover div { display: block; }
+                </style>
+                
+                <li class="region-option "><a href="#"><span>Africa</span></a>
+                    <div class="menu-country-options">
+                      <ul class="menu-countries" style="" >
+                      
+                        
+                        <li><a href="/afr/angola" class="">Angola</a>
+                        
+                        <a href="/afr/benin" class="">Benin</a>
+                        
+                        <a href="/afr/botswana" class="">Botswana</a>
+                        
+                        <a href="/afr/burkina-faso" class="">Burkina Faso </a>
+                        
+                        <a href="/afr/burundi" class="">Burundi</a>
+                        
+                        <a href="/afr/cameroon" class="">Cameroon</a>
+                        
+                        <a href="/afr/capeverde" class="">Cape Verde</a>
+                        
+                        <a href="/afr/central-african-republic" class="">Central African Repulic</a>
+                        
+                        <a href="/afr/chad" class="">Chad</a>
+                        
+                        <a href="/afr/comoros" class="">Comoros</a>
+                        
+                        <a href="/afr/congo-dem-rep" class="">Congo, Democratic Republic of</a>
+                        
+                        <a href="/afr/congo-republic" class="">Congo, Republic of</a>
+                        
+                        <a href="/afr/cote-divoire" class="">Cote d'Ivoire</a></li>
+                        
+                        <li><a href="/afr/equatorial-guinea" class="">Equatorial Guinea</a>
+                        
+                        <a href="/afr/eritrea" class="">Eritrea</a>
+                        
+                        <a href="/afr/ethiopia" class="">Ethiopia</a>
+                        
+                        <a href="/afr/gabon" class="">Gabon</a>
+                        
+                        <a href="/afr/gambia" class="">Gambia, The</a>
+                        
+                        <a href="/afr/ghana" class="">Ghana</a>
+                        
+                        <a href="/afr/guinea" class="">Guinea</a>
+                        
+                        <a href="/afr/guinea-bissau" class="">Guinea-Bissau</a>
+                        
+                        <a href="/afr/kenya" class="">Kenya</a>
+                        
+                        <a href="/afr/lesotho" class="">Lesotho</a>
+                        
+                        <a href="/afr/liberia" class="">Liberia</a>
+                        
+                        <a href="/afr/madagascar" class="">Madagascar</a>
+                        
+                        <a href="/afr/malawi" class="">Malawi</a></li>
+                        
+                        <li><a href="/afr/mali" class="">Mali</a>
+                        
+                        <a href="/afr/mauritania" class="">Mauritania</a>
+                        
+                        <a href="/afr/mauritius" class="">Mauritius</a>
+                        
+                        <a href="/afr/mozambique" class="">Mozambique</a>
+                        
+                        <a href="/afr/namibia" class="">Namibia</a>
+                        
+                        <a href="/afr/niger" class="">Niger</a>
+                        
+                        <a href="/afr/nigeria" class="">Nigeria</a>
+                        
+                        <a href="/afr/rwanda" class="">Rwanda</a>
+                        
+                        <a href="/afr/sao-tome-and-principe" class="">Sao Tome and Principe</a>
+                        
+                        <a href="/afr/senegal" class="">Senegal</a>
+                        
+                        <a href="/afr/seychelles" class="">Seychelles</a>
+                        
+                        <a href="/afr/sierraleone" class="">Sierra Leone</a>
+                        
+                        <a href="/afr/somalia" class="">Somalia</a></li>
+                        
+                        <li><a href="/afr/south-africa" class="">South Africa</a>
+                        
+                        <a href="/afr/south-sudan" class="">South Sudan</a>
+                        
+                        <a href="/afr/sudan" class="">Sudan</a>
+                        
+                        <a href="/afr/swaziland" class="">Swaziland</a>
+                        
+                        <a href="/afr/tanzania" class="">Tanzania</a>
+                        
+                        <a href="/afr/togo" class="">Togo</a>
+                        
+                        <a href="/afr/uganda" class="">Uganda</a>
+                        
+                        <a href="/afr/zambia" class="">Zambia</a>
+                        
+                        <a href="/afr/zimbabwe" class="">Zimbabwe</a>
+                        
+                      </ul>
+                  </div>
+                  </li>
+                
+                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                    <div class="menu-country-options">
+                      <ul class="menu-countries" style="" >
+                      
+                        
+                        <li><a href="/eap/cambodia" class="">Cambodia</a>
+                        
+                        <a href="/eap/china" class="">China</a>
+                        
+                        <a href="/eap/indonesia" class="">Indonesia</a>
+                        
+                        <a href="/eap/kiribati" class="">Kiribati</a>
+                        
+                        <a href="/eap/lao-pdr" class="">Lao People's Democratic Republic</a></li>
+                        
+                        <li><a href="/eap/malaysia" class="">Malaysia</a>
+                        
+                        <a href="/eap/mongolia" class="">Mongolia</a>
+                        
+                        <a href="/eap/myanmar" class="">Myanmar</a>
+                        
+                        <a href="/eap/papua-new-guinea" class="">Papua New Guinea </a>
+                        
+                        <a href="/eap/philippines" class="">Philippines</a></li>
+                        
+                        <li><a href="/eap/samoa" class="">Samoa</a>
+                        
+                        <a href="/eap/solomon-islands" class="">Solomon Islands </a>
+                        
+                        <a href="/eap/south-korea" class="">South Korea</a>
+                        
+                        <a href="/eap/thailand" class="">Thailand</a>
+                        
+                        <a href="/eap/timor-leste" class="">Timor-leste</a></li>
+                        
+                        <li><a href="/eap/tonga" class="">Tonga</a>
+                        
+                        <a href="/eap/vanuatu" class="">Vanuatu</a>
+                        
+                        <a href="/eap/vietnam" class="">Vietnam</a></li>
+                        
+                      </ul>
+                  </div>
+                  </li>
+                
+                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                    <div class="menu-country-options">
+                      <ul class="menu-countries" style="" >
+                      
+                        
+                        <li><a href="/eca/albania" class="">Albania</a>
+                        
+                        <a href="/eca/armenia" class="">Armenia</a>
+                        
+                        <a href="/eca/azerbaijan" class="">Azerbaijan</a>
+                        
+                        <a href="/eca/belarus" class="">Belarus</a>
+                        
+                        <a href="/eca/bosnia-and-herzegovina" class="">Bosnia and Herzegovina </a>
+                        
+                        <a href="/eca/bulgaria" class="">Bulgaria</a>
+                        
+                        <a href="/eca/croatia" class="">Croatia</a>
+                        
+                        <a href="/eca/czech-republic" class="">Czech Republic</a></li>
+                        
+                        <li><a href="/eca/georgia" class="">Georgia</a>
+                        
+                        <a href="/eca/hungary" class="">Hungary</a>
+                        
+                        <a href="/eca/kazakhstan" class="">Kazakhstan</a>
+                        
+                        <a href="/eca/kosovo" class="">Kosovo</a>
+                        
+                        <a href="/eca/kyrgyz-republic" class="">Kyrgyz Republic</a>
+                        
+                        <a href="/eca/latvia" class="">Latvia</a>
+                        
+                        <a href="/eca/lithuania" class="">Lithuania</a>
+                        
+                        <a href="/eca/macedonia" class="">Macedonia</a></li>
+                        
+                        <li><a href="/eca/moldova" class="">Moldova</a>
+                        
+                        <a href="/eca/moldova" class="">Moldova</a>
+                        
+                        <a href="/eca/montenegro" class="">Montenegro</a>
+                        
+                        <a href="/eca/serbia" class="">Republic of Serbia</a>
+                        
+                        <a href="/eca/romania" class="">Romania</a>
+                        
+                        <a href="/eca/russia" class="">Russia</a>
+                        
+                        <a href="/eca/tajikistan" class="">Tajikistan</a>
+                        
+                        <a href="/eca/turkey" class="">Turkey</a></li>
+                        
+                        <li><a href="/eca/turkmenistan" class="">Turkmenistan</a>
+                        
+                        <a href="/eca/ukraine" class="">Ukraine</a>
+                        
+                        <a href="/eca/uzbekistan" class="">Uzbekistan</a>
+                        
+                      </ul>
+                  </div>
+                  </li>
+                
+                <li class="region-option "><a href="#"><span>Latin America & Caribbean</span></a>
+                    <div class="menu-country-options">
+                      <ul class="menu-countries" style="" >
+                      
+                        
+                        <li><a href="/lac/antigua-barbuda" class="">Antigua and Barbuda</a>
+                        
+                        <a href="/lac/argentina" class="">Argentina</a>
+                        
+                        <a href="/lac/belize" class="">Belize</a>
+                        
+                        <a href="/lac/bolivia" class="">Bolivia</a>
+                        
+                        <a href="/lac/brazil" class="">Brazil</a>
+                        
+                        <a href="/lac/chile" class="">Chile</a>
+                        
+                        <a href="/lac/colombia" class="">Colombia</a>
+                        
+                        <a href="/lac/costa-rica" class="">Costa Rica</a>
+                        
+                        <a href="/lac/dominica" class="">Dominica</a>
+                        
+                        <a href="/lac/dominican-republic" class="">Dominican Republic</a></li>
+                        
+                        <li><a href="/lac/ecuador" class="">Ecuador</a>
+                        
+                        <a href="/lac/el-salvador" class="">El Salvador</a>
+                        
+                        <a href="/lac/grenada" class="">Grenada</a>
+                        
+                        <a href="/lac/guatemala" class="">Guatemala</a>
+                        
+                        <a href="/lac/guyana" class="">Guyana</a>
+                        
+                        <a href="/lac/haiti" class="">Haiti</a>
+                        
+                        <a href="/lac/honduras" class="">Honduras</a>
+                        
+                        <a href="/lac/jamaica" class="">Jamaica</a>
+                        
+                        <a href="/lac/mexico" class="">Mexico</a>
+                        
+                        <a href="/lac/nicaragua" class="">Nicaragua</a></li>
+                        
+                        <li><a href="/lac/panama" class="">Panama</a>
+                        
+                        <a href="/lac/paraguay" class="">Paraguay</a>
+                        
+                        <a href="/lac/peru" class="">Peru</a>
+                        
+                        <a href="/lac/stkitts-and-nevis" class="">St Kitts and Nevis</a>
+                        
+                        <a href="/lac/st-lucia" class="">St. Lucia</a>
+                        
+                        <a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a>
+                        
+                        <a href="/lac/suriname" class="">Suriname</a>
+                        
+                        <a href="/lac/trinidad-tobago" class="">Trinidad and Tobago</a>
+                        
+                        <a href="/lac/uruguay" class="">Uruguay</a>
+                        
+                        <a href="/lac/venezuela" class="">Venezuela</a></li>
+                        
+                      </ul>
+                  </div>
+                  </li>
+                
+                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                    <div class="menu-country-options">
+                      <ul class="menu-countries" style="" >
+                      
+                        
+                        <li><a href="/mena/algeria" class="">Algeria</a>
+                        
+                        <a href="/mena/djibouti" class="">Djibouti</a>
+                        
+                        <a href="/mena/egypt" class="">Egypt</a>
+                        
+                        <a href="/mena/iran" class="">Iran, Islamic Republic of</a>
+                        
+                        <a href="/mena/iraq" class="">Iraq</a></li>
+                        
+                        <li><a href="/mena/jordan" class="">Jordan</a>
+                        
+                        <a href="/mena/lebanon" class="">Lebanon</a>
+                        
+                        <a href="/mena/libya" class="">Libya</a>
+                        
+                        <a href="/mena/morocco" class="">Morocco</a>
+                        
+                        <a href="/mena/syria" class="">Syria</a></li>
+                        
+                        <li><a href="/mena/tunisia" class="">Tunisia</a>
+                        
+                        <a href="/mena/west-bank-and-gaza" class="">West Bank & Gaza</a>
+                        
+                        <a href="/mena/yemen-republic" class="">Yemen, Rep.</a>
+                        
+                      </ul>
+                  </div>
+                  </li>
+                
+                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                    <div class="menu-country-options">
+                      <ul class="menu-countries" style="" >
+                      
+                        
+                        <li><a href="/sa/afghanistan" class="">Afghanistan</a>
+                        
+                        <a href="/sa/bangladesh" class="">Bangladesh</a>
+                        
+                        <a href="/sa/bhutan" class="">Bhutan</a></li>
+                        
+                        <li><a href="/sa/fiji" class="">Fiji</a>
+                        
+                        <a href="/sa/india" class="">India</a>
+                        
+                        <a href="/sa/maldives" class="">Maldives</a></li>
+                        
+                        <li><a href="/sa/nepal" class="">Nepal</a>
+                        
+                        <a href="/sa/pakistan" class="">Pakistan</a>
+                        
+                        <a href="/sa/palau" class="">Palau</a></li>
+                        
+                        <li><a href="/sa/srilanka" class="">Sri Lanka </a></li>
+                        
+                      </ul>
+                  </div>
+                  </li>
+                 
+                </ul>
+                </div>
+                </li>
+              </ul>
 
-<h5>Feedback</h5>
-<p>In order to improve our Mapping for Results Platform, we are very interested in your feedback. Please email us with your questions and comments at <a href="mailto:maps@worldbank.org">maps@worldbank.org</a></p>
-<p>Comment on our <a href="http://blogs.worldbank.org/dmblog/node/733" title="Geography and Aid | Turning Ideas into Action">blog</a>.</p>
+      <div id="map-summary-container" style="float:left">
+        <h1 id="map-summary" style="display:none" class="loaded txtRed txtGeorgia">
+      
+        	<span id="project_count">&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="smallHdr" id="active_projects_header">financed activities working in</span> <span id="activity_count">&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="smallHdr" id="mapped_locations_header">mapped locations</span>
+      
+        </h1>
+</div>        
 
+      </div>
+    </div>
+<div id="map-content">
+  <div id="wb_map_wrapper" style="z-index: 5; height: 514px; 958px">
+  <div id="wb_map" class="" style="height: 520px"></div>
+  </div>
 </div>
+
+<div id="chart-left" class="">
+  <div id="chart-left-title">
+    <h1 id="sector_funding_title">Financed Activities by Sector</h1>
+  </div>
+  <div id="chart-left-stat">
+    <h1 id="sector_funding_total"></h1>
+    <h2 id="sector_funding_description"></h2>
+  </div>
+  <div id="chart-left-pie-chart"></div>
+</div>
+
+<div id="chart-right" class="">
+  <div id="chart-right-title">
+    <h1>Financed Activities by Region</h1>
+  </div>
+  <!-- <div id="chart-right-stat-subtitle">
+    <h1 id="funding_total"></h1>
+  </div> -->
+  <div id="chart-right-graph"></div>
+</div>
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+
+
+  var wb = new F1.WorldBank();
+  
+  
+  var projects = [];
+  var productline = {"Debt Reduction Facility":62.9,"Recipient Executed Activities":3789.91,"Global Environment Project":1517.48,"Guarantees":3630.76,"IBRD\/IDA":167527.24,"Carbon Offset":1621.11,"Montreal Protocol":245.51,"Special Financing":325.45,"GEF Medium Sized Program":20.37,"Rainforest":3.5};
+  var sectors = {"Public Administration, Law, and Justice":26512.543,"Water, sanitation and flood protection":20849.5539,"Transportation":38973.4267,"Energy and mining":27905.2064,"Industry and trade":6871.1151,"Finance":9010.0651,"Education":13164.7189,"Information and communications":1288.3851,"Health and other social services":20340.1973,"Agriculture, fishing, and forestry":13819.7185};
+  var regions = {"SOUTH ASIA":40278.93,"EAST ASIA AND PACIFIC":31768.6,"AFRICA":40508.05,"MIDDLE EAST AND NORTH AFRICA":8576.87,"OTHER":67.37,"LATIN AMERICA AND CARIBBEAN":34812.19,"EUROPE AND CENTRAL ASIA":22732.22};
+     
+     
+  wb.init("1854",  "World",  "", {projects_count: '2,797', locations_count: '16,520', sectors: sectors, regions: regions, thematic_area: "m4r" }, false);
+  
+  
+  
+</script>
+
+
+
+
+<script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 
     </div>
     
             <br class="clear" />
-        
+        <div id="footnote">Active financed activities as of September 21, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
-           
+        <a class="breadcrumb-link" href="/" title='World Bank: World'>World</a>   
         </div>
         </div>
         <div id="network-footer">
@@ -137,9 +613,11 @@
     </div>
     <br class="clear" />
 
+    <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
     </div>
 <!-- /#wrapper -->
 <!-- /layout -->
+
 <script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-18962568-1']);
@@ -157,10 +635,10 @@
 <!--
 var s_pageName="Home > Maps > ";
 var s_channel="WBG Mapping for Results EXT";
-var s_hier1 = "WBG,WBG Mapping for Results EXT";
-var s_prop1 = "";
+var s_hier1 = "WBG,WBG Mapping for Results EXT,World";
+var s_prop1 = "The World Bank - Mapping for Results";
 var s_prop6 = ""; / Region /
-var s_prop7 = ""; / Country /
+var s_prop7 = "World"; / Country /
 var s_prop2 = "Not Available"; /* Author /
 var s_prop3 = "Not Available"; / Date /
 var s_prop4 = "Not Available"; / Topic /
@@ -187,9 +665,11 @@ s_pageName = sTitle;
 s_prop1 = sTitle;
 s_hier1 += ", " + sTitle;
 
-var s_account="wbnispextgeomfr";
+var s_account="wbnispextgeomfr,wbglobalext";
 //-->
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
+
 </body></html>
