@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>The World Bank - Mapping for ResultsChile, Latin America & Caribbean > </title>
+
+  <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
+
+  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
+  <link rel="stylesheet" href="/assets/css/mapping.css">
+  <link rel="stylesheet" href="/assets/css/menu.css">
+  <script type="text/javascript" charset="utf-8">
+  // if (top.frames.length!=0)
+  //   top.location=self.document.location;
+  </script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var jq = jQuery.noConflict();
+    </script>  
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <script type="text/javascript" src="/js/ui.js"></script>
+  <script type="text/javascript" src="/js/effects_002.js"></script>
+  <script type="text/javascript" src="/js/effects.js"></script>  
+
+<!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
+
+<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
+
+
+<script src="/script/map.js" type="text/javascript"></script>
+
+
+  <style type="text/css" media="screen">
+  body, html {background-color: #FFFFFF; padding: 0; margin: 0;min-width:0}
+  h1 {text-align: left;}
+  </style>
+
+</head>
+<body class=" region-left region-right region-far-right region-content-top">
+  
+<div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<script type="text/javascript" charset="utf-8">
+
+
+  var wb = new F1.WorldBank();
+  
+
+  var projects = [{id: 'P081743',project_name: 'Chile Hornitos Project (Chacabuquito II)',totalamt: 3.15,grantamt: 3.15,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P074619',project_name: 'CHILE - Chacabuquito Hydro Power Project',totalamt: 3.5,grantamt: 3.5,mjsector1: 'Energy and mining',boardapprovaldate: 'Feb-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P103441',project_name: 'Second Public Expenditure Management',totalamt: 24.8,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":88},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P096469',project_name: 'Chile Santiago Composting Project',totalamt: 9.9,grantamt: 9.9,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
+,{id: 'P076807',project_name: 'Chile Infrastructure for Territorial Development',totalamt: 50.26,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Transportation","Percent":27},{"Name":"Information and communications","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Energy and mining","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P082037',project_name: ' Social Protection Technical Assistance',totalamt: 10.71,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2003',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P092015',project_name: 'Chile Quilleco Hydropower Project',totalamt: 3.0,grantamt: 3.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P086689',project_name: 'CL Santiago Urban Transport Technical Assistance Project',totalamt: 4.8,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":72},{"Name":"Transportation","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P111918',project_name: 'CL Securitization and Carbon Sinks Project',totalamt: 2.4,grantamt: 2.4,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}
+,{id: 'P114774',project_name: 'Social Protection TA Additional Financing',totalamt: 3.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":87},{"Name":"Health and other social services","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P102931',project_name: 'Ministry of Public Works Institutional Strenghtening TAL',totalamt: 11.7,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
+      
+  wb.init("1744",  "Chile", "Latin America & Caribbean", {projects_count: '11', locations_count: '16', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  
+  
+</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
+<script type="text/javascript" charset="utf-8">
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+</script>
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18962568-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- code for http://maps.worldbank.org -->
+<!-- SiteCatalyst code version: G.6. Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
+<script language="JavaScript">
+<!--
+var s_pageName="Home > Maps > Chile, Latin America & Caribbean > ";
+var s_channel="WBG Mapping for Results EXT";
+var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Latin America & Caribbean,Chile";
+var s_prop1 = "";
+var s_prop6 = "Latin America & Caribbean"; / Region /
+var s_prop7 = "Chile"; / Country /
+var s_prop2 = "Not Available"; /* Author /
+var s_prop3 = "Not Available"; / Date /
+var s_prop4 = "Not Available"; / Topic /
+var s_prop5 = "Not Available"; / Sub Topic /
+var s_prop8 = "Not Available"; / DocType /
+var s_prop9 = "Not Available"; / MDK or unique identifier /
+var s_prop10 = "Live"; / Site Status /
+var s_prop11 = "Not Available"; / Data Source /
+var s_prop13 = "WBG"; / VPU /
+var s_prop16="English"; / doc language /
+var s_prop17="English"; / site language */
+
+var omnitureCookieContent= getCookieValueByName('omniture');
+var s_prop18 =getVPU(omnitureCookieContent);
+var s_prop19 =getDutyStation(omnitureCookieContent);
+var s_prop20 =getUserType(omnitureCookieContent);
+
+var sTitle = document.title;
+var asTitleParts = sTitle.split("-");
+while (sTitle.indexOf(",") > -1)
+sTitle = sTitle.replace(",", "");
+
+s_pageName = sTitle;
+s_prop1 = sTitle;
+s_hier1 += ", " + sTitle;
+
+var s_account="wbnispextgeomfr,wbglobalext";
+//-->
+</script>
+<script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.6. -->
+
+
+</body></html>

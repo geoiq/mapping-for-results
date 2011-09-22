@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>The World Bank - Mapping for ResultsIndonesia, East Asia & the Pacific > </title>
+
+  <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
+
+  <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
+  <link rel="stylesheet" href="/assets/css/mapping.css">
+  <link rel="stylesheet" href="/assets/css/menu.css">
+  <script type="text/javascript" charset="utf-8">
+  // if (top.frames.length!=0)
+  //   top.location=self.document.location;
+  </script>
+  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
+
+  <script type="text/javascript" src="/js/jquery-1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var jq = jQuery.noConflict();
+    </script>  
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <script type="text/javascript" src="/js/ui.js"></script>
+  <script type="text/javascript" src="/js/effects_002.js"></script>
+  <script type="text/javascript" src="/js/effects.js"></script>  
+
+<!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
+<script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
+
+<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
+
+
+<script src="/script/map.js" type="text/javascript"></script>
+
+
+  <style type="text/css" media="screen">
+  body, html {background-color: #FFFFFF; padding: 0; margin: 0;min-width:0}
+  h1 {text-align: left;}
+  </style>
+
+</head>
+<body class=" region-left region-right region-far-right region-content-top">
+  
+<div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
+<script type="text/javascript" charset="utf-8">
+
+
+  var wb = new F1.WorldBank();
+  
+
+  var projects = [{id: 'P089479',project_name: 'Early Childhood Education and Development Project',totalamt: 67.5,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Education","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P124043',project_name: 'ID-TF INTEGRATED MIS (SIMPADU PHASE II) FOR PNPM',totalamt: 0.98,grantamt: 0.98,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":35},{"Name":"Health and other social services","Percent":30}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P084860',project_name: 'ID-PCF-Indocement Cement',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P096532',project_name: 'Dam Operational Improvement and Safety',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":88},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P077175',project_name: 'ID-Domestic Gas Market Development Project',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P116855',project_name: 'The Extended Deployment of an Enterprise Resource Planning System',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P103457',project_name: 'Community Based Settlement Rehabilitation for Yogyajarta',totalamt: 60.0,grantamt: 60.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jan-2007',majorsector_percent: [{"Name":"Industry and trade","Percent":80},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'YX'}
+,{id: 'P118150',project_name: 'Indonesia: Scholarships Prog. for Strengthening Reforming Institutions',totalamt: 112.65,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":70},{"Name":"Education","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P126059',project_name: 'JSDF-INDONESIA: EMPOWERING WOMEN OVERSEAS MIGRANT WORKERS',totalamt: 1.56,grantamt: 1.56,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Education","Percent":30}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P078070',project_name: 'Support for Poor and Disadvantaged  Areas Project',totalamt: 104.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":30},{"Name":"Health and other social services","Percent":20},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P113078',project_name: 'Geothermal Clean Energy Investment Project',totalamt: 175.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P097605',project_name: 'ID SPADA in Aceh and Nias',totalamt: 25.0,grantamt: 25.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Health and other social services","Percent":40},{"Name":"Health and other social services","Percent":30},{"Name":"Education","Percent":30}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P126039',project_name: 'CENDRAWASIH UNIVERSITY: THE RESPEK PROGRAM IN PAPUA AND WEST PAPUA PROVINCES',totalamt: 1.26,grantamt: 1.26,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Education","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P126138',project_name: 'ID-TF KDP AND ENVIRONMENT IN SULAWESI (WCS, CARE, OPWAL)',totalamt: 2.28,grantamt: 2.28,mjsector1: 'Energy and mining',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Health and other social services","Percent":30}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
+,{id: 'P068133',project_name: 'MARINE ELECTRONIC HIGHWAY DEMONSTRATION PROJECT',totalamt: 8.3,grantamt: 8.3,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Transportation","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'Global Environment Project',sector_code: 'TX'}
+,{id: 'P126139',project_name: 'JSDF-INDONESIA: CREATIVE COMMUNITIES',totalamt: 1.54,grantamt: 1.54,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P122810',project_name: 'PNPM Rural IV',totalamt: 531.19,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P114348',project_name: 'Water Resources and Irrigation Sector Management Program 2',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":41},{"Name":"Public Administration, Law, and Justice","Percent":39},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P127133',project_name: 'National Violence Monitoring System Indo',totalamt: 0.65,grantamt: 0.65,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P096677',project_name: 'ID-PCF-Indonesia Lahendong Geothermal Project',totalamt: 3.75,grantamt: 3.75,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P101785',project_name: 'Aceh Infrastructure Reconstruction Financing Facility (IRFF)',totalamt: 100.0,grantamt: 100.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":34},{"Name":"Transportation","Percent":33},{"Name":"Transportation","Percent":33}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P126163',project_name: 'JSDF POVERTY REDUCTION AND WOMENS LEADERSHIP: THE "PRIME" PROJECT',totalamt: 1.7,grantamt: 1.7,mjsector1: 'Health and other social services',boardapprovaldate: 'Nov-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Education","Percent":30}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P119125',project_name: 'Indonesia - Addl Financing BOS Knowledge Improvement for Transparency and Accountability',totalamt: 500.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":70},{"Name":"Education","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P106384',project_name: 'Statistical Capacity Building-Change and Reform for the Development of Statistics (STATCAP-CERDAS)',totalamt: 65.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P092218',project_name: 'Indonesia Infrastructure Finance Facility',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":48},{"Name":"Transportation","Percent":34},{"Name":"Transportation","Percent":11},{"Name":"Transportation","Percent":4},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P121467',project_name: 'Indonesia Slum Alleviation Policy and Action Plan (SAPOLA)',totalamt: 0.46,grantamt: 0.46,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Finance","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P105590',project_name: 'GPOBA W3 - Expanding Piped Water Supply to Surabayas Urban Poor',totalamt: 2.57,grantamt: 2.57,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P107661',project_name: 'Indonesia - BOS Knowledge Improvement for Transparency and Accountability',totalamt: 600.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Education","Percent":70},{"Name":"Education","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P099757',project_name: 'Geothermal Power Generation Development',totalamt: 4.0,grantamt: 4.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":25}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P099679',project_name: 'Bekasi Landfill Gas Flaring',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Feb-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
+,{id: 'P090990',project_name: 'Western Indonesia National Roads Improvement Project',totalamt: 250.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2011',majorsector_percent: [{"Name":"Transportation","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P063913',project_name: 'Java-Bali Power Sector Restructuring and Strengthening Project',totalamt: 141.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P118113',project_name: 'Third National Program for Community Empowerment in Urban Areas III',totalamt: 149.98,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":26},{"Name":"Transportation","Percent":26},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":14},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P090991',project_name: 'ID-Urban Water Supply and Sanitation',totalamt: 23.56,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P109196',project_name: 'National Program for Community Empowerment in Urban Areas (PNPM II UPP',totalamt: 115.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":25},{"Name":"Transportation","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P110635',project_name: 'Aceh-Nias Livelihoods and Economic Development Program (LEDP)',totalamt: 8.2,grantamt: 8.2,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":40},{"Name":"Agriculture, fishing, and forestry","Percent":19},{"Name":"Agriculture, fishing, and forestry","Percent":16},{"Name":"Agriculture, fishing, and forestry","Percent":16},{"Name":"Agriculture, fishing, and forestry","Percent":9}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P098308',project_name: 'Partnerships for Conservation management of Aketajawe-Lolobata National Park, North Maluku',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'GEF Medium Sized Program',sector_code: 'AX'}
+,{id: 'P121724',project_name: 'Public Expenditure Analysis and Capacity Harmonization (PEACH) Grant to BAKTI on Communication & Outreach',totalamt: 0.3,grantamt: 0.3,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Oct-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P121427',project_name: 'Green PNPM Environmental Awareness and Training',totalamt: 2.3,grantamt: 2.3,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Energy and mining","Percent":25}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P116884',project_name: 'WASAP D - Community and Municipal Sanitation Pilots',totalamt: 2.24,grantamt: 2.24,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":60},{"Name":"Water, sanitation and flood protection","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P106050',project_name: 'Indonesia: Extractive Industries Transparency',totalamt: 1.05,grantamt: 1.05,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
+,{id: 'P113341',project_name: 'Health Professional Education Quality Project',totalamt: 77.82,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Education","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P100218',project_name: 'ID-Aceh-Infra. Reconstr Enabling Program (IREP)',totalamt: 42.0,grantamt: 42.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Transportation","Percent":25},{"Name":"Transportation","Percent":25}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P071296',project_name: 'URBAN SECTOR DEVELOPMENT AND REFORM PROJECT',totalamt: 45.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Industry and trade","Percent":69},{"Name":"Transportation","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Health and other social services","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P102529',project_name: 'Jakarta Water',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P115052',project_name: 'Third National Program for Community Empowerment in Rural Areas (PNPM-Rural',totalamt: 785.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":22},{"Name":"Agriculture, fishing, and forestry","Percent":22},{"Name":"Transportation","Percent":22},{"Name":"Education","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P104022',project_name: 'Makassar - TPA Tamangapa Landfill Methane Collection and Flaring',totalamt: 7.7,grantamt: 7.7,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
+,{id: 'P104482',project_name: 'Pontianak - LFG Recovery Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
+,{id: 'P079906',project_name: 'Strategic Roads Infrastructure Project',totalamt: 208.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jul-2006',majorsector_percent: [{"Name":"Transportation","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P108757',project_name: 'Second National Program for Community Empowerment in Rural Areas Addit',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Water, sanitation and flood protection","Percent":17},{"Name":"Agriculture, fishing, and forestry","Percent":17},{"Name":"Transportation","Percent":17},{"Name":"Education","Percent":16}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P115724',project_name: 'Basic Education Capacity-Recipient executed',totalamt: 25.62,grantamt: 25.62,mjsector1: 'Education',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
+,{id: 'P126424',project_name: 'Indonesia: PNPM Peduli',totalamt: 3.71,grantamt: 3.71,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Education","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Finance","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
+,{id: 'P118909',project_name: 'WASPOLA Facility',totalamt: 2.33,grantamt: 2.33,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":25}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P117323',project_name: 'Indonesia Power Transmission Development Project',totalamt: 225.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P111577',project_name: 'Local Government and Decentralization Project',totalamt: 220.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P121234',project_name: 'Infrastructure Reconstruction Financing Facility - Additional Financing',totalamt: 36.7,grantamt: 36.7,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'TX'}
+,{id: 'P102476',project_name: 'Extending Telecommunications in Rural Indonesia Project',totalamt: 1.87,grantamt: 1.87,mjsector1: 'Information and communications',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Information and communications","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'CX'}
+,{id: 'P085133',project_name: 'Government Financial Management and Revenue Administration Project',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":93},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P126108',project_name: 'JSDF-INDONESIA: EDUCATION FOR VERY POOR CHILDREN',totalamt: 1.33,grantamt: 1.33,mjsector1: 'Education',boardapprovaldate: 'Oct-2005',majorsector_percent: [{"Name":"Education","Percent":40},{"Name":"Education","Percent":40},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
+,{id: 'P118813',project_name: 'ID-JSDF Sustaining Womens Leadership',totalamt: 1.92,grantamt: 1.92,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P096921',project_name: 'National Program for Community Empowerment in Urban Areas (PNPM UPP)',totalamt: 177.68,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Transportation","Percent":27},{"Name":"Health and other social services","Percent":27},{"Name":"Education","Percent":27},{"Name":"Health and other social services","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P083742',project_name: 'Farmer Empowerment through Agricultural Technology and Information',totalamt: 92.8,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Feb-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":60},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":14},{"Name":"Public Administration, Law, and Justice","Percent":11}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P109733',project_name: 'TF Water and Sanitation Sector Monitoring (WASAP E)',totalamt: 1.37,grantamt: 1.37,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P085374',project_name: 'Higher Education for Relevance and Efficiency',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Education","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P126110',project_name: 'JSDF-INDONESIA: IMPROVING FOOD SECURITY BY EMPOWERING POOR WOMEN',totalamt: 1.58,grantamt: 1.58,mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P100740',project_name: 'Project for Indonesian Tax Administration Reform (PINTAR)',totalamt: 110.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P085375',project_name: 'Third Water Supply and Sanitation for Low Income Communities Project',totalamt: 137.5,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":34},{"Name":"Water, sanitation and flood protection","Percent":33},{"Name":"Health and other social services","Percent":17},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P071316',project_name: 'Coral Reef Rehabilitation and Management Program Phase II',totalamt: 56.2,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Finance","Percent":12},{"Name":"Education","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P097104',project_name: 'BERMUTU-Better Education through Reformed Management and Universal Teacher Upgrading',totalamt: 86.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jul-2007',majorsector_percent: [{"Name":"Education","Percent":78},{"Name":"Public Administration, Law, and Justice","Percent":19},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P074290',project_name: 'Second Eastern Indonesia Region Transport Project',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Transportation","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Transportation","Percent":2},{"Name":"Transportation","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P116236',project_name: 'PAMSIMAS Support Trust Fund',totalamt: 6.54,grantamt: 6.54,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P123979',project_name: 'PEACH Grant to UGM on Capacity Building Programs Related to Sub-National PFM',totalamt: 3.7,grantamt: 3.7,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Oct-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P112158',project_name: 'Upper Cisokan Pumped Storage Hydro-Electrical Power (1040 MW) Project',totalamt: 640.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P067253',project_name: 'BRI-International Visitors Program',totalamt: 0.93,grantamt: 0.93,mjsector1: 'Finance',boardapprovaldate: 'Jul-1999',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}
+,{id: 'P105002',project_name: 'ID National Program for Community Empowerment in Rural Areas',totalamt: 231.19,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Education","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P109024',project_name: 'Aceh Economic Development Financing Facility',totalamt: 50.0,grantamt: 50.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":45},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Industry and trade","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
+,{id: 'P071318',project_name: 'Coral Reef Rehabilitation and Management Project II',totalamt: 7.5,grantamt: 7.5,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Finance","Percent":12},{"Name":"Education","Percent":8}],prodlinetext: 'Global Environment Project',sector_code: 'JX'}];
+      
+  wb.init("1769",  "Indonesia", "East Asia & the Pacific", {projects_count: '77', locations_count: '621', projects: projects, locations_layer: 0, indicators: ['Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  
+  
+</script>
+
+<script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
+<script type="text/javascript" charset="utf-8">
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+</script>
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18962568-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<!-- code for http://maps.worldbank.org -->
+<!-- SiteCatalyst code version: G.6. Copyright 1997-2004 Omniture, Inc. More info available at http://www.omniture.com -->
+<script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
+<script language="JavaScript">
+<!--
+var s_pageName="Home > Maps > Indonesia, East Asia & the Pacific > ";
+var s_channel="WBG Mapping for Results EXT";
+var s_hier1 = "WBG,WBG Mapping for Results EXT,World,East Asia & the Pacific,Indonesia";
+var s_prop1 = "";
+var s_prop6 = "East Asia & the Pacific"; / Region /
+var s_prop7 = "Indonesia"; / Country /
+var s_prop2 = "Not Available"; /* Author /
+var s_prop3 = "Not Available"; / Date /
+var s_prop4 = "Not Available"; / Topic /
+var s_prop5 = "Not Available"; / Sub Topic /
+var s_prop8 = "Not Available"; / DocType /
+var s_prop9 = "Not Available"; / MDK or unique identifier /
+var s_prop10 = "Live"; / Site Status /
+var s_prop11 = "Not Available"; / Data Source /
+var s_prop13 = "WBG"; / VPU /
+var s_prop16="English"; / doc language /
+var s_prop17="English"; / site language */
+
+var omnitureCookieContent= getCookieValueByName('omniture');
+var s_prop18 =getVPU(omnitureCookieContent);
+var s_prop19 =getDutyStation(omnitureCookieContent);
+var s_prop20 =getUserType(omnitureCookieContent);
+
+var sTitle = document.title;
+var asTitleParts = sTitle.split("-");
+while (sTitle.indexOf(",") > -1)
+sTitle = sTitle.replace(",", "");
+
+s_pageName = sTitle;
+s_prop1 = sTitle;
+s_hier1 += ", " + sTitle;
+
+var s_account="wbnispextgeomfr,wbglobalext";
+//-->
+</script>
+<script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
+<!-- End SiteCatalyst code version: G.6. -->
+
+
+</body></html>

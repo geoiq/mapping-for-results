@@ -2,7 +2,7 @@ var proxy_host = "http://maps.worldbank.org";
 var map_engine = "Wrapper_181";
 var project_attributes = ["id","project_name","totalamt","prodlinetext","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 var major_sector_name = "mjsector 1";
-
+var barchart;
 
 function getQuerystring(key, default_)
 {
@@ -82,20 +82,28 @@ if(typeof(F1)=='undefined') {F1 = {};}
   String.prototype.capitalize = function(){
 	return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
   };  
-  
+  String.prototype.wordwrap = function( width, brk, cut ) {
+      brk = brk || '\n';
+      width = width || 75;
+      cut = cut || false;
+      if (!this) { return this; }
+      var regex = '.{1,' +width+ '}(\\s|$)' + (cut ? '|.{' +width+ '}|.+$' : '|\\S+?(\\s|$)');
+      return this.match( RegExp(regex, 'g') ).join( brk );
+  }  
+
   F1.WorldBank = function(options) {  //constructor
 	this.options = options;
 	// F1.WorldBank.instances[options.id] = this;
   };
 
   F1.WorldBank.indicators = {
-	"Poverty": {source: "finder:", title:"Poverty", subtitle: "Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [16709541,16698989,15500308,11422722,6694150], categories: 5, classificationNumClasses: 6, classificationType: "St Dev", opacity: 0.75, selectedAttribute: "poverty" }}, infosubtitle: null, table: null, description: "<p>These data sets involve econometric or quantitative indirect estimation procedures that combine spatial precision (such as censuses) with substantive depth (such as surveys). They have been developed and implemented by the World Bank Development Economics Research Group and colleagues, in collaboration with country teams for the implementation of Poverty Reduction Strategy Programmes.</p><p>Though spatial information may be used in the process of generating these estimates, the spatial data is generally separated prior to the analysis, reporting and dissemination of the poverty estimates. Thus, CIESIN's database of sub-national small area estimates contains poverty and inequality data with reconstructed boundary information, using basic geographic information system (GIS) tools. (Text obtained from the source of data at <a href='http://sedac.ciesin.columbia.edu/povmap/methods_nat_sae.jsp'>CIESIN</a>)</p><p>Source: <a href='http://www.measuredhs.com/'>Demographic and Health Surveys (DHS)</a></p>"},
+	"Poverty": {source: "finder:", title:"Poverty", subtitle: "Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [16709541,16698989,15500308,11422722,6694150], categories: 5, classificationNumClasses: 6, classificationType: "St Dev", opacity: 0.75, selectedAttribute: "poverty" }}, infosubtitle: null, table: null, description: "The headcount index is a measure of the percent of the population living below the poverty line. Poverty data was obtained from World Bank Poverty Assessments, CIESIN Small Area Estimates, and national statistics bureaus.  See the data source page for information regarding the source of poverty data for each country"},
 	"Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Weightfora" }}, infosubtitle: null, table: null, description: "Percent of children under age 5 whose weight-for-age is more than two standard deviations below the median for the international reference population ages 0-59 months. The data are based on the World Health Organization’s child growth standards released in 2006.\nSource: Demographic and Health Surveys implemented by ICF Macro."},
 	"Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Infant_mor"}}, infosubtitle: null, table: null, description: "Mortality rate, infant deaths per 1,000 live births. Infant mortality rate is the number of infant deaths (deaths before reaching one year of age) per 1,000 for the ten year period preceding the survey.\nSource: Demographic and Health Surveys implemented by ICF Macro."},	
 	"Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "dbhp"}}, infosubtitle: null,table: null, description: "Percent of live births in the last three years preceding the survey assisted by a skilled health provider (doctor or other health professional).\nSource: Demographic and Health Surveys implemented by ICF Macro."},
 	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"},
 	"Unemployment Rate": {source: "finder:", title:"Unemployment Rate", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Unemployment Rate"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The percentage of the population in each first-order administrative unit that were not employed in the 12 months prior to the survey. Source:  <a href='http://www.measuredhs.com/countries/country_main.cfm?ctry_id=14' target='_new'>Demographic and Health Surveys by Macro International</a>."},	
-	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: "This information is calculated using population data from the 2000 Ghana Census and the area of each district as determined in a Geographic Information System.  For more information on this data, please refer to the <a href = 'http://maps.worldbank.org/extractives/about_extractives' > About page </a>."},
+	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: "Population Density, measured in population per square kilometers, is a result of calculations made by the Mapping for Results team. Population data was compiled from statistics bureaus and used to calculate population density. The population data was divided by the total area for each province or district. Official population density statistics were used in place of these calculations where available. These data are estimates only and are not official numbers."},
 	"Mineral deposits": {source: "finder:", title:"Mineral deposits", selectedAttribute: "mineral", styles: {}},
 	"Mines": {source: "finder:", title:"Mines", selectedAttribute: "mines", styles: {}},
 	"Oil wells": {source: "finder:", title:"Oil wells", selectedAttribute: "oil", styles: {}}, 
@@ -854,8 +862,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			if(self.stylelayers["Project Locations"] !== undefined && self.stylelayers["Project Locations"] !== null)
 				opts["chart"]["onclick"] = function() {wb.toggleSector(links[this.bar.index])};
 				 
-			var financing_total = funding > 1000 ? (funding/1000).toFixed(2) + " Billion" : funding.toFixed(2) + " Million";
-			jq('#sector_funding_total').html("$" + financing_total); // + " <span class='subtotal' title='Global Financing'>/ $136.912 Billion</span>"
+			var financing_total = funding > 1000 ? (funding/1000).toFixed(2) + " billion" : funding.toFixed(2) + " million";
+			jq('#sector_funding_total').html("$" + financing_total); // + " <span class='subtotal' title='Global Financing'>/ $136.912 billion</span>"
 			jq('#sector_funding_title').html("Financed Activities by Sector")
 
 		} else {
@@ -876,9 +884,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			var colors = self.fadeHex(self.sectors[sector_name].color, "#aaaaaa", 8);
 			opts["chart"] = {legend: labels, colors: colors};
 			opts["colors"] = colors;
-			var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " Billion" : self.total_funding.toFixed(2) + " Million"
+			var financing_total = self.total_funding > 1000 ? (self.total_funding/1000).toFixed(2) + " billion" : self.total_funding.toFixed(2) + " million"
 
-			jq('#sector_funding_total').html("$" + funding.toFixed(2) + " Million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");
+			jq('#sector_funding_total').html("$" + funding.toFixed(2) + " million <span class='subtotal' title='National Financing'>/ $"+ financing_total + "</span>");
 			jq('#sector_funding_title').html("Financed Activities for " + sector_names + " Sector")
 		}
 
@@ -975,9 +983,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var features = [];
 	  var links = [];
 	  var labels = [];
-	  jq.each(self.regions, function(s, financing) {
-		features.push({name: s, financing: financing});
-		labels.push(s)
+	  var values = []
+	  var keys = [];
+      for(var key in self.regions){ if(key != "OTHER") {keys.push(key);} }
+      
+	  jq.each(keys.sort(), function(i,s) {
+		features.push({name: s, financing: self.regions[s]});
+		values.push(self.regions[s]/1000)
+		labels.push(s.wordwrap(8, "\n", false))
 		links.push("#" + s);
 	  });
 
@@ -987,9 +1000,23 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  "data":{"name": "Financing Amount $m", "original_name": "financing"}, 
 		  "description":{"name": "Region", "original_name": "name"}, 
 		  "sort":{"name": "Financing Amount $m","original_name": "financing"} } };
-	  F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {
-		  return links[this.bar.index];
-	  }});
+          
+      jq("#chart-right-graph").html("")
+      var r = Raphael("chart-right-graph");
+
+      fin = function () {
+          this.flag = r.g.popup(this.bar.x, this.bar.y, "$" + (this.bar.value).toFixed(2) + "b").insertBefore(this);
+      }
+      fout = function () {
+          this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+      }
+      r.g.barchart(0, 10, 440, 170, [values], bar_options).hover(fin, fout);;
+      // r.g.axis(x_start, y_start, x_width, from, to, steps, orientation, labels, type, dashsize)
+      axis = r.g.axis(37,200,435,null,null,labels.length,2,labels, " ", 0);
+      // axis.text.attr({font:"8px Arial", fill:"#333", "font-weight": "regular", "color": "#333"});
+      // axis2 = r.g.axis(35,190,300,0,400,10,1);
+      return r;
+      // F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {          return links[this.bar.index]; }});
 	},
 	productlineFundingBars: function() {
 	  var self = this;
@@ -1031,17 +1058,19 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		// }
 	  });
 
-	  jq('#funding_total').html("$" + self.total_funding.toFixed(1) + " Million");
+	  jq('#funding_total').html("$" + self.total_funding.toFixed(1) + " million");
 	  
 	  bar_options = {"features":features, "attributes": {
 		  "data":{"name": "Financing Amount", "original_name": "totalamt"}, 
 		  "description":{"name": "Project", "original_name": "project_name"}, 
 		  "sort":{"name": "Total Amount","original_name": "totalamt"} } };
-	  F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {data_label: true, href: links, colors: colors, label: function() {
-		  return links[this.bar.index];
-	  }, onclick: function() {
-		  wb.highlightProject(features[this.bar.index].id);;
-		  }});
+
+      barchart = F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {data_label: true, href: links, colors: colors, label: function() {
+                       return links[this.bar.index];
+                   }, onclick: function() {
+                       wb.highlightProject(features[this.bar.index].id);;
+               }});
+          
 	},	  
     getLayers: function() {
         var self = this;
@@ -1126,9 +1155,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
             // infowindow
             if(self.stylelayers["Project Locations"] !== undefined) {
                 if(self.country == "Development Marketplace") {
-                     self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project: <a target='_new' href='$[source url]'>$[project title]</a>\nYear Funded: $[approval date]\nFunding Amount:$ $[total amt]\n\n$[development objective]"}, {title: "Location", type: "text", value: "$[geoname], $[country]\n$[region]"}]});
+                     self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project: <a target='_new' href='$[source url]'>$[project title]</a>\nYear Funded: $[approval date]\nFunding Amount:$ $[total amt]\nObjective:\n$[development objective]"}, {title: "Location", type: "text", value: "$[geoname], $[country]\n$[region]"}]});
                 } else {
-                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$["+major_sector_name+"]\n\n$[development objective]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\n\n$[precision description]"},
+                self.map.swf.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$["+major_sector_name+"]\nObjective:\n$[development objective]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\nGeoname: $[geoname]\n\nDescription:\n$[precision description]"},
                 {title:"Results", type: "text", value: "$[results]"}
                 ]});
                 }
@@ -1150,7 +1179,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
     if(!this.embed){
         this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
 	  } else {
-        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:y}}}) }
+        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:y}}}) 
+    }
         
 	  return false;
 	},
@@ -1196,10 +1226,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Mines","all", true)
             self.toggleExtractive("Mineral deposits","all", false)
             self.toggleExtractive("Oil fields","all", true)     
-            self.map.swf.setStyle( {zoom: { offset: {x:15,y:80}}} )
             self.setExtractiveIndicator('Mines','Total production','Production',true)
             self.map.swf.addLayerCategoryFilter(11,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
             self.minesPieChart() 
+            self.map.swf.setStyle( {zoom: { offset: {x:65,y:80}}} )
         }
         self.loadState();
         jq("#map-summary").show();
@@ -1233,7 +1263,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  if(self.country != "World") {
 		// self.map.swf.addLayerCategoryFilter(0, {attribute:major_sector_name,categories:self.wbicons});
 	  } else if (self.country == "World") {
-		self.map.swf.addLayerInfoWindowFilter(0, {title: "$[Country]", subtitle: "", tabs: [{title:"About", type: "text", value: "You can explore the growing list of available project profiles of World Bank activities across the world. $[Description]"}]}); }
+		self.map.swf.addLayerInfoWindowFilter(0, {title: "$[country]", subtitle: "$[project count] projects" , tabs: [{title:"About", type: "text", value: "You can explore the growing list of available project profiles of World Bank activities across the world. $[description]"}]}); }
 	  // else
 	  //   self.map.swf.addLayerInfoWindowFilter(0, {"title": "$[project title]","subtitle": "$[country]- $[sector1]","tabs": [{"title": "Financing","type": "text","value": "Project ID: \u003Ca target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627\u0026piPK=73230\u0026theSitePK=40941\u0026menuPK=228424\u0026Projectid=$[project id]'\u003E$[project id]\u003C/a\u003E\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt]million"},{"title": "Location","type": "text","value": "Country: $[country]\nProvince: $[adm1]\nDistrict: $[adm2]\nLatitude:$[latitude]\nLongitude:$[longitude]"}]})
 		
