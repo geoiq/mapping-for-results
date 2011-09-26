@@ -1176,13 +1176,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
     if (ch !== undefined && ch.length == 0)
       y = 20
 	    
-      this.map.showControl("Zoom",true);
-      this.map.showControl("Legend",true);
-      this.map.swf.setStyle( {legend: { buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});
+      this.map.swf.setStyle( {legend: {  visible: true, buttonBgColor:0x92948C, buttonPlacement:"horizontal", buttonFontColor:0xFFFFFF, buttonBgAlpha:0.7,offset:{x:0,y:0}}});
     if(!this.embed){
-        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
+        this.map.swf.setStyle( { zoom: { visible: true, bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
 	  } else {
-        this.map.swf.setStyle( { zoom: {bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:y}}}) 
+        this.map.swf.setStyle( { zoom: { visible: true, bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:y}}}) 
     }
         
 	  return false;
