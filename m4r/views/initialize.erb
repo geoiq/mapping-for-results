@@ -1,7 +1,7 @@
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  function onload() {
+  wb = new F1.WorldBank();
   <% if @page[:page_type] == "country" %>
 
   var projects = [<%= (@projects || []).collect do |project_id, project|
@@ -36,5 +36,5 @@
   wb.init("<%= (@page[:map] || "''").to_s %>",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions, thematic_area: "<%= @additional_controls || "m4r" %>" }, <%= @embed || false %>);
   
   <% end %>
-  
+  }
 </script>
