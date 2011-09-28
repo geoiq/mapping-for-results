@@ -1,4 +1,5 @@
-jq(function() {
+function initializeEvents() {
+    initializeTipsy();
     // jq(".collapsible-header").click(function () {
     //         if(jQuery(this).hasClass("expanded")) {
     //             // jq("#collapsible-banner").hide("blind", { direction: "vertical" }, 2000);
@@ -75,4 +76,4 @@ jq(function() {
     jq('table#projects-table_grid tr').hover(function() { jq(this).addClass('active')},function() { jq(this).removeClass('active')})
     jq('.simpleshare_link').click(function() { jq('#share-pane').toggle() });
     jq('#share-pane .close').click(function() { jq('#share-pane').toggle() });
-});
+}

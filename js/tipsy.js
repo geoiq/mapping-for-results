@@ -3,10 +3,10 @@
 // (c) 2008-2010 jason frame [jason@onehackoranother.com]
 // released under the MIT license
 
-(function($) {
+function initializeTipsy() {
     
     function Tipsy(element, options) {
-        this.$element = $(element);
+        this.jqelement = jq(element);
         this.options = options;
         this.enabled = true;
         this.fixTitle();
@@ -16,20 +16,20 @@
         show: function() {
             var title = this.getTitle();
             if (title && this.enabled) {
-                var $tip = this.tip();
+                var jqtip = this.tip();
                 
-                $tip.find('.tipsy-inner')[this.options.html ? 'html' : 'text'](title);
-                $tip[0].className = 'tipsy'; // reset classname in case of dynamic gravity
-                $tip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).appendTo(document.body);
+                jqtip.find('.tipsy-inner')[this.options.html ? 'html' : 'text'](title);
+                jqtip[0].className = 'tipsy'; // reset classname in case of dynamic gravity
+                jqtip.remove().css({top: 0, left: 0, visibility: 'hidden', display: 'block'}).appendTo(document.body);
                 
-                var pos = $.extend({}, this.$element.offset(), {
-                    width: this.$element[0].offsetWidth,
-                    height: this.$element[0].offsetHeight
+                var pos = jq.extend({}, this.jqelement.offset(), {
+                    width: this.jqelement[0].offsetWidth,
+                    height: this.jqelement[0].offsetHeight
                 });
                 
-                var actualWidth = $tip[0].offsetWidth, actualHeight = $tip[0].offsetHeight;
+                var actualWidth = jqtip[0].offsetWidth, actualHeight = jqtip[0].offsetHeight;
                 var gravity = (typeof this.options.gravity == 'function')
-                                ? this.options.gravity.call(this.$element[0])
+                                ? this.options.gravity.call(this.jqelement[0])
                                 : this.options.gravity;
                 
                 var tp;
@@ -56,55 +56,55 @@
                     }
                 }
                 
-                $tip.css(tp).addClass('tipsy-' + gravity);
+                jqtip.css(tp).addClass('tipsy-' + gravity);
                 
                 if (this.options.fade) {
-                    $tip.stop().css({opacity: 0, display: 'block', visibility: 'visible'}).animate({opacity: this.options.opacity});
+                    jqtip.stop().css({opacity: 0, display: 'block', visibility: 'visible'}).animate({opacity: this.options.opacity});
                 } else {
-                    $tip.css({visibility: 'visible', opacity: this.options.opacity});
+                    jqtip.css({visibility: 'visible', opacity: this.options.opacity});
                 }
             }
         },
         
         hide: function() {
             if (this.options.fade) {
-                this.tip().stop().fadeOut(function() { $(this).remove(); });
+                this.tip().stop().fadeOut(function() { jq(this).remove(); });
             } else {
                 this.tip().remove();
             }
         },
         
         fixTitle: function() {
-            var $e = this.$element;
-            if ($e.attr('title') || typeof($e.attr('original-title')) != 'string') {
-                $e.attr('original-title', $e.attr('title') || '').removeAttr('title');
+            var jqe = this.jqelement;
+            if (jqe.attr('title') || typeof(jqe.attr('original-title')) != 'string') {
+                jqe.attr('original-title', jqe.attr('title') || '').removeAttr('title');
             }
         },
         
         getTitle: function() {
-            var title, $e = this.$element, o = this.options;
+            var title, jqe = this.jqelement, o = this.options;
             this.fixTitle();
             var title, o = this.options;
             if (typeof o.title == 'string') {
-                title = $e.attr(o.title == 'title' ? 'original-title' : o.title);
+                title = jqe.attr(o.title == 'title' ? 'original-title' : o.title);
             } else if (typeof o.title == 'function') {
-                title = o.title.call($e[0]);
+                title = o.title.call(jqe[0]);
             }
-            title = ('' + title).replace(/(^\s*|\s*$)/, "");
+            title = ('' + title).replace(/(^\s*|\s*jq)/, "");
             return title || o.fallback;
         },
         
         tip: function() {
-            if (!this.$tip) {
-                this.$tip = $('<div class="tipsy"></div>').html('<div class="tipsy-arrow"></div><div class="tipsy-inner"></div>');
+            if (!this.jqtip) {
+                this.jqtip = jq('<div class="tipsy"></div>').html('<div class="tipsy-arrow"></div><div class="tipsy-inner"></div>');
             }
-            return this.$tip;
+            return this.jqtip;
         },
         
         validate: function() {
-            if (!this.$element[0].parentNode) {
+            if (!this.jqelement[0].parentNode) {
                 this.hide();
-                this.$element = null;
+                this.jqelement = null;
                 this.options = null;
             }
         },
@@ -114,7 +114,7 @@
         toggleEnabled: function() { this.enabled = !this.enabled; }
     };
     
-    $.fn.tipsy = function(options) {
+    jq.fn.tipsy = function(options) {
         
         if (options === true) {
             return this.data('tipsy');
@@ -124,13 +124,13 @@
             return this;
         }
         
-        options = $.extend({}, $.fn.tipsy.defaults, options);
+        options = jq.extend({}, jq.fn.tipsy.defaults, options);
         
         function get(ele) {
-            var tipsy = $.data(ele, 'tipsy');
+            var tipsy = jq.data(ele, 'tipsy');
             if (!tipsy) {
-                tipsy = new Tipsy(ele, $.fn.tipsy.elementOptions(ele, options));
-                $.data(ele, 'tipsy', tipsy);
+                tipsy = new Tipsy(ele, jq.fn.tipsy.elementOptions(ele, options));
+                jq.data(ele, 'tipsy', tipsy);
             }
             return tipsy;
         }
@@ -169,7 +169,7 @@
         
     };
     
-    $.fn.tipsy.defaults = {
+    jq.fn.tipsy.defaults = {
         delayIn: 0,
         delayOut: 0,
         fade: false,
@@ -185,19 +185,19 @@
     
     // Overwrite this method to provide options on a per-element basis.
     // For example, you could store the gravity in a 'tipsy-gravity' attribute:
-    // return $.extend({}, options, {gravity: $(ele).attr('tipsy-gravity') || 'n' });
+    // return jq.extend({}, options, {gravity: jq(ele).attr('tipsy-gravity') || 'n' });
     // (remember - do not modify 'options' in place!)
-    $.fn.tipsy.elementOptions = function(ele, options) {
-        return $.metadata ? $.extend({}, options, $(ele).metadata()) : options;
+    jq.fn.tipsy.elementOptions = function(ele, options) {
+        return jq.metadata ? jq.extend({}, options, jq(ele).metadata()) : options;
     };
     
-    $.fn.tipsy.autoNS = function() {
-        return $(this).offset().top > ($(document).scrollTop() + $(window).height() / 2) ? 's' : 'n';
+    jq.fn.tipsy.autoNS = function() {
+        return jq(this).offset().top > (jq(document).scrollTop() + jq(window).height() / 2) ? 's' : 'n';
     };
     
-    $.fn.tipsy.autoWE = function() {
-        return $(this).offset().left > ($(document).scrollLeft() + $(window).width() / 2) ? 'e' : 'w';
+    jq.fn.tipsy.autoWE = function() {
+        return jq(this).offset().left > (jq(document).scrollLeft() + jq(window).width() / 2) ? 'e' : 'w';
     };
     
-})(jQuery);
+}
 

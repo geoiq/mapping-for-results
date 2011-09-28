@@ -460,9 +460,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  } else if(sector == 'all') {
 		if(visible === undefined || visible === null)
 		  visible = !(jq("#sall").attr('checked'));
-		  
+
 		if(visible) {
-		  self.map.clearFilters(self.stylelayers["Project Locations"].order);
+		  try {self.map.clearFilters(self.stylelayers["Project Locations"].order);} catch(err) {}
 		  jq.each(self.sectors, function(sector) {
 			if(Object.include(self.visibleSectors, sector) === undefined || Object.include(self.visibleSectors, sector) === null)
 			  self.visibleSectors.push(sector);
@@ -492,8 +492,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
         jq('#layercontrol_projects').html("By Count");
         jq('#map-content-icons').hide()
 		jq('#map-content-regions').show()
-        $('input:radio[name="by_region"]').filter('[value="province"]').attr('checked', true);
-        $('input:radio[name="by_region"]').filter('[value="district"]').attr('checked', false);
+        jq('input:radio[name="by_region"]').filter('[value="province"]').attr('checked', true);
+        jq('input:radio[name="by_region"]').filter('[value="district"]').attr('checked', false);
 
 	  } else if(sector == 'counts_admin2') {
           self.visibleSectors = [sector];
@@ -666,13 +666,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var self = this;
 	  var highlightExpression = "$[" + attribute + "] == '"+mineral+"'";
 	  this.map.clearHighlights(self.stylelayers["Mines"].order);
-	  this.map.addHighlight(self.stylelayers["Mines"].order,highlightExpression);
+	  this.map.addHighlight(self.stylelayers["Mines"].order,{expression: highlightExpression});
 	},
 	highlightProject: function(project_id) {
 	  var self = this;
 	  var highlightExpression = "$[project id] == '"+project_id+"'";
 	  this.map.clearHighlights(self.stylelayers["Project Locations"].order);
-	  this.map.addHighlight(self.stylelayers["Project Locations"].order,highlightExpression);
+	  this.map.addHighlight(self.stylelayers["Project Locations"].order,{expression: highlightExpression});
 	},
 	sortData: function(data) {
 	  var self = this;
@@ -991,7 +991,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  jq.each(keys.sort(), function(i,s) {
 		features.push({name: s, financing: self.regions[s]});
 		values.push(self.regions[s]/1000)
-		labels.push(s.wordwrap(8, "\n", false))
+		labels.push(s.wordwrap(8, "\n", false).toLowerCase().capitalize())
 		links.push("#" + s);
 	  });
 
@@ -1014,7 +1014,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       r.g.barchart(0, 10, 440, 170, [values], bar_options).hover(fin, fout);;
       // r.g.axis(x_start, y_start, x_width, from, to, steps, orientation, labels, type, dashsize)
       axis = r.g.axis(37,200,435,null,null,labels.length,2,labels, " ", 0);
-      // axis.text.attr({font:"8px Arial", fill:"#333", "font-weight": "regular", "color": "#333"});
+      axis.text.attr({font:"12px 'Fontin Sans', Fontin-Sans, sans-serif", fill:"#333", "font-weight": "regular", "color": "#333"});
       // axis2 = r.g.axis(35,190,300,0,400,10,1);
       return r;
       // F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {          return links[this.bar.index]; }});
@@ -1192,7 +1192,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		
 		self.map.clearHighlights(0);
 		jq.map(regions,function(region) {
-			self.map.addHighlight(0, "$["+region_attr+"] == '"+region+"'");
+			self.map.addHighlight(0, {expression: "$["+region_attr+"] == '"+region+"'"});
 		});
 	},
 	hideLoading: function() {
@@ -1206,8 +1206,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
         self.getLayers(self.map);
         self.styleMap(self.map);
 
-        if(self.country_attrs.indicators !== undefined && self.stylelayers[self.country_attrs.indicators[0]] !== undefined)
-        self.setIndicator(self.country_attrs.indicators[0]);
+        if(self.country_attrs.indicators !== undefined && self.stylelayers[self.country_attrs.indicators[0]] !== undefined) {
+            self.setIndicator(self.country_attrs.indicators[0]);
+        }
         // self.toggleSector("counts_admin1",true);
         count = self.country_attrs["projects_count"];
         if(self.thematic_area == 'm4r'){
@@ -1239,7 +1240,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.sortProjects(self.projects);
             self.projectTable(self.projects);
             // self.projectFundingBars();
-            self.productlineFundingBars();
             self.sectorPieChart("all", false);
             self.toggleSector("all", true, false);
         }
@@ -1281,6 +1281,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  } else {
 		  self.styleWorldMap();
 	  }
+
+      initializeEvents();
 	  if(this.callback !== undefined && this.callback !== null) {
 	    this.callback.call(self)
 	  }
