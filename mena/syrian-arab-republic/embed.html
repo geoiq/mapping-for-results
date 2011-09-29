@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P123698',project_name: 'Urban Upgrading Strategy for Rief Damascus',totalamt: 0.27,grantamt: 0.27,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":60},{"Name":"Finance","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
@@ -55,7 +54,6 @@
 ,{id: 'P121005',project_name: 'Syria - State of the Cities Report',totalamt: 0.45,grantamt: 0.45,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":35},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Finance","Percent":15},{"Name":"Industry and trade","Percent":15}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}];
       
   wb.init("1840",  "Syria", "Middle East and North Africa", {projects_count: '4', locations_count: '0', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

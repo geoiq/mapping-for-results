@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P106449',project_name: 'Emergency Recovery and Disaster Management',totalamt: 12.5,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":23},{"Name":"Transportation","Percent":23},{"Name":"Industry and trade","Percent":23},{"Name":"Public Administration, Law, and Justice","Percent":18},{"Name":"Public Administration, Law, and Justice","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
@@ -71,7 +70,6 @@
 ,{id: 'P111863',project_name: 'BO (AF) Rural Alliances',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":45},{"Name":"Industry and trade","Percent":40},{"Name":"Industry and trade","Percent":10},{"Name":"Industry and trade","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}];
       
   wb.init("262",  "Bolivia", "Latin America & Caribbean", {projects_count: '20', locations_count: '655', projects: projects, locations_layer: 0, indicators: ['Poverty','Malnutrition','Infant Mortality','Maternal Health','Population','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P117102',project_name: 'Sanitation Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":83},{"Name":"Public Administration, Law, and Justice","Percent":17}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
@@ -551,7 +550,6 @@
 ,{id: 'P121492',project_name: 'Enhanced Public Sector Efficiency Technical Assistance Loan',totalamt: 55.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
   wb.init("1735",  "Turkey", "Europe and Central Asia", {projects_count: '500', locations_count: '470', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

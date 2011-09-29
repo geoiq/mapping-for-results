@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P106680',project_name: 'Second Land Administration Project',totalamt: 32.8,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":66},{"Name":"Agriculture, fishing, and forestry","Percent":18},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
@@ -73,7 +72,6 @@
 ,{id: 'P092987',project_name: 'Pico Bonito Sustainable Forests Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}];
       
   wb.init("417",  "Honduras", "Latin America & Caribbean", {projects_count: '22', locations_count: '262', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P093720',project_name: 'Himachal Pradesh Mid-Himalayan Watershed Development Project',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":43},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Transportation","Percent":20},{"Name":"Industry and trade","Percent":7},{"Name":"Health and other social services","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
@@ -171,7 +170,6 @@
 ,{id: 'P102790',project_name: 'India - Chiller Energy Efficiency Project - MP Component',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'Montreal Protocol',sector_code: 'LX'}];
       
   wb.init("416",  "India", "South Asia", {projects_count: '120', locations_count: '1,674', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

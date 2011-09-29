@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P107608',project_name: 'National Road Rehabilitation (Osh-Batken-Isfana)',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
@@ -86,7 +85,6 @@
 ,{id: 'P095206',project_name: 'KG - DISASTER HAZARD MSP',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'GEF Medium Sized Program',sector_code: 'LX'}];
       
   wb.init("454",  "Kyrgyz Republic", "Europe and Central Asia", {projects_count: '35', locations_count: '104', projects: projects, locations_layer: 0, indicators: ['Poverty'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

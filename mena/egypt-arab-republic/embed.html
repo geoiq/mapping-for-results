@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P100047',project_name: 'EG-Ain Sokhna Power Project',totalamt: 600.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jan-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
@@ -79,7 +78,6 @@
 ,{id: 'P119483',project_name: 'Egypt Vehicle Scrapping and Recycling Program',totalamt: 8.32,grantamt: 8.32,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'TX'}];
       
   wb.init("1805",  "Egypt", "Middle East and North Africa", {projects_count: '28', locations_count: '248', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

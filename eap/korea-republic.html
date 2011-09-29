@@ -102,6 +102,7 @@
               </ul>
            </li>     
         
+        
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
                 <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
@@ -110,6 +111,7 @@
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
+          
       </ul>
   </div>
     <div id="share_window" style="display: none;">
@@ -651,15 +653,13 @@
 
 
         <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [];
       
   wb.init("1844",  "South Korea", "East Asia & the Pacific", {projects_count: '0', locations_count: '0', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, false);
-  
   
 </script>
 

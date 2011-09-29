@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P117860',project_name: 'First East-West Highway Additional Financing',totalamt: 28.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Transportation","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
@@ -69,7 +68,6 @@
 ,{id: 'P083110',project_name: 'First East-West Highway Improvement',totalamt: 19.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Transportation","Percent":94},{"Name":"Transportation","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Education","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}];
       
   wb.init("498",  "Georgia", "Europe and Central Asia", {projects_count: '18', locations_count: '438', projects: projects, locations_layer: 0, indicators: ['Poverty'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

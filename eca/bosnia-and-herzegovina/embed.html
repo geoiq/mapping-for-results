@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P101213',project_name: 'Agriculture and Rural Development Project',totalamt: 21.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":44},{"Name":"Public Administration, Law, and Justice","Percent":24},{"Name":"Agriculture, fishing, and forestry","Percent":22},{"Name":"Agriculture, fishing, and forestry","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
@@ -64,7 +63,6 @@
 ,{id: 'P096200',project_name: 'Land Registration',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Apr-2006',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":59},{"Name":"Public Administration, Law, and Justice","Percent":31},{"Name":"Finance","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
   wb.init("496",  "Bosnia and Herzegovina ", "Europe and Central Asia", {projects_count: '13', locations_count: '129', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P117157',project_name: 'STRENGTHENING PUBLIC HEALTH CARE SYSTEM',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
@@ -58,7 +57,6 @@
 ,{id: 'P122640',project_name: 'Disaster Risk Management Development Policy Loan with a CAT DDO',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":63},{"Name":"Health and other social services","Percent":33},{"Name":"Health and other social services","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}];
       
   wb.init("1716",  "El Salvador", "Latin America & Caribbean", {projects_count: '7', locations_count: '13', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

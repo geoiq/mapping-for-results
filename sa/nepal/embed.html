@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P118179',project_name: 'Modernization of Rani Jamara Kulariya Irrigation Scheme - Phase 1',totalamt: 43.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":76},{"Name":"Water, sanitation and flood protection","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
@@ -81,7 +80,6 @@
 ,{id: 'P110463',project_name: 'Second Rural Water Supply and Sanitation Project - Additional Financing',totalamt: 27.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":90},{"Name":"Water, sanitation and flood protection","Percent":5},{"Name":"Health and other social services","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}];
       
   wb.init("373",  "Nepal", "South Asia", {projects_count: '30', locations_count: '766', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

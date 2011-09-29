@@ -44,15 +44,13 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P111474',project_name: 'Seychelles National Disaster Preparedness and Response Project',totalamt: 0.9,grantamt: 0.9,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}];
       
   wb.init("1790",  "Seychelles", "Africa", {projects_count: '1', locations_count: '1', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

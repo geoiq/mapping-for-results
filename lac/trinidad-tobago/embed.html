@@ -44,15 +44,13 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P094948',project_name: 'Trinidad and Tobago: Nariva ecosystem restoration and carbon sequestration',totalamt: 2.6,grantamt: 2.6,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":70},{"Name":"Agriculture, fishing, and forestry","Percent":30}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}];
       
   wb.init("1791",  "Trinidad and Tobago", "Latin America & Caribbean", {projects_count: '1', locations_count: '5', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

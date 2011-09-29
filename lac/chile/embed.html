@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P081743',project_name: 'Chile Hornitos Project (Chacabuquito II)',totalamt: 3.15,grantamt: 3.15,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
@@ -62,7 +61,6 @@
 ,{id: 'P102931',project_name: 'Ministry of Public Works Institutional Strenghtening TAL',totalamt: 11.7,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
   wb.init("1744",  "Chile", "Latin America & Caribbean", {projects_count: '11', locations_count: '16', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

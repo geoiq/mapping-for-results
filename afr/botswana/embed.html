@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P112516',project_name: 'Botswana - Morupule B Generation and Transmission Project',totalamt: 136.4,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
@@ -56,7 +55,6 @@
 ,{id: 'P102368',project_name: 'Integrated Transport',totalamt: 186.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Transportation","Percent":88},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}];
       
   wb.init("1793",  "Botswana", "Africa", {projects_count: '5', locations_count: '40', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

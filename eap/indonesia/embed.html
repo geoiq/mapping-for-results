@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P089479',project_name: 'Early Childhood Education and Development Project',totalamt: 67.5,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Education","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
@@ -128,7 +127,6 @@
 ,{id: 'P071318',project_name: 'Coral Reef Rehabilitation and Management Project II',totalamt: 7.5,grantamt: 7.5,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Finance","Percent":12},{"Name":"Education","Percent":8}],prodlinetext: 'Global Environment Project',sector_code: 'JX'}];
       
   wb.init("1769",  "Indonesia", "East Asia & the Pacific", {projects_count: '77', locations_count: '621', projects: projects, locations_layer: 0, indicators: ['Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

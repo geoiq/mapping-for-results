@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P100597',project_name: 'SOIL CONSERVATION FOLLOW UP PROJECT',totalamt: 2.48,grantamt: 2.48,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}
@@ -79,7 +78,6 @@
 ,{id: 'P116187',project_name: 'Additional Financing for Competitiveness Enhancement Project',totalamt: 24.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Finance","Percent":50},{"Name":"Finance","Percent":47},{"Name":"Industry and trade","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}];
       
   wb.init("410",  "Moldova", "Europe and Central Asia", {projects_count: '28', locations_count: '455', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

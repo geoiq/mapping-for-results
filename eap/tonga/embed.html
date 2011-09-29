@@ -44,16 +44,14 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P096931',project_name: 'Tonga Transport Sector Consolidation Project',totalamt: 5.44,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Transportation","Percent":45},{"Name":"Public Administration, Law, and Justice","Percent":43},{"Name":"Transportation","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P120595',project_name: 'Tonga Post Tsunami Reconstruction',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Oct-2010',majorsector_percent: [{"Name":"Industry and trade","Percent":81},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Information and communications","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}];
       
   wb.init("469",  "Tonga", "East Asia & the Pacific", {projects_count: '2', locations_count: '11', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P120181',project_name: 'Encouraging More Resilient Communities in Conflict-affected Areas of the Philippines',totalamt: 2.57,grantamt: 2.57,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
@@ -99,7 +98,6 @@
 ,{id: 'P077012',project_name: 'Kapitbisig Laban sa Kahirapan-Comprehensive and Integrated Delivery of Social Services (KALAHI-CIDSS) Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2002',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Education","Percent":20},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}];
       
   wb.init("263",  "Philippines", "East Asia & the Pacific", {projects_count: '48', locations_count: '4,642', projects: projects, locations_layer: 0, indicators: ['Poverty','Infant Mortality','Maternal Health','Population','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

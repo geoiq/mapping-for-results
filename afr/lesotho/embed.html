@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P075566',project_name: 'Lesotho Integrated Transport Project',totalamt: 23.5,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Transportation","Percent":67},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":1},{"Name":"Public Administration, Law, and Justice","Percent":1},{"Name":"Transportation","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
@@ -59,7 +58,6 @@
 ,{id: 'P088544',project_name: 'Private Sector Competitiveness and Economic Diversification',totalamt: 8.1,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":38},{"Name":"Industry and trade","Percent":22},{"Name":"Agriculture, fishing, and forestry","Percent":21},{"Name":"Industry and trade","Percent":13},{"Name":"Education","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
   wb.init("415",  "Lesotho", "Africa", {projects_count: '8', locations_count: '51', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

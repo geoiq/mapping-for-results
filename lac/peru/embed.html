@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P117310',project_name: 'Results in Nutrition for Juntos SWAp',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
@@ -80,7 +79,6 @@
 ,{id: 'P065256',project_name: 'NATIONAL RURAL WATER SUPPLY AND SANITATION PROJECT',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Aug-2002',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":45},{"Name":"Water, sanitation and flood protection","Percent":45},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}];
       
   wb.init("1761",  "Peru", "Latin America & Caribbean", {projects_count: '29', locations_count: '214', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

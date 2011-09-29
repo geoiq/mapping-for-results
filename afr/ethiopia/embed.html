@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P125307',project_name: 'Irrigation and Drainage',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":97},{"Name":"Agriculture, fishing, and forestry","Percent":2},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
@@ -91,7 +90,6 @@
 ,{id: 'P049395',project_name: 'ENERGY ACCESS PROJECT',totalamt: 132.7,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Sep-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Agriculture, fishing, and forestry","Percent":5},{"Name":"Energy and mining","Percent":5},{"Name":"Industry and trade","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}];
       
   wb.init("446",  "Ethiopia", "Africa", {projects_count: '40', locations_count: '411', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 
