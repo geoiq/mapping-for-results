@@ -58,7 +58,18 @@ class MappingForResults < Sinatra::Base
   # get '/about' do 
   #   erb :about
   # end
+  get '/countries.csv' do 
+    @countries = WorldBank.get_country_projects
 
+    csv_string = FasterCSV.generate do |csv|
+      csv << (["countrycode","count"]).flatten
+      @countries.each do |countrycode, count|
+        csv << [countrycode, count]
+      end
+    end
+    csv_string
+  end
+  
   get '/projects.csv' do 
     @projects = WorldBank.get_active_projects
 

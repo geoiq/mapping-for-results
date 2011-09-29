@@ -7,7 +7,7 @@
 %w{ rubygems yajl yajl/gzip yajl/deflate yajl/http_stream faster_csv  }.each {|gem| require gem}
 module WorldBank
 
-  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg,countrycode&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
 
   PROJECT_FIELDS = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent","prodlinetext"]
   SECTORS = {
@@ -48,10 +48,10 @@ module WorldBank
   # @returns - a hash of project data:
   #     total   - total number of projects
   #     projects - array of projects
-  def self.get_all_projects
+  def self.get_all_projects(limit = nil)
     i = 0
     project_count = 0
-    total_projects = 100
+    total_projects = limit || 100
     projects = {}
     while(project_count < total_projects)
       url = URI.parse(WB_PROJECTS_API + "&os=#{500*i}") #&geocode=
@@ -68,9 +68,25 @@ module WorldBank
   end
     
   
-  def self.get_active_projects       
-    self.get_all_projects["projects"]
+  def self.get_active_projects(limit = nil)
+    self.get_all_projects(limit)["projects"]
   end
+  
+  # Get List of projects by Country
+  # @returns - a hash of project data:
+  #     total   - total number of projects
+  #     projects - array of projects
+  def self.get_country_projects
+    projects = self.get_active_projects
+    countries = {}
+    projects.each do |project_id, project|
+      
+      countries[project["countryname"]] = 0 unless countries.include?(project["countryname"])
+      countries[project["countryname"]] += 1
+    end
+    return countries
+  end
+      
   def self.get_project_data(country)
     url = URI.parse(WB_PROJECTS_API + "&geocode=&countrycode[]=" + country.isocode)
     puts "Fetching: #{url}"
