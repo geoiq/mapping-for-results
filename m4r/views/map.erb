@@ -1251,11 +1251,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
     },
   styleWorldMap: function() {
 	  var self = this;
-	  var active_countries = [];
-	  jq.each(jq('#locations_list li a'), function(index,active) {
-		 active_countries.push(active.text);
-	  });
-	  self.highlightRegions(active_countries);
 	  jq('#project_count').html(self.country_attrs["projects_count"]);
 	  jq('#activity_count').html(self.country_attrs["locations_count"]);
 	  self.sectorPieChart("all", false);

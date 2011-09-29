@@ -101,7 +101,7 @@ module Sinatra
       end
 
       html << %Q{ You can <a href="/admin/#{page.id}/edit">edit</a> this page}
-      html << %Q{, or <a href="/admin/#{page.id}/sync">sync with project API</a>.} unless page.page_type == "page"
+      html << %Q{, or <a href="/admin/#{page.id}/sync">sync with project API</a>.} if page.page_type == "country"
       if((children = page.children).length > 0)
         html << "<ul>"
         children.each do |child|
