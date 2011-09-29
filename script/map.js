@@ -890,24 +890,25 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			jq('#sector_funding_title').html("Financed Activities for " + sector_names + " Sector")
 		}
 
-		   if(projects.length == 0){
-				jq('#sector_funding_total').hide();
-				jq('#chart-left-bar-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
-				return;
-			}
+        if(projects.length == 0){
+            jq('#sector_funding_total').hide();
+            jq('#chart-left-bar-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
+            return;
+        }
 
-			if(projects.length == 1){
-				jq('#chart-left-pie-chart').html("<br />" + projects[0].project_name + ".<br />There is only a single project in this sector.");
-				return;
-			}
+        if(projects.length == 1){
+            jq('#chart-left-pie-chart').html("<br />" + projects[0].project_name + ".<br />There is only a single project in this sector.");
+            return;
+        }
 
-			jq('#sector_funding_total').show();
-			jq('#chart-left-pie-chart').show();
+        jq('#sector_funding_total').show();
+        jq('#chart-left-pie-chart').show();
 
-			if(self.stylelayers["Project Locations"] !== undefined && self.stylelayers["Project Locations"] !== null)
-				opts["href"] = links;
-			
-			F1.Visualizer.charts.pie(190, width, pie_options, "chart-left-pie-chart", opts);		  
+        if(self.stylelayers["Project Locations"] !== undefined && self.stylelayers["Project Locations"] !== null) {
+            opts["href"] = links;
+        }
+
+        F1.Visualizer.charts.pie(190, width, pie_options, "chart-left-pie-chart", opts);		  
 
 	},
 	minesPieChart: function() {
@@ -990,7 +991,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  jq.each(keys.sort(), function(i,s) {
 		features.push({name: s, financing: self.regions[s]});
 		values.push(self.regions[s]/1000)
-		labels.push(s.wordwrap(8, "\n", false))
+		labels.push(s.wordwrap(8, "\n", false).toLowerCase().capitalize())
 		links.push("#" + s);
 	  });
 
@@ -1004,16 +1005,16 @@ if(typeof(F1)=='undefined') {F1 = {};}
       jq("#chart-right-graph").html("")
       var r = Raphael("chart-right-graph");
 
-      fin = function () {
+      var fin = function () {
           this.flag = r.g.popup(this.bar.x, this.bar.y, "$" + (this.bar.value).toFixed(2) + "b").insertBefore(this);
       }
-      fout = function () {
+      var fout = function () {
           this.flag.animate({opacity: 0}, 300, function () {this.remove();});
       }
       r.g.barchart(0, 10, 440, 170, [values], bar_options).hover(fin, fout);;
       // r.g.axis(x_start, y_start, x_width, from, to, steps, orientation, labels, type, dashsize)
       axis = r.g.axis(37,200,435,null,null,labels.length,2,labels, " ", 0);
-      // axis.text.attr({font:"8px Arial", fill:"#333", "font-weight": "regular", "color": "#333"});
+      axis.text.attr({font:"12px 'Fontin Sans', Fontin-Sans, sans-serif", fill:"#333", "font-weight": "regular", "color": "#333"});
       // axis2 = r.g.axis(35,190,300,0,400,10,1);
       return r;
       // F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {          return links[this.bar.index]; }});
@@ -1078,15 +1079,16 @@ if(typeof(F1)=='undefined') {F1 = {};}
         possibleLayers = [];
         
         // getLayers doesn't work with Medusa
-        for(var i=0; i<15; i++) {
-            
-            var l = self.map.swf.getLayer(i);
-            
-            if(l !== null && l !== undefined){
-                l.order = i;
-                possibleLayers.push(l)
-            }
-        }
+        try {
+            for(var i=0; i<15; i++) {
+
+                var l = self.map.swf.getLayer(i);
+
+                if(l !== null && l !== undefined){
+                    l.order = i;
+                    possibleLayers.push(l)
+                }
+            }} catch(err) {}
         // self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
         // return;
         var index;
