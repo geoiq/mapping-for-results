@@ -1,7 +1,7 @@
 %w{ rubygems m4r/models/page }.each {|gem| require gem}
 #host = "http://localhost:4567"
 host = "http://wbstaging.geocommons.com"
-
+=begin
 %w{script/map.js script/extractives.js 404.html 500.html}.each do |page|
   puts "#{page}"
   system "curl #{host}/#{page} > #{page}"
@@ -11,13 +11,13 @@ end
   puts "#{page.name}"
   system "curl #{host}#{page.url} > about/#{page.url}.html"
 end
-
+=end
 @regions = Page.all :page_type => "region"
 @regions.each do |region|
   puts "#{region.name}"
   system "mkdir -p .#{region.url}"
 end
-@pages = Page.all
+@pages = Page.all :page_type => "country"
 @pages.each do |page|
   puts "#{page.name}"
   system "mkdir -p .#{page.url}"
