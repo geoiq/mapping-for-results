@@ -991,7 +991,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  jq.each(keys.sort(), function(i,s) {
 		features.push({name: s, financing: self.regions[s]});
 		values.push(self.regions[s]/1000)
-		labels.push(s.wordwrap(8, "\n", false))
+		labels.push(s.wordwrap(8, "\n", false).toLowerCase().capitalize())
 		links.push("#" + s);
 	  });
 
@@ -1014,7 +1014,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       r.g.barchart(0, 10, 440, 170, [values], bar_options).hover(fin, fout);;
       // r.g.axis(x_start, y_start, x_width, from, to, steps, orientation, labels, type, dashsize)
       axis = r.g.axis(37,200,435,null,null,labels.length,2,labels, " ", 0);
-      // axis.text.attr({font:"8px Arial", fill:"#333", "font-weight": "regular", "color": "#333"});
+      axis.text.attr({font:"12px 'Fontin Sans', Fontin-Sans, sans-serif", fill:"#333", "font-weight": "regular", "color": "#333"});
       // axis2 = r.g.axis(35,190,300,0,400,10,1);
       return r;
       // F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {          return links[this.bar.index]; }});
@@ -1088,8 +1088,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     l.order = i;
                     possibleLayers.push(l)
                 }
-            } catch(err) {
-            }
+            }} catch(err) {}
         // self.stylelayers["Project Locations"] = {order: 1, source: "", sharedLayer: false};
         // return;
         var index;

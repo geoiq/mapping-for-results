@@ -120,7 +120,7 @@
 	z-index: 1;
 }
 .menu-countries a, .menu-provinces a{
-	background: url('img/sprite.png') no-repeat -290px -328px;
+	background: url('img/sprite.png') no-repeat -290px -329px;
 	display: block;
 	padding: 1px 0 1px 10px;
 }
@@ -173,7 +173,7 @@
 	background: #7a7979 url('img/sprite.png') no-repeat -281px -364px;
 	color: #fff;
 }
-.worldmenu a{color: #989A94}
+.worldmenu a{/*color: #989A94*/ color: #333;}
 /*.dropmenu li a {
     display: block;font-family: Arial, Helvetica, sans-serif; font-size:11px; font-weight:bold; color: #fff; padding:5px; background-color: #97382a;text-decoration: none; background-image:url(../images/btn-dropmenu.gif); background-repeat:no-repeat; border:#5f2017 solid 1px; text-transform:uppercase} */
 .map-options li ul {
