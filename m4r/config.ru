@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 
 Sinatra::Base.set(:run, false)
-Sinatra::Base.set(:env, ENV['RACK_ENV'])
+Sinatra::Base.set(:env, ENV['RACK_ENV'] || "production")
 
 #require 'rack/pagespeed'
 require 'mapping_for_results'

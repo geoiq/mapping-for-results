@@ -135,7 +135,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  this.region = region;
 	  this.country_attrs = country_attrs;
 	  this.productlines = {}
-	  this.current_indicator = (country_attrs.indicators !== undefined && country_attrs.length > 0) ? country_attrs.indicators[0] : null;
+	  this.current_indicator = (country_attrs.indicators !== undefined && country_attrs.indicators.length > 0) ? country_attrs.indicators[0] : null;
 	  this.cb = callback;
 	  this.page_type = country_attrs.page_type;
 	  this.thematic_area = country_attrs.thematic_area;
@@ -613,6 +613,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},	  
 	setIndicator: function(indicator,visible) {
 	  var self = this;
+	  
+	  log("self.current_indicator",self.current_indicator)
 	  if(self.stylelayers[self.current_indicator] !== undefined)
 		self.map.showLayer(self.stylelayers[self.current_indicator].order, false);
 		
@@ -639,21 +641,22 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  infosub = F1.WorldBank.indicators[indicator].infosubtitle
 		
 		//infotabs.push({title:"Other Indicators", type: "text", value: "Maternal health: $[Maternal health]% of births attended by skilled health provider\nInfant mortality: $[Infant mortality] per 1000 live births\nMalnutrition: $[Malnutrition]%\nUnemployment rate: $[Unemployment rate]%\nRegional population: $[Regional population] people\nRegional population year: $[Regional population year]\nWealth quintile - highest: $[Wealth quintile - highest]%\nWealth quintile - second highest: $[Wealth quintile - second highest]%\nWealth quintile - fourth highest: $[Wealth quintile - fourth highest]%\nWealth quintile - lowest: $[Wealth quintile - lowest]%\nWealth quintile - middle: $[Wealth quintile - middle]%\nFor further information about these indicators, refer to the <a href='http://maps.worldbank.org/extractives/about' target='_new'>About page</a>"})
-		  
-		self.map.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: indicator + ": $["+ F1.WorldBank.indicators[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
+		try {
+    		self.map.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: indicator + ": $["+ F1.WorldBank.indicators[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
 
-		self.map.setLayerTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].title);
-		self.map.setLayerSubTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].subtitle);
-		self.map.showLayer(self.stylelayers[indicator].order, true);
+    		self.map.setLayerTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].title);
+    		self.map.setLayerSubTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].subtitle);
+    		self.map.showLayer(self.stylelayers[indicator].order, true);
 		
-		// China Indicators for Poverty
-		if(self.stylelayers["No Data"] !== undefined && self.stylelayers["No Data"] !== null && self.country == "China") {
-    		if(indicator == "Poverty") {
-                self.map.showLayer(self.stylelayers["No Data"].order, true);
-    		} else {
-                self.map.showLayer(self.stylelayers["No Data"].order, false);
-    		}
-    	}
+    		// China Indicators for Poverty
+    		if(self.stylelayers["No Data"] !== undefined && self.stylelayers["No Data"] !== null && self.country == "China") {
+        		if(indicator == "Poverty") {
+                    self.map.showLayer(self.stylelayers["No Data"].order, true);
+        		} else {
+                    self.map.showLayer(self.stylelayers["No Data"].order, false);
+        		}
+        	}
+    	} catch(err) { }
 		
 	  }
 	  self.current_indicator = indicator;
@@ -815,10 +818,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var funding = 0;
 		var sector_names = "";
 		var opts = {}
-		var width = 380;
-		var char_length = 13;
+		var width = 420;
+		var char_length = 24;
 		if( self.country == "World") {
-		    width = 400;
+		    width = 640;
 		    char_length = 45;
 		    }
 
@@ -847,8 +850,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
 				links.push("javascript:wb.sectorPieChart('" + project.shortname + "', true);");	 
 				colors.push(project.color)
 				var financing = project.funding > 1000 ? (project.funding/1000).toFixed(2) + "b" : project.funding.toFixed(2) + "m"
-				labels.push(Textify.elide_during(project.name, char_length, '...'   ) + " - $" + financing )
-				data.push({name:project.name + " - $" + financing,funding: project.funding})
+			    labels.push(Textify.elide_during(project.name, char_length, '...'   ) + " - $" + financing )
+		        if( self.country == "World") 
+				    data.push({name:project.name + " - $" + financing,funding: project.funding})
+				else 
+				    data.push({name:project.name,funding: project.funding})
 			});
 
 			pie_options = {"features":data, 
@@ -901,6 +907,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             return;
         }
 
+		opts["label_length"] = char_length;
         jq('#sector_funding_total').show();
         jq('#chart-left-pie-chart').show();
 
@@ -997,7 +1004,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
 	  jq('#funding_total').hide();
 	  
-	  bar_options = {"features":features, "attributes": {
+	  bar_options = {
+	        ids: labels,
+            "features":features, "attributes": {
 		  "data":{"name": "Financing Amount $m", "original_name": "financing"}, 
 		  "description":{"name": "Region", "original_name": "name"}, 
 		  "sort":{"name": "Financing Amount $m","original_name": "financing"} } };
@@ -1150,7 +1159,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     },
         styleMap: function() {
             var self = this;
-
+            log("styleMap", self.stylelayers)
             // icons
             if(self.stylelayers["Project Locations"] !== undefined) {
                 self.map.addLayerCategoryFilter(self.stylelayers["Project Locations"].order, {attribute:major_sector_name,categories:self.wbicons});
@@ -1169,22 +1178,24 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 self.map.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Activities: $[project count]", subtitle: "$[adm1] $[adm2]", tabs:[{title:"About", type:"text", value: "Counts are determined by the total number of activities working within or at this administrative level."}]});
             }
         },
-	styleLegend: function() {
-	  // for embedded maps
-    var y = 50;
-    var ch = jq("#map-content-hdr2");
-    if (ch !== undefined && ch.length == 0)
-      y = 20
-	    
-      this.map.setStyle( {legend: {  visible: true, bgColor:0x92948C, btnBgColor:0x92948C, btnPlacement:"horizontal", btnFontColor:0xFFFFFF, bgAlpha: 0.7, btnBgAlpha:0.7,offset:{x:0,y:0}}});
-    if(!this.embed){
-        this.map.setStyle( { zoom: { visible: true, expanded: true, bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
-	  } else {
-        this.map.setStyle( { zoom: { visible: true, expanded: true, bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:y}}}) 
-    }
-        
-	  return false;
-	},
+        styleLegend: function() {
+            // for embedded maps
+            var y = 50;
+            var ch = jq("#map-content-hdr2");
+            if (ch !== undefined && ch.length == 0)
+            y = 20
+
+            this.map.setStyle( {legend: {  visible: true, bgColor:0x92948C, btnBgColor:0x92948C, btnPlacement:"horizontal", btnFontColor:0xFFFFFF, bgAlpha: 0.7, btnBgAlpha:0.7,offset:{x:0,y:0}}});
+            if(!this.embed){
+                this.map.setStyle( { zoom: { visible: true, expanded: true, bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:50}}})
+            } else {
+                this.map.setStyle( { zoom: { visible: true, expanded: true, bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:y}}}) 
+            }
+
+            this.map.setMapStyle( { tooltip: { visible: true } } )
+
+            return false;
+        },
 	highlightRegions: function(regions, region_attr) {
 		var self = this;
 		if(region_attr === undefined || region_attr === null)
@@ -1203,12 +1214,17 @@ if(typeof(F1)=='undefined') {F1 = {};}
         var self = this;
 
         if( self.initialized ) { return; }
+        log("getting layers")
         self.getLayers(self.map);
+        log("Layers got", self.stylelayers)
         self.styleMap(self.map);
+        log("Map styled");
 
         if(self.country_attrs.indicators !== undefined && self.stylelayers[self.country_attrs.indicators[0]] !== undefined) {
+            log("setting indicator")
             self.setIndicator(self.country_attrs.indicators[0]);
         }
+        log("indicator")
         // self.toggleSector("counts_admin1",true);
         count = self.country_attrs["projects_count"];
         if(self.thematic_area == 'm4r'){
@@ -1239,9 +1255,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
         if(self.projects !== undefined && self.projects !== null && self.projects.length != 0) {
             self.sortProjects(self.projects);
             self.projectTable(self.projects);
+        log("sortProjects");
             // self.projectFundingBars();
             self.sectorPieChart("all", false);
             self.toggleSector("all", true, false);
+        log("sectorPieChart");
         }
         
         self.loadState();
@@ -1251,12 +1269,16 @@ if(typeof(F1)=='undefined') {F1 = {};}
     },
   styleWorldMap: function() {
 	  var self = this;
+	  log("styleWorldMap")
 	  jq('#project_count').html(self.country_attrs["projects_count"]);
 	  jq('#activity_count').html(self.country_attrs["locations_count"]);
+	  log("styleWorldMap styled")
 	  self.sectorPieChart("all", false);
 	  self.regionFundingBars();
-	  self.map.setCallback("onFeatureSelected", function(features){ var country = JSON.parse(features)[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') });
-	  
+      self.map.setStyle( {infowindow: {visible: false}});
+	  self.map.setCallback("onFeatureSelected", function(features){ var country = JSON.parse(features.features)[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') });
+	  self.map.swf.setLayerTooltip( 0, {title: "$[country] has $[project count] projects\nClick to open the country map."} )
+	  self.map.setCallback("onFeatureHover", function(feature) { console.log(feature)})
 	  if(self.country != "World") {
 		// self.map.addLayerCategoryFilter(0, {attribute:major_sector_name,categories:self.wbicons});
 	  } else if (self.country == "World") {
@@ -1308,10 +1330,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		}
 		newArry.push("#" + hex2.toString(16));
 		return newArry;
-	}
-	  
+	},
+  log: function(obj,msg) {
+     // console.log(obj,msg)
   }
 
+  }
 // jq("#sall").attr('checked', true);
 
 })();
