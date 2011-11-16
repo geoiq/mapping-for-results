@@ -2,8 +2,8 @@
 <%# partial :map %>
 <%= partial :map_header %>
 <div id="map-content">
-  <div id="wb_map_wrapper" style="z-index: 5; height: 514px; 958px">
-  <div id="wb_map" class="" style="height: 520px"></div>
+  <div id="wb_map_wrapper" style="position:relative; z-index: 5; height: 514px; 958px">
+  <div id="wb_map" style="height: 520px"></div>
   </div>
 </div>
 
@@ -14,3 +14,4 @@
 <% unless @page.page_type == "project" %>
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 <% end %>
+

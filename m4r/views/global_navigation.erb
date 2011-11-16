@@ -8,7 +8,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 <% Page.all(:page_type => "region", :parent_id => 1, :order => [:name.asc]).each do |region_page| %>
-                <li class="region-option <%= active_class(region_page, @page) %>"><a href="#<%# region_page.url %>"><span><%= region_page.name %></span><% if  active_class(region_page, @page) == "active" %><span class="pointer" onclick="return false"></span><% end %></a>
+                <li class="region-option <%= active_class(region_page, @page) %>"><a href="<%= region_page.url %>"><span><%= region_page.name %></span><% if  active_class(region_page, @page) == "active" %><span class="pointer" onclick="return false"></span><% end %></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       <% row_size = (region_page.children.length / 4.0).ceil %>

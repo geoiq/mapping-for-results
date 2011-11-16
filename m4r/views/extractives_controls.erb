@@ -28,10 +28,10 @@
   <div id="map-content-icons2">
     <ul id="mines_sectors">
       <li style="margin-left: 11px; margin-right: 11px;">Mines:</li>
-      <li class="egoldmine"><a  sector-name="gold" original-title="Gold" class="sectorcontrol active" id="Goldmine_control" href="#">1</a></li>
-      <li class="emanganesemine"><a  sector-name="manganese" original-title="Manganese" class="sectorcontrol active" id="Manganesemine_control" href="#">2</a></li>
-      <li class="ebauxitemine"><a  sector-name="bauxite" original-title="Bauxite" class="sectorcontrol active" id="Bauxitemine_control" href="#">3</a></li>
-      <li class="eothermine"><a  sector-name="other" original-title="Other" class="sectorcontrol active" id="Othermine_control" href="#">3</a></li>
+      <li class="egoldmine"><a  sector-name="gold" original-title="Gold" class="active" id="Goldmine_control" href="#">1</a></li>
+      <li class="emanganesemine"><a  sector-name="manganese" original-title="Manganese" class="active" id="Manganesemine_control" href="#">2</a></li>
+      <li class="ebauxitemine"><a  sector-name="bauxite" original-title="Bauxite" class="active" id="Bauxitemine_control" href="#">3</a></li>
+      <li class="eothermine"><a  sector-name="other" original-title="Other" class="active" id="Othermine_control" href="#">3</a></li>
       <% if (params[:controls] || false).to_s != "true" %>
       <li class="all"><form action="" method="get">
         <input name="input" id="allmine_control" class="active" type="checkbox" value="" CHECKED/>
@@ -41,10 +41,10 @@
     </ul>
     <ul id="ore_sectors">
       <li style="margin-left: 11px; margin-right: 11px;">Ores:</li>
-      <li class="egolddeposit"><a  sector-name="gold" original-title="Gold" class="sectorcontrol inactive" id="Golddeposit_control" href="#">1</a></li>
-      <li class="emanganesedeposit"><a  sector-name="manganese" original-title="Manganese" class="sectorcontrol inactive" id="Manganesedeposit_control" href="#">2</a></li>
-      <li class="ebauxitedeposit"><a  sector-name="bauxite" original-title="Bauxite" class="sectorcontrol inactive" id="Bauxitedeposit_control" href="#">3</a></li>
-      <li class="eotherdeposit"><a  sector-name="other" original-title="Other" class="sectorcontrol inactive" id="Otherdeposit_control" href="#">3</a></li>
+      <li class="egolddeposit"><a  sector-name="gold" original-title="Gold" class="inactive" id="Golddeposit_control" href="#">1</a></li>
+      <li class="emanganesedeposit"><a  sector-name="manganese" original-title="Manganese" class="inactive" id="Manganesedeposit_control" href="#">2</a></li>
+      <li class="ebauxitedeposit"><a  sector-name="bauxite" original-title="Bauxite" class="inactive" id="Bauxitedeposit_control" href="#">3</a></li>
+      <li class="eotherdeposit"><a  sector-name="other" original-title="Other" class="inactive" id="Otherdeposit_control" href="#">3</a></li>
       <% if (params[:controls] || false).to_s != "true" %>
       <li class="all"><form action="" method="get">
         <input name="input" id="alldeposit_control" class="inactive" type="checkbox" value=""/>
@@ -54,8 +54,8 @@
     </ul> 
     <ul id="oil_sectors">
       <li style="margin-left: 11px; margin-right: 11px;">Oil:</li>
-      <li class="eoildeposit"><a  sector-name="oildeposit" original-title="Oil fields" class="sectorcontrol active" id="oildeposits_control" href="#">1</a></li>
-      <li class="eoilwell"><a  sector-name="oilwell" original-title="Oil wells" class="sectorcontrol active" id="oilwells_control" href="#">2</a></li>
+      <li class="eoildeposit"><a  sector-name="oildeposit" original-title="Oil fields" class="active" id="oildeposits_control" href="#">1</a></li>
+      <li class="eoilwell"><a  sector-name="oilwell" original-title="Oil wells" class="active" id="oilwells_control" href="#">2</a></li>
       <% if (params[:controls] || false).to_s != "true" %>
       <li class="all"><form action="" method="get">
         <input name="input" id="alloil_control" class="active" type="checkbox" value="" CHECKED/>

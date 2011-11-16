@@ -76,6 +76,7 @@ class Page
     end
     # @projects["total"] = WorldBank.filter_projects_count(@projects["projects"])
     data = self.data.merge(:projects => @projects["projects"])
+    data = self.data.merge(:financing => @financing) unless @financing.nil?
     self.data = {}
     self.data = data
     self.sync_updated_at = Time.now
