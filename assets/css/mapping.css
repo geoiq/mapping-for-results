@@ -308,7 +308,7 @@ ul.links li, ul.links li a{
 	height: 47px;
 	margin: 0;
 	position: absolute;
-	width: 780px;
+	width: 820px;
 	z-index: 10;
 }
 #map-content-hdr3 { margin-top:45px; z-index: 9;}
@@ -341,7 +341,7 @@ ul.links li, ul.links li a{
 .ie7 #map-content-icons ul li.s11{
 	padding-top: 0;
 }
-#infodiv span {opacity: 1.0; color: #FFF; padding: 4px ;}
+#infodiv span {opacity: 1.0; color: #FFF; }
 .radio-prov{
 	color: #777876;
 	float: left;

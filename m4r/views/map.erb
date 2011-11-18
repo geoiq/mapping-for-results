@@ -187,7 +187,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 view: map_engine,
 		 core_host:	 proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
 		 onMapReady: function() { log("onMapReady!!") },
-		 onMapLoaded: function() { self.loadedMap() },
+		 onMapLoaded: function() { setTimeout("wb.loadedMap()",1500); },
 		 onFeatureSelected: function(features) { if(self.country == "World" && features.features.length > 0) {
 		     var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') ;
 		 }},
@@ -677,7 +677,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	},
 	highlightProject: function(project_id, project_name) {
 	  var self = this;
-      jq("#sector_funding_description").html(project_name.capitalize());
+	  log("project_name",project_name)
+	  if(project_name !== undefined && project_name !== null)
+        jq("#sector_funding_description").html(project_name.capitalize());
       jq("#sector_funding_description").show();
 	  var highlightExpression = "$[project id] == '"+project_id+"'";
 	  this.map.clearHighlights(self.stylelayers["Project Locations"].order);
@@ -801,7 +803,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		jq("#map-table").append(table);
 
 		jq("#project-info tr").live("click", function() {
-			self.highlightProject(jq(this).attr("project-id"));
+			self.highlightProject(jq(this).attr("data-project-id"), jq(this).attr("data-project-name"));
 		});
 		jq("#projects-bar").click(function() {
 			if(jQuery(this).hasClass("expanded")) {
@@ -836,7 +838,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			self.toggleSector(sector_name, true,false); // watch recursion
 		}
 		jq("#sector_funding_description").html(sector_name.capitalize());
-		jq("#sector_funding_description").show();
+		if(self.country != "World") {jq("#sector_funding_description").show();}
 		var projects = []
 		var links = []
 		var colors = [];
@@ -989,7 +991,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		jq("#map-table").append(table);
 
 		jq("#project-info tr").live("click", function() {
-			self.highlightMine("Company name", jq(this).attr("project-id"));
+			self.highlightMine("Company name", jq(this).attr("data-project-id"));
 		});
 	    
 	},
@@ -1001,13 +1003,19 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var labels = [];
 	  var values = []
 	  var keys = [];
+	  var regions = {"afr": [-58.21771015263559, -40.06827117611299, 110.1807216852909, 42.91753062543606],
+	  "eca": [-13.217711665674042, 29.88985052620139, 70.98150425328919, 60.78686190710688],
+	  "sa": [61.884824871647496, 7.593015725643423, 146.0840407906107, 46.958994928105135],
+	  "mena": [-13.832946019988025, 12.094811366053843, 70.36626989897519, 49.98771379050206],
+	  "lac": [-160.8300113899943, -50.196834236747186, 7.56842044793218, 31.477067805569064],
+	  "eap": [82.62701167423133, -17.08655434162228, 166.82622759319457, 27.26600538926502]}
       for(var key in self.regions){ if(key != "OTHER") {keys.push(key);} }
       
 	  jq.each(keys.sort(), function(i,s) {
 		features.push({name: s, financing: self.regions[s].financing});
 		values.push(self.regions[s].financing/1000)
 		labels.push(s.wordwrap(8, "\n", false).toLowerCase().capitalize())
-		links.push("/" + self.regions[s].shortname);
+		links.push("javascript:wb.map.setExtent(" + regions[self.regions[s].shortname] + ")");
 	  });
 
 	  jq('#funding_total').hide();
@@ -1060,7 +1068,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {
 		  return links[this.bar.index];
 	  }, onclick: function() {
-		  wb.highlightProject(features[this.bar.index].id);;
+		  wb.highlightProject(features[this.bar.index].id, "");;
 		 }});
 	}, 
 	projectFundingBars: function() {
@@ -1072,7 +1080,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
 	  jq.each(self.projects, function(index, project) {
 		features.push(project);
-		links.push( "javascript:wb.highlightProject('" + project["id"] + "');"	);
+		links.push( "javascript:wb.highlightProject('" + project["id"] + "','');");
 		var sname = project.mjsector1.toLowerCase().trim();
 		// if(Object.include(self.sector_names, sname) && Object.include(self.sectors, self.sector_names[sname])) {
 			colors.push(self.sectors[self.sector_names[sname]].color);
@@ -1089,7 +1097,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       barchart = F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {data_label: true, href: links, colors: colors, label: function() {
                        return links[this.bar.index];
                    }, onclick: function() {
-                       wb.highlightProject(features[this.bar.index].id);;
+                       wb.highlightProject(features[this.bar.index].id, '');;
                }});
           
 	},	  
@@ -1235,19 +1243,23 @@ if(typeof(F1)=='undefined') {F1 = {};}
         if(tooltip != "count") self.map.setLayerTooltip(layer_index,{title: tooltip})
         var infodiv = document.createElement("div");
         infodiv.id = "infodiv";
-        infodiv.setAttribute("style", "padding: 3px; top: -1000; left: -1000; display: block;max-width: 100px; position: absolute; background-color: #92948C; opacity:0.9; filter:alpha(opacity=90)");
+        infodiv.setAttribute("style", "padding: 5px; top: -1000; left: -1000; display: block;max-width: 100px; position: absolute; background-color: #92948C; opacity:0.9; filter:alpha(opacity=90)");
         var parent = document.getElementById("wb_map");
         parent.insertBefore(infodiv, parent.childNodes[0]);
         wb.map.setCallback("onFeatureHover", function(obj) { 
-            if(obj.features !== null && obj.features.length != 0){
+            // hoverwindow only for projects & countries
+            if(obj.features !== null && obj.features.length != 0 && (obj.features[0]["mjsector 1"] !== undefined || obj.features[0]["project count"] !== undefined)) {
                 var text = ""
-                // self.map.addHighlight(layer_index, {expression: "$[country] == '" + obj.features[0].country + "'"})
                 if(tooltip == "count") {text = obj.features.length + " projects<br />";
                     jq.each(obj.features, function(index,feature) {
-                        text += "<img src='" + self.wbicons[feature["mjsector 1"]] + "' />";
+                        if(feature["mjsector 1"] !== undefined && feature["mjsector 1"] !== null)
+                            text += "<img alt='" + feature["mjsector 1"] + "' src='" + self.wbicons[feature["mjsector 1"]] + "' />";
                     })
+                } else { 
+                    if(obj.features[0]["project count"] !== undefined && obj.features[0]["project count"] !== null && obj.features[0]["project count"] == 0 ) {
+                        text = "There are no active projects in " + obj.features[0]["country"];
+                    } else { text = obj.tooltip; }
                 }
-                else { text = obj.tooltip; }
                 infodiv.innerHTML =  "<span>" + text + "</span>"
                 infodiv.style.opacity = "0.9";
                 infodiv.style.left = (obj.point.x + 10) + "px";
@@ -1313,7 +1325,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             // self.projectFundingBars();
             self.sectorPieChart("all", false);
             self.toggleSector("all", true, false);
-        log("sectorPieChart");
+            log("sectorPieChart");
         }
         
         self.loadState();
@@ -1329,7 +1341,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  log("styleWorldMap styled")
 	  self.sectorPieChart("all", false);
 	  self.regionFundingBars();
-	  self.hoverWindow(0, "$[country] has $[project count] projects.<br />Click to view the country map.")
+	  self.hoverWindow(0, "$[country] has $[project count] active projects.<br />Click to view the country map.")
       self.map.setMapStyle( {infowindow: {visible: false}});
 	  //self.map.setCallback("onFeatureSelected", function(features){ var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') });
 

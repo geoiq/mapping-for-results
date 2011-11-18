@@ -1,4 +1,4 @@
-              <ul class="worldmenu dropmenu">
+              <ul id="<%= @page.name.downcase %>_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="<%= @page[:name].length > 21 ? "padding: 5px 15px 11px 30px;" : 0 %>"><%= @page[:name] =~ /World/ ? "Explore Countries" : @page[:name].upcase %></span></a>
                 
                 <div class="menu-world-options" style="<%= defined?(@additional_controls) ? 'display:none' : '' %>">

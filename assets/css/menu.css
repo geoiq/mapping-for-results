@@ -23,10 +23,11 @@
     display: block;
     font-family: Arial,Helvetica,sans-serif;
     font-size: 13px;
-    padding: 15px 15px 16px 30px;
+    padding: 15px 15px 11px 30px;
     text-decoration: none;
     text-transform: uppercase;
 }
+#world_menu .worldmenu > li > a { padding-bottom: 16px;}
 .menu-world-options{
 	background: #d9dccf;
 	font-size: 12px;
