@@ -8,41 +8,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Indonesia, East Asia & the Pacific > The World Bank - Mapping for Results</title>
-    <meta name="description" content="Indonesia,East Asia & the Pacific,World,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="keywords" content="Indonesia,East Asia & the Pacific,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-    <script type="text/javascript" charset="utf-8">
-      // if (top.frames.length!=0)
-      //   top.location=self.document.location;
-    </script>
     <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
 </head>
 
-<body>
+<body onload="onload()">
 	<div id="container" class="clearfix">
         <div id="header" class="clearfix">
         	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
@@ -89,7 +88,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="#">Indonesia</a>, <a href="/eap">East Asia & the Pacific</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap" style="">
@@ -102,6 +101,7 @@
               </ul>
            </li>     
         
+        
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
                 <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
@@ -110,6 +110,7 @@
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
+          
       </ul>
   </div>
     <div id="share_window" style="display: none;">
@@ -125,7 +126,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#" id="map_mag"></a>
-                            <ul class="worldmenu dropmenu">
+                            <ul id="country_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">INDONESIA</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -135,7 +136,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -152,7 +153,7 @@
                         
                         <a href="/afr/cameroon" class="">Cameroon</a>
                         
-                        <a href="/afr/capeverde" class="">Cape Verde</a>
+                        <a href="/afr/cape-verde" class="">Cape Verde</a>
                         
                         <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
@@ -214,7 +215,7 @@
                         
                         <a href="/afr/seychelles" class="">Seychelles</a>
                         
-                        <a href="/afr/sierraleone" class="">Sierra Leone</a>
+                        <a href="/afr/sierra-leone" class="">Sierra Leone</a>
                         
                         <a href="/afr/somalia" class="">Somalia</a></li>
                         
@@ -240,7 +241,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option active"><a href="#"><span>East Asia & the Pacific</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/eap"><span>East Asia & the Pacific</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -248,6 +249,8 @@
                         <li><a href="/eap/cambodia" class="">Cambodia</a>
                         
                         <a href="/eap/china" class="">China</a>
+                        
+                        <a href="/eap/fiji" class="">Fiji</a>
                         
                         <a href="/eap/indonesia" class="active">Indonesia</a>
                         
@@ -261,6 +264,8 @@
                         
                         <a href="/eap/myanmar" class="">Myanmar</a>
                         
+                        <a href="/eap/palau" class="">Palau</a>
+                        
                         <a href="/eap/papua-new-guinea" class="">Papua New Guinea </a>
                         
                         <a href="/eap/philippines" class="">Philippines</a></li>
@@ -269,23 +274,23 @@
                         
                         <a href="/eap/solomon-islands" class="">Solomon Islands </a>
                         
-                        <a href="/eap/south-korea" class="">South Korea</a>
+                        <a href="/eap/korea-republic" class="">South Korea</a>
                         
                         <a href="/eap/thailand" class="">Thailand</a>
                         
-                        <a href="/eap/timor-leste" class="">Timor-leste</a></li>
+                        <a href="/eap/timor-leste" class="">Timor-leste</a>
                         
-                        <li><a href="/eap/tonga" class="">Tonga</a>
+                        <a href="/eap/tonga" class="">Tonga</a></li>
                         
-                        <a href="/eap/vanuatu" class="">Vanuatu</a>
+                        <li><a href="/eap/vanuatu" class="">Vanuatu</a>
                         
-                        <a href="/eap/vietnam" class="">Vietnam</a></li>
+                        <a href="/eap/vietnam" class="">Vietnam</a>
                         
                       </ul>
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -302,13 +307,9 @@
                         
                         <a href="/eca/bulgaria" class="">Bulgaria</a>
                         
-                        <a href="/eca/croatia" class="">Croatia</a>
-                        
-                        <a href="/eca/czech-republic" class="">Czech Republic</a></li>
+                        <a href="/eca/croatia" class="">Croatia</a></li>
                         
                         <li><a href="/eca/georgia" class="">Georgia</a>
-                        
-                        <a href="/eca/hungary" class="">Hungary</a>
                         
                         <a href="/eca/kazakhstan" class="">Kazakhstan</a>
                         
@@ -318,21 +319,19 @@
                         
                         <a href="/eca/latvia" class="">Latvia</a>
                         
-                        <a href="/eca/lithuania" class="">Lithuania</a>
+                        <a href="/eca/macedonia" class="">Macedonia</a>
                         
-                        <a href="/eca/macedonia" class="">Macedonia</a></li>
+                        <a href="/eca/moldova" class="">Moldova</a></li>
                         
-                        <li><a href="/eca/moldova" class="">Moldova</a>
+                        <li><a href="/eca/montenegro" class="">Montenegro</a>
                         
-                        <a href="/eca/moldova" class="">Moldova</a>
-                        
-                        <a href="/eca/montenegro" class="">Montenegro</a>
+                        <a href="/eca/poland" class="">Poland</a>
                         
                         <a href="/eca/serbia" class="">Republic of Serbia</a>
                         
                         <a href="/eca/romania" class="">Romania</a>
                         
-                        <a href="/eca/russia" class="">Russia</a>
+                        <a href="/eca/russian-federation" class="">Russian Federation</a>
                         
                         <a href="/eca/tajikistan" class="">Tajikistan</a>
                         
@@ -348,7 +347,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Latin America & Caribbean</span></a>
+                <li class="region-option "><a href="/lac"><span>Latin America & Caribbean</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -399,7 +398,7 @@
                         
                         <a href="/lac/peru" class="">Peru</a>
                         
-                        <a href="/lac/stkitts-and-nevis" class="">St Kitts and Nevis</a>
+                        <a href="/lac/st-kitts-and-nevis" class="">St Kitts and Nevis</a>
                         
                         <a href="/lac/st-lucia" class="">St. Lucia</a>
                         
@@ -417,7 +416,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -426,9 +425,9 @@
                         
                         <a href="/mena/djibouti" class="">Djibouti</a>
                         
-                        <a href="/mena/egypt" class="">Egypt</a>
+                        <a href="/mena/egypt-arab-republic" class="">Egypt</a>
                         
-                        <a href="/mena/iran" class="">Iran, Islamic Republic of</a>
+                        <a href="/mena/iran-islamic-republic" class="">Iran, Islamic Republic of</a>
                         
                         <a href="/mena/iraq" class="">Iraq</a></li>
                         
@@ -440,7 +439,7 @@
                         
                         <a href="/mena/morocco" class="">Morocco</a>
                         
-                        <a href="/mena/syria" class="">Syria</a></li>
+                        <a href="/mena/syrian-arab-republic" class="">Syria</a></li>
                         
                         <li><a href="/mena/tunisia" class="">Tunisia</a>
                         
@@ -452,7 +451,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -463,7 +462,7 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/fiji" class="">Fiji</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
                         <a href="/sa/india" class="">India</a>
                         
@@ -473,9 +472,7 @@
                         
                         <a href="/sa/pakistan" class="">Pakistan</a>
                         
-                        <a href="/sa/palau" class="">Palau</a></li>
-                        
-                        <li><a href="/sa/srilanka" class="">Sri Lanka </a></li>
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -572,7 +569,7 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -627,6 +624,9 @@
         
         <li><a href="https://finances.worldbank.org/facet/countries/Indonesia" target="_new">Indonesia Finances &raquo;</a></li>
         
+        
+        <li><a href="http://www.aidflows.org/index.html?country='Indonesia'" target="_new">Indonesia Aid Flows &raquo;</a></li>
+        
       </ul>
           
     <!-- <p class="desc">
@@ -641,7 +641,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of December 14, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -670,9 +670,9 @@
 
 
         <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb = null;
+  function onload() {
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P089479',project_name: 'Early Childhood Education and Development Project',totalamt: 67.5,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Education","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
@@ -691,12 +691,13 @@
 ,{id: 'P126138',project_name: 'ID-TF KDP AND ENVIRONMENT IN SULAWESI (WCS, CARE, OPWAL)',totalamt: 2.28,grantamt: 2.28,mjsector1: 'Energy and mining',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Health and other social services","Percent":30}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
 ,{id: 'P068133',project_name: 'MARINE ELECTRONIC HIGHWAY DEMONSTRATION PROJECT',totalamt: 8.3,grantamt: 8.3,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Transportation","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'Global Environment Project',sector_code: 'TX'}
 ,{id: 'P126139',project_name: 'JSDF-INDONESIA: CREATIVE COMMUNITIES',totalamt: 1.54,grantamt: 1.54,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
-,{id: 'P122810',project_name: 'PNPM Rural IV',totalamt: 531.19,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P122810',project_name: 'FOURTH NATIONAL PROGRAM FOR COMMUNITY EMPOWERMENT IN RURAL AREA (PNPM IV)',totalamt: 531.19,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P114348',project_name: 'Water Resources and Irrigation Sector Management Program 2',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":41},{"Name":"Public Administration, Law, and Justice","Percent":39},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P127133',project_name: 'National Violence Monitoring System Indo',totalamt: 0.65,grantamt: 0.65,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P096677',project_name: 'ID-PCF-Indonesia Lahendong Geothermal Project',totalamt: 3.75,grantamt: 3.75,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P101785',project_name: 'Aceh Infrastructure Reconstruction Financing Facility (IRFF)',totalamt: 100.0,grantamt: 100.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":34},{"Name":"Transportation","Percent":33},{"Name":"Transportation","Percent":33}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P126163',project_name: 'JSDF POVERTY REDUCTION AND WOMENS LEADERSHIP: THE "PRIME" PROJECT',totalamt: 1.7,grantamt: 1.7,mjsector1: 'Health and other social services',boardapprovaldate: 'Nov-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Education","Percent":30}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P099537',project_name: 'MDF Aceh - Partner Agency Implemented Projects in the Recovery of Communities in Aceh and Nias',totalamt: 72.88,grantamt: 72.88,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P119125',project_name: 'Indonesia - Addl Financing BOS Knowledge Improvement for Transparency and Accountability',totalamt: 500.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":70},{"Name":"Education","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P106384',project_name: 'Statistical Capacity Building-Change and Reform for the Development of Statistics (STATCAP-CERDAS)',totalamt: 65.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P092218',project_name: 'Indonesia Infrastructure Finance Facility',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":48},{"Name":"Transportation","Percent":34},{"Name":"Transportation","Percent":11},{"Name":"Transportation","Percent":4},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
@@ -714,18 +715,17 @@
 ,{id: 'P098308',project_name: 'Partnerships for Conservation management of Aketajawe-Lolobata National Park, North Maluku',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'GEF Medium Sized Program',sector_code: 'AX'}
 ,{id: 'P121724',project_name: 'Public Expenditure Analysis and Capacity Harmonization (PEACH) Grant to BAKTI on Communication & Outreach',totalamt: 0.3,grantamt: 0.3,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Oct-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P121427',project_name: 'Green PNPM Environmental Awareness and Training',totalamt: 2.3,grantamt: 2.3,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Energy and mining","Percent":25}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
-,{id: 'P116884',project_name: 'WASAP D - Community and Municipal Sanitation Pilots',totalamt: 2.24,grantamt: 2.24,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":60},{"Name":"Water, sanitation and flood protection","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P106050',project_name: 'Indonesia: Extractive Industries Transparency',totalamt: 1.05,grantamt: 1.05,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
 ,{id: 'P113341',project_name: 'Health Professional Education Quality Project',totalamt: 77.82,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Education","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P100218',project_name: 'ID-Aceh-Infra. Reconstr Enabling Program (IREP)',totalamt: 42.0,grantamt: 42.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Transportation","Percent":25},{"Name":"Transportation","Percent":25}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P071296',project_name: 'URBAN SECTOR DEVELOPMENT AND REFORM PROJECT',totalamt: 45.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Industry and trade","Percent":69},{"Name":"Transportation","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Health and other social services","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
 ,{id: 'P102529',project_name: 'Jakarta Water',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
-,{id: 'P115052',project_name: 'Third National Program for Community Empowerment in Rural Areas (PNPM-Rural',totalamt: 785.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":22},{"Name":"Agriculture, fishing, and forestry","Percent":22},{"Name":"Transportation","Percent":22},{"Name":"Education","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P104022',project_name: 'Makassar - TPA Tamangapa Landfill Methane Collection and Flaring',totalamt: 7.7,grantamt: 7.7,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
 ,{id: 'P104482',project_name: 'Pontianak - LFG Recovery Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
 ,{id: 'P079906',project_name: 'Strategic Roads Infrastructure Project',totalamt: 208.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jul-2006',majorsector_percent: [{"Name":"Transportation","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P108757',project_name: 'Second National Program for Community Empowerment in Rural Areas Addit',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Water, sanitation and flood protection","Percent":17},{"Name":"Agriculture, fishing, and forestry","Percent":17},{"Name":"Transportation","Percent":17},{"Name":"Education","Percent":16}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P115724',project_name: 'Basic Education Capacity-Recipient executed',totalamt: 25.62,grantamt: 25.62,mjsector1: 'Education',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
+,{id: 'P125648',project_name: 'COMMUNITY-BASED SETTLEMENT REHABILITATION AND RECONSTRUCTION PROJECT',totalamt: 11.5,grantamt: 11.5,mjsector1: 'Industry and trade',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Industry and trade","Percent":80},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'YX'}
 ,{id: 'P126424',project_name: 'Indonesia: PNPM Peduli',totalamt: 3.71,grantamt: 3.71,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Education","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Finance","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
 ,{id: 'P118909',project_name: 'WASPOLA Facility',totalamt: 2.33,grantamt: 2.33,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":25}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P117323',project_name: 'Indonesia Power Transmission Development Project',totalamt: 225.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
@@ -733,6 +733,7 @@
 ,{id: 'P121234',project_name: 'Infrastructure Reconstruction Financing Facility - Additional Financing',totalamt: 36.7,grantamt: 36.7,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'TX'}
 ,{id: 'P102476',project_name: 'Extending Telecommunications in Rural Indonesia Project',totalamt: 1.87,grantamt: 1.87,mjsector1: 'Information and communications',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Information and communications","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'CX'}
 ,{id: 'P085133',project_name: 'Government Financial Management and Revenue Administration Project',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":93},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P122982',project_name: 'Indonesia Development Policy Loan 8',totalamt: 500.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Industry and trade","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P126108',project_name: 'JSDF-INDONESIA: EDUCATION FOR VERY POOR CHILDREN',totalamt: 1.33,grantamt: 1.33,mjsector1: 'Education',boardapprovaldate: 'Oct-2005',majorsector_percent: [{"Name":"Education","Percent":40},{"Name":"Education","Percent":40},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
 ,{id: 'P118813',project_name: 'ID-JSDF Sustaining Womens Leadership',totalamt: 1.92,grantamt: 1.92,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P096921',project_name: 'National Program for Community Empowerment in Urban Areas (PNPM UPP)',totalamt: 177.68,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Transportation","Percent":27},{"Name":"Health and other social services","Percent":27},{"Name":"Education","Percent":27},{"Name":"Health and other social services","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
@@ -744,7 +745,7 @@
 ,{id: 'P085375',project_name: 'Third Water Supply and Sanitation for Low Income Communities Project',totalamt: 137.5,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":34},{"Name":"Water, sanitation and flood protection","Percent":33},{"Name":"Health and other social services","Percent":17},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P071316',project_name: 'Coral Reef Rehabilitation and Management Program Phase II',totalamt: 56.2,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Finance","Percent":12},{"Name":"Education","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P097104',project_name: 'BERMUTU-Better Education through Reformed Management and Universal Teacher Upgrading',totalamt: 86.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jul-2007',majorsector_percent: [{"Name":"Education","Percent":78},{"Name":"Public Administration, Law, and Justice","Percent":19},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P074290',project_name: 'Second Eastern Indonesia Region Transport Project',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Transportation","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Transportation","Percent":2},{"Name":"Transportation","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P122032',project_name: 'ID-TF ADDITIONAL FINANCING OF PNPM RURAL III FOR GENERASI (COMM.CCT)  SCALING-UP PROGRAM',totalamt: 38.32,grantamt: 38.32,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":34},{"Name":"Health and other social services","Percent":33},{"Name":"Education","Percent":33}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P116236',project_name: 'PAMSIMAS Support Trust Fund',totalamt: 6.54,grantamt: 6.54,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P123979',project_name: 'PEACH Grant to UGM on Capacity Building Programs Related to Sub-National PFM',totalamt: 3.7,grantamt: 3.7,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Oct-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P112158',project_name: 'Upper Cisokan Pumped Storage Hydro-Electrical Power (1040 MW) Project',totalamt: 640.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
@@ -753,12 +754,11 @@
 ,{id: 'P109024',project_name: 'Aceh Economic Development Financing Facility',totalamt: 50.0,grantamt: 50.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":45},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Industry and trade","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
 ,{id: 'P071318',project_name: 'Coral Reef Rehabilitation and Management Project II',totalamt: 7.5,grantamt: 7.5,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Finance","Percent":12},{"Name":"Education","Percent":8}],prodlinetext: 'Global Environment Project',sector_code: 'JX'}];
       
-  wb.init("1769",  "Indonesia", "East Asia & the Pacific", {projects_count: '77', locations_count: '621', projects: projects, locations_layer: 0, indicators: ['Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
+  wb.init("1769",  "Indonesia", "East Asia & the Pacific", {projects_count: '78', locations_count: '621', projects: projects, locations_layer: 0, indicators: ['Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
-  
+  }
 </script>
 
-        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
     </div><!--#container//-->
 
@@ -814,6 +814,7 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 
 </body>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for ResultsMacedonia, Europe and Central Asia > </title>
+  <title>The World Bank - Mapping for ResultsMacedonia, Europe and Central Asia - </title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
 
@@ -14,21 +14,20 @@
   </script>
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
 <script src="/script/map.js" type="text/javascript"></script>
@@ -44,14 +43,15 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb = null;
+  function onload() {
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P091723',project_name: 'Second Trade and Transport Facilitation Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2007',majorsector_percent: [{"Name":"Transportation","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":11},{"Name":"Transportation","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P089656',project_name: 'Sustainable Energy GEF Project',totalamt: 5.5,grantamt: 5.5,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":46},{"Name":"Energy and mining","Percent":36},{"Name":"Public Administration, Law, and Justice","Percent":18}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
 ,{id: 'P107840',project_name: 'Regional and Local Roads Program Support Project',totalamt: 105.2,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P125837',project_name: 'FYR Macedonia Policy Based Guarantee',totalamt: 135.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Nov-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Health and other social services","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Finance","Percent":10}],prodlinetext: 'Guarantees',sector_code: 'JX'}
 ,{id: 'P101216',project_name: 'Agriculture Strengthening and Accession Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":76},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":7},{"Name":"Agriculture, fishing, and forestry","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P083126',project_name: 'Real Estate Cadastre & Registration Project',totalamt: 14.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":40},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P096217',project_name: 'Energy Infrastructure Improvement Project',totalamt: 19.1,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
@@ -61,9 +61,9 @@
 ,{id: 'P103974',project_name: 'Conditional Cash Transfers Project',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Education","Percent":30},{"Name":"Health and other social services","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P082337',project_name: 'ECSEE APL 3 - FYR Macedonia',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jan-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}];
       
-  wb.init("1713",  "Macedonia", "Europe and Central Asia", {projects_count: '11', locations_count: '139', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("1713",  "Macedonia", "Europe and Central Asia", {projects_count: '12', locations_count: '139', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
-  
+  }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -87,7 +87,7 @@
 <script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
 <script language="JavaScript">
 <!--
-var s_pageName="Home > Maps > Macedonia, Europe and Central Asia > ";
+var s_pageName="Home > Maps > Macedonia, Europe and Central Asia - ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Europe and Central Asia,Macedonia";
 var s_prop1 = "";

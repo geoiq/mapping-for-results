@@ -8,41 +8,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Nicaragua, Latin America & Caribbean > The World Bank - Mapping for Results</title>
-    <meta name="description" content="Nicaragua,Latin America & Caribbean,World,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="keywords" content="Nicaragua,Latin America & Caribbean,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-    <script type="text/javascript" charset="utf-8">
-      // if (top.frames.length!=0)
-      //   top.location=self.document.location;
-    </script>
     <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
 </head>
 
-<body>
+<body onload="onload()">
 	<div id="container" class="clearfix">
         <div id="header" class="clearfix">
         	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
@@ -89,7 +88,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="#">Nicaragua</a>, <a href="/lac">Latin America & Caribbean</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap" style="">
@@ -102,6 +101,7 @@
               </ul>
            </li>     
         
+        
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
                 <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
@@ -110,6 +110,7 @@
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
+          
       </ul>
   </div>
     <div id="share_window" style="display: none;">
@@ -125,7 +126,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#" id="map_mag"></a>
-                            <ul class="worldmenu dropmenu">
+                            <ul id="country_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">NICARAGUA</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -135,7 +136,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -152,7 +153,7 @@
                         
                         <a href="/afr/cameroon" class="">Cameroon</a>
                         
-                        <a href="/afr/capeverde" class="">Cape Verde</a>
+                        <a href="/afr/cape-verde" class="">Cape Verde</a>
                         
                         <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
@@ -214,7 +215,7 @@
                         
                         <a href="/afr/seychelles" class="">Seychelles</a>
                         
-                        <a href="/afr/sierraleone" class="">Sierra Leone</a>
+                        <a href="/afr/sierra-leone" class="">Sierra Leone</a>
                         
                         <a href="/afr/somalia" class="">Somalia</a></li>
                         
@@ -240,7 +241,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                <li class="region-option "><a href="/eap"><span>East Asia & the Pacific</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -248,6 +249,8 @@
                         <li><a href="/eap/cambodia" class="">Cambodia</a>
                         
                         <a href="/eap/china" class="">China</a>
+                        
+                        <a href="/eap/fiji" class="">Fiji</a>
                         
                         <a href="/eap/indonesia" class="">Indonesia</a>
                         
@@ -261,6 +264,8 @@
                         
                         <a href="/eap/myanmar" class="">Myanmar</a>
                         
+                        <a href="/eap/palau" class="">Palau</a>
+                        
                         <a href="/eap/papua-new-guinea" class="">Papua New Guinea </a>
                         
                         <a href="/eap/philippines" class="">Philippines</a></li>
@@ -269,23 +274,23 @@
                         
                         <a href="/eap/solomon-islands" class="">Solomon Islands </a>
                         
-                        <a href="/eap/south-korea" class="">South Korea</a>
+                        <a href="/eap/korea-republic" class="">South Korea</a>
                         
                         <a href="/eap/thailand" class="">Thailand</a>
                         
-                        <a href="/eap/timor-leste" class="">Timor-leste</a></li>
+                        <a href="/eap/timor-leste" class="">Timor-leste</a>
                         
-                        <li><a href="/eap/tonga" class="">Tonga</a>
+                        <a href="/eap/tonga" class="">Tonga</a></li>
                         
-                        <a href="/eap/vanuatu" class="">Vanuatu</a>
+                        <li><a href="/eap/vanuatu" class="">Vanuatu</a>
                         
-                        <a href="/eap/vietnam" class="">Vietnam</a></li>
+                        <a href="/eap/vietnam" class="">Vietnam</a>
                         
                       </ul>
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -302,13 +307,9 @@
                         
                         <a href="/eca/bulgaria" class="">Bulgaria</a>
                         
-                        <a href="/eca/croatia" class="">Croatia</a>
-                        
-                        <a href="/eca/czech-republic" class="">Czech Republic</a></li>
+                        <a href="/eca/croatia" class="">Croatia</a></li>
                         
                         <li><a href="/eca/georgia" class="">Georgia</a>
-                        
-                        <a href="/eca/hungary" class="">Hungary</a>
                         
                         <a href="/eca/kazakhstan" class="">Kazakhstan</a>
                         
@@ -318,21 +319,19 @@
                         
                         <a href="/eca/latvia" class="">Latvia</a>
                         
-                        <a href="/eca/lithuania" class="">Lithuania</a>
+                        <a href="/eca/macedonia" class="">Macedonia</a>
                         
-                        <a href="/eca/macedonia" class="">Macedonia</a></li>
+                        <a href="/eca/moldova" class="">Moldova</a></li>
                         
-                        <li><a href="/eca/moldova" class="">Moldova</a>
+                        <li><a href="/eca/montenegro" class="">Montenegro</a>
                         
-                        <a href="/eca/moldova" class="">Moldova</a>
-                        
-                        <a href="/eca/montenegro" class="">Montenegro</a>
+                        <a href="/eca/poland" class="">Poland</a>
                         
                         <a href="/eca/serbia" class="">Republic of Serbia</a>
                         
                         <a href="/eca/romania" class="">Romania</a>
                         
-                        <a href="/eca/russia" class="">Russia</a>
+                        <a href="/eca/russian-federation" class="">Russian Federation</a>
                         
                         <a href="/eca/tajikistan" class="">Tajikistan</a>
                         
@@ -348,7 +347,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option active"><a href="#"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/lac"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -399,7 +398,7 @@
                         
                         <a href="/lac/peru" class="">Peru</a>
                         
-                        <a href="/lac/stkitts-and-nevis" class="">St Kitts and Nevis</a>
+                        <a href="/lac/st-kitts-and-nevis" class="">St Kitts and Nevis</a>
                         
                         <a href="/lac/st-lucia" class="">St. Lucia</a>
                         
@@ -417,7 +416,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -426,9 +425,9 @@
                         
                         <a href="/mena/djibouti" class="">Djibouti</a>
                         
-                        <a href="/mena/egypt" class="">Egypt</a>
+                        <a href="/mena/egypt-arab-republic" class="">Egypt</a>
                         
-                        <a href="/mena/iran" class="">Iran, Islamic Republic of</a>
+                        <a href="/mena/iran-islamic-republic" class="">Iran, Islamic Republic of</a>
                         
                         <a href="/mena/iraq" class="">Iraq</a></li>
                         
@@ -440,7 +439,7 @@
                         
                         <a href="/mena/morocco" class="">Morocco</a>
                         
-                        <a href="/mena/syria" class="">Syria</a></li>
+                        <a href="/mena/syrian-arab-republic" class="">Syria</a></li>
                         
                         <li><a href="/mena/tunisia" class="">Tunisia</a>
                         
@@ -452,7 +451,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -463,7 +462,7 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/fiji" class="">Fiji</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
                         <a href="/sa/india" class="">India</a>
                         
@@ -473,9 +472,7 @@
                         
                         <a href="/sa/pakistan" class="">Pakistan</a>
                         
-                        <a href="/sa/palau" class="">Palau</a></li>
-                        
-                        <li><a href="/sa/srilanka" class="">Sri Lanka </a></li>
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -568,7 +565,7 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -626,6 +623,9 @@
         
         <li><a href="https://finances.worldbank.org/facet/countries/Nicaragua" target="_new">Nicaragua Finances &raquo;</a></li>
         
+        
+        <li><a href="http://www.aidflows.org/index.html?country='Nicaragua'" target="_new">Nicaragua Aid Flows &raquo;</a></li>
+        
       </ul>
           
     <!-- <p class="desc">
@@ -640,7 +640,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of December 14, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -669,15 +669,15 @@
 
 
         <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb = null;
+  function onload() {
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P056018',project_name: 'LAND ADMINISTRATION',totalamt: 32.6,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2002',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":44},{"Name":"Public Administration, Law, and Justice","Percent":36},{"Name":"Health and other social services","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P122181',project_name: 'Nicaragua Food Emergency support Program for School Children',totalamt: 2.97,grantamt: 2.97,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
 ,{id: 'P110092',project_name: 'NI Greater Managua Water and Sanitation (PRASMA)',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P108974',project_name: 'Nicaragua Hurricane Felix Emergency Recovery Project',totalamt: 17.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":9},{"Name":"Health and other social services","Percent":8},{"Name":"Public Administration, Law, and Justice","Percent":3},{"Name":"Agriculture, fishing, and forestry","Percent":40},{"Name":"Industry and trade","Percent":40}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P108974',project_name: 'Nicaragua Hurricane Felix Emergency Recovery Project',totalamt: 17.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":40},{"Name":"Industry and trade","Percent":40},{"Name":"Health and other social services","Percent":9},{"Name":"Health and other social services","Percent":8},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P073246',project_name: 'Offgrid Rural Electrification (PERZA)',totalamt: 12.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":74},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Finance","Percent":10},{"Name":"Industry and trade","Percent":4},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P121779',project_name: 'Nicaragua Social Protection',totalamt: 19.5,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P106870',project_name: 'Improving Community and Family Health Care Services Project',totalamt: 21.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":57},{"Name":"Public Administration, Law, and Justice","Percent":43}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
@@ -692,7 +692,6 @@
 ,{id: 'P115882',project_name: 'Grant for Alternative Indigenous and Afro-Des. Agrof. Project in Nicaragua',totalamt: 1.99,grantamt: 1.99,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
 ,{id: 'P126788',project_name: 'Investment Phase under the Caribbean Coast Development Program',totalamt: 2.47,grantamt: 2.47,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":80},{"Name":"Energy and mining","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P111795',project_name: 'NI Public Financial Management Modernization Project',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":51},{"Name":"Information and communications","Percent":49}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P116470',project_name: 'Nicaragua Influenza Response',totalamt: 0.3,grantamt: 0.3,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P112906',project_name: 'Health System Strengthening and Response to Epidemiological Emergencies Project',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":98},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P120904',project_name: 'Nicaragua Caribbean Coast Development Program (Initial Phase)',totalamt: 0.04,grantamt: 0.04,mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P087046',project_name: 'Second Agricultural Technology Project',totalamt: 12.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2005',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":71},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
@@ -701,12 +700,11 @@
 ,{id: 'P106283',project_name: 'Nicaragua Rural Water Supply and Sanitation Project (PRASNICA)',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":42},{"Name":"Water, sanitation and flood protection","Percent":31},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P077826',project_name: 'Broad-Based Access to Financial Services',totalamt: 7.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Finance","Percent":70},{"Name":"Finance","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}];
       
-  wb.init("459",  "Nicaragua", "Latin America & Caribbean", {projects_count: '26', locations_count: '315', projects: projects, locations_layer: 0, indicators: ['Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
+  wb.init("459",  "Nicaragua", "Latin America & Caribbean", {projects_count: '25', locations_count: '315', projects: projects, locations_layer: 0, indicators: ['Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
-  
+  }
 </script>
 
-        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
     </div><!--#container//-->
 
@@ -762,6 +760,7 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 
 </body>

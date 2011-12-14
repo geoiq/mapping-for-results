@@ -8,41 +8,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>India, South Asia > The World Bank - Mapping for Results</title>
-    <meta name="description" content="India,South Asia,World,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="keywords" content="India,South Asia,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-    <script type="text/javascript" charset="utf-8">
-      // if (top.frames.length!=0)
-      //   top.location=self.document.location;
-    </script>
     <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
 </head>
 
-<body>
+<body onload="onload()">
 	<div id="container" class="clearfix">
         <div id="header" class="clearfix">
         	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
@@ -89,7 +88,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="#">India</a>, <a href="/sa">South Asia</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap" style="">
@@ -102,6 +101,7 @@
               </ul>
            </li>     
         
+        
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
                 <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
@@ -110,6 +110,7 @@
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
+          
       </ul>
   </div>
     <div id="share_window" style="display: none;">
@@ -125,7 +126,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#" id="map_mag"></a>
-                            <ul class="worldmenu dropmenu">
+                            <ul id="country_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">INDIA</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -135,7 +136,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -152,7 +153,7 @@
                         
                         <a href="/afr/cameroon" class="">Cameroon</a>
                         
-                        <a href="/afr/capeverde" class="">Cape Verde</a>
+                        <a href="/afr/cape-verde" class="">Cape Verde</a>
                         
                         <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
@@ -214,7 +215,7 @@
                         
                         <a href="/afr/seychelles" class="">Seychelles</a>
                         
-                        <a href="/afr/sierraleone" class="">Sierra Leone</a>
+                        <a href="/afr/sierra-leone" class="">Sierra Leone</a>
                         
                         <a href="/afr/somalia" class="">Somalia</a></li>
                         
@@ -240,7 +241,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                <li class="region-option "><a href="/eap"><span>East Asia & the Pacific</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -248,6 +249,8 @@
                         <li><a href="/eap/cambodia" class="">Cambodia</a>
                         
                         <a href="/eap/china" class="">China</a>
+                        
+                        <a href="/eap/fiji" class="">Fiji</a>
                         
                         <a href="/eap/indonesia" class="">Indonesia</a>
                         
@@ -261,6 +264,8 @@
                         
                         <a href="/eap/myanmar" class="">Myanmar</a>
                         
+                        <a href="/eap/palau" class="">Palau</a>
+                        
                         <a href="/eap/papua-new-guinea" class="">Papua New Guinea </a>
                         
                         <a href="/eap/philippines" class="">Philippines</a></li>
@@ -269,23 +274,23 @@
                         
                         <a href="/eap/solomon-islands" class="">Solomon Islands </a>
                         
-                        <a href="/eap/south-korea" class="">South Korea</a>
+                        <a href="/eap/korea-republic" class="">South Korea</a>
                         
                         <a href="/eap/thailand" class="">Thailand</a>
                         
-                        <a href="/eap/timor-leste" class="">Timor-leste</a></li>
+                        <a href="/eap/timor-leste" class="">Timor-leste</a>
                         
-                        <li><a href="/eap/tonga" class="">Tonga</a>
+                        <a href="/eap/tonga" class="">Tonga</a></li>
                         
-                        <a href="/eap/vanuatu" class="">Vanuatu</a>
+                        <li><a href="/eap/vanuatu" class="">Vanuatu</a>
                         
-                        <a href="/eap/vietnam" class="">Vietnam</a></li>
+                        <a href="/eap/vietnam" class="">Vietnam</a>
                         
                       </ul>
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -302,13 +307,9 @@
                         
                         <a href="/eca/bulgaria" class="">Bulgaria</a>
                         
-                        <a href="/eca/croatia" class="">Croatia</a>
-                        
-                        <a href="/eca/czech-republic" class="">Czech Republic</a></li>
+                        <a href="/eca/croatia" class="">Croatia</a></li>
                         
                         <li><a href="/eca/georgia" class="">Georgia</a>
-                        
-                        <a href="/eca/hungary" class="">Hungary</a>
                         
                         <a href="/eca/kazakhstan" class="">Kazakhstan</a>
                         
@@ -318,21 +319,19 @@
                         
                         <a href="/eca/latvia" class="">Latvia</a>
                         
-                        <a href="/eca/lithuania" class="">Lithuania</a>
+                        <a href="/eca/macedonia" class="">Macedonia</a>
                         
-                        <a href="/eca/macedonia" class="">Macedonia</a></li>
+                        <a href="/eca/moldova" class="">Moldova</a></li>
                         
-                        <li><a href="/eca/moldova" class="">Moldova</a>
+                        <li><a href="/eca/montenegro" class="">Montenegro</a>
                         
-                        <a href="/eca/moldova" class="">Moldova</a>
-                        
-                        <a href="/eca/montenegro" class="">Montenegro</a>
+                        <a href="/eca/poland" class="">Poland</a>
                         
                         <a href="/eca/serbia" class="">Republic of Serbia</a>
                         
                         <a href="/eca/romania" class="">Romania</a>
                         
-                        <a href="/eca/russia" class="">Russia</a>
+                        <a href="/eca/russian-federation" class="">Russian Federation</a>
                         
                         <a href="/eca/tajikistan" class="">Tajikistan</a>
                         
@@ -348,7 +347,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Latin America & Caribbean</span></a>
+                <li class="region-option "><a href="/lac"><span>Latin America & Caribbean</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -399,7 +398,7 @@
                         
                         <a href="/lac/peru" class="">Peru</a>
                         
-                        <a href="/lac/stkitts-and-nevis" class="">St Kitts and Nevis</a>
+                        <a href="/lac/st-kitts-and-nevis" class="">St Kitts and Nevis</a>
                         
                         <a href="/lac/st-lucia" class="">St. Lucia</a>
                         
@@ -417,7 +416,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -426,9 +425,9 @@
                         
                         <a href="/mena/djibouti" class="">Djibouti</a>
                         
-                        <a href="/mena/egypt" class="">Egypt</a>
+                        <a href="/mena/egypt-arab-republic" class="">Egypt</a>
                         
-                        <a href="/mena/iran" class="">Iran, Islamic Republic of</a>
+                        <a href="/mena/iran-islamic-republic" class="">Iran, Islamic Republic of</a>
                         
                         <a href="/mena/iraq" class="">Iraq</a></li>
                         
@@ -440,7 +439,7 @@
                         
                         <a href="/mena/morocco" class="">Morocco</a>
                         
-                        <a href="/mena/syria" class="">Syria</a></li>
+                        <a href="/mena/syrian-arab-republic" class="">Syria</a></li>
                         
                         <li><a href="/mena/tunisia" class="">Tunisia</a>
                         
@@ -452,7 +451,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option active"><a href="#"><span>South Asia</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/sa"><span>South Asia</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -463,7 +462,7 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/fiji" class="">Fiji</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
                         <a href="/sa/india" class="active">India</a>
                         
@@ -473,9 +472,7 @@
                         
                         <a href="/sa/pakistan" class="">Pakistan</a>
                         
-                        <a href="/sa/palau" class="">Palau</a></li>
-                        
-                        <li><a href="/sa/srilanka" class="">Sri Lanka </a></li>
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -506,11 +503,11 @@
               <ul class="dropmenu_options">
                 
                 
-                <li><a href="#" onclick="wb.setIndicator('Malnutrition'); return false">Malnutrition</a></li>
-                
-                
-                
                 <li><a href="#" onclick="wb.setIndicator('Infant Mortality'); return false">Infant Mortality</a></li>
+                
+                
+                
+                <li><a href="#" onclick="wb.setIndicator('Malnutrition'); return false">Malnutrition</a></li>
                 
                 
                 
@@ -576,7 +573,7 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -626,7 +623,7 @@
         <li><a href="http://go.worldbank.org/0BXQ5J38J0" target="_new">India Country Brief &raquo;</a></li>
         
         
-        <li><a href="http://go.worldbank.org/B4N5A3C611" target="_new">India Results Profile &raquo;</a></li>
+        <li><a href="http://go.worldbank.org/B4N5A3C611" target="_new">Results Profile &raquo;</a></li>
         
         
         <li><a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/IDA/0,,contentMDK:21396144~pagePK:51236175~piPK:437394~theSitePK:73154,00.html" target="_new">IDA at Work in India &raquo;</a></li>
@@ -648,7 +645,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of December 14, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -677,15 +674,15 @@
 
 
         <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb = null;
+  function onload() {
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P093720',project_name: 'Himachal Pradesh Mid-Himalayan Watershed Development Project',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":43},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Transportation","Percent":20},{"Name":"Industry and trade","Percent":7},{"Name":"Health and other social services","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P122193',project_name: 'Planning Support Unit for City Development Planning in Madhya Pradesh',totalamt: 0.25,grantamt: 0.25,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P088598',project_name: 'Biodiversity Conservation and Rural Livelihoods Improvement',totalamt: 8.14,grantamt: 8.14,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":94},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
-,{id: 'P071272',project_name: 'Andhra Pradesh Rural Poverty Reduction Project',totalamt: 150.03,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Feb-2003',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":40},{"Name":"Education","Percent":30},{"Name":"Health and other social services","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Health and other social services","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P105311',project_name: 'West Bengal Accelerated Development of Minor Irrigation',totalamt: 250.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Oct-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":90},{"Name":"Agriculture, fishing, and forestry","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P104649',project_name: 'India Mumbai',totalamt: 1.6,grantamt: 1.6,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
 ,{id: 'P071160',project_name: 'India: Karnataka Health Systems',totalamt: 141.83,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2006',majorsector_percent: [{"Name":"Health and other social services","Percent":72},{"Name":"Public Administration, Law, and Justice","Percent":11},{"Name":"Health and other social services","Percent":10},{"Name":"Finance","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P069376',project_name: 'INDIA - CFC PRODUCTION SECTOR CLOSURE PROJECT (ODS III)',totalamt: 83.02,grantamt: 83.02,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2000',majorsector_percent: [{"Name":"Industry and trade","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Finance","Percent":1}],prodlinetext: 'Montreal Protocol',sector_code: 'YX'}
@@ -705,7 +702,6 @@
 ,{id: 'P102768',project_name: 'Strengthening Indias Rural Credit Cooperatives',totalamt: 600.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Finance","Percent":60},{"Name":"Finance","Percent":20},{"Name":"Finance","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
 ,{id: 'P090585',project_name: 'IN: Punjab State Roads Project',totalamt: 250.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Transportation","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P101650',project_name: 'Andhra Pradesh Rural Water Supply and Sanitation',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":42},{"Name":"Water, sanitation and flood protection","Percent":42},{"Name":"Public Administration, Law, and Justice","Percent":16}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P050647',project_name: 'Uttar Pradesh Water Sector Restructuring Project',totalamt: 149.2,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Feb-2002',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":34},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Health and other social services","Percent":15},{"Name":"Energy and mining","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P117047',project_name: 'Bihar Flood Management Information System Phase II',totalamt: 1.5,grantamt: 1.5,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P096021',project_name: 'Andhra Pradesh Road Sector Project',totalamt: 320.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Transportation","Percent":95},{"Name":"Transportation","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P120112',project_name: 'Citywide Slum Upgrading Plan for the Heritage City of Agra',totalamt: 0.5,grantamt: 0.5,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
@@ -722,7 +718,6 @@
 ,{id: 'P079708',project_name: 'Tamil Nadu Empowerment and Poverty Reduction',totalamt: 120.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Industry and trade","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Industry and trade","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P088520',project_name: 'Biodiversity Conservation and Rural Livelihoods Improvement Project',totalamt: 15.36,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":69},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Health and other social services","Percent":11}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P120652',project_name: 'Rajasthan Water Sector Restructuring Project- Additional Financing',totalamt: 19.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":52},{"Name":"Public Administration, Law, and Justice","Percent":48}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P102547',project_name: 'India:  Elementary Education (Sarva Shiksha Abhiyan II)',totalamt: 600.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Education","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P073651',project_name: 'IN: Integrated Disease Surveillance Project',totalamt: 68.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":55},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Information and communications","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P093478',project_name: 'Orissa Rural Livelihoods Project',totalamt: 82.4,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":57},{"Name":"Industry and trade","Percent":36},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P097985',project_name: 'Integrated Coastal Zone Management',totalamt: 221.96,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Transportation","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
@@ -737,10 +732,8 @@
 ,{id: 'P078539',project_name: 'India: Second National Tuberculosis Control Project',totalamt: 170.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2006',majorsector_percent: [{"Name":"Health and other social services","Percent":72},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P090592',project_name: 'Punjab Rural Water Supply and Sanitation',totalamt: 154.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":55},{"Name":"Public Administration, Law, and Justice","Percent":32},{"Name":"Health and other social services","Percent":5},{"Name":"Water, sanitation and flood protection","Percent":4},{"Name":"Water, sanitation and flood protection","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P050653',project_name: 'Second Karnataka Rural Water Supply and Sanitation Project',totalamt: 151.6,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2001',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":43},{"Name":"Water, sanitation and flood protection","Percent":42},{"Name":"Public Administration, Law, and Justice","Percent":7},{"Name":"Health and other social services","Percent":7},{"Name":"Water, sanitation and flood protection","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P118673',project_name: 'Additional Financing for Second Elementary Education Project',totalamt: 750.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P107069',project_name: 'Street Lighting Energy Efficiency',totalamt: 8.12,grantamt: 8.12,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P096087',project_name: 'Tsunami Disaster Recovery in India',totalamt: 2.5,grantamt: 2.5,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":90},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'Special Financing',sector_code: 'AX'}
-,{id: 'P050655',project_name: 'India: Rajasthan Health Systems Development Project',totalamt: 89.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":60},{"Name":"Health and other social services","Percent":10},{"Name":"Finance","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P121515',project_name: 'NHAI Technical Assistance Project',totalamt: 45.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":99},{"Name":"Transportation","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P095901',project_name: 'Carbon Financing for Improved Rural Livelihoods Project',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}
 ,{id: 'P113028',project_name: 'Mumbai Urban Transport Project-2A',totalamt: 430.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
@@ -769,8 +762,7 @@
 ,{id: 'P121464',project_name: 'Supporting and Operationalising the National Urban Sanitation Policy (NUSP) in India',totalamt: 0.08,grantamt: 0.08,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P100584',project_name: 'Chiller Energy Efficiency',totalamt: 6.3,grantamt: 6.3,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
 ,{id: 'P102331',project_name: 'Second Madhya Pradesh District Poverty Initiatives Project (MPDPIP-II)',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":33},{"Name":"Industry and trade","Percent":28},{"Name":"Public Administration, Law, and Justice","Percent":21},{"Name":"Industry and trade","Percent":13},{"Name":"Health and other social services","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P118821',project_name: 'APRPRP 2nd Additional Finance',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Health and other social services","Percent":15},{"Name":"Education","Percent":10},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P104724',project_name: 'AP Rural Poverty Reduction Additional Financing',totalamt: 65.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":40},{"Name":"Finance","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Education","Percent":10},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P122241',project_name: 'TA to Enhance Financial Access through Technology in Andhra Pradesh, India',totalamt: 1.9,grantamt: 1.9,mjsector1: 'Industry and trade',boardapprovaldate: 'Oct-2011',majorsector_percent: [{"Name":"Industry and trade","Percent":50},{"Name":"Finance","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'YX'}
 ,{id: 'P121155',project_name: 'Women and Youth Use Reality-Show Format to Tell of Climate Options',totalamt: 0.2,grantamt: 0.2,mjsector1: 'Industry and trade',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Industry and trade","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'YX'}
 ,{id: 'P121013',project_name: 'Portable Solar/Wind Greenhouse to Grow Fodder for Sustainable Dairy Farms',totalamt: 0.2,grantamt: 0.2,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'GEF Medium Sized Program',sector_code: 'LX'}
 ,{id: 'P119882',project_name: 'Karnataka RWSS II Additional Financing',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":70},{"Name":"Water, sanitation and flood protection","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
@@ -778,6 +770,7 @@
 ,{id: 'P112060',project_name: 'Sustainable Rural Livelihoods and Security through Innovations in Land and Ecosystem Mgmt /Additional GEF financing to India NAIP',totalamt: 7.34,grantamt: 7.34,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Agriculture, fishing, and forestry","Percent":20}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P120836',project_name: 'Maharashtra Agricultural Competitiveness Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Industry and trade","Percent":69},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Industry and trade","Percent":7},{"Name":"Agriculture, fishing, and forestry","Percent":6},{"Name":"Agriculture, fishing, and forestry","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
 ,{id: 'P124354',project_name: 'Uttarakhand Decentralized Watershed Project Additional Financing',totalamt: 7.98,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":43},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":18},{"Name":"Public Administration, Law, and Justice","Percent":7},{"Name":"Industry and trade","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P101274',project_name: 'Rampur Hydropower Project - Carbon Finance',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P112061',project_name: 'Sustainable Land, Water and Biodiversity Conservation and Management for Improved Livelihoods in Uttarakhand Watershed Sector',totalamt: 7.49,grantamt: 7.49,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":25}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P107649',project_name: 'Second Karnataka State Highway Improvement',totalamt: 350.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P112033',project_name: 'Uttar Pradesh Sodic Lands Reclamation III Project',totalamt: 197.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Industry and trade","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
@@ -791,24 +784,23 @@
 ,{id: 'P124639',project_name: 'PMGSY Rural Roads Project',totalamt: 1500.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Transportation","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P112798',project_name: 'Power System Development IV - Additional Financing',totalamt: 400.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P100589',project_name: 'Sustainable Urban Transport (GEF)',totalamt: 20.33,grantamt: 20.33,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":69},{"Name":"Transportation","Percent":31}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
-,{id: 'P122727',project_name: 'Renovation, Modernization and Upgradation of BBMB Hydro Power Rehab Project in Punjab, India BIOCF T1 WINDOW 1',totalamt: 5.93,grantamt: 5.93,mjsector1: 'Energy and mining',boardapprovaldate: 'Aug-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P110371',project_name: 'Sustainable Urban Transport Project',totalamt: 105.23,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P077977',project_name: 'Rural Roads Project',totalamt: 399.5,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2004',majorsector_percent: [{"Name":"Transportation","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P104164',project_name: 'National Rural Livelihoods Project',totalamt: 1000.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P084792',project_name: 'Assam Agricultural Competitiveness Project',totalamt: 154.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Transportation","Percent":60},{"Name":"Agriculture, fishing, and forestry","Percent":11},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Industry and trade","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P078550',project_name: 'Uttaranchal Decentralized Watershed Development Project',totalamt: 69.62,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Industry and trade","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P100531',project_name: 'Coal-Fired Generation Rehabilitation',totalamt: 45.4,grantamt: 45.4,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P110371',project_name: 'Sustainable Urban Transport Project',totalamt: 105.23,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P122727',project_name: 'Renovation, Modernization and Upgradation of BBMB Hydro Power Rehab Project in Punjab, India BIOCF T1 WINDOW 1',totalamt: 5.93,grantamt: 5.93,mjsector1: 'Energy and mining',boardapprovaldate: 'Aug-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P100789',project_name: 'Andhra Pradesh Community-Based Tank Management Project',totalamt: 189.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":59},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Agriculture, fishing, and forestry","Percent":12},{"Name":"Industry and trade","Percent":2},{"Name":"Industry and trade","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P119295',project_name: 'KARNATAKA WIND',totalamt: 13.59,grantamt: 13.59,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P081026',project_name: 'CGAP - Friends of Womens World Banking',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Finance',boardapprovaldate: 'Nov-2002',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}
 ,{id: 'P102790',project_name: 'India - Chiller Energy Efficiency Project - MP Component',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'Montreal Protocol',sector_code: 'LX'}];
       
-  wb.init("416",  "India", "South Asia", {projects_count: '120', locations_count: '1,674', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
+  wb.init("416",  "India", "South Asia", {projects_count: '116', locations_count: '1,847', projects: projects, locations_layer: 0, indicators: ['Infant Mortality','Malnutrition','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
-  
+  }
 </script>
 
-        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
     </div><!--#container//-->
 
@@ -864,6 +856,7 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 
 </body>

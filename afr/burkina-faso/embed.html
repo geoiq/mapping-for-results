@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for ResultsBurkina Faso , Africa > </title>
+  <title>The World Bank - Mapping for ResultsBurkina Faso , Africa - </title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
 
@@ -14,21 +14,20 @@
   </script>
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
 <script src="/script/map.js" type="text/javascript"></script>
@@ -44,9 +43,9 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb = null;
+  function onload() {
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P125285',project_name: 'Health Sector Support and Multi-Sectoral Aids Project - Additional Financing',totalamt: 36.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Health and other social services","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
@@ -64,6 +63,7 @@
 ,{id: 'P111210',project_name: 'Burkina Faso: Extractive Industries Transparency Implementation',totalamt: 0.06,grantamt: 0.06,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
 ,{id: 'P098956',project_name: 'Post-Primary Education',totalamt: 22.9,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Education","Percent":71},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Education","Percent":7},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P074030',project_name: ' TRANSPORT SECTOR PROJECT',totalamt: 92.1,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2003',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P120517',project_name: 'Local Government Support Project',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P116645',project_name: 'Strengthening community participation for the fight against female genital cutting (FGM/C)',totalamt: 2.73,grantamt: 2.73,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P108791',project_name: 'International Institute for Water and Environmental Engineering (2ie)',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Education","Percent":70},{"Name":"Education","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P110815',project_name: 'Health Sector Support and AIDS project - Additional Financing',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":60},{"Name":"Health and other social services","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
@@ -76,9 +76,9 @@
 ,{id: 'P114236',project_name: 'Agricultural Productivity and Food Security Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":80},{"Name":"Agriculture, fishing, and forestry","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P098378',project_name: 'Second Phase Community Based Rural Development Project,',totalamt: 74.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":28},{"Name":"Health and other social services","Percent":25},{"Name":"Education","Percent":17},{"Name":"Water, sanitation and flood protection","Percent":17},{"Name":"Agriculture, fishing, and forestry","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
-  wb.init("497",  "Burkina Faso ", "Africa", {projects_count: '26', locations_count: '94', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("497",  "Burkina Faso ", "Africa", {projects_count: '27', locations_count: '94', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
-  
+  }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -102,7 +102,7 @@
 <script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
 <script language="JavaScript">
 <!--
-var s_pageName="Home > Maps > Burkina Faso , Africa > ";
+var s_pageName="Home > Maps > Burkina Faso , Africa - ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Africa,Burkina Faso ";
 var s_prop1 = "";

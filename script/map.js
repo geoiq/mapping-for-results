@@ -328,7 +328,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     	  s_attr.icon.selectedAttribute = attribute;
 	      self.map.setLayerStyle(self.stylelayers[indicator].order, s_attr);
 	  }
-	  self.map.setLayerInfoWindow(self.stylelayers[indicator].order, {
+	  self.map.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {
 	        title: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["title"], 
 	        subtitle: s_attr["infoWindowFilter"]["subtitle"], tabs: F1.WorldBank.extractives[indicator]["infoWindowFilter"]["tabs"]});
 	  jq('#layercontrol_extractives').html(title);
@@ -646,7 +646,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		
 		//infotabs.push({title:"Other Indicators", type: "text", value: "Maternal health: $[Maternal health]% of births attended by skilled health provider\nInfant mortality: $[Infant mortality] per 1000 live births\nMalnutrition: $[Malnutrition]%\nUnemployment rate: $[Unemployment rate]%\nRegional population: $[Regional population] people\nRegional population year: $[Regional population year]\nWealth quintile - highest: $[Wealth quintile - highest]%\nWealth quintile - second highest: $[Wealth quintile - second highest]%\nWealth quintile - fourth highest: $[Wealth quintile - fourth highest]%\nWealth quintile - lowest: $[Wealth quintile - lowest]%\nWealth quintile - middle: $[Wealth quintile - middle]%\nFor further information about these indicators, refer to the <a href='http://maps.worldbank.org/extractives/about' target='_new'>About page</a>"})
 		try {
-    		self.map.setLayerInfoWindow(self.stylelayers[indicator].order, {title: indicator + ": $["+ F1.WorldBank.indicators[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
+    		self.map.addLayerInfoWindowFilter(self.stylelayers[indicator].order, {title: indicator + ": $["+ F1.WorldBank.indicators[indicator].styles.fill.selectedAttribute +"]", subtitle: infosub, tabs:infotabs});
 
     		self.map.setLayerTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].title);
     		self.map.setLayerSubTitle(self.stylelayers[indicator].order, F1.WorldBank.indicators[indicator].subtitle);
@@ -828,7 +828,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var opts = {}
 		var width = 410;
 		var char_length = 25;
-		if( self.country == "World") {
+		if( self.country == "World" || self.country == "Africa") {
 		    width = 640;
 		    char_length = 47;
 		    }
@@ -1047,29 +1047,43 @@ if(typeof(F1)=='undefined') {F1 = {};}
       return r;
       // F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {          return links[this.bar.index]; }});
 	},
-	productlineFundingBars: function() {
+	countryFundingBars: function() {
 	  var self = this;
 	  var s;
 	  var features = [];
 	  var links = [];
+	  var values = [];
 	  var labels = [];
-	  jq.each(self.productlines, function(s, financing) {
+	  var max = 0;
+	  jq.each(self.regions, function(s, financing) {
 		features.push({name: s, financing: financing.toFixed(2)});
+		values.push(financing/1000)
 		labels.push(s)
 		links.push("#" + s);
+		if(financing/1000 > max) { max = financing/1000 }
 	  });
 
 	  jq('#funding_total').hide();
-	  
-	  bar_options = {"features":features, "attributes": {
+	  bar_options = {
+	        ids: labels,
+	      "features":features, "attributes": {
 		  "data":{"name": "Financing Amount $m", "original_name": "financing"}, 
-		  "description":{"name": "Product line", "original_name": "name"}, 
+		  "description":{"name": "Country", "original_name": "name"}, 
 		  "sort":{"name": "Financing Amount $m","original_name": "financing"} } };
-	  F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {
-		  return links[this.bar.index];
-	  }, onclick: function() {
-		  wb.highlightProject(features[this.bar.index].id, "");;
-		 }});
+
+      jq("#chart-right-graph").html("")
+      var r = Raphael("chart-right-graph");
+      var fin = function () {
+          this.flag = r.g.popup(this.bar.x, this.bar.y, labels[this.bar.index] + "\n" + ("$" + this.bar.value + "b")).insertBefore(this);
+      }
+      var fout = function () {
+          this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+      }
+      r.g.barchart(50, 20, 330, 200, [values], bar_options).hover(fin, fout).click(function(e) { window.location = links[this.bar.index];});
+      axis2 = r.g.axis(25,200,160,0,max,8,1);
+      var xLabel = r.g.text(parseInt(400/2), 210, "Country Funding in Billions");
+      xLabel.attr({title: "financing amount in US $ billions", fill:"#555"});
+      xLabel.node.id = "preview_xaxis"      
 	}, 
 	projectFundingBars: function() {
 	  var self = this;
@@ -1191,15 +1205,15 @@ if(typeof(F1)=='undefined') {F1 = {};}
             // infowindow
             if(self.stylelayers["Project Locations"] !== undefined) {
                 if(self.country == "Development Marketplace") {
-                     self.map.setLayerInfoWindow(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project: <a target='_new' href='$[source url]'>$[project title]</a>\nYear Funded: $[approval date]\nFunding Amount:$ $[total amt]\nObjective:\n$[development objective]"}, {title: "Location", type: "text", value: "$[geoname], $[country]\n$[region]"}]});
+                     self.map.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project: <a target='_new' href='$[source url]'>$[project title]</a>\nYear Funded: $[approval date]\nFunding Amount:$ $[total amt]\nObjective:\n$[development objective]"}, {title: "Location", type: "text", value: "$[geoname], $[country]\n$[region]"}]});
                 } else {
-                self.map.setLayerInfoWindow(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$["+major_sector_name+"]\nObjective:\n$[development objective]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\nGeoname: $[geoname]\n\nDescription:\n$[precision description]"},
+                self.map.addLayerInfoWindowFilter(self.stylelayers["Project Locations"].order, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$["+major_sector_name+"]\nObjective:\n$[development objective]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\nGeoname: $[geoname]\n\nDescription:\n$[precision description]"},
                 {title:"Results", type: "text", value: "$[results]"}
                 ]});
                 }
             }
             if(self.stylelayers["Project Counts"] !== undefined) {
-                self.map.setLayerInfoWindow(self.stylelayers["Project Counts"].order, {title: "Activities: $[project count]", subtitle: "$[adm1] $[adm2]", tabs:[{title:"About", type:"text", value: "Counts are determined by the total number of activities working within or at this administrative level."}]});
+                self.map.addLayerInfoWindowFilter(self.stylelayers["Project Counts"].order, {title: "Activities: $[project count]", subtitle: "$[adm1] $[adm2]", tabs:[{title:"About", type:"text", value: "Counts are determined by the total number of activities working within or at this administrative level."}]});
             }
         },
         styleLegend: function() {
@@ -1240,10 +1254,10 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	hoverWindow: function(layer_index,tooltip) {
 	    var self = this;
         self.map.setMapStyle({tooltip: {visible: false}})
-        if(tooltip != "count") self.map.setLayerTooltip(layer_index,{title: tooltip})
+        //if(tooltip != "count") self.map.setLayerTooltip(layer_index,{title: tooltip})
         var infodiv = document.createElement("div");
         infodiv.id = "infodiv";
-        infodiv.setAttribute("style", "padding: 5px; top: -1000; left: -1000; display: block;max-width: 100px; position: absolute; background-color: #92948C; opacity:0.9; filter:alpha(opacity=90)");
+
         var parent = document.getElementById("wb_map");
         parent.insertBefore(infodiv, parent.childNodes[0]);
         wb.map.setCallback("onFeatureHover", function(obj) { 
@@ -1262,8 +1276,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 }
                 infodiv.innerHTML =  "<span>" + text + "</span>"
                 infodiv.style.opacity = "0.9";
-                infodiv.style.left = (obj.point.x + 10) + "px";
-                infodiv.style.top = (obj.point.y - 10) + "px";
+                infodiv.style.left = (obj.point.x - jq("#infodiv").width() / 2) + "px";
+                infodiv.style.top = (obj.point.y - 50) + "px";
             } else {
                 // self.map.clearHighlights(layer_index);
                 infodiv.style.opacity = "0";
@@ -1297,6 +1311,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
                 jq('#mapped_locations_header').html("mapped location")
+            } else if (parseInt(self.country_attrs["projects_count"].replace(",","")) > 1000) {
+                self.countryFundingBars()
             }
             log("finish header")
 
@@ -1323,9 +1339,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.projectTable(self.projects);
             log("sortProjects");
             // self.projectFundingBars();
-            self.sectorPieChart("all", false);
             self.toggleSector("all", true, false);
             log("sectorPieChart");
+        }
+        if(self.thematic_area == "m4r") { // for countries & regions
+            self.sectorPieChart("all", false);            
         }
         
         self.loadState();
@@ -1341,17 +1359,17 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  log("styleWorldMap styled")
 	  self.sectorPieChart("all", false);
 	  self.regionFundingBars();
-	  self.hoverWindow(0, "$[country] has $[project count] active projects.<br />Click to view the country map.")
-      self.map.setMapStyle( {infowindow: {visible: false}});
+	  self.hoverWindow(3, "</span><span id='info_country'>$[country]</span><br /><span id='info_count'>$[project count] projects</span><span>")
+     // self.map.setMapStyle( {infowindow: {visible: false}});
 	  //self.map.setCallback("onFeatureSelected", function(features){ var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') });
 
       // self.map.setCallback("onFeatureHover", function(feature) { console.log(feature)})
 	  if(self.country != "World") {
 		// self.map.addLayerCategoryFilter(0, {attribute:major_sector_name,categories:self.wbicons});
 	  } else if (self.country == "World") {
-		self.map.setLayerInfoWindow(0, {title: "$[country]", subtitle: "$[project count] projects" , tabs: [{title:"About", type: "text", value: "You can explore the growing list of available project profiles of World Bank activities across the world. $[description]"}]}); }
+		self.map.addLayerInfoWindowFilter(0, {title: "$[country]", subtitle: "$[project count] projects" , tabs: [{title:"About", type: "text", value: "You can explore the growing list of available project profiles of World Bank activities across the world. $[description]"}]}); }
 	  // else
-	  //   self.map.setLayerInfoWindow(0, {"title": "$[project title]","subtitle": "$[country]- $[sector1]","tabs": [{"title": "Financing","type": "text","value": "Project ID: \u003Ca target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627\u0026piPK=73230\u0026theSitePK=40941\u0026menuPK=228424\u0026Projectid=$[project id]'\u003E$[project id]\u003C/a\u003E\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt]million"},{"title": "Location","type": "text","value": "Country: $[country]\nProvince: $[adm1]\nDistrict: $[adm2]\nLatitude:$[latitude]\nLongitude:$[longitude]"}]})
+	  //   self.map.addLayerInfoWindowFilter(0, {"title": "$[project title]","subtitle": "$[country]- $[sector1]","tabs": [{"title": "Financing","type": "text","value": "Project ID: \u003Ca target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627\u0026piPK=73230\u0026theSitePK=40941\u0026menuPK=228424\u0026Projectid=$[project id]'\u003E$[project id]\u003C/a\u003E\nProject Name: $[project title]\nSector:$[sector1]\nTotal Amount: $ $[total amt]million"},{"title": "Location","type": "text","value": "Country: $[country]\nProvince: $[adm1]\nDistrict: $[adm2]\nLatitude:$[latitude]\nLongitude:$[longitude]"}]})
 		
 	  self.hideLoading();
   },

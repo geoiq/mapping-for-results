@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for ResultsArgentina, Latin America & Caribbean > </title>
+  <title>The World Bank - Mapping for ResultsArgentina, Latin America & Caribbean - </title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
 
@@ -14,21 +14,20 @@
   </script>
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
 <script src="/script/map.js" type="text/javascript"></script>
@@ -44,9 +43,9 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb = null;
+  function onload() {
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P106735',project_name: 'Provincial Public Health Insurance Development Project',totalamt: 400.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":86},{"Name":"Public Administration, Law, and Justice","Percent":14}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
@@ -62,7 +61,7 @@
 ,{id: 'P120622',project_name: 'Basic Protection Project Additional Financing',totalamt: 480.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":86},{"Name":"Public Administration, Law, and Justice","Percent":14}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P117377',project_name: 'Prevention and Management of Influenza Type Illness and Strengthening of Argentinas Epidemiological System Project',totalamt: 229.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P114018',project_name: 'AR- Provincial Road Infrastructure Project Additional Financing',totalamt: 175.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P105680',project_name: 'Matanza-Riachuelo Basin (MRB) Sustainable Development Adaptable Lending Program',totalamt: 840.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":1},{"Name":"Water, sanitation and flood protection","Percent":1},{"Name":"Water, sanitation and flood protection","Percent":84},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P105680',project_name: 'Matanza-Riachuelo Basin (MRB) Sustainable Development Adaptable Lending Program',totalamt: 840.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":84},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":2},{"Name":"Water, sanitation and flood protection","Percent":1},{"Name":"Water, sanitation and flood protection","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P110498',project_name: 'AR PERMER Renewable Energy Additional Financing',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":89},{"Name":"Public Administration, Law, and Justice","Percent":11}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P101170',project_name: 'Second State Modernization',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P091659',project_name: 'Argentina Grasslands Project (Mercosur)',totalamt: 0.9,grantamt: 0.9,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'GEF Medium Sized Program',sector_code: 'AX'}
@@ -77,7 +76,6 @@
 ,{id: 'P095485',project_name: 'Urban Transport  in Metropolitan Areas',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Transportation","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P106684',project_name: 'Second Provincial Agricultural Development',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":31},{"Name":"Public Administration, Law, and Justice","Percent":23},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Industry and trade","Percent":16},{"Name":"Transportation","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P088032',project_name: 'AR Buenos Aires Infrastructure 1st Phase APL',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Transportation","Percent":55},{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P088934',project_name: 'Olavarria Landfill Gas Recovery Project',totalamt: 0.54,grantamt: 0.54,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}
 ,{id: 'P121836',project_name: 'Public Sector Strengthening Program - APL1',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Public Administration, Law, and Justice","Percent":32},{"Name":"Information and communications","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P116974',project_name: 'AR Third National Communication UNFCCC',totalamt: 2.44,grantamt: 2.44,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":25}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
 ,{id: 'P105288',project_name: 'AR Buenos Aires Infrastructure Sustainable Investment Development Project Phase II',totalamt: 270.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Transportation","Percent":40},{"Name":"Water, sanitation and flood protection","Percent":21},{"Name":"Water, sanitation and flood protection","Percent":21},{"Name":"Water, sanitation and flood protection","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
@@ -100,9 +98,9 @@
 ,{id: 'P095514',project_name: 'AR Lifelong Learning Project',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Education","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":21},{"Name":"Health and other social services","Percent":14},{"Name":"Education","Percent":9},{"Name":"Industry and trade","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P095569',project_name: 'AR APL2 National Highway Asset Mgt',totalamt: 400.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Transportation","Percent":94},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Education","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}];
       
-  wb.init("1718",  "Argentina", "Latin America & Caribbean", {projects_count: '50', locations_count: '549', projects: projects, locations_layer: 0, indicators: ['Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("1718",  "Argentina", "Latin America & Caribbean", {projects_count: '49', locations_count: '549', projects: projects, locations_layer: 0, indicators: ['Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
-  
+  }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -126,7 +124,7 @@
 <script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
 <script language="JavaScript">
 <!--
-var s_pageName="Home > Maps > Argentina, Latin America & Caribbean > ";
+var s_pageName="Home > Maps > Argentina, Latin America & Caribbean - ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Latin America & Caribbean,Argentina";
 var s_prop1 = "";
