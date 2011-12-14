@@ -1310,7 +1310,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
                 jq('#mapped_locations_header').html("mapped location")
-            } else if (parseInt(self.country_attrs["projects_count"].replace(",","")) > 1000) {
+            } else if (parseInt(self.country_attrs["locations_count"].replace(",","")) > 1000) {
                 self.countryFundingBars()
             }
             log("finish header")
