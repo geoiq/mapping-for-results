@@ -1038,7 +1038,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
       }
       r.g.barchart(0, 10, 440, 170, [values], bar_options).hover(fin, fout).click(function(e) { 
           window.location = links[this.bar.index];
-         // wb.loadProjects(1865)
           });
       // r.g.axis(x_start, y_start, x_width, from, to, steps, orientation, labels, type, dashsize)
       axis = r.g.axis(37,200,435,null,null,labels.length,2,labels, " ", 0);
@@ -1055,12 +1054,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var values = [];
 	  var labels = [];
 	  var max = 0;
-	  jq.each(self.regions, function(s, financing) {
-		features.push({name: s, financing: financing.toFixed(2)});
-		values.push(financing/1000)
+	  jq.each(self.regions, function(s, region) {
+		features.push({name: s, financing: region.financing.toFixed(2)});
+		values.push(region.financing/1000)
 		labels.push(s)
 		links.push("#" + s);
-		if(financing/1000 > max) { max = financing/1000 }
+		if(region.financing/1000 > max) { max = region.financing/1000 }
 	  });
 
 	  jq('#funding_total').hide();
@@ -1074,7 +1073,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
       jq("#chart-right-graph").html("")
       var r = Raphael("chart-right-graph");
       var fin = function () {
-          this.flag = r.g.popup(this.bar.x, this.bar.y, labels[this.bar.index] + "\n" + ("$" + this.bar.value + "b")).insertBefore(this);
+          this.flag = r.g.popup(this.bar.x, this.bar.y, labels[this.bar.index] + "\n" + ("$" + this.bar.value.toFixed(2) + "b")).insertBefore(this);
       }
       var fout = function () {
           this.flag.animate({opacity: 0}, 300, function () {this.remove();});

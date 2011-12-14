@@ -344,7 +344,7 @@ ul.links li, ul.links li a{
 	padding-top: 0;
 }
 #infodiv {padding: 5px; top: -1000; left: -1000; 
-    display: block;
+    display: none;
     min-width: 140px;
     position: absolute; 
     background-color: #92948C; 

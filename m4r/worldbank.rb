@@ -155,10 +155,8 @@ module WorldBank
             calculations[:sectors][name] += percent["Percent"].to_i / 100.0 * amount
         end
         
-        unless calculations[:regions].include?(project[regionname])
-          calculations[:regions][project[regionname]] = {:financing => 0, :shortname => SHORTNAMES[project[regionname]] }
-          calculations[:regions][project[regionname]][:financing] += amount
-        end
+        calculations[:regions][project[regionname]] = {:financing => 0, :shortname => SHORTNAMES[project[regionname]] } unless calculations[:regions].include?(project[regionname])
+        calculations[:regions][project[regionname]][:financing] += amount
     end
     calculations
   end
