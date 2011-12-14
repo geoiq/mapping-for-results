@@ -15,7 +15,7 @@ module WorldBank
     "LATIN AMERICA AND CARIBBEAN" => "lac",
     "EUROPE AND CENTRAL ASIA" => "eca"
   }
-  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg,countrycode&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
+  WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryshortname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg,countrycode&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
 
   PROJECT_FIELDS = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent","prodlinetext"]
   SECTORS = {
@@ -154,8 +154,8 @@ module WorldBank
             calculations[:sectors][name] = 0 unless calculations[:sectors].include?(name)
             calculations[:sectors][name] += percent["Percent"].to_i / 100.0 * amount
         end
-        
-        calculations[:regions][project[regionname]] = {:financing => 0, :shortname => SHORTNAMES[project[regionname]] } unless calculations[:regions].include?(project[regionname])
+       
+        calculations[:regions][project[regionname]] = {:financing => 0, :shortname => SHORTNAMES[project[regionname]] ||  project[regionname]} unless calculations[:regions].include?(project[regionname])
         calculations[:regions][project[regionname]][:financing] += amount
     end
     calculations
