@@ -23,6 +23,7 @@ puts "Starting Regions"
 @regions = Page.all :page_type => "region"
 @regions.each do |region|
   puts "#{region.name} - #{region.id}"
+  system "curl #{HOST}#{page.url} > #{page.shortname}.html"
   system "mkdir -p .#{region.url}"
   region.children.each do |country|
     cache_country(country)
