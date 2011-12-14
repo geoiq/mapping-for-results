@@ -44,15 +44,13 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P034154',project_name: 'Ports Rehabilitation Project',totalamt: 30.3,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-1997',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Water, sanitation and flood protection","Percent":2},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}];
       
   wb.init("445",  "Eritrea", "Africa", {projects_count: '1', locations_count: '3', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

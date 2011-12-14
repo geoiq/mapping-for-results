@@ -44,20 +44,18 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P099894',project_name: 'ROAD INFRASTRUCTURE REHABILITATION PROJECT',totalamt: 122.5,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Transportation","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P077575',project_name: 'DISTRICT HEAT (PCF)',totalamt: 4.34,grantamt: 4.34,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+  var projects = [{id: 'P077575',project_name: 'DISTRICT HEAT (PCF)',totalamt: 4.34,grantamt: 4.34,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P099894',project_name: 'ROAD INFRASTRUCTURE REHABILITATION PROJECT',totalamt: 122.5,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Transportation","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P099895',project_name: 'Municipal Infrastructure Development',totalamt: 118.7,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":35}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P100657',project_name: 'Social Inclusion Project',totalamt: 59.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Nov-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":62},{"Name":"Education","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":7},{"Name":"Health and other social services","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P075560',project_name: 'WOOD RESIDUE TO ENERGY',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Sep-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P094018',project_name: 'Second Trade and Transport Facilitation Project',totalamt: 52.8,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":22},{"Name":"Transportation","Percent":18}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
   wb.init("1763",  "Bulgaria", "Europe and Central Asia", {projects_count: '6', locations_count: '26', projects: projects, locations_layer: 0, indicators: ['Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

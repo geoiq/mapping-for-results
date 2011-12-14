@@ -44,9 +44,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P102174',project_name: 'Institutional Development for Education Project',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Education","Percent":39},{"Name":"Education","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":21},{"Name":"Public Administration, Law, and Justice","Percent":7},{"Name":"Education","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
@@ -65,7 +64,6 @@
 ,{id: 'P106580',project_name: 'LPTAP Additional Financing 1',totalamt: 2.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":68},{"Name":"Energy and mining","Percent":16},{"Name":"Energy and mining","Percent":16}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
   wb.init("453",  "Kosovo", "Europe and Central Asia", {projects_count: '14', locations_count: '7', projects: projects, locations_layer: 0, indicators: ['Poverty'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

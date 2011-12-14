@@ -44,19 +44,17 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P112516',project_name: 'Botswana - Morupule B Generation and Transmission Project',totalamt: 136.4,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P116784',project_name: 'Morupule B Generation and Transmission Project',totalamt: 242.66,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'Guarantees',sector_code: 'LX'}
-,{id: 'P095617',project_name: 'Northern Botswana Human Wildlife Coexistence Project',totalamt: 5.5,grantamt: 5.5,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
+  var projects = [{id: 'P116784',project_name: 'Morupule B Generation and Transmission Project',totalamt: 242.66,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'Guarantees',sector_code: 'LX'}
+,{id: 'P112516',project_name: 'Botswana - Morupule B Generation and Transmission Project',totalamt: 136.4,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":91},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P102299',project_name: 'Botswana National HIV/AIDS Prevention Support Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":58},{"Name":"Public Administration, Law, and Justice","Percent":35},{"Name":"Health and other social services","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P095617',project_name: 'Northern Botswana Human Wildlife Coexistence Project',totalamt: 5.5,grantamt: 5.5,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P102368',project_name: 'Integrated Transport',totalamt: 186.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Transportation","Percent":88},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}];
       
   wb.init("1793",  "Botswana", "Africa", {projects_count: '5', locations_count: '40', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

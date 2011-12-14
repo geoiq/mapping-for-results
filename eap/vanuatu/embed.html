@@ -44,16 +44,14 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P118895',project_name: 'VU:  Telecommunications & ICT Technical Assistance Project',totalamt: 2.81,grantamt: 2.81,mjsector1: 'Information and communications',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Information and communications","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'CX'}
 ,{id: 'P103873',project_name: 'VANUATU - Utility Regulatory Authority',totalamt: 0.9,grantamt: 0.9,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":34},{"Name":"Information and communications","Percent":33},{"Name":"Water, sanitation and flood protection","Percent":33}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}];
       
   wb.init("648",  "Vanuatu", "East Asia & the Pacific", {projects_count: '2', locations_count: '0', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

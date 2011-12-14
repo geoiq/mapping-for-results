@@ -44,16 +44,14 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P122151',project_name: 'Kiribati Road Rehabilitation Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Transportation","Percent":94},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P118552',project_name: 'Kiribati Food Crisis Response Operation',totalamt: 2.0,grantamt: 2.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Industry and trade","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'YX'}];
       
   wb.init("585",  "Kiribati", "East Asia & the Pacific", {projects_count: '2', locations_count: '12', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

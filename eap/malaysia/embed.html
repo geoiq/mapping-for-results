@@ -44,15 +44,13 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P106857',project_name: 'MY-CF-Kota Kinabalu Composting Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'WX'}];
       
   wb.init("1757",  "Malaysia", "East Asia & the Pacific", {projects_count: '1', locations_count: '1', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

@@ -44,20 +44,18 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P113500',project_name: 'Disaster Risk Reduciton Prog for the Municipalities of Quito',totalamt: 0.95,grantamt: 0.95,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
-,{id: 'P080093',project_name: 'ECUADOR - Hydro SIBIMBE',totalamt: 1.81,grantamt: 1.81,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+  var projects = [{id: 'P080093',project_name: 'ECUADOR - Hydro SIBIMBE',totalamt: 1.81,grantamt: 1.81,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P113500',project_name: 'Disaster Risk Reduciton Prog for the Municipalities of Quito',totalamt: 0.95,grantamt: 0.95,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P116720',project_name: 'ECUADOR:ABANICO HYDROELECTRIC PROJECT',totalamt: 4.0,grantamt: 4.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P094784',project_name: 'Ecuador - Chimborazo Development Investment Project (PIDD)',totalamt: 15.3,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":62},{"Name":"Transportation","Percent":29},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P125602',project_name: 'JSDF:  Growing with our GUAGUAS (Children)',totalamt: 2.22,grantamt: 2.22,mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":60},{"Name":"Health and other social services","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
-,{id: 'P077539',project_name: 'Reaching the Very Poor through Credit Unions-WOCCU/FFH',totalamt: 0.57,grantamt: 0.57,mjsector1: 'Finance',boardapprovaldate: 'Dec-2001',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}];
+,{id: 'P077539',project_name: 'Reaching the Very Poor through Credit Unions-WOCCU/FFH',totalamt: 0.57,grantamt: 0.57,mjsector1: 'Finance',boardapprovaldate: 'Dec-2001',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}
+,{id: 'P125602',project_name: 'JSDF:  Growing with our GUAGUAS (Children)',totalamt: 2.22,grantamt: 2.22,mjsector1: 'Health and other social services',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":60},{"Name":"Health and other social services","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}];
       
   wb.init("1741",  "Ecuador", "Latin America & Caribbean", {projects_count: '6', locations_count: '29', projects: projects, locations_layer: 0, indicators: ['Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 

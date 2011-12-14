@@ -44,16 +44,14 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+  var wb;
+  wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P070232',project_name: 'Gabon: Strengthening Capacity for Managing National Parks and Biodiversity',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":11},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P082812',project_name: 'Local Infrastructure Development Project',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":35},{"Name":"Water, sanitation and flood protection","Percent":26},{"Name":"Transportation","Percent":26},{"Name":"Health and other social services","Percent":8},{"Name":"Industry and trade","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
   wb.init("1779",  "Gabon", "Africa", {projects_count: '2', locations_count: '11', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
-  
   
 </script>
 
