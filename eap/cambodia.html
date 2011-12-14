@@ -8,41 +8,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Cambodia, East Asia & the Pacific > The World Bank - Mapping for Results</title>
-    <meta name="description" content="Cambodia,East Asia & the Pacific,World,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="keywords" content="Cambodia,East Asia & the Pacific,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-    <script type="text/javascript" charset="utf-8">
-      // if (top.frames.length!=0)
-      //   top.location=self.document.location;
-    </script>
     <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
 </head>
 
-<body>
+<body onload="onload()">
 	<div id="container" class="clearfix">
         <div id="header" class="clearfix">
         	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
@@ -89,7 +88,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="#">Cambodia</a>, <a href="/eap">East Asia & the Pacific</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap" style="">
@@ -127,7 +126,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#" id="map_mag"></a>
-                            <ul class="worldmenu dropmenu">
+                            <ul id="country_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">CAMBODIA</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -137,7 +136,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -242,7 +241,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option active"><a href="#"><span>East Asia & the Pacific</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/eap"><span>East Asia & the Pacific</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -291,7 +290,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -348,7 +347,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Latin America & Caribbean</span></a>
+                <li class="region-option "><a href="/lac"><span>Latin America & Caribbean</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -417,7 +416,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -452,7 +451,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -463,15 +462,17 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/india" class="">India</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
-                        <a href="/sa/maldives" class="">Maldives</a>
+                        <a href="/sa/india" class="">India</a>
                         
-                        <a href="/sa/nepal" class="">Nepal</a></li>
+                        <a href="/sa/maldives" class="">Maldives</a></li>
                         
-                        <li><a href="/sa/pakistan" class="">Pakistan</a>
+                        <li><a href="/sa/nepal" class="">Nepal</a>
                         
-                        <a href="/sa/srilanka" class="">Sri Lanka </a>
+                        <a href="/sa/pakistan" class="">Pakistan</a>
+                        
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -572,7 +573,7 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -644,7 +645,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of December 14, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -673,7 +674,8 @@
 
 
         <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
@@ -685,12 +687,11 @@
 ,{id: 'P106605',project_name: 'Higher Education Quality and Capacity Improvement Project',totalamt: 23.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":52},{"Name":"Education","Percent":48}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P105329',project_name: 'GMS Power Trade (Cambodia) Project',totalamt: 18.5,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P089196',project_name: 'Cambodia Trade Facilitation and Competitiveness (Julian Clark co-TTL)',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Industry and trade","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
-,{id: 'P070668',project_name: 'Basic Education Project',totalamt: 28.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'May-2005',majorsector_percent: [{"Name":"Education","Percent":45},{"Name":"Health and other social services","Percent":25},{"Name":"Education","Percent":14},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Education","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P071207',project_name: 'Provincial and Rural Infrastructure Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2003',majorsector_percent: [{"Name":"Transportation","Percent":83},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P121075',project_name: 'Ketsana Emergency Reconstruction and Rehabilitation Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Transportation","Percent":69},{"Name":"Water, sanitation and flood protection","Percent":15},{"Name":"Water, sanitation and flood protection","Percent":8},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P122975',project_name: 'KH Strategic Program for Climate Resilience-Phase 1',totalamt: 1.5,grantamt: 1.5,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
 ,{id: 'P115198',project_name: 'Cambodia-Land Administration Management and Distribution',totalamt: 2.23,grantamt: 2.23,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
-,{id: 'P100084',project_name: 'Avian and Human Influenza Control and Preparedness Emergency Project',totalamt: 6.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Health and other social services","Percent":8},{"Name":"Agriculture, fishing, and forestry","Percent":4},{"Name":"Public Administration, Law, and Justice","Percent":49}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P100084',project_name: 'Avian and Human Influenza Control and Preparedness Emergency Project',totalamt: 6.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":49},{"Name":"Agriculture, fishing, and forestry","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Health and other social services","Percent":8},{"Name":"Agriculture, fishing, and forestry","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P109648',project_name: 'Cambodia Trade Development Support Program (RETF093573)',totalamt: 12.35,grantamt: 12.35,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P087945',project_name: 'Cambodia Public Financial Management and Accountability',totalamt: 14.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P109925',project_name: 'KH--EDUCATION FOR ALL FAST TRACK INITIATIVE CATALYTIC TRUST FUND',totalamt: 57.4,grantamt: 57.4,mjsector1: 'Education',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Education","Percent":71},{"Name":"Education","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
@@ -699,11 +700,11 @@
 ,{id: 'P070542',project_name: 'Health Sector Support Project',totalamt: 27.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2002',majorsector_percent: [{"Name":"Health and other social services","Percent":80},{"Name":"Finance","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P101156',project_name: 'Demand for Good Governance Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Health and other social services","Percent":23},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Information and communications","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
-  wb.init("434",  "Cambodia", "East Asia & the Pacific", {projects_count: '21', locations_count: '101', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
+  wb.init("434",  "Cambodia", "East Asia & the Pacific", {projects_count: '20', locations_count: '101', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
+  }
 </script>
 
-        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
     </div><!--#container//-->
 
@@ -759,6 +760,7 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 
 </body>

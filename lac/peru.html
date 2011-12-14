@@ -8,41 +8,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Peru, Latin America & Caribbean > The World Bank - Mapping for Results</title>
-    <meta name="description" content="Peru,Latin America & Caribbean,World,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="keywords" content="Peru,Latin America & Caribbean,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-    <script type="text/javascript" charset="utf-8">
-      // if (top.frames.length!=0)
-      //   top.location=self.document.location;
-    </script>
     <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
 </head>
 
-<body>
+<body onload="onload()">
 	<div id="container" class="clearfix">
         <div id="header" class="clearfix">
         	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
@@ -89,7 +88,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="#">Peru</a>, <a href="/lac">Latin America & Caribbean</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap" style="">
@@ -127,7 +126,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#" id="map_mag"></a>
-                            <ul class="worldmenu dropmenu">
+                            <ul id="country_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">PERU</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -137,7 +136,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -242,7 +241,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                <li class="region-option "><a href="/eap"><span>East Asia & the Pacific</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -291,7 +290,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -348,7 +347,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option active"><a href="#"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/lac"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -417,7 +416,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -452,7 +451,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -463,15 +462,17 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/india" class="">India</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
-                        <a href="/sa/maldives" class="">Maldives</a>
+                        <a href="/sa/india" class="">India</a>
                         
-                        <a href="/sa/nepal" class="">Nepal</a></li>
+                        <a href="/sa/maldives" class="">Maldives</a></li>
                         
-                        <li><a href="/sa/pakistan" class="">Pakistan</a>
+                        <li><a href="/sa/nepal" class="">Nepal</a>
                         
-                        <a href="/sa/srilanka" class="">Sri Lanka </a>
+                        <a href="/sa/pakistan" class="">Pakistan</a>
+                        
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -560,7 +561,7 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -632,7 +633,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of December 14, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -661,45 +662,47 @@
 
 
         <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P092834',project_name: 'PE Santa Rosa Hydro Carbon Finance',totalamt: 1.5,grantamt: 1.5,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P078894',project_name: 'REAL PROPERTY RIGHTS CONSOLIDATION PROJECT',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":63},{"Name":"Public Administration, Law, and Justice","Percent":37}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P095570',project_name: 'Peru Decentralized Rural Transport Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Transportation","Percent":83},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Transportation","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+  var projects = [{id: 'P129340',project_name: 'PE Open data access',totalamt: 0.24,grantamt: 0.24,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P117310',project_name: 'Results in Nutrition for Juntos SWAp',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P095570',project_name: 'Peru Decentralized Rural Transport Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Transportation","Percent":83},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Transportation","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P078894',project_name: 'REAL PROPERTY RIGHTS CONSOLIDATION PROJECT',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":63},{"Name":"Public Administration, Law, and Justice","Percent":37}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P092834',project_name: 'PE Santa Rosa Hydro Carbon Finance',totalamt: 1.5,grantamt: 1.5,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P104760',project_name: 'Sierra Irrigation Subsector',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Water, sanitation and flood protection","Percent":12},{"Name":"Agriculture, fishing, and forestry","Percent":11}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P088909',project_name: 'Client Poverty Levels of Financial Institutions in Peru',totalamt: 0.09,grantamt: 0.09,mjsector1: 'Finance',boardapprovaldate: 'Apr-2004',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}
-,{id: 'P081954',project_name: 'PERU - Poechos Hydropower Project',totalamt: 1.2,grantamt: 1.2,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P125551',project_name: 'Round 23-Peru Integrated Legal Strategiese for the Poor',totalamt: 1.23,grantamt: 1.23,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
-,{id: 'P090110',project_name: 'PE Rural Electrification',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":79},{"Name":"Energy and mining","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
-,{id: 'P079165',project_name: 'PE Sierra Rural Development Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":39},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Industry and trade","Percent":15},{"Name":"Industry and trade","Percent":9},{"Name":"Health and other social services","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P101590',project_name: 'Second Programmatic Fiscal Mgmt and Competitiveness Development Policy Loan',totalamt: 370.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":56},{"Name":"Finance","Percent":22},{"Name":"Industry and trade","Percent":22}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P115120',project_name: 'Second Programmatic Fiscal Mgmt and Competitiveness Development Supplemental Financing',totalamt: 330.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":56},{"Name":"Finance","Percent":22},{"Name":"Industry and trade","Percent":22}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P107666',project_name: 'Water Resources Management Modernization',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P081954',project_name: 'PERU - Poechos Hydropower Project',totalamt: 1.2,grantamt: 1.2,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P088909',project_name: 'Client Poverty Levels of Financial Institutions in Peru',totalamt: 0.09,grantamt: 0.09,mjsector1: 'Finance',boardapprovaldate: 'Apr-2004',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}
 ,{id: 'P120888',project_name: 'PERU Participatory intervention model to improve child nutrition',totalamt: 1.9,grantamt: 1.9,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
-,{id: 'P088923',project_name: 'PE (CRL) Guarantee Facility',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2005',majorsector_percent: [{"Name":"Transportation","Percent":57},{"Name":"Energy and mining","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":16},{"Name":"Information and communications","Percent":7}],prodlinetext: 'Guarantees',sector_code: 'TX'}
-,{id: 'P095563',project_name: 'PE- (APL2) Health Reform Program',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":62},{"Name":"Public Administration, Law, and Justice","Percent":34},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P117314',project_name: 'National Rural Water Supply and Sanitation Additional Financing',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":48},{"Name":"Water, sanitation and flood protection","Percent":48},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P107666',project_name: 'Water Resources Management Modernization',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P115120',project_name: 'Second Programmatic Fiscal Mgmt and Competitiveness Development Supplemental Financing',totalamt: 330.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":56},{"Name":"Finance","Percent":22},{"Name":"Industry and trade","Percent":22}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P101590',project_name: 'Second Programmatic Fiscal Mgmt and Competitiveness Development Policy Loan',totalamt: 370.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":56},{"Name":"Finance","Percent":22},{"Name":"Industry and trade","Percent":22}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P079165',project_name: 'PE Sierra Rural Development Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":39},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Industry and trade","Percent":15},{"Name":"Industry and trade","Percent":9},{"Name":"Health and other social services","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P090110',project_name: 'PE Rural Electrification',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":79},{"Name":"Energy and mining","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
 ,{id: 'P117864',project_name: 'Second Rural Electrification',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Energy and mining","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P101471',project_name: 'Peru First Progrmmatic Environmental Development Policy Loan /DDO',totalamt: 330.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Energy and mining","Percent":25},{"Name":"Transportation","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P117314',project_name: 'National Rural Water Supply and Sanitation Additional Financing',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":48},{"Name":"Water, sanitation and flood protection","Percent":48},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P095563',project_name: 'PE- (APL2) Health Reform Program',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":62},{"Name":"Public Administration, Law, and Justice","Percent":34},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P088923',project_name: 'PE (CRL) Guarantee Facility',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2005',majorsector_percent: [{"Name":"Transportation","Percent":57},{"Name":"Energy and mining","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":16},{"Name":"Information and communications","Percent":7}],prodlinetext: 'Guarantees',sector_code: 'TX'}
 ,{id: 'P117293',project_name: 'Optimization of Lima Water and Sewerage Systems',totalamt: 54.5,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":49},{"Name":"Water, sanitation and flood protection","Percent":49},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P101471',project_name: 'Peru First Progrmmatic Environmental Development Policy Loan /DDO',totalamt: 330.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Energy and mining","Percent":25},{"Name":"Transportation","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P094739',project_name: 'PE Huaycoloro Landfill Gas Recovery',totalamt: 3.7,grantamt: 3.7,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Water, sanitation and flood protection","Percent":40}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P078813',project_name: 'Regional Transport Infrastructure Decentralization',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Transportation","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P101177',project_name: 'Second Results and Accountability (REACT) Development Policy Loan-Deferred Drawdawn Option',totalamt: 330.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":58},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Education","Percent":16},{"Name":"Education","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P095424',project_name: 'Strengthening Biodiversity Conservation through the National Protected Areas',totalamt: 8.89,grantamt: 8.89,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":96},{"Name":"Agriculture, fishing, and forestry","Percent":4}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
 ,{id: 'P120860',project_name: 'Catastrophe Development Policy Loan DDO',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Health and other social services","Percent":30},{"Name":"Education","Percent":5},{"Name":"Transportation","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P065256',project_name: 'NATIONAL RURAL WATER SUPPLY AND SANITATION PROJECT',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Aug-2002',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":45},{"Name":"Water, sanitation and flood protection","Percent":45},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P090116',project_name: 'PE Rural Electrification',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":86},{"Name":"Energy and mining","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P095424',project_name: 'Strengthening Biodiversity Conservation through the National Protected Areas',totalamt: 8.89,grantamt: 8.89,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":96},{"Name":"Agriculture, fishing, and forestry","Percent":4}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
+,{id: 'P101177',project_name: 'Second Results and Accountability (REACT) Development Policy Loan-Deferred Drawdawn Option',totalamt: 330.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":58},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Education","Percent":16},{"Name":"Education","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P110752',project_name: 'Justice Services Improvement Project II',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P120124',project_name: 'Peru Capacity building for subnational public Investment',totalamt: 0.4,grantamt: 0.4,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
-,{id: 'P110752',project_name: 'Justice Services Improvement Project II',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
+,{id: 'P090116',project_name: 'PE Rural Electrification',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":86},{"Name":"Energy and mining","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P065256',project_name: 'NATIONAL RURAL WATER SUPPLY AND SANITATION PROJECT',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Aug-2002',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":45},{"Name":"Water, sanitation and flood protection","Percent":45},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}];
       
-  wb.init("1761",  "Peru", "Latin America & Caribbean", {projects_count: '29', locations_count: '214', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
+  wb.init("1761",  "Peru", "Latin America & Caribbean", {projects_count: '30', locations_count: '214', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
+  }
 </script>
 
-        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
     </div><!--#container//-->
 
@@ -755,6 +758,7 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 
 </body>

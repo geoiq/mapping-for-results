@@ -24,27 +24,26 @@
 
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
 
 <!-- Layout -->
 <div id="wrapper">
@@ -98,7 +97,7 @@
     <div id="container">
           <div id="banner">
         <div id="local" class=" collapsed" content_id="collapsible-banner">
-          <div title="" class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+          <div title="" class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="/extractives">Extractive Industries</a></div>
           <div  >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>          
@@ -207,7 +206,6 @@
 </div>
 
     </div>
-    
             <br class="clear" />
         
         <div id="network-breadcrumb"><div class="limiter clear-block">
@@ -236,7 +234,6 @@
     </div>
     <br class="clear" />
 
-    <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
     </div>
 <!-- /#wrapper -->
 <!-- /layout -->
@@ -295,4 +292,5 @@ var s_account="wbnispextgeomfr,wbglobalext";
 <!-- End SiteCatalyst code version: G.6. -->
 
 
+        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 </body></html>

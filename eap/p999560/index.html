@@ -24,27 +24,26 @@
 
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
 
 <!-- Layout -->
 <div id="wrapper">
@@ -98,7 +97,7 @@
     <div id="container">
           <div id="banner">
         <div id="local" class=" collapsed" content_id="collapsible-banner">
-          <div title="" class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+          <div title="" class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="/eap/p999560">test indonesia</a></div>
           <div  >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>          
@@ -155,7 +154,7 @@
 
     <div id="map-content-header">
       <div class="worldmenuholder">
-                    <ul class="worldmenu dropmenu">
+                    <ul id="project_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">TEST INDONESIA</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -165,7 +164,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -270,7 +269,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                <li class="region-option "><a href="/eap"><span>East Asia & the Pacific</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -319,7 +318,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -376,7 +375,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Latin America & Caribbean</span></a>
+                <li class="region-option "><a href="/lac"><span>Latin America & Caribbean</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -445,7 +444,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -480,7 +479,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -491,15 +490,17 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/india" class="">India</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
-                        <a href="/sa/maldives" class="">Maldives</a>
+                        <a href="/sa/india" class="">India</a>
                         
-                        <a href="/sa/nepal" class="">Nepal</a></li>
+                        <a href="/sa/maldives" class="">Maldives</a></li>
                         
-                        <li><a href="/sa/pakistan" class="">Pakistan</a>
+                        <li><a href="/sa/nepal" class="">Nepal</a>
                         
-                        <a href="/sa/srilanka" class="">Sri Lanka </a>
+                        <a href="/sa/pakistan" class="">Pakistan</a>
+                        
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -521,27 +522,29 @@
       </div>
     </div>
 <div id="map-content">
-  <div id="wb_map_wrapper" style="z-index: 5; height: 514px; 958px">
-  <div id="wb_map" class="" style="height: 520px"></div>
+  <div id="wb_map_wrapper" style="position:relative; z-index: 5; height: 514px; 958px">
+  <div id="wb_map" style="height: 520px"></div>
   </div>
 </div>
 
 
 <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
   wb.init("1904",  "test indonesia",  "East Asia & the Pacific", {title: 'test indonesia',locations_count: '100', thematic_area: "m4r"}, false);
 
   
+  }
 </script>
 
 
 
 
 
+
     </div>
-    
             <br class="clear" />
         
         <div id="network-breadcrumb"><div class="limiter clear-block">
@@ -570,7 +573,6 @@
     </div>
     <br class="clear" />
 
-    <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
     </div>
 <!-- /#wrapper -->
 <!-- /layout -->
@@ -629,4 +631,5 @@ var s_account="wbnispextgeomfr,wbglobalext";
 <!-- End SiteCatalyst code version: G.6. -->
 
 
+        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 </body></html>

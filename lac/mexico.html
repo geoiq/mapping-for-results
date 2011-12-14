@@ -8,41 +8,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Mexico, Latin America & Caribbean > The World Bank - Mapping for Results</title>
-    <meta name="description" content="Mexico,Latin America & Caribbean,World,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="keywords" content="Mexico,Latin America & Caribbean,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-    <script type="text/javascript" charset="utf-8">
-      // if (top.frames.length!=0)
-      //   top.location=self.document.location;
-    </script>
     <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
 </head>
 
-<body>
+<body onload="onload()">
 	<div id="container" class="clearfix">
         <div id="header" class="clearfix">
         	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
@@ -89,7 +88,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="#">Mexico</a>, <a href="/lac">Latin America & Caribbean</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap" style="">
@@ -127,7 +126,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#" id="map_mag"></a>
-                            <ul class="worldmenu dropmenu">
+                            <ul id="country_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">MEXICO</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -137,7 +136,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -242,7 +241,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                <li class="region-option "><a href="/eap"><span>East Asia & the Pacific</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -291,7 +290,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -348,7 +347,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option active"><a href="#"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/lac"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -417,7 +416,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -452,7 +451,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -463,15 +462,17 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/india" class="">India</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
-                        <a href="/sa/maldives" class="">Maldives</a>
+                        <a href="/sa/india" class="">India</a>
                         
-                        <a href="/sa/nepal" class="">Nepal</a></li>
+                        <a href="/sa/maldives" class="">Maldives</a></li>
                         
-                        <li><a href="/sa/pakistan" class="">Pakistan</a>
+                        <li><a href="/sa/nepal" class="">Nepal</a>
                         
-                        <a href="/sa/srilanka" class="">Sri Lanka </a>
+                        <a href="/sa/pakistan" class="">Pakistan</a>
+                        
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -560,7 +561,7 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -632,7 +633,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of December 14, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -661,55 +662,54 @@
 
 
         <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P085593',project_name: 'MX (APL I) Tertiary Educ Student Ass',totalamt: 180.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Education","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Education","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P077717',project_name: 'Large-scale Renewable Energy Development Project (Phase 1 = $25M; Phase 2 = $45M)',totalamt: 25.35,grantamt: 25.35,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Finance","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":15}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
-,{id: 'P080104',project_name: 'MEXICO - Wind Umbrella',totalamt: 12.29,grantamt: 12.29,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P088996',project_name: 'Mexico (CRL) Integrated Energy Services',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Energy and mining","Percent":32},{"Name":"Energy and mining","Percent":14},{"Name":"Industry and trade","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P112327',project_name: 'Supplemental of Consolidation of Protected Areas System Project SINAP II - Fourth Tranche',totalamt: 5.44,grantamt: 5.44,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
+  var projects = [{id: 'P123367',project_name: 'Savings and Credit Sector Consolidation and Financial Inclusion Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Dec-2011',majorsector_percent: [{"Name":"Finance","Percent":45},{"Name":"Finance","Percent":45},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
 ,{id: 'P120654',project_name: 'MX GEF Efficient lighting and appliances',totalamt: 7.12,grantamt: 7.12,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":30}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
-,{id: 'P088546',project_name: 'Mexico: Waste Management and Carbon Offset Project',totalamt: 0.86,grantamt: 0.86,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Water, sanitation and flood protection","Percent":30}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P098732',project_name: 'Mexico: Sacred Orchids of Chiapas: Cultural and Religious Values in Conservation Project',totalamt: 0.84,grantamt: 0.84,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Industry and trade","Percent":20}],prodlinetext: 'GEF Medium Sized Program',sector_code: 'AX'}
+,{id: 'P112327',project_name: 'Supplemental of Consolidation of Protected Areas System Project SINAP II - Fourth Tranche',totalamt: 5.44,grantamt: 5.44,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
+,{id: 'P088996',project_name: 'Mexico (CRL) Integrated Energy Services',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Energy and mining","Percent":32},{"Name":"Energy and mining","Percent":14},{"Name":"Industry and trade","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P080104',project_name: 'MEXICO - Wind Umbrella',totalamt: 12.29,grantamt: 12.29,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P077717',project_name: 'Large-scale Renewable Energy Development Project (Phase 1 = $25M; Phase 2 = $45M)',totalamt: 25.35,grantamt: 25.35,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Finance","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":15}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P085593',project_name: 'MX (APL I) Tertiary Educ Student Ass',totalamt: 180.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Education","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Education","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P114271',project_name: 'Customs Institutional Strengthening',totalamt: 10.03,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P066426',project_name: 'Hybrid Solar Thermal Power Plant',totalamt: 49.35,grantamt: 49.35,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
-,{id: 'P106528',project_name: 'Results-based Management and Budgeting',totalamt: 17.24,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P101369',project_name: 'Compensatory Education',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Education","Percent":66},{"Name":"Education","Percent":31},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P088546',project_name: 'Mexico: Waste Management and Carbon Offset Project',totalamt: 0.86,grantamt: 0.86,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Water, sanitation and flood protection","Percent":30}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
 ,{id: 'P121195',project_name: 'Water Utilities Efficiency Improvement Project (PROME)',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":70},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P121800',project_name: 'MEDEC Low-Carbon DPL Loan',totalamt: 401.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":25},{"Name":"Transportation","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Industry and trade","Percent":13},{"Name":"Energy and mining","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P108766',project_name: 'Sustainable Rural Development',totalamt: 10.5,grantamt: 10.5,mjsector1: 'Industry and trade',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":35},{"Name":"Energy and mining","Percent":25}],prodlinetext: 'Global Environment Project',sector_code: 'YX'}
-,{id: 'P118072',project_name: 'Mexico Influenza A/H1N1N Prevention',totalamt: 1.7,grantamt: 1.7,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P101369',project_name: 'Compensatory Education',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Education","Percent":66},{"Name":"Education","Percent":31},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P106528',project_name: 'Results-based Management and Budgeting',totalamt: 17.24,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P066426',project_name: 'Hybrid Solar Thermal Power Plant',totalamt: 49.35,grantamt: 49.35,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
 ,{id: 'P112264',project_name: 'Strengthening the Business Environment for Enhanced Economic Growth DPL',totalamt: 751.88,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Industry and trade","Percent":33},{"Name":"Finance","Percent":21},{"Name":"Public Administration, Law, and Justice","Percent":21},{"Name":"Information and communications","Percent":13},{"Name":"Finance","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
-,{id: 'P087152',project_name: 'Mexico Savings & Rural Finance (BANSEFI) Project - Phase II',totalamt: 75.5,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
+,{id: 'P108766',project_name: 'Sustainable Rural Development',totalamt: 10.5,grantamt: 10.5,mjsector1: 'Industry and trade',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":35},{"Name":"Energy and mining","Percent":25}],prodlinetext: 'Global Environment Project',sector_code: 'YX'}
 ,{id: 'P074755',project_name: 'State Judicial Modernization Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2004',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P115067',project_name: 'Support to Oportunidades Project',totalamt: 1503.76,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P116226',project_name: 'Support to the Social Protection System in Health',totalamt: 1250.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P087152',project_name: 'Mexico Savings & Rural Finance (BANSEFI) Project - Phase II',totalamt: 75.5,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
 ,{id: 'P122349',project_name: 'Additional Financing for the Support to Oportunidades',totalamt: 1250.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P106103',project_name: 'Add Fin - Consolidation of Protected Areas System Project SINAP II - Third Tranche',totalamt: 7.35,grantamt: 7.35,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
-,{id: 'P114012',project_name: 'Sustainable Transport and Air Quality',totalamt: 5.38,grantamt: 5.38,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Transportation","Percent":40},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
-,{id: 'P107159',project_name: 'MX Urban Transport Transformation Progr',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P100438',project_name: 'Adaptation to Climate Change Impacts on the Coastal Wetlands in the Gulf of Mexico',totalamt: 4.5,grantamt: 4.5,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
-,{id: 'P125764',project_name: 'Development of an internal control IT system for the Ministry of Public Administration',totalamt: 0.12,grantamt: 0.12,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P116226',project_name: 'Support to the Social Protection System in Health',totalamt: 1250.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P115067',project_name: 'Support to Oportunidades Project',totalamt: 1503.76,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P125973',project_name: 'Development of labor statistics at the local level',totalamt: 0.27,grantamt: 0.27,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
-,{id: 'P082656',project_name: 'Mexico City Insurgentes Bus Rapid Transit System Carbon Finance Project',totalamt: 2.4,grantamt: 2.4,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2005',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'TX'}
-,{id: 'P095038',project_name: 'MX-GEF Integrated Energy Services',totalamt: 15.0,grantamt: 15.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":39},{"Name":"Public Administration, Law, and Justice","Percent":36},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Agriculture, fishing, and forestry","Percent":4},{"Name":"Industry and trade","Percent":4}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P125764',project_name: 'Development of an internal control IT system for the Ministry of Public Administration',totalamt: 0.12,grantamt: 0.12,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P100438',project_name: 'Adaptation to Climate Change Impacts on the Coastal Wetlands in the Gulf of Mexico',totalamt: 4.5,grantamt: 4.5,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
+,{id: 'P107159',project_name: 'MX Urban Transport Transformation Progr',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P114012',project_name: 'Sustainable Transport and Air Quality',totalamt: 5.38,grantamt: 5.38,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Transportation","Percent":40},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
+,{id: 'P106103',project_name: 'Add Fin - Consolidation of Protected Areas System Project SINAP II - Third Tranche',totalamt: 7.35,grantamt: 7.35,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P111839',project_name: 'SAVINGS AND RURAL FINANCE - SECOND PHASE - ADDITIONAL FINANCING II',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
-,{id: 'P103491',project_name: 'SAVINGS AND RURAL FINANCE (BANSEFI) ADDITIONAL FINANCING  PROJECT',totalamt: 29.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
-,{id: 'P106589',project_name: 'Information Technology Development',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Information and communications',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Information and communications","Percent":83},{"Name":"Public Administration, Law, and Justice","Percent":17}],prodlinetext: 'IBRD/IDA',sector_code: 'CX'}
-,{id: 'P112082',project_name: '(MEXICO) Building Technical Capacity to Develop the PPP Program in the State of Jalisco',totalamt: 0.2,grantamt: 0.2,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Transportation","Percent":60},{"Name":"Water, sanitation and flood protection","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'TX'}
-,{id: 'P112258',project_name: 'Private Housing Finance Markets Strengthening Project',totalamt: 1010.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Nov-2008',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
-,{id: 'P120200',project_name: 'Strengthening Statistical  Infomation in Yucatan',totalamt: 0.21,grantamt: 0.21,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P095038',project_name: 'MX-GEF Integrated Energy Services',totalamt: 15.0,grantamt: 15.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":39},{"Name":"Public Administration, Law, and Justice","Percent":36},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Agriculture, fishing, and forestry","Percent":4},{"Name":"Industry and trade","Percent":4}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
+,{id: 'P082656',project_name: 'Mexico City Insurgentes Bus Rapid Transit System Carbon Finance Project',totalamt: 2.4,grantamt: 2.4,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2005',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'TX'}
 ,{id: 'P106424',project_name: 'Efficient lighting and appliances',totalamt: 250.63,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P106261',project_name: 'Sustainable Rural Development',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Energy and mining","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
-,{id: 'P115347',project_name: 'School Based Management',totalamt: 220.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":50},{"Name":"Education","Percent":20},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}];
+,{id: 'P120200',project_name: 'Strengthening Statistical  Infomation in Yucatan',totalamt: 0.21,grantamt: 0.21,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
+,{id: 'P112258',project_name: 'Private Housing Finance Markets Strengthening Project',totalamt: 1010.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Nov-2008',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
+,{id: 'P112082',project_name: '(MEXICO) Building Technical Capacity to Develop the PPP Program in the State of Jalisco',totalamt: 0.2,grantamt: 0.2,mjsector1: 'Transportation',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Transportation","Percent":60},{"Name":"Water, sanitation and flood protection","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'TX'}
+,{id: 'P106589',project_name: 'Information Technology Development',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Information and communications',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Information and communications","Percent":83},{"Name":"Public Administration, Law, and Justice","Percent":17}],prodlinetext: 'IBRD/IDA',sector_code: 'CX'}
+,{id: 'P103491',project_name: 'SAVINGS AND RURAL FINANCE (BANSEFI) ADDITIONAL FINANCING  PROJECT',totalamt: 29.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
+,{id: 'P115347',project_name: 'School Based Management',totalamt: 220.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":50},{"Name":"Education","Percent":20},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P106261',project_name: 'Sustainable Rural Development',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Energy and mining","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}];
       
-  wb.init("1788",  "Mexico", "Latin America & Caribbean", {projects_count: '39', locations_count: '108', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
+  wb.init("1788",  "Mexico", "Latin America & Caribbean", {projects_count: '37', locations_count: '108', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
+  }
 </script>
 
-        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
     </div><!--#container//-->
 
@@ -765,6 +765,7 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 
 </body>

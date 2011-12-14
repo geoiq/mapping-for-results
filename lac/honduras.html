@@ -8,41 +8,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Honduras, Latin America & Caribbean > The World Bank - Mapping for Results</title>
-    <meta name="description" content="Honduras,Latin America & Caribbean,World,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="keywords" content="Honduras,Latin America & Caribbean,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-    <script type="text/javascript" charset="utf-8">
-      // if (top.frames.length!=0)
-      //   top.location=self.document.location;
-    </script>
     <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
 </head>
 
-<body>
+<body onload="onload()">
 	<div id="container" class="clearfix">
         <div id="header" class="clearfix">
         	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
@@ -89,7 +88,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="#">Honduras</a>, <a href="/lac">Latin America & Caribbean</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap" style="">
@@ -127,7 +126,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#" id="map_mag"></a>
-                            <ul class="worldmenu dropmenu">
+                            <ul id="country_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">HONDURAS</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -137,7 +136,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -242,7 +241,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                <li class="region-option "><a href="/eap"><span>East Asia & the Pacific</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -291,7 +290,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -348,7 +347,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option active"><a href="#"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/lac"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -417,7 +416,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -452,7 +451,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -463,15 +462,17 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/india" class="">India</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
-                        <a href="/sa/maldives" class="">Maldives</a>
+                        <a href="/sa/india" class="">India</a>
                         
-                        <a href="/sa/nepal" class="">Nepal</a></li>
+                        <a href="/sa/maldives" class="">Maldives</a></li>
                         
-                        <li><a href="/sa/pakistan" class="">Pakistan</a>
+                        <li><a href="/sa/nepal" class="">Nepal</a>
                         
-                        <a href="/sa/srilanka" class="">Sri Lanka </a>
+                        <a href="/sa/pakistan" class="">Pakistan</a>
+                        
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -572,7 +573,7 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -644,7 +645,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of December 14, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -673,38 +674,39 @@
 
 
         <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P082242',project_name: 'Nutrition and Social Protection project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":45},{"Name":"Education","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+  var projects = [{id: 'P106680',project_name: 'Second Land Administration Project',totalamt: 32.8,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":66},{"Name":"Agriculture, fishing, and forestry","Percent":18},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P115568',project_name: 'Additional Financing  Second Road Rehabilitation and Improvement Project',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P106680',project_name: 'Second Land Administration Project',totalamt: 32.8,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":66},{"Name":"Agriculture, fishing, and forestry","Percent":18},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P082242',project_name: 'Nutrition and Social Protection project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":45},{"Name":"Education","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P104034',project_name: 'Power Sector Efficiency Enhancement Project (PROMEF)',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jan-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P103881',project_name: 'Honduras Water and Sanitation Sector Modernization Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":47},{"Name":"Water, sanitation and flood protection","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":8},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P115592',project_name: 'Social Protection',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":78},{"Name":"Public Administration, Law, and Justice","Percent":22}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P125903',project_name: 'Integrated Urban Water Management (IUWM) in the Greater Tegucigalpa Area',totalamt: 0.4,grantamt: 0.4,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":47},{"Name":"Water, sanitation and flood protection","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":8},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
-,{id: 'P040177',project_name: 'Financial Sector Technical Assistance Credit',totalamt: 9.9,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Jun-2003',majorsector_percent: [{"Name":"Finance","Percent":70},{"Name":"Finance","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
+,{id: 'P115592',project_name: 'Social Protection',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":78},{"Name":"Public Administration, Law, and Justice","Percent":22}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P103881',project_name: 'Honduras Water and Sanitation Sector Modernization Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":47},{"Name":"Water, sanitation and flood protection","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":8},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P102474',project_name: 'GPOBA W3 - Honduras OBA Fund',totalamt: 4.44,grantamt: 4.44,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P040177',project_name: 'Financial Sector Technical Assistance Credit',totalamt: 9.9,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Jun-2003',majorsector_percent: [{"Name":"Finance","Percent":70},{"Name":"Finance","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
+,{id: 'P110050',project_name: 'Improving Public Sector Performance',totalamt: 18.2,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P127331',project_name: 'First Programmatic Reducing Vulnerabilities for Growth Development Policy Credit',totalamt: 86.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P126158',project_name: 'ADDITIONAL FINANCING FOR NUTRITION AND SOCIAL PROTECTION PROJECT',totalamt: 3.6,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":46},{"Name":"Education","Percent":27},{"Name":"Health and other social services","Percent":27}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P088319',project_name: 'Barrio-Ciudad Project',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":80},{"Name":"Water, sanitation and flood protection","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P086775',project_name: 'HN Rural Infrastructure Project',totalamt: 47.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Transportation","Percent":33},{"Name":"Water, sanitation and flood protection","Percent":27},{"Name":"Energy and mining","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Energy and mining","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P101218',project_name: 'Honduras Education Quality, Governance, & Institutional Strengthening',totalamt: 15.37,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Education","Percent":25},{"Name":"Education","Percent":24},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Education","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P090113',project_name: 'Rural Electrification Project',totalamt: 2.35,grantamt: 2.35,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
-,{id: 'P111255',project_name: 'HN HIGHLY PATHOGENIC AVIAN INFLUENZA (H5N1) PREVENTION AND CONTROL',totalamt: 0.3,grantamt: 0.3,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":90},{"Name":"Agriculture, fishing, and forestry","Percent":10}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
+,{id: 'P086775',project_name: 'HN Rural Infrastructure Project',totalamt: 47.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Transportation","Percent":33},{"Name":"Water, sanitation and flood protection","Percent":27},{"Name":"Energy and mining","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Energy and mining","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P088319',project_name: 'Barrio-Ciudad Project',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":80},{"Name":"Water, sanitation and flood protection","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P125269',project_name: 'Building Trust in Public Institutions and Policies',totalamt: 0.83,grantamt: 0.83,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
-,{id: 'P103094',project_name: 'Children & Youth Innovation (TF055813 JSDF)',totalamt: 1.97,grantamt: 1.97,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2006',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P090113',project_name: 'Rural Electrification Project',totalamt: 2.35,grantamt: 2.35,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
 ,{id: 'P101209',project_name: 'Honduras Rural Competitiveness Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":42},{"Name":"Industry and trade","Percent":25},{"Name":"Industry and trade","Percent":23},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P103094',project_name: 'Children & Youth Innovation (TF055813 JSDF)',totalamt: 1.97,grantamt: 1.97,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2006',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P088256',project_name: 'La Esperanza Hydro Project',totalamt: 1.4,grantamt: 1.4,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Energy and mining","Percent":40}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P092987',project_name: 'Pico Bonito Sustainable Forests Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}
-,{id: 'P109058',project_name: 'HONDURAS ROAD REHABILITATION AND IMPROVEMENT II',totalamt: 48.6,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Transportation","Percent":86},{"Name":"Public Administration, Law, and Justice","Percent":14}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P124157',project_name: 'HN Employment Generation in Poor Urban Neighborhoods',totalamt: 2.55,grantamt: 2.55,mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}];
+,{id: 'P124157',project_name: 'HN Employment Generation in Poor Urban Neighborhoods',totalamt: 2.55,grantamt: 2.55,mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P109058',project_name: 'HONDURAS ROAD REHABILITATION AND IMPROVEMENT II',totalamt: 48.6,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Transportation","Percent":86},{"Name":"Public Administration, Law, and Justice","Percent":14}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}];
       
   wb.init("417",  "Honduras", "Latin America & Caribbean", {projects_count: '22', locations_count: '262', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
+  }
 </script>
 
-        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
     </div><!--#container//-->
 
@@ -760,6 +762,7 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 
 </body>

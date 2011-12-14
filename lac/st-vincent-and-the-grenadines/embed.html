@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for ResultsSt. Vincent and the Grenadines, Latin America & Caribbean > </title>
+  <title>The World Bank - Mapping for ResultsSt. Vincent and the Grenadines, Latin America & Caribbean - </title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
 
@@ -14,21 +14,20 @@
   </script>
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
 <script src="/script/map.js" type="text/javascript"></script>
@@ -44,7 +43,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
@@ -53,6 +53,7 @@
       
   wb.init("506",  "St. Vincent and the Grenadines", "Latin America & Caribbean", {projects_count: '2', locations_count: '20', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+  }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -76,7 +77,7 @@
 <script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
 <script language="JavaScript">
 <!--
-var s_pageName="Home > Maps > St. Vincent and the Grenadines, Latin America & Caribbean > ";
+var s_pageName="Home > Maps > St. Vincent and the Grenadines, Latin America & Caribbean - ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Latin America & Caribbean,St. Vincent and the Grenadines";
 var s_prop1 = "";

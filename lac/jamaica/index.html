@@ -8,41 +8,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Jamaica, Latin America & Caribbean > The World Bank - Mapping for Results</title>
-    <meta name="description" content="Jamaica,Latin America & Caribbean,World,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="keywords" content="Jamaica,Latin America & Caribbean,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-    <script type="text/javascript" charset="utf-8">
-      // if (top.frames.length!=0)
-      //   top.location=self.document.location;
-    </script>
     <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
 </head>
 
-<body>
+<body onload="onload()">
 	<div id="container" class="clearfix">
         <div id="header" class="clearfix">
         	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
@@ -89,7 +88,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="#">Jamaica</a>, <a href="/lac">Latin America & Caribbean</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap" style="">
@@ -127,7 +126,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#" id="map_mag"></a>
-                            <ul class="worldmenu dropmenu">
+                            <ul id="country_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">JAMAICA</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -137,7 +136,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -242,7 +241,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                <li class="region-option "><a href="/eap"><span>East Asia & the Pacific</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -291,7 +290,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -348,7 +347,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option active"><a href="#"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/lac"><span>Latin America & Caribbean</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -417,7 +416,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -452,7 +451,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -463,15 +462,17 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/india" class="">India</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
-                        <a href="/sa/maldives" class="">Maldives</a>
+                        <a href="/sa/india" class="">India</a>
                         
-                        <a href="/sa/nepal" class="">Nepal</a></li>
+                        <a href="/sa/maldives" class="">Maldives</a></li>
                         
-                        <li><a href="/sa/pakistan" class="">Pakistan</a>
+                        <li><a href="/sa/nepal" class="">Nepal</a>
                         
-                        <a href="/sa/srilanka" class="">Sri Lanka </a>
+                        <a href="/sa/pakistan" class="">Pakistan</a>
+                        
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -560,7 +561,7 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -629,7 +630,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of December 14, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -658,27 +659,28 @@
 
 
         <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
   var projects = [{id: 'P112780',project_name: 'Jamaica Energy Security and Efficiency Enhancement Project',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":70},{"Name":"Energy and mining","Percent":15},{"Name":"Finance","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P091299',project_name: 'JM Inner City Basic Services for the Poor Project',totalamt: 29.3,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":38},{"Name":"Health and other social services","Percent":35},{"Name":"Transportation","Percent":17},{"Name":"Energy and mining","Percent":5},{"Name":"Finance","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P095673',project_name: 'Jamaica Early Childhood Development Project',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Education","Percent":60},{"Name":"Health and other social services","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P105122',project_name: 'Rural Economic Development Initiative',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":41},{"Name":"Industry and trade","Percent":41},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P095673',project_name: 'Jamaica Early Childhood Development Project',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Education","Percent":60},{"Name":"Health and other social services","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P091299',project_name: 'JM Inner City Basic Services for the Poor Project',totalamt: 29.3,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":38},{"Name":"Health and other social services","Percent":35},{"Name":"Transportation","Percent":17},{"Name":"Energy and mining","Percent":5},{"Name":"Finance","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P105024',project_name: 'Social Protection Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P123241',project_name: '2nd. Programmatic Debt and Fiscal Sustainability Development Policy Loan',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":68},{"Name":"Health and other social services","Percent":8},{"Name":"Finance","Percent":8},{"Name":"Agriculture, fishing, and forestry","Percent":8},{"Name":"Education","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P129633',project_name: 'Improving Climate Data and Information Management',totalamt: 7.1,grantamt: 7.1,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P121563',project_name: 'Jamaica Cnditional Cash Transfer Program',totalamt: 2.5,grantamt: 2.5,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
-,{id: 'P106622',project_name: 'Jamaica Second HIV/AIDS Project',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":63},{"Name":"Water, sanitation and flood protection","Percent":19},{"Name":"Health and other social services","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P116471',project_name: 'Community-based Landslide Risk Reduction (JSDF Grant)',totalamt: 2.5,grantamt: 2.5,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P107407',project_name: 'JM Education Transformation Capacity Building',totalamt: 16.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Education","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P116471',project_name: 'Community-based Landslide Risk Reduction (JSDF Grant)',totalamt: 2.5,grantamt: 2.5,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P106622',project_name: 'Jamaica Second HIV/AIDS Project',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":63},{"Name":"Water, sanitation and flood protection","Percent":19},{"Name":"Health and other social services","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P117452',project_name: 'TFSCB - Strategic Statistical Development Project for Jamaica',totalamt: 0.35,grantamt: 0.35,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}];
       
   wb.init("1787",  "Jamaica", "Latin America & Caribbean", {projects_count: '11', locations_count: '22', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
+  }
 </script>
 
-        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
     </div><!--#container//-->
 
@@ -734,6 +736,7 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 
 </body>

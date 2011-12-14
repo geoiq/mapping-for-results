@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for ResultsGuinea, Africa > </title>
+  <title>The World Bank - Mapping for ResultsGuinea, Africa - </title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
 
@@ -14,21 +14,20 @@
   </script>
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
 <script src="/script/map.js" type="text/javascript"></script>
@@ -44,31 +43,33 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P065126',project_name: 'Health Sector Support Project',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+  var projects = [{id: 'P111304',project_name: 'GUINEA: EDUCATION FOR ALL - ADDITIONAL FINANCING',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Education","Percent":47},{"Name":"Education","Percent":47},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P098742',project_name: 'Guinea- GEF- Electricity Sector Efficiency Improvement Project',totalamt: 4.5,grantamt: 4.5,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":22},{"Name":"Energy and mining","Percent":13}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
-,{id: 'P111304',project_name: 'GUINEA: EDUCATION FOR ALL - ADDITIONAL FINANCING',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Education","Percent":47},{"Name":"Education","Percent":47},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P065127',project_name: 'National Rural Infrastructure Project',totalamt: 30.3,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Aug-2004',majorsector_percent: [{"Name":"Transportation","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Industry and trade","Percent":5},{"Name":"Education","Percent":3},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P065126',project_name: 'Health Sector Support Project',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P111470',project_name: 'Education For All-Fast Track Initiative Program',totalamt: 117.8,grantamt: 117.8,mjsector1: 'Education',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Education","Percent":38},{"Name":"Education","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":18},{"Name":"Education","Percent":12},{"Name":"Education","Percent":6}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
-,{id: 'P091297',project_name: 'Urban III - Phase II',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Water, sanitation and flood protection","Percent":22},{"Name":"Water, sanitation and flood protection","Percent":21},{"Name":"Transportation","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P065127',project_name: 'National Rural Infrastructure Project',totalamt: 30.3,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Aug-2004',majorsector_percent: [{"Name":"Transportation","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Industry and trade","Percent":5},{"Name":"Education","Percent":3},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P114943',project_name: 'Improvement of Extractive Industries Management in Guinea',totalamt: 0.72,grantamt: 0.72,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
-,{id: 'P098844',project_name: 'Guinea: Extractive Industries Transparency Initiative Implementation',totalamt: 0.57,grantamt: 0.57,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
+,{id: 'P091297',project_name: 'Urban III - Phase II',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Water, sanitation and flood protection","Percent":22},{"Name":"Water, sanitation and flood protection","Percent":21},{"Name":"Transportation","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P065129',project_name: 'GN-Village Comm Supp Program - Phase 2',totalamt: 17.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":32},{"Name":"Agriculture, fishing, and forestry","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Water, sanitation and flood protection","Percent":13},{"Name":"Health and other social services","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P098844',project_name: 'Guinea: Extractive Industries Transparency Initiative Implementation',totalamt: 0.57,grantamt: 0.57,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
 ,{id: 'P070878',project_name: 'Coastal Marine and Biodiversity Management',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Health and other social services","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
-,{id: 'P050046',project_name: 'Education for All Project',totalamt: 70.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jul-2001',majorsector_percent: [{"Name":"Education","Percent":40},{"Name":"Education","Percent":26},{"Name":"Education","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Education","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P081297',project_name: 'Community-Based Land Management Project',totalamt: 7.0,grantamt: 7.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":49},{"Name":"Public Administration, Law, and Justice","Percent":36},{"Name":"Information and communications","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
+,{id: 'P050046',project_name: 'Education for All Project',totalamt: 70.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jul-2001',majorsector_percent: [{"Name":"Education","Percent":40},{"Name":"Education","Percent":26},{"Name":"Education","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Education","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P001086',project_name: 'SAL II',totalamt: 0.1,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Dec-1992',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":46},{"Name":"Industry and trade","Percent":24},{"Name":"Finance","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":9},{"Name":"Industry and trade","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P042055',project_name: 'DECENTRALIZED RURAL ELECTRIFICATION PROJECT',totalamt: 2.0,grantamt: 2.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Finance","Percent":10}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
 ,{id: 'P077317',project_name: 'Guinea Electricity Sector Efficiency Improvement',totalamt: 7.2,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":68},{"Name":"Energy and mining","Percent":21},{"Name":"Energy and mining","Percent":11}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P042055',project_name: 'DECENTRALIZED RURAL ELECTRIFICATION PROJECT',totalamt: 2.0,grantamt: 2.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Finance","Percent":10}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
 ,{id: 'P113608',project_name: 'Labor Intensive Public Works - Additional Financing for Third Urban Development Project Phase II',totalamt: 2.5,grantamt: 2.5,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Transportation","Percent":60},{"Name":"Health and other social services","Percent":40}],prodlinetext: 'Special Financing',sector_code: 'TX'}
-,{id: 'P074288',project_name: 'Decentralized Rural Electrification Project',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Finance","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P113268',project_name: 'Emergency Agricultural Productivity Support Project',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Special Financing',sector_code: 'AX'}];
+,{id: 'P113268',project_name: 'Emergency Agricultural Productivity Support Project',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Special Financing',sector_code: 'AX'}
+,{id: 'P074288',project_name: 'Decentralized Rural Electrification Project',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Finance","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}];
       
   wb.init("449",  "Guinea", "Africa", {projects_count: '18', locations_count: '153', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+  }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -92,7 +93,7 @@
 <script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
 <script language="JavaScript">
 <!--
-var s_pageName="Home > Maps > Guinea, Africa > ";
+var s_pageName="Home > Maps > Guinea, Africa - ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Africa,Guinea";
 var s_prop1 = "";

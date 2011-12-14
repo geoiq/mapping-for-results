@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for ResultsBurkina Faso , Africa > </title>
+  <title>The World Bank - Mapping for ResultsBurkina Faso , Africa - </title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
 
@@ -14,21 +14,20 @@
   </script>
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
 <script src="/script/map.js" type="text/javascript"></script>
@@ -44,39 +43,42 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P069126',project_name: 'Power Sector Development Project',totalamt: 63.58,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":93},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P081567',project_name: 'Agricultural Diversification and Market Development Project',totalamt: 66.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":34},{"Name":"Agriculture, fishing, and forestry","Percent":33},{"Name":"Industry and trade","Percent":15},{"Name":"Industry and trade","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+  var projects = [{id: 'P125285',project_name: 'Health Sector Support and Multi-Sectoral Aids Project - Additional Financing',totalamt: 36.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Health and other social services","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P078091',project_name: 'Burkina Faso Energy Access  Project',totalamt: 38.8,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":75},{"Name":"Energy and mining","Percent":18},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P125285',project_name: 'Health Sector Support and Multi-Sectoral Aids Project - Additional Financing',totalamt: 36.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":70},{"Name":"Health and other social services","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P081567',project_name: 'Agricultural Diversification and Market Development Project',totalamt: 66.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":34},{"Name":"Agriculture, fishing, and forestry","Percent":33},{"Name":"Industry and trade","Percent":15},{"Name":"Industry and trade","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P069126',project_name: 'Power Sector Development Project',totalamt: 63.58,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":93},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P093987',project_name: 'Health Sector Support  & Multisectoral AIDS Project',totalamt: 47.7,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2006',majorsector_percent: [{"Name":"Health and other social services","Percent":74},{"Name":"Health and other social services","Percent":23},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P123688',project_name: 'Burkina Faso - Pro-growth, pro-poor transport strategies (PGPTS)',totalamt: 0.19,grantamt: 0.19,mjsector1: 'Transportation',boardapprovaldate: 'Aug-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'TX'}
 ,{id: 'P119662',project_name: 'Burkina Faso - Bagre Growth Pole Project',totalamt: 115.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Industry and trade","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Industry and trade","Percent":15},{"Name":"Finance","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P123688',project_name: 'Burkina Faso - Pro-growth, pro-poor transport strategies (PGPTS)',totalamt: 0.19,grantamt: 0.19,mjsector1: 'Transportation',boardapprovaldate: 'Aug-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'TX'}
 ,{id: 'P084027',project_name: 'Decentralized Urban Capacity Building Project',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":59},{"Name":"Public Administration, Law, and Justice","Percent":39},{"Name":"Water, sanitation and flood protection","Percent":1},{"Name":"Industry and trade","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P121714',project_name: 'Burkina Faso: Community Monitoring for Service Delivery',totalamt: 1.48,grantamt: 1.48,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Education","Percent":25},{"Name":"Health and other social services","Percent":25}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P125542',project_name: 'Burkina Faso FIP Investment Strategy',totalamt: 0.25,grantamt: 0.25,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
-,{id: 'P074030',project_name: ' TRANSPORT SECTOR PROJECT',totalamt: 92.1,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2003',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P098956',project_name: 'Post-Primary Education',totalamt: 22.9,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Education","Percent":71},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Education","Percent":7},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P111210',project_name: 'Burkina Faso: Extractive Industries Transparency Implementation',totalamt: 0.06,grantamt: 0.06,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
-,{id: 'P121033',project_name: 'Transport Sector Project - Additional Financing',totalamt: 16.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Transportation","Percent":93},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P121714',project_name: 'Burkina Faso: Community Monitoring for Service Delivery',totalamt: 1.48,grantamt: 1.48,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":50},{"Name":"Education","Percent":25},{"Name":"Health and other social services","Percent":25}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P124648',project_name: 'Mineral Development Support Project',totalamt: 33.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":53},{"Name":"Energy and mining","Percent":41},{"Name":"Education","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P110815',project_name: 'Health Sector Support and AIDS project - Additional Financing',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":60},{"Name":"Health and other social services","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P108791',project_name: 'International Institute for Water and Environmental Engineering (2ie)',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Education","Percent":70},{"Name":"Education","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P121033',project_name: 'Transport Sector Project - Additional Financing',totalamt: 16.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Transportation","Percent":93},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P111210',project_name: 'Burkina Faso: Extractive Industries Transparency Implementation',totalamt: 0.06,grantamt: 0.06,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
+,{id: 'P098956',project_name: 'Post-Primary Education',totalamt: 22.9,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Education","Percent":71},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Education","Percent":7},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P074030',project_name: ' TRANSPORT SECTOR PROJECT',totalamt: 92.1,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Apr-2003',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P120517',project_name: 'Local Government Support Project',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P116645',project_name: 'Strengthening community participation for the fight against female genital cutting (FGM/C)',totalamt: 2.73,grantamt: 2.73,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P108791',project_name: 'International Institute for Water and Environmental Engineering (2ie)',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Education","Percent":70},{"Name":"Education","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P110815',project_name: 'Health Sector Support and AIDS project - Additional Financing',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":60},{"Name":"Health and other social services","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P071443',project_name: 'BF-Competitiveness & Enterprise Development Project',totalamt: 30.7,grantamt: 0.0,mjsector1: 'Information and communications',boardapprovaldate: 'Mar-2003',majorsector_percent: [{"Name":"Information and communications","Percent":30},{"Name":"Industry and trade","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'CX'}
-,{id: 'P106909',project_name: 'Urban Water Sector Project',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":60},{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P123310',project_name: 'BF-Competitiveness & Ent Dev Add Financing',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Industry and trade","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Finance","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":3},{"Name":"Finance","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
 ,{id: 'P087630',project_name: 'Burkina Faso-Ouagadougou Transport Modal Shift',totalamt: 0.91,grantamt: 0.91,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'GEF Medium Sized Program',sector_code: 'TX'}
-,{id: 'P098378',project_name: 'Second Phase Community Based Rural Development Project,',totalamt: 74.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":28},{"Name":"Health and other social services","Percent":25},{"Name":"Education","Percent":17},{"Name":"Water, sanitation and flood protection","Percent":17},{"Name":"Agriculture, fishing, and forestry","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P114236',project_name: 'Agricultural Productivity and Food Security Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":80},{"Name":"Agriculture, fishing, and forestry","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P123310',project_name: 'BF-Competitiveness & Ent Dev Add Financing',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Industry and trade","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Finance","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":3},{"Name":"Finance","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P106909',project_name: 'Urban Water Sector Project',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":60},{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P122805',project_name: 'Poverty Reduction Support Credit (11)',totalamt: 125.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Industry and trade","Percent":37},{"Name":"Public Administration, Law, and Justice","Percent":31},{"Name":"Agriculture, fishing, and forestry","Percent":13},{"Name":"Agriculture, fishing, and forestry","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
 ,{id: 'P126109',project_name: 'GFDRR MAINSTREAMING DISASTER REDUCTION IN Burkina Faso',totalamt: 1.4,grantamt: 1.4,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
-,{id: 'P122805',project_name: 'Poverty Reduction Support Credit (11)',totalamt: 125.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Industry and trade","Percent":37},{"Name":"Public Administration, Law, and Justice","Percent":31},{"Name":"Agriculture, fishing, and forestry","Percent":13},{"Name":"Agriculture, fishing, and forestry","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}];
+,{id: 'P114236',project_name: 'Agricultural Productivity and Food Security Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":80},{"Name":"Agriculture, fishing, and forestry","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P098378',project_name: 'Second Phase Community Based Rural Development Project,',totalamt: 74.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":28},{"Name":"Health and other social services","Percent":25},{"Name":"Education","Percent":17},{"Name":"Water, sanitation and flood protection","Percent":17},{"Name":"Agriculture, fishing, and forestry","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
       
-  wb.init("497",  "Burkina Faso ", "Africa", {projects_count: '26', locations_count: '94', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("497",  "Burkina Faso ", "Africa", {projects_count: '27', locations_count: '94', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+  }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -100,7 +102,7 @@
 <script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
 <script language="JavaScript">
 <!--
-var s_pageName="Home > Maps > Burkina Faso , Africa > ";
+var s_pageName="Home > Maps > Burkina Faso , Africa - ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Africa,Burkina Faso ";
 var s_prop1 = "";

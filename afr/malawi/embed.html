@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for ResultsMalawi, Africa > </title>
+  <title>The World Bank - Mapping for ResultsMalawi, Africa - </title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
 
@@ -14,21 +14,20 @@
   </script>
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
 <script src="/script/map.js" type="text/javascript"></script>
@@ -44,12 +43,12 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P075247',project_name: 'Community-Based Rural Land Development Project',totalamt: 27.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2004',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":89},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P106671',project_name: 'Agriculture Development Program SLM',totalamt: 5.8,grantamt: 5.8,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":51},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
+  var projects = [{id: 'P106671',project_name: 'Agriculture Development Program SLM',totalamt: 5.8,grantamt: 5.8,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":51},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P107545',project_name: 'MAP Additional Financing',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P096336',project_name: 'Second National Water Development Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":37},{"Name":"Public Administration, Law, and Justice","Percent":37},{"Name":"Water, sanitation and flood protection","Percent":24},{"Name":"Health and other social services","Percent":1},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P084148',project_name: 'Irrigation, Rural Livelihoods and Agricultural Development Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2005',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
@@ -62,15 +61,15 @@
 ,{id: 'P073821',project_name: 'Multi-Sectoral AIDS Project (MAP)',totalamt: 35.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2003',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":47},{"Name":"Health and other social services","Percent":38},{"Name":"Health and other social services","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P120825',project_name: 'MW: Mining Governance and Growth Support Project',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":88},{"Name":"Education","Percent":6},{"Name":"Information and communications","Percent":5},{"Name":"Energy and mining","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P121496',project_name: 'Protecting Early Childhood Development in Malawi - Rapid Social Response (RSR)',totalamt: 2.0,grantamt: 2.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
-,{id: 'P105256',project_name: 'Agricultural Sector Development',totalamt: 32.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":48},{"Name":"Public Administration, Law, and Justice","Percent":28},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P105256',project_name: 'Agricultural Development Programme Support Project SIL (FY08)',totalamt: 32.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":48},{"Name":"Public Administration, Law, and Justice","Percent":28},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P099626',project_name: 'Energy Sector',totalamt: 84.7,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":64},{"Name":"Energy and mining","Percent":19},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Energy and mining","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P124486',project_name: 'Second National Water Development Project - Additional Financing (IDA)',totalamt: 120.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":84},{"Name":"Public Administration, Law, and Justice","Percent":14},{"Name":"Water, sanitation and flood protection","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P122616',project_name: 'Malawi - Financial Sector Technical Assistance Project',totalamt: 28.2,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P123926',project_name: 'Lilongwe CDS Phase 3',totalamt: 0.25,grantamt: 0.25,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
-,{id: 'P115226',project_name: 'Community Based Rural Land Development Project',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":89},{"Name":"Agriculture, fishing, and forestry","Percent":11}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
+,{id: 'P123926',project_name: 'Lilongwe CDS Phase 3',totalamt: 0.25,grantamt: 0.25,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}];
       
-  wb.init("412",  "Malawi", "Africa", {projects_count: '20', locations_count: '128', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("412",  "Malawi", "Africa", {projects_count: '18', locations_count: '128', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+  }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -94,7 +93,7 @@
 <script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
 <script language="JavaScript">
 <!--
-var s_pageName="Home > Maps > Malawi, Africa > ";
+var s_pageName="Home > Maps > Malawi, Africa - ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Africa,Malawi";
 var s_prop1 = "";

@@ -1,6 +1,7 @@
 %w{ rubygems m4r/models/page }.each {|gem| require gem}
 #HOST = "http://localHOST:4567"
-HOST = "http://wbstaging.geocommons.com"
+#HOST = "http://wbstaging.geocommons.com"
+HOST = "http://worldbank.geoiq.com"
 def cache_country(page)
   puts "#{page.name}"
   system "mkdir -p .#{page.url}"

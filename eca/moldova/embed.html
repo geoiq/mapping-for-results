@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for ResultsMoldova, Europe and Central Asia > </title>
+  <title>The World Bank - Mapping for ResultsMoldova, Europe and Central Asia - </title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
 
@@ -14,21 +14,20 @@
   </script>
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
 <script src="/script/map.js" type="text/javascript"></script>
@@ -44,7 +43,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
@@ -62,6 +62,7 @@
 ,{id: 'P120702',project_name: 'BIOGAS GENERATION FROM ANIMAL MANURE PILOT',totalamt: 0.98,grantamt: 0.98,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":60},{"Name":"Energy and mining","Percent":40}],prodlinetext: 'GEF Medium Sized Program',sector_code: 'AX'}
 ,{id: 'P107612',project_name: 'NATIONAL WATER SUPPLY & SANITATION PROGRAM',totalamt: 14.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":62},{"Name":"Water, sanitation and flood protection","Percent":23},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Energy and mining","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P082916',project_name: 'Public Financial Management Technical Assistance Project',totalamt: 8.55,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P125719',project_name: 'Health Services and Social Assistance Additional Financing',totalamt: 10.2,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":49},{"Name":"Public Administration, Law, and Justice","Percent":31},{"Name":"Health and other social services","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P121231',project_name: 'Governance eTransformation Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":63},{"Name":"Information and communications","Percent":28},{"Name":"Information and communications","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P106960',project_name: 'Moldova Financial Sector Reform',totalamt: 3.27,grantamt: 3.27,mjsector1: 'Finance',boardapprovaldate: 'Jan-2009',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}
 ,{id: 'P090673',project_name: 'Rural Investment & Services Project (APL #2)',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Finance","Percent":56},{"Name":"Agriculture, fishing, and forestry","Percent":22},{"Name":"Industry and trade","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
@@ -77,8 +78,9 @@
 ,{id: 'P095250',project_name: 'Health Services & Social Assistance',totalamt: 17.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":49},{"Name":"Public Administration, Law, and Justice","Percent":31},{"Name":"Health and other social services","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P040558',project_name: 'Energy 2 Project',totalamt: 35.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2003',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Energy and mining","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Health and other social services","Percent":5},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}];
       
-  wb.init("410",  "Moldova", "Europe and Central Asia", {projects_count: '28', locations_count: '455', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("410",  "Moldova", "Europe and Central Asia", {projects_count: '29', locations_count: '455', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+  }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -102,7 +104,7 @@
 <script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
 <script language="JavaScript">
 <!--
-var s_pageName="Home > Maps > Moldova, Europe and Central Asia > ";
+var s_pageName="Home > Maps > Moldova, Europe and Central Asia - ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Europe and Central Asia,Moldova";
 var s_prop1 = "";

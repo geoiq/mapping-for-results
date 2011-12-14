@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>The World Bank - Mapping for ResultsDominican Republic, Latin America & Caribbean > </title>
+  <title>The World Bank - Mapping for ResultsDominican Republic, Latin America & Caribbean - </title>
 
   <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico" type="image/x-icon" />
 
@@ -14,21 +14,20 @@
   </script>
   <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
 
 
 <script src="/script/map.js" type="text/javascript"></script>
@@ -44,7 +43,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
@@ -52,16 +52,19 @@
 ,{id: 'P089866',project_name: 'DO Electricity Distribution Rehabilitation Project',totalamt: 42.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P090010',project_name: 'DO Social Sectors Investment Program',totalamt: 19.4,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":55},{"Name":"Health and other social services","Percent":45}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P109932',project_name: 'DO Emergency Recovery & Disaster Mgmt',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":27},{"Name":"Energy and mining","Percent":26},{"Name":"Agriculture, fishing, and forestry","Percent":23},{"Name":"Energy and mining","Percent":21},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P116369',project_name: 'DO Additional Financing  Social Sectors Investment Progr',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":81},{"Name":"Public Administration, Law, and Justice","Percent":19}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P125806',project_name: 'DO-3rd Perform.&Accbilty of SocSctrs DPL',totalamt: 70.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Nov-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":39},{"Name":"Health and other social services","Percent":33},{"Name":"Education","Percent":28}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P126840',project_name: 'DO AF to Emergency Recovery & Disaster Management.',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Nov-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":34},{"Name":"Agriculture, fishing, and forestry","Percent":33},{"Name":"Energy and mining","Percent":33}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P106619',project_name: 'Health Sector Reform Second Phase APL (PARSS 2)',totalamt: 30.5,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":95},{"Name":"Health and other social services","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P116369',project_name: 'DO Additional Financing  Social Sectors Investment Progr',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":81},{"Name":"Public Administration, Law, and Justice","Percent":19}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P117349',project_name: 'Dominican Republic National Strategy for the Development of Statistics (NSDS)',totalamt: 0.13,grantamt: 0.13,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P095863',project_name: 'Domininican Republic Municipal Development Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P096605',project_name: 'Dominican Republic Youth Development Project',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Education","Percent":66},{"Name":"Education","Percent":21},{"Name":"Public Administration, Law, and Justice","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P115829',project_name: ' Access to Information and Downward Accountability in the Dominican Republic',totalamt: 0.51,grantamt: 0.51,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
+,{id: 'P096605',project_name: 'Dominican Republic Youth Development Project',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Education","Percent":66},{"Name":"Education","Percent":21},{"Name":"Public Administration, Law, and Justice","Percent":13}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P078838',project_name: 'Financial Sector Technical Assistance',totalamt: 12.5,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Feb-2004',majorsector_percent: [{"Name":"Finance","Percent":38},{"Name":"Finance","Percent":25},{"Name":"Finance","Percent":20},{"Name":"Finance","Percent":17}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}];
       
-  wb.init("594",  "Dominican Republic", "Latin America & Caribbean", {projects_count: '11', locations_count: '50', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("594",  "Dominican Republic", "Latin America & Caribbean", {projects_count: '13', locations_count: '50', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+  }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
@@ -85,7 +88,7 @@
 <script language="JavaScript" src="http://siteresources.worldbank.org/SITEMGR/Resources/WebStatsUtil.js"></script>
 <script language="JavaScript">
 <!--
-var s_pageName="Home > Maps > Dominican Republic, Latin America & Caribbean > ";
+var s_pageName="Home > Maps > Dominican Republic, Latin America & Caribbean - ";
 var s_channel="WBG Mapping for Results EXT";
 var s_hier1 = "WBG,WBG Mapping for Results EXT,World,Latin America & Caribbean,Dominican Republic";
 var s_prop1 = "";

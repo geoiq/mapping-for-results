@@ -8,41 +8,40 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Ethiopia, Africa > The World Bank - Mapping for Results</title>
-    <meta name="description" content="Ethiopia,Africa,World,health,poverty,millenium developemnt goals,indicators,development,humanitarian">
+    <meta name="keywords" content="Ethiopia,Africa,World,health,poverty,millenium development goals,indicators,development,humanitarian">
     <meta name="author" content="World Bank">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="http://maps.worldbank.org/favicon.ico">
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
-    <script type="text/javascript" charset="utf-8">
-      // if (top.frames.length!=0)
-      //   top.location=self.document.location;
-    </script>
     <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
 
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
+  <script type="text/javascript" src="http://maps.worldbank.org/javascripts/jquery-1.5.min.js"></script>
     <script type="text/javascript" charset="utf-8">
     var jq = jQuery.noConflict();
     </script>  
-  <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
+  <!-- <script type="text/javascript" src="/js/jquery_002.js"></script>
   <script type="text/javascript" src="/js/ui.js"></script>
   <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
+  <script type="text/javascript" src="/js/effects.js"></script>   -->
+  <script type="text/javascript" src="/js/tipsy.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 <!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
 
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
 
 <script src="/script/map.js" type="text/javascript"></script>
 
+    <script type="text/javascript" charset="utf-8">
+      // if (top.frames.length!=0)
+      //   top.location=self.document.location;
+    </script>
 </head>
 
-<body>
+<body onload="onload()">
 	<div id="container" class="clearfix">
         <div id="header" class="clearfix">
         	<a class="network-name" href="http://www.worldbank.org">The World Bank</a>
@@ -89,7 +88,7 @@
                 </ul>
             </div><!--.navigation//-->
             <div id="local" class="clearfix">
-            	<div class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+            	<div class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="#">Ethiopia</a>, <a href="/afr">Africa</a></div>
             </div>
         </div><!--#header//-->
         <div id="main-wrap" style="">
@@ -127,7 +126,7 @@
         	<div id="map-content-header">
             <div class="worldmenuholder">
             	<a class="mag-glass" href="#" id="map_mag"></a>
-                            <ul class="worldmenu dropmenu">
+                            <ul id="country_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="0">ETHIOPIA</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -137,7 +136,7 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option active"><a href="#"><span>Africa</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/afr"><span>Africa</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -242,7 +241,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                <li class="region-option "><a href="/eap"><span>East Asia & the Pacific</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -291,7 +290,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -348,7 +347,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Latin America & Caribbean</span></a>
+                <li class="region-option "><a href="/lac"><span>Latin America & Caribbean</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -417,7 +416,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Middle East and North Africa</span></a>
+                <li class="region-option "><a href="/mena"><span>Middle East and North Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -452,7 +451,7 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
                       
@@ -463,15 +462,17 @@
                         
                         <a href="/sa/bhutan" class="">Bhutan</a></li>
                         
-                        <li><a href="/sa/india" class="">India</a>
+                        <li><a href="/sa/p999982" class="">IFC Advisory Projects in India</a>
                         
-                        <a href="/sa/maldives" class="">Maldives</a>
+                        <a href="/sa/india" class="">India</a>
                         
-                        <a href="/sa/nepal" class="">Nepal</a></li>
+                        <a href="/sa/maldives" class="">Maldives</a></li>
                         
-                        <li><a href="/sa/pakistan" class="">Pakistan</a>
+                        <li><a href="/sa/nepal" class="">Nepal</a>
                         
-                        <a href="/sa/srilanka" class="">Sri Lanka </a>
+                        <a href="/sa/pakistan" class="">Pakistan</a>
+                        
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -572,7 +573,7 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px"></div></div>
+        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -647,7 +648,7 @@
 </div>
         </div><!--#main-wrap//-->
                 <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of December 14, 2011.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -676,56 +677,58 @@
 
 
         <script type="text/javascript" charset="utf-8">
-  var wb;
+  var wb = null;
+  function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P050272',project_name: 'Ethiopia - Private Sector Development Capacity Building Project',totalamt: 24.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Industry and trade","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":32},{"Name":"Education","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
-,{id: 'P125307',project_name: 'Irrigation and Drainage',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":97},{"Name":"Agriculture, fishing, and forestry","Percent":2},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P090789',project_name: 'ET-Sustainable Land Management Program  (FY08)',totalamt: 9.0,grantamt: 9.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":32},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
-,{id: 'P096323',project_name: 'Tana & Beles Integrated Water Resources Development',totalamt: 45.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Transportation","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+  var projects = [{id: 'P125307',project_name: 'Irrigation and Drainage',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":97},{"Name":"Agriculture, fishing, and forestry","Percent":2},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P050272',project_name: 'Ethiopia - Private Sector Development Capacity Building Project',totalamt: 24.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Dec-2004',majorsector_percent: [{"Name":"Industry and trade","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":32},{"Name":"Education","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
 ,{id: 'P103022',project_name: 'Ethiopia Protection of Basic Services Program Phase II Project',totalamt: 540.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Education","Percent":53},{"Name":"Agriculture, fishing, and forestry","Percent":21},{"Name":"Health and other social services","Percent":15},{"Name":"Water, sanitation and flood protection","Percent":6},{"Name":"Transportation","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P091077',project_name: 'ET-Road Sector Dev. Stage III Proj. (APL3) in support of Govts RSDP',totalamt: 225.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2007',majorsector_percent: [{"Name":"Transportation","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P092353',project_name: 'Irrigation and Drainage Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":18},{"Name":"Industry and trade","Percent":10},{"Name":"Agriculture, fishing, and forestry","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P101556',project_name: 'Electricity Access (Rural) Expansion Project Phase II',totalamt: 130.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":94},{"Name":"Energy and mining","Percent":4},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P118533',project_name: 'Water Supply and Sanitation Project-Additional Financing',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P120040',project_name: 'BEIA-Promotion of Ethanol Micro-Distilleries in Ethiopia',totalamt: 0.15,grantamt: 0.15,mjsector1: 'Energy and mining',boardapprovaldate: 'Apr-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
+,{id: 'P096323',project_name: 'Tana & Beles Integrated Water Resources Development',totalamt: 45.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Transportation","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P090789',project_name: 'ET-Sustainable Land Management Program  (FY08)',totalamt: 9.0,grantamt: 9.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":32},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
 ,{id: 'P120172',project_name: 'Additional Financing for Energy Access Project',totalamt: 180.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":85},{"Name":"Energy and mining","Percent":12},{"Name":"Energy and mining","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P097271',project_name: 'Accelerated Electricity Access (Rural) Expansion',totalamt: 133.4,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":98},{"Name":"Health and other social services","Percent":1},{"Name":"Transportation","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P120040',project_name: 'BEIA-Promotion of Ethanol Micro-Distilleries in Ethiopia',totalamt: 0.15,grantamt: 0.15,mjsector1: 'Energy and mining',boardapprovaldate: 'Apr-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
+,{id: 'P118533',project_name: 'Water Supply and Sanitation Project-Additional Financing',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P101556',project_name: 'Electricity Access (Rural) Expansion Project Phase II',totalamt: 130.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":94},{"Name":"Energy and mining","Percent":4},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P092353',project_name: 'Irrigation and Drainage Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":18},{"Name":"Industry and trade","Percent":10},{"Name":"Agriculture, fishing, and forestry","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P091077',project_name: 'ET-Road Sector Dev. Stage III Proj. (APL3) in support of Govts RSDP',totalamt: 225.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2007',majorsector_percent: [{"Name":"Transportation","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P079275',project_name: 'Rural Capacity Building Project',totalamt: 54.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":76},{"Name":"Education","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Finance","Percent":5},{"Name":"Agriculture, fishing, and forestry","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P077380',project_name: 'ENERGY ACCESS PROJECT',totalamt: 4.93,grantamt: 4.93,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Energy and mining","Percent":5}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
-,{id: 'P098031',project_name: 'Second Multi-sectoral HIV/AIDS Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Health and other social services","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":24}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P108932',project_name: 'Pastoral Community Development Project II',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Education","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P117644',project_name: 'ROAD SECTOR DEV. SUPPORT PROGRAM II-APL2',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P118700',project_name: 'EFA FTI CF Grant 2 - GEQIP APL 1',totalamt: 98.0,grantamt: 98.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":46},{"Name":"Education","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Education","Percent":12}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
+,{id: 'P097271',project_name: 'Accelerated Electricity Access (Rural) Expansion',totalamt: 133.4,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":98},{"Name":"Health and other social services","Percent":1},{"Name":"Transportation","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P127507',project_name: 'Agricultural Growth Project - Additional Financing',totalamt: 50.0,grantamt: 50.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":45},{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Agriculture, fishing, and forestry","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
+,{id: 'P125487',project_name: 'Ethiopia: Support to Artisan Miners (JSDF)',totalamt: 3.0,grantamt: 3.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
 ,{id: 'P115154',project_name: 'Ethiopia: TFSCB Data Systems and economy-Wide Analysis Project',totalamt: 0.17,grantamt: 0.17,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
-,{id: 'P099480',project_name: 'ROAD SECTOR DEVELOPMENT PHASE II PROJECT IN SUPPORT OF RSDPII SUPPLIMENT',totalamt: 87.3,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P098428',project_name: 'Humbo and Soddo Community-Based Natural Regeneration Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":80},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Health and other social services","Percent":5},{"Name":"Education","Percent":5}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}
-,{id: 'P105651',project_name: 'Ethiopia Electricity Access Rural Expansion Project, Phase II - GPOBA',totalamt: 7.0,grantamt: 7.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
-,{id: 'P114913',project_name: 'ET: Flood risks prevention in Ethiopia',totalamt: 0.32,grantamt: 0.32,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
-,{id: 'P106872',project_name: 'Fourth Roads Sector Development',totalamt: 245.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P107217',project_name: 'Public Sector Capacity Building Program Support Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":46},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Public Administration, Law, and Justice","Percent":17}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P118700',project_name: 'EFA FTI CF Grant 2 - GEQIP APL 1',totalamt: 98.0,grantamt: 98.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":46},{"Name":"Education","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Education","Percent":12}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
+,{id: 'P117644',project_name: 'ROAD SECTOR DEV. SUPPORT PROGRAM II-APL2',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P108932',project_name: 'Pastoral Community Development Project II',totalamt: 80.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Education","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Health and other social services","Percent":20},{"Name":"Water, sanitation and flood protection","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
+,{id: 'P077380',project_name: 'ENERGY ACCESS PROJECT',totalamt: 4.93,grantamt: 4.93,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Energy and mining","Percent":5}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
 ,{id: 'P113032',project_name: 'ET: Agricultural Growth Program',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":59},{"Name":"Industry and trade","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":12},{"Name":"Agriculture, fishing, and forestry","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P074020',project_name: 'Public Sector Capacity Building Program Support Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P098132',project_name: 'Tourism Development',totalamt: 35.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":45},{"Name":"Industry and trade","Percent":41},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
-,{id: 'P113220',project_name: 'Productive Safety Net APL III',totalamt: 480.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":93},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P107217',project_name: 'Public Sector Capacity Building Program Support Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":46},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":17},{"Name":"Public Administration, Law, and Justice","Percent":17}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P106872',project_name: 'ET-Road Sector APL4 to support GoEs RSDP',totalamt: 245.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Transportation","Percent":97},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P114913',project_name: 'ET: Flood risks prevention in Ethiopia',totalamt: 0.32,grantamt: 0.32,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
+,{id: 'P105651',project_name: 'Ethiopia Electricity Access Rural Expansion Project, Phase II - GPOBA',totalamt: 7.0,grantamt: 7.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
+,{id: 'P098428',project_name: 'Humbo and Soddo Community-Based Natural Regeneration Project',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":80},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Health and other social services","Percent":5},{"Name":"Education","Percent":5}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}
+,{id: 'P099480',project_name: 'ROAD SECTOR DEVELOPMENT PHASE II PROJECT IN SUPPORT OF RSDPII SUPPLIMENT',totalamt: 87.3,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P121727',project_name: 'Ethiopia Protection of Basic Services Phase 2 Project Additional Financing',totalamt: 420.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Education","Percent":53},{"Name":"Agriculture, fishing, and forestry","Percent":21},{"Name":"Health and other social services","Percent":15},{"Name":"Water, sanitation and flood protection","Percent":6},{"Name":"Transportation","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P113220',project_name: 'Productive Safety Net APL III',totalamt: 480.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":93},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P098132',project_name: 'Tourism Development',totalamt: 35.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":45},{"Name":"Industry and trade","Percent":41},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Education","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
+,{id: 'P074020',project_name: 'Public Sector Capacity Building Program Support Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P101473',project_name: 'Urban Water Supply and Sanitation Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":41},{"Name":"Water, sanitation and flood protection","Percent":41},{"Name":"Water, sanitation and flood protection","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P076735',project_name: 'Ethiopia Water Supply and Sanitation Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":75},{"Name":"Water, sanitation and flood protection","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P082998',project_name: 'ROAD SECTOR DEVELOPMENT SUPPORT PROGRAM II (RSDSP II-APL 2)',totalamt: 160.9,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2004',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P074011',project_name: 'Ethiopia/Nile Basin Initiative:  Ethiopia-Sudan Interconnector',totalamt: 41.05,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P107139',project_name: 'Sustainable Land Management Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":32},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P101474',project_name: 'Urban Local Govt Development Project',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":55},{"Name":"Transportation","Percent":15},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Industry and trade","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
+,{id: 'P107139',project_name: 'Sustainable Land Management Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":32},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P074011',project_name: 'Ethiopia/Nile Basin Initiative:  Ethiopia-Sudan Interconnector',totalamt: 41.05,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P082998',project_name: 'ET-Road Sector Proj (APL2) to support Govts RSDP',totalamt: 160.9,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2004',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
+,{id: 'P076735',project_name: 'Ethiopia Water Supply and Sanitation Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":75},{"Name":"Water, sanitation and flood protection","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P125316',project_name: 'Urban Local Govt Development Project',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":55},{"Name":"Transportation","Percent":15},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Industry and trade","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P049395',project_name: 'ENERGY ACCESS PROJECT',totalamt: 132.7,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Sep-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Agriculture, fishing, and forestry","Percent":5},{"Name":"Energy and mining","Percent":5},{"Name":"Industry and trade","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P106855',project_name: 'General Education Quality Improvement Project - APL 1 (GEQIP)',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Education","Percent":46},{"Name":"Education","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Education","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P106228',project_name: 'ET-Ethiopia Nutrition (FY08)',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":57},{"Name":"Public Administration, Law, and Justice","Percent":36},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P106855',project_name: 'General Education Quality Improvement Project - APL 1 (GEQIP)',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Education","Percent":46},{"Name":"Education","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Education","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}];
+,{id: 'P049395',project_name: 'ENERGY ACCESS PROJECT',totalamt: 132.7,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Sep-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Agriculture, fishing, and forestry","Percent":5},{"Name":"Energy and mining","Percent":5},{"Name":"Industry and trade","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}];
       
-  wb.init("446",  "Ethiopia", "Africa", {projects_count: '40', locations_count: '411', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
+  wb.init("446",  "Ethiopia", "Africa", {projects_count: '41', locations_count: '411', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
+  }
 </script>
 
-        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
     </div><!--#container//-->
 
@@ -781,6 +784,7 @@ var s_account="wbnispextgeomfr,wbglobalext";
 </script>
 <script language="JavaScript" src="http://siteresources.worldbank.org/scripts/s_code_remote.js"></script>
 <!-- End SiteCatalyst code version: G.6. -->
+
 
 
 </body>
