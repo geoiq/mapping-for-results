@@ -214,7 +214,7 @@ class MappingForResults < Sinatra::Base
 
   
   get '/:page' do
-    @page = Page.first(:shortname => params[:page].downcase, :page_type => "page")
+    @page = Page.first(:shortname => params[:page].downcase, :page_type => "page", :parent_id => 1)
     pass if @page.nil?
     erb :about
   end
@@ -226,10 +226,8 @@ class MappingForResults < Sinatra::Base
   end
 
   get '/:region' do
-    @region = @page = Page.first(:shortname => params[:region].downcase)
-puts "REgion!"
-puts params[:region]
-puts @region.name
+    @region = @page = Page.first(:shortname => params[:region].downcase, :parent_id => 1)
+
     pass if @region.nil?
     if(params[:region] == "boost")
 	    @title = "BOOST Initiative"
