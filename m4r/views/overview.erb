@@ -1,6 +1,6 @@
       <div id="banner">
         <div id="local" class="<%= 'collapsible-header' if !@page.nil? && @page.name == 'World' %> <%= (@page.nil? || %w{world haiti boost}.include?(@page.shortname)) ? 'expanded': 'collapsed'%>" content_id="collapsible-banner">
-          <div title="" class="site-name"><a class="active" href="<%= defined?(@additional_controls) ? '#' : '/' %>"><%= @title || "Mapping for Results" %></a></div>
+          <div title="" class="site-name"><a class="active" href="<%= defined?(@additional_controls) ? '#' : '/' %>"><%= @title || "Mapping for Results" %></a> - <a href="<%= @page.url %>"><%= @page.name %></a></div>
           <div  >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>          

@@ -27,7 +27,7 @@
     text-decoration: none;
     text-transform: uppercase;
 }
-#world_menu .worldmenu > li > a { padding-bottom: 16px;}
+#world_menu.worldmenu > li > a,#region_menu.worldmenu > li > a { padding-bottom: 16px;}
 .menu-world-options{
 	background: #d9dccf;
 	font-size: 12px;

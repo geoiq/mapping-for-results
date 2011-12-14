@@ -1,4 +1,5 @@
 %w{ rubygems sinatra/base open-uri erb json net/http}.each {|gem| require gem}
+$:.<< File.dirname(__FILE__)
 
 require 'helpers'
 require 'models/page'
@@ -265,7 +266,7 @@ puts @region.name
     @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
     @projects = @page.data[:projects]
     
-    @page_subtitle = [@page[:name],@page[:region]].compact.join(", ") + " > "
+    @page_subtitle = [@page[:name],@page[:region]].compact.join(", ") + " - "
     @embed = true
     erb :map_embed, :layout => :embed 
   end

@@ -828,7 +828,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var opts = {}
 		var width = 410;
 		var char_length = 25;
-		if( self.country == "World") {
+		if( self.country == "World" || self.country == "Africa") {
 		    width = 640;
 		    char_length = 47;
 		    }
@@ -1047,29 +1047,43 @@ if(typeof(F1)=='undefined') {F1 = {};}
       return r;
       // F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {          return links[this.bar.index]; }});
 	},
-	productlineFundingBars: function() {
+	countryFundingBars: function() {
 	  var self = this;
 	  var s;
 	  var features = [];
 	  var links = [];
+	  var values = [];
 	  var labels = [];
-	  jq.each(self.productlines, function(s, financing) {
+	  var max = 0;
+	  jq.each(self.regions, function(s, financing) {
 		features.push({name: s, financing: financing.toFixed(2)});
+		values.push(financing/1000)
 		labels.push(s)
 		links.push("#" + s);
+		if(financing/1000 > max) { max = financing/1000 }
 	  });
 
 	  jq('#funding_total').hide();
-	  
-	  bar_options = {"features":features, "attributes": {
+	  bar_options = {
+	        ids: labels,
+	      "features":features, "attributes": {
 		  "data":{"name": "Financing Amount $m", "original_name": "financing"}, 
-		  "description":{"name": "Product line", "original_name": "name"}, 
+		  "description":{"name": "Country", "original_name": "name"}, 
 		  "sort":{"name": "Financing Amount $m","original_name": "financing"} } };
-	  F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {
-		  return links[this.bar.index];
-	  }, onclick: function() {
-		  wb.highlightProject(features[this.bar.index].id, "");;
-		 }});
+
+      jq("#chart-right-graph").html("")
+      var r = Raphael("chart-right-graph");
+      var fin = function () {
+          this.flag = r.g.popup(this.bar.x, this.bar.y, labels[this.bar.index] + "\n" + ("$" + this.bar.value + "b")).insertBefore(this);
+      }
+      var fout = function () {
+          this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+      }
+      r.g.barchart(50, 20, 330, 200, [values], bar_options).hover(fin, fout).click(function(e) { window.location = links[this.bar.index];});
+      axis2 = r.g.axis(25,200,160,0,max,8,1);
+      var xLabel = r.g.text(parseInt(400/2), 210, "Country Funding in Billions");
+      xLabel.attr({title: "financing amount in US $ billions", fill:"#555"});
+      xLabel.node.id = "preview_xaxis"      
 	}, 
 	projectFundingBars: function() {
 	  var self = this;
@@ -1243,7 +1257,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
         if(tooltip != "count") self.map.setLayerTooltip(layer_index,{title: tooltip})
         var infodiv = document.createElement("div");
         infodiv.id = "infodiv";
-        infodiv.setAttribute("style", "padding: 5px; top: -1000; left: -1000; display: block;max-width: 100px; position: absolute; background-color: #92948C; opacity:0.9; filter:alpha(opacity=90)");
         var parent = document.getElementById("wb_map");
         parent.insertBefore(infodiv, parent.childNodes[0]);
         wb.map.setCallback("onFeatureHover", function(obj) { 
@@ -1262,8 +1275,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 }
                 infodiv.innerHTML =  "<span>" + text + "</span>"
                 infodiv.style.opacity = "0.9";
-                infodiv.style.left = (obj.point.x + 10) + "px";
-                infodiv.style.top = (obj.point.y - 10) + "px";
+                infodiv.style.left = (obj.point.x - jq("#infodiv").width() / 2) + "px";
+                infodiv.style.top = (obj.point.y - 50) + "px";
             } else {
                 // self.map.clearHighlights(layer_index);
                 infodiv.style.opacity = "0";
@@ -1297,6 +1310,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
                 jq('#mapped_locations_header').html("mapped location")
+            } else if (parseInt(self.country_attrs["projects_count"].replace(",","")) > 1000) {
+                self.countryFundingBars()
             }
             log("finish header")
 
@@ -1323,9 +1338,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.projectTable(self.projects);
             log("sortProjects");
             // self.projectFundingBars();
-            self.sectorPieChart("all", false);
             self.toggleSector("all", true, false);
             log("sectorPieChart");
+        }
+        if(self.thematic_area == "m4r") { // for countries & regions
+            self.sectorPieChart("all", false);            
         }
         
         self.loadState();
@@ -1341,7 +1358,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  log("styleWorldMap styled")
 	  self.sectorPieChart("all", false);
 	  self.regionFundingBars();
-	  self.hoverWindow(0, "$[country] has $[project count] active projects.<br />Click to view the country map.")
+	  self.hoverWindow(3, "</span><span id='info_country'>$[country]</span><br /><span id='info_count'>$[project count] projects</span><span>")
       self.map.setMapStyle( {infowindow: {visible: false}});
 	  //self.map.setCallback("onFeatureSelected", function(features){ var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') });
 

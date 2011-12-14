@@ -63,7 +63,7 @@ module Sinatra
       when /sector_code/
         return "'#{value["Code"]}'"
       else
-        return "'#{value.gsub("'","")}'"
+        return "'#{value.gsub(/'/,'')}'"
       end
 
     end
@@ -73,7 +73,7 @@ module Sinatra
       html = ""
       html << '<select name="page[region]" id="page[region]" >'
       regions.each do |region|
-        html << "<option value='#{region.id}' #{country.region == region.name ? 'selected' : ""}>#{region.name} - #{region.parent_id}</option>"
+        html << "<option value='#{region.id}' #{country.parent.id == region.id ? 'selected' : ""}>#{region.name} - #{region.parent_id}</option>"
       end
       html << "<option value='' #{country.region == '' ? 'selected' : ""}>-- root level</option>"      
       html << "</select>"
@@ -101,7 +101,7 @@ module Sinatra
       end
 
       html << %Q{ You can <a href="/admin/#{page.id}/edit">edit</a> this page}
-      html << %Q{, or <a href="/admin/#{page.id}/sync">sync with project API</a>.} if page.page_type == "country"
+      html << %Q{, or <a href="/admin/#{page.id}/sync">sync with project API</a>.} if page.page_type =~ /country|region/
       if((children = page.children).length > 0)
         html << "<ul>"
         children.each do |child|

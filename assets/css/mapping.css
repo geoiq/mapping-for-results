@@ -239,6 +239,7 @@ ul.links li, ul.links li a{
 }
 #local .site-name {
     float: left;
+    color: white;
     font-size: 28px;
     font-weight: normal;
     line-height: 60px;
@@ -277,6 +278,7 @@ ul.links li, ul.links li a{
     background: #d9dbcd url("img/map.nav.header.gif") no-repeat 0 0;
     border: medium none;
 	z-index: 10;
+	clear: both;
 }
 .ie7 #map-content-header{
 	padding-top: 5px;
@@ -341,7 +343,19 @@ ul.links li, ul.links li a{
 .ie7 #map-content-icons ul li.s11{
 	padding-top: 0;
 }
+#infodiv {padding: 5px; top: -1000; left: -1000; 
+    display: block;
+    min-width: 140px;
+    position: absolute; 
+    background-color: #92948C; 
+    opacity:0.9; 
+    filter:alpha(opacity=90);
+    text-align: center;
+    -moz-border-radius: 15x;
+    border-radius: 5px;
+    }
 #infodiv span {opacity: 1.0; color: #FFF; }
+#infodiv span#info_country { font-size: 17px; font-weight: bold; color: #900;}
 .radio-prov{
 	color: #777876;
 	float: left;
@@ -932,4 +946,4 @@ tr.row_even td{
     padding-left: 19px;
 }
 .subtotal {color: rgb(136, 136, 136); font-size: 0.8em; cursor: pointer;}
-
+.panel { display: none;}
