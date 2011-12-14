@@ -422,7 +422,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.map.showLayer(self.stylelayers[layer].order, true);
             
             self.map.addFilter(self.stylelayers[layer].order, 
-                {expression: self.complexFilterExpression(visibleDeposits, "Mineral type")});
+                {expression: self.complexFilterExpression(visibleDeposits, "mineral type")});
         } else {
             self.map.showLayer(self.stylelayers[layer].order, false);
         }
@@ -438,7 +438,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         if(visibleDeposits.length != 0 ){
             self.map.showLayer(self.stylelayers[layer].order, true);
             self.map.addFilter(self.stylelayers[layer].order, 
-                {expression: self.complexFilterExpression(visibleDeposits, "Mineral type")});             
+                {expression: self.complexFilterExpression(visibleDeposits, "mineral type")});             
         } else {
             self.map.showLayer(self.stylelayers[layer].order, false);
         }
@@ -958,7 +958,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var links = []
         jq.each(mineral_type, function(type,amount) {
             minerals.push({"Mineral type": type, "Total_government_receipts": amount})
-            links.push("javascript:wb.highlightMine('Mineral type', '" + type + "');")
+            links.push("javascript:wb.highlightMine('mineral type', '" + type + "');")
         })
         pie_options = {"features":minerals, 
         "attributes": {"data":{"name": "Total government receipts","original_name": "Total_government_receipts"},
@@ -1310,7 +1310,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
                 jq('#mapped_locations_header').html("mapped location")
-            } else if (parseInt(self.country_attrs["locations_count"].replace(",","")) > 1000) {
+            } else if (parseInt(self.country_attrs["projects_count"].replace(",","")) > 1000) {
                 self.countryFundingBars()
             }
             log("finish header")
