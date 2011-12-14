@@ -1,4 +1,5 @@
 /*Map Area*/
+#filters.panel .palette, .panel#filters .hide_icon_filters {display: none; margin-left: -1000px}
 #geoiq_map{width:958px; height:514px;}
 
 #map-content {width:958px; height:514px; min-height: 514px; border-left:solid 1px #d9dbcd; border-bottom:solid 1px #d9dbcd;  border-right:solid 1px #d9dbcd; background:#FFFFFF;}
