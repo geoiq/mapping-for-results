@@ -9,7 +9,6 @@ def cache_country(page)
   system "curl '#{HOST}#{page.url}/embed?height=600&width=800' > .#{page.url}/embed.html"
   system "cp .#{page.url}.html .#{page.url}/index.html"
 end
-=begin
 %w{script/map.js script/extractives.js 404.html 500.html}.each do |page|
   puts "#{page}"
   system "curl #{HOST}/#{page} > #{page}"
@@ -20,7 +19,6 @@ end
   next if page.name =~ /BOOST/ 
   system "curl #{HOST}#{page.url} > about/#{page.url}.html"
 end
-=end
 puts "Starting Regions"
 @regions = Page.all :page_type => "region"
 @regions.each do |region|
@@ -31,10 +29,8 @@ puts "Starting Regions"
     cache_country(country)
   end
 end
-=begin
 puts "Regions done"
 @pages = Page.all :page_type => "country"
 @pages.each do |page|
   cache_country(page)
 end
-=end
