@@ -828,7 +828,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var opts = {}
 		var width = 410;
 		var char_length = 25;
-		if( self.country == "World" || self.country == "Africa") {
+		if( self.country == "World" || parseInt(self.country_attrs["locations_count"].replace(",","")) > 400) {
 		    width = 640;
 		    char_length = 47;
 		    }
@@ -1310,7 +1310,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
                 jq('#mapped_locations_header').html("mapped location")
-            } else if (parseInt(self.country_attrs["projects_count"].replace(",","")) > 1000) {
+            } else if (parseInt(self.country_attrs["locations_count"].replace(",","")) > 400) {
                 self.countryFundingBars()
             }
             log("finish header")

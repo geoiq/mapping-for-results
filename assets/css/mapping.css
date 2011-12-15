@@ -260,7 +260,7 @@ ul.links li, ul.links li a{
 
 #main-map{
 	padding-right: 290px;
-	z-index: 1;	
+	z-index: 100;	
 }
 #map-summary-container{
 	font-size: 25px;
@@ -673,8 +673,8 @@ a.moreData{
 	width: 290px;
 	z-index: 2;
 }
-.ie 7 #main-map{
-	clear: both;
+.ie7 #main-map{
+	/*clear: both;*/
 	margin-right: -300px;	
 }
 .ie7 #rightCol{
