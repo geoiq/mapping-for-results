@@ -40,7 +40,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body class=" region-left region-right region-far-right region-content-top" onload="onload()">
   <div id="map-content-hdr2">
       <div id="map-content-icons">
         <div id="map-content-icons2">
@@ -78,20 +78,21 @@
   </div>
 <div id="map_embed_container" style="height: 600px; width: 900px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
+ var wb = null;
+  function onload() {
 
-
-  var wb = new F1.WorldBank();
+  wb = new F1.WorldBank();
+  jq("#map_embed_container").width(getQuerystring("width", 200))
+  jq("#map_embed_container").height(getQuerystring("height", 200))
   
   wb.init("810",  "Development Marketplace",  "World", {title: 'Development Marketplace',locations_count: '479', thematic_area: "m4r"}, true);
 
-  
+ }  
   
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 <script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(getQuerystring("width", 200))
-  jq("#map_embed_container").height(getQuerystring("height", 200))
 </script>
   
 <script type="text/javascript">
