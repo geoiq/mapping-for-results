@@ -344,18 +344,20 @@ ul.links li, ul.links li a{
 	padding-top: 0;
 }
 #infodiv {padding: 5px; top: -1000; left: -1000; 
-    display: none;
+    display: block;
     min-width: 140px;
     position: absolute; 
     background-color: #92948C; 
-    opacity:0.9; 
+    opacity:0; 
     filter:alpha(opacity=90);
     text-align: center;
     -moz-border-radius: 15x;
     border-radius: 5px;
     }
+.tipsy { opacity: 0.9; }
+.tipsy-inner {  background-color: #92948C; }
 #infodiv span {opacity: 1.0; color: #FFF; }
-#infodiv span#info_country { font-size: 17px; font-weight: bold; color: #900;}
+#infodiv span#info_country { font-size: 17px; font-weight: bold; color: white;}
 .radio-prov{
 	color: #777876;
 	float: left;

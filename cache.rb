@@ -34,3 +34,5 @@ puts "Regions done"
 @pages.each do |page|
   cache_country(page)
 end
+
+cache_country(Page.first(:name => "Development Marketplace"))
