@@ -1118,7 +1118,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             // second pass if we missed any
             jq.each(self.country_attrs["indicators"], function(index,layer) {
                 if(self.stylelayers["Indicators"] !== undefined && self.stylelayers[layer] == undefined) {
-                    self.stylelayers[layer] = {guid: possibleLayers[layer].guid, order: self.stylelayers["Indicators"].guid, source: self.stylelayers["Indicators"].source, sharedLayer: true};
+                    self.stylelayers[layer] = {guid: possibleLayers[layer].guid, order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
                 }
             });
         }
@@ -1296,7 +1296,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Oil fields","all", true)     
             self.map.setMapStyle( {zoom: { offset: {x:15,y:80}}} )
             self.setExtractiveIndicator('Mines','Total production','Production',true)
-            self.map.addLayerCategoryFilter(11,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
+            self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
             self.minesPieChart() 
         }
         self.loadState();
