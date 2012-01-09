@@ -1118,7 +1118,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             // second pass if we missed any
             jq.each(self.country_attrs["indicators"], function(index,layer) {
                 if(self.stylelayers["Indicators"] !== undefined && self.stylelayers[layer] == undefined) {
-                    self.stylelayers[layer] = {guid: possibleLayers[layer].guid, order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
+                    self.stylelayers[layer] = {guid: self.stylelayers["Indicators"].guid, order: self.stylelayers["Indicators"].order, source: self.stylelayers["Indicators"].source, sharedLayer: true};
                 }
             });
         }
@@ -1201,7 +1201,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 this.map.setMapStyle( { zoom: { visible: true, expanded: true, bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:50}}}) 
             }
 
-            // this.map.setMapStyle( { tooltip: { visible: false } } )
+            this.map.setMapStyle( { tooltip: { visible: false } } )
 
             return false;
         },
@@ -1222,7 +1222,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	hoverWindow: function(layer_index,tooltip) {
 	    var self = this;
         self.map.setMapStyle({tooltip: {visible: false}})
-        //if(tooltip != "count") self.map.setLayerTooltip(layer_index,{title: tooltip})
+        if(tooltip != "count") self.map.setLayerTooltip(layer_index,{title: tooltip})
         var infodiv = document.createElement("div");
         infodiv.id = "infodiv";
 
@@ -1245,7 +1245,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                 infodiv.innerHTML =  "<span>" + text + "</span>"
                 infodiv.style.opacity = "0.9";
                 infodiv.style.left = (obj.point.x - jq("#infodiv").width() / 2) + "px";
-                infodiv.style.top = (obj.point.y - 60) + "px";
+                infodiv.style.top = (obj.point.y - 55) + "px";
             } else {
                 // self.map.clearHighlights(layer_index);
                 infodiv.style.opacity = "0";
@@ -1279,7 +1279,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
                 jq('#mapped_locations_header').html("mapped location")
-            } else if (parseInt(self.country_attrs["locations_count"].replace(",","")) > 400) {
+            } else if (parseInt(self.country_attrs["locations_count"].replace(",","")) > 500) {
                 self.countryFundingBars()
             }
             log("finish header")
@@ -1294,7 +1294,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Mines","all", true)
             self.toggleExtractive("Mineral deposits","all", false)
             self.toggleExtractive("Oil fields","all", true)     
-            self.map.setMapStyle( {zoom: { offset: {x:15,y:80}}} )
+            self.map.setMapStyle( {zoom: { offset: {x:15,y:90}}} )
             self.setExtractiveIndicator('Mines','Total production','Production',true)
             self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
             self.minesPieChart() 
@@ -1327,7 +1327,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  log("styleWorldMap styled")
 	  self.sectorPieChart("all", false);
 	  self.regionFundingBars();
-	  self.hoverWindow(3, "</span><span id='info_country'>$[country]</span><br /><span id='info_count'>$[project count] projects</span><span>")
+	  self.hoverWindow(self.map.getLayer(0).guid, "</span><span id='info_country'>$[country]</span><br /><span id='info_count'>$[project count] projects</span><span>")
       self.map.setMapStyle( {infowindow: {visible: false}});
 	  // self.map.setCallback("onFeatureSelected", function(features){ var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') });
 
