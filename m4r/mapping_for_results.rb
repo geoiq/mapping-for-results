@@ -214,7 +214,8 @@ class MappingForResults < Sinatra::Base
 
   
   get '/:page' do
-    @page = Page.first(:shortname => params[:page].downcase, :page_type => "page", :parent_id => 1)
+    @page = Page.first(:shortname => params[:page].downcase, :page_type => "page", :parent_id => nil)
+    @page = Page.first(:shortname => params[:page].downcase, :page_type => "page") if @page.nil?
     pass if @page.nil?
     erb :about
   end
