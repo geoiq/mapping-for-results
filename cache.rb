@@ -17,7 +17,7 @@ end
 @pages.each do |page|
   puts "#{page.name} - #{page.id}"
   next if page.name =~ /BOOST/ 
-  system "curl #{HOST}#{page.url} > about/#{page.url}.html"
+  system "curl #{HOST}/about/#{page.url} > about/#{page.url}.html"
 end
 puts "Starting Regions"
 @regions = Page.all :page_type => "region"

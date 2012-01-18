@@ -157,14 +157,18 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
 	  this.sector_names = {};
 	  this.sector_codes = {};
-	  jq.each(self.sectors, function(index, sector) {
-		  if(country_attrs.sectors !== undefined && country_attrs.sectors !== null && country_attrs.sectors[sector.name] !== null) { 
-			sector.funding = country_attrs.sectors[sector.name];
-			self.total_funding += country_attrs.sectors[sector.name];
-		  }
-		  self.sector_names[sector.name.toLowerCase().trim()] = index; 
-		  self.sector_codes[sector.sector_code] = sector;
-	 });
+	  var sector;
+          for( var index in self.sectors){
+                  sector = self.sectors[index];
+                  if(country_attrs.sectors !== undefined && country_attrs.sectors !== null && country_attrs.sectors[sector.name] !== null) {
+                        sector.funding = country_attrs.sectors[sector.name];
+                        self.total_funding += country_attrs.sectors[sector.name];
+                  }
+                  self.sector_names[sector.name.toLowerCase().trim()] = index;
+                  self.sector_codes[sector.sector_code] = sector;
+        }
+
+
 	 if(map_id !== undefined && map_id !== null && map_id.length != 0){
 		 this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
 		 uiZoom: false,uiLayers: false,uiLegend: false,uiStyles: true,
@@ -1024,7 +1028,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
           });
       // r.g.axis(x_start, y_start, x_width, from, to, steps, orientation, labels, type, dashsize)
       axis = r.g.axis(37,200,435,null,null,labels.length,2,labels, " ", 0);
-      axis.text.attr({font:"12px 'Fontin Sans', Fontin-Sans, sans-serif", fill:"#333", "font-weight": "regular", "color": "#333"});
+      axis.text.attr({font:"12px 'Fontin Sans', Fontin-Sans, sans-serif", fill:"#333", "color": "#333"});
       // axis2 = r.g.axis(35,190,300,0,400,10,1);
       return r;
       // F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {          return links[this.bar.index]; }});
@@ -1225,6 +1229,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
         if(tooltip != "count") self.map.setLayerTooltip(layer_index,{title: tooltip})
         var infodiv = document.createElement("div");
         infodiv.id = "infodiv";
+	infodiv.innerHTML = "<span>Explore the map with your mouse</span>"
 
         var parent = document.getElementById("wb_map");
         parent.insertBefore(infodiv, parent.childNodes[0]);
