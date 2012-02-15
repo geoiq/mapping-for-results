@@ -221,7 +221,7 @@ class MappingForResults < Sinatra::Base
   end
   
   get '/about/:page' do
-    redirect "/about" if params[:page] == "about"
+    #redirect "/about" if params[:page] == "about"
     @page = Page.first(:shortname => params[:page].downcase)
     erb :about
   end
