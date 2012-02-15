@@ -17,6 +17,7 @@ module WorldBank
   }
   WB_PROJECTS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryshortname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg,countrycode&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
 
+  WB_LOCATIONS_API = "http://search.worldbank.org/api/projects?qterm=*:*&fl=id,project_name,boardapprovaldate,totalamt,grantamt,mjsector1,regionname,countryshortname,countryname,majorsector_percent,prodlinetext,productlinetype,supplementprojectflg,countrycode,location,project_abstract,url&status[]=active&rows=500&format=json&frmYear=ALL&toYear=ALL" #&prodline[]=GE&prodline[]=PE&prodline[]=MT&prodline[]=RE&prodline[]=SF"
   PROJECT_FIELDS = ["id","project_name","totalamt","grantamt","mjsector1","boardapprovaldate","majorsector_percent","prodlinetext"]
   SECTORS = {
     :public => {:name => "Public Administration, Law, and Justice"},
@@ -105,6 +106,10 @@ module WorldBank
     projects_data["total"] = projects_data["projects"].length
     
     return projects_data
+  end
+
+  def self.get_geocoded_projects
+    projects = paginated_projects(WB_LOCATIONS_API + "&geocode=ON")
   end
   
   def self.get_region_data(region)
