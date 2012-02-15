@@ -43,8 +43,8 @@ class Project
   property :id,     Serial    # An auto-increment integer key
   property :timestamp              ,DateTime
   property :project_id             ,String     
-  property :latitude               ,Decimal, :scale => 0, :precision => 10          
-  property :longitude              ,Decimal, :scale => 0, :precision => 10          
+  property :latitude               ,Decimal, :scale => 10, :precision => 15          
+  property :longitude              ,Decimal, :scale => 10, :precision => 15
   property :precision              ,String     
   property :precision_description  ,Text                       
   property :user_id                ,String     
