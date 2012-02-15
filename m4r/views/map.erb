@@ -175,7 +175,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 core_host:	 proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
 		 onMapLoaded: function() { setTimeout("wb.loadedMap()",500); },
 		 onFeatureSelected: function(features) { if(self.country == "World" && features.features.length > 0) {
-		     var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') ;
+		     var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country["lowercase country name"].toLowerCase().replace(/\s+/g,'-') ;
 		 }},
 		 flashvars: {country: self.country}
 		 });
@@ -475,7 +475,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		if(self.stylelayers["Project Counts"] !== undefined) {
 			self.map.showLayer(self.stylelayers["Project Counts"].guid, visible);
 			self.map.clearFilters(self.stylelayers["Project Counts"].guid);
-			self.map.addFilter(self.stylelayers["Project Counts"].guid, {expression: "$[admprecision] == 'ADM1'"});
+			self.map.addFilter(self.stylelayers["Project Counts"].guid, {expression: "$[admprecisi] == 'ADM1'"});
 		}
 		self.map.showLayer(self.stylelayers["Project Locations"].guid, !visible);
 		refreshCharts = false;		  
@@ -490,7 +490,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  if(self.stylelayers["Project Counts"] !== undefined){
 			self.map.showLayer(self.stylelayers["Project Counts"].guid, visible);
 			self.map.clearFilters(self.stylelayers["Project Counts"].guid);
-			self.map.addFilter(self.stylelayers["Project Counts"].guid, {expression: "$[admprecision] == 'ADM2'"});
+			self.map.addFilter(self.stylelayers["Project Counts"].guid, {expression: "$[admprecisi] == 'ADM2'"});
 		}
 		self.map.showLayer(self.stylelayers["Project Locations"].guid, !visible);
 		refreshCharts = false;
@@ -498,8 +498,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		jq('#map-content-regions').show()
         jq('#layercontrol_projects').html("By Count");
 
-        $('input:radio[name="by_region"]').filter('[value="province"]').attr('checked', false);
-        $('input:radio[name="by_region"]').filter('[value="district"]').attr('checked', true);
+        jq('input:radio[name="by_region"]').filter('[value="province"]').attr('checked', false);
+        jq('input:radio[name="by_region"]').filter('[value="district"]').attr('checked', true);
 
 	  } else if(sector == 'counts') {
 		if(self.stylelayers["Project Counts"] !== undefined && self.stylelayers["Project Counts"] !== null)
@@ -1027,7 +1027,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
           });
       // r.g.axis(x_start, y_start, x_width, from, to, steps, orientation, labels, type, dashsize)
       axis = r.g.axis(37,200,435,null,null,labels.length,2,labels, " ", 0);
-      axis.text.attr({font:"12px 'Fontin Sans', Fontin-Sans, sans-serif", fill:"#333", "font-weight": "regular", "color": "#333"});
+      axis.text.attr({font:"12px 'Fontin Sans', Fontin-Sans, sans-serif", fill:"#333", "color": "#333"});
       // axis2 = r.g.axis(35,190,300,0,400,10,1);
       return r;
       // F1.Visualizer.charts.bar(180, 405, bar_options, "chart-right-graph", {href: links, data_label: true, label: function() {          return links[this.bar.index]; }});
@@ -1328,8 +1328,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  jq('#project_count').html(self.country_attrs["projects_count"]);
 	  jq('#activity_count').html(self.country_attrs["locations_count"]);
 	  log("styleWorldMap styled")
-	  self.sectorPieChart("all", false);
-	  self.regionFundingBars();
+	  if(self.sectors !== undefined && self.sectors !== null) {
+		  self.sectorPieChart("all", false);
+	  }
+	  if(self.regions !== undefined && self.regions !== null && Object.size(self.regions) != 0) {
+	  	  self.regionFundingBars();
+	  }
 	  self.hoverWindow(self.map.getLayer(0).guid, "</span><span id='info_country'>$[country]</span><br /><span id='info_count'>$[project count] projects</span><span>")
       self.map.setMapStyle( {infowindow: {visible: false}});
 	  // self.map.setCallback("onFeatureSelected", function(features){ var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') });

@@ -113,6 +113,7 @@ class MappingForResults < Sinatra::Base
   # 
 
   get "/login" do 
+    @page = Page.first :page_type => "page"
     erb :login
   end
 
