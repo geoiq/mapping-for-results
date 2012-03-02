@@ -894,7 +894,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
         if(projects.length == 0){
             jq('#sector_funding_total').hide();
-            jq('#chart-left-bar-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
+            jq('#chart-left-pie-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
             return;
         }
 
@@ -911,7 +911,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             opts["href"] = links;
         }
 
-        F1.Visualizer.charts.pie(190, width, pie_options, "chart-left-pie-chart", opts);		  
+	if(wb.projects.length > 0)	
+	        F1.Visualizer.charts.pie(190, width, pie_options, "chart-left-pie-chart", opts);		  
 
 	},
 	minesPieChart: function() {
@@ -1235,14 +1236,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
             // hoverwindow only for projects & countries
             if(obj.features !== null && obj.features.length != 0 && (obj.features[0]["mjsector 1"] !== undefined || obj.features[0]["project count"] !== undefined)) {
                 var text = ""
-                if(tooltip == "count") {text = obj.features.length + " projects<br />";
+                if(tooltip == "count") {text = obj.features.length + " mapped locations<br />";
                     jq.each(obj.features, function(index,feature) {
                         if(feature["mjsector 1"] !== undefined && feature["mjsector 1"] !== null)
                             text += "<img alt='" + feature["mjsector 1"] + "' src='" + self.wbicons[feature["mjsector 1"]] + "' />";
                     })
                 } else { 
                     if(obj.features[0]["project count"] !== undefined && obj.features[0]["project count"] !== null && obj.features[0]["project count"] == 0 ) {
-                        text = "There are no active projects in " + obj.features[0]["country"];
+                        text = "There are no financed activities in " + obj.features[0]["country"];
                     } else { text = obj.tooltip; }
                 }
                 infodiv.innerHTML =  "<span>" + text + "</span>"
@@ -1278,6 +1279,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#project_count').html(count);
             if(count == 1){
                 jq('#active_projects_header').html("active project working in")
+            } else if (count == 0) {
+            	jq('#chart-left-stat').html("No World Bank financed activity data.")
             }
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {

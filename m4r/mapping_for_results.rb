@@ -26,7 +26,7 @@ class MappingForResults < Sinatra::Base
   # set :reload_templates, true 
 
   helpers Sinatra::GeoiqHelper, Sinatra::PartialHelper, Sinatra::MappingHelper
-  
+
   get '/' do
     @page = Page.first(:shortname => "world")
     @projects = @page.data[:projects]
@@ -36,18 +36,13 @@ class MappingForResults < Sinatra::Base
     # headers 'Last-Modified' => @page.sync_updated_at.httpdate
     erb :index    
   end
-
-  get '/world' do
-    redirect '/'
-  end
-
   not_found do
-    erb :missing
+    erb :missing	
   end
   error do
     erb :missing
+	"Error!"
   end
-
   get '/404' do 
     erb :missing
   end
@@ -283,11 +278,13 @@ class MappingForResults < Sinatra::Base
   
   get '/:region/:country' do
     # @region = MAPS[:world][:regions][params[:region].to_sym]
+	p params.inspect
     @region = Page.first(:shortname => params[:region].downcase)
     if(@region.nil?)
-      erb :about
+      pass
     else
       @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
+	p @page[:name]
       redirect "/#{params[:region]}" if @page.nil?
       @projects = @page.data[:projects]
       
