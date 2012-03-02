@@ -176,7 +176,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 onMapLoaded: function() { setTimeout("wb.loadedMap()",500); },
 		 onFeatureSelected: function(features) { if(self.country == "World" && features.features.length > 0) {
 		     var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country["lowercase country name"].toLowerCase().replace(/\s+/g,'-') ;
-		 }},
+		 } else { jq("#infodiv")[0].style.opacity = "0";	}},
 		 flashvars: {country: self.country}
 		 });
 	  } else {
@@ -814,7 +814,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var opts = {}
 		var width = 410;
 		var char_length = 25;
-		if( self.country == "World" || parseInt(self.country_attrs["projects_count"].replace(",","")) > 100) {
+		if( self.country == "World" || parseInt(self.country_attrs["projects_count"].replace(",","")) > 130) {
 		    width = 640;
 		    char_length = 47;
 		    }
