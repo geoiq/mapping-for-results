@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -40,22 +40,22 @@
 ,{id: 'P088876',project_name: 'DJ-URBAN POVERTY REDUCTION PROJECT',totalamt: 3.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Transportation","Percent":30},{"Name":"Health and other social services","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Education","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P112253',project_name: 'DJ- Power Access and Diversification, Additonal Financing',totalamt: 6.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Energy and mining","Percent":30},{"Name":"Energy and mining","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P117424',project_name: 'Primary Education Support Program-EFA-FTI Catalytic Fund Additional Financing',totalamt: 4.0,grantamt: 4.0,mjsector1: 'Education',boardapprovaldate: 'Oct-2010',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
-,{id: 'P086994',project_name: 'Second School Access and Improvement',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Nov-2005',majorsector_percent: [{"Name":"Education","Percent":35},{"Name":"Education","Percent":35},{"Name":"Public Administration, Law, and Justice","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P086379',project_name: 'DJ-POWER ACCESS AND DIVERSIFICATION',totalamt: 7.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":76},{"Name":"Energy and mining","Percent":22},{"Name":"Water, sanitation and flood protection","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P086379',project_name: 'Djibouti Power Access and Diversification Project',totalamt: 7.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2005',majorsector_percent: [{"Name":"Energy and mining","Percent":76},{"Name":"Energy and mining","Percent":22},{"Name":"Water, sanitation and flood protection","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P107395',project_name: 'Improving Health Sector Performance',totalamt: 7.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P120190',project_name: 'DJ-Urban Poverty Reduction Add Financing',totalamt: 2.9,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":40},{"Name":"Transportation","Percent":30},{"Name":"Health and other social services","Percent":10},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Education","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P119878',project_name: 'DJ-Natural Disaster Risk Assessment and Monitoring System',totalamt: 0.9,grantamt: 0.9,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Information and communications","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}];
       
-  wb.init("444",  "Djibouti", "Middle East and North Africa", {projects_count: '11', locations_count: '55', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("444",  "Djibouti", "Middle East and North Africa", {projects_count: '10', locations_count: '55', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

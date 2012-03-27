@@ -35,5 +35,9 @@
   wb.init("<%= (@page[:map] || "").to_s %>",  "<%= (@page[:name] || "").to_s %>",  "<%= (@page[:region] || 'World').to_s %>", {projects_count: '<%= commify(@page[:projects_count]) %>', locations_count: '<%= commify(@page[:locations_count]) %>', sectors: sectors, regions: regions, thematic_area: "<%= @additional_controls || "m4r" %>" }, <%= @embed || false %>);
   
   <% end %>
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>

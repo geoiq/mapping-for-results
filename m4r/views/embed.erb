@@ -20,7 +20,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="<%= "onload()" if @page.page_type != "page" %>" class=" region-left region-right region-far-right region-content-top">
   <%= yield %>
   <%= partial :analytics %>
 </body></html>

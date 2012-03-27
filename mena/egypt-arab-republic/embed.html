@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -41,7 +41,6 @@
 ,{id: 'P120161',project_name: 'EG-Integrated Sanitation & Sew. Infra. 2',totalamt: 200.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P117356',project_name: 'EG-Railways Restructuring Additional Financing',totalamt: 330.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P119805',project_name: 'EG - Sanitation',totalamt: 9.49,grantamt: 9.49,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
-,{id: 'P091945',project_name: 'EG-El Tebbin Power',totalamt: 259.6,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Feb-2006',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P050484',project_name: 'Secondary Education Enhancement Project',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Apr-1999',majorsector_percent: [{"Name":"Education","Percent":80},{"Name":"Health and other social services","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5},{"Name":"Education","Percent":5},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P113416',project_name: 'Egypt - Wind Power Development Project',totalamt: 70.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P095925',project_name: 'Alexandria Coastal Zone Management Project (Under the Investment Fund for the Mediterranean Sea Large Marine Ecosystem)',totalamt: 7.15,grantamt: 7.15,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":34},{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Industry and trade","Percent":33}],prodlinetext: 'Global Environment Project',sector_code: 'WX'}
@@ -57,6 +56,7 @@
 ,{id: 'P073977',project_name: 'EGYPT-Integrated Irrigation Improvement and Management Project',totalamt: 120.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'May-2005',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":94},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Water, sanitation and flood protection","Percent":1},{"Name":"Water, sanitation and flood protection","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P112346',project_name: 'Affordable Mortgage Finance DPL',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
 ,{id: 'P095392',project_name: 'EGYPT-NATURAL GAS CONNECTIONS PROJECT',totalamt: 75.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
+,{id: 'P116198',project_name: 'EG-Giza North Additional Financing',totalamt: 240.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Feb-2012',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P119483',project_name: 'Egypt Vehicle Scrapping and Recycling Program',totalamt: 8.32,grantamt: 8.32,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'TX'}
 ,{id: 'P116011',project_name: 'Egypt  Enhancing Access to Finance for Micro and Small Enterprises',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
 ,{id: 'P101201',project_name: 'Cairo Airport Development Project-TB2',totalamt: 280.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Transportation","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
@@ -64,14 +64,15 @@
       
   wb.init("1805",  "Egypt", "Middle East and North Africa", {projects_count: '27', locations_count: '248', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Poverty','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

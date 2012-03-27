@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -34,9 +34,9 @@
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P110602',project_name: 'Montenegro Institutional Development and Agriculture Strengthening (MIDAS)',totalamt: 4.0,grantamt: 4.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Industry and trade","Percent":25},{"Name":"Industry and trade","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":15}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
+  var projects = [{id: 'P122785',project_name: 'HIGHER EDUCATION and RESEARCH FOR INNOVATION AND COMPETITIVENESS',totalamt: 15.98,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jan-2012',majorsector_percent: [{"Name":"Education","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P110602',project_name: 'Montenegro Institutional Development and Agriculture Strengthening (MIDAS)',totalamt: 4.0,grantamt: 4.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Industry and trade","Percent":25},{"Name":"Industry and trade","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":15}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P082223',project_name: 'Healthcare System Improvement Project (Montenegro)',totalamt: 7.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":55},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10},{"Name":"Finance","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P116787',project_name: 'Programmatic Financial Sector Development Policy Loan',totalamt: 85.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Sep-2011',majorsector_percent: [{"Name":"Finance","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
 ,{id: 'P120659',project_name: 'Additional Financing for Montenegro Environmentally Sensitive Tourist Areas Project',totalamt: 5.5,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P114275',project_name: 'Health System Improvement Additional Financing',totalamt: 7.2,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":71},{"Name":"Public Administration, Law, and Justice","Percent":29}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P106906',project_name: 'Land Administration and Management Project',totalamt: 16.2,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Dec-2008',majorsector_percent: [{"Name":"Finance","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
@@ -47,14 +47,15 @@
       
   wb.init("1756",  "Montenegro", "Europe and Central Asia", {projects_count: '10', locations_count: '51', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

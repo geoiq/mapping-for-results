@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -38,7 +38,6 @@
 ,{id: 'P115524',project_name: 'Additional Financing for the VIP 2',totalamt: 8.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Education","Percent":33},{"Name":"Health and other social services","Percent":33},{"Name":"Public Administration, Law, and Justice","Percent":18},{"Name":"Water, sanitation and flood protection","Percent":8},{"Name":"Energy and mining","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P096993',project_name: 'Agricultural Investments and Services Project',totalamt: 9.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":29},{"Name":"Agriculture, fishing, and forestry","Percent":28},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Agriculture, fishing, and forestry","Percent":17}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P096409',project_name: 'Second On-farm Irrigation Project',totalamt: 16.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":79},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P099453',project_name: 'Avian Influenza Control & Human Pandemic Preparedness & Response Project',totalamt: 4.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2006',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":38},{"Name":"Health and other social services","Percent":23},{"Name":"Agriculture, fishing, and forestry","Percent":18},{"Name":"Agriculture, fishing, and forestry","Percent":13},{"Name":"Health and other social services","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P084977',project_name: 'Health & Social Protection Project',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":22},{"Name":"Public Administration, Law, and Justice","Percent":18},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P126606',project_name: 'National Road Rehabilitation (Osh-Batken-Isfana) Project Additional Financing',totalamt: 16.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P123291',project_name: 'National Road Rehabilitation (Osh-Batken-Isfana) - Additional Financing',totalamt: 10.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Transportation","Percent":95},{"Name":"Transportation","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
@@ -54,6 +53,7 @@
 ,{id: 'P083235',project_name: 'Disaster Hazard Mitigation Project',totalamt: 6.9,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Energy and mining","Percent":65},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":15}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P108525',project_name: 'Capacity Building for Economic Management Grant',totalamt: 3.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P104994',project_name: 'Bishkek and Osh Urban Infrastructure Project',totalamt: 12.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":58},{"Name":"Transportation","Percent":23},{"Name":"Public Administration, Law, and Justice","Percent":14},{"Name":"Water, sanitation and flood protection","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P122811',project_name: 'AF - BISHKEK &OSH URBAN',totalamt: 15.8,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jan-2012',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":80},{"Name":"Transportation","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P126390',project_name: 'AF-SECOND ON-FARM IRRIGATION PROJECT',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P126819',project_name: 'KG Coordination of Emergency Situations',totalamt: 1.48,grantamt: 1.48,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P088671',project_name: 'Water Management Improvement Project (WMIP)',totalamt: 19.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Mar-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":75},{"Name":"Public Administration, Law, and Justice","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
@@ -71,14 +71,15 @@
       
   wb.init("454",  "Kyrgyz Republic", "Europe and Central Asia", {projects_count: '34', locations_count: '104', projects: projects, locations_layer: 0, indicators: ['Poverty'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

@@ -814,7 +814,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var opts = {}
 		var width = 410;
 		var char_length = 25;
-		if( self.country == "World" || parseInt(self.country_attrs["projects_count"].replace(",","")) > 130) {
+		if( self.country == "World" || (self.country_attrs["projects_count"] && parseInt(self.country_attrs["projects_count"].replace(",","")) > 130)) {
 		    width = 640;
 		    char_length = 47;
 		    }

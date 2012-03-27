@@ -65,7 +65,12 @@ class MappingForResults < Sinatra::Base
     end
     csv_string
   end
-  
+   
+ get '/countries.json' do 
+    attributes = [:name, :shortname, :map, :projects_count, :region]
+    @countries = Page.all(:page_type => "country", :status => "active", :fields => attributes + [:data])
+    @countries.to_json(:only => attributes, :methods => [:indicators])
+  end 
   get '/projects.csv' do 
     @projects = WorldBank.get_active_projects
 
@@ -275,7 +280,29 @@ class MappingForResults < Sinatra::Base
     @embed = true
     erb :map_embed, :layout => :embed 
   end
-  
+
+  get '/isocode/:isocode.png' do
+    content_type 'image/png'
+    @page = Page.first(:isocode => params[:isocode].downcase)
+    if @page.nil?
+       open(PLATFORM_API_URL + "/images/blank.png")
+    else
+       open(PLATFORM_API_URL + "/maps/#{@page[:map]}.png?height=#{params[:height] || 400}&width=#{params[:width] || 500}")
+    end
+  end 
+  get '/:region/:country.png' do
+    # @region = MAPS[:world][:regions][params[:region].to_sym]
+    @region = Page.first(:shortname => params[:region].downcase)
+    if(@region.nil?)
+      erb :about
+    else
+      @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
+      redirect "/#{params[:region]}" if @page.nil?
+    end
+
+    content_type 'image/png'
+    open(PLATFORM_API_URL + "/maps/#{@page[:map]}.png?height=#{params[:height] || 400}&width=#{params[:width] || 500}")
+  end   
   get '/:region/:country' do
     # @region = MAPS[:world][:regions][params[:region].to_sym]
 	p params.inspect

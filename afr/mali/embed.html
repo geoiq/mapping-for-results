@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -44,6 +44,7 @@
 ,{id: 'P052402',project_name: 'Gourma Biodiversity Conservation Project',totalamt: 5.5,grantamt: 5.5,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Sep-2004',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":25},{"Name":"Health and other social services","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":15}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P099709',project_name: 'Mali Sustainable Land Management',totalamt: 6.2,grantamt: 6.2,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":61},{"Name":"Agriculture, fishing, and forestry","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Agriculture, fishing, and forestry","Percent":10},{"Name":"Agriculture, fishing, and forestry","Percent":3}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P081670',project_name: 'CGAP-Microinsurance (Mali)',totalamt: 0.05,grantamt: 0.05,mjsector1: 'Finance',boardapprovaldate: 'Nov-2002',majorsector_percent: [{"Name":"Finance","Percent":50},{"Name":"Finance","Percent":50}],prodlinetext: 'Recipient Executed Activities',sector_code: 'FX'}
+,{id: 'P124054',project_name: 'ML-Strengthening Reproductive Health',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P121693',project_name: 'Mali - Second Transport Sector Project Additional Financing',totalamt: 23.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P095091',project_name: 'Fostering Agricultural Productivity Project',totalamt: 70.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":40},{"Name":"Agriculture, fishing, and forestry","Percent":31},{"Name":"Public Administration, Law, and Justice","Percent":18},{"Name":"Agriculture, fishing, and forestry","Percent":9},{"Name":"Agriculture, fishing, and forestry","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P040653',project_name: 'Rural Community  Development Project',totalamt: 60.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Sep-2005',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":49},{"Name":"Health and other social services","Percent":23},{"Name":"Public Administration, Law, and Justice","Percent":13},{"Name":"Industry and trade","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
@@ -56,16 +57,17 @@
 ,{id: 'P106052',project_name: 'Mali: Extractive Industries Transparency Initiative',totalamt: 0.21,grantamt: 0.21,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
 ,{id: 'P098268',project_name: 'ML-BioCarbon Fund MASPP & Biomass (FY06)',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jan-2007',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":80},{"Name":"Agriculture, fishing, and forestry","Percent":20}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}];
       
-  wb.init("411",  "Mali", "Africa", {projects_count: '21', locations_count: '225', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("411",  "Mali", "Africa", {projects_count: '22', locations_count: '225', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

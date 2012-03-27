@@ -82,7 +82,11 @@ class Page
     self.sync_updated_at = Time.now
     self.save
   end
+
   
+  def indicators
+    return data[:indicators]
+  end  
 end
 
 
