@@ -26,7 +26,7 @@ class MappingForResults < Sinatra::Base
   # set :reload_templates, true 
 
   helpers Sinatra::GeoiqHelper, Sinatra::PartialHelper, Sinatra::MappingHelper
-  
+
   get '/' do
     @page = Page.first(:shortname => "world")
     @projects = @page.data[:projects]
@@ -36,18 +36,13 @@ class MappingForResults < Sinatra::Base
     # headers 'Last-Modified' => @page.sync_updated_at.httpdate
     erb :index    
   end
-
-  get '/world' do
-    redirect '/'
-  end
-
   not_found do
-    erb :missing
+    erb :missing	
   end
   error do
     erb :missing
+	"Error!"
   end
-
   get '/404' do 
     erb :missing
   end
@@ -70,13 +65,11 @@ class MappingForResults < Sinatra::Base
     end
     csv_string
   end
-  
-  get '/countries.json' do 
+ get '/countries.json' do 
     attributes = [:name, :shortname, :map, :projects_count, :region]
     @countries = Page.all(:page_type => "country", :status => "active", :fields => attributes + [:data])
     @countries.to_json(:only => attributes, :methods => [:indicators])
-  end
-
+  end 
   get '/projects.csv' do 
     @projects = WorldBank.get_active_projects
 
@@ -221,7 +214,8 @@ class MappingForResults < Sinatra::Base
 
   
   get '/:page' do
-    @page = Page.first(:shortname => params[:page].downcase, :page_type => "page", :parent_id => 1)
+    @page = Page.first(:shortname => params[:page].downcase, :page_type => "page", :parent_id => nil)
+    @page = Page.first(:shortname => params[:page].downcase, :page_type => "page") if @page.nil?
     pass if @page.nil?
     erb :about
   end
@@ -285,18 +279,21 @@ class MappingForResults < Sinatra::Base
     @embed = true
     erb :map_embed, :layout => :embed 
   end
-  
-  get '/isocode/:isocode.png' do
-    @page = Page.first(:isocode => params[:isocode].upcase)
-    redirect "/#{params[:region]}" if @page.nil?
 
+  get '/isocode/:isocode.png' do
     content_type 'image/png'
-    open(PLATFORM_API_URL + "/maps/#{@page[:map]}.png?height=#{params[:height] || 400}&width=#{params[:width] || 500}")
-  end
+    @page = Page.first(:isocode => params[:isocode].downcase)
+    if @page.nil?
+       open(PLATFORM_API_URL + "/images/blank.png")
+    else
+       open(PLATFORM_API_URL + "/maps/#{@page[:map]}.png?height=#{params[:height] || 400}&width=#{params[:width] || 500}")
+    end
+  end 
   get '/:region/:country.png' do
+    # @region = MAPS[:world][:regions][params[:region].to_sym]
     @region = Page.first(:shortname => params[:region].downcase)
     if(@region.nil?)
-      redirect "/" if @page.nil?
+      erb :about
     else
       @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
       redirect "/#{params[:region]}" if @page.nil?
@@ -304,14 +301,16 @@ class MappingForResults < Sinatra::Base
 
     content_type 'image/png'
     open(PLATFORM_API_URL + "/maps/#{@page[:map]}.png?height=#{params[:height] || 400}&width=#{params[:width] || 500}")
-  end  
+  end   
   get '/:region/:country' do
     # @region = MAPS[:world][:regions][params[:region].to_sym]
+	p params.inspect
     @region = Page.first(:shortname => params[:region].downcase)
     if(@region.nil?)
-      erb :about
+      pass
     else
       @page = Page.first(:shortname => params[:country].downcase) #@region[:countries][params[:country].to_sym]
+	p @page[:name]
       redirect "/#{params[:region]}" if @page.nil?
       @projects = @page.data[:projects]
       

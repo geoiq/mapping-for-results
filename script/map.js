@@ -97,9 +97,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
   F1.WorldBank.indicators = {
 	"Poverty": {source: "finder:", title:"Poverty", subtitle: "Headcount Index", styles: { type: "CHOROPLETH",fill: { colors: [16709541,16698989,15500308,11422722,6694150], categories: 5, classificationNumClasses: 6, classificationType: "St Dev", opacity: 0.75, selectedAttribute: "poverty" }}, infosubtitle: null, table: null, description: "The headcount index is a measure of the percent of the population living below the poverty line. Poverty data was obtained from World Bank Poverty Assessments, CIESIN Small Area Estimates, and national statistics bureaus.  See the data source page for information regarding the source of poverty data for each country"},
-	"Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Weightfora" }}, infosubtitle: null, table: null, description: "Percent of children under age 5 whose weight-for-age is more than two standard deviations below the median for the international reference population ages 0-59 months. The data are based on the World Health Organization’s child growth standards released in 2006.\nSource: Demographic and Health Surveys implemented by ICF Macro."},
-	"Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Infant_mor"}}, infosubtitle: null, table: null, description: "Mortality rate, infant deaths per 1,000 live births. Infant mortality rate is the number of infant deaths (deaths before reaching one year of age) per 1,000 for the ten year period preceding the survey.\nSource: Demographic and Health Surveys implemented by ICF Macro."},	
-	"Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "dbhp"}}, infosubtitle: null,table: null, description: "Percent of live births in the last three years preceding the survey assisted by a skilled health provider (doctor or other health professional).\nSource: Demographic and Health Surveys implemented by ICF Macro."},
+	"Malnutrition": {source: "finder:", title:"Child Malnutrition", subtitle: "Percentile weight of Children under 5", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [15456706, 13744031, 10782317, 8151635, 4863020], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Weightfora" }}, infosubtitle: null, table: null, description: "Percent of children under age 5 whose weight-for-age is more than two standard deviations below the median for the international reference population ages 0-59 months. The data are based on the World Health Organization’s child growth standards released in 2006.\nSource: Demographic and Health Surveys implemented by ICF International."},
+	"Infant Mortality": {source: "finder:", title:"Infant Mortality Rate", subtitle: "Per 1,000 live births", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Infant_mor"}}, infosubtitle: null, table: null, description: "Mortality rate, infant deaths per 1,000 live births. Infant mortality rate is the number of infant deaths (deaths before reaching one year of age) per 1,000 for the ten year period preceding the survey.\nSource: Demographic and Health Surveys implemented by ICF International."},	
+	"Maternal Health": {source: "finder:", title:"Births attended by skilled health staff ", subtitle: "% of Total", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [5313667, 8608676, 12619965, 14924738, 16573399], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "dbhp"}}, infosubtitle: null,table: null, description: "Percent of live births in the last three years preceding the survey assisted by a skilled health provider (doctor or other health professional).\nSource: Demographic and Health Surveys implemented by ICF International."},
 	"Population": {source: "finder:", title:"Population", subtitle: "Total Number of People", styles: { type: "CHOROPLETH",stroke: {color: 0x222222}, fill: { colors: [0xEFF3FF, 0xBDD7E7, 0x6BAED6, 0x3182BD, 0x08519C], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "population from statoids"}}, infosubtitle: null, table: null, description: "The land area of the world is divided into countries (1). Most of the countries are, in turn, divided into smaller units. These units may be called states, provinces, regions, governorates, and so on. A phrase that describes them all is 'major administrative divisions of countries'.\n\nSource: <a href='http://www.statoids.com'>Statoids"},
 	"Unemployment Rate": {source: "finder:", title:"Unemployment Rate", subtitle: "", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "EQUAL INTERVAL", opacity: 0.75, selectedAttribute: "Unemployment Rate"}}, infosubtitle: "The percentage of the regional population not employed in the 12 months prior to the survey", table: null, description: "The percentage of the population in each first-order administrative unit that were not employed in the 12 months prior to the survey. Source:  <a href='http://www.measuredhs.com/countries/country_main.cfm?ctry_id=14' target='_new'>Demographic and Health Surveys by Macro International</a>."},	
 	"Population Density": {source: "finder:", title:"Population Density", subtitle: "Per square kilometer", styles: { type: "CHOROPLETH", stroke: {color: 0x222222}, fill: { colors: [0xFEE5D9, 0xFCAE91, 0xFB6A4A, 0xDE2D26, 0xA50F15], categories: 5, classificationNumClasses: 5, classificationType: "QUANTILE", opacity: 0.75, selectedAttribute: "Population density"}}, infosubtitle: null, table: null, description: "Population Density, measured in population per square kilometers, is a result of calculations made by the Mapping for Results team. Population data was compiled from statistics bureaus and used to calculate population density. The population data was divided by the total area for each province or district. Official population density statistics were used in place of these calculations where available. These data are estimates only and are not official numbers."},
@@ -168,7 +168,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
                   self.sector_codes[sector.sector_code] = sector;
         }
 
-
 	 if(map_id !== undefined && map_id !== null && map_id.length != 0){
 		 this.map = new F1.Maker.Map( { dom_id:"wb_map",map_id:map_id, 
 		 uiZoom: false,uiLayers: false,uiLegend: false,uiStyles: true,
@@ -176,8 +175,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 core_host:	 proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
 		 onMapLoaded: function() { setTimeout("wb.loadedMap()",500); },
 		 onFeatureSelected: function(features) { if(self.country == "World" && features.features.length > 0) {
-		     var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') ;
-		 }},
+		     var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country["lowercase country name"].toLowerCase().replace(/\s+/g,'-') ;
+		 } else { jq("#infodiv")[0].style.opacity = "0";	}},
 		 flashvars: {country: self.country}
 		 });
 	  } else {
@@ -476,7 +475,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		if(self.stylelayers["Project Counts"] !== undefined) {
 			self.map.showLayer(self.stylelayers["Project Counts"].guid, visible);
 			self.map.clearFilters(self.stylelayers["Project Counts"].guid);
-			self.map.addFilter(self.stylelayers["Project Counts"].guid, {expression: "$[admprecision] == 'ADM1'"});
+			self.map.addFilter(self.stylelayers["Project Counts"].guid, {expression: "$[admprecisi] == 'ADM1'"});
 		}
 		self.map.showLayer(self.stylelayers["Project Locations"].guid, !visible);
 		refreshCharts = false;		  
@@ -491,7 +490,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		  if(self.stylelayers["Project Counts"] !== undefined){
 			self.map.showLayer(self.stylelayers["Project Counts"].guid, visible);
 			self.map.clearFilters(self.stylelayers["Project Counts"].guid);
-			self.map.addFilter(self.stylelayers["Project Counts"].guid, {expression: "$[admprecision] == 'ADM2'"});
+			self.map.addFilter(self.stylelayers["Project Counts"].guid, {expression: "$[admprecisi] == 'ADM2'"});
 		}
 		self.map.showLayer(self.stylelayers["Project Locations"].guid, !visible);
 		refreshCharts = false;
@@ -499,8 +498,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		jq('#map-content-regions').show()
         jq('#layercontrol_projects').html("By Count");
 
-        $('input:radio[name="by_region"]').filter('[value="province"]').attr('checked', false);
-        $('input:radio[name="by_region"]').filter('[value="district"]').attr('checked', true);
+        jq('input:radio[name="by_region"]').filter('[value="province"]').attr('checked', false);
+        jq('input:radio[name="by_region"]').filter('[value="district"]').attr('checked', true);
 
 	  } else if(sector == 'counts') {
 		if(self.stylelayers["Project Counts"] !== undefined && self.stylelayers["Project Counts"] !== null)
@@ -815,7 +814,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var opts = {}
 		var width = 410;
 		var char_length = 25;
-		if( self.country == "World" || parseInt(self.country_attrs["projects_count"].replace(",","")) > 100) {
+		if( self.country == "World" || (self.country_attrs["projects_count"] && parseInt(self.country_attrs["projects_count"].replace(",","")) > 130)) {
 		    width = 640;
 		    char_length = 47;
 		    }
@@ -895,7 +894,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
         if(projects.length == 0){
             jq('#sector_funding_total').hide();
-            jq('#chart-left-bar-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
+            jq('#chart-left-pie-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
             return;
         }
 
@@ -912,7 +911,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             opts["href"] = links;
         }
 
-        F1.Visualizer.charts.pie(190, width, pie_options, "chart-left-pie-chart", opts);		  
+	if(width == 640 || (wb.projects !== undefined && wb.projects.length > 0))	
+	        F1.Visualizer.charts.pie(190, width, pie_options, "chart-left-pie-chart", opts);		  
 
 	},
 	minesPieChart: function() {
@@ -1229,7 +1229,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
         if(tooltip != "count") self.map.setLayerTooltip(layer_index,{title: tooltip})
         var infodiv = document.createElement("div");
         infodiv.id = "infodiv";
-	infodiv.innerHTML = "<span>Explore the map with your mouse</span>"
 
         var parent = document.getElementById("wb_map");
         parent.insertBefore(infodiv, parent.childNodes[0]);
@@ -1237,14 +1236,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
             // hoverwindow only for projects & countries
             if(obj.features !== null && obj.features.length != 0 && (obj.features[0]["mjsector 1"] !== undefined || obj.features[0]["project count"] !== undefined)) {
                 var text = ""
-                if(tooltip == "count") {text = obj.features.length + " projects<br />";
+                if(tooltip == "count") {text = obj.features.length + " mapped locations<br />";
                     jq.each(obj.features, function(index,feature) {
                         if(feature["mjsector 1"] !== undefined && feature["mjsector 1"] !== null)
                             text += "<img alt='" + feature["mjsector 1"] + "' src='" + self.wbicons[feature["mjsector 1"]] + "' />";
                     })
                 } else { 
                     if(obj.features[0]["project count"] !== undefined && obj.features[0]["project count"] !== null && obj.features[0]["project count"] == 0 ) {
-                        text = "There are no active projects in " + obj.features[0]["country"];
+                        text = "There are no financed activities in " + obj.features[0]["country"];
                     } else { text = obj.tooltip; }
                 }
                 infodiv.innerHTML =  "<span>" + text + "</span>"
@@ -1280,6 +1279,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#project_count').html(count);
             if(count == 1){
                 jq('#active_projects_header').html("active project working in")
+            } else if (count == 0) {
+            	jq('#chart-left-stat').html("No World Bank financed activity data.")
             }
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
@@ -1326,12 +1327,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
     },
   styleWorldMap: function() {
 	  var self = this;
-	  log("styleWorldMap")
 	  jq('#project_count').html(self.country_attrs["projects_count"]);
 	  jq('#activity_count').html(self.country_attrs["locations_count"]);
-	  log("styleWorldMap styled")
-	  self.sectorPieChart("all", false);
-	  self.regionFundingBars();
+	  if(self.sectors !== undefined && self.sectors !== null) {
+		  self.sectorPieChart("all", false);
+	  }
+	  if(self.regions !== undefined && self.regions !== null && Object.size(self.regions) != 0) {
+	  	  self.regionFundingBars();
+	  }
 	  self.hoverWindow(self.map.getLayer(0).guid, "</span><span id='info_country'>$[country]</span><br /><span id='info_count'>$[project count] projects</span><span>")
       self.map.setMapStyle( {infowindow: {visible: false}});
 	  // self.map.setCallback("onFeatureSelected", function(features){ var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') });

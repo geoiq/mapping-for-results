@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -43,21 +43,21 @@
 ,{id: 'P109087',project_name: 'Central African Republic: Extractive Ind. Transparency Initiative Implementation',totalamt: 0.3,grantamt: 0.3,mjsector1: 'Energy and mining',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
 ,{id: 'P114111',project_name: 'CAR - Emergency Power Response Project',totalamt: 8.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":60},{"Name":"Energy and mining","Percent":35},{"Name":"Energy and mining","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P073525',project_name: 'Multisectoral HIV/AIDS Project',totalamt: 17.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2001',majorsector_percent: [{"Name":"Health and other social services","Percent":47},{"Name":"Health and other social services","Percent":33},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P113221',project_name: 'CAR Food Response Project',totalamt: 7.0,grantamt: 7.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2008',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Industry and trade","Percent":10},{"Name":"Agriculture, fishing, and forestry","Percent":5}],prodlinetext: 'Special Financing',sector_code: 'JX'}
 ,{id: 'P122099',project_name: 'C.A.R. Community Reintegration Project',totalamt: 8.65,grantamt: 8.65,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":27},{"Name":"Health and other social services","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":19},{"Name":"Transportation","Percent":17},{"Name":"Industry and trade","Percent":17}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
 ,{id: 'P124278',project_name: 'CAR-Agro-Pastoral Recovery Project',totalamt: 23.8,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Industry and trade","Percent":31},{"Name":"Agriculture, fishing, and forestry","Percent":31},{"Name":"Public Administration, Law, and Justice","Percent":21},{"Name":"Agriculture, fishing, and forestry","Percent":17}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}
 ,{id: 'P117616',project_name: 'Emergency Urban Infrastructure Rehabilitation and Maintenance Project - Additional Financing',totalamt: 23.9,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":49},{"Name":"Water, sanitation and flood protection","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":14},{"Name":"Transportation","Percent":12},{"Name":"Water, sanitation and flood protection","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}];
       
-  wb.init("419",  "Central African Repulic", "Africa", {projects_count: '13', locations_count: '40', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("419",  "Central African Repulic", "Africa", {projects_count: '12', locations_count: '40', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

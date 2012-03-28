@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -37,28 +37,27 @@
   var projects = [{id: 'P117860',project_name: 'First East-West Highway Additional Financing',totalamt: 28.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Transportation","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P120887',project_name: 'ADDITIONAL FINANCING TO THE REGIONAL & MUN. INFRA. DEV. PROJECT',totalamt: 45.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Transportation","Percent":48},{"Name":"Water, sanitation and flood protection","Percent":48},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Public Administration, Law, and Justice","Percent":1},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P101468',project_name: 'YOUTH DEVELOPMENT & INCLUSION',totalamt: 1.28,grantamt: 1.28,mjsector1: 'Health and other social services',boardapprovaldate: 'Jun-2007',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
-,{id: 'P086277',project_name: 'Secondary & Local Roads Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Transportation","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P114669',project_name: 'Tblisi city Development Strategy',totalamt: 0.3,grantamt: 0.3,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P110126',project_name: 'REGIONAL & MUNICIPAL INFRASTRUCTURE DEVELOPMENT PROJECT',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Industry and trade","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P116534',project_name: 'IDP COMMUNITY DEVT PROJECT',totalamt: 2.21,grantamt: 2.21,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P063081',project_name: 'Public Sector Financial Management Reform Support',totalamt: 3.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2006',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P125424',project_name: 'Preparatory Work for 2013 Georgia National Population Census',totalamt: 0.25,grantamt: 0.25,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P117152',project_name: 'Kakheti Regional Roads Improvement Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Transportation","Percent":94},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P114365',project_name: 'Secondary and Local Roads Project: Additional Financing',totalamt: 70.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Transportation","Percent":95},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P040555',project_name: 'Health Sector Development Project',totalamt: 20.3,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2002',majorsector_percent: [{"Name":"Health and other social services","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P112523',project_name: 'EAST-WEST HIGHWAY IMPROVEMENT 3',totalamt: 147.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Transportation","Percent":98},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P083110',project_name: 'First East-West Highway Improvement',totalamt: 19.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Transportation","Percent":94},{"Name":"Transportation","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Education","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}];
       
-  wb.init("498",  "Georgia", "Europe and Central Asia", {projects_count: '14', locations_count: '438', projects: projects, locations_layer: 0, indicators: ['Poverty'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("498",  "Georgia", "Europe and Central Asia", {projects_count: '12', locations_count: '438', projects: projects, locations_layer: 0, indicators: ['Poverty'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

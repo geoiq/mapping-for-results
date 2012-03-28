@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -34,19 +34,19 @@
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P086664',project_name: 'St. Vincent and the Grenadines: OECS Education Development Project',totalamt: 6.2,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2004',majorsector_percent: [{"Name":"Education","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Education","Percent":10},{"Name":"Education","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P124939',project_name: 'Hurricane Tomas Emergency Recovery Loan',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Education","Percent":37},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Health and other social services","Percent":13},{"Name":"Transportation","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}];
+  var projects = [{id: 'P124939',project_name: 'Hurricane Tomas Emergency Recovery Loan',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jan-2011',majorsector_percent: [{"Name":"Education","Percent":37},{"Name":"Water, sanitation and flood protection","Percent":25},{"Name":"Health and other social services","Percent":13},{"Name":"Transportation","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}];
       
-  wb.init("506",  "St. Vincent and the Grenadines", "Latin America & Caribbean", {projects_count: '2', locations_count: '20', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("506",  "St. Vincent and the Grenadines", "Latin America & Caribbean", {projects_count: '1', locations_count: '20', projects: projects, locations_layer: 0, indicators: [], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

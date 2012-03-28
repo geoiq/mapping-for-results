@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -37,24 +37,24 @@
   var projects = [{id: 'P085539',project_name: 'Port-City of Limon Integrated Infrastructure Project',totalamt: 72.5,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":46},{"Name":"Health and other social services","Percent":36},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Transportation","Percent":7},{"Name":"Industry and trade","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P057857',project_name: 'CR Equity and Efficiency of Education',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2005',majorsector_percent: [{"Name":"Education","Percent":50},{"Name":"Education","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P076421',project_name: 'Umbrella Project for Renewable Energy Sources (El Cote - Smal-Scale Hydro Power Plant).',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2002',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P113426',project_name: 'Towards a neighbourhood Imprvmnt and Slum Eradication National Policy - Costa Rica',totalamt: 0.5,grantamt: 0.5,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jul-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":40},{"Name":"Public Administration, Law, and Justice","Percent":40},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Transportation","Percent":5},{"Name":"Industry and trade","Percent":5}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P093384',project_name: 'Mainstreaming Market-Based Instruments for Environmental Management Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":70},{"Name":"Water, sanitation and flood protection","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P094155',project_name: 'Carbon Sequestration in Small Farms in the Brunca Region (Coopeagri)',totalamt: 0.8,grantamt: 0.8,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}
 ,{id: 'P122206',project_name: 'Costa Rica Pilot on Early Warning Systems for Hydrometeorological Hazards',totalamt: 0.26,grantamt: 0.26,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P111926',project_name: 'Costa Rica Catastrophe Deferred Draw Down Option (CAT DDO)',totalamt: 65.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Sep-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":50},{"Name":"Water, sanitation and flood protection","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P098838',project_name: 'GEF - Mainstreaming Market-Based Instruments for Environmental Management Project',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":35},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Health and other social services","Percent":5}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
-,{id: 'P122111',project_name: 'CR Port regionalion & hinterland access',totalamt: 0.35,grantamt: 0.35,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Industry and trade","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}];
+,{id: 'P122111',project_name: 'CR Port regionalion & hinterland access',totalamt: 0.35,grantamt: 0.35,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Industry and trade","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}];
       
-  wb.init("1742",  "Costa Rica", "Latin America & Caribbean", {projects_count: '10', locations_count: '41', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("1742",  "Costa Rica", "Latin America & Caribbean", {projects_count: '9', locations_count: '41', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

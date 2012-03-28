@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -67,7 +67,7 @@
 ,{id: 'P074020',project_name: 'Public Sector Capacity Building Program Support Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":60},{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P101473',project_name: 'Urban Water Supply and Sanitation Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2007',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":41},{"Name":"Water, sanitation and flood protection","Percent":41},{"Name":"Water, sanitation and flood protection","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P101474',project_name: 'Urban Local Govt Development Project',totalamt: 150.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'May-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":55},{"Name":"Transportation","Percent":15},{"Name":"Water, sanitation and flood protection","Percent":10},{"Name":"Industry and trade","Percent":10},{"Name":"Water, sanitation and flood protection","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P107139',project_name: 'Sustainable Land Management Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":32},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":3}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
+,{id: 'P107139',project_name: 'Sustainable Land Management Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Apr-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":3},{"Name":"Water, sanitation and flood protection","Percent":32},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":26},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
 ,{id: 'P074011',project_name: 'Ethiopia/Nile Basin Initiative:  Ethiopia-Sudan Interconnector',totalamt: 41.05,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2007',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P082998',project_name: 'ET-Road Sector Proj (APL2) to support Govts RSDP',totalamt: 160.9,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2004',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":9},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P076735',project_name: 'Ethiopia Water Supply and Sanitation Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'May-2004',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":75},{"Name":"Water, sanitation and flood protection","Percent":13},{"Name":"Public Administration, Law, and Justice","Percent":6},{"Name":"Public Administration, Law, and Justice","Percent":4},{"Name":"Health and other social services","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
@@ -78,14 +78,15 @@
       
   wb.init("446",  "Ethiopia", "Africa", {projects_count: '41', locations_count: '411', projects: projects, locations_layer: 0, indicators: ['Malnutrition','Infant Mortality','Maternal Health','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -44,18 +44,20 @@
 ,{id: 'P112092',project_name: 'Thailand Small Scale Livestock Waste Management Program',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":50},{"Name":"Energy and mining","Percent":50}],prodlinetext: 'Carbon Offset',sector_code: 'AX'}
 ,{id: 'P112918',project_name: 'Additional Financing - Highways Management Project',totalamt: 79.3,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Transportation","Percent":99},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
 ,{id: 'P107716',project_name: 'TH-CF-Livestock Waste Management Program',totalamt: 0.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":10}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P057578',project_name: 'EGAT Investment Program Support Project',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Sep-1998',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Guarantees',sector_code: 'LX'}];
+,{id: 'P057578',project_name: 'EGAT Investment Program Support Project',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Sep-1998',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Guarantees',sector_code: 'LX'}
+,{id: 'P128965',project_name: 'Thailand: Partnership for Market Readiness (PMR)',totalamt: 0.35,grantamt: 0.35,mjsector1: 'Energy and mining',boardapprovaldate: 'Dec-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":80},{"Name":"Energy and mining","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}];
       
-  wb.init("1780",  "Thailand", "East Asia & the Pacific", {projects_count: '11', locations_count: '138', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("1780",  "Thailand", "East Asia & the Pacific", {projects_count: '12', locations_count: '138', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];

@@ -25,7 +25,7 @@
   </style>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
@@ -40,22 +40,22 @@
 ,{id: 'P113349',project_name: 'Health System Improvement Project',totalamt: 93.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Apr-2011',majorsector_percent: [{"Name":"Health and other social services","Percent":88},{"Name":"Public Administration, Law, and Justice","Percent":8},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P119939',project_name: 'Talimarjan Transmission Project',totalamt: 110.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P111760',project_name: 'Syrdarya Water Supply Project',totalamt: 88.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P051370',project_name: ' Health 2 Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Sep-2004',majorsector_percent: [{"Name":"Health and other social services","Percent":98},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
 ,{id: 'P107845',project_name: 'Second Basic Education',totalamt: 28.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2009',majorsector_percent: [{"Name":"Education","Percent":50},{"Name":"Education","Percent":20},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P112719',project_name: 'Uzbekistan Bukhara and Samarkand Sewerage Project',totalamt: 55.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":94},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
 ,{id: 'P118737',project_name: 'Energy Efficiency Facility for Industrial Enterprises',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P110538',project_name: 'Ferghana Valley Water Resources Management Phase-I Project',totalamt: 65.54,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":89},{"Name":"Public Administration, Law, and Justice","Percent":11}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}];
       
-  wb.init("507",  "Uzbekistan", "Europe and Central Asia", {projects_count: '11', locations_count: '94', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("507",  "Uzbekistan", "Europe and Central Asia", {projects_count: '10', locations_count: '94', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
   }
 </script>
 
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
-<script type="text/javascript" charset="utf-8">
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
-</script>
+
   
 <script type="text/javascript">
   var _gaq = _gaq || [];
