@@ -7,13 +7,13 @@
                 <style type="text/css" media="screen">
                   li.region-option:hover div { display: block; }
                 </style>
-                <% Page.all(:page_type => "region", :parent_id => 1, :order => [:name.asc]).each do |region_page| %>
+                <% Page.all(:page_type => "region", :parent_id => 1, :status => "active", :order => [:name.asc]).each do |region_page| %>
                 <li class="region-option <%= active_class(region_page, @page) %>"><a href="<%= region_page.url %>"><span><%= region_page.name %></span><% if  active_class(region_page, @page) == "active" %><span class="pointer" onclick="return false"></span><% end %></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
-                      <% row_size = (region_page.children.length / 4.0).ceil %>
-                        <% i = 0; region_page.children.each do |country_page| 
-                        next if country_page.page_type != "country" %>
+                      <% countries = Page.all(:page_type => "country", :parent_id => region_page.id, :status => "active", :order => [:name.asc]) %>
+                      <% row_size = (countries.length / 4.0).ceil %>
+                        <% i = 0; countries.each do |country_page| %>
                         <% if i%row_size == 0 %><li><% end %><a href="<%= country_page.url %>" class="<%= active_class(country_page, @page) %>"><%= country_page.name %></a><% if (i+1)%row_size == 0 || i == (region_page.children.length - 1) %></li><% end %>
                         <% i += 1; end %>
                       </ul>

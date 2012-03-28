@@ -83,6 +83,9 @@ class Page
     self.save
   end
   
+  def indicators
+    return data[:indicators]
+  end
 end
 
 

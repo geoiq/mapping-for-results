@@ -814,7 +814,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		var opts = {}
 		var width = 410;
 		var char_length = 25;
-		if( self.country == "World" || parseInt(self.country_attrs["projects_count"].replace(",","")) > 100) {
+		if( self.country == "World" || parseInt(self.country_attrs["projects_count"].replace(",","")) > 130) {
 		    width = 640;
 		    char_length = 47;
 		    }
@@ -894,7 +894,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
         if(projects.length == 0){
             jq('#sector_funding_total').hide();
-            jq('#chart-left-bar-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
+            jq('#chart-left-pie-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
             return;
         }
 
@@ -1242,7 +1242,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     })
                 } else { 
                     if(obj.features[0]["project count"] !== undefined && obj.features[0]["project count"] !== null && obj.features[0]["project count"] == 0 ) {
-                        text = "There are no active projects in " + obj.features[0]["country"];
+                        text = "There are no financed projects in " + obj.features[0]["country"];
                     } else { text = obj.tooltip; }
                 }
                 infodiv.innerHTML =  "<span>" + text + "</span>"
@@ -1277,7 +1277,9 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleSector("all",true,false);
             jq('#project_count').html(count);
             if(count == 1){
-                jq('#active_projects_header').html("active project working in")
+                jq('#active_projects_header').html("financed project working in")
+            } else if (count == 0) {
+            	jq('#chart-left-stat').html("No World Bank financed activities.")
             }
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
