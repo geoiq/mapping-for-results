@@ -17,13 +17,20 @@ end
 @pages.each do |page|
   puts "#{page.name} - #{page.id}"
   next if page.name =~ /BOOST/ 
-  system "curl #{HOST}/about/#{page.url} > about/#{page.url}.html"
+  puts "curl #{HOST}#{page.url} > #{page.url}.html"
+  system "curl #{HOST}#{page.url} > #{page.url}.html"
+  puts "cp #{page.url}.html about/#{page.url.gsub(/^\//,'')}.html" 
+  system "cp #{page.url}.html about/#{page.url.gsub(/^\//,'')}.html" 
 end
+=begin
+system "curl #{HOST}/ > index.html"
+system "cp index.html world.html"
 puts "Starting Regions"
 @regions = Page.all :page_type => "region"
 @regions.each do |region|
   puts "#{region.name} - #{region.id}"
   system "curl #{HOST}#{region.url} > #{region.shortname}.html"
+  system "cp #{region.shortname}.html #{region.shortname}/index.html"
   system "mkdir -p .#{region.url}"
   region.children.each do |country|
     cache_country(country)
@@ -36,3 +43,4 @@ puts "Regions done"
 end
 
 cache_country(Page.first(:name => "Development Marketplace"))
+=end

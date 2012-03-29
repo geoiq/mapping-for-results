@@ -22,29 +22,14 @@
   <link type="text/css" rel="stylesheet" media="all" href="/css/maps.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/assets/css/menu.css" />
 
-  <!-- <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script> -->
-
-  <script type="text/javascript" src="/js/jquery-1.js"></script>
-    <script type="text/javascript" charset="utf-8">
-    var jq = jQuery.noConflict();
-    </script>  
   <script type="text/javascript" src="/js/tipsy.js"></script>
-  <script type="text/javascript" src="/js/jquery_002.js"></script>
-  <script type="text/javascript" src="/js/ui.js"></script>
-  <script type="text/javascript" src="/js/effects_002.js"></script>
-  <script type="text/javascript" src="/js/effects.js"></script>  
-
-<!-- <script type="text/javascript" charset="utf-8" src="/js/f1.js"></script> -->
+<script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 <script type="text/javascript" charset="utf-8" src="/js/tmpl.js"></script>
 <script type="text/javascript" charset="utf-8" src="http://maps.worldbank.org/javascripts/f1.api.js"></script>
-
-<script src="http://maps.worldbank.org/javascripts/visualize.min.js?1279556727" type="text/javascript"></script>
-
-
 <script src="/script/map.js" type="text/javascript"></script>
 
 </head>
-<body class=" region-left region-right region-far-right region-content-top">
+<body onload="onload()" class=" region-left region-right region-far-right region-content-top">
 
 <!-- Layout -->
 <div id="wrapper">
@@ -98,7 +83,7 @@
     <div id="container">
           <div id="banner">
         <div id="local" class=" collapsed" content_id="collapsible-banner">
-          <div title="" class="site-name"><a class="active" href="/">Mapping for Results</a></div>
+          <div title="" class="site-name"><a class="active" href="/">Mapping for Results</a> - <a href="/mena">Middle East and North Africa</a></div>
           <div  >
             <div title="More information about Mapping for Results" class="banner-open-image"></div>
           </div>          
@@ -132,6 +117,7 @@
   	<ul class="dropmenu map-options">
   	  
   	    
+        
           <li class="share"><a title="share" href="#" id="share_options"><span></span>SHARE</a>
               <ul class="dropmenu_options">
                 <li><a title="embed" href="#" id="embed_map"><span></span>Embed Map</a></li>
@@ -140,6 +126,7 @@
                 <!-- <li><a href="#" id="">Embed the Map</a></li> -->
               </ul>
           </li>
+          
       </ul>
   </div>
     <div id="share_window" style="display: none;">
@@ -157,7 +144,7 @@
 
     <div id="map-content-header">
       <div class="worldmenuholder">
-                    <ul class="worldmenu dropmenu">
+                    <ul id="region_menu" class="worldmenu dropmenu">
                 <li class="first"><a href="#" onclick="return false;" style="padding: 5px 15px 11px 30px;">MIDDLE EAST AND NORTH AFRICA</span></a>
                 
                 <div class="menu-world-options" style="">
@@ -167,9 +154,10 @@
                   li.region-option:hover div { display: block; }
                 </style>
                 
-                <li class="region-option "><a href="#"><span>Africa</span></a>
+                <li class="region-option "><a href="/afr"><span>Africa</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
+                      
                       
                         
                         <li><a href="/afr/angola" class="">Angola</a>
@@ -184,7 +172,7 @@
                         
                         <a href="/afr/cameroon" class="">Cameroon</a>
                         
-                        <a href="/afr/capeverde" class="">Cape Verde</a>
+                        <a href="/afr/cape-verde" class="">Cape Verde</a>
                         
                         <a href="/afr/central-african-republic" class="">Central African Repulic</a>
                         
@@ -194,11 +182,11 @@
                         
                         <a href="/afr/congo-dem-rep" class="">Congo, Democratic Republic of</a>
                         
-                        <a href="/afr/congo-republic" class="">Congo, Republic of</a>
+                        <a href="/afr/congo-republic" class="">Congo, Republic of</a></li>
                         
-                        <a href="/afr/cote-divoire" class="">Cote d'Ivoire</a></li>
+                        <li><a href="/afr/cote-divoire" class="">Cote d'Ivoire</a>
                         
-                        <li><a href="/afr/equatorial-guinea" class="">Equatorial Guinea</a>
+                        <a href="/afr/equatorial-guinea" class="">Equatorial Guinea</a>
                         
                         <a href="/afr/eritrea" class="">Eritrea</a>
                         
@@ -218,13 +206,13 @@
                         
                         <a href="/afr/lesotho" class="">Lesotho</a>
                         
-                        <a href="/afr/liberia" class="">Liberia</a>
+                        <a href="/afr/liberia" class="">Liberia</a></li>
                         
-                        <a href="/afr/madagascar" class="">Madagascar</a>
+                        <li><a href="/afr/madagascar" class="">Madagascar</a>
                         
-                        <a href="/afr/malawi" class="">Malawi</a></li>
+                        <a href="/afr/malawi" class="">Malawi</a>
                         
-                        <li><a href="/afr/mali" class="">Mali</a>
+                        <a href="/afr/mali" class="">Mali</a>
                         
                         <a href="/afr/mauritania" class="">Mauritania</a>
                         
@@ -242,15 +230,15 @@
                         
                         <a href="/afr/sao-tome-and-principe" class="">Sao Tome and Principe</a>
                         
-                        <a href="/afr/senegal" class="">Senegal</a>
+                        <a href="/afr/senegal" class="">Senegal</a></li>
                         
-                        <a href="/afr/seychelles" class="">Seychelles</a>
+                        <li><a href="/afr/seychelles" class="">Seychelles</a>
                         
-                        <a href="/afr/sierraleone" class="">Sierra Leone</a>
+                        <a href="/afr/sierra-leone" class="">Sierra Leone</a>
                         
-                        <a href="/afr/somalia" class="">Somalia</a></li>
+                        <a href="/afr/somalia" class="">Somalia</a>
                         
-                        <li><a href="/afr/south-africa" class="">South Africa</a>
+                        <a href="/afr/south-africa" class="">South Africa</a>
                         
                         <a href="/afr/south-sudan" class="">South Sudan</a>
                         
@@ -266,48 +254,53 @@
                         
                         <a href="/afr/zambia" class="">Zambia</a>
                         
-                        <a href="/afr/zimbabwe" class="">Zimbabwe</a>
+                        <a href="/afr/zimbabwe" class="">Zimbabwe</a></li>
                         
                       </ul>
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>East Asia & the Pacific</span></a>
+                <li class="region-option "><a href="/eap"><span>East Asia & the Pacific</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
+                      
                       
                         
                         <li><a href="/eap/cambodia" class="">Cambodia</a>
                         
                         <a href="/eap/china" class="">China</a>
                         
+                        <a href="/eap/fiji" class="">Fiji</a>
+                        
                         <a href="/eap/indonesia" class="">Indonesia</a>
                         
-                        <a href="/eap/kiribati" class="">Kiribati</a>
+                        <a href="/eap/kiribati" class="">Kiribati</a></li>
                         
-                        <a href="/eap/lao-pdr" class="">Lao People's Democratic Republic</a></li>
+                        <li><a href="/eap/lao-pdr" class="">Lao People's Democratic Republic</a>
                         
-                        <li><a href="/eap/malaysia" class="">Malaysia</a>
+                        <a href="/eap/malaysia" class="">Malaysia</a>
                         
                         <a href="/eap/mongolia" class="">Mongolia</a>
                         
                         <a href="/eap/myanmar" class="">Myanmar</a>
                         
-                        <a href="/eap/papua-new-guinea" class="">Papua New Guinea </a>
+                        <a href="/eap/palau" class="">Palau</a></li>
                         
-                        <a href="/eap/philippines" class="">Philippines</a></li>
+                        <li><a href="/eap/papua-new-guinea" class="">Papua New Guinea </a>
                         
-                        <li><a href="/eap/samoa" class="">Samoa</a>
+                        <a href="/eap/philippines" class="">Philippines</a>
+                        
+                        <a href="/eap/samoa" class="">Samoa</a>
                         
                         <a href="/eap/solomon-islands" class="">Solomon Islands </a>
                         
-                        <a href="/eap/south-korea" class="">South Korea</a>
+                        <a href="/eap/korea-republic" class="">South Korea</a></li>
                         
-                        <a href="/eap/thailand" class="">Thailand</a>
+                        <li><a href="/eap/thailand" class="">Thailand</a>
                         
-                        <a href="/eap/timor-leste" class="">Timor-leste</a></li>
+                        <a href="/eap/timor-leste" class="">Timor-leste</a>
                         
-                        <li><a href="/eap/tonga" class="">Tonga</a>
+                        <a href="/eap/tonga" class="">Tonga</a>
                         
                         <a href="/eap/vanuatu" class="">Vanuatu</a>
                         
@@ -317,9 +310,10 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Europe and Central Asia</span></a>
+                <li class="region-option "><a href="/eca"><span>Europe and Central Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
+                      
                       
                         
                         <li><a href="/eca/albania" class="">Albania</a>
@@ -334,11 +328,11 @@
                         
                         <a href="/eca/bulgaria" class="">Bulgaria</a>
                         
-                        <a href="/eca/croatia" class="">Croatia</a>
+                        <a href="/eca/croatia" class="">Croatia</a></li>
                         
-                        <a href="/eca/czech-republic" class="">Czech Republic</a></li>
+                        <li><a href="/eca/czechrepublic" class="">Czech Republic</a>
                         
-                        <li><a href="/eca/georgia" class="">Georgia</a>
+                        <a href="/eca/georgia" class="">Georgia</a>
                         
                         <a href="/eca/hungary" class="">Hungary</a>
                         
@@ -348,29 +342,27 @@
                         
                         <a href="/eca/kyrgyz-republic" class="">Kyrgyz Republic</a>
                         
-                        <a href="/eca/latvia" class="">Latvia</a>
+                        <a href="/eca/latvia" class="">Latvia</a></li>
                         
-                        <a href="/eca/lithuania" class="">Lithuania</a>
-                        
-                        <a href="/eca/macedonia" class="">Macedonia</a></li>
-                        
-                        <li><a href="/eca/moldova" class="">Moldova</a>
+                        <li><a href="/eca/macedonia" class="">Macedonia</a>
                         
                         <a href="/eca/moldova" class="">Moldova</a>
                         
                         <a href="/eca/montenegro" class="">Montenegro</a>
                         
+                        <a href="/eca/poland" class="">Poland</a>
+                        
                         <a href="/eca/serbia" class="">Republic of Serbia</a>
                         
                         <a href="/eca/romania" class="">Romania</a>
                         
-                        <a href="/eca/russia" class="">Russia</a>
+                        <a href="/eca/russian-federation" class="">Russian Federation</a></li>
                         
-                        <a href="/eca/tajikistan" class="">Tajikistan</a>
+                        <li><a href="/eca/tajikistan" class="">Tajikistan</a>
                         
-                        <a href="/eca/turkey" class="">Turkey</a></li>
+                        <a href="/eca/turkey" class="">Turkey</a>
                         
-                        <li><a href="/eca/turkmenistan" class="">Turkmenistan</a>
+                        <a href="/eca/turkmenistan" class="">Turkmenistan</a>
                         
                         <a href="/eca/ukraine" class="">Ukraine</a>
                         
@@ -380,9 +372,10 @@
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>Latin America & Caribbean</span></a>
+                <li class="region-option "><a href="/lac"><span>Latin America & Caribbean</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
+                      
                       
                         
                         <li><a href="/lac/antigua-barbuda" class="">Antigua and Barbuda</a>
@@ -399,13 +392,13 @@
                         
                         <a href="/lac/colombia" class="">Colombia</a>
                         
-                        <a href="/lac/costa-rica" class="">Costa Rica</a>
+                        <a href="/lac/costa-rica" class="">Costa Rica</a></li>
                         
-                        <a href="/lac/dominica" class="">Dominica</a>
+                        <li><a href="/lac/dominica" class="">Dominica</a>
                         
-                        <a href="/lac/dominican-republic" class="">Dominican Republic</a></li>
+                        <a href="/lac/dominican-republic" class="">Dominican Republic</a>
                         
-                        <li><a href="/lac/ecuador" class="">Ecuador</a>
+                        <a href="/lac/ecuador" class="">Ecuador</a>
                         
                         <a href="/lac/el-salvador" class="">El Salvador</a>
                         
@@ -415,25 +408,25 @@
                         
                         <a href="/lac/guyana" class="">Guyana</a>
                         
-                        <a href="/lac/haiti" class="">Haiti</a>
+                        <a href="/lac/haiti" class="">Haiti</a></li>
                         
-                        <a href="/lac/honduras" class="">Honduras</a>
+                        <li><a href="/lac/honduras" class="">Honduras</a>
                         
                         <a href="/lac/jamaica" class="">Jamaica</a>
                         
                         <a href="/lac/mexico" class="">Mexico</a>
                         
-                        <a href="/lac/nicaragua" class="">Nicaragua</a></li>
+                        <a href="/lac/nicaragua" class="">Nicaragua</a>
                         
-                        <li><a href="/lac/panama" class="">Panama</a>
+                        <a href="/lac/panama" class="">Panama</a>
                         
                         <a href="/lac/paraguay" class="">Paraguay</a>
                         
                         <a href="/lac/peru" class="">Peru</a>
                         
-                        <a href="/lac/stkitts-and-nevis" class="">St Kitts and Nevis</a>
+                        <a href="/lac/st-kitts-and-nevis" class="">St Kitts and Nevis</a></li>
                         
-                        <a href="/lac/st-lucia" class="">St. Lucia</a>
+                        <li><a href="/lac/st-lucia" class="">St. Lucia</a>
                         
                         <a href="/lac/st-vincent-and-the-grenadines" class="">St. Vincent and the Grenadines</a>
                         
@@ -443,71 +436,69 @@
                         
                         <a href="/lac/uruguay" class="">Uruguay</a>
                         
-                        <a href="/lac/venezuela" class="">Venezuela</a></li>
+                        <a href="/lac/venezuela" class="">Venezuela</a>
                         
                       </ul>
                   </div>
                   </li>
                 
-                <li class="region-option active"><a href="#"><span>Middle East and North Africa</span><span class="pointer" onclick="return false"></span></a>
+                <li class="region-option active"><a href="/mena"><span>Middle East and North Africa</span><span class="pointer" onclick="return false"></span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
+                      
                       
                         
                         <li><a href="/mena/algeria" class="">Algeria</a>
                         
                         <a href="/mena/djibouti" class="">Djibouti</a>
                         
-                        <a href="/mena/egypt" class="">Egypt</a>
+                        <a href="/mena/egypt-arab-republic" class="">Egypt</a>
                         
-                        <a href="/mena/iran" class="">Iran, Islamic Republic of</a>
+                        <a href="/mena/iran-islamic-republic" class="">Iran, Islamic Republic of</a></li>
                         
-                        <a href="/mena/iraq" class="">Iraq</a></li>
+                        <li><a href="/mena/iraq" class="">Iraq</a>
                         
-                        <li><a href="/mena/jordan" class="">Jordan</a>
+                        <a href="/mena/jordan" class="">Jordan</a>
                         
                         <a href="/mena/lebanon" class="">Lebanon</a>
                         
-                        <a href="/mena/libya" class="">Libya</a>
+                        <a href="/mena/libya" class="">Libya</a></li>
                         
-                        <a href="/mena/morocco" class="">Morocco</a>
+                        <li><a href="/mena/morocco" class="">Morocco</a>
                         
-                        <a href="/mena/syria" class="">Syria</a></li>
+                        <a href="/mena/syrian-arab-republic" class="">Syria</a>
                         
-                        <li><a href="/mena/tunisia" class="">Tunisia</a>
+                        <a href="/mena/tunisia" class="">Tunisia</a>
                         
-                        <a href="/mena/west-bank-and-gaza" class="">West Bank & Gaza</a>
+                        <a href="/mena/west-bank-and-gaza" class="">West Bank & Gaza</a></li>
                         
-                        <a href="/mena/yemen-republic" class="">Yemen, Rep.</a>
+                        <li><a href="/mena/yemen-republic" class="">Yemen, Rep.</a>
                         
                       </ul>
                   </div>
                   </li>
                 
-                <li class="region-option "><a href="#"><span>South Asia</span></a>
+                <li class="region-option "><a href="/sa"><span>South Asia</span></a>
                     <div class="menu-country-options">
                       <ul class="menu-countries" style="" >
+                      
                       
                         
                         <li><a href="/sa/afghanistan" class="">Afghanistan</a>
                         
-                        <a href="/sa/bangladesh" class="">Bangladesh</a>
+                        <a href="/sa/bangladesh" class="">Bangladesh</a></li>
                         
-                        <a href="/sa/bhutan" class="">Bhutan</a></li>
+                        <li><a href="/sa/bhutan" class="">Bhutan</a>
                         
-                        <li><a href="/sa/fiji" class="">Fiji</a>
+                        <a href="/sa/india" class="">India</a></li>
                         
-                        <a href="/sa/india" class="">India</a>
+                        <li><a href="/sa/maldives" class="">Maldives</a>
                         
-                        <a href="/sa/maldives" class="">Maldives</a></li>
+                        <a href="/sa/nepal" class="">Nepal</a></li>
                         
-                        <li><a href="/sa/nepal" class="">Nepal</a>
+                        <li><a href="/sa/pakistan" class="">Pakistan</a>
                         
-                        <a href="/sa/pakistan" class="">Pakistan</a>
-                        
-                        <a href="/sa/palau" class="">Palau</a></li>
-                        
-                        <li><a href="/sa/srilanka" class="">Sri Lanka </a></li>
+                        <a href="/sa/srilanka" class="">Sri Lanka </a></li>
                         
                       </ul>
                   </div>
@@ -529,27 +520,53 @@
       </div>
     </div>
 <div id="map-content">
-  <div id="wb_map_wrapper" style="z-index: 5; height: 514px; 958px">
-  <div id="wb_map" class="" style="height: 520px"></div>
+  <div id="wb_map_wrapper" style="position:relative; z-index: 5; height: 514px; 958px">
+  <div id="wb_map" style="height: 520px"></div>
   </div>
 </div>
 
+<div id="chart-left" class="">
+  <div id="chart-left-title">
+    <h1 id="sector_funding_title">Financed Activities by Sector</h1>
+  </div>
+  <div id="chart-left-stat">
+    <h1 id="sector_funding_total"></h1>
+    <h2 id="sector_funding_description" style="display:none"></h2>
+  </div>
+  <div id="chart-left-pie-chart"></div>
+</div>
+
+<div id="chart-right" class="">
+  <div id="chart-right-title">
+    <h1>Financed Activities by Country</h1>
+  </div>
+  <!-- <div id="chart-right-stat-subtitle">
+    <h1 id="funding_total"></h1>
+  </div> -->
+  <div id="chart-right-graph"></div>
+</div>
+
+
+
 
 <script type="text/javascript" charset="utf-8">
-
-
-  var wb = new F1.WorldBank();
+var wb = null;
+function onload() {
+  wb = new F1.WorldBank();
   
   var projects = [];
-  var productline = {"Recipient Executed Activities":510.24,"Global Environment Project":65.86,"Guarantees":145.0,"IBRD\/IDA":7524.46,"Carbon Offset":60.32,"Montreal Protocol":7.59,"Special Financing":262.4,"GEF Medium Sized Program":1.0};
-  var sectors = {"Public Administration, Law, and Justice":627.9499,"Water, sanitation and flood protection":1533.6722,"Transportation":1596.126,"Energy and mining":2252.8525,"Industry and trade":137.1802,"Education":522.7135,"Finance":883.5315,"Information and communications":34.88,"Health and other social services":284.3205,"Agriculture, fishing, and forestry":703.6437};
-  var regions = {"Middle East and North Africa":5.95,"Republic of Iraq":882.46,"Islamic Republic of Iran":120.0,"Republic of Djibouti":65.27,"People's Democratic Republic of Algeria":0.37,"Kingdom of Morocco":881.04,"West Bank and Gaza":217.09,"Arab Republic of Egypt":3905.93,"Lebanese Republic":610.08,"Republic of Yemen":984.25,"Syrian Arab Republic":3.51,"Republic of Tunisia":569.97,"Hashemite Kingdom of Jordan":330.95};
+  var productline = {"Recipient Executed Activities":516.6,"Global Environment Project":57.36,"Guarantees":145.0,"IBRD/IDA":7400.13,"Carbon Offset":60.32,"Montreal Protocol":7.59,"Special Financing":228.4,"GEF Medium Sized Program":1.0};
+  var sectors = {"Public Administration, Law, and Justice":585.3309,"Water, sanitation and flood protection":1512.4047,"Transportation":1592.761,"Energy and mining":2435.71,"Industry and trade":98.6327,"Education":520.9135,"Finance":681.9675,"Information and communications":34.88,"Health and other social services":266.236,"Agriculture, fishing, and forestry":687.5637};
+  var regions = {"Middle East and North Africa":{"financing":5.95,"shortname":"Middle East and North Africa"},"Republic of Iraq":{"financing":890.16,"shortname":"Republic of Iraq"},"Islamic Republic of Iran":{"financing":120.0,"shortname":"Islamic Republic of Iran"},"Republic of Djibouti":{"financing":55.27,"shortname":"Republic of Djibouti"},"People's Democratic Republic of Algeria":{"financing":0.37,"shortname":"People's Democratic Republic of Algeria"},"Socialist People's Libyan Arab Jamahiriy":{"financing":3.0,"shortname":"Socialist People's Libyan Arab Jamahiriy"},"Kingdom of Morocco":{"financing":850.09,"shortname":"Kingdom of Morocco"},"West Bank and Gaza":{"financing":183.09,"shortname":"West Bank and Gaza"},"Arab Republic of Egypt":{"financing":3884.81,"shortname":"Arab Republic of Egypt"},"Lebanese Republic":{"financing":611.86,"shortname":"Lebanese Republic"},"Republic of Yemen":{"financing":933.32,"shortname":"Republic of Yemen"},"Syrian Arab Republic":{"financing":0.84,"shortname":"Syrian Arab Republic"},"Republic of Tunisia":{"financing":552.25,"shortname":"Republic of Tunisia"},"Hashemite Kingdom of Jordan":{"financing":325.39,"shortname":"Hashemite Kingdom of Jordan"}};
      
-     
-  wb.init(""569"",  "Middle East and North Africa",  "World", {projects_count: '206', locations_count: '342', sectors: sectors, regions: regions, thematic_area: "m4r" }, false);
+  wb.init("569",  "Middle East and North Africa",  "World", {projects_count: '201', locations_count: '1,609', sectors: sectors, regions: regions, thematic_area: "m4r" }, false);
 
   
-  
+
+  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
+  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+
+  }
 </script>
 
 
@@ -558,10 +575,10 @@
 <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 
 
+
     </div>
-    
             <br class="clear" />
-        <div id="footnote">Active financed activities as of September 21, 2011.</div>
+        <div id="footnote">Active financed activities as of March 28, 2012.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
     	<span class="breadcrumb-link"><a class="breadcrumb-link-home">You are here</a></span><span class="breadcrumb-link breadcrumb-first"><a href="http://www.worldbank.org/projects">Projects &amp; Operations</a></span>
     	<span class="breadcrumb-link breadcrumb-first"><a href="http://maps.worldbank.org">Map</a></span>
@@ -580,7 +597,7 @@
             <li><a href="http://developer.worldbank.org">API</a></li>
             <li class="rss last"><a href="http://www.worldbank.org/rss">RSS</a></li>
           </ul>
-          <div class="network-footer-legal"> &copy; 2011 <a href="http://www.worldbankgroup.org">The World Bank Group</a>, All Rights Reserved. <a href="http://web.worldbank.org/WBSITE/EXTERNAL/0,,contentMDK:20146401~pagePK:50016803~piPK:50016805~theSitePK:13,00.html">Legal</a>.</div>
+          <div class="network-footer-legal"> &copy; 2012 <a href="http://www.worldbankgroup.org">The World Bank Group</a>, All Rights Reserved. <a href="http://web.worldbank.org/WBSITE/EXTERNAL/0,,contentMDK:20146401~pagePK:50016803~piPK:50016805~theSitePK:13,00.html">Legal</a>.</div>
         </div>
         <div class="network-footer-hotline"> <a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/ORGANIZATION/ORGUNITS/EXTDOII/0,,contentMDK:20659616~menuPK:1702202~pagePK:64168445~piPK:64168309~theSitePK:588921,00.html">Fraud &amp; Corruption Hotline</a><br>
           <a href="http://web.worldbank.org/WBSITE/EXTERNAL/EXTABOUTUS/ORGANIZATION/ORGUNITS/EXTDOII/0,,contentMDK:20659616~menuPK:1702202~pagePK:64168445~piPK:64168309~theSitePK:588921,00.html">1-800-831-0463</a></div>
@@ -588,7 +605,6 @@
     </div>
     <br class="clear" />
 
-    <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
     </div>
 <!-- /#wrapper -->
 <!-- /layout -->
@@ -647,4 +663,5 @@ var s_account="wbnispextgeomfr,wbglobalext";
 <!-- End SiteCatalyst code version: G.6. -->
 
 
+        <script type="text/javascript" charset="utf-8" src="/js/wb_behaviors.js"></script>
 </body></html>

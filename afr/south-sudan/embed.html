@@ -29,8 +29,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-  var wb = null;
-  function onload() {
+var wb = null;
+function onload() {
   wb = new F1.WorldBank();
   
 
@@ -40,12 +40,13 @@
 ,{id: 'P118579',project_name: 'SOUTHERN SUDAN ROAD MAINTENANCE PROJECT',totalamt: 40.0,grantamt: 40.0,mjsector1: 'Transportation',boardapprovaldate: 'Feb-2010',majorsector_percent: [{"Name":"Transportation","Percent":96},{"Name":"Public Administration, Law, and Justice","Percent":4}],prodlinetext: 'Recipient Executed Activities',sector_code: 'TX'}
 ,{id: 'P099226',project_name: 'Juba Rapid Impact Emergency Project (TF055976)',totalamt: 20.0,grantamt: 20.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Nov-2005',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Education","Percent":25},{"Name":"Health and other social services","Percent":22},{"Name":"Transportation","Percent":20}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
 ,{id: 'P095081',project_name: 'SD- Emergency Transport and Infrastructure Development Project - MDTF',totalamt: 50.0,grantamt: 50.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2005',majorsector_percent: [{"Name":"Transportation","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'TX'}
+,{id: 'P125381',project_name: 'Southern Sudan Emergency Food Crisis Response Project',totalamt: 2.2,grantamt: 2.2,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":60},{"Name":"Health and other social services","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'Special Financing',sector_code: 'AX'}
 ,{id: 'P120464',project_name: 'Southern Sudan Umbrella Program for Health System development',totalamt: 63.0,grantamt: 63.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P113586',project_name: 'Southern Sudan Emergency Food Crisis Response Project',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":60},{"Name":"Health and other social services","Percent":30},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'Special Financing',sector_code: 'AX'}
 ,{id: 'P128239',project_name: 'South Sudan Private Sector Development Project',totalamt: 9.0,grantamt: 9.0,mjsector1: 'Finance',boardapprovaldate: 'Jan-2012',majorsector_percent: [{"Name":"Finance","Percent":40},{"Name":"Finance","Percent":30},{"Name":"Industry and trade","Percent":30}],prodlinetext: 'Special Financing',sector_code: 'FX'}
 ,{id: 'P111061',project_name: 'Southern Sudan - Water Supply and Sanitation Project',totalamt: 30.0,grantamt: 30.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Jan-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":54},{"Name":"Public Administration, Law, and Justice","Percent":28},{"Name":"Water, sanitation and flood protection","Percent":18}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}];
       
-  wb.init("1610",  "South Sudan", "Africa", {projects_count: '10', locations_count: '228', projects: projects, locations_layer: 0, indicators: ['Poverty','Infant Mortality','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("1610",  "South Sudan", "Africa", {projects_count: '11', locations_count: '228', projects: projects, locations_layer: 0, indicators: ['Poverty','Infant Mortality','Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
 
   jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))

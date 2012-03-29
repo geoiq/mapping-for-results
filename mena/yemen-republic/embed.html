@@ -29,8 +29,8 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-  var wb = null;
-  function onload() {
+var wb = null;
+function onload() {
   wb = new F1.WorldBank();
   
 
@@ -44,6 +44,7 @@
 ,{id: 'P122687',project_name: 'Yemen: Pilot Program for Climate Resilience Phase I (PPCR I)',totalamt: 1.5,grantamt: 1.5,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Aug-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":55},{"Name":"Agriculture, fishing, and forestry","Percent":20},{"Name":"Agriculture, fishing, and forestry","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":10}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P111757',project_name: 'Yemen Water for Urban centers- Output-based service provision by private operators',totalamt: 5.0,grantamt: 5.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Mar-2010',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":75},{"Name":"Water, sanitation and flood protection","Percent":25}],prodlinetext: 'Recipient Executed Activities',sector_code: 'WX'}
 ,{id: 'P110603',project_name: 'RY-LOSS REDUCTION PROJECT (Clean Development Mechanism-CDM)',totalamt: 28.0,grantamt: 28.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
+,{id: 'P117038',project_name: 'Emergency Social Safety Net Enhancement (EC Food Facility Grant)',totalamt: 25.89,grantamt: 25.89,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P092211',project_name: 'RY-RURAL ENERGY ACCESS',totalamt: 25.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'May-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":64},{"Name":"Energy and mining","Percent":19},{"Name":"Public Administration, Law, and Justice","Percent":17}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
 ,{id: 'P074413',project_name: 'Groundwater and Soil Conservation Project',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Feb-2004',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":68},{"Name":"Public Administration, Law, and Justice","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
 ,{id: 'P114253',project_name: 'Education for All Fast-Track Initiative Catalytic Fund Phase III',totalamt: 20.0,grantamt: 20.0,mjsector1: 'Education',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Education","Percent":93},{"Name":"Public Administration, Law, and Justice","Percent":7}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
@@ -71,7 +72,7 @@
 ,{id: 'P116110',project_name: 'Healthy Motherhood JSDF',totalamt: 3.0,grantamt: 3.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
 ,{id: 'P089259',project_name: 'Rainfed Agriculture and Livestock Project',totalamt: 20.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2006',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":41},{"Name":"Public Administration, Law, and Justice","Percent":18},{"Name":"Industry and trade","Percent":15},{"Name":"Agriculture, fishing, and forestry","Percent":14},{"Name":"Agriculture, fishing, and forestry","Percent":12}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}];
       
-  wb.init("509",  "Yemen, Rep.", "Middle East and North Africa", {projects_count: '36', locations_count: '309', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("509",  "Yemen, Rep.", "Middle East and North Africa", {projects_count: '37', locations_count: '309', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
 
   jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))

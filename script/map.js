@@ -894,12 +894,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
 
         if(projects.length == 0){
             jq('#sector_funding_total').hide();
-            jq('#chart-left-pie-chart').html("There are no projects in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
+            jq('#chart-left-pie-chart').html("There are no financed activities in this sector. <a href='#' onclick='wb.sectorPieChart(\"all\", true);'>back to all sectors</a>");
             return;
         }
 
         if(projects.length == 1){
-            jq('#chart-left-pie-chart').html("<br />" + projects[0].project_name + ".<br />There is only a single project in this sector.");
+            jq('#chart-left-pie-chart').html("<br />" + projects[0].project_name + ".<br />There is only a single activity in this sector.");
             return;
         }
 
@@ -910,8 +910,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
         if(self.stylelayers["Project Locations"] !== undefined && self.stylelayers["Project Locations"] !== null) {
             opts["href"] = links;
         }
-
-	if(width == 640 || (wb.projects !== undefined && wb.projects.length > 0))	
+	
+	console.log(self.total_funding)
+	if(self.total_funding <= 0) {
+		jq("#chart-left-pie-chart").html("No activity finance data available.")
+	} else if(width == 640 || (self.projects !== undefined && self.projects.length > 0))	
 	        F1.Visualizer.charts.pie(190, width, pie_options, "chart-left-pie-chart", opts);		  
 
 	},
@@ -1278,7 +1281,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleSector("all",true,false);
             jq('#project_count').html(count);
             if(count == 1){
-                jq('#active_projects_header').html("active project working in")
+                jq('#active_projects_header').html("financed activity working in")
             } else if (count == 0) {
             	jq('#chart-left-stat').html("No World Bank financed activity data.")
             }

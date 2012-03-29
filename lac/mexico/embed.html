@@ -29,12 +29,14 @@
   
 <div id="map_embed_container" style="height: 600px; width: 800px" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 100%"></div></div>
 <script type="text/javascript" charset="utf-8">
-  var wb = null;
-  function onload() {
+var wb = null;
+function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P123367',project_name: 'Savings and Credit Sector Consolidation and Financial Inclusion Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Dec-2011',majorsector_percent: [{"Name":"Finance","Percent":45},{"Name":"Finance","Percent":45},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
+  var projects = [{id: 'P126297',project_name: 'Second Programmatic Upper Secondary Education Development Policy Loan',totalamt: 300.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2012',majorsector_percent: [{"Name":"Education","Percent":92},{"Name":"Education","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
+,{id: 'P120170',project_name: 'Strengthening Social Resilience to Climate Change',totalamt: 300.75,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2012',majorsector_percent: [{"Name":"Health and other social services","Percent":50},{"Name":"Public Administration, Law, and Justice","Percent":50}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
+,{id: 'P123367',project_name: 'Savings and Credit Sector Consolidation and Financial Inclusion Project',totalamt: 100.0,grantamt: 0.0,mjsector1: 'Finance',boardapprovaldate: 'Dec-2011',majorsector_percent: [{"Name":"Finance","Percent":45},{"Name":"Finance","Percent":45},{"Name":"Health and other social services","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'FX'}
 ,{id: 'P120654',project_name: 'MX GEF Efficient lighting and appliances',totalamt: 7.12,grantamt: 7.12,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":70},{"Name":"Public Administration, Law, and Justice","Percent":30}],prodlinetext: 'Global Environment Project',sector_code: 'LX'}
 ,{id: 'P112327',project_name: 'Supplemental of Consolidation of Protected Areas System Project SINAP II - Fourth Tranche',totalamt: 5.44,grantamt: 5.44,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Nov-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":100}],prodlinetext: 'Global Environment Project',sector_code: 'AX'}
 ,{id: 'P088996',project_name: 'Mexico (CRL) Integrated Energy Services',totalamt: 15.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":33},{"Name":"Energy and mining","Percent":32},{"Name":"Energy and mining","Percent":14},{"Name":"Industry and trade","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
@@ -70,7 +72,7 @@
 ,{id: 'P115347',project_name: 'School Based Management',totalamt: 220.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Jun-2010',majorsector_percent: [{"Name":"Education","Percent":50},{"Name":"Education","Percent":20},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
 ,{id: 'P106261',project_name: 'Sustainable Rural Development',totalamt: 50.0,grantamt: 0.0,mjsector1: 'Industry and trade',boardapprovaldate: 'Feb-2009',majorsector_percent: [{"Name":"Industry and trade","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":25},{"Name":"Energy and mining","Percent":25}],prodlinetext: 'IBRD/IDA',sector_code: 'YX'}];
       
-  wb.init("1788",  "Mexico", "Latin America & Caribbean", {projects_count: '35', locations_count: '108', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
+  wb.init("1788",  "Mexico", "Latin America & Caribbean", {projects_count: '37', locations_count: '108', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, true);
   
 
   jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
