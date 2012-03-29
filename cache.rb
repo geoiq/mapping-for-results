@@ -17,10 +17,10 @@ end
 @pages.each do |page|
   puts "#{page.name} - #{page.id}"
   next if page.name =~ /BOOST/ 
-  puts "curl #{HOST}#{page.url} > #{page.url}.html"
-  system "curl #{HOST}#{page.url} > #{page.url}.html"
-  puts "cp #{page.url}.html about/#{page.url.gsub(/^\//,'')}.html" 
-  system "cp #{page.url}.html about/#{page.url.gsub(/^\//,'')}.html" 
+  puts "curl #{HOST}/#{page.url.gsub(/^\//,'')} > #{page.url.gsub(/^\//,'')}.html"
+  system "curl #{HOST}/#{page.url.gsub(/^\//,'')} > #{page.url.gsub(/^\//,'')}.html"
+  puts "cp #{page.url.gsub(/^\//,'')}.html about/#{page.url.gsub(/^\//,'')}.html" 
+  system "cp #{page.url.gsub(/^\//,'')}.html about/#{page.url.gsub(/^\//,'')}.html" 
 end
 =begin
 system "curl #{HOST}/ > index.html"
