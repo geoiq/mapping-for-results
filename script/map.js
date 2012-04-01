@@ -911,7 +911,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
             opts["href"] = links;
         }
 	
-	console.log(self.total_funding)
 	if(self.total_funding <= 0) {
 		jq("#chart-left-pie-chart").html("No activity finance data available.")
 	} else if(width == 640 || (self.projects !== undefined && self.projects.length > 0))	
@@ -1342,7 +1341,6 @@ if(typeof(F1)=='undefined') {F1 = {};}
       self.map.setMapStyle( {infowindow: {visible: false}});
 	  // self.map.setCallback("onFeatureSelected", function(features){ var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') });
 
-      // self.map.setCallback("onFeatureHover", function(feature) { console.log(feature)})
 	  if(self.country != "World") {
 		// self.map.addLayerCategoryFilter(0, {attribute:major_sector_name,categories:self.wbicons});
 	  } else if (self.country == "World") {
