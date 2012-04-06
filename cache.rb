@@ -5,6 +5,8 @@ HOST = "http://worldbank.geoiq.com"
 def cache_country(page)
   puts "#{page.name}"
   system "mkdir -p .#{page.url}"
+  #system "curl '#{HOST}/isocode/#{page.isocode}.png?height=221&width=545' > .#{page.url}.png"
+  system "curl '#{HOST}/isocode/#{page.isocode}.png?height=221&width=545' > isocode/#{page.isocode}.png" unless page.isocode.nil? || page.isocode.length == 0
   system "curl #{HOST}#{page.url} > .#{page.url}.html"
   system "curl '#{HOST}#{page.url}/embed?height=600&width=800' > .#{page.url}/embed.html"
   system "cp .#{page.url}.html .#{page.url}/index.html"
@@ -13,6 +15,7 @@ end
   puts "#{page}"
   system "curl #{HOST}/#{page} > #{page}"
 end
+=begin
 @pages = Page.all :page_type => "page"
 @pages.each do |page|
   puts "#{page.name} - #{page.id}"
@@ -22,7 +25,6 @@ end
   puts "cp #{page.url.gsub(/^\//,'')}.html about/#{page.url.gsub(/^\//,'')}.html" 
   system "cp #{page.url.gsub(/^\//,'')}.html about/#{page.url.gsub(/^\//,'')}.html" 
 end
-=begin
 system "curl #{HOST}/ > index.html"
 system "cp index.html world.html"
 puts "Starting Regions"
@@ -37,6 +39,7 @@ puts "Starting Regions"
   end
 end
 puts "Regions done"
+
 @pages = Page.all :page_type => "country"
 @pages.each do |page|
   cache_country(page)
@@ -44,3 +47,8 @@ end
 
 cache_country(Page.first(:name => "Development Marketplace"))
 =end
+@pages = Page.all :page_type => "project"
+@pages.each do |page|
+  cache_country(page)
+end
+

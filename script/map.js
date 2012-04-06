@@ -1204,7 +1204,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             if(!this.embed){
                 this.map.setMapStyle( { zoom: { visible: true, expanded: true, bgColor: 0x92948C, authHeight: false, height:100, cornerRadius: 5, offset: {x:15,y:y}}})
             } else {
-                this.map.setMapStyle( { zoom: { visible: true, expanded: true, bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:15}}}) 
+                this.map.setMapStyle( { zoom: { visible: true, expanded: true, bgColor: 0x92948C, authHeight: false, height:10, cornerRadius: 5, expanded: false, horizontal: true, offset: {x:15,y:50}}}) 
             }
 
             this.map.setMapStyle( { tooltip: { visible: false } } )
