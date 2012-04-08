@@ -1278,12 +1278,16 @@ if(typeof(F1)=='undefined') {F1 = {};}
         if(self.thematic_area == 'm4r'){
             log("toggleSector")
             self.toggleSector("all",true,false);
+            		
             jq('#project_count').html(count);
             if(count == 1){
                 jq('#active_projects_header').html("financed activity working in")
             } else if (count == 0) {
             	jq('#chart-left-stat').html("No World Bank financed activity data.")
-            }
+            } else if (count === null || count === undefined) {
+                jq('#project_count').html("")
+                jq('#active_projects_header').html("")
+	    }
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
                 jq('#mapped_locations_header').html("mapped location")
