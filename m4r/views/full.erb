@@ -1,6 +1,6 @@
 <!doctype html>
 <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
 <head>
@@ -17,11 +17,20 @@
     <link type="text/css" rel="stylesheet" media="all" href="/css/tipsy.css" />
     <link rel="stylesheet" href="/assets/css/mapping.css">
     <link rel="stylesheet" href="/assets/css/menu.css">
+    ﻿<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <%= partial :javascript %>
     <script type="text/javascript" charset="utf-8">
       // if (top.frames.length!=0)
       //   top.location=self.document.location;
     </script>
+    <!--[if IE 7]>
+      <script type="text/javascript">
+      $(document).ready(function() {
+          $('html').addClass('ie7');
+      });
+      </script>
+    <![endif]-->
+
 </head>
 
 <body onload="onload()">
