@@ -105,13 +105,21 @@
         <%= partial @additional_controls %>
         </div>
         <% end %>
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
+        <div id="infowindow" style="display:none">
+            <div id="infowindow_content"></div>
+        </div>         
+        <div style="height: 530px;" id="wb_map_wrapper">
+            <div id="wb_map" class="" style="height: 520px; position: relative"></div>
+        </div>
+        
       </div>
         <%= partial :projects_table if @page.page_type == "country" %>
         </div><!--#main-map//-->
         </div><!--#main-wrap//-->
         <%= partial :sidebar unless defined?(@show_sidebar) && @show_sidebar == false %>
         </div><!--#main-wrap//-->
+
+
         <%= partial :footer %>
 
         <%= partial :initialize unless @page.new? %>

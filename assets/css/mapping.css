@@ -355,6 +355,24 @@ ul.links li, ul.links li a{
     -moz-border-radius: 15x;
     border-radius: 5px;
     }
+#infowindow {
+    position: absolute;
+    margin: 10px;
+    z-index: 12;
+    height: 350px;
+    width: 300px;
+    background-color: #D9DCCF;
+    opacity: 0.7;
+    left: 51%;
+    top: 400px;
+    clear: both;    
+}
+#infowindow_content {
+    margin: 10px
+    }
+#images {
+    overflow-y: auto;
+    height: 255px}
 .tipsy { opacity: 0.9; }
 .tipsy-inner {  background-color: #92948C; }
 #infodiv span {opacity: 1.0; color: #FFF; }

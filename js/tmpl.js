@@ -39,6 +39,9 @@ table_templates = {
     project: '<tr id="row_<%= id %>" class="<%= even %> rowsector_<%= sector_code %>" data-project-name="<%= project_name %>" data-project-id="<%= id %>"><td><%= project_name %></td><td><%= id %></td><td>$<%= totalamt %> million</td><td><%= mjsector1 %></td><td><%= boardapprovaldate %></td><td><%= prodlinetext %></td></tr>',
     mine: '<tr id="row_<%= id %>" class="<%= even %>" data-project-id="<%= Company_name %>"><td><a href="<%= CompanyURL %>" target="_new"><%= Company_name %></a></td><td><%= mineral_type %></td><td><%= Total_company_payments %></td><td><%= Total_government_receipts %></td><td><%= Total_difference %></td><td><a href="<%= CSR_url %>" target="_new"><%= Sustainability_reports_available %></a></td></tr>'
 };
+info_templates = {
+    infowindow: '<h2><%= title %></h2><h3><%= sector %></h3><ul><li>Project ID: <%= project_id %></li><li>Location: <%= adm2 %>,<%= adm1 %></li></ul><div id="images"></span>'
+}
 
 Textify = {
  this_many_words: function(s,count) {  

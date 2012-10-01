@@ -174,16 +174,47 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 uiHeader: true,hideGCLogo: true,hideGILogo: false,
 		 core_host:	 proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
 		 onMapLoaded: function() { setTimeout("wb.loadedMap()",500); },
-		 onFeatureSelected: function(features) { if(self.country == "World" && features.features.length > 0) {
-		     var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country["lowercase country name"].toLowerCase().replace(/\s+/g,'-') ;
-		 } else { jq("#infodiv")[0].style.opacity = "0";	}},
-		 flashvars: {country: self.country}
-		 });
-	  } else {
-		  self.sectorPieChart("all", false);
-		  self.regionFundingBars();
-	  }
-	},
+         onMapClicked: function() {
+             jq("#infowindow").hide();               
+         },
+		 onFeatureSelected: function(features) { 
+		     if(self.country == "World" && features.features.length > 0) {
+		     	var country = features.features[0]; 
+				window.location = "/" + country.region.toLowerCase() + "/" + country["lowercase country name"].toLowerCase().replace(/\s+/g,'-') ;
+            } else if( self.country == "Vietnam" ) {
+                var project = features.features[0];
+                if(project["project id"] === undefined || project["project id"] === null) {
+                    jq("#infowindow").hide();
+                    return;
+                }
+                self.map.closeInfoWindow();
+                var html = tmpl(info_templates.infowindow, 
+                            {title: project["project title"],sector: project["mjsector 1"],adm1: project["adm1"], adm2: project["adm2"], project_id: project["project id"]});
+                jq("#infowindow_content").html(	html );
+                jq("#infowindow").show();
+                var pid = project["project id"];
+                var pid = "P044803";
+
+                var flickrUrl = "http://api.flickr.com/services/feeds/photos_public.gne?tags=wb%3Aproject%3D" + pid +"&tagmode=any&format=json&jsoncallback=?";
+                            
+                jq.getJSON(flickrUrl,
+                    function(data){
+                      jq.each(data.items, function(i,item){
+                        jq("<img/>").attr("src", item.media.m).appendTo(jq("<a/>").attr("href", item.media.m)).appendTo("#images");
+                        if ( i == 4 ) return false;
+                      });
+                    });
+                            
+            } else { 
+    			 jq("#infodiv")[0].style.opacity = "0";	
+    		 }},
+    		 flashvars: {country: self.country}
+    		 });
+    	  } else {
+    		  self.sectorPieChart("all", false);
+    		  self.regionFundingBars();
+    	  }
+    	},
 
 	setState: function(location,indicator,project,sectors) {
 	  var self = this;
