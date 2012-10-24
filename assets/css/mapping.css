@@ -363,13 +363,23 @@ ul.links li, ul.links li a{
     width: 300px;
     background-color: #D9DCCF;
     opacity: 0.7;
-    left: 51%;
+    left: 70px;
     top: 400px;
     clear: both;    
 }
 #infowindow_content {
     margin: 10px
     }
+#infowindow #project_info h2 { font-size: 1.4em; border-bottom: 1px solid #888;}
+#infowindow #project_info h3 { padding-top: 2px;}
+#project_info #project_title { border: 1px solid #888;
+    padding: 5px 3px;
+    margin: 5px 0 5px -3px; }
+#project_tabs {border-bottom: 1px solid #888; margin-top: 10px;}
+.tab_control {padding-right: 10px; cursor: pointer}
+.tab_active { font-weight: bold}
+
+
 #images {
     overflow-y: auto;
     height: 255px}

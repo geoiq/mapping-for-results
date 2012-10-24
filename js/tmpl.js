@@ -40,8 +40,8 @@ table_templates = {
     mine: '<tr id="row_<%= id %>" class="<%= even %>" data-project-id="<%= Company_name %>"><td><a href="<%= CompanyURL %>" target="_new"><%= Company_name %></a></td><td><%= mineral_type %></td><td><%= Total_company_payments %></td><td><%= Total_government_receipts %></td><td><%= Total_difference %></td><td><a href="<%= CSR_url %>" target="_new"><%= Sustainability_reports_available %></a></td></tr>'
 };
 info_templates = {
-    infowindow: '<h2><%= title %></h2><h3><%= sector %></h3><ul><li>Project ID: <%= project_id %></li><li>Location: <%= adm2 %>,<%= adm1 %></li></ul><div id="images"></span>'
-}
+    infowindow: '<a href="" id="previous_project" style="display:none">&laquo;</a> <span id="project_index"><%= project_index %></span> of <span id="project_count"><%= project_count %></span> projects<a href="" id="next_project">&raquo;</a><br />',
+    project: '<div id="project_info"><div id="project_title"><h2><%= title %></h2><h3><%= sector %></h3></div> <div id="project_tabs"> <span class="tab_control tab_active" id="tab_about">About</span> <span class="tab_control" id="tab_locations">Locations</span> <span class="tab_control" id="tab_results">Results</span> </div> <div class="tab" id="tab_about_tab"> <ul><li>Project ID: <%= project_id %></li><li>Location: <%= adm2 %>,<%= adm1 %></li></ul> </div> <div class="tab" id="tab_locations_tab" style="display:none"> Location </div> <div class="tab" id="tab_results_tab" style="display:none"> Results </div> <div id="images"></span></div>'}
 
 Textify = {
  this_many_words: function(s,count) {  
