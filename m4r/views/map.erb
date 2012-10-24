@@ -188,15 +188,12 @@ if(typeof(F1)=='undefined') {F1 = {};}
                     return;
                 }
                 self.current_projects = features.features;
-                self.current_project_index = 1;
+                self.current_project_index = 0;
                 self.map.closeInfoWindow();
                 var html = tmpl(info_templates.infowindow, {project_index: self.current_project_index, project_count: self.current_projects.length});
-                html += tmpl(info_templates.project, 
-                            {title: project["project title"],sector: project["mjsector 1"],adm1: project["adm1"], adm2: project["adm2"], project_id: project["project id"]});
+
                 jq("#infowindow_content").html(	html );
-				jq("#previous_project").live("click", function() { self.nextProject(-1);  return false });
-				jq("#next_project").live("click", function() { self.nextProject(1);   return false });
-				self.activateTabs();
+                self.nextProject(1)
                 jq("#infowindow").show();
                 // var pid = project["project id"];
                 // var pid = "P044803";
@@ -220,10 +217,15 @@ if(typeof(F1)=='undefined') {F1 = {};}
     		  self.sectorPieChart("all", false);
     		  self.regionFundingBars();
     	  }
+
+			self.activateTabs();
+
     	},
 
     activateTabs: function() {
     	var self = this;
+		jq("#previous_project").live("click", function() { self.nextProject(-1);  return false });
+		jq("#next_project").live("click", function() { self.nextProject(1);   return false });
 		jq(".tab_control").live("click", function() { 
 
 			jq(this).addClass("tab_active");
@@ -242,10 +244,15 @@ if(typeof(F1)=='undefined') {F1 = {};}
     		jq("#previous_project").hide();
     	} else { jq("#previous_project").show(); }
     	var project = self.current_projects[self.current_project_index - 1];
+		var highlightExpression = "$[project id] == '"+project["project id"]+"'";
+			self.map.clearHighlights(self.stylelayers["Project Locations"].guid);
+			self.map.addHighlight(self.stylelayers["Project Locations"].guid,{expression: highlightExpression});
+    	
         var html = tmpl(info_templates.project, 
-            {title: project["project title"],sector: project["mjsector 1"],adm1: project["adm1"], adm2: project["adm2"], project_id: project["project id"]});
+                            {icon: self.sectors[self.sector_names[project["mjsector 1"].toLowerCase().trim()]].icon,
+                            	title: project["project title"],sector: project["mjsector 1"],adm1: project["adm1"], adm2: project["adm2"], project_id: project["project id"], geoname: project["geoname"], 
+                            precision_description: project["precision description"], development_objective: project["development objective"], results: project["results"]  });
 
-		self.activateTabs();
     	jq("#project_index").html( self.current_project_index )
     	jq('#project_info').html( html );
     },

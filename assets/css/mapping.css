@@ -372,13 +372,13 @@ ul.links li, ul.links li a{
     }
 #infowindow #project_info h2 { font-size: 1.4em; border-bottom: 1px solid #888;}
 #infowindow #project_info h3 { padding-top: 2px;}
-#project_info #project_title { border: 1px solid #888;
+#project_info #project_title { /*border: 1px solid #888;*/
     padding: 5px 3px;
     margin: 5px 0 5px -3px; }
 #project_tabs {border-bottom: 1px solid #888; margin-top: 10px;}
 .tab_control {padding-right: 10px; cursor: pointer}
 .tab_active { font-weight: bold}
-
+.project_icon {float: left;}
 
 #images {
     overflow-y: auto;
