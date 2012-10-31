@@ -181,7 +181,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		     if(self.country == "World" && features.features.length > 0) {
 		     	var country = features.features[0]; 
 				window.location = "/" + country.region.toLowerCase() + "/" + country["lowercase country name"].toLowerCase().replace(/\s+/g,'-') ;
-            } else if( self.country == "Vietnam" ) {
+            } else if( self.country == "Vietnam" || self.country == "Nepal") {
                 var project = features.features[0];
                 if(project["project id"] === undefined || project["project id"] === null) {
                     jq("#infowindow").hide();

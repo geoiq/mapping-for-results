@@ -25,16 +25,7 @@
     <br class="clear" />
   </div>
 <%# end %>
-  <div id="rightDesc">
-      <% if @page.data.include?(:results) && !@page.data[:results].nil? && @page.data[:results].length > 0 %>
-      <h3><%= @page[:name].upcase %> LINKS</h3>
-      <ul class="disc">
-        <% @page.data[:results].each do |result| %>
-        <% result.symbolize_keys! %>
-        <li><a href="<%= result[:link] %>" target="_new"><%= result[:name] %> &raquo;</a></li>
-        <% end %>
-      </ul>
-      <% end %>    
+  <div id="rightDesc"> 
     <!-- <p class="desc">
       <a class="txtRed" href="#">See All Results for <%= @page[:name] %> &raquo;</a>
     </p> -->
@@ -43,5 +34,14 @@
     <!-- <p class="desc">
       Learn more about the World Bank's overall strategy in the <a href="#" class="txtRed"><%= @page[:name].upcase %> Country Overview &raquo;</a>
     </p> -->
+      <% if @page.data.include?(:results) && !@page.data[:results].nil? && @page.data[:results].length > 0 %>
+      <h3><%= @page[:name].upcase %> LINKS</h3>
+      <ul class="disc">
+        <% @page.data[:results].each do |result| %>
+        <% result.symbolize_keys! %>
+        <li><a href="<%= result[:link] %>" target="_new"><%= result[:name] %> &raquo;</a></li>
+        <% end %>
+      </ul>
+      <% end %>       
   </div>
 </div>
