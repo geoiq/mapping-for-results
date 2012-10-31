@@ -366,6 +366,10 @@ ul.links li, ul.links li a{
     left: 70px;
     top: 400px;
     clear: both;    
+    -moz-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
 }
 #infowindow_content {
     margin: 10px
