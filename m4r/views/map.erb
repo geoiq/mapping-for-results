@@ -115,6 +115,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var self = this;
 	  this.activities = {};
 	  this.projects = country_attrs.projects;
+	  self.projectObject();
 	  this.visibleSectors = [];
 	  this.map_id = map_id;
 	  if(embed !== undefined && embed !== null)
@@ -249,8 +250,8 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			self.map.addHighlight(self.stylelayers["Project Locations"].guid,{expression: highlightExpression});
     	
         var html = tmpl(info_templates.project, 
-                            {	image: self.projects[project["project id"]]["Results Image"],
-                            	results_blurb: self.projects[project["project id"]]["Results Blurb"],
+                            {	image: self.project_ids[project["project id"]]["Results Image"],
+                            	results_blurb: self.project_ids[project["project id"]]["Results Blurb"],
                             	icon: self.sectors[self.sector_names[project["mjsector 1"].toLowerCase().trim()]].icon,
                             	title: project["project title"],sector: project["mjsector 1"],adm1: project["adm1"], adm2: project["adm2"], project_id: project["project id"], geoname: project["geoname"], 
                             precision_description: project["precision description"], development_objective: project["development objective"], results: project["results"]  });
@@ -743,6 +744,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var highlightExpression = "$[project id] == '"+project_id+"'";
 	  this.map.clearHighlights(self.stylelayers["Project Locations"].guid);
 	  this.map.addHighlight(self.stylelayers["Project Locations"].guid,{expression: highlightExpression});
+	},
+	projectObject: function() {
+		var self = this;
+		self.project_ids = {};
+		jq.map(self.projects, function(project) {
+			self.project_ids[project["id"]] = project;			
+		});
 	},
 	sortData: function(data) {
 	  var self = this;
