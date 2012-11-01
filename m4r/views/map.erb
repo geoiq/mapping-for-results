@@ -249,12 +249,16 @@ if(typeof(F1)=='undefined') {F1 = {};}
 			self.map.clearHighlights(self.stylelayers["Project Locations"].guid);
 			self.map.addHighlight(self.stylelayers["Project Locations"].guid,{expression: highlightExpression});
     	var image = "";
-    	if(self.project_ids[project["project id"]]["Results Image"].length != 0 ) {
-    	    		image = "<a href='" + self.project_ids[project["project id"]]["Results Image"] + "' id='project_image' alt='Project Image'/>"
+    	if(self.project_ids[project["project id"]] !== undefined && self.project_ids[project["project id"]]["Results Image"].length != 0 ) {
+    	    		image = "<img src='" + self.project_ids[project["project id"]]["Results Image"] + "' id='project_image' alt='Project Image'/>"
+    	    }
+    	var blurb = "";
+    	if(self.project_ids[project["project id"]]["Results Blurb"] !== undefined) {
+    	    		blurb = self.project_ids[project["project id"]]["Results Blurb"];
     	    }
         var html = tmpl(info_templates.project, 
                             {	image: image,
-                            	results_blurb: self.project_ids[project["project id"]]["Results Blurb"],
+                            	results_blurb: blurb,
                             	icon: self.sectors[self.sector_names[project["mjsector 1"].toLowerCase().trim()]].icon,
                             	title: project["project title"],sector: project["mjsector 1"],adm1: project["adm1"], adm2: project["adm2"], project_id: project["project id"], geoname: project["geoname"], 
                             precision_description: project["precision description"], development_objective: project["development objective"], results: project["results"]  });
