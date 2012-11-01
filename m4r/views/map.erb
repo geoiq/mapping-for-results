@@ -257,10 +257,14 @@ if(typeof(F1)=='undefined') {F1 = {};}
     	    		blurb = self.project_ids[project["project id"]]["Results Blurb"];
     	    }
     	}
+    	var icon = "";
+    	if (self.sectors[self.sector_names[project["mjsector 1"] !== undefined) {
+    		icon = self.sectors[self.sector_names[project["mjsector 1"].toLowerCase().trim()]].icon;
+    	}
         var html = tmpl(info_templates.project, 
                             {	image: image,
                             	results_blurb: blurb,
-                            	icon: self.sectors[self.sector_names[project["mjsector 1"].toLowerCase().trim()]].icon,
+                            	icon: icon,
                             	title: project["project title"],sector: project["mjsector 1"],adm1: project["adm1"], adm2: project["adm2"], project_id: project["project id"], geoname: project["geoname"], 
                             precision_description: project["precision description"], development_objective: project["development objective"], results: project["results"]  });
 
