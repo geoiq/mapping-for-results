@@ -374,6 +374,7 @@ ul.links li, ul.links li a{
 #infowindow_content {
     margin: 10px
     }
+#project_image { height: 80px; float: right;}
 #infowindow #project_info h2 { font-size: 1.4em; border-bottom: 1px solid #888;}
 #infowindow #project_info h3 { padding-top: 2px;}
 #project_info #project_title { /*border: 1px solid #888;*/
