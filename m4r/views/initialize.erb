@@ -9,7 +9,7 @@ function onload() {
             project["totalamt"] = project["grantamt"]
          end
          
-         "{" + (PROJECT_FIELDS + ["sector_code"]).flatten.collect {|key| "#{key}: #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
+         "{" + (PROJECT_FIELDS + ["sector_code","Results Image", "Results Blurb", "GeoResult", "Project Results (ISR)"]).flatten.collect {|key| "'#{key}': #{cleanup_attributes(key, project[ key == 'sector_code' ? 'mjsector1' : key])}"}.join(",") + "}"
        end.join("\n,") %>];
       
   wb.init("<%= @page[:map].to_s %>",  "<%= @page.name.to_s %>", "<%= @page.region.to_s %>", {projects_count: '<%= commify(@page.projects_count) %>', locations_count: '<%= commify(@page.locations_count) %>', projects: projects, locations_layer: <%= @page.locations_layer || 0 %>, indicators: [<%= (@page.data[:indicators] || []).collect {|i| "'#{i}'"}.join(",") %>], layers: <%= @page.data[:layers].to_json %>, page_type: "<%= @page[:page_type] %>", thematic_area: "<%= @additional_controls || "m4r" %>"}, <%= @embed || false %>);

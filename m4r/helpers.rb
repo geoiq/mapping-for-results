@@ -63,6 +63,7 @@ module Sinatra
       when /sector_code/
         return "'#{value["Code"]}'"
       else
+        return "''" if value.nil?
         return "'#{value.gsub(/'/,'')}'"
       end
 
