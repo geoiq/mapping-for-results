@@ -257,7 +257,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
     	    		blurb = self.project_ids[project["project id"]]["Results Blurb"];
     	    }
     		if(self.project_ids[project["project id"]]["GeoResult"] !== undefined && self.project_ids[project["project id"]]["GeoResult"].length != 0 ) {
-    			links += "\n<a href='" + self.project_ids[project["project id"]]["GeoResult"] +"'>World Bank Local</a>";
+    			links += "\n<a href='" + self.project_ids[project["project id"]]["GeoResult"] +"' target='_new'>World Bank Local</a>";
     		}
     	}
 
@@ -272,7 +272,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                             	links: links,
                             	title: project["project title"],sector: project["mjsector 1"],adm1: project["adm1"], adm2: project["adm2"], project_id: project["project id"], geoname: project["geoname"], 
                             precision_description: project["precision description"], development_objective: project["development objective"], 
-                            results: project["Results Stories"]  });
+                            results: self.project_ids[project["project id"]]["Results Stories"]  });
 
     	jq("#project_index").html( self.current_project_index )
     	jq('#project_info').html( html );
