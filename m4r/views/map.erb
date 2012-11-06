@@ -228,7 +228,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		jq("#previous_project").live("click", function() { self.nextProject(-1);  return false });
 		jq("#next_project").live("click", function() { self.nextProject(1);   return false });
 		jq(".tab_control").live("click", function() { 
-			jq.each(jq(".tab_control"), function(a) { a.removeClass("tab_active")});
+			jq.each(jq(".tab_control"), function(i,a) { console.log(a); jq(a).removeClass("tab_active")});
 			jq(this).addClass("tab_active");
 			jq(".tab").hide();
 			jq("#" + this.id + "_tab").show();
