@@ -115,6 +115,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var self = this;
 	  this.activities = {};
 	  this.projects = country_attrs.projects;
+	  self.projectObject();
 	  this.visibleSectors = [];
 	  this.map_id = map_id;
 	  if(embed !== undefined && embed !== null)
@@ -174,17 +175,108 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 uiHeader: true,hideGCLogo: true,hideGILogo: false,
 		 core_host:	 proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
 		 onMapLoaded: function() { setTimeout("wb.loadedMap()",500); },
-		 onFeatureSelected: function(features) { if(self.country == "World" && features.features.length > 0) {
-		     var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country["lowercase country name"].toLowerCase().replace(/\s+/g,'-') ;
-		 } else { jq("#infodiv")[0].style.opacity = "0";	}},
-		 flashvars: {country: self.country}
-		 });
-	  } else {
-		  self.sectorPieChart("all", false);
-		  self.regionFundingBars();
-	  }
-	},
+         onMapClicked: function() {
+             jq("#infowindow").hide();               
+         },
+		 onFeatureSelected: function(features) { 
+		     if(self.country == "World" && features.features.length > 0) {
+		     	var country = features.features[0]; 
+				window.location = "/" + country.region.toLowerCase() + "/" + country["lowercase country name"].toLowerCase().replace(/\s+/g,'-') ;
+            } else if( self.country == "Vietnam" || self.country == "Nepal") {
+                var project = features.features[0];
+                if(project["project id"] === undefined || project["project id"] === null) {
+                    jq("#infowindow").hide();
+                    return;
+                }
+                self.current_projects = features.features;
+                self.current_project_index = 0;
+                self.map.closeInfoWindow();
+                var html = tmpl(info_templates.infowindow, {project_index: self.current_project_index, project_count: self.current_projects.length});
 
+                jq("#infowindow_content").html(	html );
+                self.nextProject(1)
+                jq("#infowindow").show();
+                // var pid = project["project id"];
+                // var pid = "P044803";
+
+                // var flickrUrl = "http://api.flickr.com/services/feeds/photos_public.gne?tags=wb%3Aproject%3D" + pid +"&tagmode=any&format=json&jsoncallback=?";
+                            
+                // jq.getJSON(flickrUrl,
+                //     function(data){
+                //       jq.each(data.items, function(i,item){
+                //         jq("<img/>").attr("src", item.media.m).appendTo(jq("<a/>").attr("href", item.media.m)).appendTo("#images");
+                //         if ( i == 4 ) return false;
+                //       });
+                //     });
+                            
+            } else { 
+    			 jq("#infodiv")[0].style.opacity = "0";	
+    		 }},
+    		 flashvars: {country: self.country}
+    		 });
+    	  } else {
+    		  self.sectorPieChart("all", false);
+    		  self.regionFundingBars();
+    	  }
+
+			self.activateTabs();
+
+    	},
+
+    activateTabs: function() {
+    	var self = this;
+		jq("#previous_project").live("click", function() { self.nextProject(-1);  return false });
+		jq("#next_project").live("click", function() { self.nextProject(1);   return false });
+		jq(".tab_control").live("click", function() { 
+			jq.each(jq(".tab_control"), function(i,a) { jq(a).removeClass("tab_active")});
+			jq(this).addClass("tab_active");
+			jq(".tab").hide();
+			jq("#" + this.id + "_tab").show();
+		});
+
+    },
+    nextProject: function(direction) {
+    	var self = this;
+    	self.current_project_index += direction;
+    	if(self.current_project_index == self.current_projects.length) {
+    		jq("#next_project").hide();
+    	} else { jq("#next_project").show(); }
+    	if(self.current_project_index == 1) {
+    		jq("#previous_project").hide();
+    	} else { jq("#previous_project").show(); }
+    	var project = self.current_projects[self.current_project_index - 1];
+		var highlightExpression = "$[project id] == '"+project["project id"]+"'";
+			self.map.clearHighlights(self.stylelayers["Project Locations"].guid);
+			self.map.addHighlight(self.stylelayers["Project Locations"].guid,{expression: highlightExpression});
+    	var image = "", blurb = "",links = "";
+    		if(self.project_ids[project["project id"]] !== undefined) {
+    		if(self.project_ids[project["project id"]]["Results Image"].length != 0 ) {
+    	    		image = "<img src='" + self.project_ids[project["project id"]]["Results Image"] + "' id='project_image' alt='Project Image'/>"
+    	    }
+    		if(self.project_ids[project["project id"]]["Results Blurb"] !== undefined) {
+    	    		blurb = self.project_ids[project["project id"]]["Results Blurb"];
+    	    }
+    		if(self.project_ids[project["project id"]]["GeoResult"] !== undefined && self.project_ids[project["project id"]]["GeoResult"].length != 0 ) {
+    			links += "\n<a href='" + self.project_ids[project["project id"]]["GeoResult"] +"' target='_new'>World Bank Local</a>";
+    		}
+    	}
+
+    	var icon = "";
+    	if (project["mjsector 1"] !== undefined) {
+    		icon = self.sectors[self.sector_names[project["mjsector 1"].toLowerCase().trim()]].icon;
+    	}
+        var html = tmpl(info_templates.project, 
+                            {	image: image,
+                            	results_blurb: blurb,
+                            	icon: icon,
+                            	links: links,
+                            	title: project["project title"],sector: project["mjsector 1"],adm1: project["adm1"], adm2: project["adm2"], project_id: project["project id"], geoname: project["geoname"], 
+                            precision_description: project["precision description"], development_objective: project["development objective"], 
+                            results: self.project_ids[project["project id"]]["Results Stories"]  });
+
+    	jq("#project_index").html( self.current_project_index )
+    	jq('#project_info').html( html );
+    },
 	setState: function(location,indicator,project,sectors) {
 	  var self = this;
 	  if(location !== undefined && location !== null)
@@ -670,6 +762,13 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  var highlightExpression = "$[project id] == '"+project_id+"'";
 	  this.map.clearHighlights(self.stylelayers["Project Locations"].guid);
 	  this.map.addHighlight(self.stylelayers["Project Locations"].guid,{expression: highlightExpression});
+	},
+	projectObject: function() {
+		var self = this;
+		self.project_ids = {};
+		jq.map(self.projects, function(project) {
+			self.project_ids[project["id"]] = project;			
+		});
 	},
 	sortData: function(data) {
 	  var self = this;
@@ -1182,7 +1281,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
                      self.map.setLayerInfoWindow(self.stylelayers["Project Locations"].guid, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project: <a target='_new' href='$[source url]'>$[project title]</a>\nYear Funded: $[approval date]\nFunding Amount:$ $[total amt]\nObjective:\n$[development objective]"}, {title: "Location", type: "text", value: "$[geoname], $[country]\n$[region]"}]});
                 } else {
                 self.map.setLayerInfoWindow(self.stylelayers["Project Locations"].guid, {title: "$[project title]", subtitle: "$["+major_sector_name+"]", tabs:[{title: "About", type: "text", value:"Project ID: <a target='_new' href='http://web.worldbank.org/external/projects/main?pagePK=64283627&piPK=73230&theSitePK=40941&menuPK=228424&Projectid=$[project id]'>$[project id]</a>\nProject Name: $[project title]\nSector:$["+major_sector_name+"]\nObjective:\n$[development objective]"}, {title: "Location", type: "text", value: "Province: $[adm1]\nDistrict: $[adm2]\nGeoname: $[geoname]\n\nDescription:\n$[precision description]"},
-                {title:"Results", type: "text", value: "$[results]"}
+                {title:"Results", type: "text", value: "<a href='http://documents.worldbank.org/query?project=$[project id]&docType=Implementation+Status+and+Results+Report' target='_new'>Implementation Status and Results Report</a>\n$[results]"}
                 ]});
                 }
             }
