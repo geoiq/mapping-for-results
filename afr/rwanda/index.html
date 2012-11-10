@@ -555,7 +555,13 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
+        <div id="infowindow" style="display:none">
+            <div id="infowindow_content"></div>
+        </div>         
+        <div style="height: 530px;" id="wb_map_wrapper">
+            <div id="wb_map" class="" style="height: 520px; position: relative"></div>
+        </div>
+        
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -593,7 +599,18 @@
     <br class="clear" />
   </div>
 
-  <div id="rightDesc">
+  <div id="rightDesc"> 
+    <!-- <p class="desc">
+      <a class="txtRed" href="#">See All Results for Rwanda &raquo;</a>
+    </p> -->
+    <h3>RWANDA</h3>
+      <h3>World Bank Local</h3>
+<iframe src="http://maps.worldbank.org/storymaps/Rwanda/Rwanda.html" width="290" height="220" scrolling="no"></iframe>
+
+Rwanda has achieved impressive development gains since the 1994 genocide and civil war. It is now consolidating gains in social development, accelerating growth, and ensuring that they are broadly shared to mitigate risks to eroding its hard-won political and social stability. World Bank assistance to Rwanda aims at achieving greater synergies and catalyzing higher volumes of private resources to support Rwanda’s development. The top three sectors funded by the World Bank are energy, agriculture, and private sector development. 
+    <!-- <p class="desc">
+      Learn more about the World Bank's overall strategy in the <a href="#" class="txtRed">RWANDA Country Overview &raquo;</a>
+    </p> -->
       
       <h3>RWANDA LINKS</h3>
       <ul class="disc">
@@ -617,18 +634,12 @@
         <li><a href="http://www.aidflows.org/index.html?country='Rwanda'" target="_new">Rwanda Aid Flows &raquo;</a></li>
         
       </ul>
-          
-    <!-- <p class="desc">
-      <a class="txtRed" href="#">See All Results for Rwanda &raquo;</a>
-    </p> -->
-    <h3>RWANDA</h3>
-      Rwanda has achieved impressive development gains since the 1994 genocide and civil war. It is now consolidating gains in social development, accelerating growth, and ensuring that they are broadly shared to mitigate risks to eroding its hard-won political and social stability. World Bank assistance to Rwanda aims at achieving greater synergies and catalyzing higher volumes of private resources to support Rwanda’s development. The top three sectors funded by the World Bank are energy, agriculture, and private sector development. 
-    <!-- <p class="desc">
-      Learn more about the World Bank's overall strategy in the <a href="#" class="txtRed">RWANDA Country Overview &raquo;</a>
-    </p> -->
+             
   </div>
 </div>
         </div><!--#main-wrap//-->
+
+
                 <br class="clear" />
         <div id="footnote">Active financed activities as of March 28, 2012.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
@@ -664,30 +675,32 @@ function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P112712',project_name: 'Second Emergency Demobilization and Reintegration Project',totalamt: 8.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":68},{"Name":"Public Administration, Law, and Justice","Percent":32}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P114931',project_name: 'Land Husbandry, Water Harvesting and Hillside Irrigation',totalamt: 34.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Dec-2009',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":44},{"Name":"Industry and trade","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":11},{"Name":"Agriculture, fishing, and forestry","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P097818',project_name: 'Rw:  Sustainable Energy Development Project (GEF)',totalamt: 4.5,grantamt: 4.5,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":56},{"Name":"Energy and mining","Percent":34},{"Name":"Energy and mining","Percent":10}],prodlinetext: 'Global Environment Project',sector_code: 'BX'}
-,{id: 'P105176',project_name: 'Second Rural Sector Support',totalamt: 35.0,grantamt: 0.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jun-2008',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Industry and trade","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'AX'}
-,{id: 'P111331',project_name: 'Rwanda CFL Energy Efficiency Project',totalamt: 2.28,grantamt: 2.28,mjsector1: 'Energy and mining',boardapprovaldate: 'Jul-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Carbon Offset',sector_code: 'LX'}
-,{id: 'P119941',project_name: 'Rwanda - Support from Extractive Industries Technical Advisory Facility',totalamt: 0.33,grantamt: 0.33,mjsector1: 'Energy and mining',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
-,{id: 'P121222',project_name: 'AFSF Grant to Banque populaire du Rwanda S.A.',totalamt: 1.0,grantamt: 1.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Jul-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":60},{"Name":"Finance","Percent":40}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
-,{id: 'P116360',project_name: 'Promoting Economic Empowerment of Adolescent Girls and Young Women',totalamt: 2.7,grantamt: 2.7,mjsector1: 'Education',boardapprovaldate: 'May-2011',majorsector_percent: [{"Name":"Education","Percent":75},{"Name":"Education","Percent":15},{"Name":"Industry and trade","Percent":10}],prodlinetext: 'Recipient Executed Activities',sector_code: 'EX'}
-,{id: 'P121596',project_name: 'Technical Assistance and Capacity Building to the Vision 2020 Umurenge Program (VUP)',totalamt: 2.0,grantamt: 2.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Dec-2010',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
-,{id: 'P126877',project_name: 'RW-Support to Social Protection System',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2012',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P124629',project_name: 'Statistics for Result Facility',totalamt: 10.0,grantamt: 10.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Mar-2012',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
-,{id: 'P127105',project_name: 'Rwanda - Governance & Competitiveness TA Project',totalamt: 5.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jan-2012',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Industry and trade","Percent":40},{"Name":"Industry and trade","Percent":30}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P119901',project_name: 'Rwanda Transport Sector Support Project Additional Financing',totalamt: 11.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Jun-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":62},{"Name":"Transportation","Percent":38}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}
-,{id: 'P118101',project_name: 'Skills Development Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Education',boardapprovaldate: 'Mar-2011',majorsector_percent: [{"Name":"Education","Percent":60},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20}],prodlinetext: 'IBRD/IDA',sector_code: 'EX'}
-,{id: 'P124785',project_name: 'Rwanda Land, husbandry water harvesting and hillside irrigation',totalamt: 50.0,grantamt: 50.0,mjsector1: 'Agriculture, fishing, and forestry',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Agriculture, fishing, and forestry","Percent":44},{"Name":"Industry and trade","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":11},{"Name":"Agriculture, fishing, and forestry","Percent":8}],prodlinetext: 'Recipient Executed Activities',sector_code: 'AX'}
-,{id: 'P120037',project_name: 'BEIA-Promotion of Charcoal Producers Organization in Rwanda',totalamt: 0.11,grantamt: 0.11,mjsector1: 'Energy and mining',boardapprovaldate: 'Apr-2010',majorsector_percent: [{"Name":"Energy and mining","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'LX'}
-,{id: 'P111567',project_name: 'Rwanda Electricity Access Scale-up and Sector Wide Approach (SWAp) Development Project',totalamt: 70.0,grantamt: 0.0,mjsector1: 'Energy and mining',boardapprovaldate: 'Oct-2009',majorsector_percent: [{"Name":"Energy and mining","Percent":75},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Energy and mining","Percent":9}],prodlinetext: 'IBRD/IDA',sector_code: 'LX'}
-,{id: 'P079414',project_name: 'Rwanda Transport Sector Development Project',totalamt: 11.0,grantamt: 0.0,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Aug-2007',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":60},{"Name":"Transportation","Percent":40}],prodlinetext: 'IBRD/IDA',sector_code: 'BX'}];
+  var projects = [{'id': 'P112712','project_name': 'Second Emergency Demobilization and Reintegration Project','totalamt': 8.0,'grantamt': 0.0,'mjsector1': 'Health and other social services','boardapprovaldate': 'Aug-2009','majorsector_percent': [{"Name":"Health and other social services","Percent":68},{"Name":"Public Administration, Law, and Justice","Percent":32}],'prodlinetext': 'IBRD/IDA','sector_code': 'JX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P114931','project_name': 'Land Husbandry, Water Harvesting and Hillside Irrigation','totalamt': 34.0,'grantamt': 0.0,'mjsector1': 'Agriculture, fishing, and forestry','boardapprovaldate': 'Dec-2009','majorsector_percent': [{"Name":"Agriculture, fishing, and forestry","Percent":44},{"Name":"Industry and trade","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":11},{"Name":"Agriculture, fishing, and forestry","Percent":8}],'prodlinetext': 'IBRD/IDA','sector_code': 'AX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P097818','project_name': 'Rw:  Sustainable Energy Development Project (GEF)','totalamt': 4.5,'grantamt': 4.5,'mjsector1': 'Public Administration, Law, and Justice','boardapprovaldate': 'Oct-2009','majorsector_percent': [{"Name":"Public Administration, Law, and Justice","Percent":56},{"Name":"Energy and mining","Percent":34},{"Name":"Energy and mining","Percent":10}],'prodlinetext': 'Global Environment Project','sector_code': 'BX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P105176','project_name': 'Second Rural Sector Support','totalamt': 35.0,'grantamt': 0.0,'mjsector1': 'Agriculture, fishing, and forestry','boardapprovaldate': 'Jun-2008','majorsector_percent': [{"Name":"Agriculture, fishing, and forestry","Percent":50},{"Name":"Agriculture, fishing, and forestry","Percent":30},{"Name":"Industry and trade","Percent":20}],'prodlinetext': 'IBRD/IDA','sector_code': 'AX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P111331','project_name': 'Rwanda CFL Energy Efficiency Project','totalamt': 2.28,'grantamt': 2.28,'mjsector1': 'Energy and mining','boardapprovaldate': 'Jul-2009','majorsector_percent': [{"Name":"Energy and mining","Percent":100}],'prodlinetext': 'Carbon Offset','sector_code': 'LX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P119941','project_name': 'Rwanda - Support from Extractive Industries Technical Advisory Facility','totalamt': 0.33,'grantamt': 0.33,'mjsector1': 'Energy and mining','boardapprovaldate': 'Nov-2009','majorsector_percent': [{"Name":"Energy and mining","Percent":100}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'LX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P121222','project_name': 'AFSF Grant to Banque populaire du Rwanda S.A.','totalamt': 1.0,'grantamt': 1.0,'mjsector1': 'Agriculture, fishing, and forestry','boardapprovaldate': 'Jul-2011','majorsector_percent': [{"Name":"Agriculture, fishing, and forestry","Percent":60},{"Name":"Finance","Percent":40}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'AX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P116360','project_name': 'Promoting Economic Empowerment of Adolescent Girls and Young Women','totalamt': 2.7,'grantamt': 2.7,'mjsector1': 'Education','boardapprovaldate': 'May-2011','majorsector_percent': [{"Name":"Education","Percent":75},{"Name":"Education","Percent":15},{"Name":"Industry and trade","Percent":10}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'EX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P121596','project_name': 'Technical Assistance and Capacity Building to the Vision 2020 Umurenge Program (VUP)','totalamt': 2.0,'grantamt': 2.0,'mjsector1': 'Health and other social services','boardapprovaldate': 'Dec-2010','majorsector_percent': [{"Name":"Health and other social services","Percent":100}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'JX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P126877','project_name': 'RW-Support to Social Protection System','totalamt': 40.0,'grantamt': 0.0,'mjsector1': 'Health and other social services','boardapprovaldate': 'Mar-2012','majorsector_percent': [{"Name":"Health and other social services","Percent":100}],'prodlinetext': 'IBRD/IDA','sector_code': 'JX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P124629','project_name': 'Statistics for Result Facility','totalamt': 10.0,'grantamt': 10.0,'mjsector1': 'Public Administration, Law, and Justice','boardapprovaldate': 'Mar-2012','majorsector_percent': [{"Name":"Public Administration, Law, and Justice","Percent":100}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'BX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P127105','project_name': 'Rwanda - Governance & Competitiveness TA Project','totalamt': 5.0,'grantamt': 0.0,'mjsector1': 'Public Administration, Law, and Justice','boardapprovaldate': 'Jan-2012','majorsector_percent': [{"Name":"Public Administration, Law, and Justice","Percent":30},{"Name":"Industry and trade","Percent":40},{"Name":"Industry and trade","Percent":30}],'prodlinetext': 'IBRD/IDA','sector_code': 'BX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P119901','project_name': 'Rwanda Transport Sector Support Project Additional Financing','totalamt': 11.0,'grantamt': 0.0,'mjsector1': 'Public Administration, Law, and Justice','boardapprovaldate': 'Jun-2011','majorsector_percent': [{"Name":"Public Administration, Law, and Justice","Percent":62},{"Name":"Transportation","Percent":38}],'prodlinetext': 'IBRD/IDA','sector_code': 'BX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P118101','project_name': 'Skills Development Project','totalamt': 30.0,'grantamt': 0.0,'mjsector1': 'Education','boardapprovaldate': 'Mar-2011','majorsector_percent': [{"Name":"Education","Percent":60},{"Name":"Education","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":20}],'prodlinetext': 'IBRD/IDA','sector_code': 'EX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P124785','project_name': 'Rwanda Land, husbandry water harvesting and hillside irrigation','totalamt': 50.0,'grantamt': 50.0,'mjsector1': 'Agriculture, fishing, and forestry','boardapprovaldate': 'Feb-2011','majorsector_percent': [{"Name":"Agriculture, fishing, and forestry","Percent":44},{"Name":"Industry and trade","Percent":25},{"Name":"Agriculture, fishing, and forestry","Percent":12},{"Name":"Public Administration, Law, and Justice","Percent":11},{"Name":"Agriculture, fishing, and forestry","Percent":8}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'AX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P120037','project_name': 'BEIA-Promotion of Charcoal Producers Organization in Rwanda','totalamt': 0.11,'grantamt': 0.11,'mjsector1': 'Energy and mining','boardapprovaldate': 'Apr-2010','majorsector_percent': [{"Name":"Energy and mining","Percent":100}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'LX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P111567','project_name': 'Rwanda Electricity Access Scale-up and Sector Wide Approach (SWAp) Development Project','totalamt': 70.0,'grantamt': 0.0,'mjsector1': 'Energy and mining','boardapprovaldate': 'Oct-2009','majorsector_percent': [{"Name":"Energy and mining","Percent":75},{"Name":"Public Administration, Law, and Justice","Percent":16},{"Name":"Energy and mining","Percent":9}],'prodlinetext': 'IBRD/IDA','sector_code': 'LX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P079414','project_name': 'Rwanda Transport Sector Development Project','totalamt': 11.0,'grantamt': 0.0,'mjsector1': 'Public Administration, Law, and Justice','boardapprovaldate': 'Aug-2007','majorsector_percent': [{"Name":"Public Administration, Law, and Justice","Percent":60},{"Name":"Transportation","Percent":40}],'prodlinetext': 'IBRD/IDA','sector_code': 'BX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}];
       
   wb.init("461",  "Rwanda", "Africa", {projects_count: '18', locations_count: '96', projects: projects, locations_layer: 0, indicators: ['Population Density'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
 
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+    jq.ready( function() {
+          jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10));
+          jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10));
+    } );
 
   }
 </script>

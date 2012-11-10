@@ -555,7 +555,13 @@
         </div>
         
         
-        <div style="height: 530px;" id="wb_map_wrapper"><div id="wb_map" class="" style="height: 520px; position: relative"></div></div>
+        <div id="infowindow" style="display:none">
+            <div id="infowindow_content"></div>
+        </div>         
+        <div style="height: 530px;" id="wb_map_wrapper">
+            <div id="wb_map" class="" style="height: 520px; position: relative"></div>
+        </div>
+        
       </div>
         <!--Table Data Begins-->
 <div id="map-table">
@@ -593,7 +599,18 @@
     <br class="clear" />
   </div>
 
-  <div id="rightDesc">
+  <div id="rightDesc"> 
+    <!-- <p class="desc">
+      <a class="txtRed" href="#">See All Results for Georgia &raquo;</a>
+    </p> -->
+    <h3>GEORGIA</h3>
+      <h3>Geo Results</h3>
+<iframe src="http://maps.worldbank.org/storymaps/Georgia/Georgia.html" width="290" height="220" scrolling="no"></iframe>
+
+The economy is recovering in the aftermath of the global economic crisis and the August 2008 conflict with Russia, with real GDP growth of 6.4 percent in 2010 and expected to be around 5 percent this year. However, the sustainability of this recovery, and more importantly, its impact on employment and living conditions, hinges crucially on positive global and regional conditions, which are key for Georgia's nascent tourism and logistic industries. Efforts to maintain fiscal discipline and foster investments, exports, and overall productivity are also essential. The strategic objectives of the World Bank are to meet post conflict and vulnerability needs, and strengthen competitiveness for post-crisis growth.
+    <!-- <p class="desc">
+      Learn more about the World Bank's overall strategy in the <a href="#" class="txtRed">GEORGIA Country Overview &raquo;</a>
+    </p> -->
       
       <h3>GEORGIA LINKS</h3>
       <ul class="disc">
@@ -614,18 +631,12 @@
         <li><a href="http://www.aidflows.org/index.html?country='Georgia'" target="_new">Georgia Aid Flows &raquo;</a></li>
         
       </ul>
-          
-    <!-- <p class="desc">
-      <a class="txtRed" href="#">See All Results for Georgia &raquo;</a>
-    </p> -->
-    <h3>GEORGIA</h3>
-      The economy is recovering in the aftermath of the global economic crisis and the August 2008 conflict with Russia, with real GDP growth of 6.4 percent in 2010 and expected to be around 5 percent this year. However, the sustainability of this recovery, and more importantly, its impact on employment and living conditions, hinges crucially on positive global and regional conditions, which are key for Georgia's nascent tourism and logistic industries. Efforts to maintain fiscal discipline and foster investments, exports, and overall productivity are also essential. The strategic objectives of the World Bank are to meet post conflict and vulnerability needs, and strengthen competitiveness for post-crisis growth.
-    <!-- <p class="desc">
-      Learn more about the World Bank's overall strategy in the <a href="#" class="txtRed">GEORGIA Country Overview &raquo;</a>
-    </p> -->
+             
   </div>
 </div>
         </div><!--#main-wrap//-->
+
+
                 <br class="clear" />
         <div id="footnote">Active financed activities as of March 28, 2012.</div>
         <div id="network-breadcrumb"><div class="limiter clear-block">
@@ -661,23 +672,25 @@ function onload() {
   wb = new F1.WorldBank();
   
 
-  var projects = [{id: 'P117860',project_name: 'First East-West Highway Additional Financing',totalamt: 28.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Transportation","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":8}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P120887',project_name: 'ADDITIONAL FINANCING TO THE REGIONAL & MUN. INFRA. DEV. PROJECT',totalamt: 45.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2010',majorsector_percent: [{"Name":"Transportation","Percent":48},{"Name":"Water, sanitation and flood protection","Percent":48},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Public Administration, Law, and Justice","Percent":1},{"Name":"Public Administration, Law, and Justice","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P122204',project_name: 'Second Secondary and Local Roads Project (SLRP II)',totalamt: 70.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Mar-2012',majorsector_percent: [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P114669',project_name: 'Tblisi city Development Strategy',totalamt: 0.3,grantamt: 0.3,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
-,{id: 'P110126',project_name: 'REGIONAL & MUNICIPAL INFRASTRUCTURE DEVELOPMENT PROJECT',totalamt: 40.0,grantamt: 0.0,mjsector1: 'Water, sanitation and flood protection',boardapprovaldate: 'Oct-2008',majorsector_percent: [{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Industry and trade","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'WX'}
-,{id: 'P116534',project_name: 'IDP COMMUNITY DEVT PROJECT',totalamt: 2.21,grantamt: 2.21,mjsector1: 'Health and other social services',boardapprovaldate: 'Mar-2009',majorsector_percent: [{"Name":"Health and other social services","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'JX'}
-,{id: 'P125424',project_name: 'Preparatory Work for 2013 Georgia National Population Census',totalamt: 0.25,grantamt: 0.25,mjsector1: 'Public Administration, Law, and Justice',boardapprovaldate: 'Feb-2011',majorsector_percent: [{"Name":"Public Administration, Law, and Justice","Percent":100}],prodlinetext: 'Recipient Executed Activities',sector_code: 'BX'}
-,{id: 'P117152',project_name: 'Kakheti Regional Roads Improvement Project',totalamt: 30.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Nov-2009',majorsector_percent: [{"Name":"Transportation","Percent":94},{"Name":"Public Administration, Law, and Justice","Percent":6}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P040555',project_name: 'Health Sector Development Project',totalamt: 20.3,grantamt: 0.0,mjsector1: 'Health and other social services',boardapprovaldate: 'Aug-2002',majorsector_percent: [{"Name":"Health and other social services","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],prodlinetext: 'IBRD/IDA',sector_code: 'JX'}
-,{id: 'P112523',project_name: 'EAST-WEST HIGHWAY IMPROVEMENT 3',totalamt: 147.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Sep-2009',majorsector_percent: [{"Name":"Transportation","Percent":98},{"Name":"Public Administration, Law, and Justice","Percent":2}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}
-,{id: 'P083110',project_name: 'First East-West Highway Improvement',totalamt: 19.0,grantamt: 0.0,mjsector1: 'Transportation',boardapprovaldate: 'Dec-2006',majorsector_percent: [{"Name":"Transportation","Percent":94},{"Name":"Transportation","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Education","Percent":1}],prodlinetext: 'IBRD/IDA',sector_code: 'TX'}];
+  var projects = [{'id': 'P117860','project_name': 'First East-West Highway Additional Financing','totalamt': 28.0,'grantamt': 0.0,'mjsector1': 'Transportation','boardapprovaldate': 'Nov-2009','majorsector_percent': [{"Name":"Transportation","Percent":92},{"Name":"Public Administration, Law, and Justice","Percent":8}],'prodlinetext': 'IBRD/IDA','sector_code': 'TX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P120887','project_name': 'ADDITIONAL FINANCING TO THE REGIONAL & MUN. INFRA. DEV. PROJECT','totalamt': 45.0,'grantamt': 0.0,'mjsector1': 'Transportation','boardapprovaldate': 'Nov-2010','majorsector_percent': [{"Name":"Transportation","Percent":48},{"Name":"Water, sanitation and flood protection","Percent":48},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Public Administration, Law, and Justice","Percent":1},{"Name":"Public Administration, Law, and Justice","Percent":1}],'prodlinetext': 'IBRD/IDA','sector_code': 'TX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P122204','project_name': 'Second Secondary and Local Roads Project (SLRP II)','totalamt': 70.0,'grantamt': 0.0,'mjsector1': 'Transportation','boardapprovaldate': 'Mar-2012','majorsector_percent': [{"Name":"Transportation","Percent":90},{"Name":"Public Administration, Law, and Justice","Percent":10}],'prodlinetext': 'IBRD/IDA','sector_code': 'TX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P114669','project_name': 'Tblisi city Development Strategy','totalamt': 0.3,'grantamt': 0.3,'mjsector1': 'Public Administration, Law, and Justice','boardapprovaldate': 'Oct-2008','majorsector_percent': [{"Name":"Public Administration, Law, and Justice","Percent":100}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'BX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P110126','project_name': 'REGIONAL & MUNICIPAL INFRASTRUCTURE DEVELOPMENT PROJECT','totalamt': 40.0,'grantamt': 0.0,'mjsector1': 'Water, sanitation and flood protection','boardapprovaldate': 'Oct-2008','majorsector_percent': [{"Name":"Water, sanitation and flood protection","Percent":30},{"Name":"Industry and trade","Percent":25},{"Name":"Water, sanitation and flood protection","Percent":20},{"Name":"Transportation","Percent":20},{"Name":"Public Administration, Law, and Justice","Percent":5}],'prodlinetext': 'IBRD/IDA','sector_code': 'WX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P116534','project_name': 'IDP COMMUNITY DEVT PROJECT','totalamt': 2.21,'grantamt': 2.21,'mjsector1': 'Health and other social services','boardapprovaldate': 'Mar-2009','majorsector_percent': [{"Name":"Health and other social services","Percent":100}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'JX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P125424','project_name': 'Preparatory Work for 2013 Georgia National Population Census','totalamt': 0.25,'grantamt': 0.25,'mjsector1': 'Public Administration, Law, and Justice','boardapprovaldate': 'Feb-2011','majorsector_percent': [{"Name":"Public Administration, Law, and Justice","Percent":100}],'prodlinetext': 'Recipient Executed Activities','sector_code': 'BX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P117152','project_name': 'Kakheti Regional Roads Improvement Project','totalamt': 30.0,'grantamt': 0.0,'mjsector1': 'Transportation','boardapprovaldate': 'Nov-2009','majorsector_percent': [{"Name":"Transportation","Percent":94},{"Name":"Public Administration, Law, and Justice","Percent":6}],'prodlinetext': 'IBRD/IDA','sector_code': 'TX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P040555','project_name': 'Health Sector Development Project','totalamt': 20.3,'grantamt': 0.0,'mjsector1': 'Health and other social services','boardapprovaldate': 'Aug-2002','majorsector_percent': [{"Name":"Health and other social services","Percent":80},{"Name":"Public Administration, Law, and Justice","Percent":15},{"Name":"Public Administration, Law, and Justice","Percent":5}],'prodlinetext': 'IBRD/IDA','sector_code': 'JX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P112523','project_name': 'EAST-WEST HIGHWAY IMPROVEMENT 3','totalamt': 147.0,'grantamt': 0.0,'mjsector1': 'Transportation','boardapprovaldate': 'Sep-2009','majorsector_percent': [{"Name":"Transportation","Percent":98},{"Name":"Public Administration, Law, and Justice","Percent":2}],'prodlinetext': 'IBRD/IDA','sector_code': 'TX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}
+,{'id': 'P083110','project_name': 'First East-West Highway Improvement','totalamt': 19.0,'grantamt': 0.0,'mjsector1': 'Transportation','boardapprovaldate': 'Dec-2006','majorsector_percent': [{"Name":"Transportation","Percent":94},{"Name":"Transportation","Percent":3},{"Name":"Public Administration, Law, and Justice","Percent":2},{"Name":"Education","Percent":1}],'prodlinetext': 'IBRD/IDA','sector_code': 'TX','Results Stories': '','Results Image': '','Results Blurb': '','GeoResult': '','Project Results (ISR)': ''}];
       
   wb.init("498",  "Georgia", "Europe and Central Asia", {projects_count: '11', locations_count: '438', projects: projects, locations_layer: 0, indicators: ['Poverty'], layers: null, page_type: "country", thematic_area: "m4r"}, false);
   
 
-  jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10))
-  jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10))
+    jq.ready( function() {
+          jq("#map_embed_container").width(parseInt(getQuerystring("width", 200), 10));
+          jq("#map_embed_container").height(parseInt(getQuerystring("height", 200), 10));
+    } );
 
   }
 </script>
