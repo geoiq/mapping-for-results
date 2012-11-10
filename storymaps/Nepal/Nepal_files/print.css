@@ -1,0 +1,75 @@
+/* NCCAM NEWSLETTER PRINT STYLESHEET */
+
+
+/*STANDARD TAGS */
+
+html {
+	margin: 0.25in;
+}
+
+body {
+	padding: 0;
+	font-size: 11pt;
+	font-family: Garamond,'Times New Roman', serif;
+}
+
+h1 {
+	font-size: 16pt;
+}
+
+#container {
+	font-size: 11pt;
+}
+
+h2 {
+	font-size: 13pt;
+}
+
+h3 {
+	font-size: 12pt;
+}
+
+.italics {
+	font-size: 11pt;
+}
+
+/* CUSTOM IDs/CLASSES */
+
+#topsearch {
+	width: 765px;
+	margin: 1em;
+	border: none;
+}
+
+#maincontent {
+	margin: 1em;
+	border: none;
+	width: 765pt;
+}
+
+
+.volume,
+.date {
+	font-size: 10pt;
+}
+
+.blurb {
+	font-size: 11pt;
+}
+
+.blurb .title {
+	font-size: 13pt;
+}
+
+.caption,
+#issue {
+	font-size: 10pt;
+}
+
+.footer {
+	font-size: 11pt;
+}
+
+.calendarhed {
+	margin-top: 1em;
+}

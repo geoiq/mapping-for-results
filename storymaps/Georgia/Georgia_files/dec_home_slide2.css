@@ -1,0 +1,151 @@
+
+
+/****************************/
+/* IMPORTANT: This file is been used on the Home page, Results page, Financial Resources page and Clone pages.
+/****************************/
+
+
+.slidesWrapper_home{
+ /*position: relative;leave as is*/
+overflow: hidden; /*leave as is*/
+width: 544px; /*width of featured content slider*/
+height: 200px;
+position:relative;
+padding: 0px;
+margin: 0px;
+border: 0px;
+}
+.slidesWrapper_home .slides_home{
+visibility: hidden; /*leave as is*/
+/*position: absolute; leave as is
+left: 0;  leave as is
+top: 0; leave as is */
+padding: 0px;
+background: white;
+width: 544px; /*width of content DIVs within slider. Total width should equal slider's inner width (390+5+5=400) */
+height: 200px;
+}
+
+
+#slidesWrapper_home #arrows_home {
+		 position: absolute; 
+		 top:160px;
+		 left: 2; 
+		 width: 300px;
+		 
+/*		 top:-230px;*/
+		}
+
+
+#slidesWrapper_voices #arrows_home {
+		 height:10px;
+		 position:relative;
+		 width:80px;
+		}
+		
+#arrows_home_left{
+text-align: center;
+background-color: none;
+padding: 0px 0px;
+margin: 10px 0px 0px;
+position: relative;
+}
+
+#arrows_home_right{
+text-align: center;
+background-color: none;
+padding: 0px 0px;
+margin: 10px 0px 0px;
+position: relative;
+
+}
+
+
+/*#arrows_home{
+width: 200px; Width of pagination DIV. Total width should equal slider's outer width (400+10+10=420)
+text-align: center;
+background-color: none;
+padding: 0px 0px;
+margin: 10px 0px 0px;
+position: relative;
+top: 10;
+left: 125;}*/
+
+/*html>body #arrows_home {top: -210; left: 294;}*/
+
+.mainfeature .archive {position: relative; top: -36; left: 500;}
+.archive {position: relative; top: -18; left: 283;}
+
+.archive a, .mainfeature .archive a:visited, .mainfeature .archive a:hover {font: 7.5pt verdana;; color: #fff; text-decoration: none; position:absolute}
+
+
+html>body .pagination{ top: -46;}
+
+
+.pagination a img {border: none;}
+
+.pagination a{
+padding: 0 2px;
+text-decoration: none; 
+color: #fff;
+background: none;
+font: bold 8pt verdana;
+}
+
+.pagination a.selected{
+color: #fff;
+text-decoration: underline
+}
+
+.slides_home table tr td p {
+	font-family: verdana;
+	font-size: 8pt;
+	padding: 15px 5px 0px 8px; 
+	color:#fff;
+}
+
+.slides_home table tr td .blurb {font-size: 10px; padding: 0px 5px 0px 10px; margin: 0px;}
+
+
+
+.slides_home a, .slides_home a:visited, .slides_home a:hover {color: #fff; text-decoration: none;}
+.slides_home  a:hover {text-decoration: underline;}
+
+.slides_home table .language a {font: 7.5pt verdana;}
+
+/*List style for Language versions*/
+.slides_home table tr td ul {margin: 0px 0px 0px 10px; padding: 0px;}
+
+.slides_home  table tr td ul li {list-style-type: none;
+background-image: url(file:///C|/Users/wb158349/AppData/Local/Microsoft/Windows/Temporary%20Internet%20Files/Content.IE5/0MC0Q4LF/carrot-white.gif);
+background-repeat: no-repeat; background-position: 0px .5em; 
+color: #fff;
+font-size: 7.5pt;
+padding: 0px 0px 5px 10px;
+margin: 0em 0px 0px;
+line-height: 10px;
+}
+html>body .slides_home table tr td ul li {background-position: 0px .4em; }
+
+table.mainfeature tr td ul li a, .slides_home  table tr td ul li a:visited, .contentdiv  table tr td ul li a:hover {font: 7.5pt verdana;}
+
+/* Spring Meetings blog*/
+table.mainfeature tr td.sp-box{border:1px solid #4f618f; padding:15px; }
+
+table.mainfeature tr td.sp-box p {font-size: 10px;  margin: 5px 0; padding:0; color:#000
+}
+
+.ul-sp-box {font-size: 10px;  margin: 5px; padding:0; color:#000
+}
+
+table.mainfeature tr td.sp-box a{font-size: 10px; padding: 0px 5px 0px 0px; margin: 0px; color:#000
+}
+#spring-meetings-box ul, #resources ul{margin:0; padding-left:0}
+#spring-meetings-box ul li, #resources ul li{color:#000; margin:0; padding:1px 0; list-style-type:none}
+#spring-meetings-box a, #spring-meetings-box a:visited,  #resources a, #resources a:visited, #more a, #more a:visited {color: #000; text-decoration: none;}
+#spring-meetings-box a:hover, #resources a:hover, #more a:hover{text-decoration:underline;}
+#all_features, #more{float:right; margin-top:10px}
+
+#spring-meetings-box p, #resources p{margin:0; font-size:10px;}
+
+#slidesWrapper_home{margin-bottom:0px; position:relative}
