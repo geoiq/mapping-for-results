@@ -766,9 +766,11 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	projectObject: function() {
 		var self = this;
 		self.project_ids = {};
+		if(self.projects !== undefined && self.projects !== null) {
 		jq.map(self.projects, function(project) {
 			self.project_ids[project["id"]] = project;			
 		});
+		}
 	},
 	sortData: function(data) {
 	  var self = this;
@@ -1390,7 +1392,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             jq('#activity_count').html(self.country_attrs["locations_count"]);
             if(self.country_attrs["locations_count"] == 1) {
                 jq('#mapped_locations_header').html("mapped location")
-            } else if (parseInt(self.country_attrs["locations_count"].replace(",","")) > 500) {
+            } else if (parseInt(self.country_attrs["locations_count"].replace(",","")) > 500 && self.projects !== undefined) {
                 self.countryFundingBars()
             }
             log("finish header")
