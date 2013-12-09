@@ -187,7 +187,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
 		 view: map_engine,
 		 core_host:	 proxy_host + '/', finder_host:proxy_host + '/', maker_host: proxy_host + '/',
 		 onMapReady: function() { log("onMapReady!!") },
-		 onMapLoaded: function() { setTimeout("wb.loadedMap()",1500); },
+		 onMapLoaded: function() { log("onMapLoaded"); setTimeout("wb.loadedMap()",1500); },
 		 onFeatureSelected: function(features) { if(self.country == "World" && features.features.length > 0) {
 		     var country = features.features[0]; window.location = "/" + country.region.toLowerCase() + "/" + country.country.toLowerCase().replace(/\s+/,'-') ;
 		 }},
