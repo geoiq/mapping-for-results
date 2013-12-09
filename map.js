@@ -1,4 +1,5 @@
-var proxy_host = "http://maps.worldbank.org";	   
+var proxy_host = "http://worldbank.highearthorbit.com";
+var asset_host = "http://worldbank.highearthorbit.com";
 var map_engine = "Wrapper_181";
 var project_attributes = ["id","project_name","totalamt","prodlinetext","grantamt","mjsector1","boardapprovaldate","majorsector_percent"];
 var major_sector_name = "mjsector 1";
@@ -142,19 +143,19 @@ if(typeof(F1)=='undefined') {F1 = {};}
 	  if(this.thematic_area === undefined || this.thematic_area === null)
 	    this.thematic_area = "m4r";
 	    
-	  this.wbicons = {"Agriculture, fishing, and forestry":"http://maps.worldbank.org/images/icons/round/agriculture-16.png","Information and communications":"http://maps.worldbank.org/images/icons/round/communication-16.png","Education":"http://maps.worldbank.org/images/icons/round/education-16.png","Energy and mining":"http://maps.worldbank.org/images/icons/round/energy-16.png","Finance":"http://maps.worldbank.org/images/icons/round/finance-16.png","Health and other social services":"http://maps.worldbank.org/images/icons/round/health-16.png","Industry and trade":"http://maps.worldbank.org/images/icons/round/industry-16.png","Public Administration, Law, and Justice":"http://maps.worldbank.org/images/icons/round/public-16.png","Transportation":"http://maps.worldbank.org/images/icons/round/transportation-16.png","Water, sanitation and flood protection":"http://maps.worldbank.org/images/icons/round/water-16.png"};
+	  this.wbicons = {"Agriculture, fishing, and forestry":asset_host + "/images/icons/round/agriculture-16.png","Information and communications":asset_host + "/images/icons/round/communication-16.png","Education":asset_host + "/images/icons/round/education-16.png","Energy and mining":asset_host + "/images/icons/round/energy-16.png","Finance":asset_host + "/images/icons/round/finance-16.png","Health and other social services":asset_host + "/images/icons/round/health-16.png","Industry and trade":asset_host + "/images/icons/round/industry-16.png","Public Administration, Law, and Justice":asset_host + "/images/icons/round/public-16.png","Transportation":asset_host + "/images/icons/round/transportation-16.png","Water, sanitation and flood protection":asset_host + "/images/icons/round/water-16.png"};
 	  var color_index = 3;
 	  this.sectors = {
-		"agriculture": {name: "Agriculture, fishing, and forestry", sector_code: "AX", color: self.fadeHex("#8bb131","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "agriculture", icon: "http://maps.worldbank.org/images/icons/round/agriculture-on.png"}, 
-		"communications": {name: "Information and communications", sector_code: "CX", color: self.fadeHex("#395f8f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "communications", icon: "http://maps.worldbank.org/images/icons/round/communication-on.png"},
-		"education": {name: "Education", sector_code: "EX", color: self.fadeHex("#eebd00","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "education", icon: "http://maps.worldbank.org/images/icons/round/education-on.png"}, 
-		"energy": {name: "Energy and mining", sector_code: "LX", color: self.fadeHex("#880000","#FFFFFF",10)[color_index],	funding: 0, projects: [], activities: 0, shortname: "energy", icon: "http://maps.worldbank.org/images/icons/round/energy-on.png"},
-		"finance": {name: "Finance", sector_code: "FX", color: self.fadeHex("#40823f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "finance", icon: "http://maps.worldbank.org/images/icons/round/finance-on.png"},
-		"health": {name: "Health and other social services", sector_code: "JX", color: self.fadeHex("#c23001","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "health", icon: "http://maps.worldbank.org/images/icons/round/health-on.png"},
-		"industry": {name: "Industry and trade", sector_code: "YX", color: self.fadeHex("#7f4410","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "industry", icon: "http://maps.worldbank.org/images/icons/round/industry-on.png"},
-		"public": {name: "Public Administration, Law, and Justice", sector_code: "BX", color: self.fadeHex("#8060a4","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "public", icon: "http://maps.worldbank.org/images/icons/round/public-on.png"},
-		"water": {name: "Water, sanitation and flood protection", sector_code: "WX", color: self.fadeHex("#369fd0","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "water", icon: "http://maps.worldbank.org/images/icons/round/water-on.png"},
-		"transportation": {name: "Transportation", sector_code: "TX", color: self.fadeHex("#d28807","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "transportation", icon: "http://maps.worldbank.org/images/icons/round/transportation-on.png"}};
+		"agriculture": {name: "Agriculture, fishing, and forestry", sector_code: "AX", color: self.fadeHex("#8bb131","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "agriculture", icon: asset_host + "/images/icons/round/agriculture-on.png"}, 
+		"communications": {name: "Information and communications", sector_code: "CX", color: self.fadeHex("#395f8f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "communications", icon: asset_host + "/images/icons/round/communication-on.png"},
+		"education": {name: "Education", sector_code: "EX", color: self.fadeHex("#eebd00","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "education", icon: asset_host + "/images/icons/round/education-on.png"}, 
+		"energy": {name: "Energy and mining", sector_code: "LX", color: self.fadeHex("#880000","#FFFFFF",10)[color_index],	funding: 0, projects: [], activities: 0, shortname: "energy", icon: asset_host + "/images/icons/round/energy-on.png"},
+		"finance": {name: "Finance", sector_code: "FX", color: self.fadeHex("#40823f","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "finance", icon: asset_host + "/images/icons/round/finance-on.png"},
+		"health": {name: "Health and other social services", sector_code: "JX", color: self.fadeHex("#c23001","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "health", icon: asset_host + "/images/icons/round/health-on.png"},
+		"industry": {name: "Industry and trade", sector_code: "YX", color: self.fadeHex("#7f4410","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "industry", icon: asset_host + "/images/icons/round/industry-on.png"},
+		"public": {name: "Public Administration, Law, and Justice", sector_code: "BX", color: self.fadeHex("#8060a4","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "public", icon: asset_host + "/images/icons/round/public-on.png"},
+		"water": {name: "Water, sanitation and flood protection", sector_code: "WX", color: self.fadeHex("#369fd0","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "water", icon: asset_host + "/images/icons/round/water-on.png"},
+		"transportation": {name: "Transportation", sector_code: "TX", color: self.fadeHex("#d28807","#FFFFFF",10)[color_index], funding: 0, projects: [], activities: 0, shortname: "transportation", icon: asset_host + "/images/icons/round/transportation-on.png"}};
 
 	  this.sector_names = {};
 	  this.sector_codes = {};
@@ -1312,7 +1313,7 @@ if(typeof(F1)=='undefined') {F1 = {};}
             self.toggleExtractive("Oil fields","all", true)     
             self.map.setMapStyle( {zoom: { offset: {x:15,y:90}}} )
             self.setExtractiveIndicator('Mines','Total production','Production',true)
-            self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,{attribute:"Mineral type",categories:{"Gold":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_gold.png","Bauxite":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_bauxite.png","Manganese":"http://maps.worldbank.org/images/icons/worldbank//extractives/small_manganese.png","Other":"http://maps.worldbank.org/images/icons/worldbank/extractives/small_other.png"}})               
+            self.map.addLayerCategoryFilter(self.stylelayers["Mines"].guid,{attribute:"Mineral type",categories:{"Gold":asset_host + "/images/icons/worldbank//extractives/small_gold.png","Bauxite":asset_host + "/images/icons/worldbank//extractives/small_bauxite.png","Manganese":asset_host + "/images/icons/worldbank//extractives/small_manganese.png","Other":asset_host + "/images/icons/worldbank/extractives/small_other.png"}})               
             self.minesPieChart() 
         }
         self.loadState();
