@@ -140,8 +140,8 @@
         $LAB.script(scriptBase + "jquery-1.6.2.min.js").wait(function(){
           jq = jQuery.noConflict();
       
-        $LAB.script("http://maps.worldbank.org/javascripts/external.min.js").wait()
-            .script("http://maps.worldbank.org/javascripts/visualize.min.js").wait(function(){
+        $LAB.script("/javascripts/external.min.js").wait()
+            .script("/javascripts/visualize.min.js").wait(function(){
             js_loaded()
         });
       
