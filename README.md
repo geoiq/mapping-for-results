@@ -1,8 +1,12 @@
 # mapping-for-results
 
-World Bank Mapping for Results dashboard
+World Bank Mapping for Results dashboard. [Read more](http://blogs.worldbank.org/developmenttalk/mapping-for-results) about the project. Visit the [new Mapping for Results](http://maps.worldbank.org/)
 
 ![mapping-for-results-the-world-bank](https://cloud.githubusercontent.com/assets/1218/19153444/9f56932c-8ba4-11e6-8aff-dd2fad572b9b.png)
+
+
+![worldbank country page](https://cloud.githubusercontent.com/assets/1218/19153911/53e56a42-8ba6-11e6-8cb3-87db8131bc51.png)
+
 
 Released under the open-source Apache License
 
